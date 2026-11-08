@@ -52,20 +52,24 @@ def _ts(t: float) -> str:
     return f"{h:02}:{m:02}:{s:02},{ms:03}"
 
 
-def to_srt(timing: dict, max_chars: int = 42) -> str:
-    cues, cur = [], []
+def cues(timing: dict, max_chars: int = 42) -> list[tuple[float, float, str]]:
+    """Gom từ thành dòng phụ đề ≤ max_chars, ngắt sau dấu kết câu."""
+    groups, cur = [], []
     for w in timing["words"]:
         if cur and len(" ".join(x["w"] for x in cur + [w])) > max_chars:
-            cues.append(cur)
+            groups.append(cur)
             cur = []
         cur.append(w)
         if w["w"][-1:] in ".!?":
-            cues.append(cur)
+            groups.append(cur)
             cur = []
     if cur:
-        cues.append(cur)
-    return "".join(f"{i}\n{_ts(c[0]['start'])} --> {_ts(c[-1]['end'])}\n{' '.join(x['w'] for x in c)}\n\n"
-                   for i, c in enumerate(cues, 1))
+        groups.append(cur)
+    return [(g[0]["start"], g[-1]["end"], " ".join(x["w"] for x in g)) for g in groups]
+
+
+def to_srt(timing: dict, max_chars: int = 42) -> str:
+    return "".join(f"{i}\n{_ts(a)} --> {_ts(b)}\n{t}\n\n" for i, (a, b, t) in enumerate(cues(timing, max_chars), 1))
 
 
 def main(video_dir: str) -> int:
