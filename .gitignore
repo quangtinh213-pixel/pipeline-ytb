@@ -1,0 +1,12 @@
+.mcp.json
+.superpowers/
+.venv/
+__pycache__/
+.pytest_cache/
+node_modules/
+videos/*/giong*.mp3
+videos/*/giong/
+videos/*/*.mp4
+videos/*/shorts/
+videos/*/frames/
+.DS_Store
