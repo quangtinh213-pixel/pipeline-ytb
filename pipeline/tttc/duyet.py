@@ -55,3 +55,27 @@ def render_review_1(video_dir) -> Path:
             + "<h2>Kịch bản</h2>" + _script_html(script))
     return _page(d, "duyet-1.html", f"Duyệt 1 · {d.name}",
                  "Kiểm từng số với nguồn, rồi trả lời 'duyệt' hoặc ghi chỗ cần sửa.", body)
+
+
+def render_review_2(video_dir) -> Path:
+    d = Path(video_dir)
+    nguon = json.loads(_read(d / "nguon.json", "[]"))
+    goi = json.loads(_read(d / "dong-goi.json", "{}"))
+    warns = check(_read(d / "kich-ban.md"), nguon)
+    warns += [f"Nguồn [#{n['id']}] là số sơ bộ ({n['gia_tri']}): video phải nói rõ 'sơ bộ'"
+              for n in nguon if n["trang_thai"] == "so-bo"]
+    opts = "".join(
+        f'<div class="opt"><strong>Phương án {i}</strong><img src="{escape(o["file_thumb"])}" alt="">'
+        f'<p>{escape(o["tieu_de"])}</p><p class="meta">Chữ thumbnail: {escape(" / ".join(o.get("chu_thumb", [])))}</p></div>'
+        for i, o in enumerate(goi.get("phuong_an", []), 1))
+    shorts = "".join(
+        f'<div class="opt"><video controls src="{escape(s["file"])}"></video><p>{escape(s["tieu_de"])}</p>'
+        f'<p class="meta">Đăng {escape(s["ngay"])} {escape(s["gio"])}</p></div>' for s in goi.get("shorts", []))
+    body = (_warnings(warns)
+            + '<h2>Video</h2><video controls src="final.mp4"></video>'
+            + f'<h2>Tiêu đề + thumbnail</h2><div class="opts">{opts}</div>'
+            + f'<h2>Shorts</h2><div class="opts">{shorts}</div>'
+            + "<h2>Mô tả</h2><pre>" + escape(goi.get("mo_ta", "")) + "</pre>"
+            + "<h2>Tags</h2><pre>" + escape(", ".join(goi.get("tags", []))) + "</pre>")
+    return _page(d, "duyet-2.html", f"Duyệt 2 · {d.name}",
+                 "Xem video, chọn phương án 1/2/3, rồi trả lời 'duyệt phương án N' hoặc ghi chỗ cần sửa.", body)

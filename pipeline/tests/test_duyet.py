@@ -41,3 +41,33 @@ def test_review_1_escapes_html(tmp_path):
 
 def test_review_1_written_to_video_dir(tmp_path):
     assert duyet.render_review_1(_video(tmp_path)) == tmp_path / "duyet-1.html"
+
+
+GOI = {"phuong_an": [{"tieu_de": f"Tiêu đề {i}", "chu_thumb": ["X"], "file_thumb": f"thumbnails/{i}.png"}
+                     for i in (1, 2, 3)],
+       "mo_ta": "Mô tả <b>video</b>", "tags": ["a"],
+       "shorts": [{"file": "shorts/1.mp4", "tieu_de": "S1", "ngay": "14/11/2026", "gio": "12:00"}]}
+
+
+def _video2(tmp_path):
+    d = _video(tmp_path)
+    (d / "dong-goi.json").write_text(json.dumps(GOI, ensure_ascii=False), encoding="utf-8")
+    return d
+
+
+def test_review_2_lists_three_options(tmp_path):
+    html = duyet.render_review_2(_video2(tmp_path)).read_text(encoding="utf-8")
+    for i in (1, 2, 3):
+        assert f"Tiêu đề {i}" in html and f'src="thumbnails/{i}.png"' in html
+    assert "&lt;b&gt;video" in html
+
+
+def test_review_2_links_video_and_shorts(tmp_path):
+    html = duyet.render_review_2(_video2(tmp_path)).read_text(encoding="utf-8")
+    assert '<video controls src="final.mp4"' in html and 'src="shorts/1.mp4"' in html
+    assert "14/11/2026 12:00" in html
+
+
+def test_review_2_shows_remaining_warnings(tmp_path):
+    html = duyet.render_review_2(_video2(tmp_path)).read_text(encoding="utf-8")
+    assert 'class="canh-bao"' in html and "g1" in html and "sơ bộ" in html
