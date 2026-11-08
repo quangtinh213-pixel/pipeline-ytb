@@ -1,1 +1,114 @@
-{"scenes": [{"id": "c01", "mau": "chuong", "so": "Phần 2", "chuong": "ChatGPT: Free, Go, Plus, Pro", "start": 0.0, "end": 2.54}, {"id": "c02", "mau": "minh-hoa", "svg": "laptop", "phu": ["dong-xu", "cay"], "nhan": "Trả tiền cho AI mỗi tháng?", "start": 2.54, "end": 6.86}, {"id": "c03", "mau": "trang-nguon", "anh": "p1.png", "khung": "50.5,74,15,9", "nguon_id": "p1", "nen": "toi", "start": 6.86, "end": 11.43}, {"id": "c04", "mau": "so-lon", "so": 522500, "sau": " đ", "nhan": "ChatGPT Plus mỗi tháng", "nguon_id": "p1", "huong": "len", "svg": "tien", "start": 11.43, "end": 15.74}, {"id": "c05", "mau": "bieu-do", "nhan": "Giá gói AI trả phí mỗi tháng ở Việt Nam", "bieu_do": {"kieu": "cot", "nhan_x": ["ChatGPT Go", "Google AI Pro", "ChatGPT Plus"], "gia_tri": [132000, 489000, 522500], "don_vi": "đ", "noi_bat": 2, "chu_thich": "ĐẮT NHẤT", "nguon_id": ["p1", "g1"]}, "start": 15.74, "end": 21.08}, {"id": "c06", "mau": "nhan-vat", "anh": "sam-altman-cropedit-james-tamim.jpg", "nhan": "Sam Altman", "vai": "Tổng giám đốc OpenAI", "start": 21.08, "end": 25.393787}]}
+{
+ "scenes": [
+  {
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "ChatGPT: Free, Go, Plus, Pro",
+   "id": "c01",
+   "start": 0.0,
+   "end": 2.126
+  },
+  {
+   "mau": "minh-hoa",
+   "svg": "laptop",
+   "phu": [
+    "dong-xu",
+    "cay"
+   ],
+   "nhan": "Trả tiền cho AI mỗi tháng?",
+   "nhip": [
+    "trả tiền",
+    "mỗi tháng",
+    "không dùng"
+   ],
+   "id": "c02",
+   "start": 2.126,
+   "end": 6.802
+  },
+  {
+   "mau": "trich-bao",
+   "nguon_id": "p2",
+   "trich": "Phù hợp nhất cho công việc chuyên sâu và năng suất cao",
+   "to_vang": "năng suất cao",
+   "nhip": [
+    "năng suất"
+   ],
+   "id": "c03",
+   "start": 6.802,
+   "end": 13.533
+  },
+  {
+   "mau": "so-lon",
+   "so": 522500,
+   "sau": " đ",
+   "nhan": "ChatGPT Plus mỗi tháng",
+   "nguon_id": "p1",
+   "huong": "len",
+   "svg": "tien",
+   "nhip": [
+    "năm trăm",
+    "mỗi tháng"
+   ],
+   "id": "c04",
+   "start": 13.533,
+   "end": 18.209
+  },
+  {
+   "mau": "bieu-do",
+   "nhan": "Giá gói AI trả phí mỗi tháng ở Việt Nam",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "ChatGPT Go",
+     "Google AI Pro",
+     "ChatGPT Plus"
+    ],
+    "gia_tri": [
+     132000,
+     489000,
+     522500
+    ],
+    "don_vi": "đ",
+    "noi_bat": 2,
+    "chu_thich": "ĐẮT NHẤT",
+    "nguon_id": [
+     "p1",
+     "g1"
+    ]
+   },
+   "nhip": [
+    "Go",
+    "Google",
+    "Plus",
+    "đắt nhất"
+   ],
+   "id": "c05",
+   "start": 18.209,
+   "end": 22.814
+  },
+  {
+   "mau": "b-roll",
+   "video": "commons-quy-dao.mp4",
+   "nhan": "Hạ tầng toàn cầu",
+   "so": "03",
+   "nhip": [
+    "hạ tầng"
+   ],
+   "id": "c06",
+   "start": 22.814,
+   "end": 26.357
+  },
+  {
+   "mau": "nhan-vat",
+   "anh": "sam-altman-cropedit-james-tamim.jpg",
+   "nhan": "Sam Altman",
+   "vai": "Tổng giám đốc OpenAI",
+   "nhip": [
+    "tổng giám đốc"
+   ],
+   "id": "c07",
+   "start": 26.357,
+   "end": 30.537
+  }
+ ]
+}

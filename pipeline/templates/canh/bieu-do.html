@@ -19,7 +19,7 @@
                           font: 800 30px/1 var(--font-display); padding: 12px 20px; border-radius: 12px; }
   </style>
   <div id="root" data-composition-id="bieu-do" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":"TIÊU ĐỀ"},{"id":"nhan_x","type":"string","label":"Nhãn cột (JSON)","default":"[\"A\",\"B\"]"},{"id":"gia_tri","type":"string","label":"Giá trị (JSON)","default":"[1,2]"},{"id":"so_hien","type":"string","label":"Số hiện (JSON)","default":"[\"1\",\"2\"]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"noi_bat","type":"number","label":"Cột nổi bật (0-based)","default":-1},{"id":"chu_thich","type":"string","label":"Chú thích cột nổi bật","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":"TIÊU ĐỀ"},{"id":"nhan_x","type":"string","label":"Nhãn cột (JSON)","default":"[\"A\",\"B\"]"},{"id":"gia_tri","type":"string","label":"Giá trị (JSON)","default":"[1,2]"},{"id":"so_hien","type":"string","label":"Số hiện (JSON)","default":"[\"1\",\"2\"]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"noi_bat","type":"number","label":"Cột nổi bật (0-based)","default":-1},{"id":"chu_thich","type":"string","label":"Chú thích cột nổi bật","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
     <div id="bd-san" class="san">
       <div id="bd-tieu-de" class="bd-tieu-de" data-var-text="tieu_de">TIÊU ĐỀ</div>
       <div id="bd-khung" class="bd-khung" data-layout-allow-overflow>
@@ -33,6 +33,7 @@
   <script>
     // Cột dựng một lần lúc khởi tạo từ biến (tất định); mọi chuyển động nằm trên timeline.
     const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
     document.querySelector("#bd-san").classList.add("nen-" + (v.nen || "toi"));
     const labels = JSON.parse(v.nhan_x), vals = JSON.parse(v.gia_tri);
     const hl = Number(v.noi_bat), max = Math.max(...vals), n = vals.length;
@@ -59,13 +60,13 @@
                       (i === hl && v.chu_thich ? '<div class="bd-chip" id="bd-chip"><span>' + v.chu_thich + '</span></div>' : "");
       khung.appendChild(col);
       if (i !== hl) others.push(col);
-      const t0 = 0.4 + i * 0.18, obj = { x: 0 }, so = col.querySelector(".bd-so");
+      const t0 = at(i, 0.4 + i * 0.18), obj = { x: 0 }, so = col.querySelector(".bd-so");
       tl.fromTo(col, { scaleY: 0 }, { scaleY: 1, duration: 0.75, ease: "back.out(1.3)" }, t0);
       tl.fromTo(obj, { x: 0 }, { x: val, duration: 0.75, ease: "power3.out",
                 onUpdate: () => { so.textContent = fmt(obj.x, i); } }, t0);
     });
     // sau khi mọi cột lên: cột thường lùi lại, cột nổi bật được chú thích
-    const tHl = 0.4 + n * 0.18 + 0.5;
+    const tHl = at(n, 0.4 + n * 0.18 + 0.5);
     if (hl >= 0 && others.length) tl.fromTo(others, { opacity: 1 }, { opacity: 0.45, duration: 0.4, ease: "power2.inOut" }, tHl);
     if (document.querySelector("#bd-chip"))
       tl.fromTo("#bd-chip", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, tHl + 0.1);

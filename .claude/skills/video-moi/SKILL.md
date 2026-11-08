@@ -34,7 +34,8 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
 - Mỗi con số dùng trong video thành một mục trong `nguon.json`:
   `{"id","gia_tri","trich_dan","url","ngay_truy_cap","anh_chup","trang_thai"}`
   - `id` ngắn: `p1`, `g2`...; `gia_tri` ghi đúng như trong nguồn kèm đơn vị.
-  - `trich_dan` là câu gốc chứa số (ngắn, ≤ 25 từ).
+  - `trich_dan` là câu gốc chứa số, **chép nguyên văn** (≤ 25 từ) – mẫu `trich-bao` chỉ được trích đúng chữ này.
+  - `ten`: tên báo/cơ quan để hiện trên màn hình (vd "VnExpress", "Bộ Tài chính"); bỏ trống thì dùng tên miền.
   - `anh_chup`: chụp trang bằng trình duyệt có sẵn, lưu `nguon/<id>.png`.
   - `trang_thai`: `xac-minh` (đọc thấy trong nguồn gốc) | `so-bo` (nguồn tự ghi là sơ bộ/ước tính) |
     `chua-xac-minh` (chỉ thấy ở tin thứ cấp).

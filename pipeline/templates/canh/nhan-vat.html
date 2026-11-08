@@ -16,7 +16,7 @@
                          font: 500 28px/1.2 var(--font-display); }
   </style>
   <div id="root" data-composition-id="nhan-vat" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/nguoi.svg"},{"id":"ten","type":"string","label":"Tên","default":"Tên"},{"id":"vai","type":"string","label":"Vai trò","default":"Vai trò"},{"id":"ghi_cong","type":"string","label":"Ghi công ảnh","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"kem"}]'>
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/nguoi.svg"},{"id":"ten","type":"string","label":"Tên","default":"Tên"},{"id":"vai","type":"string","label":"Vai trò","default":"Vai trò"},{"id":"ghi_cong","type":"string","label":"Ghi công ảnh","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"kem"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
     <div id="nv-san" class="san">
       <div id="nv-khoi" class="nv-khoi"></div>
       <div id="nv-anh" class="nv-anh"><img id="nv-img" data-var-src="anh" src="assets/svg/nguoi.svg" alt=""></div>
@@ -29,6 +29,7 @@
   </div>
   <script>
     const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
     document.querySelector("#nv-san").classList.add("nen-" + (v.nen || "kem"));
     const ten = document.querySelector("#nv-ten");
     String(v.ten).split(/\s+/).forEach((w, i) => {
@@ -42,7 +43,7 @@
     tl.fromTo("#nv-img", { scale: 1.12 }, { scale: 1.0, duration: 1.2, ease: "power2.out" }, 0.12);
     tl.fromTo("#nv-ten span", { opacity: 0, filter: "blur(6px)" },
               { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08 }, 0.45);
-    tl.fromTo("#nv-vai", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.8);
+    tl.fromTo("#nv-vai", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, at(0, 0.8));
     tl.fromTo("#nv-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
     window.__timelines["nhan-vat"] = tl;
   </script>

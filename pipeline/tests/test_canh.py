@@ -117,3 +117,38 @@ def test_chart_values_must_match_source(tmp_path):
     chart = {"kieu": "cot", "nhan_x": ["A", "B"], "gia_tri": [522500, 999], "don_vi": "đ", "nguon_id": "p1"}
     sc = _sc((0, 6), (6, 12), mau="bieu-do", bieu_do=chart)
     assert any("999" in e for e in _errors(canh.validate(sc, TIMING, tmp_path, SRC)))
+
+
+def test_validate_missing_keyword(tmp_path):
+    timing = {"duration": 12.0, "words": [{"w": "Plus", "start": 7.0, "end": 7.3}]}
+    ok = _sc((0, 6), (6, 12))
+    ok["scenes"][1]["nhip"] = ["Plus"]
+    assert _errors(canh.validate(ok, timing, tmp_path, SRC)) == []
+    bad = _sc((0, 6), (6, 12))
+    bad["scenes"][0]["nhip"] = ["Plus"]                       # từ nằm ở cảnh sau
+    assert any("Plus" in e for e in _errors(canh.validate(bad, timing, tmp_path, SRC)))
+
+
+TRICH = [{"id": "b1", "gia_tri": "", "trich_dan": "Giá RAM DDR5 tăng gấp ba lần chỉ trong sáu tháng, theo TrendForce.",
+          "url": "https://vnexpress.net/abc", "ngay_truy_cap": "2026-11-07", "trang_thai": "xac-minh"}]
+
+
+def test_trich_bao_must_quote_source_exactly(tmp_path):
+    sc = _sc((0, 6), (6, 12), mau="trich-bao", nguon_id="b1",
+             trich="Giá RAM DDR5 tăng gấp ba lần chỉ trong sáu tháng", to_vang="tăng gấp ba lần")
+    assert _errors(canh.validate(sc, TIMING, tmp_path, TRICH)) == []
+    sai = _sc((0, 6), (6, 12), mau="trich-bao", nguon_id="b1", trich="Giá RAM tăng gấp bốn lần", to_vang="gấp bốn")
+    assert any("trích" in e for e in _errors(canh.validate(sai, TIMING, tmp_path, TRICH)))
+    lech = _sc((0, 6), (6, 12), mau="trich-bao", nguon_id="b1",
+               trich="Giá RAM DDR5 tăng gấp ba lần chỉ trong sáu tháng", to_vang="gấp năm")
+    assert any("tô vàng" in e for e in _errors(canh.validate(lech, TIMING, tmp_path, TRICH)))
+    thieu = _sc((0, 6), (6, 12), mau="trich-bao", trich="abc", to_vang="")
+    assert any("nguon_id" in e for e in _errors(canh.validate(thieu, TIMING, tmp_path, TRICH)))
+
+
+def test_broll_scene_needs_video_file(tmp_path):
+    sc = _sc((0, 6), (6, 12), mau="b-roll", video="pexels-1.mp4", nhan="QUY MÔ")
+    assert any("pexels-1.mp4" in e for e in _errors(canh.validate(sc, TIMING, tmp_path, SRC, video_dir=tmp_path)))
+    (tmp_path / "broll").mkdir()
+    (tmp_path / "broll" / "pexels-1.mp4").write_bytes(b"x")
+    assert _errors(canh.validate(sc, TIMING, tmp_path, SRC, video_dir=tmp_path)) == []

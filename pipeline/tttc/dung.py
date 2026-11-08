@@ -7,6 +7,9 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
 - trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
+- trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich)
+- b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01")
+Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
 Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi theo chương. Chuyển cảnh tự gán (transitions()).
 """
 import json
@@ -21,12 +24,24 @@ from urllib.parse import urlparse
 
 from PIL import Image
 
-from tttc.canh import cues
+from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
 
 PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
-PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-", "chuong": "ch-"}
+SFX = PIPE / "am-thanh" / "sfx"
+PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
+          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-"}
+# Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
+DEFAULT_STEPS = {
+    "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
+    "so-lon": [0.05, 1.6],             # bắt đầu đếm, dòng dưới
+    "trang-nguon": [0.8],              # zoom vào số
+    "nhan-vat": [0.8],                 # thẻ vai trò
+    "chuong": [],
+    "trich-bao": [0.9],                # tô vàng
+    "b-roll": [0.5],                   # nhãn chương
+}
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 NHAC_DB = 0.1  # ≈ −20 dB dưới giọng
 TILE_W, TILE_H, COLS = 384, 216, 10
@@ -55,7 +70,8 @@ def _source_line(nguon: dict) -> str:
     return f"Nguồn: {host}, {d:%d/%m/%Y}"
 
 
-def _vars(c: dict, by_id: dict, credits: dict) -> dict:
+def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None) -> dict:
+    broll_credits = broll_credits or {}
     src = lambda nid: " · ".join(_source_line(by_id[n]) for n in (nid if isinstance(nid, list) else [nid])
                                  if n in by_id)
     m = c["mau"]
@@ -84,7 +100,50 @@ def _vars(c: dict, by_id: dict, credits: dict) -> dict:
         url = n["url"].split("://", 1)[-1].removeprefix("www.").rstrip("/") if n else ""
         return {"anh": f"assets/nguon/{c['anh']}", "khung": c.get("khung", "0,0,0,0"), "url": url,
                 "nguon": src(c.get("nguon_id"))}
+    if m == "trich-bao":
+        n = by_id[c["nguon_id"]]
+        return {"bao": n.get("ten") or urlparse(n["url"]).netloc.removeprefix("www."),
+                "ngay": f"{date.fromisoformat(n['ngay_truy_cap']):%d/%m/%Y}",
+                "tieu_de": c["trich"], "to_vang": c.get("to_vang", "")}
+    if m == "b-roll":
+        return {"nhan": c.get("nhan", ""), "so": c.get("so", ""), "ghi_cong": broll_credits.get(c["video"], "")}
     raise ValueError(f"mẫu không có: {m}")
+
+
+def steps(c: dict, words: list[dict]) -> list[float]:
+    """Mốc từng bước của cảnh: từ khoá trong nhip (khớp giọng đọc) hoặc mặc định của mẫu."""
+    if c["mau"] == "bieu-do":
+        n = len(c["bieu_do"]["gia_tri"])
+        base = [0.4 + i * 0.18 for i in range(n)] + [0.4 + n * 0.18 + 0.5]
+    else:
+        base = list(DEFAULT_STEPS[c["mau"]])
+    for k, ph in enumerate(c.get("nhip") or []):
+        t = phrase_time(words, ph, c["start"], c["end"]) if ph else None
+        if t is not None and k < len(base):
+            base[k] = round(t - c["start"], 3)
+    return base
+
+
+def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
+    """(tệp, giây tính từ đầu cảnh, âm lượng) gắn theo đúng các mốc hình của cảnh."""
+    m = c["mau"]
+    if m == "chuong":
+        return [("impact-bass-1", 0.1, 0.25)]
+    if m == "minh-hoa":
+        ev = [("pop", 0.55, 0.3)]
+        ev += [("pop", st[k + 1], 0.2) for k in range(len(c.get("phu", [])[:2]))]
+        return ev
+    if m == "so-lon":
+        return [("ping", st[0] + 1.3, 0.3)]
+    if m == "bieu-do":
+        return [("pop", st[-1] + 0.1, 0.3)] if c["bieu_do"].get("chu_thich") else []
+    if m == "trang-nguon":
+        return [("whoosh-short", st[0], 0.3)]
+    if m == "nhan-vat":
+        return [("whoosh-short", 0.05, 0.25)]
+    if m == "trich-bao":
+        return [("click-soft", st[0], 0.35)]
+    return []
 
 
 def grounds(scenes: list[dict]) -> list[str]:
@@ -109,8 +168,8 @@ def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
     return out
 
 
-def _scene_file(mau: str, sid: str) -> str:
-    s = (TPL / f"{mau}.html").read_text(encoding="utf-8")
+def _scene_file(mau: str, sid: str, video: str = "") -> str:
+    s = (TPL / f"{mau}.html").read_text(encoding="utf-8").replace("__VIDEO__", f"assets/broll/{video}")
     s = s.replace(f'data-composition-id="{mau}"', f'data-composition-id="{sid}"')
     s = s.replace(f'__timelines["{mau}"]', f'__timelines["{sid}"]')
     return re.sub(rf"(?<![\w-]){PREFIX[mau]}", f"{sid}-{PREFIX[mau]}", s)  # id/class riêng cho mỗi lần gắn
@@ -123,6 +182,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     timing = _read_json(d / "giong-timing.json", {"duration": 0, "words": []})
     by_id = {n["id"]: n for n in _read_json(d / "nguon.json", [])}
     credits = {c["tep"]: c["ghi_cong"] for c in _read_json(d / "anh" / "ghi-cong.json", [])}
+    broll_credits = {c["tep"]: c["ghi_cong"] for c in _read_json(d / "broll" / "ghi-cong.json", [])}
     i, j = scene_range or (0, len(scenes))
     nens = grounds(scenes)[i:j]
     scenes = scenes[i:j]
@@ -134,16 +194,21 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         shutil.rmtree(o)
     (o / "compositions").mkdir(parents=True)
     shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md"))  # cả thư viện: mẫu dùng ảnh mặc định
-    for sub in ("anh", "nguon"):
+    for sub in ("anh", "nguon", "broll"):
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
     shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
+    shutil.copytree(SFX, o / "assets" / "sfx")
 
     hosts = []
+    sfx = []
     for c, nen in zip(scenes, nens):
         sid = c["id"]
-        (o / "compositions" / f"{sid}.html").write_text(_scene_file(c["mau"], sid), encoding="utf-8")
-        vals = json.dumps(dict(_vars(c, by_id, credits), nen=nen), ensure_ascii=False).replace("'", "&#39;")
+        (o / "compositions" / f"{sid}.html").write_text(_scene_file(c["mau"], sid, c.get("video", "")), encoding="utf-8")
+        st = steps(c, timing.get("words", []))
+        sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
+        vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=nen, nhip=json.dumps(st)),
+                          ensure_ascii=False).replace("'", "&#39;")
         hosts.append(f'<div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html"\n'
                      f'           data-start="{round(c["start"] - t0, 3)}" data-duration="{round(c["end"] - c["start"], 3)}"'
                      f' data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"\n'
@@ -154,6 +219,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         seam = round(scenes[k]["start"] - t0, 3)
         a = round(max(0.0, seam - 0.3), 3)
         cls = "tr-dip" if kind == "dip" else f"tr-{kind}"
+        if kind != "dip":
+            sfx.append(("whoosh-short", seam - 0.3, 0.35))
         trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{a}" data-duration="0.6" data-track-index="4">'
                    f'<div id="tr-{k}-p" class="tr-p {cls}"></div></div>')
         if kind == "dip":  # tối nhanh 3 khung trước cú cắt rồi sáng lại
@@ -166,6 +233,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     caps = [f'<div id="cap-{k}" class="clip cap" data-start="{round(a - t0, 3)}" data-duration="{round(b - a, 3)}">'
             f"<span>{escape(t)}</span></div>"
             for k, (a, b, t) in enumerate(cues(timing)) if a >= t0 - 0.01 and b <= t0 + total + 0.01]
+
+    sfx_tags = [f'<audio id="sfx-{k}" src="assets/sfx/{f}.mp3" data-start="{round(t, 3)}" data-volume="{v}"></audio>'
+                for k, (f, t, v) in enumerate(sorted(sfx, key=lambda e: e[1])) if 0 <= t < total - 0.1]
 
     nhac = _read_json(CONFIG, {}).get("nhac_nen")
     audio = [f'<audio id="giong" src="assets/giong.mp3" data-start="0" data-media-start="{t0}" '
@@ -211,6 +281,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         {chr(10).join(caps)}
       </div>
       {chr(10).join(audio)}
+      {chr(10).join(sfx_tags)}
     </div>
     <script>
       const tl = gsap.timeline({{ paused: true }});

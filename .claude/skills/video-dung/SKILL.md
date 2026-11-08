@@ -29,6 +29,16 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 - Cho sân khấu có chuyện xảy ra: `minh-hoa` thêm `phu` (1–2 đạo cụ: cay, dong-xu, container, nguoi, mui-ten-len/xuong…);
   `so-lon` thêm `huong` khi số tăng/giảm và `svg` hình nền hợp nghĩa; `bieu-do` thêm `chu_thich` ≤ 2 từ cho cột nổi bật.
 - Nền và chuyển cảnh tự gán theo chương; chỉ ghi `nen` khi muốn phá nhịp có chủ đích.
+- **Nhịp con**: mỗi cảnh ghi `nhip` = các cụm từ giọng đọc nói trong cảnh, theo thứ tự bước của mẫu
+  (`DEFAULT_STEPS` trong `tttc/dung.py`; `bieu-do` = một cụm cho mỗi cột + một cụm cho cột nổi bật).
+  Mục tiêu: hình đổi khoảng 2 s một lần. `tttc.canh` báo lỗi nếu cụm không có trong lời đọc của cảnh.
+- **Tỉ lệ cảnh** (docs/nghien-cuu/hinh-anh-doi-thu.md): minh họa 25%, số liệu 25%, `b-roll` 20%,
+  bằng chứng (`trich-bao`, `trang-nguon`) 15%, còn lại 15%. Không 3 cảnh liền cùng nhóm.
+- **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
+  Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
+- **`b-roll`**: `tttc.broll.search("<từ khoá tiếng Anh>")` → `pick(videos, min_seconds=<độ dài cảnh + 1>)` →
+  `download(item, V)`; ghi `video` = tên tệp. Xem 3 khung của clip trước khi dùng: **không dùng clip có mặt người
+  nhận ra được, logo hãng, chữ nước ngoài lớn**. Khoá Pexels trong Keychain (tên `pexels`).
 - Ảnh trang nguồn: chụp lại trang bằng trình duyệt ở độ phân giải ≥ 1600 px rộng, lưu `V/nguon/<id>.png`;
   `khung` là vùng chứa con số (x,y,w,h theo % ảnh).
 

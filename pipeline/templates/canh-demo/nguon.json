@@ -1,1 +1,30 @@
-[{"id": "p1", "gia_tri": "Go 132.000 đ; Plus 522.500 đ", "trich_dan": "", "url": "https://chatgpt.com/vi-VN/pricing", "ngay_truy_cap": "2026-11-08", "anh_chup": "nguon/p1.png", "trang_thai": "xac-minh"}, {"id": "g1", "gia_tri": "Google AI Pro 489.000 đ", "trich_dan": "", "url": "https://one.google.com/about/plans", "ngay_truy_cap": "2026-11-07", "anh_chup": "", "trang_thai": "xac-minh"}]
+[
+ {
+  "id": "p1",
+  "gia_tri": "Go 132.000 đ; Plus 522.500 đ",
+  "trich_dan": "",
+  "url": "https://chatgpt.com/vi-VN/pricing",
+  "ngay_truy_cap": "2026-11-08",
+  "anh_chup": "nguon/p1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "p2",
+  "gia_tri": "",
+  "ten": "OpenAI · Trang giá ChatGPT",
+  "trich_dan": "Plus: Phù hợp nhất cho công việc chuyên sâu và năng suất cao",
+  "url": "https://chatgpt.com/vi-VN/pricing",
+  "ngay_truy_cap": "2026-11-08",
+  "anh_chup": "nguon/p1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "g1",
+  "gia_tri": "Google AI Pro 489.000 đ",
+  "trich_dan": "",
+  "url": "https://one.google.com/about/plans",
+  "ngay_truy_cap": "2026-11-07",
+  "anh_chup": "",
+  "trang_thai": "xac-minh"
+ }
+]

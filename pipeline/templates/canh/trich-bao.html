@@ -1,0 +1,62 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .tb-khung { position: absolute; left: 300px; right: 300px; top: 0; bottom: 70px;
+                      display: flex; align-items: center; justify-content: center; }
+    #root .tb-nghieng { transform: rotate(-1.6deg); width: 100%; position: relative; }
+    #root .tb-lot { position: absolute; inset: 0; background: #E9DFCB; transform: rotate(3deg) translate(26px, 18px);
+                    box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
+    #root .tb-giay { position: relative; background: #FBF6EC; padding: 80px 96px 104px; border-radius: 4px;
+                     box-shadow: 0 30px 70px rgba(0,0,0,0.45); }
+    #root .tb-bang { position: absolute; left: 50%; top: -26px; width: 220px; height: 52px; margin-left: -110px;
+                     background: rgba(255,200,0,0.82); transform: rotate(2deg); }
+    #root .tb-dau { display: flex; justify-content: space-between; align-items: baseline;
+                    border-bottom: 3px solid #111; padding-bottom: 18px; margin-bottom: 34px; }
+    #root .tb-bao { font: 900 34px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: #111; }
+    #root .tb-ngay { font: 600 28px/1 var(--font-display); color: #5C5548; }
+    #root .tb-tieu-de { font: 800 82px/1.2 var(--font-display); color: #111; letter-spacing: -0.015em; }
+    #root .tb-to { background-image: linear-gradient(#FFC800, #FFC800); background-repeat: no-repeat;
+                   background-position: 0 88%; background-size: 0% 46%; padding: 0 4px; }
+  </style>
+  <div id="root" data-composition-id="trich-bao" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"bao","type":"string","label":"Tên báo / cơ quan","default":"Tên báo"},{"id":"ngay","type":"string","label":"Ngày","default":""},{"id":"tieu_de","type":"string","label":"Đoạn trích (nguyên văn)","default":"Đoạn trích"},{"id":"to_vang","type":"string","label":"Cụm tô vàng","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.9]"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+    <div id="tb-san" class="san">
+      <div id="tb-khung" class="tb-khung">
+        <div class="tb-nghieng">
+          <div class="tb-lot"></div>
+          <div id="tb-giay" class="tb-giay">
+            <div class="tb-bang"></div>
+            <div class="tb-dau"><span id="tb-bao" class="tb-bao" data-var-text="bao">Tên báo</span>
+              <span id="tb-ngay" class="tb-ngay" data-var-text="ngay"></span></div>
+            <div id="tb-tieu-de" class="tb-tieu-de"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#tb-san").classList.add("nen-" + (v.nen || "toi"));
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    // đoạn trích dựng bằng textContent (không chèn HTML), cụm tô vàng bọc riêng để quét bút dạ
+    const box = document.querySelector("#tb-tieu-de"), text = String(v.tieu_de), hl = String(v.to_vang || "");
+    const i = hl ? text.toLowerCase().indexOf(hl.toLowerCase()) : -1;
+    const add = (t, cls, id) => { const s = document.createElement("span"); s.textContent = t;
+                                  if (cls) s.className = cls; if (id) s.id = id; box.appendChild(s); };
+    add("“");
+    if (i >= 0) { add(text.slice(0, i)); add(text.slice(i, i + hl.length), "tb-to", "tb-to"); add(text.slice(i + hl.length)); }
+    else add(text);
+    add("”");
+    // mép dưới tờ giấy xé răng cưa, cố định theo số răng (tất định)
+    const teeth = 36, pts = ["0 0", "100% 0"];
+    for (let k = teeth; k >= 0; k--) pts.push(`${(k / teeth) * 100}% ${k % 2 ? 100 : 97.5}%`);
+    document.querySelector("#tb-giay").style.clipPath = `polygon(${pts.join(",")})`;
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#tb-khung", { y: 90, opacity: 0, scale: 0.96 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 0);
+    if (document.querySelector("#tb-to"))
+      tl.fromTo("#tb-to", { backgroundSize: "0% 46%" }, { backgroundSize: "100% 46%", duration: 0.5, ease: "power2.inOut" }, at(0, 0.9));
+    tl.fromTo("#tb-khung", { x: 0 }, { x: -24, duration: 8, ease: "none" }, 0.55);
+    window.__timelines["trich-bao"] = tl;
+  </script>
+</template>

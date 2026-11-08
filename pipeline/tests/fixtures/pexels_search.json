@@ -1,0 +1,10 @@
+{"page": 1, "per_page": 3, "total_results": 3, "videos": [
+ {"id": 101, "duration": 4, "url": "https://www.pexels.com/video/ngan-101/", "user": {"name": "An", "url": "https://www.pexels.com/@an"},
+  "video_files": [{"quality": "hd", "file_type": "video/mp4", "width": 1920, "height": 1080, "link": "https://videos.pexels.com/101-hd.mp4"}]},
+ {"id": 202, "duration": 15, "url": "https://www.pexels.com/video/doc-202/", "user": {"name": "Bình", "url": "https://www.pexels.com/@binh"},
+  "video_files": [{"quality": "hd", "file_type": "video/mp4", "width": 1080, "height": 1920, "link": "https://videos.pexels.com/202-hd.mp4"}]},
+ {"id": 303, "duration": 20, "url": "https://www.pexels.com/video/cang-303/", "user": {"name": "Chi", "url": "https://www.pexels.com/@chi"},
+  "video_files": [{"quality": "sd", "file_type": "video/mp4", "width": 960, "height": 540, "link": "https://videos.pexels.com/303-sd.mp4"},
+                  {"quality": "hd", "file_type": "video/mp4", "width": 1920, "height": 1080, "link": "https://videos.pexels.com/303-hd.mp4"},
+                  {"quality": "uhd", "file_type": "video/mp4", "width": 3840, "height": 2160, "link": "https://videos.pexels.com/303-uhd.mp4"}]}
+]}

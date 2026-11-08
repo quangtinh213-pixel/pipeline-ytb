@@ -160,3 +160,70 @@ def test_compose_maps_new_variables(video):
     assert vals["c3"]["huong"] == "len" and vals["c3"]["svg"] == "assets/svg/tien.svg"
     assert vals["c4"]["chu_thich"] == "ĐẮT NHẤT"
     assert vals["c5"]["url"] == "chatgpt.com/vi-VN/pricing"
+
+
+# ---- A: nhịp con theo từ khoá ----
+
+WORDS = [{"w": w, "start": 9 + i * 0.5, "end": 9 + i * 0.5 + 0.4}
+         for i, w in enumerate("Gói ChatGPT Plus giá năm trăm nghìn, đắt nhất.".split())]
+
+
+def test_find_phrase_time():
+    assert dung.phrase_time(WORDS, "Plus", 9, 14) == pytest.approx(10.0)
+    assert dung.phrase_time(WORDS, "năm trăm", 9, 14) == pytest.approx(11.0)
+    assert dung.phrase_time(WORDS, "đắt nhất", 9, 14) == pytest.approx(12.5)  # bỏ dấu câu khi so
+    assert dung.phrase_time(WORDS, "Gemini", 9, 14) is None
+    assert dung.phrase_time(WORDS, "Gói", 9.5, 14) is None                      # ngoài cửa sổ cảnh
+
+
+def test_compose_steps_default_and_keyword(video):
+    timing = json.loads((video / "giong-timing.json").read_text())
+    timing["words"] = WORDS
+    (video / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False), encoding="utf-8")
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"][2]["nhip"] = [None, "đắt nhất"]          # c3 so-lon: bước 2 (dòng dưới) theo từ khoá
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    vals = _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))
+    assert json.loads(vals["c3"]["nhip"]) == pytest.approx([0.05, 3.5])   # 12,5 − 9,0
+    assert json.loads(vals["c2"]["nhip"]) == pytest.approx(dung.DEFAULT_STEPS["minh-hoa"])
+    assert len(json.loads(vals["c4"]["nhip"])) == 3                       # 2 cột + bước nổi bật
+
+
+# ---- D: âm thanh hiệu ứng ----
+
+def test_compose_places_sfx(video):
+    html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    sfx = re.findall(r'<audio id="sfx-\d+" src="assets/sfx/([\w-]+)\.mp3" data-start="([\d.]+)"', html)
+    names = [n for n, _ in sfx]
+    assert ("whoosh-short", "3.7") in sfx                    # quét khi rời chương (đường nối 4,0 − 0,3)
+    assert ("ping", str(round(9 + 0.05 + 1.3, 3))) in sfx    # số lớn đếm xong
+    assert "impact-bass-1" in names and "pop" in names
+    assert (dung.compose(video) / "assets" / "sfx" / "ping.mp3").exists()
+    assert all(float(v) <= 0.4 for v in re.findall(r'id="sfx-\d+"[^>]*data-volume="([\d.]+)"', html))
+
+
+# ---- B, C: mẫu trích báo và b-roll ----
+
+def test_compose_trich_bao_and_broll(video):
+    nguon = json.loads((video / "nguon.json").read_text(encoding="utf-8"))
+    nguon.append({"id": "b1", "gia_tri": "", "trich_dan": "Giá RAM tăng gấp ba lần.", "ten": "VnExpress",
+                  "url": "https://vnexpress.net/x", "ngay_truy_cap": "2026-11-07", "trang_thai": "xac-minh"})
+    (video / "nguon.json").write_text(json.dumps(nguon, ensure_ascii=False), encoding="utf-8")
+    (video / "broll").mkdir()
+    (video / "broll" / "pexels-303.mp4").write_bytes(b"x")
+    (video / "broll" / "ghi-cong.json").write_text(json.dumps([{"tep": "pexels-303.mp4", "ghi_cong": "Video: Chi trên Pexels"}],
+                                                              ensure_ascii=False), encoding="utf-8")
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"] += [
+        {"id": "c5", "mau": "trich-bao", "start": 20, "end": 25, "nguon_id": "b1", "trich": "Giá RAM tăng gấp ba lần",
+         "to_vang": "gấp ba lần"},
+        {"id": "c6", "mau": "b-roll", "start": 25, "end": 30, "video": "pexels-303.mp4", "nhan": "QUY MÔ", "so": "01"}]
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    out = dung.compose(video)
+    vals = _host_vals((out / "index.html").read_text(encoding="utf-8"))
+    assert vals["c5"]["bao"] == "VnExpress" and vals["c5"]["ngay"] == "07/11/2026"
+    assert vals["c5"]["tieu_de"] == "Giá RAM tăng gấp ba lần" and vals["c5"]["to_vang"] == "gấp ba lần"
+    assert vals["c6"]["ghi_cong"] == "Video: Chi trên Pexels" and vals["c6"]["nhan"] == "QUY MÔ"
+    scene = (out / "compositions" / "c6.html").read_text(encoding="utf-8")
+    assert 'src="assets/broll/pexels-303.mp4"' in scene and "muted" in scene
+    assert (out / "assets" / "broll" / "pexels-303.mp4").exists()

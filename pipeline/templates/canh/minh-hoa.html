@@ -15,7 +15,7 @@
                     transform-origin: top center; }
   </style>
   <div id="root" data-composition-id="minh-hoa" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
     <div id="mh-san" class="san">
       <div id="mh-the-gioi" class="mh-the-gioi">
         <div id="mh-dat" class="mh-dat"><img src="assets/svg/nen-dat.svg" alt=""></div>
@@ -31,6 +31,7 @@
   </div>
   <script>
     const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
     document.querySelector("#mh-san").classList.add("nen-" + (v.nen || "toi"));
     if (!v.phu1) document.querySelector("#mh-phu-1").style.display = "none";
     if (!v.phu2) document.querySelector("#mh-phu-2").style.display = "none";
@@ -39,11 +40,11 @@
     tl.fromTo("#mh-dat", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
     tl.fromTo("#mh-chinh", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: "back.out(1.4)" }, 0.18);
     tl.fromTo("#mh-bong", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.65, ease: "back.out(1.4)" }, 0.18);
-    tl.fromTo("#mh-phu-1", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.5);
-    tl.fromTo("#mh-phu-2", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.58);
-    tl.fromTo("#mh-day", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 0.62);
+    tl.fromTo("#mh-phu-1", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(1, 0.5));
+    tl.fromTo("#mh-phu-2", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(2, 0.58));
+    tl.fromTo("#mh-day", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, at(0, 0.72) - 0.1);
     tl.fromTo("#mh-nhan-txt", { opacity: 0, filter: "blur(8px)", scale: 0.92 },
-              { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.22, ease: "power3.out" }, 0.72);
+              { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.22, ease: "power3.out" }, at(0, 0.72));
     tl.fromTo("#mh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
     // sân khấu trôi rất chậm (quỹ đạo nền), nhãn đứng yên
     tl.fromTo("#mh-the-gioi", { x: 0 }, { x: -36, duration: 9, ease: "none" }, 0);

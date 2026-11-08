@@ -1,0 +1,37 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: #000; overflow: hidden; }
+    #root .br-cam { position: absolute; inset: 0; }
+    #root .br-cam video { width: 100%; height: 100%; object-fit: cover; }
+    #root .br-toi { position: absolute; inset: 0;
+                    background: linear-gradient(180deg, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0) 22%, rgba(0,0,0,0) 55%, rgba(0,0,0,0.7) 100%); }
+    #root .br-nhan { position: absolute; left: 96px; bottom: 150px; display: flex; align-items: stretch; }
+    #root .br-so { background: #FFC800; color: #111; font: 900 46px/1 var(--font-display); padding: 18px 22px; }
+    #root .br-chu { background: rgba(17,17,17,0.88); color: #fff; font: 900 46px/1 var(--font-display);
+                    padding: 18px 28px; text-transform: uppercase; letter-spacing: 0.02em; }
+    #root .br-ghi-cong { position: absolute; left: 96px; top: 48px; color: rgba(255,255,255,0.8);
+                         font: 500 28px/1.2 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="b-roll" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"nhan","type":"string","label":"Nhãn","default":""},{"id":"so","type":"string","label":"Số chương (vd 01)","default":""},{"id":"ghi_cong","type":"string","label":"Ghi công video","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.5]"},{"id":"nen","type":"string","label":"Nền","default":"toi"}]'>
+    <div id="br-cam" class="br-cam">
+      <video id="br-video" class="clip" data-start="0" data-media-start="0.5" muted playsinline src="__VIDEO__"></video>
+    </div>
+    <div class="br-toi"></div>
+    <div id="br-nhan" class="br-nhan"><span id="br-so" class="br-so" data-var-text="so"></span>
+      <span id="br-chu" class="br-chu" data-var-text="nhan"></span></div>
+    <div id="br-ghi-cong" class="br-ghi-cong" data-var-text="ghi_cong"></div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    if (!v.so) document.querySelector("#br-so").style.display = "none";
+    if (!v.nhan) document.querySelector("#br-nhan").style.display = "none";
+    const tl = gsap.timeline({ paused: true });
+    // máy quay đẩy chậm vào video thật; nhãn trượt ra theo nhịp
+    tl.fromTo("#br-cam", { scale: 1.0 }, { scale: 1.08, duration: 9, ease: "none" }, 0);
+    tl.fromTo("#br-nhan", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, at(0, 0.5));
+    tl.fromTo("#br-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    window.__timelines["b-roll"] = tl;
+  </script>
+</template>

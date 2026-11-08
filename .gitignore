@@ -14,3 +14,4 @@ videos/*/frames/
 pipeline/templates/canh-demo/frames/*.mp4
 pipeline/templates/canh-demo/composition/
 docs/nghien-cuu/khung-hinh/
+pipeline/am-thanh/nhac/*.mp3

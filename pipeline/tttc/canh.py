@@ -1,17 +1,34 @@
 """Kiểm canh.json theo timestamp giọng đọc và xuất phụ đề SRT."""
 import json
+import re
 import sys
+import unicodedata
 from pathlib import Path
 
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 
 
-def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | tuple = ()) -> list[str]:
+def _norm(s: str) -> str:
+    return re.sub(r"\s+", " ", re.sub(r"[.,!?:;\"'()…“”‘’]", "", unicodedata.normalize("NFC", s).lower())).strip()
+
+
+def phrase_time(words: list[dict], phrase: str, start: float, end: float) -> float | None:
+    """Thời điểm bắt đầu cụm từ đầu tiên khớp, trong cửa sổ [start, end) của cảnh."""
+    toks = _norm(phrase).split()
+    win = [w for w in words if start - 0.01 <= w["start"] < end]
+    for i in range(len(win) - len(toks) + 1):
+        if [_norm(w["w"]) for w in win[i:i + len(toks)]] == toks:
+            return win[i]["start"]
+    return None
+
+
+def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | tuple = (),
+             video_dir: Path | None = None) -> list[str]:
     """Trả danh sách 'Lỗi: ...' (phải sửa) và 'Cảnh báo: ...' (nên xem)."""
     by_id = {n["id"]: n for n in nguon}
     msgs, ids = [], set(by_id)
@@ -47,7 +64,29 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             if n not in ids:
                 msgs.append(f"Lỗi: {cid} trỏ tới nguồn [#{n}] không có trong nguon.json")
         msgs += _check_values(c, [by_id[n] for n in nids if n in by_id], bool(nids))
+        for ph in c.get("nhip") or []:
+            if ph and phrase_time(timing.get("words", []), ph, c["start"], c["end"]) is None:
+                msgs.append(f"Lỗi: {cid} có nhịp '{ph}' nhưng giọng đọc không nói cụm này trong cảnh")
+        if c["mau"] == "trich-bao":
+            msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
+        if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
+            msgs.append(f"Lỗi: {cid} cần video broll/{c.get('video')} chưa tải")
     return msgs
+
+
+def _check_quote(c: dict, src: dict | None) -> list[str]:
+    """Trích báo phải là nguyên văn một đoạn trong trich_dan của nguồn; phần tô vàng nằm trong đoạn trích."""
+    if not src:
+        return [f"Lỗi: {c['id']} trích báo thiếu nguon_id hợp lệ"]
+    out = []
+    trich = c.get("trich", "")
+    if not trich or _norm(trich) not in _norm(src.get("trich_dan", "")):
+        out.append(f"Lỗi: {c['id']} trích không đúng nguyên văn nguồn [#{src['id']}]")
+    if c.get("to_vang") and _norm(c["to_vang"]) not in _norm(trich):
+        out.append(f"Lỗi: {c['id']} cụm tô vàng không nằm trong đoạn trích")
+    if len(trich.split()) > 25:
+        out.append(f"Lỗi: {c['id']} đoạn trích dài quá 25 từ")
+    return out
 
 
 def _unit_scale(text: str) -> str:
