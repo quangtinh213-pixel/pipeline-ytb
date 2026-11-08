@@ -26,8 +26,9 @@ CAU = [  # (câu đọc, cảnh)
       "bieu_do": {"kieu": "cot", "nhan_x": ["ChatGPT Go", "Google AI Pro", "ChatGPT Plus"],
                   "gia_tri": [132000, 489000, 522500], "don_vi": "đ", "noi_bat": 2, "chu_thich": "ĐẮT NHẤT",
                   "nguon_id": ["p1", "g1"]}, "nhip": ["Go", "Google", "Plus", "đắt nhất"]}),
-    ("Tiền thuê bao chảy qua hạ tầng trải khắp địa cầu.",
-     {"mau": "b-roll", "video": "commons-quy-dao.mp4", "nhan": "Hạ tầng toàn cầu", "so": "03", "nhip": ["hạ tầng"]}),
+    ("Tiền thuê bao chảy về các trung tâm dữ liệu.",
+     {"mau": "b-roll", "video": "trung-tam-du-lieu-5028622.mp4", "nhan": "Trung tâm dữ liệu", "so": "03",
+      "nhip": ["trung tâm"]}),
     ("Người đứng sau ChatGPT là Sam Altman, tổng giám đốc OpenAI.",
      {"mau": "nhan-vat", "anh": "sam-altman-cropedit-james-tamim.jpg", "nhan": "Sam Altman", "vai": "Tổng giám đốc OpenAI",
       "nhip": ["tổng giám đốc"]}),
@@ -45,6 +46,10 @@ NGUON = [
 
 
 def main():
+    from tttc import broll
+    e = next(x for x in json.loads((broll.KHO / "kho.json").read_text(encoding="utf-8"))
+             if x["tep"] == "trung-tam-du-lieu-5028622.mp4")
+    broll.nhap(broll.KHO / e["tep"], D, e["ghi_cong"], bat_dau=2, do_dai=6)
     text = " ".join(c for c, _ in CAU)
     subprocess.run(["say", "-v", "Linh", "-r", "185", "-o", str(D / "g.aiff"), text], check=True)
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(D / "g.aiff"), "-c:a", "libmp3lame", "-b:a", "128k",

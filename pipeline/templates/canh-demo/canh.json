@@ -6,7 +6,7 @@
    "chuong": "ChatGPT: Free, Go, Plus, Pro",
    "id": "c01",
    "start": 0.0,
-   "end": 2.126
+   "end": 2.127
   },
   {
    "mau": "minh-hoa",
@@ -22,8 +22,8 @@
     "không dùng"
    ],
    "id": "c02",
-   "start": 2.126,
-   "end": 6.802
+   "start": 2.127,
+   "end": 6.806
   },
   {
    "mau": "trich-bao",
@@ -34,8 +34,8 @@
     "năng suất"
    ],
    "id": "c03",
-   "start": 6.802,
-   "end": 13.533
+   "start": 6.806,
+   "end": 13.541
   },
   {
    "mau": "so-lon",
@@ -50,8 +50,8 @@
     "mỗi tháng"
    ],
    "id": "c04",
-   "start": 13.533,
-   "end": 18.209
+   "start": 13.541,
+   "end": 18.219
   },
   {
    "mau": "bieu-do",
@@ -83,20 +83,20 @@
     "đắt nhất"
    ],
    "id": "c05",
-   "start": 18.209,
-   "end": 22.814
+   "start": 18.219,
+   "end": 22.827
   },
   {
    "mau": "b-roll",
-   "video": "commons-quy-dao.mp4",
-   "nhan": "Hạ tầng toàn cầu",
+   "video": "trung-tam-du-lieu-5028622.mp4",
+   "nhan": "Trung tâm dữ liệu",
    "so": "03",
    "nhip": [
-    "hạ tầng"
+    "trung tâm"
    ],
    "id": "c06",
-   "start": 22.814,
-   "end": 26.357
+   "start": 22.827,
+   "end": 26.018
   },
   {
    "mau": "nhan-vat",
@@ -107,8 +107,8 @@
     "tổng giám đốc"
    ],
    "id": "c07",
-   "start": 26.357,
-   "end": 30.537
+   "start": 26.018,
+   "end": 30.2
   }
  ]
 }
