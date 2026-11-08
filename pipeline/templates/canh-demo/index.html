@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"></script>
+    <style>
+/* Dùng chung cho mọi mẫu cảnh; compose chép vào thẻ style của index.html. */
+:root {
+  --ground: #111111;
+  --ink: #FFFFFF;
+  --accent: #FFC800;
+  --muted: #BDBDBD;
+  --line: #2A2A2A;
+  --font-display: "Inter", sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); }
+#root { width: 100%; height: 100%; position: relative; font-family: var(--font-display);
+        font-variant-numeric: tabular-nums; }
+
+    </style>
+  </head>
+  <body>
+    <div id="root" data-composition-id="main" data-start="0" data-duration="24" data-width="1920" data-height="1080">
+      <div id="chuong" data-composition-id="chuong" data-composition-src="compositions/chuong.html"
+           data-start="0" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"so": "Phần 2", "ten": "ChatGPT: Free, Go, Plus, Pro"}'></div>
+      <div id="minh-hoa" data-composition-id="minh-hoa" data-composition-src="compositions/minh-hoa.html"
+           data-start="4" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"svg": "assets/svg/laptop.svg", "nhan": "Trả tiền cho AI mỗi tháng?", "nguon": ""}'></div>
+      <div id="trang-nguon" data-composition-id="trang-nguon" data-composition-src="compositions/trang-nguon.html"
+           data-start="8" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"anh": "assets/nguon/chatgpt-pricing.png", "khung": "50.5,77,15,8", "nguon": "Ảnh chụp chatgpt.com/vi-VN/pricing, 08/11/2026"}'></div>
+      <div id="so-lon" data-composition-id="so-lon" data-composition-src="compositions/so-lon.html"
+           data-start="12" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"so": 522500, "truoc": "", "sau": " đ", "nhan": "ChatGPT Plus mỗi tháng", "nguon": "Nguồn: chatgpt.com/vi-VN/pricing, 07/11/2026"}'></div>
+      <div id="bieu-do" data-composition-id="bieu-do" data-composition-src="compositions/bieu-do.html"
+           data-start="16" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"tieu_de": "Giá gói AI trả phí mỗi tháng ở Việt Nam", "nhan_x": "[\"ChatGPT Go\", \"Google AI Pro\", \"ChatGPT Plus\"]", "gia_tri": "[132000, 489000, 522500]", "don_vi": "đ", "noi_bat": 2, "nguon": "Nguồn: chatgpt.com/vi-VN/pricing · one.google.com, 07/11/2026"}'></div>
+      <div id="nhan-vat" data-composition-id="nhan-vat" data-composition-src="compositions/nhan-vat.html"
+           data-start="20" data-duration="4" data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"
+           data-variable-values='{"anh": "assets/svg/dien-thoai.svg", "ten": "Ảnh nhân vật mẫu", "vai": "Vai trò / chức danh", "ghi_cong": "Ảnh: Tác giả, Wikimedia Commons, CC BY 4.0"}'></div>
+    </div>
+    <script>
+      window.__timelines["main"] = gsap.timeline({ paused: true });
+    </script>
+  </body>
+</html>

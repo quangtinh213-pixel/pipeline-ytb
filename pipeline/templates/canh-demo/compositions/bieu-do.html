@@ -1,0 +1,53 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
+    #root .bd-tieu-de { position: absolute; left: 160px; top: 110px; right: 160px; color: var(--muted);
+                        font: 800 34px/1.2 var(--font-display); text-transform: uppercase; letter-spacing: 0.02em; }
+    #root .bd-khung { position: absolute; left: 160px; right: 160px; top: 200px; bottom: 190px;
+                      border-bottom: 4px solid var(--line); }
+    #root .bd-cot { position: absolute; bottom: 0; background: #4A4A4A; border-radius: 10px 10px 0 0;
+                    transform-origin: bottom center; }
+    #root .bd-cot.noi-bat { background: var(--accent); }
+    #root .bd-so { position: absolute; width: 100%; text-align: center; top: -76px; color: var(--ink);
+                   font: 900 52px/1 var(--font-display); white-space: nowrap; }
+    #root .bd-cot.noi-bat .bd-so { color: var(--accent); }
+    #root .bd-nhan { position: absolute; width: 100%; text-align: center; bottom: -64px; color: var(--ink);
+                     font: 700 30px/1.1 var(--font-display); white-space: nowrap; }
+    #root .bd-nguon { position: absolute; left: 96px; bottom: 60px; color: var(--muted);
+                      font: 500 28px/1.2 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="bieu-do" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":"TIÊU ĐỀ"},{"id":"nhan_x","type":"string","label":"Nhãn cột (JSON)","default":"[\"A\",\"B\"]"},{"id":"gia_tri","type":"string","label":"Giá trị (JSON)","default":"[1,2]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"noi_bat","type":"number","label":"Cột nổi bật (0-based)","default":-1},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
+    <div id="bd-tieu-de" class="bd-tieu-de" data-var-text="tieu_de">TIÊU ĐỀ</div>
+    <div id="bd-khung" class="bd-khung" data-layout-allow-overflow></div>
+    <div id="bd-nguon" class="bd-nguon" data-var-text="nguon"></div>
+  </div>
+  <script>
+    // Cột dựng một lần lúc khởi tạo từ biến (tất định); mọi chuyển động nằm trên timeline.
+    const v = window.__hyperframes.getVariables();
+    const labels = JSON.parse(v.nhan_x), vals = JSON.parse(v.gia_tri);
+    const hl = Number(v.noi_bat), max = Math.max(...vals), n = vals.length;
+    const khung = document.querySelector("#bd-khung");
+    const W = 1600, gap = 0.35, colW = W / (n + (n + 1) * gap);
+    const fmt = x => x.toLocaleString("vi-VN") + (v.don_vi ? " " + v.don_vi : "");
+    const tl = gsap.timeline({ paused: true });
+    vals.forEach((val, i) => {
+      const col = document.createElement("div");
+      col.id = "bd-cot-" + i;
+      col.className = "bd-cot" + (i === hl ? " noi-bat" : "");
+      col.style.left = (gap + i * (1 + gap)) * colW + "px";
+      col.style.width = colW + "px";
+      col.style.height = Math.max(0.02, val / max) * 100 + "%";
+      col.innerHTML = '<div class="bd-so" id="bd-so-' + i + '">' + fmt(0) + '</div>' +
+                      '<div class="bd-nhan">' + labels[i] + '</div>';
+      khung.appendChild(col);
+      const t0 = 0.3 + i * 0.25, obj = { x: 0 }, so = col.querySelector(".bd-so");
+      tl.fromTo(col, { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, t0);
+      tl.fromTo(obj, { x: 0 }, { x: val, duration: 0.7, ease: "power3.out",
+                onUpdate: () => { so.textContent = fmt(Math.round(obj.x)); } }, t0);
+    });
+    tl.fromTo("#bd-tieu-de", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, 0);
+    tl.fromTo("#bd-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.4);
+    window.__timelines["bieu-do"] = tl;
+  </script>
+</template>

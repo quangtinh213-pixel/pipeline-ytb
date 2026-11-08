@@ -10,3 +10,4 @@ videos/*/*.mp4
 videos/*/shorts/
 videos/*/frames/
 .DS_Store
+.hyperframes/

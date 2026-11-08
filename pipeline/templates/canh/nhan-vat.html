@@ -1,0 +1,33 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
+    #root .nv-anh { position: absolute; left: 200px; top: 170px; width: 620px; height: 740px;
+                    border-radius: 24px; overflow: hidden; border: 6px solid var(--accent); }
+    #root .nv-anh img { width: 100%; height: 100%; object-fit: cover; }
+    #root .nv-chu { position: absolute; left: 900px; right: 160px; top: 0; bottom: 0;
+                    display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    #root .nv-ten { color: var(--ink); font: 900 92px/1.05 var(--font-display); }
+    #root .nv-vai { margin-top: 24px; display: inline-block; background: var(--accent); color: var(--ground);
+                    font: 800 40px/1 var(--font-display); padding: 14px 26px; border-radius: 14px; }
+    #root .nv-ghi-cong { position: absolute; left: 200px; top: 930px; width: 1200px; color: var(--muted);
+                         font: 500 28px/1.2 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="nhan-vat" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/tai-lieu.svg"},{"id":"ten","type":"string","label":"Tên","default":"Tên"},{"id":"vai","type":"string","label":"Vai trò","default":"Vai trò"},{"id":"ghi_cong","type":"string","label":"Ghi công ảnh","default":""}]'>
+    <div id="nv-anh" class="nv-anh"><img id="nv-img" data-var-src="anh" src="assets/svg/tai-lieu.svg" alt=""></div>
+    <div class="nv-chu">
+      <div id="nv-ten" class="nv-ten" data-var-text="ten">Tên</div>
+      <div id="nv-vai" class="nv-vai" data-var-text="vai">Vai trò</div>
+    </div>
+    <div id="nv-ghi-cong" class="nv-ghi-cong" data-var-text="ghi_cong"></div>
+  </div>
+  <script>
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#nv-anh", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
+    tl.fromTo("#nv-img", { scale: 1.08 }, { scale: 1, duration: 8, ease: "none" }, 0);
+    tl.fromTo("#nv-ten", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.25);
+    tl.fromTo("#nv-vai", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0.5);
+    tl.fromTo("#nv-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    window.__timelines["nhan-vat"] = tl;
+  </script>
+</template>
