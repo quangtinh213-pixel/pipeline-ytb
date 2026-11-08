@@ -15,3 +15,6 @@ pipeline/templates/canh-demo/frames/*.mp4
 pipeline/templates/canh-demo/composition/
 docs/nghien-cuu/khung-hinh/
 pipeline/am-thanh/nhac/*.mp3
+pipeline/broll-kho/*.mp4
+pipeline/broll-kho/*.mov
+pipeline/broll-kho/*.webm

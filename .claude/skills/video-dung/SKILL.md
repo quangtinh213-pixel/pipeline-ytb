@@ -36,9 +36,11 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
   bằng chứng (`trich-bao`, `trang-nguon`) 15%, còn lại 15%. Không 3 cảnh liền cùng nhóm.
 - **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
   Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
-- **`b-roll`**: `tttc.broll.search("<từ khoá tiếng Anh>")` → `pick(videos, min_seconds=<độ dài cảnh + 1>)` →
-  `download(item, V)`; ghi `video` = tên tệp. Xem 3 khung của clip trước khi dùng: **không dùng clip có mặt người
-  nhận ra được, logo hãng, chữ nước ngoài lớn**. Khoá Pexels trong Keychain (tên `pexels`).
+- **`b-roll`**: chọn clip trong kho `pipeline/broll-kho/kho.json` theo `tu_khoa`/`mo_ta`, độ dài ≥ cảnh + 1 s;
+  `tttc.broll.nhap(KHO / tep, V, ghi_cong=<từ kho.json>, bat_dau=<giây>, do_dai=<độ dài cảnh + 0,5>)`;
+  ghi `video` = tên tệp trả về. Không có clip hợp: thêm clip mới vào kho (Pexels/Pixabay, tải thủ công) hoặc,
+  nếu có khoá Pexels trong Keychain, `broll.search` → `pick` → `download`. Mọi clip: xem 3 khung trước khi dùng –
+  **không mặt người nhận ra được, không logo hãng, không chữ nước ngoài lớn**. Một clip dùng cho một cảnh mỗi video.
 - Ảnh trang nguồn: chụp lại trang bằng trình duyệt ở độ phân giải ≥ 1600 px rộng, lưu `V/nguon/<id>.png`;
   `khung` là vùng chứa con số (x,y,w,h theo % ảnh).
 
