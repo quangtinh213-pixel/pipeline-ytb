@@ -10,7 +10,7 @@
                       font: 500 28px/1.2 var(--font-display); }
   </style>
   <div id="root" data-composition-id="so-lon" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
+       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
     <div id="sl-wrap" class="sl-wrap">
       <div id="sl-so" class="sl-so">0</div>
       <div id="sl-nhan" class="sl-nhan" data-var-text="nhan"></div>
@@ -20,7 +20,10 @@
   <script>
     const v = window.__hyperframes.getVariables();
     const el = document.querySelector("#sl-so"), obj = { x: 0 }, target = Number(v.so);
-    const fmt = x => (v.truoc || "") + Math.round(x).toLocaleString("vi-VN") + (v.sau || "");
+    // Khung cuối hiện đúng chuỗi số của nguồn (không làm tròn); lúc đếm giữ cùng số chữ số thập phân.
+    const hien = String(v.so_hien), dec = (hien.split(",")[1] || "").length;
+    const fmt = x => (v.truoc || "") + (x >= target ? hien : x.toLocaleString("vi-VN",
+      { minimumFractionDigits: dec, maximumFractionDigits: dec })) + (v.sau || "");
     el.textContent = fmt(0);
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#sl-so", { opacity: 0, scale: 0.9 }, { opacity: 1, scale: 1, duration: 0.3, ease: "power2.out" }, 0);

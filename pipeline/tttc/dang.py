@@ -80,12 +80,18 @@ def upload(video_dir, date_vn: str, time_vn: str, youtube=None, tracker: Path = 
            playlist_id: str | None = None) -> str:
     d = Path(video_dir)
     _guard(d)
+    state = tt.load(d)
+    if state["steps"]["dang"]["status"] == "xong":
+        return state["video_id"]
     body = build_body(d, publish_at(date_vn, time_vn))
     yt = youtube or client()
     if playlist_id is None:
         playlist_id = json.loads(CONFIG.read_text(encoding="utf-8")).get("playlist_id") or None
-    vid = yt.videos().insert(part="snippet,status", body=body,
-                             media_body=_media(d / "final.mp4", "video/mp4")).execute()["id"]
+    vid = state.get("video_id")
+    if not vid:  # lưu id ngay sau khi tạo: bước sau hỏng thì chạy lại không tạo video thứ hai
+        vid = yt.videos().insert(part="snippet,status", body=body,
+                                 media_body=_media(d / "final.mp4", "video/mp4")).execute()["id"]
+        tt.set_field(d, "video_id", vid)
     yt.thumbnails().set(videoId=vid, media_body=_media(d / _chosen(d)["file_thumb"], "image/png")).execute()
     yt.captions().insert(part="snippet", body={"snippet": {"videoId": vid, "language": "vi", "name": "Tiếng Việt"}},
                          media_body=_media(d / "phu-de.srt", "application/octet-stream")).execute()
@@ -100,12 +106,16 @@ def upload(video_dir, date_vn: str, time_vn: str, youtube=None, tracker: Path = 
 def upload_short(video_dir, index: int, youtube=None, tracker: Path = TRACKER) -> str:
     d = Path(video_dir)
     _guard(d)
+    done = tt.load(d).get("short_ids") or {}
+    if str(index) in done:
+        return done[str(index)]
     goi = _goi(d)
     s = goi["shorts"][index]
     body = _body(s["tieu_de"], goi["mo_ta"], goi.get("tags", []), publish_at(s["ngay"], s["gio"]))
     yt = youtube or client()
     vid = yt.videos().insert(part="snippet,status", body=body,
                              media_body=_media(d / s["file"], "video/mp4")).execute()["id"]
+    tt.set_field(d, "short_ids", dict(done, **{str(index): vid}))
     _track(Path(tracker), s["tieu_de"], f"{s['ngay']} {s['gio']}", vid)
     return vid
 

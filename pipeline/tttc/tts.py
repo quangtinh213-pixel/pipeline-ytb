@@ -1,5 +1,6 @@
 """Giọng đọc ElevenLabs có timestamp từng ký tự → giong.mp3 + giong-timing.json."""
 import base64
+import hashlib
 import json
 import re
 import subprocess
@@ -62,6 +63,12 @@ def _duration(p: Path) -> float:
     return float(out.stdout.strip())
 
 
+def seg_name(i: int, text: str, cfg: dict) -> str:
+    """Tên tệp theo nội dung + cấu hình giọng: sửa câu thì gọi lại, không sửa thì không tốn tiền."""
+    h = hashlib.sha1("|".join([text, cfg["voice_id"], cfg["model_id"], str(cfg["speed"])]).encode()).hexdigest()
+    return f"doan-{i:03}-{h[:8]}"
+
+
 def _call(post, key: str, cfg: dict, text: str, prev: str, nxt: str) -> dict:
     body = {"text": text, "model_id": cfg["model_id"], "voice_settings": {"speed": cfg["speed"]},
             "previous_text": prev, "next_text": nxt}
@@ -86,8 +93,9 @@ def synthesize(video_dir, post=requests.post, key: str | None = None, cfg: dict 
     paras = spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8"))
     out = d / "giong"
     out.mkdir(exist_ok=True)
+    names = [seg_name(i, t, cfg) for i, t in enumerate(paras)]
     for i, text in enumerate(paras):
-        mp3, js = out / f"doan-{i:03}.mp3", out / f"doan-{i:03}.json"
+        mp3, js = out / f"{names[i]}.mp3", out / f"{names[i]}.json"
         if mp3.exists() and js.exists():
             continue  # đã trả tiền cho đoạn này, không gọi lại
         res = _call(post, key, cfg, text, paras[i - 1] if i else "", paras[i + 1] if i + 1 < len(paras) else "")
@@ -96,15 +104,16 @@ def synthesize(video_dir, post=requests.post, key: str | None = None, cfg: dict 
 
     words, ranges, offset = [], [], 0.0
     for i in range(len(paras)):
-        dur = _duration(out / f"doan-{i:03}.mp3")
-        align = json.loads((out / f"doan-{i:03}.json").read_text(encoding="utf-8"))
+        dur = _duration(out / f"{names[i]}.mp3")
+        align = json.loads((out / f"{names[i]}.json").read_text(encoding="utf-8"))
         words += words_from_alignment(align, offset)
         ranges.append({"i": i, "start": offset, "end": offset + dur})
         offset += dur
     lst = out / "list.txt"
-    lst.write_text("".join(f"file 'doan-{i:03}.mp3'\n" for i in range(len(paras))))
+    lst.write_text("".join(f"file '{n}.mp3'\n" for n in names))
+    # mã hoá lại khi nối: '-c copy' giữ phần đệm của từng mp3, lệch ~40 ms mỗi chỗ nối
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
-                    "-c", "copy", str(d / "giong.mp3")], check=True)
+                    "-c:a", "libmp3lame", "-b:a", "128k", str(d / "giong.mp3")], check=True)
     timing = {"duration": _duration(d / "giong.mp3"), "words": words, "paragraphs": ranges}
     (d / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1), encoding="utf-8")
 

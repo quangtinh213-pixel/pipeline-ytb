@@ -17,7 +17,7 @@
                       font: 500 28px/1.2 var(--font-display); }
   </style>
   <div id="root" data-composition-id="bieu-do" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":"TIÊU ĐỀ"},{"id":"nhan_x","type":"string","label":"Nhãn cột (JSON)","default":"[\"A\",\"B\"]"},{"id":"gia_tri","type":"string","label":"Giá trị (JSON)","default":"[1,2]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"noi_bat","type":"number","label":"Cột nổi bật (0-based)","default":-1},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":"TIÊU ĐỀ"},{"id":"nhan_x","type":"string","label":"Nhãn cột (JSON)","default":"[\"A\",\"B\"]"},{"id":"gia_tri","type":"string","label":"Giá trị (JSON)","default":"[1,2]"},{"id":"so_hien","type":"string","label":"Số hiện (JSON)","default":"[\"1\",\"2\"]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"noi_bat","type":"number","label":"Cột nổi bật (0-based)","default":-1},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
     <div id="bd-tieu-de" class="bd-tieu-de" data-var-text="tieu_de">TIÊU ĐỀ</div>
     <div id="bd-khung" class="bd-khung" data-layout-allow-overflow></div>
     <div id="bd-nguon" class="bd-nguon" data-var-text="nguon"></div>
@@ -29,7 +29,11 @@
     const hl = Number(v.noi_bat), max = Math.max(...vals), n = vals.length;
     const khung = document.querySelector("#bd-khung");
     const W = 1600, gap = 0.35, colW = W / (n + (n + 1) * gap);
-    const fmt = x => x.toLocaleString("vi-VN") + (v.don_vi ? " " + v.don_vi : "");
+    const hien = JSON.parse(v.so_hien);
+    const unit = v.don_vi ? " " + v.don_vi : "";
+    const dec = i => (hien[i].split(",")[1] || "").length;
+    const fmt = (x, i) => (x >= vals[i] ? hien[i] : x.toLocaleString("vi-VN",
+      { minimumFractionDigits: dec(i), maximumFractionDigits: dec(i) })) + unit;
     const tl = gsap.timeline({ paused: true });
     vals.forEach((val, i) => {
       const col = document.createElement("div");
@@ -38,13 +42,13 @@
       col.style.left = (gap + i * (1 + gap)) * colW + "px";
       col.style.width = colW + "px";
       col.style.height = Math.max(0.02, val / max) * 100 + "%";
-      col.innerHTML = '<div class="bd-so" id="bd-so-' + i + '">' + fmt(0) + '</div>' +
+      col.innerHTML = '<div class="bd-so" id="bd-so-' + i + '">' + fmt(0, i) + '</div>' +
                       '<div class="bd-nhan">' + labels[i] + '</div>';
       khung.appendChild(col);
       const t0 = 0.3 + i * 0.25, obj = { x: 0 }, so = col.querySelector(".bd-so");
       tl.fromTo(col, { scaleY: 0 }, { scaleY: 1, duration: 0.7, ease: "power3.out" }, t0);
       tl.fromTo(obj, { x: 0 }, { x: val, duration: 0.7, ease: "power3.out",
-                onUpdate: () => { so.textContent = fmt(Math.round(obj.x)); } }, t0);
+                onUpdate: () => { so.textContent = fmt(obj.x, i); } }, t0);
     });
     tl.fromTo("#bd-tieu-de", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.3 }, 0);
     tl.fromTo("#bd-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.4);

@@ -68,6 +68,8 @@ def test_compose_maps_variables(video):
     assert vals["c2"]["svg"] == "assets/svg/chip.svg" and vals["c2"]["nhan"] == "Chip"
     assert vals["c3"]["so"] == 522500 and vals["c3"]["nguon"] == "Nguồn: chatgpt.com, 07/11/2026"
     assert json.loads(vals["c4"]["gia_tri"]) == [132000, 522500] and vals["c4"]["noi_bat"] == 1
+    assert vals["c3"]["so_hien"] == "522.500"  # chữ hiện ở khung cuối, đúng như nguồn
+    assert json.loads(vals["c4"]["so_hien"]) == ["132.000", "522.500"]
     assert vals["c1"]["ten"] == "Mở đầu"
 
 
@@ -108,3 +110,15 @@ def test_contact_sheet_size(tmp_path):
                      {"id": "c", "start": 4, "end": 6}]}
     out = dung.contact_sheet(v, sc, tmp_path / "sheet.png")
     assert Image.open(out).size == (3 * 384, 216)
+
+
+def test_vi_number_keeps_decimals():
+    assert dung.vi_number(5.3) == "5,3" and dung.vi_number(2.5) == "2,5"
+    assert dung.vi_number(522500) == "522.500" and dung.vi_number("5,3") == "5,3"
+    assert dung.vi_number(1234567.25) == "1.234.567,25"
+
+
+def test_contact_sheet_creates_folder(tmp_path):
+    v = _tone(tmp_path / "v.mp4", 2, video=True)
+    out = dung.contact_sheet(v, {"scenes": [{"id": "a", "start": 0, "end": 2}]}, tmp_path / "frames" / "s.png")
+    assert out.exists()

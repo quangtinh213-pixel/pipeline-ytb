@@ -6,7 +6,11 @@ import unicodedata
 from pathlib import Path
 
 TAG = re.compile(r"\[#([\w-]+)\]")
-NUM = re.compile(r"\d[\d.,]*\d|\d")
+# Số kiểu Việt: dấu chấm/cách nhóm nghìn, dấu phẩy thập phân; kèm đơn vị quy mô phía sau nếu có.
+NUM = re.compile(r"(?<![\d.,])(\d{1,3}(?:[ .]\d{3})+(?:,\d+)?|\d+(?:,\d+)?)(?!\d)"
+                 r"(?:\s*(%|nghìn|ngàn|triệu|tỷ)(?!\w))?", re.I)
+UNIT_AFTER = re.compile(r"\s*(%|nghìn|ngàn|triệu|tỷ|usd|đô|đồng|đ|\$|gb|tb)(?!\w)", re.I)
+NUM_WORDS = re.compile(r"(?<!\w)(trăm|nghìn|ngàn|triệu|tỷ|phần trăm)(?!\w)", re.I)
 DATE_TIME = re.compile(r"\b\d{1,2}/\d{1,2}/\d{4}\b|\b\d{1,2}:\d{2}\b")
 PLACEHOLDER = re.compile(r"\[[^\]]*(?:\.\.\.|…|ĐIỀN|ĐỔI|TODO|TBD)[^\]]*\]")
 LIST_MARK = re.compile(r"^\s*(?:\d+[.)]|[-*>])\s+")
@@ -15,14 +19,30 @@ SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?!\[#)")
 WARN = ("sơ bộ", "chưa chính thức")
 
 
-def _digits(s: str) -> str:
-    return re.sub(r"\D", "", s)
+def vi_value(raw: str) -> float:
+    return float(raw.replace(" ", "").replace(".", "").replace(",", "."))
 
 
-def _numbers(text: str) -> list[str]:
+def _scale(word) -> str:
+    w = (word or "").lower()
+    return "nghìn" if w == "ngàn" else w
+
+
+def tokens(text: str, keep_small: bool = True) -> list[tuple[str, float, str]]:
+    """(chuỗi gốc, giá trị, quy mô) cho mỗi số; keep_small=False bỏ số nguyên < 13 không kèm đơn vị."""
+    out = []
+    for m in NUM.finditer(text):
+        raw, scale = m.group(1), _scale(m.group(2))
+        small = raw.isdigit() and int(raw) < 13 and not UNIT_AFTER.match(text, m.end(1))
+        # shortcut: số nguyên < 13 không kèm đơn vị coi là đếm/thứ tự; nếu lọt số liệu thì hạ ngưỡng
+        if keep_small or not small:
+            out.append((raw, vi_value(raw), scale))
+    return out
+
+
+def _numbers(text: str) -> list[tuple[str, float, str]]:
     text = URL.sub(" ", TAG.sub(" ", DATE_TIME.sub(" ", PLACEHOLDER.sub(" ", text))))
-    # shortcut: số nguyên < 13 không dấu phân cách coi là đếm/tháng, bỏ qua; nếu lọt sai số liệu thì hạ ngưỡng
-    return [n for n in NUM.findall(text) if not (n.isdigit() and int(n) < 13)]
+    return tokens(text, keep_small=False)
 
 
 def check(script_md: str, nguon: list[dict]) -> list[str]:
@@ -44,13 +64,16 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
                 else:
                     srcs.append(by_id[i])
             if nums and not ids:
-                errs.append(f"Số {', '.join(nums)} không có nguồn: {sent.strip()}")
+                errs.append(f"Số {', '.join(n[0] for n in nums)} không có nguồn: {sent.strip()}")
                 continue
-            allowed = {_digits(v) for s in srcs
-                       for v in NUM.findall(unicodedata.normalize("NFC", s["gia_tri"]))}
-            for n in nums:
-                if srcs and _digits(n) not in allowed:
-                    errs.append(f"Số {n} không khớp giá trị nguồn {[s['id'] for s in srcs]}: {sent.strip()}")
+            if not ids and NUM_WORDS.search(sent):
+                errs.append(f"Số viết bằng chữ không có nguồn: {sent.strip()}")
+                continue
+            allowed = {(v, sc) for s in srcs for _, v, sc in tokens(unicodedata.normalize("NFC", s["gia_tri"]))}
+            for raw, v, sc in nums:
+                if srcs and (v, sc) not in allowed:
+                    errs.append(f"Số {raw}{' ' + sc if sc else ''} không khớp giá trị nguồn "
+                                f"{[s['id'] for s in srcs]}: {sent.strip()}")
             low = sent.lower()
             for s in srcs:
                 if s["trang_thai"] == "chua-xac-minh":

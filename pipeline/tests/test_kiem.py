@@ -66,3 +66,28 @@ def test_check_handles_nfd_text():
 
 def test_headings_skipped():
     assert check("#### Beat 70: Giá 2026", NGUON) == []
+
+
+SRC = [{"id": "a", "gia_tri": "35 triệu USD", "trich_dan": "", "url": "u", "ngay_truy_cap": "2026-11-07",
+        "anh_chup": "", "trang_thai": "xac-minh"}]
+
+
+def test_small_number_with_unit_needs_source():
+    assert check("Lợi nhuận 7 triệu.", NGUON) and check("Thị phần tăng 8%.", NGUON)
+    assert check("Giá 5 đô mỗi tháng.", NGUON)
+
+
+def test_space_grouped_thousands_detected():
+    assert check("Giá 1 000 000 đồng.", NGUON)
+
+
+def test_wrong_scale_rejected():
+    assert check("Công ty có 35 tỷ USD. [#a]", SRC)
+    assert check("Công ty có 3,5 triệu USD. [#a]", SRC)
+    assert check("Công ty có 35 triệu USD. [#a]", SRC) == []
+
+
+def test_spoken_number_words_need_source():
+    errs = check("Apple mất ba nghìn tỷ đô.", NGUON)
+    assert errs and "chữ" in errs[0]
+    assert check("Apple mất ba nghìn tỷ đô. [#p1]", NGUON) == []

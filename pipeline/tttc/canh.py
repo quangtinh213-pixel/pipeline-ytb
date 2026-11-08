@@ -3,6 +3,8 @@ import json
 import sys
 from pathlib import Path
 
+from tttc.kiem import NUM, _scale, tokens, vi_value
+
 MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
@@ -11,7 +13,8 @@ EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 
 def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | tuple = ()) -> list[str]:
     """Trả danh sách 'Lỗi: ...' (phải sửa) và 'Cảnh báo: ...' (nên xem)."""
-    msgs, ids = [], {n["id"] for n in nguon}
+    by_id = {n["id"]: n for n in nguon}
+    msgs, ids = [], set(by_id)
     sc = scenes["scenes"]
     if not sc:
         return ["Lỗi: canh.json không có cảnh nào"]
@@ -39,9 +42,37 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         if c.get("svg") and not (Path(svg_dir) / f"{c['svg']}.svg").exists():
             msgs.append(f"Lỗi: {cid} cần hình {c['svg']}.svg chưa có trong thư viện")
         nid = (c.get("bieu_do") or {}).get("nguon_id") or c.get("nguon_id")
-        if nid and nid not in ids:
-            msgs.append(f"Lỗi: {cid} trỏ tới nguồn [#{nid}] không có trong nguon.json")
+        nids = nid if isinstance(nid, list) else [nid] if nid else []
+        for n in nids:
+            if n not in ids:
+                msgs.append(f"Lỗi: {cid} trỏ tới nguồn [#{n}] không có trong nguon.json")
+        msgs += _check_values(c, [by_id[n] for n in nids if n in by_id], bool(nids))
     return msgs
+
+
+def _unit_scale(text: str) -> str:
+    m = NUM.search("1 " + (text or "").strip())
+    return _scale(m.group(2)) if m else ""
+
+
+def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
+    """Số hiện trên màn hình (so-lon, bieu-do) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
+    if c["mau"] == "so-lon" and "so" in c:
+        vals, scale = [c["so"]], _unit_scale(c.get("truoc", "") + " " + c.get("sau", ""))
+    elif c["mau"] == "bieu-do" and c.get("bieu_do"):
+        vals, scale = c["bieu_do"]["gia_tri"], _unit_scale(c["bieu_do"].get("don_vi", ""))
+    else:
+        return []
+    if not has_ref:
+        return [f"Lỗi: {c['id']} hiện số nhưng thiếu nguon_id"]
+    allowed = {(v, sc) for s in srcs for _, v, sc in tokens(s["gia_tri"])}
+    out = []
+    for v in vals:
+        num = vi_value(v) if isinstance(v, str) else float(v)
+        if (num, scale) not in allowed:
+            out.append(f"Lỗi: {c['id']} hiện {v}{' ' + scale if scale else ''} không khớp nguồn "
+                       f"{[s['id'] for s in srcs]}")
+    return out
 
 
 def _ts(t: float) -> str:

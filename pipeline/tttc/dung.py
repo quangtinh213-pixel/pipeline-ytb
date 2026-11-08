@@ -21,6 +21,7 @@ from urllib.parse import urlparse
 from PIL import Image
 
 from tttc.canh import cues
+from tttc.kiem import vi_value
 
 PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
@@ -34,6 +35,19 @@ def _read_json(p: Path, default):
     return json.loads(p.read_text(encoding="utf-8")) if p.exists() else default
 
 
+def vi_number(x) -> str:
+    """Số viết kiểu Việt, giữ đúng số chữ số thập phân: 5.3 → '5,3', 522500 → '522.500'."""
+    if isinstance(x, str):
+        return x.strip()
+    whole, _, frac = repr(float(x)).partition(".") if not float(x).is_integer() else (str(int(x)), "", "")
+    whole = f"{int(whole):,}".replace(",", ".")
+    return f"{whole},{frac}" if frac else whole
+
+
+def _num(x) -> float:
+    return vi_value(x) if isinstance(x, str) else x
+
+
 def _source_line(nguon: dict) -> str:
     host = urlparse(nguon["url"]).netloc.removeprefix("www.")
     d = date.fromisoformat(nguon["ngay_truy_cap"])
@@ -41,19 +55,21 @@ def _source_line(nguon: dict) -> str:
 
 
 def _vars(c: dict, by_id: dict, credits: dict) -> dict:
-    src = lambda nid: _source_line(by_id[nid]) if nid in by_id else ""
+    src = lambda nid: " · ".join(_source_line(by_id[n]) for n in (nid if isinstance(nid, list) else [nid])
+                                 if n in by_id)
     m = c["mau"]
     if m == "chuong":
         return {"so": c.get("so", ""), "ten": c.get("chuong", "")}
     if m == "minh-hoa":
         return {"svg": f"assets/svg/{c['svg']}.svg", "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
     if m == "so-lon":
-        return {"so": c["so"], "truoc": c.get("truoc", ""), "sau": c.get("sau", ""), "nhan": c.get("nhan", ""),
-                "nguon": src(c.get("nguon_id"))}
+        return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "truoc": c.get("truoc", ""),
+                "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
     if m == "bieu-do":
         b = c["bieu_do"]
         return {"tieu_de": c.get("nhan", ""), "nhan_x": json.dumps(b["nhan_x"], ensure_ascii=False),
-                "gia_tri": json.dumps(b["gia_tri"]), "don_vi": b.get("don_vi", ""),
+                "gia_tri": json.dumps([_num(v) for v in b["gia_tri"]]),
+                "so_hien": json.dumps([vi_number(v) for v in b["gia_tri"]]), "don_vi": b.get("don_vi", ""),
                 "noi_bat": b.get("noi_bat", -1), "nguon": src(b.get("nguon_id"))}
     if m == "nhan-vat":
         return {"anh": f"assets/anh/{c['anh']}", "ten": c.get("nhan", ""), "vai": c.get("vai", ""),
@@ -181,5 +197,6 @@ def contact_sheet(video_mp4, scenes: dict, out_png) -> Path:
                             "-vf", f"scale={TILE_W}:{TILE_H}", str(f)], check=True)
             sheet.paste(Image.open(f), ((k % COLS) * TILE_W, (k // COLS) * TILE_H))
     out = Path(out_png)
+    out.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(out)
     return out

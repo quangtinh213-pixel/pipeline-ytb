@@ -91,3 +91,29 @@ def test_srt_breaks_after_sentence_end():
 def test_srt_time_format_over_one_minute():
     srt = canh.to_srt({"words": [{"w": "A", "start": 61.25, "end": 62.5}]})
     assert "00:01:01,250 --> 00:01:02,500" in srt
+
+
+SRC = [{"id": "p1", "gia_tri": "522.500 đ"}, {"id": "t1", "gia_tri": "5,3 tỷ USD"}]
+
+
+def test_number_scenes_require_source(tmp_path):
+    sc = _sc((0, 6), (6, 12), so=522500, nhan="Plus")
+    errs = _errors(canh.validate(sc, TIMING, tmp_path, SRC))
+    assert any("nguon_id" in e for e in errs)
+
+
+def test_screen_value_must_match_source(tmp_path):
+    ok = _sc((0, 6), (6, 12), so=522500, sau=" đ", nguon_id="p1")
+    assert _errors(canh.validate(ok, TIMING, tmp_path, SRC)) == []
+    bad = _sc((0, 6), (6, 12), so=525000, sau=" đ", nguon_id="p1")
+    assert any("525" in e for e in _errors(canh.validate(bad, TIMING, tmp_path, SRC)))
+    dec = _sc((0, 6), (6, 12), so=5.3, sau=" tỷ USD", nguon_id="t1")
+    assert _errors(canh.validate(dec, TIMING, tmp_path, SRC)) == []
+    scale = _sc((0, 6), (6, 12), so=5.3, sau=" triệu USD", nguon_id="t1")
+    assert _errors(canh.validate(scale, TIMING, tmp_path, SRC))
+
+
+def test_chart_values_must_match_source(tmp_path):
+    chart = {"kieu": "cot", "nhan_x": ["A", "B"], "gia_tri": [522500, 999], "don_vi": "đ", "nguon_id": "p1"}
+    sc = _sc((0, 6), (6, 12), mau="bieu-do", bieu_do=chart)
+    assert any("999" in e for e in _errors(canh.validate(sc, TIMING, tmp_path, SRC)))

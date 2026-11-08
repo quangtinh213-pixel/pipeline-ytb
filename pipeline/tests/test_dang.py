@@ -134,3 +134,34 @@ def test_upload_short_uses_its_own_schedule(video, tmp_path):
     body = yt.log[0][1]["body"]
     assert body["snippet"]["title"].endswith("#shorts")
     assert body["status"]["publishAt"] == "2026-11-14T05:00:00Z"
+
+
+class FlakyThumbYT(FakeYT):
+    def __init__(self):
+        super().__init__()
+        self.fail = True
+
+    def thumbnails(self):
+        if self.fail:
+            self.fail = False
+            raise RuntimeError("403 thumbnails")
+        return super().thumbnails()
+
+
+def test_upload_retry_does_not_duplicate_video(video, tmp_path):
+    _approve(video)
+    yt = FlakyThumbYT()
+    with pytest.raises(RuntimeError):
+        dang.upload(video, "13/11/2026", "19:00", youtube=yt, tracker=tmp_path / "t.csv", playlist_id="")
+    assert dang.upload(video, "13/11/2026", "19:00", youtube=yt, tracker=tmp_path / "t.csv", playlist_id="") == "vid123"
+    assert [n for n, _ in yt.log].count("videos.insert") == 1
+    assert dang.upload(video, "13/11/2026", "19:00", youtube=yt, tracker=tmp_path / "t.csv", playlist_id="") == "vid123"
+    assert [n for n, _ in yt.log].count("videos.insert") == 1
+
+
+def test_upload_short_twice_uploads_once(video, tmp_path):
+    _approve(video)
+    yt = FakeYT()
+    dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    assert [n for n, _ in yt.log].count("videos.insert") == 1

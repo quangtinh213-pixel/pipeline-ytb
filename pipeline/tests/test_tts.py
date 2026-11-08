@@ -78,8 +78,9 @@ def test_words_from_alignment_nfd():
 def test_tts_skips_done_paragraphs(tmp_path, silent_mp3, monkeypatch):
     d = _video(tmp_path)
     (d / "giong").mkdir()
-    (d / "giong" / "doan-000.mp3").write_bytes(base64.b64decode(silent_mp3))
-    (d / "giong" / "doan-000.json").write_text(json.dumps(_alignment("Xin chào các bạn.")))
+    name = tts.seg_name(0, "Xin chào các bạn.", CFG)
+    (d / "giong" / f"{name}.mp3").write_bytes(base64.b64decode(silent_mp3))
+    (d / "giong" / f"{name}.json").write_text(json.dumps(_alignment("Xin chào các bạn.")))
     calls = []
 
     def post(url, **kw):
@@ -126,3 +127,27 @@ def test_timing_duration_matches_audio(tmp_path, silent_mp3):
     assert timing["paragraphs"][1]["start"] == pytest.approx(1.0, abs=0.06)
     assert timing["words"][1]["w"] == "Hai." and timing["words"][1]["start"] >= 1.0
     assert (d / "giong.mp3").exists()
+
+
+def _ok_post(silent_mp3, calls):
+    def post(url, **kw):
+        calls.append(kw["json"]["text"])
+        return Resp(200, {"audio_base64": silent_mp3, "alignment": _alignment(kw["json"]["text"])})
+    return post
+
+
+def test_tts_resynthesizes_edited_paragraph(tmp_path, silent_mp3):
+    d = _video(tmp_path)
+    tts.synthesize(d, post=_ok_post(silent_mp3, []), key="k", cfg=CFG)
+    (d / "kich-ban.md").write_text(SCRIPT.replace("**ba** gói", "**bốn** gói"), encoding="utf-8")
+    calls = []
+    tts.synthesize(d, post=_ok_post(silent_mp3, calls), key="k", cfg=CFG)
+    assert calls == ["Hôm nay mình so bốn gói."]
+
+
+def test_concat_does_not_drift(tmp_path, silent_mp3):
+    lines = "\n".join(f"  Câu số {i}." for i in range(12))
+    d = _video(tmp_path, "* **Lời đọc:**\n" + lines + "\n")
+    tts.synthesize(d, post=_ok_post(silent_mp3, []), key="k", cfg=CFG)
+    timing = json.loads((d / "giong-timing.json").read_text())
+    assert timing["paragraphs"][-1]["end"] == pytest.approx(timing["duration"], abs=0.05)
