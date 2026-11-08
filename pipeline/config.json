@@ -1,0 +1,14 @@
+{
+  "elevenlabs": {"voice_id": "", "model_id": "eleven_multilingual_v2", "speed": 1.0},
+  "nguon_tin": [
+    "https://www.reuters.com/technology/",
+    "https://www.bloomberg.com/technology",
+    "https://techcrunch.com/",
+    "https://vnexpress.net/so-hoa",
+    "https://cafef.vn/cong-nghe.chn",
+    "https://chinhphu.vn/"
+  ],
+  "gio_dang_mac_dinh": "19:00",
+  "nhac_nen": "",
+  "playlist_id": ""
+}
