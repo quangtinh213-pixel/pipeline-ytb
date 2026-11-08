@@ -1,28 +1,45 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
-    #root .ch-wrap { position: absolute; left: 200px; right: 200px; top: 0; bottom: 0;
+    #root { position: absolute; inset: 0; }
+    #root .ch-so-to { position: absolute; right: 80px; bottom: -140px; font: 900 760px/1 var(--font-display);
+                      color: transparent; -webkit-text-stroke: 6px rgba(17,17,17,0.18); letter-spacing: -0.05em; }
+    #root .ch-wrap { position: absolute; left: 200px; right: 520px; top: 0; bottom: 0;
                      display: flex; flex-direction: column; justify-content: center; }
-    #root .ch-so { color: var(--accent); font: 800 40px/1 var(--font-display); letter-spacing: 0.12em;
+    #root .ch-so { color: var(--ink); font: 800 40px/1 var(--font-display); letter-spacing: 0.14em;
                    text-transform: uppercase; }
-    #root .ch-vach { margin: 28px 0 32px; width: 220px; height: 10px; background: var(--accent);
+    #root .ch-vach { margin: 28px 0 32px; width: 220px; height: 12px; background: var(--ink);
                      transform-origin: left center; }
-    #root .ch-ten { color: var(--ink); font: 900 104px/1.05 var(--font-display); letter-spacing: -0.02em; }
+    #root .ch-ten { color: var(--ink); font: 900 112px/1.04 var(--font-display); letter-spacing: -0.025em; }
+    #root .ch-ten span { display: inline-block; margin-right: 0.24em; }
   </style>
   <div id="root" data-composition-id="chuong" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"so","type":"string","label":"Nhãn chương","default":"Phần 1"},{"id":"ten","type":"string","label":"Tên chương","default":"Tên chương"}]'>
-    <div id="ch-wrap" class="ch-wrap">
-      <div id="ch-so" class="ch-so" data-var-text="so">Phần 1</div>
-      <div id="ch-vach" class="ch-vach"></div>
-      <div id="ch-ten" class="ch-ten" data-var-text="ten">Tên chương</div>
+       data-composition-variables='[{"id":"so","type":"string","label":"Nhãn chương","default":"Phần 1"},{"id":"ten","type":"string","label":"Tên chương","default":"Tên chương"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"vang"}]'>
+    <div id="ch-san" class="san">
+      <div id="ch-so-to" class="ch-so-to"></div>
+      <div class="ch-wrap">
+        <div id="ch-so" class="ch-so" data-var-text="so">Phần 1</div>
+        <div id="ch-vach" class="ch-vach"></div>
+        <div id="ch-ten" class="ch-ten"></div>
+      </div>
     </div>
   </div>
   <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#ch-san").classList.add("nen-" + (v.nen || "vang"));
+    const digits = (String(v.so).match(/\d+/) || [""])[0];
+    document.querySelector("#ch-so-to").textContent = digits ? digits.padStart(2, "0") : "";
+    // tên chương tách từng từ để hiện lần lượt
+    const ten = document.querySelector("#ch-ten");
+    String(v.ten).split(/\s+/).forEach((w, i) => {
+      const s = document.createElement("span");
+      s.id = "ch-tu-" + i; s.textContent = w; ten.appendChild(s);
+    });
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#ch-so", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0);
-    tl.fromTo("#ch-vach", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.inOut" }, 0.1);
-    tl.fromTo("#ch-ten", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0.3);
-    tl.fromTo("#ch-wrap", { x: 0 }, { x: 24, duration: 7.2, ease: "none" }, 0.8);
+    tl.fromTo("#ch-so-to", { x: 160, opacity: 0 }, { x: 0, opacity: 1, duration: 0.9, ease: "expo.out" }, 0);
+    tl.fromTo("#ch-so", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power3.out" }, 0.1);
+    tl.fromTo("#ch-vach", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.inOut" }, 0.15);
+    tl.fromTo("#ch-ten span", { opacity: 0, filter: "blur(6px)" },
+              { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.07 }, 0.35);
     window.__timelines["chuong"] = tl;
   </script>
 </template>

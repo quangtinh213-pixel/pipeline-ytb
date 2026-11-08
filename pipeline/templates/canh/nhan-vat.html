@@ -1,33 +1,49 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
+    #root { position: absolute; inset: 0; }
+    #root .nv-khoi { position: absolute; left: 236px; top: 206px; width: 620px; height: 740px;
+                     border-radius: 24px; background: var(--accent); }
     #root .nv-anh { position: absolute; left: 200px; top: 170px; width: 620px; height: 740px;
-                    border-radius: 24px; overflow: hidden; border: 6px solid var(--accent); }
+                    border-radius: 24px; overflow: hidden; background: #222; }
     #root .nv-anh img { width: 100%; height: 100%; object-fit: cover; }
-    #root .nv-chu { position: absolute; left: 900px; right: 160px; top: 0; bottom: 0;
+    #root .nv-chu { position: absolute; left: 960px; right: 140px; top: 0; bottom: 0;
                     display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
-    #root .nv-ten { color: var(--ink); font: 900 92px/1.05 var(--font-display); }
-    #root .nv-vai { margin-top: 24px; display: inline-block; background: var(--accent); color: var(--ground);
+    #root .nv-ten { color: var(--ink); font: 900 96px/1.04 var(--font-display); letter-spacing: -0.02em; }
+    #root .nv-ten span { display: inline-block; margin-right: 0.22em; }
+    #root .nv-vai { margin-top: 30px; display: inline-block; background: var(--ink); color: var(--tren-muc);
                     font: 800 40px/1 var(--font-display); padding: 14px 26px; border-radius: 14px; }
-    #root .nv-ghi-cong { position: absolute; left: 200px; top: 930px; width: 1200px; color: var(--muted);
+    #root .nv-ghi-cong { position: absolute; left: 960px; top: 860px; width: 820px; color: var(--muted);
                          font: 500 28px/1.2 var(--font-display); }
   </style>
   <div id="root" data-composition-id="nhan-vat" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/tai-lieu.svg"},{"id":"ten","type":"string","label":"Tên","default":"Tên"},{"id":"vai","type":"string","label":"Vai trò","default":"Vai trò"},{"id":"ghi_cong","type":"string","label":"Ghi công ảnh","default":""}]'>
-    <div id="nv-anh" class="nv-anh"><img id="nv-img" data-var-src="anh" src="assets/svg/tai-lieu.svg" alt=""></div>
-    <div class="nv-chu">
-      <div id="nv-ten" class="nv-ten" data-var-text="ten">Tên</div>
-      <div id="nv-vai" class="nv-vai" data-var-text="vai">Vai trò</div>
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/nguoi.svg"},{"id":"ten","type":"string","label":"Tên","default":"Tên"},{"id":"vai","type":"string","label":"Vai trò","default":"Vai trò"},{"id":"ghi_cong","type":"string","label":"Ghi công ảnh","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"kem"}]'>
+    <div id="nv-san" class="san">
+      <div id="nv-khoi" class="nv-khoi"></div>
+      <div id="nv-anh" class="nv-anh"><img id="nv-img" data-var-src="anh" src="assets/svg/nguoi.svg" alt=""></div>
+      <div class="nv-chu">
+        <div id="nv-ten" class="nv-ten"></div>
+        <div id="nv-vai" class="nv-vai" data-var-text="vai">Vai trò</div>
+      </div>
+      <div id="nv-ghi-cong" class="nv-ghi-cong" data-var-text="ghi_cong"></div>
     </div>
-    <div id="nv-ghi-cong" class="nv-ghi-cong" data-var-text="ghi_cong"></div>
   </div>
   <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#nv-san").classList.add("nen-" + (v.nen || "kem"));
+    const ten = document.querySelector("#nv-ten");
+    String(v.ten).split(/\s+/).forEach((w, i) => {
+      const s = document.createElement("span");
+      s.id = "nv-tu-" + i; s.textContent = w; ten.appendChild(s);
+    });
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#nv-anh", { opacity: 0, x: -60 }, { opacity: 1, x: 0, duration: 0.5, ease: "power3.out" }, 0);
-    tl.fromTo("#nv-img", { scale: 1.08 }, { scale: 1, duration: 8, ease: "none" }, 0);
-    tl.fromTo("#nv-ten", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.4, ease: "power3.out" }, 0.25);
-    tl.fromTo("#nv-vai", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0.5);
-    tl.fromTo("#nv-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    tl.fromTo("#nv-khoi", { x: -120, opacity: 0 }, { x: 0, opacity: 1, duration: 0.55, ease: "expo.out" }, 0);
+    tl.fromTo("#nv-anh", { clipPath: "inset(100% 0% 0% 0% round 24px)" },
+              { clipPath: "inset(0% 0% 0% 0% round 24px)", duration: 0.6, ease: "power3.inOut" }, 0.12);
+    tl.fromTo("#nv-img", { scale: 1.12 }, { scale: 1.0, duration: 1.2, ease: "power2.out" }, 0.12);
+    tl.fromTo("#nv-ten span", { opacity: 0, filter: "blur(6px)" },
+              { opacity: 1, filter: "blur(0px)", duration: 0.13, stagger: 0.08 }, 0.45);
+    tl.fromTo("#nv-vai", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(2)" }, 0.8);
+    tl.fromTo("#nv-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
     window.__timelines["nhan-vat"] = tl;
   </script>
 </template>

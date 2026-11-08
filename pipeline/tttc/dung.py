@@ -1,12 +1,13 @@
 """Ghép canh.json + giọng thành dự án HyperFrames, bảng soi hình, kiểm hình–tiếng.
 
-Trường canh.json theo mẫu (ngoài id, mau, start, end):
+Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có thể ghi đè nen: toi|kem|vang):
 - chuong:      so (vd "Phần 2"), chuong (tên chương)
-- minh-hoa:    svg (tên trong pipeline/svg), nhan, nguon_id?
-- so-lon:      so (số), truoc?, sau?, nhan, nguon_id?
-- bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, nguon_id}
+- minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?
+- so-lon:      so (số hoặc chuỗi "5,3"), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong
+- bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
-- trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (%), nguon_id?
+- trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
+Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi theo chương. Chuyển cảnh tự gán (transitions()).
 """
 import json
 import re
@@ -61,22 +62,51 @@ def _vars(c: dict, by_id: dict, credits: dict) -> dict:
     if m == "chuong":
         return {"so": c.get("so", ""), "ten": c.get("chuong", "")}
     if m == "minh-hoa":
-        return {"svg": f"assets/svg/{c['svg']}.svg", "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
+        phu = c.get("phu", [])
+        return {"svg": f"assets/svg/{c['svg']}.svg", "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
+                "phu1": f"assets/svg/{phu[0]}.svg" if len(phu) > 0 else "",
+                "phu2": f"assets/svg/{phu[1]}.svg" if len(phu) > 1 else ""}
     if m == "so-lon":
         return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "truoc": c.get("truoc", ""),
-                "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
+                "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
+                "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", "")}
     if m == "bieu-do":
         b = c["bieu_do"]
         return {"tieu_de": c.get("nhan", ""), "nhan_x": json.dumps(b["nhan_x"], ensure_ascii=False),
                 "gia_tri": json.dumps([_num(v) for v in b["gia_tri"]]),
                 "so_hien": json.dumps([vi_number(v) for v in b["gia_tri"]]), "don_vi": b.get("don_vi", ""),
-                "noi_bat": b.get("noi_bat", -1), "nguon": src(b.get("nguon_id"))}
+                "noi_bat": b.get("noi_bat", -1), "chu_thich": b.get("chu_thich", ""), "nguon": src(b.get("nguon_id"))}
     if m == "nhan-vat":
         return {"anh": f"assets/anh/{c['anh']}", "ten": c.get("nhan", ""), "vai": c.get("vai", ""),
                 "ghi_cong": "Ảnh: " + credits[c["anh"]] if c["anh"] in credits else ""}
     if m == "trang-nguon":
-        return {"anh": f"assets/nguon/{c['anh']}", "khung": c.get("khung", "0,0,0,0"), "nguon": src(c.get("nguon_id"))}
+        n = by_id.get(c.get("nguon_id"))
+        url = n["url"].split("://", 1)[-1].removeprefix("www.").rstrip("/") if n else ""
+        return {"anh": f"assets/nguon/{c['anh']}", "khung": c.get("khung", "0,0,0,0"), "url": url,
+                "nguon": src(c.get("nguon_id"))}
     raise ValueError(f"mẫu không có: {m}")
+
+
+def grounds(scenes: list[dict]) -> list[str]:
+    """Nền mỗi cảnh: chương vàng, nhân vật kem, còn lại đổi tối/kem theo chương chẵn/lẻ; canh.json ghi đè được."""
+    out, chap = [], 0
+    for c in scenes:
+        if c["mau"] == "chuong":
+            chap += 1
+        auto = "vang" if c["mau"] == "chuong" else "kem" if c["mau"] == "nhan-vat" else ("kem" if chap % 2 else "toi")
+        out.append(c.get("nen") or auto)
+    return out
+
+
+def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
+    """(chỉ số cảnh sau đường nối, kiểu): vào chương quét vàng, rời chương quét mực, cứ 3 đường nối có 1 lần chớp tối."""
+    out = []
+    for k in range(1, len(scenes)):
+        a, b = scenes[k - 1]["mau"], scenes[k]["mau"]
+        kind = "vang" if b == "chuong" else "muc" if a == "chuong" else "dip" if k % 3 == 0 else ""
+        if kind:
+            out.append((k, kind))
+    return out
 
 
 def _scene_file(mau: str, sid: str) -> str:
@@ -94,6 +124,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     by_id = {n["id"]: n for n in _read_json(d / "nguon.json", [])}
     credits = {c["tep"]: c["ghi_cong"] for c in _read_json(d / "anh" / "ghi-cong.json", [])}
     i, j = scene_range or (0, len(scenes))
+    nens = grounds(scenes)[i:j]
     scenes = scenes[i:j]
     t0 = scenes[0]["start"]
     total = round(scenes[-1]["end"] - t0, 3) if scene_range else timing["duration"]
@@ -109,14 +140,28 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
 
     hosts = []
-    for c in scenes:
+    for c, nen in zip(scenes, nens):
         sid = c["id"]
         (o / "compositions" / f"{sid}.html").write_text(_scene_file(c["mau"], sid), encoding="utf-8")
-        vals = json.dumps(_vars(c, by_id, credits), ensure_ascii=False).replace("'", "&#39;")
+        vals = json.dumps(dict(_vars(c, by_id, credits), nen=nen), ensure_ascii=False).replace("'", "&#39;")
         hosts.append(f'<div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html"\n'
                      f'           data-start="{round(c["start"] - t0, 3)}" data-duration="{round(c["end"] - c["start"], 3)}"'
                      f' data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"\n'
                      f"           data-variable-values='{vals}'></div>")
+
+    trs, tr_js = [], []
+    for k, kind in transitions(scenes):
+        seam = round(scenes[k]["start"] - t0, 3)
+        a = round(max(0.0, seam - 0.3), 3)
+        cls = "tr-dip" if kind == "dip" else f"tr-{kind}"
+        trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{a}" data-duration="0.6" data-track-index="4">'
+                   f'<div id="tr-{k}-p" class="tr-p {cls}"></div></div>')
+        if kind == "dip":  # tối nhanh 3 khung trước cú cắt rồi sáng lại
+            tr_js.append(f'tl.fromTo("#tr-{k}-p", {{ opacity: 0 }}, {{ opacity: 0.6, duration: 0.1 }}, {seam - 0.1:.3f}); '
+                         f'tl.to("#tr-{k}-p", {{ opacity: 0, duration: 0.15 }}, {seam:.3f});')
+        else:  # tấm màu quét qua che cú cắt
+            tr_js.append(f'tl.fromTo("#tr-{k}-p", {{ xPercent: -101 }}, {{ xPercent: 0, duration: 0.3, ease: "power3.in" }}, {a:.3f}); '
+                         f'tl.to("#tr-{k}-p", {{ xPercent: 101, duration: 0.3, ease: "power3.out" }}, {seam:.3f});')
 
     caps = [f'<div id="cap-{k}" class="clip cap" data-start="{round(a - t0, 3)}" data-duration="{round(b - a, 3)}">'
             f"<span>{escape(t)}</span></div>"
@@ -148,6 +193,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
 {base}
       #phu-de {{ position: absolute; inset: 0; pointer-events: none; z-index: 10; }}
       .cap {{ position: absolute; left: 0; right: 0; margin: 0 auto; text-align: center; {cap_css} }}
+      .tr {{ position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }}
+      .tr-p {{ position: absolute; inset: 0; }}
+      .tr-vang {{ background: #FFC800; }} .tr-muc {{ background: #111111; }} .tr-dip {{ background: #000; opacity: 0; }}
       .cap span {{ display: inline; background: rgba(17,17,17,0.82); color: #FFFFFF; padding: 6px 16px;
                   border-radius: 10px; font-weight: 700; line-height: 1.5; box-decoration-break: clone;
                   -webkit-box-decoration-break: clone; }}
@@ -158,13 +206,16 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       {stage_open}
       {chr(10).join(hosts)}
       {stage_close}
+      {chr(10).join(trs)}
       <div id="phu-de" class="clip" data-start="0" data-duration="{total}" data-track-index="5" data-track-kind="captions">
         {chr(10).join(caps)}
       </div>
       {chr(10).join(audio)}
     </div>
     <script>
-      window.__timelines["main"] = gsap.timeline({{ paused: true }});
+      const tl = gsap.timeline({{ paused: true }});
+      {chr(10).join(tr_js)}
+      window.__timelines["main"] = tl;
     </script>
   </body>
 </html>

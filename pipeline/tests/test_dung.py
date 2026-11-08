@@ -122,3 +122,41 @@ def test_contact_sheet_creates_folder(tmp_path):
     v = _tone(tmp_path / "v.mp4", 2, video=True)
     out = dung.contact_sheet(v, {"scenes": [{"id": "a", "start": 0, "end": 2}]}, tmp_path / "frames" / "s.png")
     assert out.exists()
+
+
+def _host_vals(html):
+    return {sid: json.loads(v.replace("&#39;", "'")) for sid, v in
+            re.findall(r'<div id="([\w-]+)"[^>]*?data-variable-values=\'([^\']*)\'', html)}
+
+
+def test_compose_assigns_grounds(video):
+    vals = _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))
+    assert vals["c1"]["nen"] == "vang"           # chương: nền vàng
+    assert vals["c2"]["nen"] == "kem"            # chương 1 (lẻ): nền kem
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"][1]["nen"] = "toi"               # canh.json ghi đè được
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    assert _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))["c2"]["nen"] == "toi"
+
+
+def test_compose_adds_transitions(video):
+    html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    assert re.search(r'id="tr-1"[^>]*data-start="3.7"', html) and 'class="tr-p tr-muc"' in html  # rời chương
+    assert 'id="tr-2"' not in html                                                         # cắt thẳng
+    assert re.search(r'id="tr-3"[^>]*data-start="13.7"', html) and "tr-dip" in html
+    assert 'tl.fromTo("#tr-1-p"' in html
+
+
+def test_compose_maps_new_variables(video):
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"][1].update(phu=["cay", "dong-xu"])
+    sc["scenes"][2].update(huong="len", svg="tien")
+    sc["scenes"][3]["bieu_do"]["chu_thich"] = "ĐẮT NHẤT"
+    sc["scenes"].append({"id": "c5", "mau": "trang-nguon", "start": 20, "end": 24, "anh": "p1.png",
+                         "khung": "1,2,3,4", "nguon_id": "p1"})
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    vals = _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))
+    assert vals["c2"]["phu1"] == "assets/svg/cay.svg" and vals["c2"]["phu2"] == "assets/svg/dong-xu.svg"
+    assert vals["c3"]["huong"] == "len" and vals["c3"]["svg"] == "assets/svg/tien.svg"
+    assert vals["c4"]["chu_thich"] == "ĐẮT NHẤT"
+    assert vals["c5"]["url"] == "chatgpt.com/vi-VN/pricing"

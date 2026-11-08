@@ -11,3 +11,5 @@ videos/*/shorts/
 videos/*/frames/
 .DS_Store
 .hyperframes/
+pipeline/templates/canh-demo/frames/*.mp4
+pipeline/templates/canh-demo/composition/

@@ -171,10 +171,97 @@ def bieu_do_nen():
     return p
 
 
+def poly_raw(pts, fill, sw=6):
+    """Đa giác từ toạ độ 3D, cho các mặt không phải hình hộp (chóp mũi tên, mái)."""
+    return poly(pts, fill, sw)
+
+
+def nen_dat():
+    # nền sân khấu: tấm đất tối, đường xám có vạch vàng, vài ô cỏ
+    G1, G2, G3, ROAD = "#262626", "#1A1A1A", "#141414", "#3A3A3A"
+    p = box(0, 0, 0, 600, 420, 24, G1, G2, G3)
+    p.append(on_top(0, 0, 0, 600, 420, 24, 0.0, 0.42, 1.0, 0.62, ROAD, 3))
+    for k in range(6):
+        u = 0.04 + k * 0.165
+        p.append(on_top(0, 0, 0, 600, 420, 24, u, 0.505, u + 0.08, 0.535, Y, 2))
+    p.append(on_top(0, 0, 0, 600, 420, 24, 0.05, 0.06, 0.32, 0.34, "#2F2F2F", 3))
+    p.append(on_top(0, 0, 0, 600, 420, 24, 0.68, 0.70, 0.95, 0.94, "#2F2F2F", 3))
+    return p
+
+
+def cay():
+    p = box(26, 26, 0, 18, 18, 60, "#8A6A3A", "#6E5430", "#5A4426")
+    p += box(0, 0, 60, 70, 70, 70, "#FFFFFF", "#BDBDBD", "#6E6E6E")
+    p += box(12, 12, 130, 46, 46, 34, "#FFFFFF", "#BDBDBD", "#6E6E6E")
+    return p
+
+
+def dong_xu():
+    p = []
+    for i in range(6):
+        p += box(0, 0, i * 14, 80, 80, 14, Y, "#E0B000", "#C79C00")
+        p.append(on_top(0, 0, i * 14, 80, 80, 14, 0.3, 0.3, 0.7, 0.7, "#E0B000", 2))
+    for i in range(3):
+        p += box(110, 30, i * 14, 80, 80, 14, Y, "#E0B000", "#C79C00")
+    return p
+
+
+def _mui_ten(up: bool, col_top, col_l, col_r):
+    # thân hộp + chóp 4 mặt; up=False lật ngược chóp xuống dưới
+    w, h, tip = 50, 150, 70
+    if up:
+        p = box(25, 25, 0, w, w, h, col_top, col_l, col_r)
+        z0, z1 = h, h + tip
+    else:
+        p = box(25, 25, tip, w, w, h, col_top, col_l, col_r)
+        z0, z1 = tip, 0
+    a, b = (0, 0), (100, 100)
+    apex = (50, 50, z1)
+    base = [(a[0], a[1], z0), (b[0], a[1], z0), (b[0], b[1], z0), (a[0], b[1], z0)]
+    if up:
+        p.append(poly_raw([base[3], base[2], apex], col_l))
+        p.append(poly_raw([base[1], base[2], apex], col_r))
+    else:
+        p.insert(0, poly_raw([base[3], base[2], apex], col_l))
+        p.insert(0, poly_raw([base[1], base[2], apex], col_r))
+        p.append(poly_raw(base, col_top))
+    return p
+
+
+def mui_ten_len():
+    return _mui_ten(True, Y, "#E0B000", "#C79C00")
+
+
+def mui_ten_xuong():
+    return _mui_ten(False, WHITE, LIGHT, MID)
+
+
+def container():
+    p = box(0, 0, 0, 240, 100, 100, Y, "#E0B000", "#C79C00")
+    for k in range(9):
+        u = 0.06 + k * 0.1
+        p.append(on_left(0, 0, 0, 240, 100, 100, u, 0.1, u + 0.04, 0.9, "#C79C00", 2))
+    p += box(0, 0, 100, 240, 100, 100, WHITE, LIGHT, MID)
+    for k in range(9):
+        u = 0.06 + k * 0.1
+        p.append(on_left(0, 0, 100, 240, 100, 100, u, 0.1, u + 0.04, 0.9, MID, 2))
+    return p
+
+
+def nguoi():
+    p = box(10, 10, 0, 16, 16, 70, DARK, DARK, DARK)
+    p += box(34, 10, 0, 16, 16, 70, DARK, DARK, DARK)
+    p += box(0, 0, 70, 60, 36, 80, Y, "#E0B000", "#C79C00")
+    p += box(14, 4, 150, 32, 28, 34, WHITE, LIGHT, MID)
+    return p
+
+
 ITEMS = {
     "toa-nha-quoc-hoi": toa_nha_quoc_hoi, "dien-thoai": dien_thoai, "chip": chip, "laptop": laptop,
     "tien": tien, "tai-lieu": tai_lieu, "nha-may": nha_may, "may-chu": may_chu,
     "co-viet-nam": co_viet_nam, "bieu-do-nen": bieu_do_nen,
+    "nen-dat": nen_dat, "cay": cay, "dong-xu": dong_xu, "mui-ten-len": mui_ten_len,
+    "mui-ten-xuong": mui_ten_xuong, "container": container, "nguoi": nguoi,
 }
 
 if __name__ == "__main__":

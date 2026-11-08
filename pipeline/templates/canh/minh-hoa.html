@@ -1,30 +1,52 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
-    #root .mh-art { position: absolute; left: 50%; top: 50%; width: 720px; height: 720px;
-                    margin: -390px 0 0 -360px; }
-    #root .mh-art img { width: 100%; height: 100%; object-fit: contain; }
-    #root .mh-nhan { position: absolute; left: 0; right: 0; bottom: 150px; text-align: center; }
-    #root .mh-nhan span { display: inline-block; background: var(--accent); color: var(--ground);
-                          font: 900 64px/1 var(--font-display); text-transform: uppercase;
-                          padding: 18px 36px; border-radius: 18px; letter-spacing: -0.01em; }
-    #root .mh-nguon { position: absolute; left: 96px; top: 48px; color: var(--muted);
-                      font: 500 28px/1.2 var(--font-display); }
+    #root { position: absolute; inset: 0; }
+    #root .mh-the-gioi { position: absolute; inset: 0; }
+    #root .mh-dat { position: absolute; left: 410px; top: 100px; width: 1100px; height: 1100px; }
+    #root .mh-dat img, #root .mh-chinh img, #root .mh-phu img { width: 100%; height: 100%; object-fit: contain; }
+    #root .mh-bong { position: absolute; left: 760px; top: 700px; width: 400px; height: 90px; border-radius: 50%;
+                     background: rgba(0,0,0,0.35); filter: blur(18px); }
+    #root .mh-chinh { position: absolute; left: 660px; top: 250px; width: 600px; height: 520px; }
+    #root .mh-phu { position: absolute; width: 230px; height: 230px; }
+    #root .mh-phu-1 { left: 470px; top: 560px; }
+    #root .mh-phu-2 { left: 1230px; top: 590px; }
+    #root .mh-nhan { position: absolute; left: 0; right: 0; top: 96px; text-align: center; }
+    #root .mh-day { position: absolute; left: 958px; top: 196px; width: 4px; height: 70px; background: var(--accent);
+                    transform-origin: top center; }
   </style>
   <div id="root" data-composition-id="minh-hoa" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"svg","type":"string","label":"Hình SVG","default":"assets/svg/chip.svg"},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
-    <div id="mh-art" class="mh-art"><img id="mh-img" data-var-src="svg" src="assets/svg/chip.svg" alt=""></div>
-    <div id="mh-nhan" class="mh-nhan"><span id="mh-nhan-txt" data-var-text="nhan">NHÃN</span></div>
-    <div id="mh-nguon" class="mh-nguon" data-var-text="nguon"></div>
+       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+    <div id="mh-san" class="san">
+      <div id="mh-the-gioi" class="mh-the-gioi">
+        <div id="mh-dat" class="mh-dat"><img src="assets/svg/nen-dat.svg" alt=""></div>
+        <div id="mh-bong" class="mh-bong"></div>
+        <div id="mh-phu-1" class="mh-phu mh-phu-1"><img id="mh-phu-1-img" data-var-src="phu1" src="assets/svg/cay.svg" alt=""></div>
+        <div id="mh-chinh" class="mh-chinh"><img id="mh-img" data-var-src="svg" src="assets/svg/chip.svg" alt=""></div>
+        <div id="mh-phu-2" class="mh-phu mh-phu-2"><img id="mh-phu-2-img" data-var-src="phu2" src="assets/svg/cay.svg" alt=""></div>
+      </div>
+      <div id="mh-day" class="mh-day"></div>
+      <div id="mh-nhan" class="mh-nhan"><span id="mh-nhan-txt" class="nhan-pill" data-var-text="nhan">NHÃN</span></div>
+      <div id="mh-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
   </div>
   <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#mh-san").classList.add("nen-" + (v.nen || "toi"));
+    if (!v.phu1) document.querySelector("#mh-phu-1").style.display = "none";
+    if (!v.phu2) document.querySelector("#mh-phu-2").style.display = "none";
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#mh-img", { opacity: 0, y: 40, scale: 0.92 },
-              { opacity: 1, y: 0, scale: 1, duration: 0.6, ease: "power3.out" }, 0);
-    tl.fromTo("#mh-art", { scale: 1 }, { scale: 1.04, duration: 7.4, ease: "none" }, 0.6);
-    tl.fromTo("#mh-nhan-txt", { opacity: 0, y: 30 },
-              { opacity: 1, y: 0, duration: 0.35, ease: "back.out(2)" }, 0.35);
-    tl.fromTo("#mh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    // nền đất trồi lên, vật chính rơi xuống và nảy, đạo cụ bật ra, rồi dây + nhãn
+    tl.fromTo("#mh-dat", { y: 140, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, ease: "expo.out" }, 0);
+    tl.fromTo("#mh-chinh", { y: -260, opacity: 0 }, { y: 0, opacity: 1, duration: 0.65, ease: "back.out(1.4)" }, 0.18);
+    tl.fromTo("#mh-bong", { scale: 0.3, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.65, ease: "back.out(1.4)" }, 0.18);
+    tl.fromTo("#mh-phu-1", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.5);
+    tl.fromTo("#mh-phu-2", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, 0.58);
+    tl.fromTo("#mh-day", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, 0.62);
+    tl.fromTo("#mh-nhan-txt", { opacity: 0, filter: "blur(8px)", scale: 0.92 },
+              { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.22, ease: "power3.out" }, 0.72);
+    tl.fromTo("#mh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
+    // sân khấu trôi rất chậm (quỹ đạo nền), nhãn đứng yên
+    tl.fromTo("#mh-the-gioi", { x: 0 }, { x: -36, duration: 9, ease: "none" }, 0);
     window.__timelines["minh-hoa"] = tl;
   </script>
 </template>

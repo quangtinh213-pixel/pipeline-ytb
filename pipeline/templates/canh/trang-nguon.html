@@ -1,32 +1,57 @@
 <template>
   <style>
-    #root { position: absolute; inset: 0; background: var(--ground); overflow: hidden; }
-    #root .tn-trang { position: absolute; left: 160px; top: 90px; width: 1600px; height: 860px;
-                      border-radius: 16px; overflow: hidden; background: #fff; }
+    #root { position: absolute; inset: 0; }
+    #root .tn-cam { position: absolute; inset: 0; }
+    #root .tn-trinh-duyet { position: absolute; left: 200px; top: 120px; width: 1520px; height: 880px;
+                            border-radius: 18px; overflow: hidden; background: #fff;
+                            box-shadow: 0 40px 90px rgba(0,0,0,0.45); }
+    #root .tn-thanh { position: absolute; left: 0; right: 0; top: 0; height: 60px; background: #2A2A2A;
+                      display: flex; align-items: center; gap: 12px; padding: 0 22px; }
+    #root .tn-cham { width: 16px; height: 16px; border-radius: 50%; background: #555; }
+    #root .tn-url { margin-left: 18px; flex: 1; height: 36px; border-radius: 18px; background: #1A1A1A; color: #CFCFCF;
+                    font: 500 22px/36px var(--font-display); padding: 0 18px; white-space: nowrap; overflow: hidden; }
+    #root .tn-trang { position: absolute; left: 0; right: 0; top: 60px; bottom: 0; overflow: hidden; }
     #root .tn-trang img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
                           object-position: top center; }
-    #root .tn-khung { position: absolute; border: 8px solid var(--accent); border-radius: 12px;
-                      box-shadow: 0 0 0 4000px rgba(17,17,17,0.55); }
-    #root .tn-nguon { position: absolute; left: 160px; top: 36px; color: var(--muted);
-                      font: 500 28px/1.2 var(--font-display); }
+    #root .tn-toi { position: absolute; inset: 0; background: rgba(17,17,17,0.55); }
+    #root .tn-khung { position: absolute; border: 8px solid #FFC800; border-radius: 12px; }
   </style>
   <div id="root" data-composition-id="trang-nguon" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp trang","default":"assets/svg/tai-lieu.svg"},{"id":"khung","type":"string","label":"Vùng tô x,y,w,h (%)","default":"10,10,40,15"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""}]'>
-    <div id="tn-trang" class="tn-trang" data-layout-allow-overflow>
-      <img id="tn-img" data-var-src="anh" src="assets/svg/tai-lieu.svg" alt="">
-      <div id="tn-khung" class="tn-khung"></div>
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp trang","default":"assets/svg/tai-lieu.svg"},{"id":"khung","type":"string","label":"Vùng tô x,y,w,h (% vùng trang)","default":"10,10,40,15"},{"id":"url","type":"string","label":"Địa chỉ trang","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+    <div id="tn-san" class="san">
+      <div id="tn-cam" class="tn-cam">
+        <div id="tn-trinh-duyet" class="tn-trinh-duyet" data-layout-allow-overflow>
+          <div class="tn-thanh"><span class="tn-cham"></span><span class="tn-cham"></span><span class="tn-cham"></span>
+            <span id="tn-url" class="tn-url" data-var-text="url" data-layout-ignore></span></div>
+          <div id="tn-trang" class="tn-trang">
+            <img id="tn-img" data-var-src="anh" src="assets/svg/tai-lieu.svg" alt="">
+            <div id="tn-toi" class="tn-toi"></div>
+            <div id="tn-khung" class="tn-khung"></div>
+          </div>
+        </div>
+      </div>
+      <div id="tn-nguon" class="dong-nguon" data-var-text="nguon"></div>
     </div>
-    <div id="tn-nguon" class="tn-nguon" data-var-text="nguon"></div>
   </div>
   <script>
     const v = window.__hyperframes.getVariables();
+    document.querySelector("#tn-san").classList.add("nen-" + (v.nen || "toi"));
     const [x, y, w, h] = String(v.khung).split(",").map(Number);
     const k = document.querySelector("#tn-khung");
     Object.assign(k.style, { left: x + "%", top: y + "%", width: w + "%", height: h + "%" });
+    // vùng tối khoét lỗ đúng chỗ có số
+    document.querySelector("#tn-toi").style.clipPath =
+      `polygon(0 0,100% 0,100% 100%,0 100%,0 ${y}%,${x}% ${y}%,${x}% ${y + h}%,${x + w}% ${y + h}%,${x + w}% ${y}%,0 ${y}%)`;
+    // máy quay: trình duyệt hiện ra, rồi zoom vào chỗ có số
+    const bx = 200 + 1520 * (x + w / 2) / 100, by = 180 + 820 * (y + h / 2) / 100;
     const tl = gsap.timeline({ paused: true });
-    tl.fromTo("#tn-trang", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.45, ease: "power3.out" }, 0);
-    tl.fromTo("#tn-img", { scale: 1 }, { scale: 1.05, duration: 8, ease: "none" }, 0);
-    tl.fromTo("#tn-khung", { opacity: 0, scale: 1.15 }, { opacity: 1, scale: 1, duration: 0.4, ease: "back.out(1.6)" }, 0.6);
+    tl.fromTo("#tn-trinh-duyet", { y: 80, opacity: 0, scale: 0.94 },
+              { y: 0, opacity: 1, scale: 1, duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#tn-toi", { opacity: 0 }, { opacity: 1, duration: 0.4, ease: "power2.inOut" }, 0.8);
+    tl.fromTo("#tn-cam", { scale: 1, x: 0, y: 0 },
+              { scale: 1.7, x: 960 - 1.7 * bx, y: 540 - 1.7 * by, transformOrigin: "0 0",
+                duration: 1.0, ease: "power2.inOut" }, 0.8);
+    tl.fromTo("#tn-khung", { opacity: 0, scale: 1.25 }, { opacity: 1, scale: 1, duration: 0.35, ease: "back.out(1.8)" }, 1.6);
     tl.fromTo("#tn-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.3);
     window.__timelines["trang-nguon"] = tl;
   </script>
