@@ -15,6 +15,8 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
                nguon_id (bắt buộc nếu có so), dong? (cho huy hiệu VS, mặc định dap)
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
 - b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01")
+Mọi mẫu: dan? {the, goc? phai|trai, huong? (hướng nhìn; mặc định nghiêng về giữa màn hình), tu?} – nhân vật dẫn chuyện; có
+pipeline/nhan-vat/kit.json thì lấy PNG biểu cảm × hướng (tttc/nhan_vat.py), không thì svg/tui-*.svg.
 Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
 Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi theo chương. Chuyển cảnh tự gán (transitions()).
 """
@@ -31,7 +33,7 @@ from urllib.parse import urlparse
 
 from PIL import Image
 
-from tttc import grain, theme
+from tttc import grain, nhan_vat, theme
 from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
@@ -267,6 +269,11 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     for sub in ("anh", "nguon", "broll"):
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
+    kit = nhan_vat.doc_kit()  # có bộ nhân vật PNG thì dùng, không thì nhân vật SVG cũ
+    if kit:
+        (o / "assets" / "nv").mkdir()
+        for f in nhan_vat.KIT.parent.glob("*.png"):
+            shutil.copy(f, o / "assets" / "nv" / f.name)
     nhac = _read_json(CONFIG, {}).get("nhac_nen")
     if nhac and not (PIPE / nhac).is_file():
         raise FileNotFoundError(f"Không thấy nhạc nền {nhac} (config.json:nhac_nen)")
@@ -329,17 +336,23 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             a, dur = round(c["start"] - t0, 3), round(c["end"] - c["start"], 3)
             ra = phrase_time(timing.get("words", []), d["tu"], c["start"], c["end"]) if d.get("tu") else None
             vao = round(a + (ra - c["start"] if ra is not None else 0.3), 3)
-            the = d["the"]
+            the, goc = d["the"], d.get("goc", "phai")
+            if kit:
+                huong = d.get("huong") or nhan_vat.huong_mac_dinh(goc)
+                co_nham = [the, huong] in kit["nham"]
+                mo, nham = f"assets/nv/{nhan_vat.tep(the, huong)}", f"assets/nv/{nhan_vat.tep(the, huong, True)}"
+            else:
+                co_nham, mo, nham = True, f"assets/svg/tui-{the}.svg", f"assets/svg/tui-{the}-nham.svg"
             dan_tags.append(
-                f'<div id="dan-{k}" class="clip dan dan-{d.get("goc", "phai")}" data-start="{a}" data-duration="{dur}" '
-                f'data-track-index="3"><img src="assets/svg/tui-{the}.svg" alt="">'
-                f'<img id="dan-{k}-nham" src="assets/svg/tui-{the}-nham.svg" alt="" style="opacity:0"></div>')
+                f'<div id="dan-{k}" class="clip dan dan-{goc}" data-start="{a}" data-duration="{dur}" '
+                f'data-track-index="3"><img src="{mo}" alt="">'
+                + (f'<img id="dan-{k}-nham" src="{nham}" alt="" style="opacity:0">' if co_nham else "") + '</div>')
             dan_js.append(f'tl.fromTo("#dan-{k}", {{ scale: 0, y: 40, transformOrigin: "50% 100%" }}, '
                           f'{{ scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }}, {vao});')
             dan_js.append(f'tl.to("#dan-{k}", {{ y: -10, duration: 1.2, ease: "sine.inOut", yoyo: true, '
                           f'repeat: {max(0, int((a + dur - vao - 0.5) / 1.2) - 1)} }}, {vao + 0.5:.3f});')  # hữu hạn, đủ phủ hết cảnh
             t = vao + 1.8
-            while t < a + dur - 0.3:  # chớp mắt: ảnh nhắm mắt phủ lên ảnh mở mắt (cùng hình dáng) trong 0,14 s
+            while co_nham and t < a + dur - 0.3:  # chớp mắt: ảnh nhắm mắt phủ lên ảnh mở mắt (cùng hình dáng) trong 0,14 s
                 dan_js.append(f'tl.set("#dan-{k}-nham", {{ opacity: 1 }}, {t:.3f}); '
                               f'tl.set("#dan-{k}-nham", {{ opacity: 0 }}, {t + 0.14:.3f});')
                 t += 2.8

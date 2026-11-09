@@ -1,7 +1,8 @@
+import json
 import re
 from pathlib import Path
 
-from tttc import canh
+from tttc import canh, nhan_vat
 
 TIMING = {"duration": 12.0, "words": [], "paragraphs": []}
 NGUON = [{"id": "p1"}]
@@ -273,11 +274,34 @@ def test_validate_thoi_gian_row_missing_years_is_error_not_crash():
 
 
 def test_validate_dan_pose_and_corner(tmp_path):
-    ok = canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "trai"}), TIMING, tmp_path, NGUON)
+    ok = canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "trai"}), TIMING, tmp_path, NGUON, kit=None)
     assert _errors(ok) == []
-    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "bay"}), TIMING, tmp_path, NGUON)))
-    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "giua"}), TIMING, tmp_path, NGUON)))
-    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan="chao"), TIMING, tmp_path, NGUON)))
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "bay"}), TIMING, tmp_path, NGUON, kit=None)))
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "giua"}), TIMING, tmp_path, NGUON, kit=None)))
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan="chao"), TIMING, tmp_path, NGUON, kit=None)))
+
+
+KIT = {"the": ["chao", "nghi"], "huong": ["truoc", "nghieng-trai", "nghieng-phai", "ngang"],
+       "dang": [["chao", "truoc"], ["chao", "nghieng-trai"], ["nghi", "truoc"]], "nham": []}
+
+
+def test_validate_dan_with_kit_checks_expression_and_direction(tmp_path):
+    def run(**dan):
+        return _errors(canh.validate(_sc((0, 6), (6, 12), dan=dan), TIMING, tmp_path, NGUON, kit=KIT))
+    assert any("huong" in e for e in run(the="chao", huong="ngang"))           # cặp không có trong kit
+    assert run(the="chao", goc="phai") == []                                    # huong mặc định nghieng-trai hợp lệ
+    assert any("dan" in e for e in run(the="ngac-nhien"))                       # the không nằm trong kit
+    assert any("huong" in e for e in run(the="nghi", goc="phai"))               # nghi + nghieng-trai không có trong kit
+
+
+def test_validate_dan_without_kit_keeps_old_rule_and_reads_default_kit(tmp_path, monkeypatch):
+    sc = _sc((0, 6), (6, 12), dan={"the": "ngac-nhien"})
+    assert _errors(canh.validate(sc, TIMING, tmp_path, NGUON, kit=None)) == []
+    monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "khong-co" / "kit.json")  # không có tệp: luật cũ
+    assert _errors(canh.validate(sc, TIMING, tmp_path, NGUON)) == []
+    (tmp_path / "kit.json").write_text(json.dumps(KIT), encoding="utf-8")
+    monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "kit.json")  # có tệp: dùng luật kit mặc định
+    assert any("dan" in e for e in _errors(canh.validate(sc, TIMING, tmp_path, NGUON)))
 
 
 def test_validate_dan_phrase_must_be_spoken_in_scene(tmp_path):

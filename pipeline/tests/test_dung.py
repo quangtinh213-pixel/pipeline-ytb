@@ -367,6 +367,38 @@ def _video_with_dan(video, **dan_extra):
     return video
 
 
+@pytest.fixture(autouse=True)
+def _khong_kit(tmp_path, monkeypatch):
+    from tttc import nhan_vat
+    monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "khong-co-kit" / "kit.json")  # mặc định không có bộ nhân vật PNG
+
+
+def _kit_png(tmp_path, monkeypatch, nham):
+    from PIL import Image
+    from tttc import nhan_vat
+    d = tmp_path / "nv-kit"
+    d.mkdir()
+    for n in ("chao-nghieng-trai", "chao-nghieng-trai-nham"):
+        Image.new("RGBA", (40, 60), (255, 200, 0, 255)).save(d / f"{n}.png")
+    (d / "kit.json").write_text(json.dumps({"the": ["chao"], "huong": ["nghieng-trai"], "dang": [["chao", "nghieng-trai"]],
+                                           "nham": [["chao", "nghieng-trai"]] if nham else []}), encoding="utf-8")
+    monkeypatch.setattr(nhan_vat, "KIT", d / "kit.json")
+
+
+def test_compose_uses_kit_png_with_default_direction_and_blink(video, tmp_path, monkeypatch):
+    _kit_png(tmp_path, monkeypatch, nham=True)
+    out = dung.compose(_video_with_dan(video, the="chao"))
+    html = (out / "index.html").read_text(encoding="utf-8")
+    assert 'src="assets/nv/chao-nghieng-trai.png"' in html and 'id="dan-1-nham" src="assets/nv/chao-nghieng-trai-nham.png"' in html
+    assert (out / "assets" / "nv" / "chao-nghieng-trai.png").exists() and "assets/svg/tui-" not in html.split("<style")[0]
+
+
+def test_compose_kit_without_blink_pair_omits_blink_image_and_script(video, tmp_path, monkeypatch):
+    _kit_png(tmp_path, monkeypatch, nham=False)
+    html = (dung.compose(_video_with_dan(video, the="chao")) / "index.html").read_text(encoding="utf-8")
+    assert "dan-1-nham" not in html and 'src="assets/nv/chao-nghieng-trai.png"' in html
+
+
 def test_compose_adds_mascot_clip_for_scene_with_dan(video):
     out = dung.compose(_video_with_dan(video))
     html = (out / "index.html").read_text(encoding="utf-8")

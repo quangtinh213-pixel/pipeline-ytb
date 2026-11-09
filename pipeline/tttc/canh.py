@@ -5,6 +5,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
+from tttc import nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
 MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian"}
@@ -32,9 +33,13 @@ def phrase_time(words: list[dict], phrase: str, start: float, end: float) -> flo
     return None
 
 
+DOC_KIT = object()  # mặc định: đọc nhan-vat/kit.json; truyền None để ép luật nhân vật SVG cũ
+
+
 def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | tuple = (),
-             video_dir: Path | None = None) -> list[str]:
+             video_dir: Path | None = None, kit=DOC_KIT) -> list[str]:
     """Trả danh sách 'Lỗi: ...' (phải sửa) và 'Cảnh báo: ...' (nên xem)."""
+    kit = nhan_vat.doc_kit() if kit is DOC_KIT else kit
     by_id = {n["id"]: n for n in nguon}
     msgs, ids = [], set(by_id)
     sc = scenes["scenes"]
@@ -58,7 +63,7 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         if c["mau"] not in MAU:
             msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
         if c.get("dan") is not None:
-            msgs += _check_dan(c, timing.get("words", []))
+            msgs += _check_dan(c, timing.get("words", []), kit)
         if c.get("dong", "") not in DONG:
             msgs.append(f"Lỗi: {cid} dong không hợp lệ: {c['dong']} (chọn {', '.join(sorted(DONG - {''}))})")
         if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
@@ -145,10 +150,15 @@ def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
     return out
 
 
-def _check_dan(c: dict, words: list[dict]) -> list[str]:
+def _check_dan(c: dict, words: list[dict], kit: dict | None = None) -> list[str]:
     d = c["dan"]
-    if not isinstance(d, dict) or d.get("the") not in DAN_THE or d.get("goc", "phai") not in DAN_GOC:
-        return [f"Lỗi: {c['id']} dan phải là {{the: {'|'.join(sorted(DAN_THE))}, goc?: phai|trai, tu?: cụm}}"]
+    the_ok = kit["the"] if kit else DAN_THE
+    if not isinstance(d, dict) or d.get("the") not in the_ok or d.get("goc", "phai") not in DAN_GOC:
+        return [f"Lỗi: {c['id']} dan phải là {{the: {'|'.join(sorted(the_ok))}, goc?: phai|trai, huong?, tu?: cụm}}"]
+    if kit:
+        huong = d.get("huong") or nhan_vat.huong_mac_dinh(d.get("goc", "phai"))
+        if not nhan_vat.hop_le(d["the"], huong, kit):
+            return [f"Lỗi: {c['id']} dan {d['the']} không có huong '{huong}' trong bộ nhân vật (kit.json:dang)"]
     if d.get("tu") and phrase_time(words, d["tu"], c["start"], c["end"]) is None:
         return [f"Lỗi: {c['id']} dan.tu '{d['tu']}' nhưng giọng đọc không nói cụm này trong cảnh"]
     return []
