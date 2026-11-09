@@ -184,3 +184,41 @@ def test_validate_quy_trinh_svg_exists(tmp_path):
     c = _qt_scene(buoc=[{"nhan": "A", "svg": "chip"}, {"nhan": "B"}, {"nhan": "C", "svg": "thieu"}])
     errs = _errors(canh.validate(c, {"duration": 6.0}, _svg(tmp_path, "chip"), NGUON))
     assert len(errs) == 1 and "thieu" in errs[0]
+
+
+SS_SRC = [{"id": "n1", "gia_tri": "Blackwell 208 tỷ transistor; VGC 300 triệu transistor"}]
+
+
+def _ss(**c):
+    side = lambda so, don_vi: {"nhan": "X", "svg": "chip", "so": so, "don_vi": don_vi}
+    base = {"id": "c0", "mau": "so-sanh", "start": 0, "end": 6, "nguon_id": "n1",
+            "trai": side(208, "tỷ transistor"), "phai": side(300, "triệu transistor")}
+    return {"scenes": [dict(base, **c)]}
+
+
+def test_check_values_so_sanh_matches_source(tmp_path):
+    svg = _svg(tmp_path, "chip")
+    assert _errors(canh.validate(_ss(), {"duration": 6.0}, svg, SS_SRC)) == []
+    bad = _ss(phai={"nhan": "X", "svg": "chip", "so": 350, "don_vi": "triệu transistor"})
+    assert any("350" in e for e in _errors(canh.validate(bad, {"duration": 6.0}, svg, SS_SRC)))
+    scale = _ss(phai={"nhan": "X", "svg": "chip", "so": 300, "don_vi": "tỷ transistor"})
+    assert any("300" in e for e in _errors(canh.validate(scale, {"duration": 6.0}, svg, SS_SRC)))
+
+
+def test_validate_so_sanh_requires_nguon_id_when_number(tmp_path):
+    svg = _svg(tmp_path, "chip")
+    errs = _errors(canh.validate(_ss(nguon_id=None), {"duration": 6.0}, svg, SS_SRC))
+    assert any("nguon_id" in e for e in errs)
+    no_num = _ss(nguon_id=None, trai={"nhan": "A", "svg": "chip"}, phai={"nhan": "B", "svg": "chip"})
+    assert _errors(canh.validate(no_num, {"duration": 6.0}, svg, SS_SRC)) == []
+
+
+def test_validate_so_sanh_to_range_and_sides(tmp_path):
+    svg = _svg(tmp_path, "chip")
+    for to in (0, 1.5):
+        bad = _ss(phai={"nhan": "B", "svg": "chip", "to": to})
+        assert any("to" in e for e in _errors(canh.validate(bad, {"duration": 6.0}, svg, SS_SRC))), to
+    ok = _ss(nguon_id=None, trai={"nhan": "A", "svg": "chip", "to": 1.0}, phai={"nhan": "B", "svg": "chip", "to": 0.15})
+    assert _errors(canh.validate(ok, {"duration": 6.0}, svg, SS_SRC)) == []
+    thieu = _ss(nguon_id=None, trai={"nhan": "A", "svg": "chip"}, phai=None)
+    assert any("phai" in e for e in _errors(canh.validate(thieu, {"duration": 6.0}, svg, SS_SRC)))

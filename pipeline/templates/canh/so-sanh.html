@@ -1,0 +1,77 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .ss-ben { position: absolute; top: 200px; width: 560px; height: 760px; display: flex;
+                    flex-direction: column; align-items: center; justify-content: flex-start; text-align: center; }
+    #root .ss-trai { left: 200px; } #root .ss-phai { left: 1160px; }
+    #root .ss-khung { width: 480px; height: 480px; display: flex; align-items: flex-end; justify-content: center; }
+    #root .ss-khung img { object-fit: contain; }
+    #root .ss-so { margin-top: 26px; color: var(--accent); font: 900 110px/1 var(--font-display); letter-spacing: -0.03em;
+                   white-space: nowrap; }
+    #root .nen-vang .ss-so, #root .nen-kem .ss-so { color: var(--ink); }
+    #root .ss-donvi { color: var(--muted); font: 800 40px/1.1 var(--font-display); margin-top: 6px; }
+    #root .ss-nhan { margin-top: 22px; }
+    #root .ss-nhan span { display: inline-block; background: var(--ink); color: var(--tren-muc);
+                          font: 800 36px/1.15 var(--font-display); padding: 12px 20px; border-radius: 12px; }
+    #root .ss-nen { position: absolute; left: 200px; right: 200px; top: 680px; height: 6px; background: var(--line);
+                    border-radius: 3px; }
+    #root .ss-vs { position: absolute; left: 880px; top: 380px; width: 160px; height: 160px; border-radius: 50%;
+                   background: var(--accent); color: var(--accent-ink); border: 6px solid var(--tren-muc);
+                   font: 900 64px/148px var(--font-display); text-align: center; }
+    #root .ss-ti-le { position: absolute; left: 0; right: 0; top: 70px; text-align: center; }
+  </style>
+  <div id="root" data-composition-id="so-sanh" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"trai","type":"string","label":"Bên trái (JSON)","default":"{\"nhan\":\"A\",\"svg\":\"assets/svg/chip.svg\",\"so\":null,\"so_hien\":\"\",\"don_vi\":\"\",\"to\":1}"},{"id":"phai","type":"string","label":"Bên phải (JSON)","default":"{\"nhan\":\"B\",\"svg\":\"assets/svg/chip.svg\",\"so\":null,\"so_hien\":\"\",\"don_vi\":\"\",\"to\":1}"},{"id":"ti_le","type":"string","label":"Nhãn tỉ lệ","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của VS","default":"dap"}]'>
+    <div id="ss-san" class="san">
+      <div id="ss-ti-le" class="ss-ti-le"><span id="ss-ti-le-txt" class="nhan-pill" data-var-text="ti_le"></span></div>
+      <div id="ss-nen" class="ss-nen"></div>
+      <div id="ss-trai" class="ss-ben ss-trai">
+        <div class="ss-khung"><img id="ss-trai-img" alt=""></div>
+        <div id="ss-trai-so" class="ss-so"></div><div id="ss-trai-dv" class="ss-donvi"></div>
+        <div id="ss-trai-nhan" class="ss-nhan"><span></span></div>
+      </div>
+      <div id="ss-phai" class="ss-ben ss-phai">
+        <div class="ss-khung"><img id="ss-phai-img" alt=""></div>
+        <div id="ss-phai-so" class="ss-so"></div><div id="ss-phai-dv" class="ss-donvi"></div>
+        <div id="ss-phai-nhan" class="ss-nhan"><span></span></div>
+      </div>
+      <div id="ss-vs" class="ss-vs">VS</div>
+      <div id="ss-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
+  </div>
+  <script>
+    /*__DONG__*/
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#ss-san").classList.add("nen-" + (v.nen || "toi"));
+    const tl = gsap.timeline({ paused: true });
+    // Mỗi bên: hình có kích thước theo `to` (cùng đứng trên một đường nền), số đếm lên, đơn vị, nhãn.
+    function ben(id, side, t0) {
+      const s = JSON.parse(side), img = document.querySelector("#" + id + "-img");
+      img.src = s.svg;
+      img.style.width = img.style.height = Math.round(480 * s.to) + "px";
+      document.querySelector("#" + id + "-nhan span").textContent = s.nhan;
+      document.querySelector("#" + id + "-dv").textContent = s.don_vi;
+      const el = document.querySelector("#" + id + "-so"), obj = { x: 0 };
+      if (s.so === null) { el.style.display = "none"; } else {
+        const hien = String(s.so_hien), dec = (hien.split(",")[1] || "").length;
+        const fmt = x => x >= s.so ? hien : x.toLocaleString("vi-VN", { minimumFractionDigits: dec, maximumFractionDigits: dec });
+        el.textContent = fmt(0);
+        tl.fromTo(obj, { x: 0 }, { x: s.so, duration: 1.0, ease: "power3.out", onUpdate: () => { el.textContent = fmt(obj.x); } }, t0 + 0.25);
+        tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.25);
+      }
+      tl.fromTo(img, { y: -240, opacity: 0, transformOrigin: "50% 100%" }, { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, t0);
+      tl.fromTo("#" + id + "-dv", { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.4);
+      tl.fromTo("#" + id + "-nhan", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22 }, t0 + 0.35);
+    }
+    tl.fromTo("#ss-nen", { scaleX: 0 }, { scaleX: 1, duration: 0.5, ease: "power3.inOut" }, 0.05);
+    ben("ss-trai", v.trai, at(0, 0.5));
+    ben("ss-phai", v.phai, at(1, 1.1));
+    tl.fromTo("#ss-vs", { scale: 0 }, { scale: 1, duration: 0.4, ease: "back.out(2)" }, at(1, 1.1) - 0.1);
+    if (v.ti_le) tl.fromTo("#ss-ti-le", { opacity: 0, y: -24 }, { opacity: 1, y: 0, duration: 0.3, ease: "back.out(2)" }, at(2, 1.8));
+    else document.querySelector("#ss-ti-le").style.display = "none";
+    dongLap(tl, "#ss-vs", v.dong, at(1, 1.1) + 0.6, 12);
+    tl.fromTo("#ss-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    window.__timelines["so-sanh"] = tl;
+  </script>
+</template>

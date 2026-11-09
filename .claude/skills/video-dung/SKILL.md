@@ -42,6 +42,9 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.
+- **`so-sanh`** (hai vật cạnh nhau, "gấp N lần", "sân bóng so với hạt gạo"): `trai` và `phai` = `{nhan, svg, so?, don_vi?, to?}`;
+  `to` (0–1) là cỡ hình tương đối, hai hình đứng trên cùng một đường nền; `ti_le` = nhãn "gấp ~700 lần" (nhãn tự tính phải
+  có nguồn `tu-tinh`); có `so` thì bắt buộc `nguon_id` và số + đơn vị phải khớp nguồn.
 - **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
   Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
 - **`b-roll`** – clip riêng cho từng video (kho chung chỉ là phần nền):

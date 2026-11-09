@@ -7,7 +7,7 @@ from pathlib import Path
 
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -74,6 +74,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
                 msgs.append(f"Lỗi: {cid} có nhịp '{ph}' nhưng giọng đọc không nói cụm này trong cảnh")
         if c["mau"] == "quy-trinh":
             msgs += _check_quy_trinh(c, svg_dir)
+        if c["mau"] == "so-sanh":
+            msgs += _check_so_sanh(c, svg_dir)
         if c["mau"] == "trich-bao":
             msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
@@ -90,6 +92,21 @@ def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
         out.append(f"Lỗi: {c['id']} noi_bat={nb} nằm ngoài các bước")
     out += [f"Lỗi: {c['id']} bước '{b.get('nhan')}' cần hình {b['svg']}.svg chưa có trong thư viện"
             for b in buoc if b.get("svg") and not (Path(svg_dir) / f"{b['svg']}.svg").exists()]
+    return out
+
+
+def _check_so_sanh(c: dict, svg_dir: Path) -> list[str]:
+    out = []
+    for ben in ("trai", "phai"):
+        s = c.get(ben)
+        if not isinstance(s, dict) or not s.get("nhan"):
+            out.append(f"Lỗi: {c['id']} so-sanh thiếu {ben} (cần nhan và svg)")
+            continue
+        to = s.get("to", 1.0)
+        if not isinstance(to, (int, float)) or not 0 < to <= 1:
+            out.append(f"Lỗi: {c['id']} {ben}.to={to} phải trong (0, 1]")
+        if not s.get("svg") or not (Path(svg_dir) / f"{s['svg']}.svg").exists():
+            out.append(f"Lỗi: {c['id']} {ben} cần hình {s.get('svg')}.svg chưa có trong thư viện")
     return out
 
 
@@ -114,18 +131,24 @@ def _unit_scale(text: str) -> str:
 
 
 def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
-    """Số hiện trên màn hình (so-lon, bieu-do) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
+    """Số hiện trên màn hình (so-lon, bieu-do, so-sanh) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
     if c["mau"] == "so-lon" and "so" in c:
-        vals, scale = [c["so"]], _unit_scale(c.get("truoc", "") + " " + c.get("sau", ""))
+        pairs = [(c["so"], _unit_scale(c.get("truoc", "") + " " + c.get("sau", "")))]
     elif c["mau"] == "bieu-do" and c.get("bieu_do"):
-        vals, scale = c["bieu_do"]["gia_tri"], _unit_scale(c["bieu_do"].get("don_vi", ""))
+        scale = _unit_scale(c["bieu_do"].get("don_vi", ""))
+        pairs = [(v, scale) for v in c["bieu_do"]["gia_tri"]]
+    elif c["mau"] == "so-sanh":  # mỗi bên có thể có đơn vị riêng ("tỷ transistor" so với "triệu transistor")
+        pairs = [(s["so"], _unit_scale(s.get("don_vi", c.get("don_vi", ""))))
+                 for s in (c.get("trai"), c.get("phai")) if isinstance(s, dict) and s.get("so") is not None]
+        if not pairs:
+            return []
     else:
         return []
     if not has_ref:
         return [f"Lỗi: {c['id']} hiện số nhưng thiếu nguon_id"]
     allowed = {(v, sc) for s in srcs for _, v, sc in tokens(s["gia_tri"])}
     out = []
-    for v in vals:
+    for v, scale in pairs:
         num = vi_value(v) if isinstance(v, str) else float(v)
         if (num, scale) not in allowed:
             out.append(f"Lỗi: {c['id']} hiện {v}{' ' + scale if scale else ''} không khớp nguồn "

@@ -273,3 +273,34 @@ def test_sfx_quy_trinh_one_pop_per_step():
 def test_compose_quy_trinh_scene_file_and_prefix(video):
     s = dung._scene_file("quy-trinh", "q1")
     assert 'data-composition-id="q1"' in s and "q1-qt-" in s and "function dongLap" in s
+
+
+SS = {"id": "s1", "mau": "so-sanh", "start": 0, "end": 6, "nguon_id": "p1", "ti_le": "gấp ~700 lần",
+      "trai": {"nhan": "Nvidia Blackwell", "svg": "chip", "so": 208, "don_vi": "tỷ transistor"},
+      "phai": {"nhan": "Chip VGC", "svg": "chip", "so": "300", "don_vi": "triệu transistor", "to": 0.15}}
+
+
+def test_vars_so_sanh():
+    v = dung._vars(SS, {"p1": NGUON[0]}, {})
+    trai, phai = json.loads(v["trai"]), json.loads(v["phai"])
+    assert trai == {"nhan": "Nvidia Blackwell", "svg": "assets/svg/chip.svg", "so": 208.0, "so_hien": "208",
+                    "don_vi": "tỷ transistor", "to": 1.0}
+    assert phai["to"] == 0.15 and phai["so"] == 300.0 and phai["so_hien"] == "300"
+    assert v["ti_le"] == "gấp ~700 lần" and v["dong"] == "dap" and v["nguon"].startswith("Nguồn: chatgpt.com")
+
+
+def test_steps_so_sanh_default_and_keyword():
+    assert dung.steps(SS, []) == pytest.approx([0.5, 1.1, 1.8])
+    t = dung.steps(dict(SS, nhip=[None, "VGC"]), [{"w": "VGC", "start": 2.5, "end": 2.8}])
+    assert t[1] == pytest.approx(2.5)
+
+
+def test_sfx_so_sanh():
+    ev = dung.sfx_events(SS, dung.steps(SS, []))
+    assert [f for f, _, _ in ev] == ["pop", "pop", "ping"]
+    assert len(dung.sfx_events(dict(SS, ti_le=""), dung.steps(SS, []))) == 2
+
+
+def test_so_sanh_scene_file_prefix():
+    s = dung._scene_file("so-sanh", "s1")
+    assert 'data-composition-id="s1"' in s and "s1-ss-" in s and "function dongLap" in s
