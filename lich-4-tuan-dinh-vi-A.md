@@ -1,3 +1,5 @@
+> **Đã thay thế (09/11/2026).** Lịch này thuộc định vị A đã bị thay bởi docs/superpowers/specs/2026-11-09-dinh-vi-doi-dau-van-hanh-design.md (nhịp đích 1 video/ngày, giờ đăng 15:30).
+
 # Lịch 4 tuần – Định vị A: "Công nghệ ảnh hưởng túi tiền người Việt"
 
 Đầu vào đã chốt: ~30 giờ/tuần, giọng tổng hợp (không lộ mặt), chưa có gì (kể cả tên kênh).

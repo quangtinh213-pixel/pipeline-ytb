@@ -1,14 +1,14 @@
-# Thẻ phong cách kịch bản – Túi Tiền Công Nghệ
+# Thẻ phong cách kịch bản
 
-Định vị do chủ kênh chốt ngày 09/11/2026; luật chính kiến và máy kiểm "mùi máy" rút từ phản biện chéo với Antigravity (đã lọc: bỏ mọi câu mẫu có số hay nhận xét không có nguồn). Học cách làm của kênh mẫu, không chép câu chữ.
+Công thức cập nhật 09/11/2026 theo định vị đối đầu (docs/superpowers/specs/2026-11-09-dinh-vi-doi-dau-van-hanh-design.md): giống công thức kênh mẫu (sự kiện + cặp số + câu hỏi, ba phần có chương, kết trả lời tiêu đề); luật an toàn giữ nguyên; luật chính kiến và máy kiểm "mùi máy" rút từ phản biện chéo với Antigravity (đã lọc: bỏ mọi câu mẫu có số hay nhận xét không có nguồn). Học cách làm của kênh mẫu, không chép câu chữ.
 `tttc.phong_cach` kiểm: mở đầu, kết, độ dài và "mùi máy" (chỉ cảnh báo). Các điều còn lại do người viết giữ.
 
 ## 1. Người dẫn và lập trường
 
-- **Slogan:** Công nghệ đổi mới, túi tiền đổi chiều. Nói bằng số liệu, dẫn nguồn tận gốc.
-- **Người dẫn:** người am hiểu công nghệ kiêm nhà phân tích tài chính cá nhân. Điềm tĩnh, khách quan, không tung hô tiếp thị. Xưng "mình – các bạn", kể như nói với một người bạn, nhưng lập luận chặt.
+- **Tôn chỉ:** tin nóng công nghệ–kinh tế có góc Việt Nam. Nói bằng số liệu, dẫn nguồn tận gốc.
+- **Người dẫn:** người theo dõi công nghệ và kinh tế, điềm tĩnh, khách quan, không tung hô tiếp thị. Xưng "mình – các bạn", kể như nói với một người bạn, nhưng lập luận chặt.
 - **Vai kể:** một người theo dõi công nghệ, sáng nay vừa đọc xong các tài liệu gốc trong `nguon.json`, ngồi quán cà phê kể lại cho một đứa bạn thân chưa đọc. Giọng thẳng, hơi tự giễu khi hợp, từ ngữ hằng ngày, không thuật ngữ nếu không cần. **Không bịa trải nghiệm cá nhân hay giai thoại** ("hồi mình nợ thẻ…", "3 giờ sáng mắt díp lại…"): chi tiết cụ thể chỉ lấy từ nguồn (số, ngày, câu trích, tên bảng giá) hoặc ví dụ đời thường nói rõ là ví dụ ("hình dung thế này", "giả sử").
-- **Lập trường:** mỗi video chốt một **phán quyết túi tiền** (mua ngay, chờ, hay thay thế rẻ hơn / ở lại bản miễn phí), có tiêu chí công khai và có **điều kiện đổi ý**. Có chính kiến, nhưng chính kiến luôn đứng trên số liệu có nguồn.
+- **Lập trường:** bám số liệu có nguồn. **Phán quyết** (mua ngay, chờ, thay thế) kèm tiêu chí công khai và **điều kiện đổi ý** là **tùy chọn**, dùng khi đề có lựa chọn cụ thể cho người xem; không bắt buộc ở mọi video. Có chính kiến thì chính kiến luôn đứng trên số liệu có nguồn (xem mục 5).
 - **Không làm:** lời khuyên đầu tư hay tài chính cá nhân hóa ("bạn nên mua"); phán xét thương hiệu ("hãng hút máu", "dịch vụ tệ"); so "mô hình nào thông minh hơn" khi không có bằng chứng; suy diễn ý đồ của hãng.
 
 ## 2. Ba nguyên tắc bất di bất dịch
@@ -17,14 +17,13 @@
 2. **Nguồn tận gốc, hiện trên màn hình** (trang giá, báo cáo, văn bản luật, giá niêm yết), và nói tên nguồn trong lời ("theo trang giá của OpenAI").
 3. **Quy đổi ra tiền đồng khi có thể, nhưng có nguồn.** Tiền ngoại tệ quy đổi bằng tỷ giá tham chiếu có nguồn và ngày (ghi `tu-tinh`: công thức, tỷ giá, ngày). Thước đo đời thường (cốc cà phê, tiền trọ) phải lấy từ một mức niêm yết kiểm được; không có thì không dùng. Số mình suy ra gắn nhãn **"ước tính độc lập của kênh"**.
 
-## 3. Cấu trúc: Cú sốc ví → Số liệu → Dây chuyền → Phán quyết
+## 3. Cấu trúc: Sự kiện + cặp số + câu hỏi → ba phần có chương → trả lời tiêu đề
 
-Video 8–14 phút, 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm tiết).
+Video 8–14 phút, 2.000–2.600 từ lời đọc (~200–230 từ/phút; từ = âm tiết).
 
-1. **Cú sốc ví tiền (đến ~1 phút).** Một con số và người chịu ảnh hưởng ở Việt Nam, kèm một cặp số lệch nhau để gây tò mò. Số có nguồn `[#id]` ngay trong 90 từ đầu; hỏi 1–2 câu hứa sẽ trả lời. Không mở bằng "sáng nay mình mở trang giá".
-2. **Số liệu và nguồn.** Chuyện gì xảy ra, giá, thuế, giới hạn là bao nhiêu, theo ai. Hình trang nguồn, thẻ tên nguồn.
-3. **Dây chuyền.** Từ giá gốc tới cái người Việt trả (thuế, tỷ giá, phí, quy ra năm). Chỗ cho số `tu-tinh` và thước đo đời thường.
-4. **Phán quyết.** Mua ngay, chờ, hay thay thế, theo điều kiện, kèm **"mình sẽ đổi ý nếu..."**, rồi mời người xem đoán một con số ở bình luận (60 từ cuối có dấu `?`).
+1. **Mở (đến ~1 phút).** Một sự kiện đang nóng kèm một cặp số lệch nhau để gây tò mò. Số có nguồn `[#id]` ngay trong 90 từ đầu; hỏi 1–2 câu hứa sẽ trả lời. Không mở bằng "sáng nay mình mở trang giá".
+2. **Ba phần có chương.** Mỗi phần mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối phần trả lời. Ví dụ đời thường mỗi 1–2 phút, nói tên nguồn ngay trong lời ("theo Reuters"), số tự suy ra gắn nhãn "mình tự tính". Hình trang nguồn, thẻ tên nguồn ở góc.
+3. **Kết.** Trả lời lại câu hỏi của tiêu đề (có thể bằng "hai cái thước"), rồi mời người xem đoán một con số ở bình luận (60 từ cuối có dấu `?`). Phán quyết và "mình sẽ đổi ý nếu..." chỉ thêm khi đề phù hợp.
 
 ## 4. Ba tầng ngôn ngữ (tách số liệu khỏi ý mình)
 
@@ -36,7 +35,7 @@ Video 8–14 phút, 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm
 
 Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay ý đồ không có số liệu thì không nói.
 
-## 5. Sáu luật chính kiến an toàn
+## 5. Sáu luật chính kiến an toàn (áp dụng khi video đưa ra phán quyết)
 
 1. **Phán xét sự phù hợp, không phán xét hãng.** Không nói "gói này tệ"; nói "với người chỉ viết email, trả khoản này là lãng phí".
 2. **Tiêu chí công khai trước khi phán.** Ví dụ phép thử hòa vốn: gói này có tiết kiệm được một buổi tối làm thêm mỗi tháng không.
@@ -51,7 +50,7 @@ Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay
 - **Câu dài ngắn đan xen**, ít nhất 10% câu ≤ 5 từ. Có câu cụt, câu bỏ lửng, câu cảm thán đời thường.
 - **Nói tiếng Việt, không dịch từ tiếng Anh.** Danh sách từ, mở bài, kết bài và cụm dịch thô bị cấm nằm ở `pipeline/phong-cach/tu-cam.json` (máy kiểm báo Lỗi, chặn duyệt 1); thêm mục mới chỉ cần sửa tệp đó.
 - **Phán xét thật, bớt rào đón.** Tối đa 3 câu kiểu "mình nghĩ", "bạn tự xem", "tùy bạn". Thà nêu tiêu chí còn hơn đẩy cho người xem.
-- **Kết không nhai lại.** Kết = phán quyết + điều kiện đổi ý + câu mời đoán một con số. Không liệt kê "Một, hai, ba" lại những gì vừa nói.
+- **Kết không nhai lại.** Kết = trả lời câu hỏi của tiêu đề (cộng phán quyết và điều kiện đổi ý nếu có) + câu mời đoán một con số. Không liệt kê "Một, hai, ba" lại những gì vừa nói.
 - **Chi tiết cụ thể, bản địa, có nguồn** thay cho ví dụ quốc dân dịch từ tiếng Anh (thẻ gym, máy chạy bộ phơi đồ). Ví dụ đời thường mỗi 1–2 phút, ưu tiên thứ người Việt gặp hằng ngày.
 - **Tự hỏi tự đáp có chừng mực:** chỉ khi chuyển ý thật, không phải công tắc mở mỗi chương.
 - **Mở và đóng không thủ tục.** Lời khai báo (ngày ghi nhận, giá có thể đổi) gói gọn một câu, đặt chỗ nó có lý do xuất hiện, không đứng riêng thành một đoạn "ba lưu ý".
@@ -60,4 +59,4 @@ Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay
 
 - Mỗi chương mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối chương trả lời.
 - Bảng giá, trang nguồn, biểu đồ có tên nguồn ở góc; số tự tính có nhãn.
-- Bảng màu giữ đen–vàng, màu phụ theo ý nghĩa (xanh: miễn phí, tiết kiệm; đỏ: giới hạn, thuế, rủi ro; lam: AI, dữ liệu; tím: gói cao cấp).
+- Bảng màu lấy từ `brand/theme.json` (khi đã có); màu phụ theo ý nghĩa: xanh miễn phí, tiết kiệm; đỏ giới hạn, thuế, rủi ro; lam AI, dữ liệu; tím gói cao cấp.

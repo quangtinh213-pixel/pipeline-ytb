@@ -1,6 +1,6 @@
 ---
 name: video-dung
-description: Chặng 2 của pipeline video kênh Túi Tiền Công Nghệ – giọng ElevenLabs, chia cảnh, hình minh họa, render HyperFrames, Shorts, đóng gói tiêu đề/thumbnail/mô tả, rồi dừng ở điểm duyệt 2. Dùng khi người dùng gõ /video-dung, "dựng video", hoặc nói "duyệt phương án N" cho video đang chờ duyệt 2.
+description: Chặng 2 của pipeline video của kênh – giọng ElevenLabs, chia cảnh, hình minh họa, render HyperFrames, Shorts, đóng gói tiêu đề/thumbnail/mô tả, rồi dừng ở điểm duyệt 2. Dùng khi người dùng gõ /video-dung, "dựng video", hoặc nói "duyệt phương án N" cho video đang chờ duyệt 2.
 ---
 
 # /video-dung [thư mục video]
@@ -148,6 +148,6 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 - Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh.
 - Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}')`
   rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
-- Giờ đăng Short: theo `lich-4-tuan-dinh-vi-A.md` (Shorts rơi vào ngày sau video dài).
+- Giờ đăng Short: sáng ngày hôm sau video dài (đề xuất 08:00 giờ Việt Nam).
 - Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
 - `set_step(V, "shorts", "xong")` sau khi tất cả Short đã dựng.

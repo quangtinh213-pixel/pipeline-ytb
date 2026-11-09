@@ -1,6 +1,6 @@
 ---
 name: video-moi
-description: Chặng 1 của pipeline video kênh Túi Tiền Công Nghệ – chọn đề, đọc nguồn gốc, viết kịch bản gắn nguồn, tự kiểm, rồi dừng ở điểm duyệt 1. Dùng khi người dùng gõ /video-moi [chủ đề], "làm video mới", hoặc nói "duyệt" cho một kịch bản đang chờ duyệt 1.
+description: Chặng 1 của pipeline video của kênh – chọn đề, đọc nguồn gốc, viết kịch bản gắn nguồn, tự kiểm, rồi dừng ở điểm duyệt 1. Dùng khi người dùng gõ /video-moi [chủ đề], "làm video mới", hoặc nói "duyệt" cho một kịch bản đang chờ duyệt 1.
 ---
 
 # /video-moi [chủ đề tùy chọn]
@@ -14,21 +14,18 @@ Sổ trạng thái: `tttc.trang_thai` (`load`, `set_step`, `set_field`, `next_st
 - Nếu người dùng nói "duyệt" cho video đang `duyet-1=cho-duyet`: chạy lại `tttc.kiem` một lần; sạch thì
   `set_step(dir, "duyet-1", "da-duyet")` và báo "Chạy /video-dung để dựng". Còn lỗi thì báo lỗi, không duyệt.
 - Nếu người dùng ghi chỗ cần sửa: sửa `kich-ban.md`/`nguon.json`, quay lại bước 4.
-- Video mới: tạo `videos/<yyyy-mm-dd-slug>/` (ngày = ngày đăng dự kiến theo `lich-4-tuan-dinh-vi-A.md`
-  nếu có, không thì hôm nay; slug ascii không dấu, ≤ 5 từ).
+- Video mới: tạo `videos/<yyyy-mm-dd-slug>/` (ngày = ngày đăng dự kiến, mặc định hôm nay; slug ascii không dấu, ≤ 5 từ).
 - Video đã có: đọc `next_step`, bỏ qua bước đã `xong`.
 
 Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "loi", "<lý do>")` và dừng, báo người dùng.
 
 ## 1. chu-de
 
-- Có chủ đề từ người dùng: vẫn chấm theo 3 câu bên dưới, ghi 1 đề.
-- Không có: đọc `pipeline/config.json:nguon_tin`, quét tin 24 giờ qua. Chấm mỗi đề 3 câu, mỗi câu 0–2 điểm:
-  1. Đang nóng? 2. Có số lớn? 3. Hệ quả cho túi tiền người Việt? (**0 điểm câu 3 → loại**).
-- Chấm câu 1 bằng dữ liệu, không cảm tính: gọi skill `yt-viral` cho ngách (công nghệ / giá cả / túi tiền, tiếng Việt)
-  để xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
-- Ghi `chu-de.md`: 3 đề tốt nhất, mỗi đề gồm tiêu đề tạm, lời hứa một câu, điểm từng câu, link tin.
-  Đề 1 là đề được làm tiếp; người dùng đổi ở điểm duyệt.
+- Có chủ đề từ người dùng: vẫn chấm theo bảng bên dưới, ghi 1 đề.
+- Không có: quét tin 24 giờ qua từ `pipeline/config.json:nguon_tin`, và đọc RSS đối thủ bằng `cd pipeline && uv run python -m tttc.radar rss` (chỉ lấy tiêu đề, giờ đăng, số view làm tín hiệu; không lấy lời, kịch bản, hình của họ).
+- Chấm mỗi đề (`tttc.radar.cham_diem`): cú sốc trong 48 giờ (0–2), số lớn nêu được từ nguồn gốc (0–2), góc Việt Nam (0–2, **nặng gấp đôi**). Đạt khi ≥ 4 điểm; cùng điểm thì đề có góc Việt Nam xếp trước, rồi đề mới hơn. Góc Việt Nam bằng 0 **không tự động loại**. Xếp bằng `radar.xep_hang`.
+- Chấm câu "nóng" bằng dữ liệu: gọi skill `yt-viral` cho ngách (tin công nghệ–kinh tế tiếng Việt) xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
+- Ghi `chu-de.md` bằng `radar.ghi_chu_de(V, top, ho_da_dang)`: 3 đề tốt nhất, mỗi đề có điểm từng câu, link tin gốc, cờ "họ đã đăng cùng sự kiện" (đối chiếu RSS). Họ đã đăng cùng đề thì **vẫn làm**, chỉ ghi cờ. Đề 1 là đề được làm tiếp; người dùng đổi ở điểm duyệt 1.
 
 ## 2. nguon
 

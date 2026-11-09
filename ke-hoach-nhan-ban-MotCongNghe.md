@@ -1,3 +1,5 @@
+> **Đã thay thế (09/11/2026).** Mục 4 (định vị A) và mục 9 đã được thay bởi docs/superpowers/specs/2026-11-09-dinh-vi-doi-dau-van-hanh-design.md.
+
 # Kế hoạch nhân bản kênh "Mọt Công Nghệ" (@MotCongNghe)
 
 Dữ liệu lấy ngày 07/11/2026 từ trang công khai của kênh (danh sách video, mô tả và từ khoá của video top 1). Không đăng nhập, không dùng YouTube Studio của ai.

@@ -1,6 +1,6 @@
 ---
 name: video-dang
-description: Chặng 3 của pipeline video kênh Túi Tiền Công Nghệ – upload video và Shorts đã qua 2 điểm duyệt lên YouTube ở chế độ riêng tư + hẹn giờ. Dùng khi người dùng gõ /video-dang, "đăng video", "lên lịch đăng".
+description: Chặng 3 của pipeline video của kênh – upload video và Shorts đã qua 2 điểm duyệt lên YouTube ở chế độ riêng tư + hẹn giờ. Dùng khi người dùng gõ /video-dang, "đăng video", "lên lịch đăng".
 ---
 
 # /video-dang [thư mục video]
@@ -19,7 +19,7 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 ## Mỗi video
 1. Chọn video: thư mục do người dùng nêu, hoặc thư mục duy nhất có `duyet-2=da-duyet` và `dang` chưa xong.
 2. `tt.is_approved` phải đúng; không thì dừng và nói bước nào chưa duyệt. Không có ngoại lệ.
-3. Ngày/giờ: lấy từ `lich-4-tuan-dinh-vi-A.md` theo ngày trong tên thư mục; không có thì `config.json:gio_dang_mac_dinh`.
+3. Ngày/giờ: ngày theo tên thư mục, giờ `config.json:gio_dang_mac_dinh` (15:30, trước khung 17:00–20:00 của đối thủ).
 4. **Xác nhận với người dùng trước khi upload** (một câu): tiêu đề đã chọn, ngày giờ đăng (giờ Việt Nam),
    số Shorts và giờ từng Short. Đợi "ok".
 5. `uv run python -m tttc.dang ../videos/<slug> <dd/mm/yyyy> <HH:MM>` → in video id.
