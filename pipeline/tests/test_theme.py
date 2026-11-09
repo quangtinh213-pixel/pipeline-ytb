@@ -1,0 +1,46 @@
+import pytest
+
+from tttc import theme
+
+
+def test_cssify_resolves_nested_and_indexed_keys():
+    th = {"nen": "#111111", "nhan": ["#FFC800", "#E0B000"], "kem": {"nen": "#FBF6EC"}}
+    assert theme.cssify("a {{theme:nen}} b {{theme:nhan.1}} c {{theme:kem.nen}}", th) == "a #111111 b #E0B000 c #FBF6EC"
+
+
+def test_cssify_unknown_key_names_it():
+    with pytest.raises(KeyError, match="khong_co"):
+        theme.cssify("{{theme:khong_co}}", {"nen": "#111111"})
+
+
+def test_cssify_leaves_plain_css_untouched():
+    assert theme.cssify("a { color: red; } b {{ x }}", {"nen": "#111111"}) == "a { color: red; } b {{ x }}"
+
+
+def test_contrast_known_values():
+    assert theme.contrast("#000000", "#FFFFFF") == pytest.approx(21.0, abs=0.01)
+    assert theme.contrast("#111111", "#FFC800") > 4.5
+
+
+def test_current_theme_passes_its_own_check():
+    assert [m for m in theme.kiem(theme.load()) if m.startswith("Lỗi")] == []
+
+
+def test_kiem_rejects_accent_equal_to_semantic_colour_and_low_contrast():
+    th = theme.load()
+    th["nhan"] = list(th["sac"]["lam"][:3])
+    assert any("trùng" in m for m in theme.kiem(th))
+    th = theme.load()
+    th["chu_tren_nhan"] = th["nhan"][0]
+    assert any("tương phản" in m for m in theme.kiem(th))
+
+
+def test_kiem_warns_black_yellow_pair_only_for_a_new_identity():
+    th = theme.load()
+    assert not any("đen–vàng" in m for m in theme.kiem(th))  # theme hiện tại là bản sao của hiện trạng
+    th["ten"] = "kenh-moi"
+    assert any(m.startswith("Cảnh báo") and "đen–vàng" in m for m in theme.kiem(th))
+
+
+def test_derived_constants_match_current_code():
+    assert theme.VANG == ("#FFC800", "#E0B000", "#C79C00") and theme.SAC["xanh"][0] == "#00D084"
