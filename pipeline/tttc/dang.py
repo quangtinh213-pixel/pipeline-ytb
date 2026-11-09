@@ -6,12 +6,13 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
+from tttc import theo_doi
 from tttc import trang_thai as tt
 
 ROOT = Path(__file__).resolve().parents[2]
 TRACKER = ROOT / "theo-doi.csv"
 CONFIG = ROOT / "pipeline" / "config.json"
-FIELDS = ["ngay", "tieu_de", "gio_dang", "link", "view_24h", "view_7d", "ctr", "giu_chan_30s"]
+FIELDS = ["ngay", "tieu_de", "gio_dang", "link", "view_24h", "view_7d", "ctr", "giu_chan_30s"] + theo_doi.EXTRA
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.force-ssl"]
 KR = "tui-tien-cong-nghe"
 RETRIES = 3  # tự thử lại khi lỗi mạng/5xx tạm thời, nhất là khi tải video lớn
@@ -70,6 +71,7 @@ def _media(path: Path, mime: str):
 
 
 def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
+    theo_doi.migrate(tracker)  # sổ cũ thiếu cột so sánh với đối thủ thì thêm cột, giữ nguyên dòng cũ
     new = not tracker.exists()
     with tracker.open("a", encoding="utf-8", newline="") as f:
         w = csv.DictWriter(f, fieldnames=FIELDS)

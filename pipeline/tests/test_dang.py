@@ -203,3 +203,14 @@ def test_upload_retries_transient_errors(video, tmp_path):
     RETRIES_SEEN.clear()
     dang.upload(video, "13/11/2099", "19:00", youtube=FakeYT(), tracker=tmp_path / "t.csv", playlist_id="PL1")
     assert RETRIES_SEEN and all(n == dang.RETRIES and n >= 1 for n in RETRIES_SEEN)
+
+
+def test_track_migrates_old_csv_and_keeps_old_rows(tmp_path):
+    import csv
+    t = tmp_path / "theo-doi.csv"
+    t.write_text("ngay,tieu_de,gio_dang,link,view_24h,view_7d,ctr,giu_chan_30s\n"
+                 "09/11/2026,Cũ,09/11/2026 20:45,https://youtu.be/x,,,,\n", encoding="utf-8")
+    dang._track(t, "Mới", "10/11/2026 15:30", "vid")
+    rows = list(csv.DictReader(t.open(encoding="utf-8")))
+    assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 12
+    assert [r["tieu_de"] for r in rows] == ["Cũ", "Mới"] and rows[1]["chenh_gio"] == "" and rows[1]["link"].endswith("vid")
