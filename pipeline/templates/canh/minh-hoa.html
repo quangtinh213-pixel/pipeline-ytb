@@ -15,10 +15,10 @@
                     transform-origin: top center; }
   </style>
   <div id="root" data-composition-id="minh-hoa" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop/tilt/tho)","default":"bob"},{"id":"vao","type":"string","label":"Kiểu vào cảnh 0-3","default":"0"}]'>
+       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop/tilt/tho)","default":"bob"},{"id":"vao","type":"string","label":"Kiểu vào cảnh 0-3","default":"0"},{"id":"phong","type":"string","label":"Phông (svg sàn)","default":"assets/svg/nen-dat.svg"},{"id":"bo_cuc","type":"string","label":"Bố cục đạo cụ (JSON)","default":"[]"},{"id":"may_quay","type":"string","label":"Camera (dung/day-vao/keo-ra/lia/he-lo)","default":"dung"},{"id":"thoi_luong","type":"string","label":"Thời lượng cảnh (giây)","default":"5"}]'>
     <div id="mh-san" class="san">
       <div id="mh-the-gioi" class="mh-the-gioi">
-        <div id="mh-dat" class="mh-dat"><img src="assets/svg/nen-dat.svg" alt=""></div>
+        <div id="mh-dat" class="mh-dat"><img data-var-src="phong" src="assets/svg/nen-dat.svg" alt=""></div>
         <div id="mh-bong" class="mh-bong"></div>
         <div id="mh-phu-1" class="mh-phu mh-phu-1"><img id="mh-phu-1-img" data-var-src="phu1" src="assets/svg/cay.svg" alt=""></div>
         <div id="mh-chinh" class="mh-chinh"><img id="mh-img" data-var-src="svg" src="assets/svg/chip.svg" alt=""></div>
@@ -36,6 +36,15 @@
     document.querySelector("#mh-san").classList.add("nen-" + (v.nen || "toi"));
     if (!v.phu1) document.querySelector("#mh-phu-1").style.display = "none";
     if (!v.phu2) document.querySelector("#mh-phu-2").style.display = "none";
+    // bố cục tham số (thay phu): x,y theo sàn 1100×1100 đặt tại (410,100), cỡ = to × 230 px
+    const BC = JSON.parse(v.bo_cuc || "[]");
+    BC.forEach((b, i) => {
+      const sz = 230 * (b.to || 1), el = document.createElement("div");
+      el.id = "mh-bc-" + i; el.className = "mh-phu";
+      el.style.cssText = `left:${Math.round(410 + b.x * 1100 - sz / 2)}px; top:${Math.round(100 + b.y * 1100 - sz / 2)}px; width:${sz}px; height:${sz}px`;
+      el.innerHTML = `<img src="${b.svg}" alt="">`;
+      document.querySelector("#mh-the-gioi").appendChild(el);
+    });
     const tl = gsap.timeline({ paused: true });
     // bốn kiểu vào cảnh xoay vòng (vao 0-3): rơi nảy, trượt chéo isometric, nở từ sàn, xếp tầng
     const vao = parseInt(v.vao || "0", 10) % 4;
@@ -56,6 +65,8 @@
     }
     tl.fromTo("#mh-phu-1", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(1, 0.5));
     tl.fromTo("#mh-phu-2", { scale: 0, transformOrigin: "50% 90%" }, { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(2, 0.58));
+    BC.forEach((b, i) => tl.fromTo("#mh-bc-" + i, { scale: 0, transformOrigin: "50% 90%" },
+      { scale: 1, duration: 0.45, ease: "back.out(1.8)" }, at(i + 1, 0.5 + 0.08 * i)));
     tl.fromTo("#mh-day", { scaleY: 0 }, { scaleY: 1, duration: 0.25, ease: "power2.out" }, at(0, 0.72) - 0.1);
     tl.fromTo("#mh-nhan-txt", { opacity: 0, filter: "blur(8px)", scale: 0.92 },
               { opacity: 1, filter: "blur(0px)", scale: 1, duration: 0.22, ease: "power3.out" }, at(0, 0.72));
@@ -64,9 +75,11 @@
     tl.to("#mh-dat", { x: -18, duration: 8.3, ease: "none" }, 0.7);
     tl.to("#mh-chinh", { x: -36, duration: 8.1, ease: "none" }, 0.9);
     tl.to("#mh-phu-1, #mh-phu-2", { x: -54, duration: 8, ease: "none" }, 1.0);
+    BC.forEach((b, i) => tl.to("#mh-bc-" + i, { x: -54, duration: 8, ease: "none" }, 1.0));
     dongLap(tl, "#mh-chinh", v.dong, 0.9, 12);
     dongLap(tl, "#mh-phu-1", v.dong ? "bob" : "", 1.0, 12, 0.4);
     dongLap(tl, "#mh-phu-2", v.dong ? "bob" : "", 1.1, 12, 0.8);
+    BC.forEach((b, i) => dongLap(tl, "#mh-bc-" + i, v.dong ? "bob" : "", 1.0 + 0.1 * i, 12, 0.4 * (i + 1)));
     window.__timelines["minh-hoa"] = tl;
   </script>
 </template>

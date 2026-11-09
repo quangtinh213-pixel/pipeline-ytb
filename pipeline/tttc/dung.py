@@ -2,7 +2,9 @@
 
 Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có thể ghi đè nen: toi|kem|vang):
 - chuong:      so (vd "Phần 2"), chuong (tên chương)
-- minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?, dong? bob|xoay|dap|chop (mặc định bob)
+- minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?, dong? bob|xoay|dap|chop (mặc định bob),
+               san_khau? (phông: nen-dat mặc định, hoặc phần sau "phong-" của svg/phong-*.svg), bo_cuc? [1–4 {svg, x, y, to}] (thay phu;
+               x,y 0–1 trên sàn, to 0,2–1,5), may_quay? dung|day-vao|keo-ra|lia|he-lo
 - so-lon:      so (số hoặc chuỗi "5,3"), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
@@ -105,9 +107,14 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         return {"so": c.get("so", ""), "ten": c.get("chuong", "")}
     if m == "minh-hoa":
         phu = c.get("phu", [])
+        sk = c.get("san_khau", "nen-dat")
         return {"svg": f"assets/svg/{c['svg']}.svg", "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
                 "phu1": f"assets/svg/{phu[0]}.svg" if len(phu) > 0 else "",
-                "phu2": f"assets/svg/{phu[1]}.svg" if len(phu) > 1 else "", "dong": c.get("dong", "bob")}
+                "phu2": f"assets/svg/{phu[1]}.svg" if len(phu) > 1 else "", "dong": c.get("dong", "bob"),
+                "phong": f"assets/svg/{'nen-dat' if sk == 'nen-dat' else 'phong-' + sk}.svg",
+                "bo_cuc": json.dumps([{**b, "svg": f"assets/svg/{b['svg']}.svg"} for b in c.get("bo_cuc", [])],
+                                     ensure_ascii=False),
+                "may_quay": c.get("may_quay") or "dung", "thoi_luong": round(c.get("end", 0) - c.get("start", 0), 3)}
     if m == "so-lon":
         return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "truoc": c.get("truoc", ""),
                 "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
@@ -178,7 +185,8 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("impact-bass-1", 0.1, 0.25)]
     if m == "minh-hoa":
         ev = [("pop", 0.55, 0.3)]
-        ev += [("pop", st[k + 1], 0.2) for k in range(len(c.get("phu", [])[:2]))]
+        n = len(c.get("bo_cuc") or c.get("phu", [])[:2])
+        ev += [("pop", st[k + 1] if k + 1 < len(st) else st[-1] + 0.08 * (k + 2 - len(st)), 0.2) for k in range(n)]
         return ev
     if m == "so-lon":
         return [("ping", st[0] + 1.3, 0.3)]

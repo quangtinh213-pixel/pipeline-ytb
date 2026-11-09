@@ -423,3 +423,32 @@ def test_compose_adds_grain_overlay_only_when_enabled(video, monkeypatch):
     monkeypatch.setattr(dung, "_render_cfg", lambda: {})
     out = dung.compose(video)
     assert not (out / "assets" / "grain.png").exists() and "grain" not in (out / "index.html").read_text(encoding="utf-8")
+
+
+def test_minh_hoa_variables_for_stage_layout_and_camera(video):
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"][1].update({"san_khau": "may-chu", "may_quay": "day-vao",
+                            "bo_cuc": [{"svg": "cay", "x": 0.2, "y": 0.6, "to": 1.0}]})
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    vals = {sid: json.loads(v.replace("&#39;", "'")) for sid, v in
+            re.findall(r'<div id="([\w-]+)"[^>]*?data-variable-values=\'([^\']*)\'', html)}
+    c2 = vals["c2"]
+    assert c2["phong"] == "assets/svg/phong-may-chu.svg" and c2["may_quay"] == "day-vao" and c2["thoi_luong"] == 5.0
+    assert json.loads(c2["bo_cuc"]) == [{"svg": "assets/svg/cay.svg", "x": 0.2, "y": 0.6, "to": 1.0}]
+
+
+def test_old_minh_hoa_defaults_to_ground_slab_and_still_camera(video):
+    html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    vals = {sid: json.loads(v.replace("&#39;", "'")) for sid, v in
+            re.findall(r'<div id="([\w-]+)"[^>]*?data-variable-values=\'([^\']*)\'', html)}
+    assert vals["c2"]["phong"] == "assets/svg/nen-dat.svg" and vals["c2"]["may_quay"] == "dung"
+    assert vals["c2"]["bo_cuc"] == "[]"
+
+
+def test_sfx_pops_for_each_layout_prop_without_index_error():
+    c = {"mau": "minh-hoa", "start": 0, "end": 4, "bo_cuc": [{}] * 4}
+    ev = dung.sfx_events(c, [0.72, 0.5, 0.58])
+    assert [e[0] for e in ev] == ["pop"] * 5 and all(e[1] >= 0 for e in ev)
+    old = dung.sfx_events({"mau": "minh-hoa", "start": 0, "end": 4, "phu": ["cay", "dong-xu"]}, [0.72, 0.5, 0.58])
+    assert [e[1] for e in old] == [0.55, 0.5, 0.58]  # hành vi cũ giữ nguyên

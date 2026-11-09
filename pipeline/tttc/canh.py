@@ -13,6 +13,7 @@ TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
 DAN_THE, DAN_GOC = {"chao", "ngac-nhien", "nghi"}, {"phai", "trai"}  # nhân vật dẫn chuyện "Túi" (svg/tui-*.svg)
+MAY_QUAY = {"", "dung", "day-vao", "keo-ra", "lia", "he-lo"}  # camera áp lên "thế giới" của cảnh minh-hoa
 DONG = {"", "bob", "xoay", "dap", "chop", "tilt", "tho"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
@@ -78,6 +79,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         for label in _nhan_pills(c):
             if len(label.split()) > NHAN_MAX_TU:
                 msgs.append(f"Cảnh báo: {cid} nhãn dài {len(label.split())} từ (≤ {NHAN_MAX_TU}): {label[:30]}")
+        if c["mau"] == "minh-hoa":
+            msgs += _check_minh_hoa(c, svg_dir)
         if c["mau"] == "quy-trinh":
             msgs += _check_quy_trinh(c, svg_dir)
         if c["mau"] == "so-sanh":
@@ -102,6 +105,32 @@ def _nhan_pills(c: dict) -> list[str]:
     if c["mau"] == "quy-trinh":
         return [b["nhan"] for b in c.get("buoc") or [] if b.get("nhan")]
     return []
+
+
+def san_khau_hop_le(svg_dir: Path = SVG_DIR) -> set[str]:
+    """Phông hợp lệ: nen-dat cùng phần sau `phong-` của mọi tệp phong-*.svg (thêm phông = thêm tệp SVG)."""
+    return {"nen-dat"} | {f.stem.removeprefix("phong-") for f in Path(svg_dir).glob("phong-*.svg")}
+
+
+def _check_minh_hoa(c: dict, svg_dir: Path) -> list[str]:
+    cid, out = c["id"], []
+    if c.get("san_khau", "nen-dat") not in san_khau_hop_le(svg_dir):
+        out.append(f"Lỗi: {cid} san_khau '{c['san_khau']}' không có (chọn {', '.join(sorted(san_khau_hop_le(svg_dir)))})")
+    if c.get("may_quay", "") not in MAY_QUAY:
+        out.append(f"Lỗi: {cid} may_quay '{c['may_quay']}' không hợp lệ (chọn {', '.join(sorted(MAY_QUAY - {''}))})")
+    bc = c.get("bo_cuc")
+    if bc is not None:
+        if c.get("phu"):
+            out.append(f"Lỗi: {cid} không dùng cùng lúc phu và bo_cuc")
+        if not isinstance(bc, list) or not 1 <= len(bc) <= 4:
+            out.append(f"Lỗi: {cid} bo_cuc cần 1–4 đạo cụ")
+        else:
+            for b in bc:
+                ok = (isinstance(b, dict) and 0 <= b.get("x", -1) <= 1 and 0 <= b.get("y", -1) <= 1
+                      and 0.2 <= b.get("to", 1.0) <= 1.5 and (Path(svg_dir) / f"{b.get('svg')}.svg").exists())
+                if not ok:
+                    out.append(f"Lỗi: {cid} bo_cuc có đạo cụ sai: {b} (cần svg có trong thư viện, x và y trong 0–1, to trong 0,2–1,5)")
+    return out
 
 
 def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:

@@ -340,3 +340,38 @@ def test_long_label_check_covers_so_sanh_and_quy_trinh_but_not_so_lon_caption():
     out = canh.validate({"scenes": [ss, qt, sl]}, {"duration": 9.0, "words": []})
     flagged = {m.split()[2] for m in out if "nhãn dài" in m}
     assert flagged == {"c2", "c3"}
+
+
+def _mh(**kw):
+    return {"scenes": [{"id": "c1", "mau": "minh-hoa", "start": 0, "end": 4, "svg": "chip", **kw}]}
+
+
+T4 = {"duration": 4.0, "words": []}
+BC1 = {"svg": "cay", "x": 0.2, "y": 0.6, "to": 1.0}
+
+
+def _svgs(tmp_path):
+    for f in ("nen-dat", "phong-may-chu", "chip", "cay"):
+        (tmp_path / f"{f}.svg").write_text("<svg/>", encoding="utf-8")
+    return tmp_path
+
+
+def test_minh_hoa_stage_camera_and_layout_valid(tmp_path):
+    ok = canh.validate(_mh(san_khau="may-chu", may_quay="day-vao", bo_cuc=[BC1]), T4, _svgs(tmp_path))
+    assert [m for m in ok if m.startswith("Lỗi")] == []
+    assert canh.san_khau_hop_le(tmp_path) == {"nen-dat", "may-chu"}
+
+
+def test_minh_hoa_rejects_unknown_stage_camera_and_bad_layout(tmp_path):
+    d = _svgs(tmp_path)
+    assert any("san_khau" in m for m in canh.validate(_mh(san_khau="mars"), T4, d))
+    assert any("may_quay" in m for m in canh.validate(_mh(may_quay="xoay-tit"), T4, d))
+    assert any("bo_cuc" in m for m in canh.validate(_mh(bo_cuc=[{**BC1, "x": 1.5}]), T4, d))
+    assert any("bo_cuc" in m for m in canh.validate(_mh(bo_cuc=[{**BC1, "to": 3}]), T4, d))
+    assert any("bo_cuc" in m for m in canh.validate(_mh(bo_cuc=[BC1] * 5), T4, d))
+    assert any("bo_cuc" in m for m in canh.validate(_mh(bo_cuc=[{**BC1, "svg": "khong-co"}]), T4, d))
+    assert any("phu" in m and "bo_cuc" in m for m in canh.validate(_mh(phu=["cay"], bo_cuc=[BC1]), T4, d))
+
+
+def test_old_minh_hoa_without_new_fields_has_no_new_errors(tmp_path):
+    assert [m for m in canh.validate(_mh(), T4, _svgs(tmp_path)) if m.startswith("Lỗi")] == []
