@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <title>Kênh thử</title>
+ <published>2026-10-21T13:45:21+00:00</published>
+ <entry>
+  <yt:videoId>aaa111</yt:videoId>
+  <title>Video thử một &quot;trích&quot;</title>
+  <published>2026-11-09T10:47:41+00:00</published>
+  <media:group><media:community><media:statistics views="11180"/></media:community></media:group>
+ </entry>
+ <entry>
+  <yt:videoId>bbb222</yt:videoId>
+  <title>Video thử hai</title>
+  <published>2026-11-08T10:33:47+00:00</published>
+  <media:group><media:community><media:statistics views="6677"/></media:community></media:group>
+ </entry>
+ <entry>
+  <yt:videoId>ccc333</yt:videoId>
+  <title>Mục hỏng thiếu giờ đăng</title>
+  <media:group><media:community><media:statistics views="5"/></media:community></media:group>
+ </entry>
+</feed>
