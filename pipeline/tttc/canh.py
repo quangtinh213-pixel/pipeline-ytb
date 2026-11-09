@@ -13,7 +13,7 @@ TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
 DAN_THE, DAN_GOC = {"chao", "ngac-nhien", "nghi"}, {"phai", "trai"}  # nhân vật dẫn chuyện "Túi" (svg/tui-*.svg)
-DONG = {"", "bob", "xoay", "dap", "chop"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
+DONG = {"", "bob", "xoay", "dap", "chop", "tilt", "tho"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
 

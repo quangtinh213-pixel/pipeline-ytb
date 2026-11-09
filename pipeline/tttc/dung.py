@@ -49,6 +49,12 @@ DEFAULT_STEPS = {
     "b-roll": [0.5],                   # nhãn chương
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
+# Màu phụ theo ý nghĩa (canh.json: sac): (nhấn, bóng, bóng tối, màu chữ trên nhấn). Mặc định không ghi sac = vàng thương hiệu.
+SAC = {"xanh": ("#00D084", "#00A368", "#007A4D", "#111111"),   # tiết kiệm, miễn phí, được
+       "do": ("#FF4D4D", "#CC3333", "#9E2626", "#FFFFFF"),     # giới hạn, rủi ro, thuế, cảnh báo
+       "lam": ("#2979FF", "#1C54B2", "#143F85", "#FFFFFF"),    # AI, dữ liệu, lưu trữ
+       "tim": ("#7C4DFF", "#5C35C7", "#44279A", "#FFFFFF")}    # gói cao cấp, hệ sinh thái
+VANG = ("#FFC800", "#E0B000", "#C79C00")
 TILE_W, TILE_H, COLS = 384, 216, 10
 
 
@@ -229,6 +235,14 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         shutil.rmtree(o)
     (o / "compositions").mkdir(parents=True)
     shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md"))  # cả thư viện: mẫu dùng ảnh mặc định
+    for k in {c["sac"] for c in scenes if c.get("sac")}:  # bản đổi màu nhấn vàng → màu phụ, không vẽ lại thư viện
+        for f in list((o / "assets" / "svg").glob("*.svg")):
+            if f.stem == "nen-dat" or f.stem.startswith("tui-") or "@" in f.stem:
+                continue
+            t = f.read_text(encoding="utf-8")
+            for old, new in zip(VANG, SAC[k][:3]):
+                t = re.sub(old, new, t, flags=re.I)
+            (f.with_name(f"{f.stem}@{k}.svg")).write_text(t, encoding="utf-8")
     for sub in ("anh", "nguon", "broll"):
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
@@ -243,16 +257,23 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
 
     hosts = []
     sfx = []
-    for c, nen in zip(scenes, nens):
+    for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
         (o / "compositions" / f"{sid}.html").write_text(_scene_file(c["mau"], sid, c.get("video", "")), encoding="utf-8")
         st = steps(c, timing.get("words", []))
         sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
-        vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=nen, nhip=json.dumps(st)),
-                          ensure_ascii=False).replace("'", "&#39;")
+        extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng
+        vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=nen, nhip=json.dumps(st), **extra),
+                          ensure_ascii=False)
+        sac = c.get("sac")
+        style = ""
+        if sac in SAC:
+            vals = re.sub(r"assets/svg/(?!nen-dat|tui-)([\w-]+)\.svg", rf"assets/svg/\1@{sac}.svg", vals)
+            style = f' style="--accent:{SAC[sac][0]};--accent-ink:{SAC[sac][3]};--tint:16%"'
+        vals = vals.replace("'", "&#39;")
         hosts.append(f'<div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html"\n'
                      f'           data-start="{round(c["start"] - t0, 3)}" data-duration="{round(c["end"] - c["start"], 3)}"'
-                     f' data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"\n'
+                     f' data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"{style}\n'
                      f"           data-variable-values='{vals}'></div>")
 
     trs, tr_js = [], []

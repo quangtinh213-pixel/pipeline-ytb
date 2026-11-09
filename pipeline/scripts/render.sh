@@ -3,7 +3,12 @@
 set -euo pipefail
 dir=$1; mkdir -p "$(dirname "$2")"; out=$(cd "$(dirname "$2")" && pwd)/$(basename "$2"); q=${3:-delivery}
 cd "$dir"
-npx hyperframes check >/tmp/hf-check-$$.txt 2>&1 || true
-if grep -q "✗" /tmp/hf-check-$$.txt; then grep "✗" /tmp/hf-check-$$.txt; echo "check có lỗi, dừng render" >&2; exit 1; fi
+hf=/tmp/hf-check-$$.txt
+rc=0; npx hyperframes check >"$hf" 2>&1 || rc=$?
+# cổng: check phải thoát 0, có dòng "Check passed" và không có ✗; check crash (thiếu dòng pass) cũng dừng
+if [ "$rc" -ne 0 ] || grep -q "✗" "$hf" || ! grep -q "Check passed" "$hf"; then
+  grep "✗" "$hf" || tail -20 "$hf" >&2 || true
+  echo "check có lỗi (thoát $rc), dừng render" >&2; exit 1
+fi
 npx hyperframes render --output "$out" --quality "$q" --fps 30 --skill hyperframes --quiet
 echo "$out"
