@@ -77,7 +77,7 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 
 ## 4. render
 1. `uv run python -c "from tttc import dung; dung.compose('V')"`
-2. `scripts/render.sh V/composition V/final.mp4 delivery` (khoảng 1–2 giờ cho 11 phút; chạy nền).
+2. `scripts/render.sh V/composition V/final.mp4 delivery` (đo 09/11/2026 trên máy i9 16 luồng: delivery ≈ 2× thời lượng, khoảng 25 phút cho video 12 phút; chạy nền; xem docs/nghien-cuu/do-render-2026-11-09.md).
 3. `dung.contact_sheet('V/final.mp4', canh, 'V/frames/soi-hinh.png')` – **xem ảnh này**: chữ tràn, hình chồng,
    cảnh trống, số sai. Sửa `canh.json`/mẫu, render lại.
 4. `dung.check_av('V/final.mp4', 'V/giong.mp3')` phải rỗng.
