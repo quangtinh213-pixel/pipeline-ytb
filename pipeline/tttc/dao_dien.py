@@ -18,7 +18,12 @@ SLOT = [(0.2, 0.62), (0.8, 0.66), (0.24, 0.3), (0.76, 0.3)]  # vị trí đạo 
 
 
 def validate(dd: dict, khung: dict, svg_dir: Path = SVG_DIR) -> list[str]:
+    if not isinstance(dd.get("scenes"), list):
+        return ['Lỗi: dao-dien.json phải có "scenes": [...] (mỗi cảnh của canh-khung.json một mục)']
     out, ids = [], [c["id"] for c in khung["scenes"]]
+    out += [f"Lỗi: một mục trong dao-dien.json thiếu id: {json.dumps(s, ensure_ascii=False)[:60]}"
+            for s in dd["scenes"] if not isinstance(s, dict) or "id" not in s]
+    dd = {**dd, "scenes": [s for s in dd["scenes"] if isinstance(s, dict) and "id" in s]}
     have = {s["id"] for s in dd["scenes"]}
     out += [f"Lỗi: dao-dien.json thiếu cảnh {i}" for i in ids if i not in have]
     out += [f"Lỗi: dao-dien.json có cảnh {s['id']} không có trong canh-khung.json" for s in dd["scenes"] if s["id"] not in ids]
@@ -87,7 +92,11 @@ def sinh_canh(dd: dict, khung: dict, timing: dict) -> dict:
 def main(video_dir: str) -> int:
     d = Path(video_dir)
     rd = lambda n: json.loads((d / n).read_text(encoding="utf-8"))
-    dd, khung, timing = rd("dao-dien.json"), rd("canh-khung.json"), rd("giong-timing.json")
+    try:
+        dd, khung, timing = rd("dao-dien.json"), rd("canh-khung.json"), rd("giong-timing.json")
+    except FileNotFoundError as e:
+        print(f"Lỗi: thiếu {Path(e.filename).name} (canh-khung.json do `tttc.chia` sinh, giong-timing.json do bước giong)")
+        return 1
     msgs = validate(dd, khung, SVG_DIR)
     for m in msgs:
         print("-", m)

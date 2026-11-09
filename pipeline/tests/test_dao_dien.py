@@ -94,3 +94,18 @@ def test_main_refuses_and_keeps_canh_json_when_errors(tmp_path, svg_dir, monkeyp
         (tmp_path / name).write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     assert dao_dien.main(str(tmp_path)) == 1 and "Lỗi" in capsys.readouterr().out
     assert json.loads((tmp_path / "canh.json").read_text(encoding="utf-8")) == {"scenes": [{"id": "cu"}]}
+
+
+def test_validate_malformed_file_is_error_not_crash(svg_dir):
+    assert any(m.startswith("Lỗi") and "scenes" in m for m in dao_dien.validate({}, KHUNG, svg_dir))
+    dd = _dd()
+    dd["scenes"].append({"y": "không có id"})
+    msgs = dao_dien.validate(dd, KHUNG, svg_dir)
+    assert any(m.startswith("Lỗi") and "thiếu id" in m for m in msgs)
+    dd = _dd(s1={"san_khau": "mars", "may_quay": "bay"})
+    assert sum(m.startswith("Lỗi") for m in dao_dien.validate(dd, KHUNG, svg_dir)) >= 2
+
+
+def test_main_missing_input_names_the_file_and_returns_1(tmp_path, capsys):
+    assert dao_dien.main(str(tmp_path)) == 1
+    assert "dao-dien.json" in capsys.readouterr().out

@@ -41,7 +41,7 @@ Số đọc thành chữ bị phiên âm thành chữ số vẫn căn được (
 Kiểm `giong-timing.json`: `words[-1].end ≤ duration`.
 
 ## 1b. dao-dien
-Claude là đạo diễn: quyết mỗi cảnh phục vụ điều gì trước khi chọn mẫu và hình (spec: docs/superpowers/specs/2026-11-09-chat-luong-hinh-anh-design.md mục 4). Video cũ không có `dao-dien.json` bỏ qua mục này, viết `canh.json` bằng tay như mục 2.
+Claude là đạo diễn: quyết mỗi cảnh phục vụ điều gì trước khi chọn mẫu và hình (spec: docs/superpowers/specs/2026-11-09-chat-luong-hinh-anh-design.md mục 4). Muốn bỏ qua (video cũ, hoặc `canh.json` viết tay như mục 2): vẫn phải `set_step(V, "dao-dien", "xong", "bỏ qua: canh.json viết tay")`, nếu không `next_step` cứ trả `dao-dien` và cổng chạy khô báo thiếu giờ kết thúc.
 
 **Bốn nguyên tắc đạo diễn:**
 1. **Hình bổ nghĩa, không chép lời.** Mỗi cảnh phải trả lời: cảnh này giúp người xem hiểu hay cảm thấy điều gì mà lời đọc chưa tự nói ra?
