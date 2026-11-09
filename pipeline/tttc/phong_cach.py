@@ -2,6 +2,7 @@
 import json
 import re
 import statistics
+import sys
 from pathlib import Path
 
 from tttc import tts
@@ -34,7 +35,7 @@ def kiem(script_md: str) -> list[str]:
         out.append(f"Cảnh báo: {TAIL} từ cuối chưa có câu hỏi mời người xem bình luận")
     if not MIN_TU <= len(words) <= MAX_TU:
         out.append(f"Cảnh báo: lời đọc {len(words)} từ, khung {MIN_TU}–{MAX_TU} từ (10–13 phút)")
-    return out + mui_may(script_md)
+    return out + mui_may(script_md) + tu_cam(script_md) + nhip(script_md)
 
 
 TU_CAM = Path(__file__).resolve().parent.parent / "phong-cach" / "tu-cam.json"
@@ -125,3 +126,16 @@ def nhip(script_md: str) -> list[str]:
     out += [f"Cảnh báo: cụm kể trải nghiệm cá nhân «{m.group(0)}», kênh tin tức không được bịa trải nghiệm"
             for m in TRAI_NGHIEM.finditer(text)]
     return out
+
+
+def main(video_dir: str) -> int:
+    msgs = kiem((Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8"))
+    for m in msgs:
+        print("-", m)
+    loi = sum(m.startswith("Lỗi") for m in msgs)
+    print(f"{loi} Lỗi, {len(msgs) - loi} cảnh báo")
+    return 1 if loi else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1]))

@@ -1,4 +1,5 @@
 import unicodedata
+from pathlib import Path
 
 import pytest
 
@@ -166,3 +167,25 @@ def test_nhip_skips_statistics_on_short_excerpts():
 def test_kiem_includes_mui_may_and_is_silent_without_spoken():
     assert phong_cach.mui_may("Chỉ ghi chú.") == []
     assert any("bộ ba" in m for m in phong_cach.kiem(_long(head=OK_HEAD + "Một, a. Hai, b. Ba, c. Một, a. Hai, b. Ba, c. ")))
+
+
+def test_kiem_includes_tu_cam_and_nhip():
+    out = phong_cach.kiem(_long(head=OK_HEAD + "Đây là bước đột phá. " + "Giá rất cao. " * 6))
+    assert _w(out, "từ cấm") and _w(out, "cảm thán")
+
+
+def test_main_exit_code_follows_errors(tmp_path, capsys):
+    (tmp_path / "kich-ban.md").write_text(_long(head=OK_HEAD + "Đây là bước đột phá. "), encoding="utf-8")
+    assert phong_cach.main(str(tmp_path)) == 1 and "Lỗi" in capsys.readouterr().out
+    (tmp_path / "kich-ban.md").write_text(_long(head=OK_HEAD, tail="Bạn đoán năm nào?"), encoding="utf-8")
+    assert phong_cach.main(str(tmp_path)) == 0
+
+
+BASELINE = [Path(__file__).resolve().parents[2] / "videos" / v for v in
+            ("2026-11-15-nvidia-siet-chip/kich-ban-v2.md", "2026-11-13-goi-ai-dang-tien/kich-ban.md")]
+
+
+@pytest.mark.skipif(not all(p.exists() for p in BASELINE), reason="kịch bản đã duyệt không có trong máy này")
+@pytest.mark.parametrize("p", BASELINE, ids=lambda p: p.parent.name)
+def test_approved_scripts_stay_clean(p):
+    assert phong_cach.kiem(p.read_text(encoding="utf-8")) == []
