@@ -3,10 +3,9 @@
 Dữ liệu thật của video 1; ảnh và video lấy sẵn trong anh/, broll/, nguon/.
 """
 import json
-import subprocess
 from pathlib import Path
 
-from tttc import canh, dung
+from tttc import canh, dung, giong_tam
 
 D = Path(__file__).resolve().parent
 CAU = [  # (câu đọc, cảnh)
@@ -51,19 +50,9 @@ def main():
              if x["tep"] == "trung-tam-du-lieu-5028622.mp4")
     broll.nhap(broll.KHO / e["tep"], D, e["ghi_cong"], bat_dau=2, do_dai=6)
     text = " ".join(c for c, _ in CAU)
-    subprocess.run(["say", "-v", "Linh", "-r", "185", "-o", str(D / "g.aiff"), text], check=True)
-    subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", str(D / "g.aiff"), "-c:a", "libmp3lame", "-b:a", "128k",
-                    str(D / "giong.mp3")], check=True)
-    (D / "g.aiff").unlink()
-    dur = float(subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0",
-                                str(D / "giong.mp3")], capture_output=True, text=True).stdout)
-    # shortcut: giọng macOS không có timestamp, chia đều theo số ký tự; giọng ElevenLabs thật có mốc từng từ
-    words, t, rate = [], 0.0, dur / len(text)
-    for w in text.split():
-        words.append({"w": w, "start": round(t, 3), "end": round(t + len(w) * rate, 3)})
-        t += (len(w) + 1) * rate
-    (D / "giong-timing.json").write_text(json.dumps({"duration": dur, "words": words, "paragraphs": []},
-                                                    ensure_ascii=False), encoding="utf-8")
+    timing = giong_tam.giong_tam(text, D)
+    dur, words = timing["duration"], timing["words"]
+    (D / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False), encoding="utf-8")
     (D / "nguon.json").write_text(json.dumps(NGUON, ensure_ascii=False, indent=1), encoding="utf-8")
     scenes, k = [], 0
     for i, (cau, sc) in enumerate(CAU):

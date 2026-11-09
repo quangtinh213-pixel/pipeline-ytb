@@ -25,7 +25,7 @@ def test_chia_covers_whole_duration_without_gaps():
 
 def test_chia_respects_min_and_max():
     sc = chia.chia(_timing(600, ends=range(10, 600, 11)))
-    assert all(2.0 - 1e-9 <= d <= 5.5 + 1e-9 for d in _durs(sc))
+    assert all(2.5 - 1e-9 <= d <= 5.5 + 1e-9 for d in _durs(sc))  # 2,5 s = ngưỡng cảnh báo của canh.validate
 
 
 def test_chia_prefers_sentence_end():
@@ -36,7 +36,7 @@ def test_chia_prefers_sentence_end():
 def test_chia_never_returns_scene_shorter_than_min():
     for n, ends in [(10, set()), (53, {20, 21}), (47, {9, 10, 11, 30}), (31, {25})]:
         sc = chia.chia(_timing(n, ends=ends))
-        assert min(_durs(sc)) >= 2.0 - 1e-9, (n, _durs(sc))
+        assert min(_durs(sc)) >= 2.5 - 1e-9, (n, _durs(sc))
 
 
 def test_chia_text_is_union_of_words():

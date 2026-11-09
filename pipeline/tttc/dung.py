@@ -233,6 +233,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
     nhac = _read_json(CONFIG, {}).get("nhac_nen")
+    if nhac and not (PIPE / nhac).is_file():
+        raise FileNotFoundError(f"Không thấy nhạc nền {nhac} (config.json:nhac_nen)")
     if nhac:  # nhạc trộn sẵn vào một bản giọng: tự hạ khi có tiếng (tron_am), Shorts cắt cùng một tệp
         tron(d / "giong.mp3", PIPE / nhac, o / "assets" / "giong.mp3")
     else:

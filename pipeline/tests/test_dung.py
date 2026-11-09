@@ -350,3 +350,11 @@ def test_compose_without_music_copies_voice(video, tmp_path, monkeypatch):
     monkeypatch.setattr(dung, "CONFIG", cfg)
     out = dung.compose(video)
     assert (out / "assets" / "giong.mp3").read_bytes() == b"mp3" and 'id="nhac"' not in (out / "index.html").read_text(encoding="utf-8")
+
+
+def test_compose_missing_music_file_gives_clear_error(video, tmp_path, monkeypatch):
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"nhac_nen": "am-thanh/nhac/khong-co.mp3"}), encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
+    with pytest.raises(FileNotFoundError, match="nhạc nền"):
+        dung.compose(video)

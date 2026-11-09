@@ -19,7 +19,7 @@ def _diem(words: list[dict], j: int, dur: float, muc: float) -> float:
     return bonus - abs(dur - muc)
 
 
-def chia(timing: dict, muc: float = 3.5, toi_thieu: float = 2.0, toi_da: float = 5.5) -> list[dict]:
+def chia(timing: dict, muc: float = 3.5, toi_thieu: float = 2.5, toi_da: float = 5.5) -> list[dict]:
     words, total = timing["words"], timing["duration"]
     if not words:
         return []
