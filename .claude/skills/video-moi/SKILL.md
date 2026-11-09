@@ -59,15 +59,49 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
   - Số từ nguồn `so-bo` phải có chữ "sơ bộ" hoặc "chưa chính thức" trong câu.
   - 10–13 phút ≈ 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm tiết; `tttc.phong_cach` kiểm).
 
-## 4. kiem
+- **Khung giao việc cho `yt-script`** (điền `{...}`; spec giọng văn `docs/superpowers/specs/2026-11-09-giong-van-kich-ban-design.md`, Phụ lục A):
 
-1. `uv run python -m tttc.kiem ../videos/<slug>`; sửa tới khi `0 lỗi`.
+```
+[BỐI CẢNH & VAI TRÒ]: Bạn là một người theo dõi công nghệ, sáng nay vừa đọc xong các tài liệu gốc
+trong nguon.json, đang ngồi quán cà phê kể lại cho một đứa bạn thân chưa đọc.
+[CHỦ ĐỀ]: {đề, lời hứa một câu, nguon.json}
+[MẪU GIỌNG]: {pipeline/phong-cach/phan-tich-giong.md + các đoạn trong pipeline/phong-cach/mau-giong/}
+[QUY TẮC BẮT BUỘC]:
+1. Giọng điệu: thẳng thắn, gãy gọn, chân thật, hơi tự giễu khi hợp, như trò chuyện 1-1.
+2. Cấm mở bài sáo rỗng và kết bài đúc kết đạo lý; mở bằng sự kiện + cặp số + câu hỏi (theo thẻ phong cách).
+3. Cấm tuyệt đối mọi mục trong pipeline/phong-cach/tu-cam.json.
+4. Nhịp: xen câu rất ngắn (3–5 từ) với câu vừa; cho phép câu lửng và câu hỏi tu từ ngắn;
+   từ đệm chỉ trong danh sách cho phép.
+5. Chi tiết cụ thể lấy từ nguồn (số, ngày, câu trích, tên) thay cho tính từ cảm thán;
+   ví dụ đời thường phải nói rõ là ví dụ.
+6. Không bịa trải nghiệm cá nhân hay giai thoại.
+7. Mọi câu có số gắn [#id], không đổi giá trị so với nguon.json.
+8. Đọc to thành tiếng phải nghe tự nhiên, không vấp.
+```
+- **Biên tập hai lượt** trên bản nháp (đừng viết lại từ đầu): lượt 1 "Đọc lại, gạch bỏ mọi câu sáo rỗng không thêm thông tin."; lượt 2 "Viết lại sao cho đọc to thành tiếng không vấp, nghe như nói trực tiếp, không như đọc văn bản." Hai lượt không được đổi con số, thẻ `[#id]`, câu "sơ bộ" hoặc "mình tự tính".
+- `cd pipeline && uv run python -m tttc.phong_cach ../videos/<slug>` tới `0 Lỗi` (Lỗi là từ cấm, mở/kết bài sáo rỗng, dịch thô; chặn duyệt 1). Đọc từng cảnh báo nhịp và sửa hoặc ghi lý do giữ. Rồi `set_step(dir, "kich-ban", "xong")`.
+
+## 4. phan-bien-giong (agy, đúng 2 vòng)
+
+Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước `kiem` lo. Lời đọc được gửi tới dịch vụ Antigravity trước khi đăng (không gửi khóa, token, dữ liệu cá nhân). Không dùng `--dangerously-skip-permissions`.
+
+1. **Vòng 1:** `cd pipeline && uv run python -m tttc.phan_bien vong 1 ../videos/<slug>`. In `conversation_id` và phản hồi; ghi `phan-bien-giong-1.md` (+ `.raw.json`).
+2. **Triage** (agy đề xuất, bạn quyết): điền mục `## Bảng triage` của `phan-bien-giong-1.md` thành bảng cột `#, câu trích, loại, mức, nhận/bỏ, lý do`. Mục nào nhận thì sửa `kich-ban.md` (không đổi số, `[#id]`, câu cảnh báo), rồi chạy lại `tttc.phong_cach` (phòng gợi ý đưa vào cụm bị cấm).
+3. **Vòng 2:** `uv run python -m tttc.phan_bien vong 2 ../videos/<slug> --conversation <id> --triage ../videos/<slug>/phan-bien-giong-1.md`; triage và sửa tiếp, điền `phan-bien-giong-2.md`.
+4. **Đạt khi** không còn mục nặng đã nhận mà chưa sửa và bốn điểm vòng 2 đều ≥ 4. Đúng 2 vòng, không có vòng 3 tự động; chưa đạt thì ghi rõ trong note để bạn quyết ở duyệt 1.
+5. `set_step(dir, "phan-bien-giong", "xong", "vòng 1: N mục (nhận a, bỏ b), điểm x/x/x/x; vòng 2: M mục (nhận c, bỏ d), điểm y/y/y/y")`.
+6. **agy lỗi** (khác SUCCESS, quá thời gian, mất lệnh): thử lại một lần. Vẫn lỗi thì chạy một subagent Claude độc lập với đúng prompt của `tttc.phan_bien.dung_prompt`, và ghi note `agy lỗi, dùng subagent` (trang duyệt 1 sẽ đánh dấu đỏ). Không bỏ qua im lặng.
+
+## 5. kiem
+
+1. (chạy sau mọi chỗ sửa giọng văn) `uv run python -m tttc.kiem ../videos/<slug>`; sửa tới khi `0 lỗi`.
 2. Dispatch một subagent độc lập (không chia sẻ ngữ cảnh) với `kich-ban.md` + `nguon.json` + ảnh chụp: nhiệm vụ là
    tìm câu nói quá nguồn (nguồn nói X, kịch bản nói hơn X), số lấy sai mục, thiếu cảnh báo sơ bộ. Sửa những gì nó tìm ra.
 3. `set_step(dir, "kiem", "xong")`.
 
-## 5. duyet-1
+## 6. nghe thử và duyet-1
 
+- Tạo bản nghe thử: `uv run python -m tttc.giong_vieneu thu-60s ../videos/<slug>` (nghe-thu.mp3, đính kèm trang duyệt).
 - `uv run python -c "from tttc.duyet import render_review_1; print(render_review_1('../videos/<slug>'))"`
 - `set_step(dir, "duyet-1", "cho-duyet")`
 - Gửi `duyet-1.html` cho người dùng (SendUserFile, display render). Tóm tắt 3 dòng: đề, số nguồn, cảnh báo còn lại.

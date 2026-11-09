@@ -7,6 +7,7 @@
 
 - **Slogan:** Công nghệ đổi mới, túi tiền đổi chiều. Nói bằng số liệu, dẫn nguồn tận gốc.
 - **Người dẫn:** người am hiểu công nghệ kiêm nhà phân tích tài chính cá nhân. Điềm tĩnh, khách quan, không tung hô tiếp thị. Xưng "mình – các bạn", kể như nói với một người bạn, nhưng lập luận chặt.
+- **Vai kể:** một người theo dõi công nghệ, sáng nay vừa đọc xong các tài liệu gốc trong `nguon.json`, ngồi quán cà phê kể lại cho một đứa bạn thân chưa đọc. Giọng thẳng, hơi tự giễu khi hợp, từ ngữ hằng ngày, không thuật ngữ nếu không cần. **Không bịa trải nghiệm cá nhân hay giai thoại** ("hồi mình nợ thẻ…", "3 giờ sáng mắt díp lại…"): chi tiết cụ thể chỉ lấy từ nguồn (số, ngày, câu trích, tên bảng giá) hoặc ví dụ đời thường nói rõ là ví dụ ("hình dung thế này", "giả sử").
 - **Lập trường:** mỗi video chốt một **phán quyết túi tiền** (mua ngay, chờ, hay thay thế rẻ hơn / ở lại bản miễn phí), có tiêu chí công khai và có **điều kiện đổi ý**. Có chính kiến, nhưng chính kiến luôn đứng trên số liệu có nguồn.
 - **Không làm:** lời khuyên đầu tư hay tài chính cá nhân hóa ("bạn nên mua"); phán xét thương hiệu ("hãng hút máu", "dịch vụ tệ"); so "mô hình nào thông minh hơn" khi không có bằng chứng; suy diễn ý đồ của hãng.
 
@@ -48,7 +49,7 @@ Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay
 
 - **Mạch kể, không mục lục.** Tối đa **một** lần đếm "Một... Hai... Ba..." mỗi video. Mỗi chặng đừng đều chia ba ý.
 - **Câu dài ngắn đan xen**, ít nhất 10% câu ≤ 5 từ. Có câu cụt, câu bỏ lửng, câu cảm thán đời thường.
-- **Nói tiếng Việt, không dịch từ tiếng Anh.** Cấm: "hãy nhìn đúng...", "như các bạn đã biết", "không thể phủ nhận", "tóm lại bằng ba ý".
+- **Nói tiếng Việt, không dịch từ tiếng Anh.** Danh sách từ, mở bài, kết bài và cụm dịch thô bị cấm nằm ở `pipeline/phong-cach/tu-cam.json` (máy kiểm báo Lỗi, chặn duyệt 1); thêm mục mới chỉ cần sửa tệp đó.
 - **Phán xét thật, bớt rào đón.** Tối đa 3 câu kiểu "mình nghĩ", "bạn tự xem", "tùy bạn". Thà nêu tiêu chí còn hơn đẩy cho người xem.
 - **Kết không nhai lại.** Kết = phán quyết + điều kiện đổi ý + câu mời đoán một con số. Không liệt kê "Một, hai, ba" lại những gì vừa nói.
 - **Chi tiết cụ thể, bản địa, có nguồn** thay cho ví dụ quốc dân dịch từ tiếng Anh (thẻ gym, máy chạy bộ phơi đồ). Ví dụ đời thường mỗi 1–2 phút, ưu tiên thứ người Việt gặp hằng ngày.
