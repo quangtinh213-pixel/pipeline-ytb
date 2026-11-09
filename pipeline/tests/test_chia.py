@@ -50,3 +50,11 @@ def test_main_writes_canh_khung(tmp_path):
     assert chia.main(str(tmp_path)) == 0
     data = json.loads((tmp_path / "canh-khung.json").read_text(encoding="utf-8"))
     assert data["scenes"][0]["start"] == 0 and "loi" in data["scenes"][0]
+
+
+def test_chia_long_silence_does_not_create_tiny_scene():
+    w = [{"w": f"a{i}", "start": i * 0.4, "end": i * 0.4 + 0.35} for i in range(20)]
+    w += [{"w": f"b{i}.", "start": 20 + i * 0.4, "end": 20 + i * 0.4 + 0.35} for i in range(20)]  # lặng 12 s ở giữa
+    sc = chia.chia({"duration": 28.0, "words": w})
+    assert min(_durs(sc)) >= 2.5 - 1e-9 and sc[0]["start"] == 0 and sc[-1]["end"] == 28.0
+    assert all(a["end"] == b["start"] for a, b in zip(sc, sc[1:]))

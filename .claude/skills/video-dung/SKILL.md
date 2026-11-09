@@ -37,8 +37,9 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 - **Nhịp con**: mỗi cảnh ghi `nhip` = các cụm từ giọng đọc nói trong cảnh, theo thứ tự bước của mẫu
   (`DEFAULT_STEPS` trong `tttc/dung.py`; `bieu-do` = một cụm cho mỗi cột + một cụm cho cột nổi bật).
   Mục tiêu: hình đổi khoảng 2 s một lần. `tttc.canh` báo lỗi nếu cụm không có trong lời đọc của cảnh.
-- **Tỉ lệ cảnh** (docs/nghien-cuu/hinh-anh-doi-thu.md): minh họa 25%, số liệu 25%, `b-roll` 20%,
-  bằng chứng (`trich-bao`, `trang-nguon`) 15%, còn lại 15%. Không 3 cảnh liền cùng nhóm.
+- **Tỉ lệ cảnh** (chuẩn kênh mẫu, docs/nghien-cuu/kenh-mau-motcongnghe-2026-11-09.md mục 4; `tttc.chat_luong` đo):
+  đồ họa tự dựng (`minh-hoa`, `quy-trinh`, `so-sanh`, `thoi-gian`, `so-lon`, `bieu-do`, `chuong`) ≥ 70%;
+  bằng chứng (`trich-bao`, `trang-nguon`) 8–18%; ảnh/video đời thật (`b-roll`, `nhan-vat`) ≤ 15%. Không 3 cảnh liền cùng mẫu.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.
@@ -73,7 +74,9 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
   chạy `uv run python svg/ve.py`. Không vẽ chữ, không logo.
 - Cảnh `nhan-vat`: `tttc.anh.search("<tên người>")` → `pick()` → `download(item, V)`; ghi `anh` = tên tệp trả về.
   `pick` trả None thì đổi cảnh đó sang `minh-hoa`.
-- `uv run python -m tttc.canh V` tới khi `0 lỗi` (cảnh báo 4–8 s được phép khi có lý do).
+- `uv run python -m tttc.canh V` tới khi `0 lỗi` (cảnh báo độ dài 2,5–6 s được phép khi có lý do).
+- `uv run python -m tttc.chat_luong V` tới khi **0 Lỗi**; đọc từng Cảnh báo (nhịp, tỉ lệ mẫu, sự kiện hình và hiệu ứng
+  âm thanh mỗi phút, tốc độ đọc) và sửa hoặc ghi lý do giữ. Chỉ sang bước render khi đạt (render tốn cả chục phút).
 
 ## 4. render
 1. `uv run python -c "from tttc import dung; dung.compose('V')"`

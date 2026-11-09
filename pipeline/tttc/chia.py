@@ -29,15 +29,15 @@ def chia(timing: dict, muc: float = 3.5, toi_thieu: float = 2.5, toi_da: float =
 
     out, i, t0 = [], 0, 0.0
     while i < len(words):
-        cand, fallback = [], i
+        cand = []
         for j in range(i, len(words)):
             dur = bien(j) - t0
             if dur > toi_da and j > i:
                 break
-            fallback = j
             if dur >= toi_thieu and (j == len(words) - 1 or total - bien(j) >= toi_thieu):
                 cand.append((_diem(words, j, dur, muc), j))
-        j = max(cand)[1] if cand else fallback
+        # chỉ có khe lặng dài làm mọi điểm ngắt vượt toi_da: chịu cảnh dài hơn còn hơn cảnh quá ngắn
+        j = max(cand)[1] if cand else next((k for k in range(i, len(words)) if bien(k) - t0 >= toi_thieu), len(words) - 1)
         out.append({"id": f"c{len(out) + 1:03}", "start": round(t0, 3), "end": round(bien(j), 3),
                     "loi": " ".join(w["w"] for w in words[i:j + 1])})
         i, t0 = j + 1, bien(j)
