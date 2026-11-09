@@ -28,6 +28,7 @@ from urllib.parse import urlparse
 
 from PIL import Image
 
+from tttc import theme
 from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
@@ -50,11 +51,8 @@ DEFAULT_STEPS = {
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 # Màu phụ theo ý nghĩa (canh.json: sac): (nhấn, bóng, bóng tối, màu chữ trên nhấn). Mặc định không ghi sac = vàng thương hiệu.
-SAC = {"xanh": ("#00D084", "#00A368", "#007A4D", "#111111"),   # tiết kiệm, miễn phí, được
-       "do": ("#FF4D4D", "#CC3333", "#9E2626", "#FFFFFF"),     # giới hạn, rủi ro, thuế, cảnh báo
-       "lam": ("#2979FF", "#1C54B2", "#143F85", "#FFFFFF"),    # AI, dữ liệu, lưu trữ
-       "tim": ("#7C4DFF", "#5C35C7", "#44279A", "#FFFFFF")}    # gói cao cấp, hệ sinh thái
-VANG = ("#FFC800", "#E0B000", "#C79C00")
+# Màu phụ lấy từ brand/theme.json (xanh: tiết kiệm, miễn phí; do: giới hạn, rủi ro, thuế; lam: AI, dữ liệu; tim: gói cao cấp).
+SAC, VANG = theme.SAC, theme.VANG
 TILE_W, TILE_H, COLS = 384, 216, 10
 
 
@@ -209,7 +207,7 @@ def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
 
 
 def _scene_file(mau: str, sid: str, video: str = "") -> str:
-    s = (TPL / f"{mau}.html").read_text(encoding="utf-8").replace("__VIDEO__", f"assets/broll/{video}")
+    s = theme.cssify((TPL / f"{mau}.html").read_text(encoding="utf-8")).replace("__VIDEO__", f"assets/broll/{video}")
     s = s.replace("/*__DONG__*/", (TPL / "dong.js").read_text(encoding="utf-8"))
     s = s.replace(f'data-composition-id="{mau}"', f'data-composition-id="{sid}"')
     s = s.replace(f'__timelines["{mau}"]', f'__timelines["{sid}"]')
@@ -332,7 +330,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     stage_close = "</div>" if vertical else ""
     cap_css = ("bottom: 420px; font-size: 64px; max-width: 980px;" if vertical
                else "bottom: 36px; font-size: 44px; max-width: 1500px;")
-    base = (TPL / "base.css").read_text(encoding="utf-8").replace("1920px", f"{w}px").replace("1080px", f"{h}px")
+    base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
+    nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
+    nen_rgb = ",".join(str(int(nen[i:i + 2], 16)) for i in (1, 3, 5))
     html = f"""<!doctype html>
 <html lang="vi">
   <head>
@@ -348,8 +348,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       .dan-phai {{ right: 70px; }} .dan-trai {{ left: 70px; }}
       .tr {{ position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }}
       .tr-p {{ position: absolute; inset: 0; }}
-      .tr-vang {{ background: #FFC800; }} .tr-muc {{ background: #111111; }} .tr-dip {{ background: #000; opacity: 0; }}
-      .cap span {{ display: inline; background: rgba(17,17,17,0.82); color: #FFFFFF; padding: 6px 16px;
+      .tr-vang {{ background: {nhan0}; }} .tr-muc {{ background: {nen}; }} .tr-dip {{ background: #000; opacity: 0; }}
+      .cap span {{ display: inline; background: rgba({nen_rgb},0.82); color: {muc}; padding: 6px 16px;
                   border-radius: 10px; font-weight: 700; line-height: 1.5; box-decoration-break: clone;
                   -webkit-box-decoration-break: clone; }}
     </style>

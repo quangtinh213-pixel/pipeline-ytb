@@ -4,18 +4,18 @@
     #root .tb-khung { position: absolute; left: 300px; right: 300px; top: 0; bottom: 70px;
                       display: flex; align-items: center; justify-content: center; }
     #root .tb-nghieng { transform: rotate(-1.6deg); width: 100%; position: relative; }
-    #root .tb-lot { position: absolute; inset: 0; background: #E9DFCB; transform: rotate(3deg) translate(26px, 18px);
+    #root .tb-lot { position: absolute; inset: 0; background: {{theme:kem.lot}}; transform: rotate(3deg) translate(26px, 18px);
                     box-shadow: 0 20px 50px rgba(0,0,0,0.35); }
-    #root .tb-giay { position: relative; background: #FBF6EC; padding: 80px 96px 104px; border-radius: 4px;
+    #root .tb-giay { position: relative; background: {{theme:kem.nen}}; padding: 80px 96px 104px; border-radius: 4px;
                      box-shadow: 0 30px 70px rgba(0,0,0,0.45); }
     #root .tb-bang { position: absolute; left: 50%; top: -26px; width: 220px; height: 52px; margin-left: -110px;
                      background: rgba(255,200,0,0.82); transform: rotate(2deg); }
     #root .tb-dau { display: flex; justify-content: space-between; align-items: baseline;
-                    border-bottom: 3px solid #111; padding-bottom: 18px; margin-bottom: 34px; }
-    #root .tb-bao { font: 900 34px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: #111; }
-    #root .tb-ngay { font: 600 28px/1 var(--font-display); color: #5C5548; }
-    #root .tb-tieu-de { font: 800 82px/1.2 var(--font-display); color: #111; letter-spacing: -0.015em; }
-    #root .tb-to { background-image: linear-gradient(#FFC800, #FFC800); background-repeat: no-repeat;
+                    border-bottom: 3px solid {{theme:kem.muc}}; padding-bottom: 18px; margin-bottom: 34px; }
+    #root .tb-bao { font: 900 34px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: {{theme:kem.muc}}; }
+    #root .tb-ngay { font: 600 28px/1 var(--font-display); color: {{theme:kem.muted}}; }
+    #root .tb-tieu-de { font: 800 82px/1.2 var(--font-display); color: {{theme:kem.muc}}; letter-spacing: -0.015em; }
+    #root .tb-to { background-image: linear-gradient({{theme:nhan.0}}, {{theme:nhan.0}}); background-repeat: no-repeat;
                    background-position: 0 88%; background-size: 0% 46%; padding: 0 4px; }
   </style>
   <div id="root" data-composition-id="trich-bao" data-width="1920" data-height="1080"

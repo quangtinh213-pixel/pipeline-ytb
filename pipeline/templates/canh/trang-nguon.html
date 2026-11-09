@@ -5,7 +5,7 @@
     #root .tn-trinh-duyet { position: absolute; left: 200px; top: 120px; width: 1520px; height: 880px;
                             border-radius: 18px; overflow: hidden; background: #fff;
                             box-shadow: 0 40px 90px rgba(0,0,0,0.45); }
-    #root .tn-thanh { position: absolute; left: 0; right: 0; top: 0; height: 60px; background: #2A2A2A;
+    #root .tn-thanh { position: absolute; left: 0; right: 0; top: 0; height: 60px; background: {{theme:duong}};
                       display: flex; align-items: center; gap: 12px; padding: 0 22px; }
     #root .tn-cham { width: 16px; height: 16px; border-radius: 50%; background: #555; }
     #root .tn-url { margin-left: 18px; flex: 1; height: 36px; border-radius: 18px; background: #1A1A1A; color: #CFCFCF;
@@ -14,7 +14,7 @@
     #root .tn-trang img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
                           object-position: top center; }
     #root .tn-toi { position: absolute; inset: 0; background: rgba(17,17,17,0.55); }
-    #root .tn-khung { position: absolute; border: 8px solid #FFC800; border-radius: 12px; }
+    #root .tn-khung { position: absolute; border: 8px solid {{theme:nhan.0}}; border-radius: 12px; }
   </style>
   <div id="root" data-composition-id="trang-nguon" data-width="1920" data-height="1080"
        data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp trang","default":"assets/svg/tai-lieu.svg"},{"id":"khung","type":"string","label":"Vùng tô x,y,w,h (% vùng trang)","default":"10,10,40,15"},{"id":"url","type":"string","label":"Địa chỉ trang","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>

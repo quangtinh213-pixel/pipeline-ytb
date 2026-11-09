@@ -131,3 +131,10 @@ def test_review_1_embeds_listening_sample_when_present(tmp_path):
     d = _video(tmp_path)
     (d / "nghe-thu.mp3").write_bytes(b"x")
     assert '<audio controls src="nghe-thu.mp3"' in duyet.render_review_1(d).read_text(encoding="utf-8")
+
+
+def test_review_page_takes_colours_from_theme(tmp_path, monkeypatch):
+    from tttc import theme
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "nen": "#0A0B0C", "nhan": ["#00AAFF", "#0088CC", "#006699"]})
+    html = duyet.render_review_1(_video(tmp_path)).read_text(encoding="utf-8")
+    assert "--bg:#0A0B0C" in html and "--accent:#00AAFF" in html and "#FFC800" not in html

@@ -5,7 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
-from tttc import chat_luong, phong_cach, trang_thai
+from tttc import chat_luong, phong_cach, theme, trang_thai
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -46,7 +46,7 @@ def _script_html(md: str) -> str:
 
 def _page(video_dir: Path, name: str, title: str, meta: str, body: str) -> Path:
     out = video_dir / name
-    out.write_text(Template(TEMPLATE.read_text(encoding="utf-8")).substitute(
+    out.write_text(Template(theme.cssify(TEMPLATE.read_text(encoding="utf-8"))).substitute(
         title=escape(title), meta=escape(meta), body=body), encoding="utf-8")
     return out
 

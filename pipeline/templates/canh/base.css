@@ -1,13 +1,13 @@
 /* Dùng chung cho mọi mẫu cảnh; compose chép vào thẻ style của index.html. */
 :root {
-  --ground: #111111;
-  --ink: #FFFFFF;
-  --accent: #FFC800;
-  --accent-ink: #111111;
-  --muted: #BDBDBD;
-  --line: #2A2A2A;
-  --bar: #4A4A4A;
-  --font-display: "Inter", sans-serif;
+  --ground: {{theme:nen}};
+  --ink: {{theme:muc}};
+  --accent: {{theme:nhan.0}};
+  --accent-ink: {{theme:chu_tren_nhan}};
+  --muted: {{theme:muted}};
+  --line: {{theme:duong}};
+  --bar: {{theme:thanh}};
+  --font-display: "{{theme:font}}", sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); }
@@ -16,12 +16,12 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 
 /* Ba nền xen kẽ; đặt lớp nen-* lên khung sân khấu của từng cảnh, màu chữ đổi theo biến. */
 .san { position: absolute; inset: 0; overflow: hidden; }
-.nen-toi { --tren-muc: #111111; --ink: #FFFFFF; --muted: #BDBDBD; --line: #2A2A2A; --bar: #4A4A4A; --accent-ink: #111111;
-           background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) var(--tint, 0%), #1F1F1F) 0%, #111111 70%); }
-.nen-kem { --tren-muc: #FBF6EC; --ink: #111111; --muted: #5C5548; --line: #D9CFBC; --bar: #BDB3A0; --accent-ink: #111111;
-           background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.5), #FBF6EC) 0%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.7), #EFE6D3) 75%); }
-.nen-vang { --tren-muc: #FFC800; --ink: #111111; --muted: #4A3A00; --line: #E0B000; --bar: #C79C00; --accent: #111111;
-            --accent-ink: #FFC800; background: #FFC800; }
+.nen-toi { --tren-muc: {{theme:nen}}; --ink: {{theme:muc}}; --muted: {{theme:muted}}; --line: {{theme:duong}}; --bar: {{theme:thanh}}; --accent-ink: {{theme:chu_tren_nhan}};
+           background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) var(--tint, 0%), {{theme:nen_sang}}) 0%, {{theme:nen}} 70%); }
+.nen-kem { --tren-muc: {{theme:kem.nen}}; --ink: {{theme:kem.muc}}; --muted: {{theme:kem.muted}}; --line: {{theme:kem.duong}}; --bar: {{theme:kem.thanh}}; --accent-ink: {{theme:chu_tren_nhan}};
+           background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.5), {{theme:kem.nen}}) 0%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.7), {{theme:kem.nen_2}}) 75%); }
+.nen-vang { --tren-muc: {{theme:nhan.0}}; --ink: {{theme:chu_tren_nhan}}; --muted: {{theme:vang_nen.muted}}; --line: {{theme:nhan.1}}; --bar: {{theme:nhan.2}}; --accent: {{theme:chu_tren_nhan}};
+            --accent-ink: {{theme:nhan.0}}; background: {{theme:nhan.0}}; }
 .nen-toi::before, .nen-kem::before, .nen-vang::before {
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(circle, rgba(127,127,127,0.16) 2px, transparent 2.5px);

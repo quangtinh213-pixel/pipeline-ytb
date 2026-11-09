@@ -121,3 +121,17 @@ def test_tu_tinh_requires_label_phrase():
 def test_tu_tinh_value_still_matched():
     errs = check("Đã 16 năm, mình tự tính. [#t1]", NGUON + [TT])
     assert len(errs) == 1 and "không khớp" in errs[0]
+
+
+def test_tu_tinh_accepts_channel_wording():
+    for phrase in ("mình chia ra", "mình nhân ra", "ước tính độc lập của kênh"):
+        assert check(f"Đã 15 năm, {phrase}. [#t1]", NGUON + [TT]) == [], phrase
+
+
+def test_tu_tinh_label_may_sit_in_previous_sentence_of_same_paragraph():
+    ok = "Mình nhân ra thế này. Đã 15 năm. [#t1]"
+    assert check(ok, NGUON + [TT]) == []
+    far = "Mình nhân ra thế này.\nĐã 15 năm. [#t1]"  # đoạn khác thì không tính
+    assert any("tự tính" in e for e in check(far, NGUON + [TT]))
+    none = "Đã rất lâu rồi. Đã 15 năm. [#t1]"
+    assert any("tự tính" in e for e in check(none, NGUON + [TT]))

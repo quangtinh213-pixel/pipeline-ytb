@@ -388,3 +388,12 @@ def test_compose_vertical_has_no_mascot(video):
     out = dung.compose(_video_with_dan(video), w=1080, h=1920, scene_range=(1, 3), out="short")
     assert "dan-" not in (out / "index.html").read_text(encoding="utf-8").replace("dan-phai", "").replace("dan-trai", "")
     assert 'class="clip dan' not in (out / "index.html").read_text(encoding="utf-8")
+
+
+def test_compose_takes_colours_from_theme(video, monkeypatch):
+    from tttc import theme
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "nhan": ["#00AAFF", "#0088CC", "#006699"], "nen": "#0A0B0C"})
+    out = dung.compose(video)
+    pages = [out / "index.html", *sorted((out / "compositions").glob("*.html"))]
+    text = "".join(p.read_text(encoding="utf-8") for p in pages)
+    assert "#00AAFF" in text and "#0A0B0C" in text and "#FFC800" not in text  # mực/kem giữ #111111 vì theme thử không đổi chúng

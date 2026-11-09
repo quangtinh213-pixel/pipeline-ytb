@@ -44,6 +44,25 @@ def test_download_writes_file_and_credit(tmp_path):
     assert cred[0]["ghi_cong"] == "Video: Chi trên Pexels" and cred[0]["tep"] == "pexels-303.mp4"
 
 
+def test_download_interrupted_leaves_no_partial_file(tmp_path, monkeypatch):
+    import pytest
+    item = {"id": 303, "link": "https://videos.example/303.mp4", "tac_gia": "Chi", "trang": "https://pexels.com/303"}
+    orig = Path.write_bytes
+
+    def mat_giua_chung(self, data):  # ghi được một phần rồi mất kết nối
+        orig(self, data[:2])
+        raise OSError("mất kết nối giữa chừng")
+
+    monkeypatch.setattr(Path, "write_bytes", mat_giua_chung)
+    with pytest.raises(OSError):
+        broll.download(item, tmp_path, get=lambda *a, **k: Resp(content=b"mp4data"))
+    assert not (tmp_path / "broll" / "pexels-303.mp4").exists()  # không có tệp cắt cụt bị coi là đã tải
+
+    monkeypatch.setattr(Path, "write_bytes", orig)
+    p = broll.download(item, tmp_path, get=lambda *a, **k: Resp(content=b"mp4data"))
+    assert p.read_bytes() == b"mp4data"
+
+
 # ---- B-roll thủ công: kho dùng chung + nhập vào video ----
 import subprocess
 
