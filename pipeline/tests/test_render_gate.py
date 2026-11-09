@@ -8,7 +8,7 @@ import pytest
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "render.sh"
 FAKE_NPX = """#!/usr/bin/env bash
 if [ "$2" = "check" ]; then printf '%b' "$FAKE_CHECK"; exit "$FAKE_RC"; fi
-echo render >> "$FAKE_LOG"; exit 0
+echo "render $*" >> "$FAKE_LOG"; exit 0
 """
 
 
@@ -23,13 +23,14 @@ def run_render(tmp_path):
     comp = tmp_path / "comp"
     comp.mkdir()
 
-    def run(check_out: str, rc: int):
-        env = dict(os.environ, PATH=f"{bin_dir}:{os.environ['PATH']}", FAKE_CHECK=check_out,
-                   FAKE_RC=str(rc), FAKE_LOG=str(log))
+    def run(check_out: str, rc: int, extra_env: dict | None = None):
+        env = {**os.environ, "PATH": f"{bin_dir}:{os.environ['PATH']}", "FAKE_CHECK": check_out, "FAKE_RC": str(rc),
+               "FAKE_LOG": str(log), "HF_RENDER_ARGS": "", **(extra_env or {})}
         r = subprocess.run(["bash", str(SCRIPT), str(comp), str(tmp_path / "out" / "v.mp4")],
                            env=env, capture_output=True, text=True)
         rendered = log.exists() and "render" in log.read_text(encoding="utf-8")
         return r.returncode, rendered
+    run.log = lambda: log.read_text(encoding="utf-8") if log.exists() else ""
     return run
 
 
@@ -56,3 +57,13 @@ def test_stops_when_check_crashes_silently(run_render):
 def test_stops_on_nonzero_exit_even_with_pass_line(run_render):
     code, rendered = run_render("◇  Check passed\\n", 2)
     assert code != 0 and not rendered
+
+
+def test_render_args_env_is_passed_to_hyperframes(run_render):
+    code, rendered = run_render("◇  Check passed\\n", 0, {"HF_RENDER_ARGS": "--video-bitrate 8M --max-bitrate 12M"})
+    assert code == 0 and rendered and "--video-bitrate 8M --max-bitrate 12M" in run_render.log()
+
+
+def test_empty_render_args_keep_the_old_command(run_render):
+    code, _ = run_render("◇  Check passed\\n", 0)
+    assert code == 0 and "--video-bitrate" not in run_render.log() and "--quality delivery" in run_render.log()

@@ -19,6 +19,7 @@ Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi th
 import json
 import re
 import shutil
+import sys
 import subprocess
 import tempfile
 from datetime import date
@@ -28,7 +29,7 @@ from urllib.parse import urlparse
 
 from PIL import Image
 
-from tttc import theme
+from tttc import grain, theme
 from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
@@ -54,6 +55,20 @@ GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 # Màu phụ lấy từ brand/theme.json (xanh: tiết kiệm, miễn phí; do: giới hạn, rủi ro, thuế; lam: AI, dữ liệu; tim: gói cao cấp).
 SAC, VANG = theme.SAC, theme.VANG
 TILE_W, TILE_H, COLS = 384, 216, 10
+
+
+def _render_cfg() -> dict:
+    return _read_json(CONFIG, {}).get("render", {})
+
+
+def render_args(cfg: dict | None = None) -> list[str]:
+    """Tham số `hyperframes render` từ config.json:render (bitrate, max_bitrate, keyframe); khóa không đặt thì bỏ."""
+    cfg = _render_cfg() if cfg is None else cfg
+    out = []
+    for key, flag in (("bitrate", "--video-bitrate"), ("max_bitrate", "--max-bitrate"), ("keyframe", "--keyframe-interval")):
+        if cfg.get(key):
+            out += [flag, str(cfg[key])]
+    return out
 
 
 def _read_json(p: Path, default):
@@ -252,6 +267,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     else:
         shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
     shutil.copytree(SFX, o / "assets" / "sfx")
+    do_grain = float(_render_cfg().get("grain") or 0)
+    if do_grain > 0:  # hạt nhiễu mịn chống banding: PNG xám phủ overlay với độ mờ thấp
+        grain.tao_grain(o / "assets" / "grain.png")
 
     hosts = []
     sfx = []
@@ -332,6 +350,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                else "bottom: 36px; font-size: 44px; max-width: 1500px;")
     base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
     nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
+    grain_css = (f"\n      #root::after {{ content: ''; position: absolute; inset: 0; background: url(assets/grain.png); "
+                 f"opacity: {do_grain}; mix-blend-mode: overlay; pointer-events: none; z-index: 9; }}"
+                 if do_grain > 0 else "")
     nen_rgb = ",".join(str(int(nen[i:i + 2], 16)) for i in (1, 3, 5))
     html = f"""<!doctype html>
 <html lang="vi">
@@ -351,7 +372,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       .tr-vang {{ background: {nhan0}; }} .tr-muc {{ background: {nen}; }} .tr-dip {{ background: #000; opacity: 0; }}
       .cap span {{ display: inline; background: rgba({nen_rgb},0.82); color: {muc}; padding: 6px 16px;
                   border-radius: 10px; font-weight: 700; line-height: 1.5; box-decoration-break: clone;
-                  -webkit-box-decoration-break: clone; }}
+                  -webkit-box-decoration-break: clone; }}{grain_css}
     </style>
   </head>
   <body>
@@ -407,3 +428,7 @@ def contact_sheet(video_mp4, scenes: dict, out_png) -> Path:
     out.parent.mkdir(parents=True, exist_ok=True)
     sheet.save(out)
     return out
+
+
+if __name__ == "__main__" and sys.argv[1:] == ["render-args"]:
+    print(" ".join(render_args()))

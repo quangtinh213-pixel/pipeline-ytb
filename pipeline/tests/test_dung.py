@@ -407,3 +407,19 @@ def test_compose_does_not_copy_generated_contact_sheet(video, tmp_path, monkeypa
     monkeypatch.setattr(dung, "SVG", svg)
     out = dung.compose(video)
     assert not (out / "assets" / "svg" / "thu-vien.png").exists() and (out / "assets" / "svg" / "chip.svg").exists()
+
+
+def test_render_args_only_includes_set_keys():
+    assert dung.render_args({"bitrate": "8M", "max_bitrate": "12M", "keyframe": 2, "grain": 0}) == \
+        ["--video-bitrate", "8M", "--max-bitrate", "12M", "--keyframe-interval", "2"]
+    assert dung.render_args({}) == [] and dung.render_args({"bitrate": "8M"}) == ["--video-bitrate", "8M"]
+
+
+def test_compose_adds_grain_overlay_only_when_enabled(video, monkeypatch):
+    monkeypatch.setattr(dung, "_render_cfg", lambda: {"grain": 0.02})
+    out = dung.compose(video)
+    assert (out / "assets" / "grain.png").exists()
+    assert "assets/grain.png" in (out / "index.html").read_text(encoding="utf-8")
+    monkeypatch.setattr(dung, "_render_cfg", lambda: {})
+    out = dung.compose(video)
+    assert not (out / "assets" / "grain.png").exists() and "grain" not in (out / "index.html").read_text(encoding="utf-8")
