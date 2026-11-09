@@ -1,4 +1,6 @@
 import json
+from datetime import datetime, timedelta, timezone
+
 import pytest
 from tttc import trang_thai as tt
 
@@ -83,3 +85,45 @@ def test_old_video_past_review_1_is_not_pushed_back(tmp_path):
 def test_old_video_before_review_1_still_needs_voice_review(tmp_path):
     _old(tmp_path)
     assert tt.next_step(tmp_path) == "phan-bien-giong"
+
+
+VN = timezone(timedelta(hours=7))
+
+
+def at(h, m=0):
+    return datetime(2026, 11, 10, h, m, tzinfo=VN)
+
+
+def test_set_step_records_start_and_end(tmp_path):
+    tt.set_step(tmp_path, "giong", "dang-chay", now=at(11, 0))
+    tt.set_step(tmp_path, "giong", "xong", "ok", now=at(11, 12))
+    s = tt.load(tmp_path)["steps"]["giong"]
+    assert (s["status"], s["note"]) == ("xong", "ok")
+    assert s["bat_dau"] == at(11, 0).isoformat() and s["ket_thuc"] == at(11, 12).isoformat()
+
+
+def test_gio_reports_seconds_per_step_and_total(tmp_path):
+    tt.set_step(tmp_path, "chu-de", "dang-chay", now=at(6, 30))
+    tt.set_step(tmp_path, "chu-de", "xong", now=at(6, 45))
+    tt.set_step(tmp_path, "duyet-2", "dang-chay", now=at(14, 0))
+    tt.set_step(tmp_path, "duyet-2", "da-duyet", now=at(14, 20))
+    g = tt.gio(tmp_path)
+    assert g["buoc"]["chu-de"] == 900 and g["buoc"]["duyet-2"] == 1200 and g["tong"] == 28200
+
+
+def test_gio_total_is_none_without_both_ends(tmp_path):
+    tt.set_step(tmp_path, "chu-de", "xong", now=at(6, 45))
+    assert tt.gio(tmp_path)["tong"] is None
+
+
+def test_running_step_is_still_pending(tmp_path):
+    for s in ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem"]:
+        tt.set_step(tmp_path, s, "xong")
+    tt.set_step(tmp_path, "duyet-1", "da-duyet")
+    tt.set_step(tmp_path, "giong", "dang-chay")
+    assert tt.next_step(tmp_path) == "giong"
+
+
+def test_old_video_without_timestamps_still_loads(tmp_path):
+    (tmp_path / "trang-thai.json").write_text(json.dumps({"steps": {"chu-de": {"status": "xong", "note": ""}}}), encoding="utf-8")
+    assert tt.gio(tmp_path) == {"buoc": {}, "tong": None}
