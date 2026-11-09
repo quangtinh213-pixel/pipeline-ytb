@@ -157,3 +157,36 @@ def test_spoken_paragraphs_keep_tags():
     md = "#### Beat 1\n**Lời đọc:**\nGói Plus giá năm trăm nghìn. [#p1] Rồi sao?\n"
     assert tts.spoken_paragraphs(md) == ["Gói Plus giá năm trăm nghìn. Rồi sao?"]
     assert tts.spoken_paragraphs(md, keep_tags=True) == ["Gói Plus giá năm trăm nghìn. [#p1] Rồi sao?"]
+
+
+def _recording_post(silent_mp3, seen):
+    def post(url, headers, json, timeout):
+        seen.append((url, json))
+        return Resp(200, {"audio_base64": silent_mp3, "alignment": _alignment("x")})
+    return post
+
+
+def test_call_sends_voice_settings_when_configured(silent_mp3):
+    seen = []
+    cfg = dict(CFG, stability=0.4, similarity_boost=0.8, style=0.2)
+    tts._call(_recording_post(silent_mp3, seen), "k", cfg, "xin chào", "", "")
+    assert seen[0][1]["voice_settings"] == {"speed": 1.0, "stability": 0.4, "similarity_boost": 0.8, "style": 0.2}
+    seen.clear()
+    tts._call(_recording_post(silent_mp3, seen), "k", CFG, "xin chào", "", "")
+    assert seen[0][1]["voice_settings"] == {"speed": 1.0}
+
+
+def test_seg_name_changes_with_stability():
+    base = tts.seg_name(0, "xin chào", CFG)
+    assert tts.seg_name(0, "xin chào", dict(CFG, stability=0.4)) != base
+    assert tts.seg_name(0, "xin chào", dict(CFG, stability=0.5)) != tts.seg_name(0, "xin chào", dict(CFG, stability=0.4))
+    assert base == "doan-000-" + __import__("hashlib").sha1(
+        "xin chào|v1|eleven_multilingual_v2|1.0".encode()).hexdigest()[:8]  # đoạn đã tổng hợp trước đây vẫn dùng lại được
+
+
+def test_audition_writes_one_file_per_voice(tmp_path, silent_mp3):
+    seen = []
+    files = tts.audition("Thử giọng.", ["vA", "vB"], tmp_path / "thu", post=_recording_post(silent_mp3, seen),
+                         key="k", cfg=CFG)
+    assert [f.name for f in files] == ["vA.mp3", "vB.mp3"] and all(f.stat().st_size > 0 for f in files)
+    assert [u.split("/text-to-speech/")[1].split("/")[0] for u, _ in seen] == ["vA", "vB"]
