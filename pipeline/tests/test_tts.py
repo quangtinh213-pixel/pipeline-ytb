@@ -190,3 +190,8 @@ def test_audition_writes_one_file_per_voice(tmp_path, silent_mp3):
                          key="k", cfg=CFG)
     assert [f.name for f in files] == ["vA.mp3", "vB.mp3"] and all(f.stat().st_size > 0 for f in files)
     assert [u.split("/text-to-speech/")[1].split("/")[0] for u, _ in seen] == ["vA", "vB"]
+
+
+def test_spoken_paragraphs_ignores_horizontal_rules():
+    md = "#### Beat 1\n**Lời đọc:**\nXin chào.\n\n---\n\n#### Beat 2\n**Lời đọc:**\nTạm biệt.\n***\n"
+    assert tts.spoken_paragraphs(md) == ["Xin chào.", "Tạm biệt."]

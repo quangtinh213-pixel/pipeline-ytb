@@ -18,6 +18,17 @@ Mỗi bước: `set_step(V, <bước>, "xong")`; lỗi thì `set_step(V, <bướ
 ## 1. giong
 `uv run python -m tttc.tts V` (khoá ElevenLabs trong Keychain). Đoạn đã có thì không gọi lại (không mất tiền).
 
+**Giọng VieNeu-TTS chạy trong máy** (không tốn tiền, không cần khoá; cần `~/Documents/VieNeu-TTS` đã cài): thay cho `tttc.tts`:
+
+    uv run python -m tttc.giong_vieneu nghe-thu <thư mục> "Hải Đăng" "Thiện Minh"   # nghe thử giọng, một lần
+    uv run python -m tttc.giong_vieneu V                                              # tạo giong.mp3 + giong-timing.json
+
+Cấu hình trong `config.json:vieneu` (tuỳ chọn): `voice` (mặc định "Hải Đăng"), `pause_cau` (0,25 s), `pause_doan` (0,5 s),
+`python` (mặc định python của VieNeu-TTS), `phat_am` = `{"ChatGPT": "chát gi pi ti"}` đổi chữ **chỉ để gửi cho giọng đọc**
+khi đọc sai tên tiếng Anh (mốc từ vẫn theo chữ kịch bản). Mỗi câu một tệp wav trong `V/giong-vieneu/`, tên theo nội dung +
+giọng nên sửa câu nào chỉ làm lại câu đó; mốc từ chỉ sai trong phạm vi một câu, đã cắt lặng đầu/cuối câu. Tốc độ khoảng 0,7–1,2×
+thời lượng giọng trên máy i9 (video 12 phút mất 10–15 phút). Số trong lời đọc phải viết thành chữ như mọi giọng khác.
+
 **Giọng làm thủ công** (thu âm, ElevenLabs web, TTS khác – không dùng API): người dùng đưa một hoặc nhiều tệp tiếng, đúng thứ
 tự kịch bản, đọc đúng chữ trong `Lời đọc` (số viết thành chữ). Thay cho `tttc.tts`:
 

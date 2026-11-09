@@ -16,7 +16,7 @@ NHOM = {
 MUC_TIEU = {
     "tb_giay": (2.8, 4.5), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_min": 0.70,
     "bang_chung": (0.08, 0.18), "doi_that_max": 0.15, "chay_max": 2,
-    "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (130, 160),
+    "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 230)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
 EMPTY = "Lỗi: canh.json không có cảnh nào"
 

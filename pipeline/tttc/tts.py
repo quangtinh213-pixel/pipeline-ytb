@@ -31,6 +31,9 @@ def spoken_paragraphs(script_md: str, keep_tags: bool = False) -> list[str]:
     paras, on = [], False
     for line in _nfc(script_md).splitlines():
         s = line.strip()
+        if re.fullmatch(r"[-*_]{3,}", s):  # đường kẻ ngang giữa các beat không phải lời đọc
+            on = False
+            continue
         m = SPOKEN.search(s)
         if m:
             on, s = True, s[m.end():]

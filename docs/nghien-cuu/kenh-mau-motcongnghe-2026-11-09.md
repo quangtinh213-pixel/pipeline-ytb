@@ -15,7 +15,7 @@ Nguồn: vidIQ (số kênh/video đến 08/11), phụ đề tự động của v
 - Xưng "mình", ví dụ đời thường mỗi ~1–2 phút (ổ khoá; viết sách rồi mang đi in; chip 15 năm = "đứa bé sinh năm ấy giờ vào lớp 10"; sân bóng và hạt gạo), tự hỏi tự đáp, mời người xem đoán.
 - Khoảng 30+ con số; mỗi số nói rõ nguồn ngay trong lời ("theo Reuters", "TrendForce kể ra"). Số tự suy ra được gắn nhãn: "phép tính này là mình tự ướm, không phải dự báo của ai".
 - Kết: trả lời lại câu hỏi tiêu đề bằng "2 cái thước", rồi mời bình luận một con số dự đoán.
-- Tốc độ đọc ước lượng 140–150 từ/phút.
+- Tốc độ đọc: bản ước lượng 140–150 từ/phút của công cụ vidIQ **sai**. Đo trên hai đoạn phụ đề thật (19 s và 17 s): 196 và 222 từ/phút (từ = âm tiết, vì tiếng Việt viết cách chữ theo âm tiết). Video 12 phút ≈ 2.300–2.600 từ.
 
 **Hình/tiếng (ước lượng của công cụ):**
 - ~75% minh họa isometric có chuyển động liên tục; ~10% ảnh chụp báo có khung nổi bật; ~8% thẻ số lớn; ~5% ảnh thật; ~2% biểu đồ thời gian (so nhịp Việt Nam, Singapore, Ấn Độ).
@@ -39,7 +39,7 @@ Cả 3 cùng khuôn: chia đôi khung bằng đường răng cưa; trái là m�
 | Ảnh/video đời thật (b-roll, nhan-vat) | ~5% | ≤ 15% |
 | Sự kiện hình mỗi phút (cảnh + bước nhịp + lần nhân vật xuất hiện) | đổi ~2 s | ≥ 30 |
 | Hiệu ứng âm thanh mỗi phút | dày | ≥ 15 |
-| Tốc độ đọc | 140–150 từ/phút | 130–160 |
+| Tốc độ đọc | ~200 từ/phút (đo 196–222) | 180–230 |
 | Nhạc nền | có, hạ khi nói | có, hạ ≥ 6 dB khi có giọng |
 | Mở đầu 90 từ đầu | sự kiện + số + câu hỏi | có số và có dấu "?" |
 | Cuối video | câu hỏi bình luận | 60 từ cuối có "?" |

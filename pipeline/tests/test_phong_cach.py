@@ -11,7 +11,7 @@ def _filler(n: int) -> str:
     return " ".join(["từ"] * (n - 1) + ["xong."])
 
 
-def _long(head="", tail="", n=1700):
+def _long(head="", tail="", n=2300):
     body = _filler(n - len(head.split()) - len(tail.split()))
     return _script(head + body + " " + tail)
 
@@ -34,8 +34,8 @@ def test_closing_needs_question():
 
 def test_length_window():
     assert len(_w(phong_cach.kiem(_long(head=OK_HEAD, n=900)), "lời đọc")) == 1
-    assert len(_w(phong_cach.kiem(_long(head=OK_HEAD, n=2200)), "lời đọc")) == 1
-    assert _w(phong_cach.kiem(_long(head=OK_HEAD, n=1700)), "lời đọc") == []
+    assert len(_w(phong_cach.kiem(_long(head=OK_HEAD, n=3200)), "lời đọc")) == 1
+    assert _w(phong_cach.kiem(_long(head=OK_HEAD, n=2300)), "lời đọc") == []
 
 
 def test_no_spoken_paragraphs_is_silent():

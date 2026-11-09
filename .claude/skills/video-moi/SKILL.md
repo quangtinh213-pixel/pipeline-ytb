@@ -57,7 +57,7 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
   - Câu nào có số (cả trên màn hình lẫn lời đọc) gắn `[#id]` ngay sau dấu chấm câu.
   - Trong **lời đọc**, số viết thành chữ để TTS đọc đúng ("năm trăm hai mươi hai nghìn năm trăm đồng"); trên màn hình giữ chữ số.
   - Số từ nguồn `so-bo` phải có chữ "sơ bộ" hoặc "chưa chính thức" trong câu.
-  - 10–13 phút ≈ 1.500–1.900 từ lời đọc.
+  - 10–13 phút ≈ 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm tiết; `tttc.phong_cach` kiểm).
 
 ## 4. kiem
 

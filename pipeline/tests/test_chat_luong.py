@@ -55,9 +55,9 @@ def test_kiem_warns_on_slow_pace():
 
 
 def test_kiem_passes_channel_like_profile():
-    m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 170))
+    m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
     assert cl.kiem(m) == []
-    assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 130 <= m["toc_do"] <= 160
+    assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 180 <= m["toc_do"] <= 230
 
 
 def test_main_exit_code_follows_errors(tmp_path):
@@ -66,5 +66,5 @@ def test_main_exit_code_follows_errors(tmp_path):
     (tmp_path / "giong-timing.json").write_text(json.dumps(_timing(68.5, 166)), encoding="utf-8")
     assert cl.main(str(tmp_path)) == 1
     (tmp_path / "canh.json").write_text(json.dumps(_canh(PROFILE, [3.5] * 20)), encoding="utf-8")
-    (tmp_path / "giong-timing.json").write_text(json.dumps(_timing(70, 170)), encoding="utf-8")
+    (tmp_path / "giong-timing.json").write_text(json.dumps(_timing(70, 234)), encoding="utf-8")
     assert cl.main(str(tmp_path)) == 0

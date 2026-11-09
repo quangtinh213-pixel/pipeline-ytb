@@ -1,7 +1,7 @@
 """Kiểm phong cách kịch bản theo kênh mẫu (docs/phong-cach-kich-ban.md). Chỉ trả cảnh báo, không chặn."""
 from tttc import tts
 
-HEAD, TAIL, MIN_TU, MAX_TU = 90, 60, 1500, 1900
+HEAD, TAIL, MIN_TU, MAX_TU = 90, 60, 2000, 2600  # 10–13 phút ở ~200 từ/phút
 
 
 def _split(script_md: str) -> tuple[list[str], list[str]]:
