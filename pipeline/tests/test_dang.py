@@ -19,11 +19,15 @@ GOI = {
 }
 
 
+RETRIES_SEEN = []  # num_retries của mỗi lệnh execute, để kiểm tra có thử lại khi lỗi mạng
+
+
 class FakeReq:
     def __init__(self, log, name, kw, result):
         self.log, self.name, self.kw, self.result = log, name, kw, result
 
-    def execute(self):
+    def execute(self, num_retries=0):
+        RETRIES_SEEN.append(num_retries)
         self.log.append((self.name, self.kw))
         return self.result
 
@@ -192,3 +196,10 @@ def test_upload_retry_does_not_duplicate_caption(video, tmp_path):
     dang.upload(video, "13/11/2099", "19:00", youtube=yt, tracker=tmp_path / "t.csv", playlist_id="PL1")
     assert [n for n, _ in yt.log].count("captions.insert") == 1
     assert [n for n, _ in yt.log].count("playlistItems.insert") == 1
+
+
+def test_upload_retries_transient_errors(video, tmp_path):
+    _approve(video)
+    RETRIES_SEEN.clear()
+    dang.upload(video, "13/11/2099", "19:00", youtube=FakeYT(), tracker=tmp_path / "t.csv", playlist_id="PL1")
+    assert RETRIES_SEEN and all(n == dang.RETRIES and n >= 1 for n in RETRIES_SEEN)
