@@ -23,7 +23,7 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 4. **Xác nhận với người dùng trước khi upload** (một câu): tiêu đề đã chọn, ngày giờ đăng (giờ Việt Nam),
    số Shorts và giờ từng Short. Đợi "ok".
 5. `uv run python -m tttc.dang ../videos/<slug> <dd/mm/yyyy> <HH:MM>` → in video id.
-6. Từng Short: `uv run python -m tttc.dang short ../videos/<slug> <i>` (giờ lấy từ `dong-goi.json:shorts[i]`).
+6. Shorts đăng **sau** video dài: buổi tối dựng Shorts (`video-dung` mục 7, thêm vào `dong-goi.json:shorts`), sáng hôm sau đăng từng Short: `uv run python -m tttc.dang short ../videos/<slug> <i>` (giờ lấy từ `dong-goi.json:shorts[i]`).
 7. Báo link YouTube Studio: `https://studio.youtube.com/video/<id>/edit` cho mỗi video; nhắc người dùng mở
    kiểm thumbnail, phụ đề, giờ hẹn, nhãn "nội dung thay đổi/tổng hợp".
 

@@ -6,7 +6,7 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 STEPS = ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem", "duyet-1", "giong", "canh", "hinh",
-         "render", "shorts", "dong-goi", "duyet-2", "dang"]
+         "render", "dong-goi", "duyet-2", "dang", "shorts"]  # shorts dựng sau khi đăng video dài, không nằm trên đường găng
 STATUSES = {"chua-chay", "dang-chay", "xong", "loi", "cho-duyet", "da-duyet"}
 KET_THUC = {"xong", "da-duyet", "cho-duyet", "loi"}  # trạng thái ghi giờ kết thúc
 VN = timezone(timedelta(hours=7))
@@ -74,6 +74,19 @@ def next_step(video_dir):
         if st not in ("xong", "da-duyet"):
             return s
     return None
+
+
+def kho(videos_root) -> list[Path]:
+    """Kho dự trữ: video evergreen đã qua duyệt 2 nhưng chưa đăng, sắp theo tên thư mục."""
+    out = []
+    for d in sorted(Path(videos_root).iterdir()):
+        if not (d / FILE).exists():
+            continue
+        data = load(d)
+        if (data.get("loai") == "evergreen" and data["steps"]["duyet-2"]["status"] == "da-duyet"
+                and data["steps"]["dang"]["status"] != "xong"):
+            out.append(d)
+    return out
 
 
 def is_approved(video_dir) -> bool:

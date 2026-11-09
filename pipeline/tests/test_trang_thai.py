@@ -127,3 +127,31 @@ def test_running_step_is_still_pending(tmp_path):
 def test_old_video_without_timestamps_still_loads(tmp_path):
     (tmp_path / "trang-thai.json").write_text(json.dumps({"steps": {"chu-de": {"status": "xong", "note": ""}}}), encoding="utf-8")
     assert tt.gio(tmp_path) == {"buoc": {}, "tong": None}
+
+
+def test_shorts_come_after_publishing():
+    assert tt.STEPS.index("shorts") > tt.STEPS.index("dang") > tt.STEPS.index("duyet-2")
+
+
+def test_next_step_after_review_2_is_dang_not_shorts(tmp_path):
+    for s in tt.STEPS[: tt.STEPS.index("duyet-2")]:
+        tt.set_step(tmp_path, s, "xong")
+    tt.set_step(tmp_path, "duyet-1", "da-duyet")
+    tt.set_step(tmp_path, "duyet-2", "da-duyet")
+    assert tt.next_step(tmp_path) == "dang"
+
+
+def test_kho_lists_approved_unpublished_evergreen_only(tmp_path):
+    def mk(name, loai, duyet2, dang):
+        d = tmp_path / name
+        d.mkdir()
+        tt.set_field(d, "loai", loai)
+        tt.set_step(d, "duyet-2", duyet2)
+        tt.set_step(d, "dang", dang)
+    mk("a-ok", "evergreen", "da-duyet", "chua-chay")
+    mk("b-da-dang", "evergreen", "da-duyet", "xong")
+    mk("c-nong", "nong", "da-duyet", "chua-chay")
+    mk("d-chua-duyet", "evergreen", "cho-duyet", "chua-chay")
+    (tmp_path / "e-khong-so").mkdir()
+    (tmp_path / "f-tep.txt").write_text("x", encoding="utf-8")
+    assert [p.name for p in tt.kho(tmp_path)] == ["a-ok"]

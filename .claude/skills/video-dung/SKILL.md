@@ -12,7 +12,7 @@ Mỗi bước: `set_step(V, <bước>, "xong")`; lỗi thì `set_step(V, <bướ
 - `duyet-1` phải `da-duyet`. Không thì dừng: "Chạy /video-moi và duyệt kịch bản trước."
 - Người dùng nói "duyệt phương án N" cho video `duyet-2=cho-duyet`: `set_field(V, "chon", N)`,
   `set_step(V, "duyet-2", "da-duyet")`, báo "Chạy /video-dang". Hết.
-- Người dùng ghi chỗ cần sửa ở duyệt 2: sửa đúng bước liên quan (cảnh → bước 2–4, tiêu đề → bước 6), chạy lại từ đó.
+- Người dùng ghi chỗ cần sửa ở duyệt 2: sửa đúng bước liên quan (cảnh → bước 2–4, tiêu đề → bước 5), chạy lại từ đó.
 - Đọc `next_step(V)`, bắt đầu từ bước chưa xong.
 
 ## 1. giong
@@ -110,13 +110,7 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
    cảnh trống, số sai. Sửa `canh.json`/mẫu, render lại.
 4. `dung.check_av('V/final.mp4', 'V/giong.mp3')` phải rỗng.
 
-## 5. shorts
-- Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh.
-- Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}')`
-  rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
-- Giờ đăng Short: theo `lich-4-tuan-dinh-vi-A.md` (Shorts rơi vào ngày sau video dài).
-
-## 6. dong-goi
+## 5. dong-goi
 1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail (≤ 3–4 chữ).
 2. Thumbnail:
    - Phương án 1: `tttc.thumb.make([(dòng, "white"|"yellow"), ...], V/thumbnails/1.png)`.
@@ -145,7 +139,15 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
      "shorts":[{"file":"shorts/k.mp4","tieu_de":"... #shorts","ngay":"dd/mm/yyyy","gio":"HH:MM"}]}`
    và `V/dong-goi.md` bản dễ đọc của cùng nội dung.
 
-## 7. duyet-2
+## 6. duyet-2
 - `uv run python -c "from tttc.duyet import render_review_2; print(render_review_2('V'))"`
 - `set_step(V, "duyet-2", "cho-duyet")`; gửi `duyet-2.html` (SendUserFile, render) cùng `frames/soi-hinh.png`.
 - Tóm tắt: độ dài video, số cảnh, 3 tiêu đề, cảnh báo còn lại. **Dừng.** Không tự chọn phương án.
+
+## 7. shorts (sau khi đăng video dài, buổi tối)
+- Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh.
+- Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}')`
+  rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
+- Giờ đăng Short: theo `lich-4-tuan-dinh-vi-A.md` (Shorts rơi vào ngày sau video dài).
+- Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
+- `set_step(V, "shorts", "xong")` sau khi tất cả Short đã dựng.
