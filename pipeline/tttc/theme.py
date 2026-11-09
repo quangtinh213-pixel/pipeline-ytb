@@ -6,6 +6,8 @@ uv run python -m tttc.theme ap-dung.
 """
 import json
 import re
+import subprocess
+import sys
 from pathlib import Path
 
 THEME = Path(__file__).resolve().parents[2] / "brand" / "theme.json"
@@ -64,3 +66,31 @@ def kiem(th: dict) -> list[str]:
     if th.get("ten") != "hien-tai" and th["nen"].upper() == "#111111" and th["nhan"][0].upper() == "#FFC800":
         out.append("Cảnh báo: cặp đen–vàng trùng nhận diện của kênh mẫu")
     return out
+
+
+def ap_dung(run=subprocess.run) -> list[str]:
+    """Kiểm theme, rồi sinh lại toàn bộ SVG thư viện, logo và bảng soi. Theme có Lỗi thì không sinh gì."""
+    msgs = kiem(TH)
+    if any(m.startswith("Lỗi") for m in msgs):
+        return msgs
+    pipe, brand = THEME.parents[1] / "pipeline", THEME.parent
+    run([sys.executable, str(pipe / "svg" / "ve.py")], check=True, cwd=pipe)
+    run([sys.executable, str(brand / "make_brand.py")], check=True, cwd=brand)
+    run([sys.executable, str(pipe / "svg" / "sheet.py")], check=True, cwd=pipe)
+    return msgs
+
+
+def main(argv: list[str], run=subprocess.run) -> int:
+    if argv[:1] != ["ap-dung"]:
+        print("dùng: python -m tttc.theme ap-dung")
+        return 2
+    msgs = ap_dung(run)
+    for m in msgs:
+        print("-", m)
+    loi = sum(m.startswith("Lỗi") for m in msgs)
+    print(f"{loi} lỗi, {len(msgs) - loi} cảnh báo")
+    return 1 if loi else 0
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv[1:]))

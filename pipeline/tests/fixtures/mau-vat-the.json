@@ -1,0 +1,27 @@
+{
+  "_ly_do": {
+    "pipeline/tttc/theme.py": "cặp đen–vàng của kênh mẫu, dùng để cảnh báo trùng nhận diện",
+    "pipeline/svg/ve.py": "màu vật thể: xám nền đất và trung tâm dữ liệu, gỗ, cờ Việt Nam đúng màu cờ",
+    "pipeline/templates/canh/trang-nguon.html": "màu thanh trình duyệt giả trong cảnh trang nguồn, không thuộc thương hiệu"
+  },
+  "pipeline/tttc/theme.py": [
+    "#111111",
+    "#FFC800"
+  ],
+  "pipeline/svg/ve.py": [
+    "#141414",
+    "#1A1A1A",
+    "#262626",
+    "#2F2F2F",
+    "#3A3A3A",
+    "#5A4426",
+    "#6E5430",
+    "#8A6A3A",
+    "#A51B15",
+    "#DA251D"
+  ],
+  "pipeline/templates/canh/trang-nguon.html": [
+    "#1A1A1A",
+    "#CFCFCF"
+  ]
+}

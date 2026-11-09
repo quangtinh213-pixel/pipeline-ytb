@@ -48,3 +48,19 @@ def test_derived_constants_match_current_code():
 
 def test_brand_colors_are_the_svg_palette():
     assert theme.brand_colors() == {"#111111", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#FFC800", "#E0B000", "#C79C00"}
+
+
+def test_ap_dung_runs_generators_then_checks_theme():
+    from pathlib import Path
+    calls = []
+    out = theme.ap_dung(run=lambda cmd, **kw: calls.append(Path(cmd[1]).name))
+    assert calls == ["ve.py", "make_brand.py", "sheet.py"]
+    assert [m for m in out if m.startswith("Lỗi")] == []
+
+
+def test_main_ap_dung_exit_code_follows_theme_errors(monkeypatch):
+    noop = lambda *a, **k: None
+    assert theme.main(["ap-dung"], run=noop) == 0
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "chu_tren_nhan": theme.TH["nhan"][0]})
+    assert theme.main(["ap-dung"], run=noop) == 1
+    assert theme.main(["khac"], run=noop) == 2
