@@ -15,7 +15,7 @@
                     transform-origin: top center; }
   </style>
   <div id="root" data-composition-id="minh-hoa" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+       data-composition-variables='[{"id":"svg","type":"string","label":"Hình chính","default":"assets/svg/chip.svg"},{"id":"phu1","type":"string","label":"Đạo cụ trái","default":""},{"id":"phu2","type":"string","label":"Đạo cụ phải","default":""},{"id":"nhan","type":"string","label":"Nhãn","default":"NHÃN"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":"bob"}]'>
     <div id="mh-san" class="san">
       <div id="mh-the-gioi" class="mh-the-gioi">
         <div id="mh-dat" class="mh-dat"><img src="assets/svg/nen-dat.svg" alt=""></div>
@@ -30,6 +30,7 @@
     </div>
   </div>
   <script>
+    /*__DONG__*/
     const v = window.__hyperframes.getVariables();
     const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
     document.querySelector("#mh-san").classList.add("nen-" + (v.nen || "toi"));
@@ -48,6 +49,9 @@
     tl.fromTo("#mh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.9);
     // sân khấu trôi rất chậm (quỹ đạo nền), nhãn đứng yên
     tl.fromTo("#mh-the-gioi", { x: 0 }, { x: -36, duration: 9, ease: "none" }, 0);
+    dongLap(tl, "#mh-chinh", v.dong, 0.9, 12);
+    dongLap(tl, "#mh-phu-1", v.dong ? "bob" : "", 1.0, 12, 0.4);
+    dongLap(tl, "#mh-phu-2", v.dong ? "bob" : "", 1.1, 12, 0.8);
     window.__timelines["minh-hoa"] = tl;
   </script>
 </template>

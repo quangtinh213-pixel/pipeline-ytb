@@ -152,3 +152,10 @@ def test_broll_scene_needs_video_file(tmp_path):
     (tmp_path / "broll").mkdir()
     (tmp_path / "broll" / "pexels-1.mp4").write_bytes(b"x")
     assert _errors(canh.validate(sc, TIMING, tmp_path, SRC, video_dir=tmp_path)) == []
+
+
+def test_validate_rejects_unknown_dong(tmp_path):
+    bad = canh.validate(_sc((0, 6), (6, 12), dong="nhay"), TIMING, tmp_path, NGUON)
+    assert sum("dong" in m and m.startswith("Lỗi") for m in bad) == 2
+    ok = canh.validate(_sc((0, 6), (6, 12), dong="xoay"), TIMING, tmp_path, NGUON)
+    assert _errors(ok) == []

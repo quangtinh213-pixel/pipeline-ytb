@@ -12,6 +12,7 @@ SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
+DONG = {"", "bob", "xoay", "dap", "chop"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
 
@@ -54,6 +55,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         seen.add(cid)
         if c["mau"] not in MAU:
             msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
+        if c.get("dong", "") not in DONG:
+            msgs.append(f"Lỗi: {cid} dong không hợp lệ: {c['dong']} (chọn {', '.join(sorted(DONG - {''}))})")
         if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
             msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép {CANH_MIN_LOI:g}–{CANH_MAX_LOI:g} s)")
         elif dur < CANH_MIN_CB or dur > CANH_MAX_CB:

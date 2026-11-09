@@ -232,3 +232,17 @@ def test_compose_trich_bao_and_broll(video):
 def test_source_line_tu_tinh_shows_formula():
     n = {"id": "t1", "gia_tri": "15 năm", "trang_thai": "tu-tinh", "cong_thuc": "2026 − 2011", "dau_vao": []}
     assert dung._source_line(n) == "Tự tính: 2026 − 2011"
+
+
+def test_scene_file_injects_dong_helper():
+    for mau in ("minh-hoa", "so-lon"):
+        s = dung._scene_file(mau, "c1")
+        assert "function dongLap" in s and "__DONG__" not in s
+    assert 'dongLap(tl, "#mh-chinh"' in dung._scene_file("minh-hoa", "c1").replace("c1-mh-", "mh-")
+
+
+def test_vars_dong_defaults():
+    mh = dung._vars({"mau": "minh-hoa", "svg": "chip"}, {}, {})
+    assert mh["dong"] == "bob"
+    assert dung._vars({"mau": "minh-hoa", "svg": "chip", "dong": "xoay"}, {}, {})["dong"] == "xoay"
+    assert dung._vars({"mau": "so-lon", "so": 5}, {}, {})["dong"] == ""

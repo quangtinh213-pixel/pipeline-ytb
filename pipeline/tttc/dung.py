@@ -2,8 +2,8 @@
 
 Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có thể ghi đè nen: toi|kem|vang):
 - chuong:      so (vd "Phần 2"), chuong (tên chương)
-- minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?
-- so-lon:      so (số hoặc chuỗi "5,3"), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong
+- minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?, dong? bob|xoay|dap|chop (mặc định bob)
+- so-lon:      so (số hoặc chuỗi "5,3"), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
 - trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
@@ -83,11 +83,11 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         phu = c.get("phu", [])
         return {"svg": f"assets/svg/{c['svg']}.svg", "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
                 "phu1": f"assets/svg/{phu[0]}.svg" if len(phu) > 0 else "",
-                "phu2": f"assets/svg/{phu[1]}.svg" if len(phu) > 1 else ""}
+                "phu2": f"assets/svg/{phu[1]}.svg" if len(phu) > 1 else "", "dong": c.get("dong", "bob")}
     if m == "so-lon":
         return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "truoc": c.get("truoc", ""),
                 "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
-                "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", "")}
+                "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", ""), "dong": c.get("dong", "")}
     if m == "bieu-do":
         b = c["bieu_do"]
         return {"tieu_de": c.get("nhan", ""), "nhan_x": json.dumps(b["nhan_x"], ensure_ascii=False),
@@ -172,6 +172,7 @@ def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
 
 def _scene_file(mau: str, sid: str, video: str = "") -> str:
     s = (TPL / f"{mau}.html").read_text(encoding="utf-8").replace("__VIDEO__", f"assets/broll/{video}")
+    s = s.replace("/*__DONG__*/", (TPL / "dong.js").read_text(encoding="utf-8"))
     s = s.replace(f'data-composition-id="{mau}"', f'data-composition-id="{sid}"')
     s = s.replace(f'__timelines["{mau}"]', f'__timelines["{sid}"]')
     return re.sub(rf"(?<![\w-]){PREFIX[mau]}", f"{sid}-{PREFIX[mau]}", s)  # id/class riêng cho mỗi lần gắn
