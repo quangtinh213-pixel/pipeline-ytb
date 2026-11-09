@@ -351,7 +351,7 @@ BC1 = {"svg": "cay", "x": 0.2, "y": 0.6, "to": 1.0}
 
 
 def _svgs(tmp_path):
-    for f in ("nen-dat", "phong-may-chu", "chip", "cay"):
+    for f in ("nen-dat", "san-khau-may-chu", "chip", "cay"):
         (tmp_path / f"{f}.svg").write_text("<svg/>", encoding="utf-8")
     return tmp_path
 

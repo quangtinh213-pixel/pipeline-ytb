@@ -674,6 +674,71 @@ def tui(the: str = "chao", nham: bool = False):
     return p
 
 
+
+# ---------- Phông (sân khấu) theo chủ đề, tệp san-khau-*.svg: nen_dat() cộng chi tiết thấp ở rìa sàn, chừa trống vùng giữa cho vật chính ----------
+# Chi tiết nằm trong khung của sàn (x + y ≥ 2 × chiều cao) nên viewBox giống hệt nen-dat.svg.
+Z = 24  # mặt trên của sàn
+
+
+def _phong(extra):
+    return nen_dat() + extra
+
+
+def phong_may_chu():
+    ex = []
+    for k in range(6):  # dãy tủ máy chủ dọc mép sau, mỗi tủ một đèn nhấn
+        x = 80 + k * 80
+        ex += box(x, 12, Z, 56, 30, 44, MID, DARK, INK)
+        ex.append(on_left(x, 12, Z, 56, 30, 44, 0.15, 0.62, 0.45, 0.72, Y, 2))
+    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.1, 0.84, 0.9, 0.9, MID, 2))  # dây cáp trên sàn
+    return _phong(ex)
+
+
+def phong_nha_may():
+    ex = box(500, 30, Z, 90, 140, 52, LIGHT, MID, DARK)  # nhà xưởng thấp ở mép phải
+    ex += box(540, 250, Z, 40, 40, 70, MID, DARK, INK)  # ống khói
+    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.05, 0.80, 0.7, 0.86, MID, 2))  # băng chuyền
+    ex += [on_top(0, 0, 0, 600, 420, 24, 0.08 + k * 0.15, 0.815, 0.14 + k * 0.15, 0.845, Y, 2) for k in range(4)]
+    return _phong(ex)
+
+
+def phong_cang():
+    ex = []
+    for k, col in enumerate((Y, MID, WHITE, MID)):  # chồng container ở mép trước
+        ex += box(20 + k * 64, 340, Z, 60, 60, 28, col, Y2 if col == Y else LIGHT, Y3 if col == Y else DARK)
+    ex += box(560, 300, Z, 14, 14, 90, MID, DARK, INK)  # chân cần cẩu
+    ex += box(430, 300, Z + 90, 144, 14, 10, MID, DARK, INK)  # tay cần cẩu
+    return _phong(ex)
+
+
+def phong_thanh_pho():
+    ex = []
+    for k, h in enumerate((38, 62, 46, 70, 40, 56)):  # dãy nhà thấp cao thấp xen kẽ ở mép sau
+        x = 80 + k * 84
+        ex += box(x, 14, Z, 64, 40, h, WHITE if k % 2 else LIGHT, LIGHT if k % 2 else MID, MID if k % 2 else DARK)
+        ex.append(on_left(x, 14, Z, 64, 40, h, 0.2, 0.2, 0.8, 0.5, DARK, 2))
+    return _phong(ex)
+
+
+def phong_san_giao_dich():
+    ex = []
+    for k, h in enumerate((14, 26, 20, 38, 30, 46)):  # cột giá, một cột nhấn
+        c = k == 3
+        ex += box(90 + k * 70, 18, Z, 26, 26, h, Y if c else WHITE, Y2 if c else LIGHT, Y3 if c else MID)
+    ex += box(20, 150, Z, 14, 120, 54, DARK, INK, INK)  # bảng điện tử ở mép trái
+    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.04, 0.9, 0.5, 0.96, MID, 2))  # dải chỉ số trên sàn
+    return _phong(ex)
+
+
+def phong_co_quan():
+    ex = box(120, 14, Z, 360, 90, 8, LIGHT, MID, DARK) + box(140, 24, Z + 8, 320, 70, 8, WHITE, LIGHT, MID)  # bậc thềm
+    for k in range(4):  # cột trụ
+        ex += box(150 + k * 100, 34, Z + 16, 22, 22, 56, WHITE, LIGHT, MID)
+    ex += box(540, 30, Z, 8, 8, 80, MID, DARK, INK)  # cột cờ
+    ex += box(548, 30, Z + 60, 36, 4, 20, Y, Y2, Y3)
+    return _phong(ex)
+
+
 ITEMS = {
     "toa-nha-quoc-hoi": toa_nha_quoc_hoi, "dien-thoai": dien_thoai, "chip": chip, "laptop": laptop,
     "tien": tien, "tai-lieu": tai_lieu, "nha-may": nha_may, "may-chu": may_chu,
@@ -726,6 +791,12 @@ ITEMS = {
     "tui-ngac-nhien-nham": lambda: tui("ngac-nhien", True),
     "tui-nghi": lambda: tui("nghi", False),
     "tui-nghi-nham": lambda: tui("nghi", True),
+    "san-khau-may-chu": phong_may_chu,
+    "san-khau-nha-may": phong_nha_may,
+    "san-khau-cang": phong_cang,
+    "san-khau-thanh-pho": phong_thanh_pho,
+    "san-khau-san-giao-dich": phong_san_giao_dich,
+    "san-khau-co-quan": phong_co_quan,
 }
 
 if __name__ == "__main__":

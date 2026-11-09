@@ -434,7 +434,7 @@ def test_minh_hoa_variables_for_stage_layout_and_camera(video):
     vals = {sid: json.loads(v.replace("&#39;", "'")) for sid, v in
             re.findall(r'<div id="([\w-]+)"[^>]*?data-variable-values=\'([^\']*)\'', html)}
     c2 = vals["c2"]
-    assert c2["phong"] == "assets/svg/phong-may-chu.svg" and c2["may_quay"] == "day-vao" and c2["thoi_luong"] == 5.0
+    assert c2["phong"] == "assets/svg/san-khau-may-chu.svg" and c2["may_quay"] == "day-vao" and c2["thoi_luong"] == 5.0
     assert json.loads(c2["bo_cuc"]) == [{"svg": "assets/svg/cay.svg", "x": 0.2, "y": 0.6, "to": 1.0}]
 
 

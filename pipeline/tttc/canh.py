@@ -108,8 +108,8 @@ def _nhan_pills(c: dict) -> list[str]:
 
 
 def san_khau_hop_le(svg_dir: Path = SVG_DIR) -> set[str]:
-    """Phông hợp lệ: nen-dat cùng phần sau `phong-` của mọi tệp phong-*.svg (thêm phông = thêm tệp SVG)."""
-    return {"nen-dat"} | {f.stem.removeprefix("phong-") for f in Path(svg_dir).glob("phong-*.svg")}
+    """Phông hợp lệ: nen-dat cùng phần sau `san-khau-` của mọi tệp san-khau-*.svg (thêm phông = thêm tệp SVG)."""
+    return {"nen-dat"} | {f.stem.removeprefix("san-khau-") for f in Path(svg_dir).glob("san-khau-*.svg")}
 
 
 def _check_minh_hoa(c: dict, svg_dir: Path) -> list[str]:

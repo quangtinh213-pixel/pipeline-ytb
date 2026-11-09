@@ -29,9 +29,11 @@ def test_every_svg_follows_library_rules(path):
     assert "<text" not in s, "không chữ trong SVG"
     vx, vy, vw, vh = map(float, re.search(r'viewBox="([^"]+)"', s).group(1).split())
     assert abs(vw - vh) < 0.2, "viewBox phải vuông"
-    assert path.stat().st_size <= 20_000
+    phong = path.stem.startswith("san-khau-")  # phông = nen-dat cộng chi tiết nên được lớn hơn và dùng màu nền đất
+    assert path.stat().st_size <= (40_000 if phong else 20_000)
     colors = {c.upper() for c in re.findall(r"#[0-9A-Fa-f]{6}", s)}
-    assert colors <= BRAND | EXTRA.get(path.stem, set()), f"màu ngoài bảng: {colors - BRAND - EXTRA.get(path.stem, set())}"
+    extra = EXTRA["nen-dat"] if phong else EXTRA.get(path.stem, set())
+    assert colors <= BRAND | extra, f"màu ngoài bảng: {colors - BRAND - extra}"
 
 
 def test_library_has_at_least_55_shapes():
@@ -53,3 +55,20 @@ def test_sheet_makes_one_tile_per_svg(tmp_path):
     import sheet
     out = sheet.sheet(d, tmp_path / "s.png", cot=2)
     assert Image.open(out).size == (2 * 240, 2 * 260)  # 3 hình, 2 cột → 2 hàng
+
+
+PHONG = ["san-khau-may-chu", "san-khau-nha-may", "san-khau-cang", "san-khau-thanh-pho", "san-khau-san-giao-dich", "san-khau-co-quan"]
+
+
+def _viewbox(name):
+    return re.search(r'viewBox="([^"]+)"', (SVG_DIR / f"{name}.svg").read_text(encoding="utf-8")).group(1)
+
+
+@pytest.mark.parametrize("name", PHONG)
+def test_stage_backdrops_exist_and_share_the_ground_slab_viewbox(name):
+    assert (SVG_DIR / f"{name}.svg").exists()
+    assert _viewbox(name) == _viewbox("nen-dat")  # cùng khung với nen-dat nên vị trí vật chính không đổi
+
+
+def test_at_least_six_stage_backdrops():
+    assert len(list(SVG_DIR.glob("san-khau-*.svg"))) >= 6
