@@ -491,12 +491,12 @@ def tram_phat_song():
 
 
 def bong_bong():
-    """Quả cầu xếp từ 9 đĩa chồng nhau (kiểu khối như cả thư viện), một chấm vàng ở mặt trước."""
+    """Quả cầu xếp từ 8 đĩa chồng nhau (kiểu khối như cả thư viện), một chấm vàng ở mặt trước."""
     p = []
-    for k in range(9):
-        zc = k * 22 + 11
+    for k in range(8):
+        zc = k * 25 + 12.5
         r = math.sqrt(max(100 ** 2 - (zc - 100) ** 2, 36))
-        p += cil(0, 0, k * 22, r, 22, WHITE, LIGHT, MID)
+        p += cil(0, 0, k * 25, r, 25, WHITE, LIGHT, MID, n=18)
     return p + box(52, 52, 78, 22, 22, 22, Y, "#E0B000", "#C79C00")
 
 
