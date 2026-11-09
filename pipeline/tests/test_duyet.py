@@ -71,3 +71,12 @@ def test_review_2_links_video_and_shorts(tmp_path):
 def test_review_2_shows_remaining_warnings(tmp_path):
     html = duyet.render_review_2(_video2(tmp_path)).read_text(encoding="utf-8")
     assert 'class="canh-bao"' in html and "g1" in html and "sơ bộ" in html
+
+
+def test_review_2_shows_quality_warnings(tmp_path):
+    d = _video2(tmp_path)
+    scenes = [{"id": f"c{i}", "mau": "so-lon", "start": i * 6.0, "end": i * 6.0 + 6.0} for i in range(3)]
+    (d / "canh.json").write_text(json.dumps({"scenes": scenes}), encoding="utf-8")
+    (d / "giong-timing.json").write_text(json.dumps({"duration": 18.0, "words": []}), encoding="utf-8")
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "Độ dài trung bình" in html

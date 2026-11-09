@@ -5,6 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
+from tttc import chat_luong
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -64,6 +65,8 @@ def render_review_2(video_dir) -> Path:
     warns = check(_read(d / "kich-ban.md"), nguon)
     warns += [f"Nguồn [#{n['id']}] là số sơ bộ ({n['gia_tri']}): video phải nói rõ 'sơ bộ'"
               for n in nguon if n["trang_thai"] == "so-bo"]
+    if (d / "canh.json").exists() and (d / "giong-timing.json").exists():
+        warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json"))))
     opts = "".join(
         f'<div class="opt"><strong>Phương án {i}</strong><img src="{escape(o["file_thumb"])}" alt="">'
         f'<p>{escape(o["tieu_de"])}</p><p class="meta">Chữ thumbnail: {escape(" / ".join(o.get("chu_thumb", [])))}</p></div>'
