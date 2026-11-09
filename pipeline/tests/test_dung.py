@@ -304,3 +304,29 @@ def test_sfx_so_sanh():
 def test_so_sanh_scene_file_prefix():
     s = dung._scene_file("so-sanh", "s1")
     assert 'data-composition-id="s1"' in s and "s1-ss-" in s and "function dongLap" in s
+
+
+TG = {"id": "g1", "mau": "thoi-gian", "start": 0, "end": 6, "nguon_id": "p1",
+      "truc": {"tu": 2024, "den": 2030, "don_vi": "năm"},
+      "hang": [{"nhan": "Singapore", "tu": 2024, "den": 2026}, {"nhan": "Hoà Lạc", "tu": 2026, "den": 2030, "noi_bat": True}]}
+
+
+def test_vars_thoi_gian():
+    v = dung._vars(TG, {"p1": NGUON[0]}, {})
+    assert json.loads(v["truc"]) == {"tu": 2024, "den": 2030, "don_vi": "năm"}
+    assert json.loads(v["hang"]) == [{"nhan": "Singapore", "tu": 2024, "den": 2026, "noi_bat": False},
+                                     {"nhan": "Hoà Lạc", "tu": 2026, "den": 2030, "noi_bat": True}]
+    assert v["nguon"].startswith("Nguồn: chatgpt.com")
+
+
+def test_steps_and_sfx_thoi_gian():
+    st = dung.steps(TG, [])
+    assert st == pytest.approx([0.5, 1.1])
+    assert [(f, v) for f, _, v in dung.sfx_events(TG, st)] == [("whoosh-short", 0.2)] * 2
+    assert dung.steps(dict(TG, nhip=[None, "Hoà Lạc"]), [{"w": "Hoà", "start": 3.0, "end": 3.2},
+                                                       {"w": "Lạc", "start": 3.2, "end": 3.4}])[1] == pytest.approx(3.0)
+
+
+def test_thoi_gian_scene_file_prefix():
+    s = dung._scene_file("thoi-gian", "g1")
+    assert 'data-composition-id="g1"' in s and "g1-tg-" in s

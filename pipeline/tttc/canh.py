@@ -7,7 +7,7 @@ from pathlib import Path
 
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -76,6 +76,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs += _check_quy_trinh(c, svg_dir)
         if c["mau"] == "so-sanh":
             msgs += _check_so_sanh(c, svg_dir)
+        if c["mau"] == "thoi-gian":
+            msgs += _check_thoi_gian(c)
         if c["mau"] == "trich-bao":
             msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
@@ -92,6 +94,21 @@ def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
         out.append(f"Lỗi: {c['id']} noi_bat={nb} nằm ngoài các bước")
     out += [f"Lỗi: {c['id']} bước '{b.get('nhan')}' cần hình {b['svg']}.svg chưa có trong thư viện"
             for b in buoc if b.get("svg") and not (Path(svg_dir) / f"{b['svg']}.svg").exists()]
+    return out
+
+
+def _check_thoi_gian(c: dict) -> list[str]:
+    hang, truc, out = c.get("hang") or [], c.get("truc") or {}, []
+    if not 2 <= len(hang) <= 5:
+        out.append(f"Lỗi: {c['id']} thoi-gian cần 2–5 hàng (đang {len(hang)})")
+    lo, hi = truc.get("tu"), truc.get("den")
+    if lo is None or hi is None or not lo < hi:
+        return out + [f"Lỗi: {c['id']} thoi-gian cần truc có tu < den (trục {lo}–{hi})"]
+    for h in hang:
+        if not isinstance(h.get("tu"), (int, float)) or not isinstance(h.get("den"), (int, float)) or not h["tu"] < h["den"]:
+            out.append(f"Lỗi: {c['id']} hàng '{h.get('nhan')}' cần tu < den ({h.get('tu')}–{h.get('den')})")
+        elif h["tu"] < lo or h["den"] > hi:
+            out.append(f"Lỗi: {c['id']} hàng '{h.get('nhan')}' {h['tu']}–{h['den']} nằm ngoài trục {lo}–{hi}")
     return out
 
 
@@ -131,12 +148,16 @@ def _unit_scale(text: str) -> str:
 
 
 def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
-    """Số hiện trên màn hình (so-lon, bieu-do, so-sanh) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
+    """Số hiện trên màn hình (so-lon, bieu-do, so-sanh, thoi-gian) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
     if c["mau"] == "so-lon" and "so" in c:
         pairs = [(c["so"], _unit_scale(c.get("truoc", "") + " " + c.get("sau", "")))]
     elif c["mau"] == "bieu-do" and c.get("bieu_do"):
         scale = _unit_scale(c["bieu_do"].get("don_vi", ""))
         pairs = [(v, scale) for v in c["bieu_do"]["gia_tri"]]
+    elif c["mau"] == "thoi-gian":  # năm trên các thanh là số hiện trên màn hình; vạch trục chỉ là thang đo
+        pairs = [(h[k], "") for h in c.get("hang") or [] for k in ("tu", "den") if isinstance(h.get(k), (int, float))]
+        if not pairs:
+            return []
     elif c["mau"] == "so-sanh":  # mỗi bên có thể có đơn vị riêng ("tỷ transistor" so với "triệu transistor")
         pairs = [(s["so"], _unit_scale(s.get("don_vi", c.get("don_vi", ""))))
                  for s in (c.get("trai"), c.get("phai")) if isinstance(s, dict) and s.get("so") is not None]

@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 from tttc import canh
 
@@ -222,3 +223,44 @@ def test_validate_so_sanh_to_range_and_sides(tmp_path):
     assert _errors(canh.validate(ok, {"duration": 6.0}, svg, SS_SRC)) == []
     thieu = _ss(nguon_id=None, trai={"nhan": "A", "svg": "chip"}, phai=None)
     assert any("phai" in e for e in _errors(canh.validate(thieu, {"duration": 6.0}, svg, SS_SRC)))
+
+
+TG_SRC = [{"id": "n1", "gia_tri": "Singapore khởi công 2024, sản xuất 2026; Ấn Độ khởi công 2024, chạy thương mại 2028"}]
+
+
+def _tg(**c):
+    base = {"id": "c0", "mau": "thoi-gian", "start": 0, "end": 6, "nguon_id": "n1",
+            "truc": {"tu": 2024, "den": 2030, "don_vi": "năm"},
+            "hang": [{"nhan": "Singapore", "tu": 2024, "den": 2026}, {"nhan": "Ấn Độ", "tu": 2024, "den": 2028, "noi_bat": True}]}
+    return {"scenes": [dict(base, **c)]}
+
+
+def _tg_errors(sc, src=TG_SRC):
+    return _errors(canh.validate(sc, {"duration": 6.0}, Path("."), src))
+
+
+def test_validate_thoi_gian_rows_in_axis():
+    assert _tg_errors(_tg()) == []
+    ngoai = _tg(hang=[{"nhan": "A", "tu": 2024, "den": 2026}, {"nhan": "B", "tu": 2024, "den": 2031}])
+    assert any("trục" in e for e in _tg_errors(ngoai, [{"id": "n1", "gia_tri": "2024 2026 2031"}]))
+    nguoc = _tg(hang=[{"nhan": "A", "tu": 2026, "den": 2026}, {"nhan": "B", "tu": 2024, "den": 2028}])
+    assert any("tu < den" in e for e in _tg_errors(nguoc))
+    assert any("trục" in e for e in _tg_errors(_tg(truc={"tu": 2030, "den": 2024, "don_vi": "năm"})))
+
+
+def test_validate_thoi_gian_row_count():
+    row = {"nhan": "A", "tu": 2024, "den": 2026}
+    assert any("2–5" in e for e in _tg_errors(_tg(hang=[row])))
+    assert any("2–5" in e for e in _tg_errors(_tg(hang=[row] * 6)))
+    assert _tg_errors(_tg(hang=[row] * 5)) == []
+
+
+def test_check_values_thoi_gian_years_in_source():
+    sai = _tg(hang=[{"nhan": "A", "tu": 2025, "den": 2026}, {"nhan": "B", "tu": 2024, "den": 2028}])
+    assert any("2025" in e for e in _tg_errors(sai))
+    assert any("nguon_id" in e for e in _tg_errors(_tg(nguon_id=None)))
+
+
+def test_validate_thoi_gian_row_missing_years_is_error_not_crash():
+    thieu = _tg(hang=[{"nhan": "A"}, {"nhan": "B", "tu": 2024, "den": 2028}])
+    assert any("tu < den" in e for e in _tg_errors(thieu))

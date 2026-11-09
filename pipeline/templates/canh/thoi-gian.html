@@ -1,0 +1,82 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .tg-tieu-de { position: absolute; left: 160px; top: 110px; right: 160px; color: var(--ink);
+                        font: 900 52px/1.15 var(--font-display); letter-spacing: -0.01em; }
+    #root .tg-khung { position: absolute; left: 520px; top: 270px; width: 1240px; height: 520px; }
+    #root .tg-luoi { position: absolute; top: 0; bottom: 0; width: 2px; background: var(--line); }
+    #root .tg-vach { position: absolute; top: 540px; width: 160px; margin-left: -80px; text-align: center;
+                     color: var(--muted); font: 700 30px/1 var(--font-display); }
+    #root .tg-hang { position: absolute; left: -360px; width: 1600px; }
+    #root .tg-nhan { position: absolute; left: 0; width: 340px; text-align: right; color: var(--ink);
+                     font: 800 38px/1.1 var(--font-display); }
+    #root .tg-thanh { position: absolute; height: 64px; background: var(--bar); border-radius: 12px;
+                      transform-origin: left center; }
+    #root .tg-thanh.noi-bat { background: var(--accent); }
+    #root .tg-so { position: absolute; color: var(--ink); font: 900 38px/64px var(--font-display); white-space: nowrap; }
+  </style>
+  <div id="root" data-composition-id="thoi-gian" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"truc","type":"string","label":"Trục thời gian (JSON)","default":"{\"tu\":2024,\"den\":2030,\"don_vi\":\"năm\"}"},{"id":"hang","type":"string","label":"Các hàng (JSON)","default":"[{\"nhan\":\"A\",\"tu\":2024,\"den\":2026,\"noi_bat\":false},{\"nhan\":\"B\",\"tu\":2024,\"den\":2028,\"noi_bat\":true}]"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="tg-san" class="san">
+      <div id="tg-tieu-de" class="tg-tieu-de" data-var-text="tieu_de"></div>
+      <div id="tg-khung" class="tg-khung" data-layout-allow-overflow></div>
+      <div id="tg-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
+  </div>
+  <script>
+    // Trục và thanh dựng một lần lúc khởi tạo từ biến (tất định); mọi chuyển động nằm trên timeline.
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#tg-san").classList.add("nen-" + (v.nen || "toi"));
+    const truc = JSON.parse(v.truc), hang = JSON.parse(v.hang), n = hang.length;
+    const khung = document.querySelector("#tg-khung"), W = 1240, span = truc.den - truc.tu;
+    const px = x => ((x - truc.tu) / span) * W;
+    const buoc = span <= 8 ? 1 : span <= 20 ? 2 : 5;  // vạch năm thưa dần khi trục dài
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#tg-tieu-de", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
+    const truc_el = [];
+    for (let y = truc.tu; y <= truc.den; y += buoc) {
+      const g = document.createElement("div");
+      g.className = "tg-luoi";
+      g.style.left = px(y) + "px";
+      const t = document.createElement("div");
+      t.className = "tg-vach";
+      t.style.left = px(y) + "px";
+      t.textContent = String(y);
+      khung.append(g, t);
+      truc_el.push(g, t);
+    }
+    tl.fromTo(truc_el, { opacity: 0 }, { opacity: 1, duration: 0.4, stagger: 0.02 }, 0.1);
+    const rowH = 520 / n;
+    hang.forEach((h, i) => {
+      const t0 = at(i, 0.5 + 0.6 * i), top = i * rowH + (rowH - 64) / 2;
+      const nhan = document.createElement("div");
+      nhan.id = "tg-nhan-" + i;
+      nhan.className = "tg-nhan";
+      nhan.style.left = "-360px";
+      nhan.style.top = top + 8 + "px";
+      nhan.textContent = h.nhan;
+      const thanh = document.createElement("div");
+      thanh.id = "tg-thanh-" + i;
+      thanh.className = "tg-thanh" + (h.noi_bat ? " noi-bat" : "");
+      thanh.style.left = px(h.tu) + "px";
+      thanh.style.width = px(h.den) - px(h.tu) + "px";
+      thanh.style.top = top + "px";
+      const so = document.createElement("div");
+      so.id = "tg-so-" + i;
+      so.className = "tg-so";
+      const dentro = px(h.den) + 260 > W + 100;  // thanh chạm mép phải: ghi năm bên trong thanh để khỏi tràn khung hình
+      so.style.width = "230px";
+      so.style.textAlign = dentro ? "right" : "left";
+      so.style.left = (dentro ? px(h.den) - 248 : px(h.den) + 18) + "px";
+      so.style.top = top + "px";
+      so.textContent = h.tu + "–" + h.den;
+      khung.append(nhan, thanh, so);
+      tl.fromTo(nhan, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.3, ease: "power2.out" }, t0);
+      tl.fromTo(thanh, { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, t0 + 0.05);
+      tl.fromTo(so, { opacity: 0, x: -12 }, { opacity: 1, x: 0, duration: 0.25 }, t0 + 0.6);
+    });
+    tl.fromTo("#tg-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    window.__timelines["thoi-gian"] = tl;
+  </script>
+</template>
