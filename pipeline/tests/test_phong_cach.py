@@ -1,3 +1,7 @@
+import unicodedata
+
+import pytest
+
 from tttc import phong_cach
 
 OK_HEAD = "Viettel ra chip 28 nanomet, nhưng liệu thế đã đủ? [#v1] "
@@ -54,10 +58,47 @@ def test_triad_structure_warns_when_repeated():
     assert len(_w(_mui(many), "bộ ba")) == 1
 
 
+CAM = [("Đây là một bước đột phá của ngành.", "từ cấm"),
+       ("Giải pháp hoàn hảo cho mọi nhà.", "từ cấm"),
+       ("Không chỉ rẻ hơn mà còn nhanh hơn.", "từ cấm"),
+       ("Chiếc chìa khóa vàng của ngành.", "từ cấm")]
+
+
+@pytest.mark.parametrize("spoken,key", CAM)
+def test_tu_cam_flags_banned_phrase_as_error(spoken, key):
+    out = phong_cach.tu_cam(_script(spoken))
+    assert len(_w(out, key)) == 1 and out[0].startswith("Lỗi:")
+
+
 def test_translationese_phrase_is_named():
-    out = _w(_mui("Hãy nhìn đúng những gì trang giá nói. Giá là chín trăm."), "dịch thô")
+    out = _w(phong_cach.tu_cam(_script("Hãy nhìn đúng những gì trang giá nói. Giá là chín trăm.")), "dịch thô")
     assert len(out) == 1 and "hãy nhìn đúng" in out[0].lower()
-    assert _w(_mui("Mở bảng giá ra xem họ ghi gì."), "dịch thô") == []
+    assert _w(phong_cach.tu_cam(_script("Mở bảng giá ra xem họ ghi gì.")), "dịch thô") == []
+
+
+def test_tu_cam_opening_only_in_first_40_words():
+    assert _w(phong_cach.tu_cam(_script("Bạn đã bao giờ tự hỏi vì sao chip đắt? Giá là chín trăm.")), "mở bài")
+    late = _filler(60) + " Bạn đã bao giờ tự hỏi vì sao chip đắt?"
+    assert _w(phong_cach.tu_cam(_script(late)), "mở bài") == []
+
+
+def test_tu_cam_closing_only_in_last_60_words():
+    assert _w(phong_cach.tu_cam(_script(_filler(100) + " Tóm lại, chip đắt.")), "kết bài")
+    assert _w(phong_cach.tu_cam(_script("Tóm lại, chip đắt. " + _filler(100))), "kết bài") == []
+
+
+def test_tu_cam_ignores_quoted_source_text():
+    assert phong_cach.tu_cam(_script('Bài báo viết “một bước ngoặt của ngành” rồi dừng.')) == []
+    assert phong_cach.tu_cam(_script('Bài báo viết "một bước ngoặt của ngành" rồi dừng.')) == []
+    assert len(phong_cach.tu_cam(_script("Đây là bước ngoặt của ngành."))) == 1
+
+
+def test_tu_cam_matches_decomposed_unicode_and_uppercase():
+    assert len(phong_cach.tu_cam(_script(unicodedata.normalize("NFD", "ĐỘT PHÁ là từ bị cấm.")))) == 1
+
+
+def test_tu_cam_silent_without_spoken_paragraphs():
+    assert phong_cach.tu_cam("Chỉ có ghi chú, không có lời đọc.") == []
 
 
 def test_hedging_cap():

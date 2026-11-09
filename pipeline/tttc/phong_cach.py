@@ -1,5 +1,7 @@
 """Kiểm phong cách kịch bản theo kênh mẫu (docs/phong-cach-kich-ban.md). Chỉ trả cảnh báo, không chặn."""
+import json
 import re
+from pathlib import Path
 
 from tttc import tts
 
@@ -34,12 +36,31 @@ def kiem(script_md: str) -> list[str]:
     return out + mui_may(script_md)
 
 
-# Cụm nghe như dịch thô từ tiếng Anh hoặc chuyển đoạn lười; danh sách tổng quát, không gắn riêng một kịch bản.
-DICH_THO = ("hãy nhìn đúng", "như các bạn đã biết", "không thể phủ nhận", "trong thế giới ngày nay",
-            "hãy cùng nhau", "tóm lại bằng", "điều quan trọng cần lưu ý", "chúng ta sẽ cùng")
+TU_CAM = Path(__file__).resolve().parent.parent / "phong-cach" / "tu-cam.json"
+QUOTED = re.compile(r'"[^"]*"|“[^”]*”')  # chữ trích nguyên văn từ nguồn được miễn khỏi danh sách cấm
 RAO_DON = re.compile(r"mình nghĩ|mình cho rằng|tùy bạn|bạn tự (?:xem|thử|kiểm)", re.I)
 BO_BA = re.compile(r"^(?:Ba|Thứ ba)\s*,")
 LIET_KE = re.compile(r"^(?:Một|Hai|Ba|Thứ (?:nhất|hai|ba))\s*,")
+
+
+def tu_cam(script_md: str, path: Path = TU_CAM) -> list[str]:
+    """Lỗi cứng theo phong-cach/tu-cam.json: từ/cụm cấm, mở bài và kết bài sáo rỗng, cụm dịch thô."""
+    text = QUOTED.sub(" ", " ".join(tts.spoken_paragraphs(script_md)))
+    if not text.strip():
+        return []
+    low, cam, out = text.lower(), json.loads(Path(path).read_text(encoding="utf-8")), []
+    ctx = lambda i: " ".join(text[max(0, i - 20):i + 50].split())
+    for p in cam["tu"]:
+        if p in low:
+            out.append(f"Lỗi: từ cấm «{p}»: …{ctx(low.index(p))}…")
+    for pat in cam["mau"]:
+        if m := re.search(pat, low):
+            out.append(f"Lỗi: từ cấm «{m.group(0)}»: …{ctx(m.start())}…")
+    head, tail = " ".join(low.split()[:40]), " ".join(low.split()[-60:])
+    out += [f"Lỗi: mở bài sáo rỗng «{p}»" for p in cam["mo_bai"] if p in head]
+    out += [f"Lỗi: kết bài đúc kết đạo lý «{p}»" for p in cam["ket_bai"] if p in tail]
+    out += [f"Lỗi: cụm nghe như dịch thô từ tiếng Anh: «{p}»" for p in cam["dich_tho"] if p in low]
+    return out
 
 
 def mui_may(script_md: str) -> list[str]:
@@ -53,7 +74,6 @@ def mui_may(script_md: str) -> list[str]:
     if ba > 1:
         out.append(f"Cảnh báo: {ba} lần đếm kiểu bộ ba 'Một... Hai... Ba...' (tối đa 1 lần mỗi video); gom ý bằng mạch kể")
     low = text.lower()
-    out += [f"Cảnh báo: cụm nghe như dịch thô từ tiếng Anh: «{p}»" for p in DICH_THO if p in low]
     n = len(RAO_DON.findall(text))
     if n > 3:
         out.append(f"Cảnh báo: {n} câu rào đón ('mình nghĩ', 'bạn tự xem'...), tối đa 3; hãy nêu phán xét kèm tiêu chí")
