@@ -1,0 +1,125 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .bn-tieu-de { position: absolute; left: 160px; top: 90px; right: 160px; color: var(--ink);
+                        font: 900 68px/1.15 var(--font-display); letter-spacing: -0.01em; }
+    #root .bn-svg { position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; }
+    #root .bn-diem { position: absolute; width: 0; height: 0; }
+    #root .bn-cham { position: absolute; left: -22px; top: -22px; width: 44px; height: 44px; border-radius: 50%;
+                     background: var(--ink); border: 8px solid var(--accent); box-sizing: border-box; }
+    #root .bn-diem.noi-bat .bn-cham { left: -34px; top: -34px; width: 68px; height: 68px; background: var(--accent); border-color: var(--ink); }
+    #root .bn-vong { position: absolute; left: -75px; top: -75px; width: 150px; height: 150px; border-radius: 50%;
+                     border: 6px solid var(--accent); opacity: 0; box-sizing: border-box; }
+    #root .bn-nhan { position: absolute; transform: translate(-50%, 0); white-space: nowrap; background: var(--ink);
+                     color: var(--tren-muc); font: 800 46px/1.15 var(--font-display); padding: 14px 26px; border-radius: 14px; }
+    #root .bn-diem.noi-bat .bn-nhan { background: var(--accent); color: var(--accent-ink); }
+    #root .bn-noi-nhan { position: absolute; transform: translate(-50%, -50%); white-space: nowrap; background: var(--accent);
+                         color: var(--accent-ink); font: 800 40px/1.15 var(--font-display); padding: 10px 22px; border-radius: 12px; opacity: 0; }
+    #root .bn-ghi { position: absolute; left: 160px; bottom: 150px; color: var(--muted); font: 600 28px/1 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="ban-do" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"diem","type":"string","label":"Các điểm (JSON: nhan, vi_do, kinh_do, noi_bat)","default":"[{\"nhan\":\"A\",\"vi_do\":10,\"kinh_do\":0,\"noi_bat\":false},{\"nhan\":\"B\",\"vi_do\":20,\"kinh_do\":30,\"noi_bat\":true}]"},{"id":"noi","type":"string","label":"Mũi tên (JSON: tu, den, nhan)","default":"[]"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của điểm nổi bật","default":"dap"}]'>
+    <div id="bn-san" class="san">
+      <div id="bn-tieu-de" class="bn-tieu-de" data-var-text="tieu_de"></div>
+      <svg id="bn-svg" class="bn-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
+      <div id="bn-ghi" class="bn-ghi">Sơ đồ minh họa, không theo tỉ lệ</div>
+      <div id="bn-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
+  </div>
+  <script>
+    /*__DONG__*/
+    // Mọi phần tử dựng một lần lúc khởi tạo từ biến (tất định); chuyển động nằm trên timeline.
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    const san = document.querySelector("#bn-san");
+    san.classList.add("nen-" + (v.nen || "toi"));
+    const diem = JSON.parse(v.diem), noi = JSON.parse(v.noi || "[]"), nd = diem.length;
+    const svg = document.querySelector("#bn-svg"), NS = "http://www.w3.org/2000/svg";
+    // Phép chiếu chữ nhật: vừa khít các điểm, chừa lề; hai trục co giãn riêng để sơ đồ lấp đầy khung (đã ghi "không theo tỉ lệ").
+    const lons = diem.map(d => d.kinh_do), lats = diem.map(d => d.vi_do);
+    const lo0 = Math.min(...lons), lo1 = Math.max(...lons), la0 = Math.min(...lats), la1 = Math.max(...lats);
+    const padLo = Math.max(8, 0.12 * (lo1 - lo0)), padLa = Math.max(8, 0.25 * (la1 - la0));
+    const W = 1480, H = 640, L0 = 220, T0 = 250;
+    const sx = W / (lo1 - lo0 + 2 * padLo), sy = H / (la1 - la0 + 2 * padLa);
+    const mLo = (lo0 + lo1) / 2, mLa = (la0 + la1) / 2;
+    const X = lo => L0 + W / 2 + (lo - mLo) * sx, Y = la => T0 + H / 2 - (la - mLa) * sy;
+    const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; };
+    // Lưới kinh vĩ tuyến
+    const buoc = (lo1 - lo0 + 2 * padLo) > 80 ? 20 : 10;
+    for (let lo = Math.ceil((mLo - W / 2 / sx) / buoc) * buoc; lo <= mLo + W / 2 / sx; lo += buoc)
+      mk("line", { x1: X(lo), y1: T0, x2: X(lo), y2: T0 + H, stroke: "var(--line)", "stroke-width": 2 });
+    for (let la = Math.ceil((mLa - H / 2 / sy) / buoc) * buoc; la <= mLa + H / 2 / sy; la += buoc)
+      mk("line", { x1: L0, y1: Y(la), x2: L0 + W, y2: Y(la), stroke: "var(--line)", "stroke-width": 2 });
+    const P = diem.map(d => ({ x: X(d.kinh_do), y: Y(d.vi_do) }));
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#bn-tieu-de", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
+    tl.fromTo("#bn-svg", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0);
+    // Mũi tên cong (dựng trước điểm để điểm nằm đè lên đầu mút)
+    const arcs = noi.map((e, j) => {
+      const a = P[e.tu], b = P[e.den], dx = b.x - a.x, dy = b.y - a.y, len = Math.hypot(dx, dy);
+      const cx = (a.x + b.x) / 2 + dy * 0.22, cy = (a.y + b.y) / 2 - Math.abs(dx) * 0.22 - 20;  // vòng lên phía trên
+      const path = mk("path", { d: `M${a.x},${a.y} Q${cx},${cy} ${b.x},${b.y}`, fill: "none", stroke: "var(--accent)", "stroke-width": 10,
+                                "stroke-linecap": "round" });
+      const total = path.getTotalLength();
+      path.style.strokeDasharray = total; path.style.strokeDashoffset = total;
+      const t = 0.9, mt = 1 - t, px = mt * mt * a.x + 2 * mt * t * cx + t * t * b.x, py = mt * mt * a.y + 2 * mt * t * cy + t * t * b.y;
+      const tx = 2 * mt * (cx - a.x) + 2 * t * (b.x - cx), ty = 2 * mt * (cy - a.y) + 2 * t * (b.y - cy), ang = Math.atan2(ty, tx) * 180 / Math.PI;
+      const head = mk("polygon", { points: "0,-20 38,0 0,20", fill: "var(--accent)", transform: `translate(${px},${py}) rotate(${ang})`, opacity: 0 });
+      return { path, total, head, mx: 0.25 * a.x + 0.5 * cx + 0.25 * b.x, my: 0.25 * a.y + 0.5 * cy + 0.25 * b.y, nhan: e.nhan || "" };
+    });
+    let hl = -1;
+    // Xếp nhãn: thử dưới, trên, phải, trái của từng điểm, lấy chỗ đầu tiên không đè lên nhãn khác hay điểm nào.
+    const da = [];
+    P.forEach(p => da.push({ x: p.x - 45, y: p.y - 45, w: 90, h: 90 }));
+    const chong = (r, bo) => da.some((q, k) => k !== bo && r.x < q.x + q.w && r.x + r.w > q.x && r.y < q.y + q.h && r.y + r.h > q.y);
+    const viTri = diem.map((d, i) => {
+      const w = 27 * d.nhan.length + 60, h = 76, r0 = d.noi_bat ? 56 : 44;
+      const cs = [[0, r0], [0, -r0 - h], [r0 + w / 2 + 6, -h / 2], [-(r0 + w / 2 + 6), -h / 2]];
+      for (const [dx, dy] of cs) {
+        let x = P[i].x + dx - w / 2; x = Math.max(60, Math.min(1860 - w, x));
+        const r = { x, y: P[i].y + dy, w, h };
+        if (!chong(r, -1) && r.y > 160 && r.y + h < 920) { da.push(r); return { dx: x + w / 2 - P[i].x, dy, tren: dy < 0 }; }
+      }
+      const [dx, dy] = cs[0]; da.push({ x: P[i].x - w / 2, y: P[i].y + dy, w, h }); return { dx, dy, tren: false };
+    });
+    diem.forEach((d, i) => {
+      const t0 = at(i, 0.5 + 0.55 * i);
+      const g = document.createElement("div");
+      g.id = "bn-diem-" + i;
+      g.className = "bn-diem" + (d.noi_bat ? " noi-bat" : "");
+      g.style.left = P[i].x + "px"; g.style.top = P[i].y + "px";
+      const vong = document.createElement("div"); vong.className = "bn-vong"; vong.id = "bn-vong-" + i;
+      const cham = document.createElement("div"); cham.className = "bn-cham"; cham.id = "bn-cham-" + i;
+      const nhan = document.createElement("div"); nhan.className = "bn-nhan"; nhan.id = "bn-nhan-" + i; nhan.textContent = d.nhan;
+      const tren = viTri[i].tren;
+      nhan.style.top = viTri[i].dy + "px";
+      nhan.style.left = viTri[i].dx + "px";
+      g.append(vong, cham, nhan);
+      san.appendChild(g);
+      if (d.noi_bat) hl = i;
+      tl.fromTo(cham, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, t0);
+      tl.fromTo(nhan, { opacity: 0, y: tren ? 10 : -10 }, { opacity: 1, y: 0, duration: 0.25 }, t0 + 0.1);
+    });
+    arcs.forEach((a, j) => {
+      const t0 = at(nd + j, 0.5 + 0.55 * nd + 0.5 * j);
+      tl.to(a.path, { strokeDashoffset: 0, duration: 0.7, ease: "power2.inOut" }, t0);
+      tl.to(a.head, { opacity: 1, duration: 0.1 }, t0 + 0.6);
+      if (a.nhan) {
+        const p = document.createElement("div"); p.className = "bn-noi-nhan"; p.id = "bn-noi-" + j; p.textContent = a.nhan;
+        p.style.left = a.mx + "px"; p.style.top = a.my + "px"; san.appendChild(p);
+        tl.fromTo(p, { opacity: 0, scale: 0.7 }, { opacity: 1, scale: 1, duration: 0.25, ease: "back.out(2)" }, t0 + 0.4);
+      }
+    });
+    const tEnd = at(nd + Math.max(noi.length - 1, 0), 0.5 + 0.55 * nd + 0.5 * Math.max(noi.length - 1, 0));
+    if (hl >= 0) {  // sau khi đủ bước: vòng sáng toả ra quanh điểm nổi bật
+      for (let r = 0; r < 3; r++) {  // dùng .to (không dùng fromTo) để vòng không hiện trước giờ bắt đầu
+        const t = tEnd + 0.9 + r * 1.2;
+        tl.to("#bn-vong-" + hl, { opacity: 0.9, scale: 0.5, duration: 0.01 }, t);
+        tl.to("#bn-vong-" + hl, { opacity: 0, scale: 1.5, duration: 0.9, ease: "power2.out" }, t + 0.01);
+      }
+      dongLap(tl, "#bn-cham-" + hl, v.dong, tEnd + 0.9, 12);
+    }
+    tl.fromTo("#bn-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    window.__timelines["ban-do"] = tl;
+  </script>
+</template>

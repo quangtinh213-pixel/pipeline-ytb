@@ -9,7 +9,7 @@ from pathlib import Path
 from tttc import dung
 
 NHOM = {
-    "do-hoa": {"minh-hoa", "quy-trinh", "so-sanh", "thoi-gian", "so-lon", "bieu-do", "chuong"},
+    "do-hoa": {"minh-hoa", "quy-trinh", "so-sanh", "thoi-gian", "so-lon", "bieu-do", "chuong", "ban-do"},
     "bang-chung": {"trich-bao", "trang-nguon"},
     "doi-that": {"b-roll", "nhan-vat"},
 }

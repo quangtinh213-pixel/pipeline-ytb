@@ -435,3 +435,32 @@ def test_minh_hoa_rejects_unknown_stage_camera_and_bad_layout(tmp_path):
 
 def test_old_minh_hoa_without_new_fields_has_no_new_errors(tmp_path):
     assert [m for m in canh.validate(_mh(), T4, _svgs(tmp_path)) if m.startswith("Lỗi")] == []
+
+
+def _bd(**c):
+    base = {"diem": [{"nhan": "Mỹ", "vi_do": 38.9, "kinh_do": -77.0}, {"nhan": "Malaysia", "vi_do": 3.1, "kinh_do": 101.7},
+                     {"nhan": "Việt Nam", "vi_do": 21.0, "kinh_do": 105.8, "noi_bat": True}],
+            "noi": [{"tu": 0, "den": 1, "nhan": "chip AI"}, {"tu": 1, "den": 2}]}
+    return {"scenes": [dict({"id": "c0", "mau": "ban-do", "start": 0, "end": 6}, **{**base, **c}),
+                       {"id": "c1", "mau": "chuong", "start": 6, "end": 12, "so": "Phần 2"}]}
+
+
+def test_ban_do_valid_scene_has_no_errors(tmp_path):
+    assert _errors(canh.validate(_bd(), TIMING, tmp_path, NGUON, kit=None)) == []
+
+
+def test_ban_do_rejects_bad_points_and_links(tmp_path):
+    def errs(**c):
+        return _errors(canh.validate(_bd(**c), TIMING, tmp_path, NGUON, kit=None))
+    assert any("2–6" in e for e in errs(diem=[{"nhan": "A", "vi_do": 1, "kinh_do": 1}]))
+    assert any("vi_do" in e for e in errs(diem=[{"nhan": "A", "vi_do": 95, "kinh_do": 1}, {"nhan": "B", "vi_do": 1, "kinh_do": 1}]))
+    assert any("kinh_do" in e for e in errs(diem=[{"nhan": "A", "vi_do": 1, "kinh_do": 200}, {"nhan": "B", "vi_do": 1, "kinh_do": 1}]))
+    assert any("noi" in e for e in errs(noi=[{"tu": 0, "den": 7}]))
+    assert any("noi" in e for e in errs(noi=[{"tu": 1, "den": 1}]))
+
+
+def test_ban_do_labels_must_be_vietnamese_and_short(tmp_path):
+    en = _bd(diem=[{"nhan": "United States of America", "vi_do": 38.9, "kinh_do": -77.0}, {"nhan": "Malaysia", "vi_do": 3.1, "kinh_do": 101.7}])
+    assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, NGUON, kit=None)))
+    long = _bd(diem=[{"nhan": "Một hai ba bốn năm sáu bảy", "vi_do": 1, "kinh_do": 1}, {"nhan": "B", "vi_do": 1, "kinh_do": 2}])
+    assert any("nhãn dài" in m for m in canh.validate(long, TIMING, tmp_path, NGUON, kit=None))

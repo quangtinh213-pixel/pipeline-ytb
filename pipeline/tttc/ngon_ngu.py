@@ -33,7 +33,7 @@ def man_hinh(c: dict) -> list[tuple[str, str]]:
         if isinstance(c.get(side), dict):
             add(f"{side}.nhan", c[side].get("nhan"))
             add(f"{side}.don_vi", c[side].get("don_vi"))
-    for key in ("buoc", "hang"):
+    for key in ("buoc", "hang", "diem", "noi"):
         for i, b in enumerate(c.get(key) or []):
             if isinstance(b, dict):
                 add(f"{key}[{i}].nhan", b.get("nhan"))

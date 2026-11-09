@@ -96,6 +96,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.
+- **`ban-do`** (sơ đồ vị trí: hàng hóa đi từ đâu tới đâu, nước nào nằm ở đâu): `diem` = 2–6 phần tử `{nhan, vi_do, kinh_do, noi_bat?}` (toạ độ thủ đô hoặc thành phố chính, độ thập phân), `noi` = các mũi tên cong `{tu, den, nhan?}` nối hai điểm theo chỉ số, `nhip` = một cụm lời đọc cho mỗi điểm rồi mỗi mũi tên. Đây là **sơ đồ, không phải bản đồ theo tỉ lệ**: hai trục co giãn riêng để lấp đầy khung, mẫu tự ghi "Sơ đồ minh họa, không theo tỉ lệ"; không vẽ biên giới hay đường bờ biển. Nhãn là tên nước/thành phố bằng tiếng Việt (≤ 5 từ), nhãn mũi tên ngắn; điểm cần nhìn đặt `noi_bat`.
 - **`so-sanh`** (hai vật cạnh nhau, "gấp N lần", "sân bóng so với hạt gạo"): `trai` và `phai` = `{nhan, svg, so?, don_vi?, to?}`;
   `to` (0–1) là cỡ hình tương đối, hai hình đứng trên cùng một đường nền; `ti_le` = nhãn "gấp ~700 lần" (nhãn tự tính phải
   có nguồn `tu-tinh`); có `so` thì bắt buộc `nguon_id` và số + đơn vị phải khớp nguồn.

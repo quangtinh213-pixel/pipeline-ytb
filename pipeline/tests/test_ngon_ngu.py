@@ -27,3 +27,8 @@ def test_man_hinh_lists_every_text_field_of_each_template():
     assert {t for _, t in ngon_ngu.man_hinh(q)} == {"Quy trình", "Một", "Hai"}
     t = {"mau": "trich-bao", "trich": "English quote here", "trich_vi": "Câu trích tiếng Việt"}
     assert [x for _, x in ngon_ngu.man_hinh(t)] == ["Câu trích tiếng Việt"]  # chỉ bản hiển thị, không phải nguyên văn
+
+
+def test_man_hinh_covers_map_points_and_links():
+    c = {"mau": "ban-do", "tieu_de": "Đường đi", "diem": [{"nhan": "Mỹ"}, {"nhan": "Malaysia"}], "noi": [{"tu": 0, "den": 1, "nhan": "chip AI"}]}
+    assert {t for _, t in ngon_ngu.man_hinh(c)} == {"Đường đi", "Mỹ", "Malaysia", "chip AI"}

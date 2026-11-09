@@ -527,3 +527,31 @@ def test_dong_js_defines_camera_for_every_kind():
 def test_minh_hoa_template_calls_camera_on_the_world():
     html = (dung.TPL / "minh-hoa.html").read_text(encoding="utf-8")
     assert 'mayQuay(tl, "#mh-the-gioi", v.may_quay' in html
+
+
+BD = {"id": "b1", "mau": "ban-do", "start": 0, "end": 8, "tieu_de": "Đường đi của chip",
+      "diem": [{"nhan": "Mỹ", "vi_do": 38.9, "kinh_do": -77.0}, {"nhan": "Malaysia", "vi_do": 3.1, "kinh_do": 101.7},
+               {"nhan": "Việt Nam", "vi_do": 21.0, "kinh_do": 105.8, "noi_bat": True}],
+      "noi": [{"tu": 0, "den": 1, "nhan": "chip AI"}, {"tu": 1, "den": 2}]}
+
+
+def test_vars_ban_do():
+    v = dung._vars(BD, {}, {})
+    assert json.loads(v["diem"])[2] == {"nhan": "Việt Nam", "vi_do": 21.0, "kinh_do": 105.8, "noi_bat": True}
+    assert json.loads(v["diem"])[0]["noi_bat"] is False
+    assert json.loads(v["noi"]) == [{"tu": 0, "den": 1, "nhan": "chip AI"}, {"tu": 1, "den": 2, "nhan": ""}]
+    assert v["tieu_de"] == "Đường đi của chip" and v["dong"] == "dap"
+
+
+def test_steps_and_sfx_ban_do_points_then_links():
+    st = dung.steps(BD, [])
+    assert st == pytest.approx([0.5, 1.05, 1.6, 2.15, 2.65])  # 3 điểm rồi 2 mũi tên
+    ev = dung.sfx_events(BD, st)
+    assert [f for f, _, _ in ev] == ["pop"] * 3 + ["whoosh-short"] * 2
+
+
+def test_ban_do_scene_file_and_group():
+    s = dung._scene_file("ban-do", "b1")
+    assert 'data-composition-id="b1"' in s and "b1-bn-" in s and "function dongLap" in s and "Sơ đồ minh họa" in s
+    from tttc import chat_luong
+    assert "ban-do" in chat_luong.NHOM["do-hoa"]

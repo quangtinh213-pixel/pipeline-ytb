@@ -12,6 +12,8 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich); trich nguồn tiếng Anh thì
                bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi)
 - quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
+- ban-do:      tieu_de?, diem [2–6 {nhan, vi_do, kinh_do, noi_bat?}], noi? [{tu, den, nhan?}] (mũi tên cong nối hai điểm theo chỉ số),
+               nguon_id?, dong? (vòng sáng ở điểm nổi bật, mặc định dap); sơ đồ vị trí theo toạ độ, không phải bản đồ theo tỉ lệ
 - so-sanh:     trai, phai {nhan, svg, so?, don_vi?, to? (0–1, cỡ hình tương đối)}, don_vi?, ti_le? ("gấp ~700 lần"),
                nguon_id (bắt buộc nếu có so), dong? (cho huy hiệu SO, mặc định dap)
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
@@ -43,7 +45,7 @@ PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
 SFX = PIPE / "am-thanh" / "sfx"
 PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
-          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-"}
+          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-"}
 # Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
 DEFAULT_STEPS = {
     "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
@@ -159,6 +161,11 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                 "nguon": src(c.get("nguon_id")),
                 "buoc": json.dumps([{"nhan": b["nhan"], "svg": f"assets/svg/{b['svg']}.svg" if b.get("svg") else ""}
                                     for b in c["buoc"]], ensure_ascii=False)}
+    if m == "ban-do":
+        return {"tieu_de": c.get("tieu_de", ""), "nguon": src(c.get("nguon_id")), "dong": c.get("dong", "dap"),
+                "diem": json.dumps([dict(d, noi_bat=bool(d.get("noi_bat"))) for d in c["diem"]], ensure_ascii=False),
+                "noi": json.dumps([{"tu": e["tu"], "den": e["den"], "nhan": e.get("nhan", "")} for e in c.get("noi") or []],
+                                  ensure_ascii=False)}
     if m == "b-roll":
         return {"nhan": c.get("nhan", ""), "so": c.get("so", ""), "ghi_cong": broll_credits.get(c["video"], "")}
     raise ValueError(f"mẫu không có: {m}")
@@ -173,6 +180,9 @@ def steps(c: dict, words: list[dict]) -> list[float]:
         base = [round(0.5 + 0.55 * i, 3) for i in range(len(c["buoc"]))]
     elif c["mau"] == "thoi-gian":
         base = [round(0.5 + 0.6 * i, 3) for i in range(len(c["hang"]))]
+    elif c["mau"] == "ban-do":
+        nd = len(c["diem"])
+        base = [round(0.5 + 0.55 * i, 3) for i in range(nd)] + [round(0.5 + 0.55 * nd + 0.5 * j, 3) for j in range(len(c.get("noi") or []))]
     else:
         base = list(DEFAULT_STEPS[c["mau"]])
     for k, ph in enumerate(c.get("nhip") or []):
@@ -200,6 +210,9 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("pop", t, 0.2) for t in st[:6]]
     if m == "thoi-gian":
         return [("whoosh-short", t, 0.2) for t in st[:5]]
+    if m == "ban-do":
+        nd = len(c["diem"])
+        return [("pop", t, 0.2) for t in st[:nd]] + [("whoosh-short", t, 0.2) for t in st[nd:]]
     if m == "so-sanh":
         return [("pop", st[0], 0.3), ("pop", st[1], 0.3)] + ([("chime", st[2] + 0.1, 0.3)] if c.get("ti_le") else [])
     if m == "trang-nguon":

@@ -8,7 +8,7 @@ from pathlib import Path
 from tttc import ngon_ngu, nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -92,6 +92,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs += _check_quy_trinh(c, svg_dir)
         if c["mau"] == "so-sanh":
             msgs += _check_so_sanh(c, svg_dir)
+        if c["mau"] == "ban-do":
+            msgs += _check_ban_do(c)
         if c["mau"] == "thoi-gian":
             msgs += _check_thoi_gian(c)
         if c["mau"] == "trich-bao":
@@ -111,6 +113,8 @@ def _nhan_pills(c: dict) -> list[str]:
         return [c[k]["nhan"] for k in ("trai", "phai") if isinstance(c.get(k), dict) and c[k].get("nhan")]
     if c["mau"] == "quy-trinh":
         return [b["nhan"] for b in c.get("buoc") or [] if b.get("nhan")]
+    if c["mau"] == "ban-do":
+        return [x["nhan"] for k in ("diem", "noi") for x in c.get(k) or [] if isinstance(x, dict) and x.get("nhan")]
     return []
 
 
@@ -137,6 +141,26 @@ def _check_minh_hoa(c: dict, svg_dir: Path) -> list[str]:
                       and 0.2 <= b.get("to", 1.0) <= 1.5 and (Path(svg_dir) / f"{b.get('svg')}.svg").exists())
                 if not ok:
                     out.append(f"Lỗi: {cid} bo_cuc có đạo cụ sai: {b} (cần svg có trong thư viện, x và y trong 0–1, to trong 0,2–1,5)")
+    return out
+
+
+def _check_ban_do(c: dict) -> list[str]:
+    """Sơ đồ vị trí: 2–6 điểm có toạ độ hợp lệ, các mũi tên nối đúng chỉ số điểm."""
+    diem, noi, out = c.get("diem") or [], c.get("noi") or [], []
+    if not 2 <= len(diem) <= 6:
+        out.append(f"Lỗi: {c['id']} ban-do cần 2–6 điểm (đang {len(diem)})")
+    for i, d in enumerate(diem):
+        if not isinstance(d, dict) or not d.get("nhan"):
+            out.append(f"Lỗi: {c['id']} điểm {i} thiếu nhan")
+            continue
+        for k, lim in (("vi_do", 90), ("kinh_do", 180)):
+            v = d.get(k)
+            if not isinstance(v, (int, float)) or isinstance(v, bool) or not -lim <= v <= lim:
+                out.append(f"Lỗi: {c['id']} điểm '{d['nhan']}' {k} phải là số trong khoảng ±{lim}")
+    for j, e in enumerate(noi):
+        ok = isinstance(e, dict) and all(isinstance(e.get(k), int) and 0 <= e[k] < len(diem) for k in ("tu", "den"))
+        if not ok or e["tu"] == e["den"]:
+            out.append(f"Lỗi: {c['id']} noi[{j}] phải nối hai điểm khác nhau theo chỉ số 0–{max(len(diem) - 1, 0)}")
     return out
 
 
