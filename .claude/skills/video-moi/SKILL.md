@@ -50,7 +50,7 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
 
 ## 3. kich-ban
 
-- Gọi skill `yt-script` với đề, lời hứa và `nguon.json`. Khung 6 đoạn của kênh:
+- Gọi skill `yt-script` với đề, lời hứa, `nguon.json` và **thẻ phong cách `docs/phong-cach-kich-ban.md`**. Khung 6 đoạn của kênh:
   móc 15 giây → bối cảnh/số → chuyện thật sự đổi gì → hệ quả cho người Việt → hai việc cần ngóng → kết trả lời câu hỏi tiêu đề.
 - Định dạng `kich-ban.md`:
   - Mỗi beat: `#### Beat N: <tên>`, dòng `[TRÊN MÀN HÌNH]: ...`, rồi `**Lời đọc:**` và các đoạn lời đọc ngay dưới.

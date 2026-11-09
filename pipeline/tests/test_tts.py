@@ -151,3 +151,9 @@ def test_concat_does_not_drift(tmp_path, silent_mp3):
     tts.synthesize(d, post=_ok_post(silent_mp3, []), key="k", cfg=CFG)
     timing = json.loads((d / "giong-timing.json").read_text())
     assert timing["paragraphs"][-1]["end"] == pytest.approx(timing["duration"], abs=0.05)
+
+
+def test_spoken_paragraphs_keep_tags():
+    md = "#### Beat 1\n**Lời đọc:**\nGói Plus giá năm trăm nghìn. [#p1] Rồi sao?\n"
+    assert tts.spoken_paragraphs(md) == ["Gói Plus giá năm trăm nghìn. Rồi sao?"]
+    assert tts.spoken_paragraphs(md, keep_tags=True) == ["Gói Plus giá năm trăm nghìn. [#p1] Rồi sao?"]

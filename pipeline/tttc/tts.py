@@ -22,7 +22,7 @@ def _nfc(s: str) -> str:
     return unicodedata.normalize("NFC", s)
 
 
-def spoken_paragraphs(script_md: str) -> list[str]:
+def spoken_paragraphs(script_md: str, keep_tags: bool = False) -> list[str]:
     paras, on = [], False
     for line in _nfc(script_md).splitlines():
         s = line.strip()
@@ -33,7 +33,7 @@ def spoken_paragraphs(script_md: str) -> list[str]:
             on = False
             continue
         if on:
-            s = re.sub(r"\s+", " ", TAG.sub("", s).replace("*", "")).strip()
+            s = re.sub(r"\s+", " ", (s if keep_tags else TAG.sub("", s)).replace("*", "")).strip()
             if s:
                 paras.append(s)
     return paras

@@ -5,7 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
-from tttc import chat_luong
+from tttc import chat_luong, phong_cach
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -55,7 +55,7 @@ def render_review_1(video_dir) -> Path:
     d = Path(video_dir)
     nguon = json.loads(_read(d / "nguon.json", "[]"))
     script = _read(d / "kich-ban.md")
-    body = (_warnings(check(script, nguon))
+    body = (_warnings(check(script, nguon) + phong_cach.kiem(script))
             + "<h2>Chủ đề</h2><pre>" + escape(_read(d / "chu-de.md")) + "</pre>"
             + "<h2>Số → nguồn</h2>" + _sources_table(nguon)
             + "<h2>Kịch bản</h2>" + _script_html(script))

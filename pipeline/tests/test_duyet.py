@@ -88,3 +88,9 @@ def test_sources_table_shows_formula_for_tu_tinh(tmp_path):
     (d / "nguon.json").write_text(json.dumps(NGUON + [tt], ensure_ascii=False), encoding="utf-8")
     html = duyet.render_review_1(d).read_text(encoding="utf-8")
     assert "#t1" in html and "2026 − 2011" in html
+
+
+def test_review_1_shows_style_warnings(tmp_path):
+    d = _video(tmp_path, "#### Beat 1\n**Lời đọc:**\nChào các bạn.\n")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert 'class="canh-bao"' in html and "90 từ đầu" in html
