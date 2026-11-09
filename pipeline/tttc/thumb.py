@@ -4,7 +4,17 @@ from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageFont, ImageOps
 
-BG, COLORS = (17, 17, 17), {"white": (255, 255, 255), "yellow": (255, 200, 0)}
+from tttc import theme
+
+
+
+def _pal() -> dict:
+    """Màu thumbnail lấy từ brand/theme.json mỗi lần gọi (đổi theme là đổi ngay)."""
+    th = theme.TH
+    return {"bg": theme.rgb(th["nen"]), "white": theme.rgb(th["muc"]), "yellow": theme.rgb(th["nhan"][0]),
+            "ink": theme.rgb(th["chu_tren_nhan"])}
+
+
 FONT = "/System/Library/Fonts/SFNS.ttf"  # SF Pro, có dấu tiếng Việt (giống brand/make_brand.py)
 W, H, MAX_W, MAX_H, GAP = 1280, 720, 1200, 640, 28  # GAP rộng cho dấu tiếng Việt
 
@@ -26,12 +36,12 @@ def fit_font(text: str, max_w: int, start: int) -> ImageFont.FreeTypeFont:
 
 
 def make(lines: list[tuple[str, str]], out: Path, background: Path | None = None) -> tuple[Path, Path]:
-    out = Path(out)
+    out, p = Path(out), _pal()
     if background:
         img = ImageOps.fit(Image.open(background).convert("RGB"), (W, H))
         img = Image.blend(img, Image.new("RGB", (W, H), (0, 0, 0)), 0.55)  # tối 55% để chữ nổi
     else:
-        img = Image.new("RGB", (W, H), BG)
+        img = Image.new("RGB", (W, H), p["bg"])
     d = ImageDraw.Draw(img)
     fonts = [fit_font(t, MAX_W, 300) for t, _ in lines]
     boxes = [d.textbbox((0, 0), t, font=f) for (t, _), f in zip(lines, fonts)]
@@ -43,7 +53,7 @@ def make(lines: list[tuple[str, str]], out: Path, background: Path | None = None
         total = sum(b[3] - b[1] for b in boxes) + GAP * (len(lines) - 1)
     y = (H - total) / 2
     for (text, color), f, b in zip(lines, fonts, boxes):
-        d.text(((W - (b[2] - b[0])) / 2 - b[0], y - b[1]), text, font=f, fill=COLORS[color])
+        d.text(((W - (b[2] - b[0])) / 2 - b[0], y - b[1]), text, font=f, fill=p[color])
         y += (b[3] - b[1]) + GAP
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out)
@@ -52,7 +62,6 @@ def make(lines: list[tuple[str, str]], out: Path, background: Path | None = None
     return out, small
 
 
-YELLOW, INK = (255, 200, 0), (17, 17, 17)
 BORDER, TEETH, TOOTH_AMP, CREDIT_W = 10, 7, 24, 460
 
 
@@ -76,34 +85,35 @@ def chia_doi(trai: Path | None, phai: Path, dong: list[str], out: Path, ghi_cong
     trai=None thì cắt đôi ảnh phải thành hai nửa. Chữ tối đa 2 hộp vàng; ghi công nhỏ góc trên phải."""
     if not 1 <= len(dong) <= 2:
         raise ValueError("Thumbnail chia đôi cần 1–2 dòng chữ")
-    out = Path(out)
+    out, p = Path(out), _pal()
+    yellow, ink, bg = p["yellow"], p["ink"], p["bg"]
     zig = _zigzag()
     if trai is None:
         img = ImageOps.fit(Image.open(phai).convert("RGB"), (W, H))
     else:
-        img = Image.new("RGB", (W, H), BG)
+        img = Image.new("RGB", (W, H), bg)
         img.paste(ImageOps.fit(Image.open(phai).convert("RGB"), (700, H)), (580, 0))
-        left = Image.new("RGB", (W, H), BG)
+        left = Image.new("RGB", (W, H), bg)
         left.paste(ImageOps.fit(Image.open(trai).convert("RGB"), (700, H)), (0, 0))
         mask = Image.new("L", (W, H), 0)
         ImageDraw.Draw(mask).polygon([(0, 0), *zig, (0, H)], fill=255)
         img.paste(left, (0, 0), mask)
     d = ImageDraw.Draw(img)
-    d.line(zig, fill=YELLOW, width=8, joint="curve")
-    d.rectangle([0, 0, W - 1, H - 1], outline=YELLOW, width=BORDER)
+    d.line(zig, fill=yellow, width=8, joint="curve")
+    d.rectangle([0, 0, W - 1, H - 1], outline=yellow, width=BORDER)
     if vs:
-        d.ellipse([640 - 62, 360 - 62, 640 + 62, 360 + 62], fill=YELLOW, outline=INK, width=6)
+        d.ellipse([640 - 62, 360 - 62, 640 + 62, 360 + 62], fill=yellow, outline=ink, width=6)
         f = font(64)
         b = d.textbbox((0, 0), "VS", font=f)
-        d.text((640 - (b[0] + b[2]) / 2, 360 - (b[1] + b[3]) / 2), "VS", font=f, fill=INK)
+        d.text((640 - (b[0] + b[2]) / 2, 360 - (b[1] + b[3]) / 2), "VS", font=f, fill=ink)
     pad_x, pad_y, gap, y = 28, 14, 14, H - 44
     for text in reversed(dong):  # hộp dưới cùng vẽ trước, hộp trên xếp chồng lên
         f = fit_font(text, 1100 - 2 * pad_x, 110)
         b = d.textbbox((0, 0), text, font=f)
         tw, th = b[2] - b[0], b[3] - b[1]
         y -= th + 2 * pad_y
-        d.rectangle([48, y, 48 + tw + 2 * pad_x, y + th + 2 * pad_y], fill=YELLOW)
-        d.text((48 + pad_x - b[0], y + pad_y - b[1]), text, font=f, fill=INK)
+        d.rectangle([48, y, 48 + tw + 2 * pad_x, y + th + 2 * pad_y], fill=yellow)
+        d.text((48 + pad_x - b[0], y + pad_y - b[1]), text, font=f, fill=ink)
         y -= gap
     if ghi_cong:
         f = ImageFont.truetype(FONT, 18)

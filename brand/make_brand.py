@@ -1,7 +1,11 @@
 """Tạo logo kênh và thumbnail video 1. Chạy: python3 make_brand.py"""
+import json
+from pathlib import Path
+
 from PIL import Image, ImageDraw, ImageFont
 
-BG, YELLOW, WHITE = "#111111", "#FFC800", "#FFFFFF"
+TH = json.loads((Path(__file__).resolve().parent / "theme.json").read_text(encoding="utf-8"))  # màu thương hiệu một nguồn
+BG, YELLOW, WHITE = TH["nen"], TH["nhan"][0], TH["muc"]
 FONT = "/System/Library/Fonts/SFNS.ttf"  # SF Pro, có dấu tiếng Việt
 
 def font(size, weight="Heavy"):

@@ -25,6 +25,10 @@ def brand_colors() -> set[str]:
     return {c.upper() for c in [*TH["ve"].values(), *TH["nhan"]]}
 
 
+def rgb(hex_color: str) -> tuple[int, int, int]:
+    return tuple(int(hex_color[i:i + 2], 16) for i in (1, 3, 5))
+
+
 def _get(th: dict, key: str):
     cur = th
     for part in key.split("."):

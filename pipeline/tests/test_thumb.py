@@ -110,3 +110,19 @@ def test_khung_tu_video_can_crop_bottom_band_off(tmp_path):
                     "-pix_fmt", "yuv420p", str(mp4)], check=True)
     h = Image.open(thumb.khung_tu_video(mp4, 1.0, tmp_path / "k.png", bo_day=0.12)).size[1]
     assert abs(h - 158) <= 2  # cắt dải phụ đề đã in sẵn ở đáy video
+
+
+def test_make_takes_colours_from_theme(tmp_path, monkeypatch):
+    from tttc import theme
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "nen": "#0A0B0C"})
+    big, _ = thumb.make([("A", "white")], tmp_path / "t.png")
+    assert Image.open(big).getpixel((0, 0)) == (10, 11, 12)
+
+
+def test_chia_doi_takes_accent_from_theme(tmp_path, monkeypatch):
+    from tttc import theme
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "nhan": ["#00AAFF", "#0088CC", "#006699"]})
+    right = tmp_path / "r.png"
+    Image.new("RGB", (400, 400), (40, 40, 40)).save(right)
+    big, _ = thumb.chia_doi(None, right, ["MỘT"], tmp_path / "c.png")
+    assert Image.open(big).getpixel((3, 3)) == (0, 170, 255)  # viền khung theo màu nhấn của theme
