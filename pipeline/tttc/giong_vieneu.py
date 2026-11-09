@@ -4,6 +4,7 @@ Mỗi CÂU là một đơn vị tổng hợp: biết chính xác độ dài từ
 (từ rải đều theo số ký tự). Không cần whisper. Câu đã làm thì không làm lại (tên tệp theo nội dung + giọng).
 Chạy: uv run python -m tttc.giong_vieneu ../videos/<slug>
       uv run python -m tttc.giong_vieneu nghe-thu <thư mục ra> "Hải Đăng" "Thiện Minh" ...
+      uv run python -m tttc.giong_vieneu thu-60s <thư mục video>   # nghe-thu.mp3: ~210 từ đầu bằng giọng đã chọn
 """
 import hashlib
 import json
@@ -104,6 +105,37 @@ def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
                                                     ensure_ascii=False, indent=1), encoding="utf-8")
 
 
+def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subprocess.run) -> Path:
+    """Đọc thử các câu đầu (cộng dồn đến ≥ so_tu từ) bằng giọng đã chọn → nghe-thu.mp3.
+    Dùng đúng tên wav theo câu của synthesize nên câu giữ nguyên sẽ được tái dùng khi tạo giọng đầy đủ."""
+    d, cfg = Path(video_dir), _cfg(cfg)
+    voice, units, n = cfg["voice"], [], 0
+    for p in tts.spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8")):
+        ss = cau(p)
+        for k, s in enumerate(ss):
+            units.append((s, k == len(ss) - 1))
+            n += len(s.split())
+            if n >= so_tu:
+                break
+        if n >= so_tu:
+            break
+    raw = d / "giong-vieneu"
+    raw.mkdir(exist_ok=True)
+    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, voice)}.wav"), "voice": voice}
+              for s in dict.fromkeys(s for s, _ in units)], raw, cfg, run)
+    files = []
+    for k, (s, cuoi_doan) in enumerate(units):
+        out = raw / f"nt{k:03}.wav"
+        _cat_nghi(raw / f"{_ten(s, voice)}.wav", out, cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"], cfg["toc_do"])
+        files.append(out)
+    lst = raw / "nt-list.txt"
+    lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files))
+    mp3 = d / "nghe-thu.mp3"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c:a", "libmp3lame",
+                    "-b:a", "128k", str(mp3)], check=True)
+    return mp3
+
+
 def audition(out_dir, voices: list[str], text: str = tts.AUDITION_TEXT, cfg: dict | None = None,
              run=subprocess.run) -> list[Path]:
     """Đọc cùng một đoạn bằng nhiều giọng để nghe thử; mỗi giọng ra out_dir/<giọng>.mp3."""
@@ -123,5 +155,7 @@ def audition(out_dir, voices: list[str], text: str = tts.AUDITION_TEXT, cfg: dic
 if __name__ == "__main__":
     if sys.argv[1] == "nghe-thu":
         print("\n".join(map(str, audition(sys.argv[2], sys.argv[3:]))))
+    elif sys.argv[1] == "thu-60s":
+        print(nghe_thu(sys.argv[2]))
     else:
         synthesize(sys.argv[1])

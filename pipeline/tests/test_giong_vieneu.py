@@ -122,3 +122,19 @@ def test_tempo_slows_speech_down(tmp_path):
     giong_vieneu.synthesize(d, cfg=dict(CFG, toc_do=0.5), run=_fake_worker([1.0]))
     t = json.loads((d / "giong-timing.json").read_text(encoding="utf-8"))
     assert t["duration"] == pytest.approx(2.0 + 0.5, abs=0.15)  # 1 s tiếng chậm 0,5× → 2 s, cộng nghỉ 0,5 s
+
+
+def test_nghe_thu_reads_first_sentences_up_to_word_budget(tmp_path):
+    script = "#### Beat 1\n**Lời đọc:**\n" + " ".join(f"Câu số {i} có sáu chữ nữa." for i in range(40)) + "\n"
+    d, calls = _video(tmp_path, script), []
+    out = giong_vieneu.nghe_thu(d, so_tu=30, cfg=CFG, run=_fake_worker([0.3], calls=calls))
+    assert out == d / "nghe-thu.mp3" and out.exists()
+    assert len(calls[0]) == 5 and _dur(out) > 1.0
+
+
+def test_nghe_thu_wavs_are_reused_by_full_synthesis(tmp_path):
+    d = _video(tmp_path)
+    giong_vieneu.nghe_thu(d, so_tu=5, cfg=CFG, run=_fake_worker([0.3]))
+    calls = []
+    giong_vieneu.synthesize(d, cfg=CFG, run=_fake_worker([0.3], calls=calls))
+    assert [j["text"] for c in calls for j in c] == ["Giá chưa gồm thuế."]
