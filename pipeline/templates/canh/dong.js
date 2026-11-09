@@ -12,3 +12,13 @@ function dongLap(tl, sel, kieu, t0, t1, lech) {
   else if (kieu === "chop") tl.to(sel, Object.assign({ filter: "brightness(1.25)" }, nua), s);
   else tl.to(sel, { rotationY: 360 * n, transformPerspective: 900, duration: T * n, ease: "none" }, s);
 }
+
+// Camera áp lên "thế giới" của cảnh. kieu: day-vao | keo-ra | lia | he-lo; "" hoặc "dung" là đứng yên.
+// Hữu hạn và đi theo timeline (render tạm dừng ra đúng từng khung); dur là thời lượng chuyển động tính từ t0.
+function mayQuay(tl, sel, kieu, t0, dur) {
+  const o = { transformOrigin: "50% 55%" };
+  if (kieu === "day-vao") tl.fromTo(sel, Object.assign({ scale: 1 }, o), Object.assign({ scale: 1.2, duration: dur, ease: "sine.inOut" }, o), t0);
+  else if (kieu === "keo-ra") tl.fromTo(sel, Object.assign({ scale: 1.22 }, o), Object.assign({ scale: 1, duration: dur, ease: "sine.inOut" }, o), t0);
+  else if (kieu === "lia") tl.fromTo(sel, { x: 70 }, { x: -70, duration: dur, ease: "sine.inOut" }, t0);
+  else if (kieu === "he-lo") tl.fromTo(sel, Object.assign({ scale: 1.35 }, o), Object.assign({ scale: 1, duration: dur * 0.4, ease: "power3.out" }, o), t0);
+}

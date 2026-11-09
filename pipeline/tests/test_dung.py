@@ -452,3 +452,15 @@ def test_sfx_pops_for_each_layout_prop_without_index_error():
     assert [e[0] for e in ev] == ["pop"] * 5 and all(e[1] >= 0 for e in ev)
     old = dung.sfx_events({"mau": "minh-hoa", "start": 0, "end": 4, "phu": ["cay", "dong-xu"]}, [0.72, 0.5, 0.58])
     assert [e[1] for e in old] == [0.55, 0.5, 0.58]  # hành vi cũ giữ nguyên
+
+
+def test_dong_js_defines_camera_for_every_kind():
+    js = (dung.TPL / "dong.js").read_text(encoding="utf-8")
+    assert "function mayQuay(" in js
+    for kieu in ("day-vao", "keo-ra", "lia", "he-lo"):
+        assert f'"{kieu}"' in js
+
+
+def test_minh_hoa_template_calls_camera_on_the_world():
+    html = (dung.TPL / "minh-hoa.html").read_text(encoding="utf-8")
+    assert 'mayQuay(tl, "#mh-the-gioi", v.may_quay' in html
