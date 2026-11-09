@@ -5,7 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
-from tttc import chat_luong, phong_cach
+from tttc import chat_luong, phong_cach, trang_thai
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -51,11 +51,28 @@ def _page(video_dir: Path, name: str, title: str, meta: str, body: str) -> Path:
     return out
 
 
+def _phan_bien(d: Path, note: str) -> str:
+    links = "".join(f' <a href="{n}">{n}</a>' for n in ("phan-bien-giong-1.md", "phan-bien-giong-2.md")
+                    if (d / n).exists())
+    red = ('<div class="canh-bao do"><strong>agy lỗi</strong>: phản biện giọng văn do subagent thay thế, xem kỹ.</div>'
+           if "agy lỗi" in note else "")
+    audio = ('<h2>Nghe thử 60 giây</h2><audio controls src="nghe-thu.mp3"></audio>'
+             if (d / "nghe-thu.mp3").exists() else "")
+    return f'{red}<div class="phan-bien"><h2>Phản biện giọng văn</h2><p>{escape(note)}{links}</p></div>{audio}'
+
+
 def render_review_1(video_dir) -> Path:
     d = Path(video_dir)
     nguon = json.loads(_read(d / "nguon.json", "[]"))
     script = _read(d / "kich-ban.md")
+    buoc = trang_thai.load(d)["steps"]["phan-bien-giong"]
+    if buoc["status"] != "xong":
+        raise ValueError("chưa phản biện giọng văn với agy (2 vòng): chạy tttc.phan_bien vong 1 rồi vong 2")
+    loi_giong = [m for m in phong_cach.kiem(script) if m.startswith("Lỗi")]
+    if loi_giong:
+        raise ValueError(f"giọng văn còn {len(loi_giong)} Lỗi: " + "; ".join(loi_giong))
     body = (_warnings(check(script, nguon) + phong_cach.kiem(script))
+            + _phan_bien(d, buoc["note"])
             + "<h2>Chủ đề</h2><pre>" + escape(_read(d / "chu-de.md")) + "</pre>"
             + "<h2>Số → nguồn</h2>" + _sources_table(nguon)
             + "<h2>Kịch bản</h2>" + _script_html(script))
