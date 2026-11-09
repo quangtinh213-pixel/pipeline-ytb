@@ -198,19 +198,34 @@ def _ts(t: float) -> str:
 
 
 def cues(timing: dict, max_chars: int = 42) -> list[tuple[float, float, str]]:
-    """Gom từ thành dòng phụ đề ≤ max_chars, ngắt sau dấu kết câu."""
+    """Gom từ thành dòng phụ đề ≤ max_chars (trừ một từ dài hơn nó), ngắt theo nghĩa: bắt buộc sau .!?, ưu tiên sau , ; :
+    khi dòng đã ≥ 60% max_chars, và khi buộc ngắt vì vượt max_chars thì lùi về dấu , ; : gần nhất; không để một từ
+    đứng riêng một dòng giữa câu."""
+    text = lambda ws: " ".join(x["w"] for x in ws)
+    ket_cau = lambda w: w["w"][-1:] in ".!?"
     groups, cur = [], []
     for w in timing["words"]:
-        if cur and len(" ".join(x["w"] for x in cur + [w])) > max_chars:
-            groups.append(cur)
-            cur = []
+        if cur and len(text(cur + [w])) > max_chars:
+            k = max((i for i in range(1, len(cur)) if cur[i - 1]["w"][-1:] in ",;:"), default=0)
+            groups.append(cur[:k] if k else cur)
+            cur = cur[k:] if k else []
         cur.append(w)
-        if w["w"][-1:] in ".!?":
+        if ket_cau(w) or (w["w"][-1:] in ",;:" and len(text(cur)) >= 0.6 * max_chars):
             groups.append(cur)
             cur = []
     if cur:
         groups.append(cur)
-    return [(g[0]["start"], g[-1]["end"], " ".join(x["w"] for x in g)) for g in groups]
+    i = 1
+    while i < len(groups):  # nhóm một từ khi câu chưa kết: mượn từ cuối của nhóm trước, hoặc gộp vào nhóm trước
+        g, prev = groups[i], groups[i - 1]
+        if len(g) == 1 and not ket_cau(prev[-1]):
+            if len(prev) >= 3 and len(text([prev[-1], *g])) <= max_chars:
+                groups[i], groups[i - 1] = [prev[-1], *g], prev[:-1]
+            elif len(text(prev + g)) <= max_chars:
+                groups[i - 1:i + 1] = [prev + g]
+                continue
+        i += 1
+    return [(g[0]["start"], g[-1]["end"], text(g)) for g in groups]
 
 
 def to_srt(timing: dict, max_chars: int = 42) -> str:

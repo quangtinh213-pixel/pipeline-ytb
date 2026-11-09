@@ -280,3 +280,39 @@ def test_validate_dan_phrase_must_be_spoken_in_scene(tmp_path):
                      {"id": "c1", "mau": "so-lon", "start": 6, "end": 12, "dan": {"the": "nghi", "tu": "năm trăm"}}]}
     errs = _errors(canh.validate(sc, timing, tmp_path, NGUON))
     assert len(errs) == 1 and "c1" in errs[0] and "năm trăm" in errs[0]
+
+
+def _cue_timing(text):
+    ws = text.split()
+    return {"words": [{"w": w, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, w in enumerate(ws)], "duration": len(ws) * 0.5}
+
+
+def test_cues_break_at_comma_before_mid_phrase():
+    out = [c[2] for c in canh.cues(_cue_timing("Họ nói giá sẽ tăng, nhưng chưa nói tăng bao nhiêu phần trăm."), 30)]
+    assert out[0] == "Họ nói giá sẽ tăng," and all(len(x) <= 30 for x in out)
+
+
+def test_cues_forced_break_falls_back_to_last_comma():
+    out = [c[2] for c in canh.cues(_cue_timing("Một hai, ba bốn năm sáu bảy tám chín mười"), 24)]
+    assert out[0] == "Một hai," and all(len(x) <= 24 for x in out)
+
+
+def test_cues_never_leave_single_word_orphan_inside_a_sentence():
+    out = [c[2] for c in canh.cues(_cue_timing("a b c d e f g h i j k l m n o p"), 10)]
+    assert all(len(x.split()) >= 2 for x in out) and " ".join(out) == "a b c d e f g h i j k l m n o p"
+
+
+def test_cues_respect_max_chars_and_sentence_end():
+    out = [c[2] for c in canh.cues(_cue_timing("Một hai ba bốn năm. Sáu bảy tám chín mười mười một."), 20)]
+    assert out[0].endswith("năm.") and all(len(x) <= 20 for x in out)
+
+
+def test_cues_keep_one_word_sentences_and_cover_timing():
+    t = _cue_timing("Được. Rồi.")
+    out = canh.cues(t, 20)
+    assert [c[2] for c in out] == ["Được.", "Rồi."]
+    assert out[0][0] == t["words"][0]["start"] and out[-1][1] == t["words"][-1]["end"]
+
+
+def test_cues_empty_timing():
+    assert canh.cues({"words": []}) == []
