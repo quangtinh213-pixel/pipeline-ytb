@@ -91,3 +91,9 @@ def test_spoken_number_words_need_source():
     errs = check("Apple mất ba nghìn tỷ đô.", NGUON)
     assert errs and "chữ" in errs[0]
     assert check("Apple mất ba nghìn tỷ đô. [#p1]", NGUON) == []
+
+
+def test_english_decimal_with_unit_flagged():
+    errs = check("Giá chip là 2.5 USD.", NGUON)
+    assert any("2,5" in e for e in errs)
+    assert check("Gemini 2.5 Pro ra mắt.", NGUON) == []

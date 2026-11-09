@@ -2,7 +2,7 @@
 import csv
 import json
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -36,6 +36,8 @@ def _check_text(title: str, desc: str, tags: list[str]) -> None:
 
 def _body(title: str, desc: str, tags: list[str], when: str) -> dict:
     _check_text(title, desc, tags)
+    if datetime.strptime(when, "%Y-%m-%dT%H:%M:%SZ").replace(tzinfo=timezone.utc) <= datetime.now(timezone.utc) + timedelta(minutes=15):
+        raise ValueError(f"Giờ đăng {when} (UTC) đã qua hoặc quá gần, YouTube không hẹn giờ được: chọn giờ khác")
     return {"snippet": {"title": title, "description": desc, "tags": tags, "categoryId": "28",
                         "defaultLanguage": "vi", "defaultAudioLanguage": "vi"},
             "status": {"privacyStatus": "private", "publishAt": when, "selfDeclaredMadeForKids": False,
@@ -93,8 +95,10 @@ def upload(video_dir, date_vn: str, time_vn: str, youtube=None, tracker: Path = 
                                  media_body=_media(d / "final.mp4", "video/mp4")).execute()["id"]
         tt.set_field(d, "video_id", vid)
     yt.thumbnails().set(videoId=vid, media_body=_media(d / _chosen(d)["file_thumb"], "image/png")).execute()
-    yt.captions().insert(part="snippet", body={"snippet": {"videoId": vid, "language": "vi", "name": "Tiếng Việt"}},
-                         media_body=_media(d / "phu-de.srt", "application/octet-stream")).execute()
+    if not state.get("phu_de_ok"):  # chạy lại sau lỗi bước playlist không thêm bản phụ đề thứ hai
+        yt.captions().insert(part="snippet", body={"snippet": {"videoId": vid, "language": "vi", "name": "Tiếng Việt"}},
+                             media_body=_media(d / "phu-de.srt", "application/octet-stream")).execute()
+        tt.set_field(d, "phu_de_ok", True)
     if playlist_id:
         yt.playlistItems().insert(part="snippet", body={"snippet": {
             "playlistId": playlist_id, "resourceId": {"kind": "youtube#video", "videoId": vid}}}).execute()
