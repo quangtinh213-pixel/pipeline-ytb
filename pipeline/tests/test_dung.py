@@ -397,3 +397,13 @@ def test_compose_takes_colours_from_theme(video, monkeypatch):
     pages = [out / "index.html", *sorted((out / "compositions").glob("*.html"))]
     text = "".join(p.read_text(encoding="utf-8") for p in pages)
     assert "#00AAFF" in text and "#0A0B0C" in text and "#FFC800" not in text  # mực/kem giữ #111111 vì theme thử không đổi chúng
+
+
+def test_compose_does_not_copy_generated_contact_sheet(video, tmp_path, monkeypatch):
+    import shutil
+    svg = tmp_path / "svg"
+    shutil.copytree(dung.SVG, svg)
+    (svg / "thu-vien.png").write_bytes(b"png")  # bảng soi do svg/sheet.py sinh, không thuộc dự án video
+    monkeypatch.setattr(dung, "SVG", svg)
+    out = dung.compose(video)
+    assert not (out / "assets" / "svg" / "thu-vien.png").exists() and (out / "assets" / "svg" / "chip.svg").exists()

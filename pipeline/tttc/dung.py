@@ -232,7 +232,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     if o.exists():
         shutil.rmtree(o)
     (o / "compositions").mkdir(parents=True)
-    shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md"))  # cả thư viện: mẫu dùng ảnh mặc định
+    shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md", "*.png"))  # cả thư viện: mẫu dùng ảnh mặc định
     for k in {c["sac"] for c in scenes if c.get("sac")}:  # bản đổi màu nhấn vàng → màu phụ, không vẽ lại thư viện
         for f in list((o / "assets" / "svg").glob("*.svg")):
             if f.stem == "nen-dat" or f.stem.startswith("tui-") or "@" in f.stem:
