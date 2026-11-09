@@ -138,3 +138,13 @@ def test_review_page_takes_colours_from_theme(tmp_path, monkeypatch):
     monkeypatch.setattr(theme, "TH", {**theme.TH, "nen": "#0A0B0C", "nhan": ["#00AAFF", "#0088CC", "#006699"]})
     html = duyet.render_review_1(_video(tmp_path)).read_text(encoding="utf-8")
     assert "--bg:#0A0B0C" in html and "--accent:#00AAFF" in html and "#FFC800" not in html
+
+
+def test_review_2_shows_do_kho_from_director_and_judge_files(tmp_path):
+    d = _video2(tmp_path)
+    scenes = [{"id": f"c{i}", "mau": "so-lon", "start": i * 3.0, "end": i * 3.0 + 3.0} for i in range(3)]
+    (d / "canh.json").write_text(json.dumps({"scenes": scenes}), encoding="utf-8")
+    (d / "giong-timing.json").write_text(json.dumps({"duration": 9.0, "words": []}), encoding="utf-8")
+    (d / "dao-dien-cham.json").write_text(json.dumps({"beats": [{"y_nghia": 2, "da_dang": 2, "chieu_sau": 2, "nhip": 2}]}), encoding="utf-8")
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "độ khô" in html and "điểm giám khảo trung bình 2.0" in html

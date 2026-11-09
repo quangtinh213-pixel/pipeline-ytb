@@ -18,6 +18,10 @@ MUC_TIEU = {
     "bang_chung": (0.08, 0.18), "doi_that_max": 0.15, "chay_max": 2,
     "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 230)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
+# Chỉ số "độ khô" (spec 2026-11-09-chat-luong-hinh-anh-design.md mục 7): cảnh báo, hiệu chỉnh sau chạy khô.
+MUC_TIEU["do_kho"] = {"phong_min": 5, "phong_lien_max": 2, "lap_max": 0, "may_quay_min": 0.20, "cham_min": 3,
+                      "cham_tb_min": 4.0}
+NHIP_CAM_XUC_DU = {"mo", "dinh", "dao-chieu", "chot"}
 EMPTY = "Lỗi: canh.json không có cảnh nào"
 
 
@@ -28,7 +32,37 @@ def _buoc(c: dict, words: list[dict]) -> list[float]:
         return []
 
 
-def do(canh: dict, timing: dict) -> dict:
+def do_kho(canh: dict, dao_dien: dict | None = None, cham: dict | None = None) -> dict:
+    """Đo độ khô: đa dạng phông, hình chính lặp, camera; có dao-dien.json thì thêm cảnh trọng điểm và nhịp cảm xúc;
+    có dao-dien-cham.json (điểm giám khảo 1–5) thì thêm điểm."""
+    sc = canh["scenes"]
+    mh = [c for c in sc if c["mau"] == "minh-hoa"]
+    phong = [c.get("san_khau", "nen-dat") for c in mh]
+    chay = best = 0
+    prev = None
+    for p in phong:
+        chay = chay + 1 if p == prev else 1
+        best, prev = max(best, chay), p
+    lap = sum(bool(c.get("svg")) and c["svg"] in {x.get("svg") for x in mh[max(0, i - 7):i]} for i, c in enumerate(mh))
+    out = {"so_phong": len(set(phong)), "phong_lien_max": best, "vat_chinh_lap": lap,
+           "ti_le_may_quay": sum(c.get("may_quay") not in (None, "", "dung") for c in sc) / len(sc) if sc else 0.0}
+    if dao_dien is not None:
+        mau = {c["id"]: c["mau"] for c in sc}
+        thieu = 0
+        for d in dao_dien["scenes"]:
+            if d.get("trong_diem"):
+                can_camera = mau.get(d["id"]) == "minh-hoa" and d.get("may_quay") in (None, "", "dung")
+                thieu += not d.get("an_du") or can_camera
+        out["trong_diem_thieu"] = thieu
+        out["nhip_cam_xuc_du"] = NHIP_CAM_XUC_DU <= {d.get("nhip_cam_xuc") for d in dao_dien["scenes"]}
+    if cham is not None:
+        diem = [v for b in cham["beats"] for v in (b["y_nghia"], b["da_dang"], b["chieu_sau"], b["nhip"])]
+        out["cham_thap"] = sum(min(b["y_nghia"], b["da_dang"], b["chieu_sau"], b["nhip"]) < 3 for b in cham["beats"])
+        out["cham_tb"] = sum(diem) / len(diem) if diem else 0.0
+    return out
+
+
+def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None = None) -> dict:
     sc = canh["scenes"]
     words = timing.get("words", [])
     n = len(sc)
@@ -49,7 +83,7 @@ def do(canh: dict, timing: dict) -> dict:
     return {"so_canh": n, "tb_giay": sum(durs) / n, "duoi_1_5": sum(d < 1.5 for d in durs),
             "tren_8": sum(d > 8 for d in durs), "ti_le": ti_le, "chay_dai_nhat": best,
             "su_kien_phut": (n + sum(map(len, steps)) + dan) / phut, "sfx_phut": sfx / phut,
-            "toc_do": len(words) / phut}
+            "toc_do": len(words) / phut, "do_kho": do_kho(canh, dao_dien, cham)}
 
 
 def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
@@ -80,6 +114,24 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
     lo, hi = muc["toc_do"]
     if not lo <= so_do["toc_do"] <= hi:
         out.append(f"Cảnh báo: Tốc độ đọc {so_do['toc_do']:.0f} từ/phút, chuẩn {lo}–{hi}")
+    k, m = so_do.get("do_kho"), muc["do_kho"]
+    if k:
+        if k["so_phong"] < m["phong_min"]:
+            out.append(f"Cảnh báo: độ khô: {k['so_phong']} phông khác nhau, cần ≥ {m['phong_min']}")
+        if k["phong_lien_max"] > m["phong_lien_max"]:
+            out.append(f"Cảnh báo: độ khô: {k['phong_lien_max']} cảnh liền cùng phông (tối đa {m['phong_lien_max']})")
+        if k["vat_chinh_lap"] > m["lap_max"]:
+            out.append(f"Cảnh báo: độ khô: {k['vat_chinh_lap']} cảnh lặp hình chính trong cửa sổ 8 cảnh")
+        if k["ti_le_may_quay"] < m["may_quay_min"]:
+            out.append(f"Cảnh báo: độ khô: chỉ {k['ti_le_may_quay']:.0%} cảnh có camera, chuẩn ≥ {m['may_quay_min']:.0%}")
+        if k.get("trong_diem_thieu"):
+            out.append(f"Cảnh báo: độ khô: {k['trong_diem_thieu']} cảnh trọng điểm thiếu ẩn dụ hoặc camera")
+        if k.get("nhip_cam_xuc_du") is False:
+            out.append("Cảnh báo: độ khô: bản đồ nhịp cảm xúc thiếu một trong mở, đỉnh, đảo chiều, chốt")
+        if k.get("cham_thap"):
+            out.append(f"Cảnh báo: độ khô: {k['cham_thap']} beat có tiêu chí giám khảo dưới {m['cham_min']}")
+        if "cham_tb" in k and k["cham_tb"] < m["cham_tb_min"]:
+            out.append(f"Cảnh báo: độ khô: điểm giám khảo trung bình {k['cham_tb']:.1f} < {m['cham_tb_min']}")
     return out
 
 
@@ -87,7 +139,10 @@ def main(video_dir: str) -> int:
     d = Path(video_dir)
     canh = json.loads((d / "canh.json").read_text(encoding="utf-8"))
     timing = json.loads((d / "giong-timing.json").read_text(encoding="utf-8"))
-    so_do = do(canh, timing)
+    dd = d / "dao-dien.json"
+    cham = d / "dao-dien-cham.json"
+    so_do = do(canh, timing, json.loads(dd.read_text(encoding="utf-8")) if dd.exists() else None,
+               json.loads(cham.read_text(encoding="utf-8")) if cham.exists() else None)
     msgs = kiem(so_do)
     for k, v in so_do.items():
         print(f"  {k}: {v if not isinstance(v, float) else round(v, 2)}")

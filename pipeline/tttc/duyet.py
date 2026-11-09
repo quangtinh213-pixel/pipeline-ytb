@@ -88,7 +88,10 @@ def render_review_2(video_dir) -> Path:
     warns += [f"Nguồn [#{n['id']}] là số sơ bộ ({n['gia_tri']}): video phải nói rõ 'sơ bộ'"
               for n in nguon if n["trang_thai"] == "so-bo"]
     if (d / "canh.json").exists() and (d / "giong-timing.json").exists():
-        warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json"))))
+        dd, cham = d / "dao-dien.json", d / "dao-dien-cham.json"
+        warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json")),
+                                               json.loads(_read(dd)) if dd.exists() else None,
+                                               json.loads(_read(cham)) if cham.exists() else None))
     opts = "".join(
         f'<div class="opt"><strong>Phương án {i}</strong><img src="{escape(o["file_thumb"])}" alt="">'
         f'<p>{escape(o["tieu_de"])}</p><p class="meta">Chữ thumbnail: {escape(" / ".join(o.get("chu_thumb", [])))}</p></div>'

@@ -56,7 +56,7 @@ def test_kiem_warns_on_slow_pace():
 
 def test_kiem_passes_channel_like_profile():
     m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
-    assert cl.kiem(m) == []
+    assert [e for e in cl.kiem(m) if "độ khô" not in e] == []  # mẫu cũ chỉ có một phông nên bị báo độ khô, đúng ý đo
     assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 180 <= m["toc_do"] <= 230
 
 
@@ -68,3 +68,45 @@ def test_main_exit_code_follows_errors(tmp_path):
     (tmp_path / "canh.json").write_text(json.dumps(_canh(PROFILE, [3.5] * 20)), encoding="utf-8")
     (tmp_path / "giong-timing.json").write_text(json.dumps(_timing(70, 234)), encoding="utf-8")
     assert cl.main(str(tmp_path)) == 0
+
+
+def _mh(i, svg, sk="nen-dat", mq=""):
+    return {"id": f"c{i}", "mau": "minh-hoa", "start": i * 3.0, "end": i * 3.0 + 3.0, "svg": svg, "san_khau": sk, "may_quay": mq}
+
+
+def _ok_base():
+    return cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
+
+
+def test_do_kho_counts_stages_runs_repeats_and_camera():
+    sc = [_mh(0, "chip"), _mh(1, "laptop", "may-chu", "day-vao"), _mh(2, "chip", "may-chu"), _mh(3, "tien", "may-chu")]
+    d = cl.do_kho({"scenes": sc})
+    assert d["so_phong"] == 2 and d["phong_lien_max"] == 3 and d["vat_chinh_lap"] == 1 and d["ti_le_may_quay"] == 0.25
+
+
+def test_do_kho_defaults_missing_stage_to_nen_dat():
+    assert cl.do_kho({"scenes": [_mh(0, "chip"), _mh(1, "laptop")]})["so_phong"] == 1
+
+
+def test_do_kho_reads_director_and_judge():
+    dd = {"scenes": [{"id": "c0", "trong_diem": True, "an_du": "", "may_quay": "", "nhip_cam_xuc": "mo"},
+                     {"id": "c1", "trong_diem": True, "an_du": "cái cân", "may_quay": "day-vao", "nhip_cam_xuc": "chot"}]}
+    cham = {"beats": [{"y_nghia": 4, "da_dang": 2, "chieu_sau": 4, "nhip": 4}]}
+    d = cl.do_kho({"scenes": [_mh(0, "chip"), _mh(1, "laptop")]}, dd, cham)
+    assert d["trong_diem_thieu"] == 1 and d["nhip_cam_xuc_du"] is False
+    assert d["cham_thap"] == 1 and d["cham_tb"] == 3.5
+
+
+def test_kiem_warns_on_each_violated_do_kho_metric():
+    so_do = {**_ok_base(), "do_kho": {"so_phong": 1, "phong_lien_max": 5, "vat_chinh_lap": 2, "ti_le_may_quay": 0.0}}
+    assert sum(m.startswith("Cảnh báo: độ khô:") for m in cl.kiem(so_do)) == 4
+
+
+def test_kiem_do_kho_clean_when_all_metrics_met():
+    so_do = {**_ok_base(), "do_kho": {"so_phong": 5, "phong_lien_max": 2, "vat_chinh_lap": 0, "ti_le_may_quay": 0.2,
+                                      "trong_diem_thieu": 0, "nhip_cam_xuc_du": True, "cham_thap": 0, "cham_tb": 4.2}}
+    assert [m for m in cl.kiem(so_do) if "độ khô" in m] == []
+
+
+def test_old_callers_without_director_files_still_work():
+    assert "do_kho" in cl.do(_canh(["minh-hoa"], [3]), _timing(3, 8))
