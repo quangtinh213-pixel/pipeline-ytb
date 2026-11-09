@@ -17,6 +17,16 @@ Mỗi bước: `set_step(V, <bước>, "xong")`; lỗi thì `set_step(V, <bướ
 
 ## 1. giong
 `uv run python -m tttc.tts V` (khoá ElevenLabs trong Keychain). Đoạn đã có thì không gọi lại (không mất tiền).
+
+**Giọng làm thủ công** (thu âm, ElevenLabs web, TTS khác – không dùng API): người dùng đưa một hoặc nhiều tệp tiếng, đúng thứ
+tự kịch bản, đọc đúng chữ trong `Lời đọc` (số viết thành chữ). Thay cho `tttc.tts`:
+
+    uv run python -m tttc.giong_tay V tep1.mp3 [tep2.mp3 ...] [--srt phu-de.srt]
+
+Ghép thành `V/giong.mp3`, lấy mốc từng từ bằng phiên âm (`hyperframes transcribe`, whisper `small` tiếng Việt; **lần đầu tải mô
+hình ~466 MB: hỏi người dùng trước**) hoặc nhập phụ đề `.srt` nếu có (không cần tải, mốc chính xác ở mức cue), rồi căn từng từ
+kịch bản vào đó và ghi `giong-timing.json`. Lệnh in % từ khớp trực tiếp; dưới 50% là nhầm tệp hoặc đọc sai kịch bản, không ghi gì.
+Số đọc thành chữ bị phiên âm thành chữ số vẫn căn được (lấy khoảng của số), nhưng mốc từng từ trong khối đó chỉ gần đúng.
 Kiểm `giong-timing.json`: `words[-1].end ≤ duration`.
 
 ## 2. canh
