@@ -2,11 +2,14 @@
 
 Giấy phép Pexels/Pixabay: dùng thương mại, không bắt buộc ghi công – kênh vẫn ghi.
 """
+import io
 import json
 import re
 import subprocess
+import tempfile
 import unicodedata
 from pathlib import Path
+from urllib.parse import urlparse
 
 import requests
 
@@ -95,6 +98,62 @@ def quet_kho(kho: Path = KHO) -> list[dict]:
     return moi
 
 
+def _chuan_hoa(src: Path, out: Path, bat_dau: float = 0.0, do_dai: float | None = None, crf: int = 20) -> None:
+    """1920×1080 phủ kín (cắt mép), 30 fps, H.264, bỏ tiếng."""
+    cut = (["-ss", str(bat_dau)] if bat_dau else []) + (["-t", str(do_dai)] if do_dai else [])
+    subprocess.run(["ffmpeg", "-v", "error", "-y", *cut, "-i", str(src), "-an",
+                    "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080",
+                    "-r", "30", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", str(crf), str(out)], check=True)
+
+
+TIN_CAY = {"videos.pexels.com", "cdn.pixabay.com", "upload.wikimedia.org"}
+
+
+def tai_ve(url: str, ten: str, kho, ghi_cong: str, nguon: str, mo_ta: str, tu_khoa: list[str],
+           get=requests.get) -> Path:
+    """Tải một clip (chỉ từ máy chủ tin cậy) vào kho: chuẩn hoá ≤ 20 s, thêm mục kho.json. Đã có thì bỏ qua."""
+    if urlparse(url).hostname not in TIN_CAY:
+        raise ValueError(f"Không tải từ máy chủ ngoài danh sách tin cậy: {urlparse(url).hostname}")
+    if not ghi_cong.strip():
+        raise ValueError("Clip phải có ghi công")
+    kho = Path(kho)
+    path = kho / "kho.json"
+    data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
+    out = kho / f"{_slug(ten)}.mp4"
+    if out.exists() and any(e["tep"] == out.name for e in data):
+        return out
+    with tempfile.TemporaryDirectory() as tmp:
+        raw = Path(tmp) / "tai.mp4"
+        r = get(url, headers={"User-Agent": "Mozilla/5.0"}, timeout=180)
+        r.raise_for_status()
+        raw.write_bytes(r.content)
+        probe = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries",
+                                "stream=codec_type", "-of", "csv=p=0", str(raw)], capture_output=True, text=True)
+        if "video" not in probe.stdout:
+            raise RuntimeError(f"Tệp tải về không phải video: {url}")
+        _chuan_hoa(raw, out, do_dai=20, crf=22)
+    data.append({"tep": out.name, "do_dai": _duration(out), "mo_ta": mo_ta, "ghi_cong": ghi_cong.strip(),
+                 "tu_khoa": tu_khoa, "nguon": nguon})
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+    return out
+
+
+def soi(clip: Path, out_png, w: int = 320, h: int = 180) -> Path:
+    """3 khung (10%, 50%, 90%) cạnh nhau để duyệt mặt người, logo, chữ trước khi dùng clip."""
+    from PIL import Image
+    dur = _duration(Path(clip))
+    strip = Image.new("RGB", (3 * w, h))
+    for k, f in enumerate((0.1, 0.5, 0.9)):
+        png = subprocess.run(["ffmpeg", "-v", "error", "-ss", f"{dur * f:.2f}", "-i", str(clip), "-frames:v", "1",
+                              "-vf", f"scale={w}:{h}", "-f", "image2pipe", "-vcodec", "png", "-"],
+                             capture_output=True, check=True).stdout
+        strip.paste(Image.open(io.BytesIO(png)), (k * w, 0))
+    out = Path(out_png)
+    out.parent.mkdir(parents=True, exist_ok=True)
+    strip.save(out)
+    return out
+
+
 def nhap(src: Path, video_dir, ghi_cong: str, bat_dau: float = 0.0, do_dai: float | None = None) -> Path:
     """Cắt clip từ kho vào V/broll/: 1920×1080 phủ kín (cắt mép), 30 fps, H.264, bỏ tiếng; ghi công một lần."""
     if not ghi_cong.strip():
@@ -104,10 +163,7 @@ def nhap(src: Path, video_dir, ghi_cong: str, bat_dau: float = 0.0, do_dai: floa
     d.mkdir(parents=True, exist_ok=True)
     # shortcut: tên ra theo tên clip gốc, một clip chỉ dùng một đoạn mỗi video; cần nhiều đoạn thì thêm hậu tố
     out = d / f"{_slug(src.stem)}.mp4"
-    cut = (["-ss", str(bat_dau)] if bat_dau else []) + (["-t", str(do_dai)] if do_dai else [])
-    subprocess.run(["ffmpeg", "-v", "error", "-y", *cut, "-i", str(src), "-an",
-                    "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080",
-                    "-r", "30", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", "20", str(out)], check=True)
+    _chuan_hoa(src, out, bat_dau, do_dai)
     log = d / "ghi-cong.json"
     credits = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []
     if not any(c["tep"] == out.name for c in credits):

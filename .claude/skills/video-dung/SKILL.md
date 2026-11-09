@@ -36,11 +36,21 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
   bằng chứng (`trich-bao`, `trang-nguon`) 15%, còn lại 15%. Không 3 cảnh liền cùng nhóm.
 - **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
   Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
-- **`b-roll`**: chọn clip trong kho `pipeline/broll-kho/kho.json` theo `tu_khoa`/`mo_ta`, độ dài ≥ cảnh + 1 s;
-  `tttc.broll.nhap(KHO / tep, V, ghi_cong=<từ kho.json>, bat_dau=<giây>, do_dai=<độ dài cảnh + 0,5>)`;
-  ghi `video` = tên tệp trả về. Không có clip hợp: thêm clip mới vào kho (Pexels/Pixabay, tải thủ công) hoặc,
-  nếu có khoá Pexels trong Keychain, `broll.search` → `pick` → `download`. Mọi clip: xem 3 khung trước khi dùng –
-  **không mặt người nhận ra được, không logo hãng, không chữ nước ngoài lớn**. Một clip dùng cho một cảnh mỗi video.
+- **`b-roll`** – clip riêng cho từng video (kho chung chỉ là phần nền):
+  1. Liệt kê mọi cảnh `b-roll` của video và hình cần thấy (vd "cánh quạt điện gió", "chợ Bến Thành").
+  2. Tìm trong `pipeline/broll-kho/kho.json` theo `tu_khoa`/`mo_ta`, độ dài ≥ cảnh + 1 s. Có clip hợp và chưa
+     dùng trong video này thì dùng.
+  3. Không có: mở trình duyệt có sẵn ở `https://www.pexels.com/`, dán `pipeline/scripts/pexels-tim.js` vào
+     `javascript_tool`, gọi `await pxl("<từ khoá tiếng Anh cụ thể>", 4)`. Chọn 1–2 ứng viên hợp nhất.
+  4. `broll.tai_ve(link, "<chu-de>-<id>", broll.KHO, f"Video: {user} trên Pexels", nguon=page,
+     mo_ta="<mô tả tiếng Việt>", tu_khoa=[...Việt + Anh...])` – chỉ nhận videos.pexels.com / cdn.pixabay.com /
+     upload.wikimedia.org.
+  5. `broll.soi(clip, V/frames/broll-<ten>.jpg)` rồi **xem ảnh**: có mặt người nhận ra được, logo hãng, chữ nước
+     ngoài lớn, tiền nước khác khi nói về tiền Việt → xoá clip khỏi kho (tệp + mục kho.json), tìm clip khác.
+  6. `broll.nhap(KHO / tep, V, ghi_cong=<từ kho.json>, bat_dau=<giây>, do_dai=<độ dài cảnh + 0,5>)`; ghi
+     `video` = tên tệp trả về. Một clip dùng cho một cảnh mỗi video.
+  Không tìm được clip đạt sau 2 lượt từ khoá: đổi cảnh đó sang `minh-hoa` hoặc `so-lon`, không dùng clip kém.
+  Có khoá Pexels trong Keychain thì `broll.search`/`pick`/`download` thay cho bước 3–4.
 - Ảnh trang nguồn: chụp lại trang bằng trình duyệt ở độ phân giải ≥ 1600 px rộng, lưu `V/nguon/<id>.png`;
   `khung` là vùng chứa con số (x,y,w,h theo % ảnh).
 

@@ -105,3 +105,57 @@ def test_quet_kho_adds_new_files_only(tmp_path):
     (kho / "kho.json").write_text(json.dumps(data, ensure_ascii=False), encoding="utf-8")
     assert broll.quet_kho(kho) == []                      # chạy lại không thêm trùng, giữ phần đã sửa
     assert json.loads((kho / "kho.json").read_text(encoding="utf-8"))[0]["ghi_cong"] == "Video: Chi trên Pexels"
+
+
+# ---- Tải thêm B-roll theo từng video ----
+
+def _bytes_of_clip(tmp_path, secs=3):
+    return _clip(tmp_path / "src.mp4", w=1280, h=720, secs=secs).read_bytes()
+
+
+def test_tai_ve_rejects_untrusted_host(tmp_path):
+    with pytest.raises(ValueError):
+        broll.tai_ve("https://evil.example.com/x.mp4", "cang", tmp_path, "Video: A trên Pexels",
+                     nguon="https://www.pexels.com/video/1/", mo_ta="x", tu_khoa=["x"])
+
+
+def test_tai_ve_downloads_normalizes_and_indexes(tmp_path):
+    data = _bytes_of_clip(tmp_path)
+    calls = []
+
+    def get(url, headers=None, timeout=None, stream=None):
+        calls.append(url)
+        return Resp(content=data)
+
+    kho = tmp_path / "kho"
+    kho.mkdir()
+    p = broll.tai_ve("https://videos.pexels.com/video-files/9/9-hd_1920_1080_30fps.mp4", "dien-gio-9", kho,
+                     "Video: Dũng trên Pexels", nguon="https://www.pexels.com/video/9/",
+                     mo_ta="Cánh quạt điện gió quay", tu_khoa=["điện gió", "năng lượng"], get=get)
+    assert p == kho / "dien-gio-9.mp4"
+    info = _probe(p)
+    v = [s for s in info["streams"] if s["codec_type"] == "video"][0]
+    assert (v["width"], v["height"]) == (1920, 1080)
+    entry = json.loads((kho / "kho.json").read_text(encoding="utf-8"))[0]
+    assert entry["tep"] == "dien-gio-9.mp4" and entry["ghi_cong"] == "Video: Dũng trên Pexels"
+    assert entry["tu_khoa"] == ["điện gió", "năng lượng"] and entry["do_dai"] == pytest.approx(3, abs=0.2)
+    # tải lại cùng tên: không gọi mạng, không thêm mục trùng
+    broll.tai_ve("https://videos.pexels.com/video-files/9/9-hd_1920_1080_30fps.mp4", "dien-gio-9", kho,
+                 "Video: Dũng trên Pexels", nguon="https://www.pexels.com/video/9/", mo_ta="x", tu_khoa=[], get=get)
+    assert len(calls) == 1 and len(json.loads((kho / "kho.json").read_text(encoding="utf-8"))) == 1
+
+
+def test_tai_ve_rejects_non_video_payload(tmp_path):
+    kho = tmp_path / "kho"
+    kho.mkdir()
+    with pytest.raises(RuntimeError):
+        broll.tai_ve("https://videos.pexels.com/x.mp4", "rac", kho, "Video: A trên Pexels",
+                     nguon="https://www.pexels.com/video/1/", mo_ta="x", tu_khoa=[],
+                     get=lambda *a, **k: Resp(content=b"<html>blocked</html>"))
+    assert not (kho / "rac.mp4").exists()
+
+
+def test_soi_makes_three_frame_strip(tmp_path):
+    from PIL import Image
+    out = broll.soi(_clip(tmp_path / "a.mp4", secs=2, audio=False), tmp_path / "soi.jpg")
+    assert Image.open(out).size == (3 * 320, 180)
