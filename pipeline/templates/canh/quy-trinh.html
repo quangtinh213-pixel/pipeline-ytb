@@ -2,18 +2,18 @@
   <style>
     #root { position: absolute; inset: 0; }
     #root .qt-tieu-de { position: absolute; left: 160px; top: 110px; right: 160px; color: var(--ink);
-                        font: 900 52px/1.15 var(--font-display); letter-spacing: -0.01em; }
-    #root .qt-khung { position: absolute; left: 160px; top: 330px; width: 1600px; height: 460px; }
+                        font: 900 68px/1.15 var(--font-display); letter-spacing: -0.01em; }
+    #root .qt-khung { position: absolute; left: 160px; top: 290px; width: 1600px; height: 640px; }
     #root .qt-nut { position: absolute; top: 0; height: 100%; text-align: center; }
     #root .qt-hop { margin: 0 auto; display: flex; align-items: center; justify-content: center; }
     #root .qt-hop img { width: 100%; height: 100%; object-fit: contain; }
     #root .qt-hop.so { background: var(--accent); color: var(--accent-ink); border-radius: 50%;
-                       font: 900 110px/1 var(--font-display); }
-    #root .qt-nhan { margin-top: 30px; }
+                       font: 900 150px/1 var(--font-display); }
+    #root .qt-nhan { margin-top: 36px; }
     #root .qt-nhan span { display: inline-block; background: var(--ink); color: var(--tren-muc);
-                          font: 800 36px/1.15 var(--font-display); padding: 12px 20px; border-radius: 12px; }
+                          font: 800 46px/1.15 var(--font-display); padding: 14px 26px; border-radius: 14px; }
     #root .qt-nut.noi-bat .qt-nhan span { background: var(--accent); color: var(--accent-ink); }
-    #root .qt-mui { position: absolute; height: 10px; background: var(--ink); border-radius: 5px;
+    #root .qt-mui { position: absolute; height: 12px; background: var(--ink); border-radius: 5px;
                     transform-origin: left center; }
     #root .qt-mui::after { content: ""; position: absolute; right: -8px; top: -11px; border-left: 22px solid var(--ink);
                            border-top: 16px solid transparent; border-bottom: 16px solid transparent; }
@@ -34,7 +34,7 @@
     document.querySelector("#qt-san").classList.add("nen-" + (v.nen || "toi"));
     const buoc = JSON.parse(v.buoc), n = buoc.length, hl = Number(v.noi_bat);
     const khung = document.querySelector("#qt-khung");
-    const nw = 1600 / n, hop = Math.min(240, nw - 90);
+    const nw = 1600 / n, hop = Math.min(420, nw - 150);
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#qt-tieu-de", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
     const others = [];

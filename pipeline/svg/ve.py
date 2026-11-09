@@ -52,19 +52,23 @@ def on_top(x, y, z, w, d, h, u0, v0, u1, v1, fill, sw=4):
                  (x + u1 * w, y + v1 * d, Z), (x + u0 * w, y + v1 * d, Z)], fill, sw)
 
 
-def save(name, parts):
-    body = "\n  ".join(parts)
-    # khung nhìn tính từ toạ độ thật rồi đưa vào viewBox 0 0 400 400, chừa lề
-    xs, ys = [], []
+def _viewbox(parts):
+    """viewBox vuông quanh mọi điểm của hình, chừa lề (đưa vào khung 0 0 400 400)."""
     import re
-    for m in re.finditer(r'points="([^"]+)"', body):
+    xs, ys = [], []
+    for m in re.finditer(r'points="([^"]+)"', "\n".join(parts)):
         for pair in m.group(1).split():
             a, b = map(float, pair.split(","))
             xs.append(a), ys.append(b)
     minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
     size = max(maxx - minx, maxy - miny) + 24
     cx, cy = (minx + maxx) / 2, (miny + maxy) / 2
-    vb = f"{cx - size / 2:.1f} {cy - size / 2:.1f} {size:.1f} {size:.1f}"
+    return f"{cx - size / 2:.1f} {cy - size / 2:.1f} {size:.1f} {size:.1f}"
+
+
+def save(name, parts):
+    body = "\n  ".join(parts)
+    vb = getattr(parts, "vb", "") or _viewbox(parts)  # phông giữ viewBox của nen-dat dù vật dựng lên cao hơn mép sàn
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" width="400" height="400">\n  {body}\n</svg>\n')
     (OUT / f"{name}.svg").write_text(svg, encoding="utf-8")
 
@@ -675,68 +679,157 @@ def tui(the: str = "chao", nham: bool = False):
 
 
 
-# ---------- Phông (sân khấu) theo chủ đề, tệp san-khau-*.svg: nen_dat() cộng chi tiết thấp ở rìa sàn, chừa trống vùng giữa cho vật chính ----------
-# Chi tiết nằm trong khung của sàn (x + y ≥ 2 × chiều cao) nên viewBox giống hệt nen-dat.svg.
+# ---------- Phông (sân khấu) theo chủ đề, tệp san-khau-*.svg ----------
+# Mỗi phông có sàn riêng và vật dựng ở hai cạnh phía sau (cạnh y≈14 chạy sang phải, cạnh x≈14 chạy xuống trái), chừa trống
+# vùng giữa cho vật chính. viewBox giữ đúng của nen-dat nên vật cao vượt mép sàn vẫn đặt vật chính cùng một vị trí;
+# chiều cao bị chặn để không chạm nhãn ở đỉnh khung.
 Z = 24  # mặt trên của sàn
+G1, G2, G3 = "#262626", "#1A1A1A", "#141414"
+PAD, LANE = "#2F2F2F", "#3A3A3A"
 
 
-def _phong(extra):
-    return nen_dat() + extra
+class _Phong(list):
+    vb = ""
+
+
+def _tile(u0, v0, u1, v1, fill, sw=2):
+    return on_top(0, 0, 0, 600, 420, 24, u0, v0, u1, v1, fill, sw)
+
+
+def _san(decals):
+    return [*box(0, 0, 0, 600, 420, 24, G1, G2, G3), *decals]
+
+
+def _cao(x, y, h):
+    return min(h, (x + y) / 2 + 100)
+
+
+def _bx(x, y, w, d, h, top=WHITE, left=LIGHT, right=MID, z=Z, det=None):
+    """Hộp đứng trên sàn: (x, y, w, d, hình); det(hh) cho chi tiết trên mặt hộp sau khi chiều cao đã bị chặn."""
+    hh = _cao(x, y, h)
+    parts = box(x, y, z, w, d, hh, top, left, right)
+    if det:
+        parts += det(hh)
+    return (x, y, w, d, parts)
+
+
+def _ghep(floor, objs, sap=True):
+    """Sàn rồi các vật từ xa đến gần (x + y + w + d tăng dần); sap=False giữ nguyên thứ tự đã viết (vật chồng lên nhau)."""
+    out = _Phong(floor)
+    for *_, parts in (sorted(objs, key=lambda o: o[0] + o[1] + o[2] + o[3]) if sap else objs):
+        out += parts
+    out.vb = _viewbox(nen_dat())
+    return out
+
+
+def _led(x, y, w, d, ks=(0.25, 0.5, 0.75)):
+    return lambda hh: [on_left(x, y, Z, w, d, hh, 0.14, 0.1, 0.86, 0.9, PAD, 2)] + \
+        [on_left(x, y, Z, w, d, hh, 0.2, k - 0.025, 0.55, k + 0.025, Y if i == 1 else WHITE, 1) for i, k in enumerate(ks)]
+
+
+def _cua_so(x, y, w, d, hang=3, cot=2, lit=()):
+    def f(hh):
+        out = []
+        for r in range(hang):
+            for c in range(cot):
+                u0, v0 = 0.14 + c * 0.42, 0.12 + r * 0.26
+                out.append(on_left(x, y, Z, w, d, hh, u0, v0 + 0.0, u0 + 0.3, v0 + 0.16,
+                                   Y if (r, c) in lit else DARK, 1))
+        return out
+    return f
 
 
 def phong_may_chu():
-    ex = []
-    for k in range(6):  # dãy tủ máy chủ dọc mép sau, mỗi tủ một đèn nhấn
-        x = 80 + k * 80
-        ex += box(x, 12, Z, 56, 30, 44, MID, DARK, INK)
-        ex.append(on_left(x, 12, Z, 56, 30, 44, 0.15, 0.62, 0.45, 0.72, Y, 2))
-    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.1, 0.84, 0.9, 0.9, MID, 2))  # dây cáp trên sàn
-    return _phong(ex)
+    """Phòng máy chủ: sàn nâng ô vuông, hai dãy tủ máy cao phía sau, mỗi tủ ba đèn."""
+    sàn = [_tile(0.02 + c * 0.098, 0.04 + r * 0.139, 0.02 + (c + 1) * 0.098, 0.04 + (r + 1) * 0.139, PAD, 2)
+           for r in range(7) for c in range(10) if (r + c) % 2 == 0]
+    sàn.append(_tile(0.0, 0.46, 1.0, 0.54, LANE, 3))  # lối đi
+    sàn += [_tile(0.04 + k * 0.17, 0.495, 0.1 + k * 0.17, 0.505, Y, 1) for k in range(6)]
+    objs = [_bx(64 + k * 58, 14, 46, 34, 120, MID, DARK, INK, det=_led(64 + k * 58, 14, 46, 34)) for k in range(8)]
+    objs += [_bx(14, 96 + k * 62, 34, 46, 110, MID, DARK, INK, det=_led(14, 96 + k * 62, 34, 46)) for k in range(5)]
+    return _ghep(_san(sàn), objs)
 
 
 def phong_nha_may():
-    ex = box(500, 30, Z, 90, 140, 52, LIGHT, MID, DARK)  # nhà xưởng thấp ở mép phải
-    ex += box(540, 250, Z, 40, 40, 70, MID, DARK, INK)  # ống khói
-    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.05, 0.80, 0.7, 0.86, MID, 2))  # băng chuyền
-    ex += [on_top(0, 0, 0, 600, 420, 24, 0.08 + k * 0.15, 0.815, 0.14 + k * 0.15, 0.845, Y, 2) for k in range(4)]
-    return _phong(ex)
+    """Nhà máy: băng chuyền chạy ngang sàn, nhà xưởng mái răng cưa, hai ống khói sọc vàng, bồn chứa ở cạnh trái."""
+    sàn = [_tile(0.0, 0.78, 1.0, 0.88, LANE, 3)] + [_tile(0.04 + k * 0.12, 0.8, 0.1 + k * 0.12, 0.86, Y if k % 3 == 0 else PAD, 1)
+                                                      for k in range(8)]
+    sàn += [_tile(0.0, 0.93 + 0.0, 0.5, 1.0, Y, 1), _tile(0.5, 0.93, 1.0, 1.0, DARK, 1)]  # viền cảnh báo
+    objs = [_bx(270, 14, 270, 90, 66, LIGHT, MID, DARK)]
+    objs += [_bx(270 + k * 68, 14, 68, 90, 30, WHITE, LIGHT, MID, z=Z + _cao(270, 14, 66)) for k in range(4)]
+    for xx, yy, hh in ((524, 112, 160), (556, 160, 124)):  # ống khói đứng trước nhà xưởng, sọc vàng ở ngọn
+        objs += [_bx(xx, yy, 30, 30, hh, MID, DARK, INK), _bx(xx, yy, 30, 30, 18, Y, Y2, Y3, z=Z + _cao(xx, yy, hh) - 40)]
+    objs += [(40, 110 + k * 84, 52, 52, cil(66, 136 + k * 84, Z, 26, 70 + 14 * k, WHITE, LIGHT, MID)) for k in range(3)]
+    return _ghep(_san(sàn), objs)
 
 
 def phong_cang():
-    ex = []
-    for k, col in enumerate((Y, MID, WHITE, MID)):  # chồng container ở mép trước
-        ex += box(20 + k * 64, 340, Z, 60, 60, 28, col, Y2 if col == Y else LIGHT, Y3 if col == Y else DARK)
-    ex += box(560, 300, Z, 14, 14, 90, MID, DARK, INK)  # chân cần cẩu
-    ex += box(430, 300, Z + 90, 144, 14, 10, MID, DARK, INK)  # tay cần cẩu
-    return _phong(ex)
+    """Cảng: bãi container kẻ ô, ba hàng chồng container nhiều màu, cần cẩu giàn bắc ngang cạnh trái."""
+    sàn = [_tile(0.28 + c * 0.17, 0.06 + r * 0.2, 0.28 + (c + 1) * 0.17 - 0.01, 0.06 + (r + 1) * 0.2 - 0.02, PAD, 2)
+           for r in range(2) for c in range(4)]
+    sàn += [_tile(0.0, 0.5, 1.0, 0.6, LANE, 3)] + [_tile(0.03 + k * 0.17, 0.545, 0.1 + k * 0.17, 0.555, Y, 1) for k in range(6)]
+    objs = []
+    cols = [(Y, Y2, Y3), (MID, DARK, INK), (WHITE, LIGHT, MID), (LIGHT, MID, DARK)]
+    for r, y in enumerate((14, 66)):
+        for c in range(4):
+            x = 290 + c * 66
+            for lv in range(3 - r if (c + r) % 3 else 2):
+                col = cols[(c + lv + r) % 4]
+                objs.append(_bx(x, y, 60, 30, 26, *col, z=Z + lv * 26))
+    for yy in (84, 330):  # chân giàn
+        objs.append(_bx(14, yy, 14, 14, 140, MID, DARK, INK))
+    objs.append(_bx(14, 84, 14, 260, 12, LIGHT, MID, DARK, z=Z + _cao(14, 84, 140) - 12))
+    objs.append(_bx(8, 190, 26, 40, 14, Y, Y2, Y3, z=Z + _cao(14, 84, 140) - 26))  # xe con
+    objs.append(_bx(10, 196, 22, 30, 24, Y, Y2, Y3, z=Z + _cao(14, 84, 140) - 56))  # container đang cẩu
+    return _ghep(_san(sàn), objs)
 
 
 def phong_thanh_pho():
-    ex = []
-    for k, h in enumerate((38, 62, 46, 70, 40, 56)):  # dãy nhà thấp cao thấp xen kẽ ở mép sau
-        x = 80 + k * 84
-        ex += box(x, 14, Z, 64, 40, h, WHITE if k % 2 else LIGHT, LIGHT if k % 2 else MID, MID if k % 2 else DARK)
-        ex.append(on_left(x, 14, Z, 64, 40, h, 0.2, 0.2, 0.8, 0.5, DARK, 2))
-    return _phong(ex)
+    """Thành phố: ngã tư có vạch qua đường, dãy nhà cao thấp có cửa sổ phía sau, dãy nhà thấp ở cạnh trái."""
+    sàn = [_tile(0.0, 0.42, 1.0, 0.62, LANE, 3), _tile(0.43, 0.0, 0.57, 1.0, LANE, 3)]
+    sàn += [_tile(0.04 + k * 0.15, 0.51, 0.1 + k * 0.15, 0.53, Y, 1) for k in range(6) if not 0.38 < 0.07 + k * 0.15 < 0.62]
+    sàn += [_tile(0.455 + k * 0.016, 0.43, 0.465 + k * 0.016, 0.61, WHITE, 1) for k in range(6)]
+    objs, heights = [], (90, 140, 110, 170, 100, 150, 120, 160)
+    for k, h in enumerate(heights):
+        x = 54 + k * 62
+        objs.append(_bx(x, 14, 54, 36, h, WHITE if k % 2 else LIGHT, LIGHT if k % 2 else MID, MID if k % 2 else DARK,
+                        det=_cua_so(x, 14, 54, 36, 3 + k % 3, 2, lit={(0, 1)} if k == 3 else ())))
+    for k, h in enumerate((60, 84, 66, 96)):
+        y = 96 + k * 76
+        objs.append(_bx(14, y, 34, 56, h, LIGHT, MID, DARK, det=_cua_so(14, y, 34, 56, 2, 2)))
+    return _ghep(_san(sàn), objs)
 
 
 def phong_san_giao_dich():
-    ex = []
-    for k, h in enumerate((14, 26, 20, 38, 30, 46)):  # cột giá, một cột nhấn
-        c = k == 3
-        ex += box(90 + k * 70, 18, Z, 26, 26, h, Y if c else WHITE, Y2 if c else LIGHT, Y3 if c else MID)
-    ex += box(20, 150, Z, 14, 120, 54, DARK, INK, INK)  # bảng điện tử ở mép trái
-    ex.append(on_top(0, 0, 0, 600, 420, 24, 0.04, 0.9, 0.5, 0.96, MID, 2))  # dải chỉ số trên sàn
-    return _phong(ex)
+    """Sàn giao dịch: nền lưới, dãy cột giá cao dần có một cột nhấn, bảng điện tử lớn ở cạnh trái với các thanh tăng dần."""
+    sàn = [_tile(0.02 + c * 0.16, 0.05 + r * 0.24, 0.02 + (c + 1) * 0.16 - 0.015, 0.05 + (r + 1) * 0.24 - 0.02, PAD, 2)
+           for r in range(4) for c in range(6) if (r + c) % 2]
+    objs = []
+    for k, h in enumerate((30, 52, 44, 80, 70, 120, 96, 150)):
+        c = k == 7
+        x = 60 + k * 62
+        objs.append(_bx(x, 14, 36, 30, h, Y if c else WHITE, Y2 if c else LIGHT, Y3 if c else MID))
+    def bang(hh):
+        return [on_right(14, 80, Z, 16, 260, hh, 0.06 + k * 0.15, 0.1, 0.06 + k * 0.15 + 0.1, 0.18 + k * 0.1, Y if k == 5 else WHITE, 2)
+                for k in range(6)]
+    objs.append(_bx(14, 80, 16, 260, 120, DARK, INK, INK, det=bang))
+    return _ghep(_san(sàn), objs)
 
 
 def phong_co_quan():
-    ex = box(120, 14, Z, 360, 90, 8, LIGHT, MID, DARK) + box(140, 24, Z + 8, 320, 70, 8, WHITE, LIGHT, MID)  # bậc thềm
-    for k in range(4):  # cột trụ
-        ex += box(150 + k * 100, 34, Z + 16, 22, 22, 56, WHITE, LIGHT, MID)
-    ex += box(540, 30, Z, 8, 8, 80, MID, DARK, INK)  # cột cờ
-    ex += box(548, 30, Z + 60, 36, 4, 20, Y, Y2, Y3)
-    return _phong(ex)
+    """Cơ quan: sân đá có thảm giữa, toà nhà cột trụ có mái bậc phía sau, hai cột cờ vàng ở bên phải."""
+    sàn = [_tile(0.38, 0.0, 0.62, 1.0, LANE, 3), _tile(0.0, 0.0, 1.0, 0.04, PAD, 2), _tile(0.0, 0.96, 1.0, 1.0, PAD, 2)]
+    objs = [_bx(150, 14, 380, 80, 10, LIGHT, MID, DARK), _bx(170, 24, 340, 60, 10, WHITE, LIGHT, MID, z=Z + 10),
+            _bx(176, 24, 328, 22, 92, MID, DARK, INK, z=Z + 20)]  # tường sau hàng cột
+    for k in range(7):
+        objs.append(_bx(190 + k * 48, 46, 24, 24, 92, WHITE, LIGHT, MID, z=Z + 20))
+    objs += [_bx(170, 24, 340, 60, 14, LIGHT, MID, DARK, z=Z + 112),
+             _bx(210, 30, 260, 48, 12, WHITE, LIGHT, MID, z=Z + 126),
+             _bx(250, 36, 180, 36, 12, LIGHT, MID, DARK, z=Z + 138),
+             _bx(290, 42, 100, 24, 12, WHITE, LIGHT, MID, z=Z + 150)]
+    for k, yy in enumerate((110, 150)):
+        objs += [_bx(548, yy, 8, 8, 120, MID, DARK, INK), _bx(556, yy, 34, 4, 22, Y, Y2, Y3, z=Z + 96)]
+    return _ghep(_san(sàn), objs, sap=False)  # toà nhà xếp từ nền lên mái, cột cờ ở gần nhất
 
 
 def cua_hep():
