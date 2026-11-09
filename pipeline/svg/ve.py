@@ -5,8 +5,12 @@ Toạ độ 3D: x sang phải-trước, y sang trái-trước, z lên. Mặt th�
 import math
 from pathlib import Path
 
+from tttc import theme
+
 C, S = math.cos(math.radians(30)), math.sin(math.radians(30))
-INK, WHITE, LIGHT, MID, DARK, Y = "#111111", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#FFC800"
+_VE = theme.TH["ve"]
+INK, WHITE, LIGHT, MID, DARK = _VE["ink"], _VE["trang"], _VE["sang"], _VE["vua"], _VE["toi"]
+Y, Y2, Y3 = theme.TH["nhan"]  # nhấn, bóng, bóng tối
 OUT = Path(__file__).resolve().parent
 
 
@@ -71,7 +75,7 @@ def toa_nha_quoc_hoi():
     for i in range(6):
         p += box(70 + i * 22, 100, 50, 10, 10, 60, WHITE, WHITE, LIGHT)
     p += box(105, 35, 110, 50, 50, 30, WHITE, LIGHT, MID)
-    p += box(118, 48, 140, 24, 24, 40, Y, Y, "#C79C00")
+    p += box(118, 48, 140, 24, 24, 40, Y, Y, Y3)
     p += box(127, 57, 180, 6, 6, 24, INK, INK, INK)
     return p
 
@@ -108,10 +112,10 @@ def laptop():
 def tien():
     p = []
     for i in range(4):
-        p += box(0, 0, i * 18, 170, 90, 18, Y, "#E0B000", "#C79C00")
-        p.append(on_top(0, 0, i * 18, 170, 90, 18, 0.35, 0.2, 0.65, 0.8, "#E0B000", 3))
+        p += box(0, 0, i * 18, 170, 90, 18, Y, Y2, Y3)
+        p.append(on_top(0, 0, i * 18, 170, 90, 18, 0.35, 0.2, 0.65, 0.8, Y2, 3))
     for i in range(5):
-        p += box(200, 40, i * 12, 50, 50, 12, Y, "#E0B000", "#C79C00")
+        p += box(200, 40, i * 12, 50, 50, 12, Y, Y2, Y3)
     return p
 
 
@@ -128,7 +132,7 @@ def nha_may():
     for i in range(3):
         p += box(i * 80, 0, 70, 80, 140, 26, LIGHT, WHITE, MID)
     p += box(200, 20, 96, 26, 26, 110, MID, LIGHT, DARK)
-    p += box(200, 20, 186, 26, 26, 14, Y, Y, "#C79C00")
+    p += box(200, 20, 186, 26, 26, 14, Y, Y, Y3)
     for i in range(4):
         p.append(on_left(0, 0, 0, 240, 140, 70, 0.06 + i * 0.23, 0.25, 0.2 + i * 0.23, 0.7, DARK, 3))
     return p
@@ -166,7 +170,7 @@ def co_viet_nam():
 def bieu_do_nen():
     p = box(0, 0, 0, 280, 120, 10, DARK, DARK, DARK)
     for i, (h, col) in enumerate([(60, LIGHT), (100, LIGHT), (150, LIGHT), (220, Y)]):
-        top, left, right = (Y, "#E0B000", "#C79C00") if col == Y else (WHITE, LIGHT, MID)
+        top, left, right = (Y, Y2, Y3) if col == Y else (WHITE, LIGHT, MID)
         p += box(20 + i * 65, 35, 10, 45, 45, h, top, left, right)
     return p
 
@@ -191,18 +195,18 @@ def nen_dat():
 
 def cay():
     p = box(26, 26, 0, 18, 18, 60, "#8A6A3A", "#6E5430", "#5A4426")
-    p += box(0, 0, 60, 70, 70, 70, "#FFFFFF", "#BDBDBD", "#6E6E6E")
-    p += box(12, 12, 130, 46, 46, 34, "#FFFFFF", "#BDBDBD", "#6E6E6E")
+    p += box(0, 0, 60, 70, 70, 70, WHITE, LIGHT, MID)
+    p += box(12, 12, 130, 46, 46, 34, WHITE, LIGHT, MID)
     return p
 
 
 def dong_xu():
     p = []
     for i in range(6):
-        p += box(0, 0, i * 14, 80, 80, 14, Y, "#E0B000", "#C79C00")
-        p.append(on_top(0, 0, i * 14, 80, 80, 14, 0.3, 0.3, 0.7, 0.7, "#E0B000", 2))
+        p += box(0, 0, i * 14, 80, 80, 14, Y, Y2, Y3)
+        p.append(on_top(0, 0, i * 14, 80, 80, 14, 0.3, 0.3, 0.7, 0.7, Y2, 2))
     for i in range(3):
-        p += box(110, 30, i * 14, 80, 80, 14, Y, "#E0B000", "#C79C00")
+        p += box(110, 30, i * 14, 80, 80, 14, Y, Y2, Y3)
     return p
 
 
@@ -229,7 +233,7 @@ def _mui_ten(up: bool, col_top, col_l, col_r):
 
 
 def mui_ten_len():
-    return _mui_ten(True, Y, "#E0B000", "#C79C00")
+    return _mui_ten(True, Y, Y2, Y3)
 
 
 def mui_ten_xuong():
@@ -237,10 +241,10 @@ def mui_ten_xuong():
 
 
 def container():
-    p = box(0, 0, 0, 240, 100, 100, Y, "#E0B000", "#C79C00")
+    p = box(0, 0, 0, 240, 100, 100, Y, Y2, Y3)
     for k in range(9):
         u = 0.06 + k * 0.1
-        p.append(on_left(0, 0, 0, 240, 100, 100, u, 0.1, u + 0.04, 0.9, "#C79C00", 2))
+        p.append(on_left(0, 0, 0, 240, 100, 100, u, 0.1, u + 0.04, 0.9, Y3, 2))
     p += box(0, 0, 100, 240, 100, 100, WHITE, LIGHT, MID)
     for k in range(9):
         u = 0.06 + k * 0.1
@@ -251,7 +255,7 @@ def container():
 def nguoi():
     p = box(10, 10, 0, 16, 16, 70, DARK, DARK, DARK)
     p += box(34, 10, 0, 16, 16, 70, DARK, DARK, DARK)
-    p += box(0, 0, 70, 60, 36, 80, Y, "#E0B000", "#C79C00")
+    p += box(0, 0, 70, 60, 36, 80, Y, Y2, Y3)
     p += box(14, 4, 150, 32, 28, 34, WHITE, LIGHT, MID)
     return p
 
@@ -317,14 +321,14 @@ def may_quang_khac():
     p = box(0, 0, 0, 200, 140, 40, DARK, DARK, DARK)
     p += box(20, 20, 40, 160, 100, 110, LIGHT, WHITE, MID)
     p += box(70, 40, 150, 60, 60, 36, DARK, DARK, DARK)
-    p += cil(100, 70, 186, 22, 40, Y, "#E0B000", "#C79C00")
+    p += cil(100, 70, 186, 22, 40, Y, Y2, Y3)
     p.append(on_left(20, 20, 40, 160, 100, 110, 0.1, 0.2, 0.9, 0.8, MID, 3))
     return p
 
 
 def chip_bao_mat():
     p = chip()
-    p += box(60, 60, 22, 60, 50, 36, Y, "#E0B000", "#C79C00")
+    p += box(60, 60, 22, 60, 50, 36, Y, Y2, Y3)
     p += box(72, 72, 58, 10, 10, 30, DARK, DARK, DARK) + box(98, 72, 58, 10, 10, 30, DARK, DARK, DARK)
     p += box(72, 72, 88, 36, 10, 10, DARK, DARK, DARK)
     return p
@@ -340,7 +344,7 @@ def usb():
 
 def o_khoa():
     p = box(0, 0, 0, 130, 70, 20, DARK, DARK, DARK)
-    p += box(10, 5, 20, 110, 60, 90, Y, "#E0B000", "#C79C00")
+    p += box(10, 5, 20, 110, 60, 90, Y, Y2, Y3)
     p += box(25, 20, 110, 16, 16, 60, LIGHT, WHITE, MID) + box(89, 20, 110, 16, 16, 60, LIGHT, WHITE, MID)
     p += box(25, 20, 170, 80, 16, 16, LIGHT, WHITE, MID)
     p.append(on_left(10, 5, 20, 110, 60, 90, 0.42, 0.3, 0.58, 0.7, INK, 3))
@@ -350,7 +354,7 @@ def o_khoa():
 def chia_khoa():
     p = box(0, 0, 0, 220, 26, 12, LIGHT, WHITE, MID)
     p += box(150, 0, 12, 20, 26, 26, LIGHT, WHITE, MID) + box(190, 0, 12, 20, 26, 40, LIGHT, WHITE, MID)
-    p += cil(-30, 13, 0, 56, 12, Y, "#E0B000", "#C79C00")
+    p += cil(-30, 13, 0, 56, 12, Y, Y2, Y3)
     p += cil(-30, 13, 12, 18, 1, DARK, DARK, DARK)
     return p
 
@@ -359,7 +363,7 @@ def khien():
     p = []
     for k, (w, h) in enumerate([(150, 40), (140, 30), (110, 30), (70, 30), (30, 24)]):
         p += box((150 - w) / 2, 0, sum(x[1] for x in [(150, 40), (140, 30), (110, 30), (70, 30)][:k]), w, 24, h,
-                 Y if k == 0 else WHITE, "#E0B000" if k == 0 else LIGHT, "#C79C00" if k == 0 else MID)
+                 Y if k == 0 else WHITE, Y2 if k == 0 else LIGHT, Y3 if k == 0 else MID)
     p.append(on_left(0, 0, 0, 150, 24, 40, 0.42, 0.2, 0.58, 0.9, INK, 3))
     return p
 
@@ -373,7 +377,7 @@ def transistor():
 
 def soi_toc():
     p = box(0, 0, 0, 330, 6, 6, DARK, DARK, DARK)
-    p += box(300, 30, 0, 36, 36, 8, Y, "#E0B000", "#C79C00")
+    p += box(300, 30, 0, 36, 36, 8, Y, Y2, Y3)
     p += box(-10, 30, 0, 26, 26, 8, LIGHT, WHITE, MID)
     return p
 
@@ -382,7 +386,7 @@ def hat_gao():
     p = box(0, 0, 0, 160, 120, 10, DARK, DARK, DARK)
     p += box(55, 40, 10, 50, 22, 16, WHITE, WHITE, LIGHT)
     p.append(on_top(55, 40, 10, 50, 22, 16, 0.1, 0.4, 0.9, 0.6, LIGHT, 2))
-    p += box(120, 90, 10, 12, 12, 12, Y, "#E0B000", "#C79C00")
+    p += box(120, 90, 10, 12, 12, 12, Y, Y2, Y3)
     return p
 
 
@@ -408,7 +412,7 @@ def dong_ho():
     p = cil(0, 0, 0, 90, 22, WHITE, LIGHT, MID)
     p.append(poly([(-6, 0, 22), (6, 0, 22), (6, -60, 22), (-6, -60, 22)], INK, 2))
     p.append(poly([(0, -6, 22), (0, 6, 22), (46, 6, 22), (46, -6, 22)], INK, 2))
-    p += cil(0, 0, 22, 12, 6, Y, "#E0B000", "#C79C00")
+    p += cil(0, 0, 22, 12, 6, Y, Y2, Y3)
     return p
 
 
@@ -440,7 +444,7 @@ def bo_nao_ai():
     p = box(0, 0, 0, 200, 200, 14, DARK, DARK, DARK)
     p += box(25, 25, 14, 150, 150, 50, LIGHT, WHITE, MID)
     p += box(50, 50, 64, 100, 100, 50, WHITE, LIGHT, MID)
-    p += box(75, 75, 114, 50, 50, 40, Y, "#E0B000", "#C79C00")
+    p += box(75, 75, 114, 50, 50, 40, Y, Y2, Y3)
     for i in range(3):
         p.append(on_left(25, 25, 14, 150, 150, 50, 0.1 + i * 0.3, 0.3, 0.3 + i * 0.3, 0.7, MID, 3))
     return p
@@ -453,7 +457,7 @@ def robot():
     p += box(20, 8, 150, 70, 44, 50, WHITE, WHITE, LIGHT)
     p.append(on_left(20, 8, 150, 70, 44, 50, 0.15, 0.4, 0.4, 0.7, INK, 3))
     p.append(on_left(20, 8, 150, 70, 44, 50, 0.6, 0.4, 0.85, 0.7, INK, 3))
-    p += box(50, 26, 200, 10, 10, 30, DARK, DARK, DARK) + box(46, 22, 230, 18, 18, 14, Y, "#E0B000", "#C79C00")
+    p += box(50, 26, 200, 10, 10, 30, DARK, DARK, DARK) + box(46, 22, 230, 18, 18, 14, Y, Y2, Y3)
     return p
 
 
@@ -461,7 +465,7 @@ def dam_may():
     p = box(0, 20, 0, 120, 100, 60, WHITE, WHITE, LIGHT)
     p += box(60, 0, 0, 130, 130, 90, WHITE, LIGHT, MID)
     p += box(150, 30, 0, 110, 90, 55, WHITE, WHITE, LIGHT)
-    p += box(95, 35, 90, 60, 60, 10, Y, "#E0B000", "#C79C00")
+    p += box(95, 35, 90, 60, 60, 10, Y, Y2, Y3)
     return p
 
 
@@ -476,7 +480,7 @@ def pin():
 def tia_set():
     pts = [(60, 0), (0, 90), (45, 90), (20, 190), (110, 70), (62, 70), (100, 0)]
     p = []
-    for off, col in ((-16, "#C79C00"), (0, Y)):
+    for off, col in ((-16, Y3), (0, Y)):
         p.append(poly([(x, off, z) for x, z in pts], col))
     return p
 
@@ -486,7 +490,7 @@ def tram_phat_song():
     p += box(90, 90, 14, 20, 20, 240, LIGHT, WHITE, MID)
     for k in range(3):
         p += box(70 - k * 0, 80, 120 + k * 50, 60, 6, 8, DARK, DARK, DARK) if False else box(75, 85, 130 + k * 45, 50, 8, 10, MID, LIGHT, DARK)
-    p += box(86, 86, 254, 28, 28, 28, Y, "#E0B000", "#C79C00")
+    p += box(86, 86, 254, 28, 28, 28, Y, Y2, Y3)
     return p
 
 
@@ -497,13 +501,13 @@ def bong_bong():
         zc = k * 25 + 12.5
         r = math.sqrt(max(100 ** 2 - (zc - 100) ** 2, 36))
         p += cil(0, 0, k * 25, r, 25, WHITE, LIGHT, MID, n=18)
-    return p + box(52, 52, 78, 22, 22, 22, Y, "#E0B000", "#C79C00")
+    return p + box(52, 52, 78, 22, 22, 22, Y, Y2, Y3)
 
 
 def do_thi_roi():
     p = box(0, 0, 0, 300, 120, 10, DARK, DARK, DARK)
     for i, h in enumerate([200, 150, 100, 50]):
-        col = (Y, "#E0B000", "#C79C00") if i == 3 else (WHITE, LIGHT, MID)
+        col = (Y, Y2, Y3) if i == 3 else (WHITE, LIGHT, MID)
         p += box(20 + i * 68, 35, 10, 46, 46, h, *col)
     return p
 
@@ -530,7 +534,7 @@ def vi_tien():
     p = box(0, 0, 0, 190, 110, 70, DARK, DARK, DARK)
     p += box(0, 0, 70, 190, 110, 14, LIGHT, WHITE, MID)
     p.append(on_left(0, 0, 0, 190, 110, 70, 0.78, 0.35, 0.96, 0.65, Y, 3))
-    p += box(30, -30, 0, 70, 30, 10, Y, "#E0B000", "#C79C00")
+    p += box(30, -30, 0, 70, 30, 10, Y, Y2, Y3)
     return p
 
 
@@ -540,7 +544,7 @@ def can_cung_cau():
     p += box(110, 60, 14, 20, 20, 190, LIGHT, WHITE, MID)
     p += box(-30, 60, 204, 300, 20, 14, WHITE, WHITE, LIGHT)
     p += box(-30, 40, 120, 90, 60, 10, DARK, DARK, DARK) + box(180, 40, 120, 90, 60, 10, DARK, DARK, DARK)
-    p += box(-10, 55, 130, 50, 30, 50, Y, "#E0B000", "#C79C00") + box(200, 55, 130, 50, 30, 24, WHITE, LIGHT, MID)
+    p += box(-10, 55, 130, 50, 30, 50, Y, Y2, Y3) + box(200, 55, 130, 50, 30, 24, WHITE, LIGHT, MID)
     return p
 
 
@@ -548,14 +552,14 @@ def bua_phan_quyet():
     p = box(0, 0, 0, 160, 110, 24, DARK, DARK, DARK)
     p += box(60, 40, 24, 30, 30, 90, LIGHT, WHITE, MID)
     p += box(10, 30, 114, 130, 50, 50, DARK, DARK, DARK)
-    p += box(10, 30, 164, 130, 50, 12, Y, "#E0B000", "#C79C00")
+    p += box(10, 30, 164, 130, 50, 12, Y, Y2, Y3)
     return p
 
 
 def ta_hang():
     p = box(0, 0, 0, 320, 110, 40, DARK, DARK, DARK)
     for i in range(3):
-        p += box(20 + i * 80, 10, 40, 74, 90, 50, Y if i == 1 else WHITE, "#E0B000" if i == 1 else LIGHT, "#C79C00" if i == 1 else MID)
+        p += box(20 + i * 80, 10, 40, 74, 90, 50, Y if i == 1 else WHITE, Y2 if i == 1 else LIGHT, Y3 if i == 1 else MID)
     p += box(250, 10, 40, 60, 90, 80, WHITE, LIGHT, MID)
     p.append(on_left(250, 10, 40, 60, 90, 80, 0.15, 0.45, 0.85, 0.75, DARK, 3))
     return p
@@ -564,7 +568,7 @@ def ta_hang():
 def cang_bien():
     p = box(0, 0, 0, 340, 140, 14, DARK, DARK, DARK)
     p += box(30, 20, 14, 14, 14, 200, LIGHT, WHITE, MID) + box(150, 20, 14, 14, 14, 200, LIGHT, WHITE, MID)
-    p += box(20, 16, 214, 160, 22, 14, Y, "#E0B000", "#C79C00")
+    p += box(20, 16, 214, 160, 22, 14, Y, Y2, Y3)
     for i in range(3):
         p += box(200 + i * 40, 30, 14, 36, 70, 30, WHITE if i != 1 else LIGHT, LIGHT, MID)
     return p
@@ -592,8 +596,8 @@ def kinh_lup():
 def ten_lua():
     p = cil(0, 0, 40, 40, 150, WHITE, LIGHT, MID)
     nose = [(40 * math.cos(a), 40 * math.sin(a), 190) for a in [2 * math.pi * k / 16 for k in range(16)]]
-    p += [poly([nose[0], nose[4], (0, 0, 270)], "#E0B000", 3), poly([nose[4], nose[8], (0, 0, 270)], Y, 3)]
-    p += box(-70, -12, 40, 36, 24, 70, Y, "#E0B000", "#C79C00") + box(34, -12, 40, 36, 24, 70, Y, "#E0B000", "#C79C00")
+    p += [poly([nose[0], nose[4], (0, 0, 270)], Y2, 3), poly([nose[4], nose[8], (0, 0, 270)], Y, 3)]
+    p += box(-70, -12, 40, 36, 24, 70, Y, Y2, Y3) + box(34, -12, 40, 36, 24, 70, Y, Y2, Y3)
     p += box(-20, -20, 0, 40, 40, 40, DARK, DARK, DARK)
     return p
 
@@ -613,7 +617,7 @@ def thue_phan_tram():
 
 
 def _ng(x0, y0, top=Y):
-    side = ("#E0B000", "#C79C00") if top == Y else (LIGHT, MID)
+    side = (Y2, Y3) if top == Y else (LIGHT, MID)
     p = box(x0 + 10, y0 + 10, 0, 16, 16, 70, DARK, DARK, DARK) + box(x0 + 34, y0 + 10, 0, 16, 16, 70, DARK, DARK, DARK)
     p += box(x0, y0, 70, 60, 36, 80, top, *side) + box(x0 + 14, y0 + 4, 150, 32, 28, 34, WHITE, LIGHT, MID)
     return p
@@ -637,7 +641,7 @@ def cao_oc():
         for c in range(3):
             p.append(on_left(0, 0, 0, 110, 90, 260, 0.12 + c * 0.28, 0.07 + r * 0.1, 0.28 + c * 0.28, 0.12 + r * 0.1, DARK, 2))
     p += box(110, 10, 0, 80, 70, 150, LIGHT, WHITE, MID)
-    p += box(25, 20, 260, 60, 50, 24, Y, "#E0B000", "#C79C00")
+    p += box(25, 20, 260, 60, 50, 24, Y, Y2, Y3)
     return p
 
 
@@ -651,9 +655,9 @@ def tui(the: str = "chao", nham: bool = False):
     if the == "ngac-nhien":
         p += arm(-20, 60, 70)  # tay trái ở phía sau thân nên vẽ trước
     p += box(15, 10, 0, 100, 70, 12, DARK, DARK, DARK)
-    p += box(*body[:3], *body[3:], Y, "#E0B000", "#C79C00")
-    p += box(25, 15, 112, 80, 60, 22, Y, "#E0B000", "#C79C00") + box(35, 25, 134, 60, 40, 12, DARK, DARK, DARK)
-    p += box(20, 10, 146, 90, 70, 26, Y, "#E0B000", "#C79C00")
+    p += box(*body[:3], *body[3:], Y, Y2, Y3)
+    p += box(25, 15, 112, 80, 60, 22, Y, Y2, Y3) + box(35, 25, 134, 60, 40, 12, DARK, DARK, DARK)
+    p += box(20, 10, 146, 90, 70, 26, Y, Y2, Y3)
     for u in (0.2, 0.62):
         if nham:
             p.append(mat(u, 0.6, u + 0.18, 0.64, INK, 2))
@@ -666,7 +670,7 @@ def tui(the: str = "chao", nham: bool = False):
         p += arm(130, 70, 80) + box(128, 26, 148, 24, 24, 20, WHITE, LIGHT, MID)
     else:
         p += arm(130, 30, 40) + box(60, 92, 40, 40, 24, 18, WHITE, LIGHT, MID)
-        p += box(52, 28, 190, 26, 26, 26, Y, "#E0B000", "#C79C00")
+        p += box(52, 28, 190, 26, 26, 26, Y, Y2, Y3)
     return p
 
 

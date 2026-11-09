@@ -3,6 +3,8 @@ from pathlib import Path
 
 import pytest
 
+from tttc import theme
+
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 
 
@@ -16,7 +18,7 @@ def test_svg_content_inside_viewbox(path):
             assert vx <= x <= vx + vw and vy <= y <= vy + vh, f"{path.stem}: điểm ({x}, {y}) nằm ngoài viewBox"
 
 
-BRAND = {"#111111", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#FFC800", "#E0B000", "#C79C00"}
+BRAND = theme.brand_colors()  # bảng màu thư viện lấy từ brand/theme.json
 EXTRA = {"cay": {"#5A4426", "#6E5430", "#8A6A3A"}, "co-viet-nam": {"#A51B15", "#DA251D"},
          "nen-dat": {"#141414", "#1A1A1A", "#262626", "#2F2F2F", "#3A3A3A"}}
 

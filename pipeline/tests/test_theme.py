@@ -44,3 +44,7 @@ def test_kiem_warns_black_yellow_pair_only_for_a_new_identity():
 
 def test_derived_constants_match_current_code():
     assert theme.VANG == ("#FFC800", "#E0B000", "#C79C00") and theme.SAC["xanh"][0] == "#00D084"
+
+
+def test_brand_colors_are_the_svg_palette():
+    assert theme.brand_colors() == {"#111111", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#FFC800", "#E0B000", "#C79C00"}

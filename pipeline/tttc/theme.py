@@ -20,6 +20,11 @@ VANG = tuple(TH["nhan"])
 SAC = {k: tuple(v) for k, v in TH["sac"].items()}
 
 
+def brand_colors() -> set[str]:
+    """Bảng màu thư viện SVG (hoa chữ hoa): màu `ve` và bộ ba nhấn."""
+    return {c.upper() for c in [*TH["ve"].values(), *TH["nhan"]]}
+
+
 def _get(th: dict, key: str):
     cur = th
     for part in key.split("."):
