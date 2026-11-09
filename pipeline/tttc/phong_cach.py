@@ -38,6 +38,7 @@ def kiem(script_md: str) -> list[str]:
     return out + mui_may(script_md) + tu_cam(script_md) + nhip(script_md)
 
 
+CONFIG = Path(__file__).resolve().parent.parent / "config.json"
 TU_CAM = Path(__file__).resolve().parent.parent / "phong-cach" / "tu-cam.json"
 QUOTED = re.compile(r'"[^"]*"|“[^”]*”')  # chữ trích nguyên văn từ nguồn được miễn khỏi danh sách cấm
 RAO_DON = re.compile(r"mình nghĩ|mình cho rằng|tùy bạn|bạn tự (?:xem|thử|kiểm)", re.I)
@@ -128,8 +129,17 @@ def nhip(script_md: str) -> list[str]:
     return out
 
 
+def uoc_tinh_phut(script_md: str, wpm: float) -> float:
+    """Số phút đọc ước tính = số từ lời đọc (không tính thẻ [#id]) / tốc độ đọc từ-phút."""
+    return len(_split(script_md)[1]) / wpm
+
+
 def main(video_dir: str) -> int:
-    msgs = kiem((Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8"))
+    script = (Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8")
+    msgs = kiem(script)
+    wpm = json.loads(CONFIG.read_text(encoding="utf-8")).get("vieneu", {}).get("wpm_du_kien") if CONFIG.exists() else None
+    if wpm:
+        print(f"ước tính {uoc_tinh_phut(script, wpm):.1f} phút ở {wpm:.0f} từ/phút (config vieneu.wpm_du_kien)")
     for m in msgs:
         print("-", m)
     loi = sum(m.startswith("Lỗi") for m in msgs)

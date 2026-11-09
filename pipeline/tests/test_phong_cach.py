@@ -189,3 +189,19 @@ BASELINE = [Path(__file__).resolve().parents[2] / "videos" / v for v in
 @pytest.mark.parametrize("p", BASELINE, ids=lambda p: p.parent.name)
 def test_approved_scripts_stay_clean(p):
     assert phong_cach.kiem(p.read_text(encoding="utf-8")) == []
+
+
+def test_uoc_tinh_phut_counts_spoken_words_only():
+    md = _long(head=OK_HEAD, n=2300)
+    assert abs(phong_cach.uoc_tinh_phut(md, 230) - 2300 / 230) < 0.05
+    assert phong_cach.uoc_tinh_phut("Chỉ ghi chú.", 230) == 0.0
+
+
+def test_main_prints_estimate_when_config_has_wpm(tmp_path, capsys, monkeypatch):
+    import json
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"vieneu": {"wpm_du_kien": 230}}), encoding="utf-8")
+    monkeypatch.setattr(phong_cach, "CONFIG", cfg)
+    (tmp_path / "kich-ban.md").write_text(_long(head=OK_HEAD, tail="Bạn đoán năm nào?"), encoding="utf-8")
+    phong_cach.main(str(tmp_path))
+    assert "ước tính 10.0 phút ở 230 từ/phút" in capsys.readouterr().out
