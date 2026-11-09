@@ -1,6 +1,7 @@
 """Kiểm phong cách kịch bản theo kênh mẫu (docs/phong-cach-kich-ban.md). Chỉ trả cảnh báo, không chặn."""
 import json
 import re
+import statistics
 from pathlib import Path
 
 from tttc import tts
@@ -73,7 +74,6 @@ def mui_may(script_md: str) -> list[str]:
     ba = sum(bool(BO_BA.match(x)) for x in sents)
     if ba > 1:
         out.append(f"Cảnh báo: {ba} lần đếm kiểu bộ ba 'Một... Hai... Ba...' (tối đa 1 lần mỗi video); gom ý bằng mạch kể")
-    low = text.lower()
     n = len(RAO_DON.findall(text))
     if n > 3:
         out.append(f"Cảnh báo: {n} câu rào đón ('mình nghĩ', 'bạn tự xem'...), tối đa 3; hãy nêu phán xét kèm tiêu chí")
@@ -83,6 +83,45 @@ def mui_may(script_md: str) -> list[str]:
             out.append(f"Cảnh báo: chỉ {ngan:.0%} câu ngắn (≤ 5 từ), cần ≥ 10% để nhịp đọc không đều đều")
     if sum(bool(LIET_KE.match(x)) for x in sents[-6:]) >= 2:
         out.append("Cảnh báo: phần kết nhai lại bằng 'Một... Hai... Ba...'; kết bằng phán quyết, điều kiện đổi ý và câu mời đoán")
-    if "đổi ý" not in low:
-        out.append("Cảnh báo: chưa có điều kiện đổi ý ('mình sẽ đổi ý nếu...') đi kèm phán quyết")
+    return out
+
+
+# Ngưỡng đặt dưới mốc nền của hai kịch bản đã duyệt (docs/superpowers/specs/2026-11-09-giong-van-kich-ban-design.md 3.4).
+NHIP = {"cv_min": 0.5, "chuoi_max": 4, "dai_tu": 28, "dai_max": 8, "cam_than_max": 5, "dem_max": 15,
+        "toi_thieu_cau": 20}
+CAM_THAN = re.compile(r"\b(?:rất|vô cùng|cực kỳ|khổng lồ|đáng kinh ngạc|choáng)\b", re.I)
+TU_DEM = re.compile(r"kiểu như|nói thật là|đoạn này mới cấn|tính ra thì", re.I)
+TRAI_NGHIEM = re.compile(r"\b(?:mình từng|hồi mình|có lần mình|tôi từng)\b", re.I)
+
+
+def nhip(script_md: str) -> list[str]:
+    """Cảnh báo nhịp câu, từ đệm, tính từ cảm thán và trải nghiệm cá nhân bịa; không chặn."""
+    text = " ".join(tts.spoken_paragraphs(script_md))
+    if not text.strip():
+        return []
+    out = []
+    sents = [x.strip() for x in re.split(r"(?<=[.!?…])\s+", text) if x.strip()]
+    if len(sents) >= NHIP["toi_thieu_cau"]:  # thống kê chỉ có nghĩa khi đủ câu
+        dai = [len(x.split()) for x in sents]
+        cv = statistics.pstdev(dai) / statistics.mean(dai)
+        if cv < NHIP["cv_min"]:
+            out.append(f"Cảnh báo: độ lệch chuẩn/trung bình độ dài câu {cv:.2f}, cần ≥ {NHIP['cv_min']} (nhịp quá đều)")
+        best = run = 1
+        base = dai[0]
+        for n in dai[1:]:  # chuỗi câu có độ dài trong ±20% so với câu đầu chuỗi
+            run, base = (run + 1, base) if abs(n - base) <= 0.2 * base else (1, n)
+            best = max(best, run)
+        if best > NHIP["chuoi_max"]:
+            out.append(f"Cảnh báo: {best} câu liền cùng độ dài (tối đa {NHIP['chuoi_max']})")
+        so_dai = sum(n > NHIP["dai_tu"] for n in dai)
+        if so_dai > NHIP["dai_max"]:
+            out.append(f"Cảnh báo: {so_dai} câu dài hơn {NHIP['dai_tu']} từ, khó đọc to (tối đa {NHIP['dai_max']})")
+    cam = len(CAM_THAN.findall(text))
+    if cam > NHIP["cam_than_max"]:
+        out.append(f"Cảnh báo: {cam} tính từ cảm thán (rất, vô cùng...), tối đa {NHIP['cam_than_max']}; dùng số liệu cụ thể")
+    dem = len(TU_DEM.findall(text))
+    if dem > NHIP["dem_max"]:
+        out.append(f"Cảnh báo: {dem} từ đệm, tối đa {NHIP['dem_max']}")
+    out += [f"Cảnh báo: cụm kể trải nghiệm cá nhân «{m.group(0)}», kênh tin tức không được bịa trải nghiệm"
+            for m in TRAI_NGHIEM.finditer(text)]
     return out

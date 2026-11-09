@@ -122,9 +122,45 @@ def test_ending_must_not_recap_with_triad():
     assert _w(_mui(verdict), "kết") == []
 
 
-def test_needs_change_of_mind_condition():
-    assert len(_w(_mui("Phán quyết là ở bản miễn phí."), "đổi ý")) == 1
-    assert _w(_mui("Mình sẽ đổi ý nếu hãng bỏ giới hạn."), "đổi ý") == []
+def test_change_of_mind_is_no_longer_required():
+    assert _w(_mui("Phán quyết là ở bản miễn phí."), "đổi ý") == []
+
+
+def _sents(lengths):
+    return " ".join(" ".join(["từ"] * (n - 1)) + " xong." for n in lengths)
+
+
+def test_nhip_flags_uniform_sentence_lengths():
+    assert len(_w(phong_cach.nhip(_script(_sents([12] * 30))), "độ lệch")) == 1
+    assert _w(phong_cach.nhip(_script(_sents([3, 14, 9, 22, 5, 17, 11, 30, 4, 13] * 3))), "độ lệch") == []
+
+
+def test_nhip_flags_run_longer_than_four_similar_sentences():
+    base = [3, 20, 9, 27, 5, 16, 11, 24, 4, 14] * 2
+    assert len(_w(phong_cach.nhip(_script(_sents(base + [10, 10, 11, 10, 9] + base))), "câu liền")) == 1
+    assert _w(phong_cach.nhip(_script(_sents(base + [10, 10, 11, 10] + base))), "câu liền") == []
+
+
+def test_nhip_flags_more_than_eight_long_sentences():
+    assert len(_w(phong_cach.nhip(_script(_sents([30] * 9 + [5] * 12))), "dài hơn 28")) == 1
+    assert _w(phong_cach.nhip(_script(_sents([30] * 8 + [5] * 12))), "dài hơn 28") == []
+
+
+def test_nhip_counts_emotive_adjectives_and_fillers():
+    assert len(_w(phong_cach.nhip(_script("Giá rất cao. " * 6)), "cảm thán")) == 1
+    assert _w(phong_cach.nhip(_script("Giá rất cao. " * 5)), "cảm thán") == []
+    assert len(_w(phong_cach.nhip(_script("Kiểu như vậy đó. " * 16)), "từ đệm")) == 1
+    assert _w(phong_cach.nhip(_script("Kiểu như vậy đó. " * 15)), "từ đệm") == []
+
+
+def test_nhip_flags_invented_personal_experience():
+    assert len(_w(phong_cach.nhip(_script("Hồi mình nợ thẻ năm chục triệu. Giá là chín trăm.")), "trải nghiệm cá nhân")) == 1
+    assert _w(phong_cach.nhip(_script("Mình đọc xong tài liệu sáng nay. Giá là chín trăm.")), "trải nghiệm cá nhân") == []
+
+
+def test_nhip_skips_statistics_on_short_excerpts():
+    out = phong_cach.nhip(_script(_sents([12] * 10)))
+    assert _w(out, "độ lệch") == [] and _w(out, "câu liền") == []
 
 
 def test_kiem_includes_mui_may_and_is_silent_without_spoken():
