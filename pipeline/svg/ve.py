@@ -59,7 +59,7 @@ def save(name, parts):
             xs.append(a), ys.append(b)
     minx, maxx, miny, maxy = min(xs), max(xs), min(ys), max(ys)
     size = max(maxx - minx, maxy - miny) + 24
-    cx, cy = (minx + maxx) / 2, (minx + maxx) and (miny + maxy) / 2
+    cx, cy = (minx + maxx) / 2, (miny + maxy) / 2
     vb = f"{cx - size / 2:.1f} {cy - size / 2:.1f} {size:.1f} {size:.1f}"
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" width="400" height="400">\n  {body}\n</svg>\n')
     (OUT / f"{name}.svg").write_text(svg, encoding="utf-8")

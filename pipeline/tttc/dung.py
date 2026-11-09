@@ -8,6 +8,7 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
 - trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
 - trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich)
+- quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
 - b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01")
 Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
 Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi theo chương. Chuyển cảnh tự gán (transitions()).
@@ -31,7 +32,7 @@ PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
 SFX = PIPE / "am-thanh" / "sfx"
 PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
-          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-"}
+          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-"}
 # Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
 DEFAULT_STEPS = {
     "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
@@ -107,6 +108,11 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         return {"bao": n.get("ten") or urlparse(n["url"]).netloc.removeprefix("www."),
                 "ngay": f"{date.fromisoformat(n['ngay_truy_cap']):%d/%m/%Y}",
                 "tieu_de": c["trich"], "to_vang": c.get("to_vang", "")}
+    if m == "quy-trinh":
+        return {"tieu_de": c.get("tieu_de", ""), "noi_bat": c.get("noi_bat", -1), "dong": c.get("dong", "dap"),
+                "nguon": src(c.get("nguon_id")),
+                "buoc": json.dumps([{"nhan": b["nhan"], "svg": f"assets/svg/{b['svg']}.svg" if b.get("svg") else ""}
+                                    for b in c["buoc"]], ensure_ascii=False)}
     if m == "b-roll":
         return {"nhan": c.get("nhan", ""), "so": c.get("so", ""), "ghi_cong": broll_credits.get(c["video"], "")}
     raise ValueError(f"mẫu không có: {m}")
@@ -117,6 +123,8 @@ def steps(c: dict, words: list[dict]) -> list[float]:
     if c["mau"] == "bieu-do":
         n = len(c["bieu_do"]["gia_tri"])
         base = [0.4 + i * 0.18 for i in range(n)] + [0.4 + n * 0.18 + 0.5]
+    elif c["mau"] == "quy-trinh":
+        base = [round(0.5 + 0.55 * i, 3) for i in range(len(c["buoc"]))]
     else:
         base = list(DEFAULT_STEPS[c["mau"]])
     for k, ph in enumerate(c.get("nhip") or []):
@@ -139,6 +147,8 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("ping", st[0] + 1.3, 0.3)]
     if m == "bieu-do":
         return [("pop", st[-1] + 0.1, 0.3)] if c["bieu_do"].get("chu_thich") else []
+    if m == "quy-trinh":
+        return [("pop", t, 0.2) for t in st[:6]]
     if m == "trang-nguon":
         return [("whoosh-short", st[0], 0.3)]
     if m == "nhan-vat":

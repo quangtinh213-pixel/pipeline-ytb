@@ -246,3 +246,30 @@ def test_vars_dong_defaults():
     assert mh["dong"] == "bob"
     assert dung._vars({"mau": "minh-hoa", "svg": "chip", "dong": "xoay"}, {}, {})["dong"] == "xoay"
     assert dung._vars({"mau": "so-lon", "so": 5}, {}, {})["dong"] == ""
+
+
+QT = {"id": "q1", "mau": "quy-trinh", "start": 0, "end": 6, "tieu_de": "Chip đi từ bản vẽ tới tay người dùng",
+      "buoc": [{"nhan": "Thiết kế", "svg": "chip"}, {"nhan": "Đúc"}, {"nhan": "Đóng gói"}], "noi_bat": 1}
+
+
+def test_vars_quy_trinh():
+    v = dung._vars(QT, {}, {})
+    assert json.loads(v["buoc"]) == [{"nhan": "Thiết kế", "svg": "assets/svg/chip.svg"},
+                                     {"nhan": "Đúc", "svg": ""}, {"nhan": "Đóng gói", "svg": ""}]
+    assert v["tieu_de"] == QT["tieu_de"] and v["noi_bat"] == 1 and v["dong"] == "dap"
+
+
+def test_steps_quy_trinh_one_per_step():
+    assert dung.steps(QT, []) == pytest.approx([0.5, 1.05, 1.6])
+    assert dung.steps(dict(QT, nhip=[None, "đúc"]), [{"w": "đúc", "start": 2.0, "end": 2.3}])[1] == pytest.approx(2.0)
+
+
+def test_sfx_quy_trinh_one_pop_per_step():
+    ev = dung.sfx_events(QT, dung.steps(QT, []))
+    assert [(f, v) for f, _, v in ev] == [("pop", 0.2)] * 3
+    assert [t for _, t, _ in ev] == pytest.approx([0.5, 1.05, 1.6])
+
+
+def test_compose_quy_trinh_scene_file_and_prefix(video):
+    s = dung._scene_file("quy-trinh", "q1")
+    assert 'data-composition-id="q1"' in s and "q1-qt-" in s and "function dongLap" in s

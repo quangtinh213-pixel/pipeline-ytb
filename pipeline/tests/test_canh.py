@@ -159,3 +159,28 @@ def test_validate_rejects_unknown_dong(tmp_path):
     assert sum("dong" in m and m.startswith("Lỗi") for m in bad) == 2
     ok = canh.validate(_sc((0, 6), (6, 12), dong="xoay"), TIMING, tmp_path, NGUON)
     assert _errors(ok) == []
+
+
+def _qt(n, **extra):
+    return dict({"buoc": [{"nhan": f"B{i}"} for i in range(n)]}, **extra)
+
+
+def _qt_scene(**c):
+    return {"scenes": [dict({"id": "c0", "mau": "quy-trinh", "start": 0, "end": 6}, **c)]}
+
+
+def test_validate_quy_trinh_step_count(tmp_path):
+    for n, ok in [(2, False), (3, True), (4, True), (6, True), (7, False)]:
+        msgs = canh.validate(_qt_scene(**_qt(n)), {"duration": 6.0}, tmp_path, NGUON)
+        assert (_errors(msgs) == []) is ok, n
+
+
+def test_validate_quy_trinh_noi_bat_in_range(tmp_path):
+    assert _errors(canh.validate(_qt_scene(**_qt(4, noi_bat=3)), {"duration": 6.0}, tmp_path, NGUON)) == []
+    assert any("noi_bat" in e for e in _errors(canh.validate(_qt_scene(**_qt(4, noi_bat=4)), {"duration": 6.0}, tmp_path, NGUON)))
+
+
+def test_validate_quy_trinh_svg_exists(tmp_path):
+    c = _qt_scene(buoc=[{"nhan": "A", "svg": "chip"}, {"nhan": "B"}, {"nhan": "C", "svg": "thieu"}])
+    errs = _errors(canh.validate(c, {"duration": 6.0}, _svg(tmp_path, "chip"), NGUON))
+    assert len(errs) == 1 and "thieu" in errs[0]

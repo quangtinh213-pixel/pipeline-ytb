@@ -7,7 +7,7 @@ from pathlib import Path
 
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -72,11 +72,25 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         for ph in c.get("nhip") or []:
             if ph and phrase_time(timing.get("words", []), ph, c["start"], c["end"]) is None:
                 msgs.append(f"Lỗi: {cid} có nhịp '{ph}' nhưng giọng đọc không nói cụm này trong cảnh")
+        if c["mau"] == "quy-trinh":
+            msgs += _check_quy_trinh(c, svg_dir)
         if c["mau"] == "trich-bao":
             msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
             msgs.append(f"Lỗi: {cid} cần video broll/{c.get('video')} chưa tải")
     return msgs
+
+
+def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
+    buoc, out = c.get("buoc") or [], []
+    if not 3 <= len(buoc) <= 6:
+        out.append(f"Lỗi: {c['id']} quy-trinh cần 3–6 bước (đang {len(buoc)})")
+    nb = c.get("noi_bat")
+    if nb is not None and not (isinstance(nb, int) and 0 <= nb < len(buoc)):
+        out.append(f"Lỗi: {c['id']} noi_bat={nb} nằm ngoài các bước")
+    out += [f"Lỗi: {c['id']} bước '{b.get('nhan')}' cần hình {b['svg']}.svg chưa có trong thư viện"
+            for b in buoc if b.get("svg") and not (Path(svg_dir) / f"{b['svg']}.svg").exists()]
+    return out
 
 
 def _check_quote(c: dict, src: dict | None) -> list[str]:
