@@ -297,7 +297,7 @@ def test_steps_so_sanh_default_and_keyword():
 
 def test_sfx_so_sanh():
     ev = dung.sfx_events(SS, dung.steps(SS, []))
-    assert [f for f, _, _ in ev] == ["pop", "pop", "ping"]
+    assert [f for f, _, _ in ev] == ["pop", "pop", "chime"]
     assert len(dung.sfx_events(dict(SS, ti_le=""), dung.steps(SS, []))) == 2
 
 
@@ -330,3 +330,23 @@ def test_steps_and_sfx_thoi_gian():
 def test_thoi_gian_scene_file_prefix():
     s = dung._scene_file("thoi-gian", "g1")
     assert 'data-composition-id="g1"' in s and "g1-tg-" in s
+
+
+def test_compose_mixes_music_into_voice_track(video, tmp_path, monkeypatch):
+    _tone(video / "giong.mp3", 20)
+    music = _tone(tmp_path / "nhac.mp3", 5)
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"nhac_nen": str(music)}), encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
+    out = dung.compose(video)
+    html = (out / "index.html").read_text(encoding="utf-8")
+    assert 'id="nhac"' not in html and 'id="giong"' in html
+    assert (out / "assets" / "giong.mp3").read_bytes() != (video / "giong.mp3").read_bytes()  # bản đã trộn nhạc
+
+
+def test_compose_without_music_copies_voice(video, tmp_path, monkeypatch):
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"nhac_nen": ""}), encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
+    out = dung.compose(video)
+    assert (out / "assets" / "giong.mp3").read_bytes() == b"mp3" and 'id="nhac"' not in (out / "index.html").read_text(encoding="utf-8")

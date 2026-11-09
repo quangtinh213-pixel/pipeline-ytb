@@ -30,6 +30,7 @@ from PIL import Image
 
 from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
+from tttc.tron_am import tron
 
 PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
@@ -48,7 +49,6 @@ DEFAULT_STEPS = {
     "b-roll": [0.5],                   # nhãn chương
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
-NHAC_DB = 0.1  # ≈ −20 dB dưới giọng
 TILE_W, TILE_H, COLS = 384, 216, 10
 
 
@@ -170,7 +170,7 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
     if m == "thoi-gian":
         return [("whoosh-short", t, 0.2) for t in st[:5]]
     if m == "so-sanh":
-        return [("pop", st[0], 0.3), ("pop", st[1], 0.3)] + ([("ping", st[2] + 0.1, 0.3)] if c.get("ti_le") else [])
+        return [("pop", st[0], 0.3), ("pop", st[1], 0.3)] + ([("chime", st[2] + 0.1, 0.3)] if c.get("ti_le") else [])
     if m == "trang-nguon":
         return [("whoosh-short", st[0], 0.3)]
     if m == "nhan-vat":
@@ -232,7 +232,11 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     for sub in ("anh", "nguon", "broll"):
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
-    shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
+    nhac = _read_json(CONFIG, {}).get("nhac_nen")
+    if nhac:  # nhạc trộn sẵn vào một bản giọng: tự hạ khi có tiếng (tron_am), Shorts cắt cùng một tệp
+        tron(d / "giong.mp3", PIPE / nhac, o / "assets" / "giong.mp3")
+    else:
+        shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
     shutil.copytree(SFX, o / "assets" / "sfx")
 
     hosts = []
@@ -272,13 +276,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     sfx_tags = [f'<audio id="sfx-{k}" src="assets/sfx/{f}.mp3" data-start="{round(t, 3)}" data-volume="{v}"></audio>'
                 for k, (f, t, v) in enumerate(sorted(sfx, key=lambda e: e[1])) if 0 <= t < total - 0.1]
 
-    nhac = _read_json(CONFIG, {}).get("nhac_nen")
     audio = [f'<audio id="giong" src="assets/giong.mp3" data-start="0" data-media-start="{t0}" '
              f'data-duration="{total}" data-volume="1"></audio>']
-    if nhac:
-        shutil.copy(PIPE / nhac, o / "assets" / "nhac.mp3")
-        audio.append(f'<audio id="nhac" src="assets/nhac.mp3" data-start="0" data-duration="{total}" '
-                     f'data-volume="{NHAC_DB}" data-fade-in="1" data-fade-out="2"></audio>')
 
     vertical = h > w
     # Shorts: sân khấu ngang thu nhỏ 0,5625 đặt giữa khung dọc, phụ đề to bên dưới.
