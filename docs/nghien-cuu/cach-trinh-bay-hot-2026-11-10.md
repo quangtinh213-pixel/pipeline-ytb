@@ -49,10 +49,10 @@ Mục đích: tìm cách trình bày chuyên nghiệp hơn, rõ ràng hơn, dễ
 7. Hình `thuoc-do` ("giữ đúng mức") trông như phím đàn.
 8. Nhãn còn dài hơn 5 từ ở 13 cảnh (kế thừa từ video đã đăng).
 
-## 5. Đề xuất (xếp theo giá trị trên công sức; chưa làm trừ mục 1–2)
-1. **Mọi chữ trên màn hình bằng tiếng Việt.** Trích báo hiện bản dịch của kênh (nhãn nhỏ "dịch từ bản gốc tiếng Anh"), nguyên văn giữ trong `canh.json` để kiểm chứng; `tttc.canh` báo Lỗi khi một ô chữ trông như tiếng Anh; "VS" đổi thành chữ Việt. *(Yêu cầu của bạn, đang làm.)*
-2. **Phóng to và dọn bố cục** ở `quy-trinh`, `so-sanh`, `minh-hoa` đơn lẻ, dòng nguồn một dòng, nhãn lớn hơn, đo "tỉ lệ khung hình được dùng" (mục 3, số 1 và 12). *(Đang làm.)*
-3. **Vẽ lại sáu phông** thành môi trường nhận ra được (cảng có cần cẩu và chồng container, trung tâm dữ liệu có hàng tủ máy, thành phố có đường chân trời…), sàn khác nhau theo chủ đề.
+## 5. Đề xuất (xếp theo giá trị trên công sức; mục 1–3 đã làm ngày 10/11, còn lại chưa làm)
+1. **Mọi chữ trên màn hình bằng tiếng Việt.** Trích báo hiện bản dịch của kênh (nhãn nhỏ "dịch từ bản gốc tiếng Anh"), nguyên văn giữ trong `canh.json` để kiểm chứng; `tttc.canh` báo Lỗi khi một ô chữ trông như tiếng Anh; "VS" đổi thành chữ Việt. *(Yêu cầu của bạn. Đã làm: `tttc/ngon_ngu.py`, kiểm trong `tttc.canh`, mẫu `trich-bao` hiện bản dịch, nhãn "SO". Chữ Anh được nhận bằng heuristic: không dấu tiếng Việt và từ 4 từ; câu trích từ 2 từ.)*
+2. **Phóng to và dọn bố cục** ở `quy-trinh`, `so-sanh`, `minh-hoa` đơn lẻ, dòng nguồn một dòng, nhãn lớn hơn, đo "tỉ lệ khung hình được dùng" (mục 3, số 1 và 12). *(Đã làm một phần: `quy-trinh` phóng hình 240→420 px, nhãn 36→46 px, tiêu đề 52→68 px; nhãn `so-sanh` 46 px. Chưa có thước đo "tỉ lệ khung được dùng" và chưa kiểm thời gian đọc.)*
+3. **Vẽ lại sáu phông** thành môi trường nhận ra được (cảng có cần cẩu và chồng container, trung tâm dữ liệu có hàng tủ máy, thành phố có đường chân trời…), sàn khác nhau theo chủ đề. *(Đã làm: phòng máy chủ, nhà máy, cảng, thành phố, sàn giao dịch, cơ quan, mỗi phông một sàn riêng và vật dựng ở hai cạnh sau; xem `svg/README.md`.)*
 4. **Thêm ẩn dụ vật lý vào thư viện** (bập bênh, domino, đồng hồ đo, bản đồ) và **mẫu `ban-do`** cho các đề xuất khẩu, thuế, chuỗi cung ứng.
 5. **Số lớn đếm tăng** và **biểu đồ thanh xếp hạng** cho đề về giá, thị phần, chi tiêu.
 6. **Thử A/B phụ đề** đủ câu và từ khóa động sau khi đăng (cần retention thật).
