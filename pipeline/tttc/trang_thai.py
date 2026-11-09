@@ -5,7 +5,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-STEPS = ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem", "duyet-1", "giong", "canh", "hinh",
+STEPS = ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem", "duyet-1", "giong", "dao-dien", "canh", "hinh",
          "render", "dong-goi", "duyet-2", "dang", "shorts"]  # shorts dựng sau khi đăng video dài, không nằm trên đường găng
 STATUSES = {"chua-chay", "dang-chay", "xong", "loi", "cho-duyet", "da-duyet"}
 KET_THUC = {"xong", "da-duyet", "cho-duyet", "loi"}  # trạng thái ghi giờ kết thúc
@@ -13,15 +13,19 @@ VN = timezone(timedelta(hours=7))
 FILE = "trang-thai.json"
 
 
+# Bước thêm sau này: tệp cũ mà đã có bước nào từ mốc này trở đi khác chua-chay thì coi như xong, không bị đẩy lùi.
+CO_TRUOC = {"phan-bien-giong": "duyet-1", "dao-dien": "canh"}
+
+
 def load(video_dir) -> dict:
     p = Path(video_dir) / FILE
     data = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
     steps = data.setdefault("steps", {})
-    # video đã qua điểm duyệt 1 từ trước khi có bước phan-bien-giong thì coi như đã xong, không bị đẩy lùi
-    qua_duyet_1 = any(steps.get(s, {}).get("status", "chua-chay") != "chua-chay" for s in STEPS[STEPS.index("duyet-1"):])
+    qua = {s: any(steps.get(t, {}).get("status", "chua-chay") != "chua-chay" for t in STEPS[STEPS.index(tu):])
+           for s, tu in CO_TRUOC.items()}  # tính trước vòng lặp để không phụ thuộc thứ tự điền mặc định
     for s in STEPS:
         steps.setdefault(s, {"status": "xong", "note": "video có trước bước này"}
-                         if s == "phan-bien-giong" and qua_duyet_1 else {"status": "chua-chay", "note": ""})
+                         if qua.get(s) else {"status": "chua-chay", "note": ""})
     return data
 
 

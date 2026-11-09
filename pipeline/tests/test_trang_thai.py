@@ -87,6 +87,42 @@ def test_old_video_before_review_1_still_needs_voice_review(tmp_path):
     assert tt.next_step(tmp_path) == "phan-bien-giong"
 
 
+def test_dao_dien_sits_between_giong_and_canh():
+    assert tt.STEPS.index("dao-dien") == tt.STEPS.index("giong") + 1 == tt.STEPS.index("canh") - 1
+
+
+def _dung(tmp_path, **st):
+    """Tệp cũ (trước bước dao-dien): các bước đến giong xong, thêm các bước ở st."""
+    steps = {s: {"status": "xong", "note": ""} for s in ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem", "giong"]}
+    steps["duyet-1"] = {"status": "da-duyet", "note": ""}
+    steps.update({k: {"status": v, "note": ""} for k, v in st.items()})
+    (tmp_path / "trang-thai.json").write_text(json.dumps({"steps": steps}), encoding="utf-8")
+
+
+def test_new_video_after_giong_needs_dao_dien(tmp_path):
+    for s in ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem"]:
+        tt.set_step(tmp_path, s, "xong")
+    tt.set_step(tmp_path, "duyet-1", "da-duyet")
+    tt.set_step(tmp_path, "giong", "xong")
+    assert tt.next_step(tmp_path) == "dao-dien"
+
+
+def test_old_video_with_canh_done_is_not_pushed_back(tmp_path):
+    _dung(tmp_path, canh="xong")
+    assert tt.load(tmp_path)["steps"]["dao-dien"]["status"] == "xong"
+    assert tt.next_step(tmp_path) == "hinh"
+
+
+def test_old_video_with_canh_running_is_not_pushed_back(tmp_path):
+    _dung(tmp_path, canh="loi")
+    assert tt.next_step(tmp_path) == "canh"
+
+
+def test_old_video_giong_done_canh_not_run_needs_dao_dien(tmp_path):
+    _dung(tmp_path)
+    assert tt.next_step(tmp_path) == "dao-dien"
+
+
 VN = timezone(timedelta(hours=7))
 
 

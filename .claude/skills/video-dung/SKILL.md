@@ -40,8 +40,34 @@ kịch bản vào đó và ghi `giong-timing.json`. Lệnh in % từ khớp tr�
 Số đọc thành chữ bị phiên âm thành chữ số vẫn căn được (lấy khoảng của số), nhưng mốc từng từ trong khối đó chỉ gần đúng.
 Kiểm `giong-timing.json`: `words[-1].end ≤ duration`.
 
+## 1b. dao-dien
+Claude là đạo diễn: quyết mỗi cảnh phục vụ điều gì trước khi chọn mẫu và hình (spec: docs/superpowers/specs/2026-11-09-chat-luong-hinh-anh-design.md mục 4). Video cũ không có `dao-dien.json` bỏ qua mục này, viết `canh.json` bằng tay như mục 2.
+
+**Bốn nguyên tắc đạo diễn:**
+1. **Hình bổ nghĩa, không chép lời.** Mỗi cảnh phải trả lời: cảnh này giúp người xem hiểu hay cảm thấy điều gì mà lời đọc chưa tự nói ra?
+2. **Mỗi beat có một khoảnh khắc nhấn** (đỉnh) và một nhịp thở trước hoặc sau nó.
+3. **Ẩn dụ phải kiểm được.** Hình ẩn dụ không được thêm khẳng định không có nguồn (ví dụ không vẽ đám đông giận dữ khi nguồn không nói về phản ứng công chúng). Mọi số trên màn hình vẫn có `nguon_id`.
+4. **Đa dạng có chủ đích:** đổi phông, vật chính, bố cục khi ý đổi, không đổi chỉ để đổi.
+
+**Cách làm** (giới hạn khoảng 45 phút; vượt thì giảm cảnh trọng điểm xuống ~20%, không bỏ bước):
+1. `uv run python -m tttc.chia V` để có `V/canh-khung.json` (mốc và `loi` từng cảnh).
+2. Viết `V/dao-dien.json` = `{"scenes": [...]}`, mỗi cảnh trong `canh-khung.json` một mục: `y` (người xem phải hiểu/cảm thấy gì), `nhip_cam_xuc`
+   (`mo|leo|dinh|dao-chieu|ha|chot`), `trong_diem` (true/false), `canh` (`mau` + trường của mẫu như mục 2), và với `minh-hoa`:
+   `san_khau`, `vat_chinh`, `dao_cu` (≤ 4 tên SVG), `may_quay` (`dung|day-vao|keo-ra|lia|he-lo`). Cảnh trọng điểm (mở bài, số lớn,
+   đảo chiều, kết, đỉnh mỗi beat; khoảng **30%** số cảnh) bắt buộc có `an_du` (hình ẩn dụ và vì sao đúng với nguồn) và `may_quay` khác `dung`;
+   chỉ cảnh này được chỉ đạo sâu, còn lại theo luật đa dạng (không 3 cảnh liền cùng mẫu/phông/vật chính). `am_thanh`, `dan` tùy chọn.
+3. Chia theo beat cho subagent chạy song song, mỗi agent viết phần `dao-dien.json` của beat mình; một agent tổng hợp ghép lại và kiểm nhịp
+   cảm xúc toàn video (có đỉnh và nhịp thở ở mỗi beat, không dồn trọng điểm vào một chỗ).
+4. `uv run python -m tttc.dao_dien V`: in Lỗi/Cảnh báo, **có Lỗi thì không ghi gì**; sạch Lỗi thì sinh `V/canh.json` (cũ lưu `canh-truoc-dao-dien.json`) và `V/hinh-thieu.json`.
+   Vẽ từng hình trong `hinh-thieu.json` bằng `pipeline/svg/ve.py` (mục 3), rồi chạy lại lệnh để Cảnh báo hết.
+5. **Giám khảo hình ảnh** (subagent độc lập, không chia sẻ ngữ cảnh): đưa cho nó `dao-dien.json`, `canh-khung.json` (lời đọc từng cảnh), `nguon.json`
+   và kết quả `uv run python -m tttc.chat_luong V` (bảng số đo), cùng nội dung `pipeline/phong-cach/giam-khao-hinh.md`. Nó ghi `V/dao-dien-cham.json`.
+   Claude sửa `dao-dien.json` theo cảnh khô và ẩn dụ vượt nguồn nó chỉ ra, chạy lại bước 4, chấm lại: **tối đa 2 vòng sửa**.
+   Giám khảo là một agent chứ không phải người xem thật; điểm chỉ là mốc, phép thử thật là retention sau khi đăng.
+
 ## 2. canh
-Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường từng mẫu):
+Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường từng mẫu). **Video có `dao-dien.json` thì `canh.json` đã được sinh ở mục 1b:**
+chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V` trên tệp đó, chỉ sửa tay khi hai lệnh báo (sửa ở `dao-dien.json` rồi sinh lại, đừng sửa `canh.json` sinh ra).
 - Chạy `uv run python -m tttc.chia V` để có `V/canh-khung.json`: mốc `start/end` đã cắt đúng ranh giới từ, cảnh liền
   nhau, cảnh đầu 0, cảnh cuối = `duration`, kèm `loi` (lời đọc của cảnh). Chép sang `canh.json`, điền `mau` và nội dung
   từng cảnh; **không tự đổi mốc** (cần đổi thì sửa tay và chạy lại `tttc.canh`).
