@@ -77,7 +77,13 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 ## 6. dong-goi
 1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail (≤ 3–4 chữ).
 2. Thumbnail:
-   - Phương án 1, 2: `tttc.thumb.make([(dòng, "white"|"yellow"), ...], V/thumbnails/N.png)`.
+   - Phương án 1: `tttc.thumb.make([(dòng, "white"|"yellow"), ...], V/thumbnails/1.png)`.
+   - Phương án 2: CoDesign (IMG.LY). Trước `edit` đầu tiên nạp skill `codesign:handbook`, `codesign:api`, `codesign:judge`
+     (cùng một lượt) – bỏ bước hỏi ý, brief đã đủ: trang 1280×720, nền #111111, chữ trắng/vàng #FFC800 đậm, chữ
+     thumbnail của phương án 2, có thể thêm một hình/đạo cụ (không mặt người thật, không logo hãng). Chạy vòng `judge`
+     tới khi qua, `export` png → `V/thumbnails/2.png`; > 2 MB thì xuất lại nhỏ hơn (YouTube từ chối). Tạo bản nhỏ:
+     `Image.open(p).resize((168, 94), Image.LANCZOS).save(V/thumbnails/2-168px.png)`.
+     CoDesign hỏng/chưa đăng nhập: dùng `thumb.make` như phương án 1 và ghi lý do trong `dong-goi.md`.
    - Phương án 3: TobyFlow `gen_image` (gọi `list_capabilities` trước, poll `get_job`) tạo **nền 16:9**. Prompt phải ghi:
      không chữ, không mặt người thật, không logo hãng, tông tối gần đen với điểm nhấn vàng #FFC800, một vật thể chính.
      Tải ảnh về `V/thumbnails/nen-3.png`, rồi `thumb.make(lines, V/thumbnails/3.png, background=V/thumbnails/nen-3.png)`.

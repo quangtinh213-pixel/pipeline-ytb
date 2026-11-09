@@ -25,6 +25,8 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
 - Có chủ đề từ người dùng: vẫn chấm theo 3 câu bên dưới, ghi 1 đề.
 - Không có: đọc `pipeline/config.json:nguon_tin`, quét tin 24 giờ qua. Chấm mỗi đề 3 câu, mỗi câu 0–2 điểm:
   1. Đang nóng? 2. Có số lớn? 3. Hệ quả cho túi tiền người Việt? (**0 điểm câu 3 → loại**).
+- Chấm câu 1 bằng dữ liệu, không cảm tính: gọi skill `yt-viral` cho ngách (công nghệ / giá cả / túi tiền, tiếng Việt)
+  để xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
 - Ghi `chu-de.md`: 3 đề tốt nhất, mỗi đề gồm tiêu đề tạm, lời hứa một câu, điểm từng câu, link tin.
   Đề 1 là đề được làm tiếp; người dùng đổi ở điểm duyệt.
 
