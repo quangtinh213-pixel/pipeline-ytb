@@ -641,6 +641,35 @@ def cao_oc():
     return p
 
 
+# ---------- Nhân vật dẫn chuyện "Túi" (chờ duyệt, Task 8) ----------
+def tui(the: str = "chao", nham: bool = False):
+    """Chiếc túi tiền vàng có mặt trên mặt y+ của thân. the: chao | ngac-nhien | nghi; nham: mắt nhắm (để chớp)."""
+    body = (0, 0, 12, 130, 90, 100)
+    mat = lambda u0, v0, u1, v1, fill, sw=3: on_left(*body, u0, v0, u1, v1, fill, sw)
+    arm = lambda x, z, h: box(x, 30, z, 20, 16, h, DARK, DARK, DARK)
+    p = []
+    if the == "ngac-nhien":
+        p += arm(-20, 60, 70)  # tay trái ở phía sau thân nên vẽ trước
+    p += box(15, 10, 0, 100, 70, 12, DARK, DARK, DARK)
+    p += box(*body[:3], *body[3:], Y, "#E0B000", "#C79C00")
+    p += box(25, 15, 112, 80, 60, 22, Y, "#E0B000", "#C79C00") + box(35, 25, 134, 60, 40, 12, DARK, DARK, DARK)
+    p += box(20, 10, 146, 90, 70, 26, Y, "#E0B000", "#C79C00")
+    for u in (0.2, 0.62):
+        if nham:
+            p.append(mat(u, 0.6, u + 0.18, 0.64, INK, 2))
+        else:
+            p.append(mat(u, 0.5, u + 0.18, 0.74, WHITE))
+            p.append(mat(u + (0.02 if the == "nghi" else 0.06), 0.54, u + (0.1 if the == "nghi" else 0.12), 0.68, INK, 2))
+    mieng = {"chao": (0.36, 0.26, 0.64, 0.34), "ngac-nhien": (0.43, 0.14, 0.57, 0.36), "nghi": (0.5, 0.28, 0.7, 0.31)}[the]
+    p.append(mat(*mieng, INK, 2))
+    if the in ("chao", "ngac-nhien"):
+        p += arm(130, 70, 80) + box(128, 26, 148, 24, 24, 20, WHITE, LIGHT, MID)
+    else:
+        p += arm(130, 30, 40) + box(60, 92, 40, 40, 24, 18, WHITE, LIGHT, MID)
+        p += box(52, 28, 190, 26, 26, 26, Y, "#E0B000", "#C79C00")
+    return p
+
+
 ITEMS = {
     "toa-nha-quoc-hoi": toa_nha_quoc_hoi, "dien-thoai": dien_thoai, "chip": chip, "laptop": laptop,
     "tien": tien, "tai-lieu": tai_lieu, "nha-may": nha_may, "may-chu": may_chu,
@@ -687,6 +716,12 @@ ITEMS = {
     "nguoi-nhom": nguoi_nhom,
     "tui-xach": tui_xach,
     "cao-oc": cao_oc,
+    "tui-chao": lambda: tui("chao", False),
+    "tui-chao-nham": lambda: tui("chao", True),
+    "tui-ngac-nhien": lambda: tui("ngac-nhien", False),
+    "tui-ngac-nhien-nham": lambda: tui("ngac-nhien", True),
+    "tui-nghi": lambda: tui("nghi", False),
+    "tui-nghi-nham": lambda: tui("nghi", True),
 }
 
 if __name__ == "__main__":
