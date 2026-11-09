@@ -321,3 +321,22 @@ def test_cues_keep_one_word_sentences_and_cover_timing():
 
 def test_cues_empty_timing():
     assert canh.cues({"words": []}) == []
+
+
+def test_long_pill_label_warns_over_five_words():
+    sc = {"scenes": [{"id": "c1", "mau": "minh-hoa", "start": 0, "end": 3, "svg": "chip", "nhan": "một hai ba bốn năm sáu"}]}
+    out = canh.validate(sc, {"duration": 3.0, "words": []})
+    assert any(m.startswith("Cảnh báo: c1 nhãn dài 6 từ") for m in out)
+    sc["scenes"][0]["nhan"] = "một hai ba bốn năm"
+    assert not any("nhãn dài" in m for m in canh.validate(sc, {"duration": 3.0, "words": []}))
+
+
+def test_long_label_check_covers_so_sanh_and_quy_trinh_but_not_so_lon_caption():
+    long = "một hai ba bốn năm sáu bảy"
+    ss = {"id": "c2", "mau": "so-sanh", "start": 0, "end": 3, "trai": {"nhan": long, "svg": "chip"},
+          "phai": {"nhan": "Ngắn", "svg": "chip"}}
+    qt = {"id": "c3", "mau": "quy-trinh", "start": 3, "end": 6, "buoc": [{"nhan": "A"}, {"nhan": long}, {"nhan": "C"}]}
+    sl = {"id": "c4", "mau": "so-lon", "start": 6, "end": 9, "so": 5, "nhan": long}
+    out = canh.validate({"scenes": [ss, qt, sl]}, {"duration": 9.0, "words": []})
+    flagged = {m.split()[2] for m in out if "nhãn dài" in m}
+    assert flagged == {"c2", "c3"}

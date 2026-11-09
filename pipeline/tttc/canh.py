@@ -75,6 +75,9 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         for ph in c.get("nhip") or []:
             if ph and phrase_time(timing.get("words", []), ph, c["start"], c["end"]) is None:
                 msgs.append(f"Lỗi: {cid} có nhịp '{ph}' nhưng giọng đọc không nói cụm này trong cảnh")
+        for label in _nhan_pills(c):
+            if len(label.split()) > NHAN_MAX_TU:
+                msgs.append(f"Cảnh báo: {cid} nhãn dài {len(label.split())} từ (≤ {NHAN_MAX_TU}): {label[:30]}")
         if c["mau"] == "quy-trinh":
             msgs += _check_quy_trinh(c, svg_dir)
         if c["mau"] == "so-sanh":
@@ -86,6 +89,19 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
             msgs.append(f"Lỗi: {cid} cần video broll/{c.get('video')} chưa tải")
     return msgs
+
+
+NHAN_MAX_TU = 5  # nhãn dạng viên (pill) ≤ 5 từ; dòng dưới của so-lon là câu ngắn nên không tính
+
+
+def _nhan_pills(c: dict) -> list[str]:
+    if c["mau"] == "minh-hoa":
+        return [c["nhan"]] if c.get("nhan") else []
+    if c["mau"] == "so-sanh":
+        return [c[k]["nhan"] for k in ("trai", "phai") if isinstance(c.get(k), dict) and c[k].get("nhan")]
+    if c["mau"] == "quy-trinh":
+        return [b["nhan"] for b in c.get("buoc") or [] if b.get("nhan")]
+    return []
 
 
 def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
