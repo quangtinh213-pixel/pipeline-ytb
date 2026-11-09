@@ -14,8 +14,24 @@
   ],
   "gio_dang_mac_dinh": "19:00",
   "nhac_nen": "",
-  "playlist_id": "",
+  "playlist_id": "PLf9v4rPuuCys",
   "vieneu": {
-    "voice": "Quốc Tuấn"
+    "voice": "Quốc Tuấn",
+    "toc_do": 1.0,
+    "phat_am": {
+      "GPT-6": "GPT sáu",
+      "Gemini 4": "Gemini bốn",
+      "Nvidia": "En vi đi a",
+      "Jensen Huang": "Giên xần Hoàng",
+      "Alice Huang": "A lít Hoàng",
+      "Megaspeed": "Mê ga xpít",
+      "AI Diffusion": "ây ai Đi phiu giần",
+      "ExaFLOPs": "Ếch xa phlốp",
+      "GPU": "gi pi u",
+      "Washington": "Oa sinh tơn",
+      "FPT Cloud": "ép pê tê clao",
+      "Viettel": "Viết ten",
+      "FP tám": "ép pê tám"
+    }
   }
 }
