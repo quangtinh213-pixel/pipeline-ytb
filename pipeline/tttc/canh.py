@@ -199,14 +199,15 @@ def _ts(t: float) -> str:
 
 def cues(timing: dict, max_chars: int = 42) -> list[tuple[float, float, str]]:
     """Gom từ thành dòng phụ đề ≤ max_chars (trừ một từ dài hơn nó), ngắt theo nghĩa: bắt buộc sau .!?, ưu tiên sau , ; :
-    khi dòng đã ≥ 60% max_chars, và khi buộc ngắt vì vượt max_chars thì lùi về dấu , ; : gần nhất; không để một từ
+    khi dòng đã ≥ 60% max_chars, và khi buộc ngắt vì vượt max_chars thì lùi về dấu , ; : gần nhất nếu vế đầu ≥ 40% max_chars; không để một từ
     đứng riêng một dòng giữa câu."""
     text = lambda ws: " ".join(x["w"] for x in ws)
     ket_cau = lambda w: w["w"][-1:] in ".!?"
     groups, cur = [], []
     for w in timing["words"]:
         if cur and len(text(cur + [w])) > max_chars:
-            k = max((i for i in range(1, len(cur)) if cur[i - 1]["w"][-1:] in ",;:"), default=0)
+            k = max((i for i in range(1, len(cur)) if cur[i - 1]["w"][-1:] in ",;:" and len(text(cur[:i])) >= 0.4 * max_chars),
+                    default=0)  # chỉ lùi về dấu phẩy khi vế đầu đủ dài, tránh dòng vài từ chớp lên rồi mất
             groups.append(cur[:k] if k else cur)
             cur = cur[k:] if k else []
         cur.append(w)

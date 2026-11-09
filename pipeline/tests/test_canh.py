@@ -293,8 +293,13 @@ def test_cues_break_at_comma_before_mid_phrase():
 
 
 def test_cues_forced_break_falls_back_to_last_comma():
-    out = [c[2] for c in canh.cues(_cue_timing("Một hai, ba bốn năm sáu bảy tám chín mười"), 24)]
-    assert out[0] == "Một hai," and all(len(x) <= 24 for x in out)
+    out = [c[2] for c in canh.cues(_cue_timing("Một hai ba bốn năm, sáu bảy tám chín mười mười một"), 24)]
+    assert out[0] == "Một hai ba bốn năm," and all(len(x) <= 24 for x in out)
+
+
+def test_cues_short_clause_is_not_split_off_alone():
+    out = [c[2] for c in canh.cues(_cue_timing("Năm ngoái, Mỹ bắt chip AI xuất sang Malaysia và Thái Lan phải có thêm giấy phép."), 42)]
+    assert out[0] != "Năm ngoái," and all(len(x) <= 42 for x in out)
 
 
 def test_cues_never_leave_single_word_orphan_inside_a_sentence():
