@@ -12,6 +12,7 @@ SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
+DAN_THE, DAN_GOC = {"chao", "ngac-nhien", "nghi"}, {"phai", "trai"}  # nhân vật dẫn chuyện "Túi" (svg/tui-*.svg)
 DONG = {"", "bob", "xoay", "dap", "chop"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
@@ -55,6 +56,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         seen.add(cid)
         if c["mau"] not in MAU:
             msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
+        if c.get("dan") is not None:
+            msgs += _check_dan(c, timing.get("words", []))
         if c.get("dong", "") not in DONG:
             msgs.append(f"Lỗi: {cid} dong không hợp lệ: {c['dong']} (chọn {', '.join(sorted(DONG - {''}))})")
         if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
@@ -95,6 +98,15 @@ def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
     out += [f"Lỗi: {c['id']} bước '{b.get('nhan')}' cần hình {b['svg']}.svg chưa có trong thư viện"
             for b in buoc if b.get("svg") and not (Path(svg_dir) / f"{b['svg']}.svg").exists()]
     return out
+
+
+def _check_dan(c: dict, words: list[dict]) -> list[str]:
+    d = c["dan"]
+    if not isinstance(d, dict) or d.get("the") not in DAN_THE or d.get("goc", "phai") not in DAN_GOC:
+        return [f"Lỗi: {c['id']} dan phải là {{the: {'|'.join(sorted(DAN_THE))}, goc?: phai|trai, tu?: cụm}}"]
+    if d.get("tu") and phrase_time(words, d["tu"], c["start"], c["end"]) is None:
+        return [f"Lỗi: {c['id']} dan.tu '{d['tu']}' nhưng giọng đọc không nói cụm này trong cảnh"]
+    return []
 
 
 def _check_thoi_gian(c: dict) -> list[str]:

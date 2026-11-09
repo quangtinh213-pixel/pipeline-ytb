@@ -358,3 +358,33 @@ def test_compose_missing_music_file_gives_clear_error(video, tmp_path, monkeypat
     monkeypatch.setattr(dung, "CONFIG", cfg)
     with pytest.raises(FileNotFoundError, match="nhạc nền"):
         dung.compose(video)
+
+
+def _video_with_dan(video, **dan_extra):
+    sc = json.loads(json.dumps(SCENES))
+    sc["scenes"][1]["dan"] = dict({"the": "ngac-nhien", "goc": "phai"}, **dan_extra)
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    return video
+
+
+def test_compose_adds_mascot_clip_for_scene_with_dan(video):
+    out = dung.compose(_video_with_dan(video))
+    html = (out / "index.html").read_text(encoding="utf-8")
+    m = re.search(r'<div id="dan-1" class="clip dan dan-phai" data-start="([\d.]+)" data-duration="([\d.]+)"', html)
+    assert m and float(m.group(1)) == 4 and float(m.group(2)) == 5  # đúng đầu và độ dài cảnh c2
+    assert 'src="assets/svg/tui-ngac-nhien.svg"' in html and 'src="assets/svg/tui-ngac-nhien-nham.svg"' in html
+    assert (out / "assets" / "svg" / "tui-ngac-nhien-nham.svg").exists()
+    assert 'id="dan-0"' not in html and html.count('class="clip dan') == 1
+
+
+def test_compose_scene_range_keeps_mascot_inside_range(video):
+    out = dung.compose(_video_with_dan(video, goc="trai"), scene_range=(1, 3), out="cat")
+    html = (out / "index.html").read_text(encoding="utf-8")
+    m = re.search(r'<div id="dan-0" class="clip dan dan-trai" data-start="([\d.]+)" data-duration="([\d.]+)"', html)
+    assert m and float(m.group(1)) == 0 and float(m.group(1)) + float(m.group(2)) <= 10 + 1e-6  # cắt đoạn c2–c3 dài 10 s
+
+
+def test_compose_vertical_has_no_mascot(video):
+    out = dung.compose(_video_with_dan(video), w=1080, h=1920, scene_range=(1, 3), out="short")
+    assert "dan-" not in (out / "index.html").read_text(encoding="utf-8").replace("dan-phai", "").replace("dan-trai", "")
+    assert 'class="clip dan' not in (out / "index.html").read_text(encoding="utf-8")

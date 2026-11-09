@@ -275,6 +275,29 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             f"<span>{escape(t)}</span></div>"
             for k, (a, b, t) in enumerate(cues(timing)) if a >= t0 - 0.01 and b <= t0 + total + 0.01]
 
+    dan_tags, dan_js = [], []
+    if h <= w:  # shortcut: Shorts (khung dọc) chưa có nhân vật; thêm khi có nhu cầu
+        for k, c in enumerate(scenes):
+            d = c.get("dan")
+            if not d:
+                continue
+            a, dur = round(c["start"] - t0, 3), round(c["end"] - c["start"], 3)
+            ra = phrase_time(timing.get("words", []), d["tu"], c["start"], c["end"]) if d.get("tu") else None
+            vao = round(a + (ra - c["start"] if ra is not None else 0.3), 3)
+            the = d["the"]
+            dan_tags.append(
+                f'<div id="dan-{k}" class="clip dan dan-{d.get("goc", "phai")}" data-start="{a}" data-duration="{dur}" '
+                f'data-track-index="3"><img src="assets/svg/tui-{the}.svg" alt="">'
+                f'<img id="dan-{k}-nham" src="assets/svg/tui-{the}-nham.svg" alt="" style="opacity:0"></div>')
+            dan_js.append(f'tl.fromTo("#dan-{k}", {{ scale: 0, y: 40, transformOrigin: "50% 100%" }}, '
+                          f'{{ scale: 1, y: 0, duration: 0.45, ease: "back.out(2)" }}, {vao});')
+            dan_js.append(f'tl.to("#dan-{k}", {{ y: -10, duration: 1.2, ease: "sine.inOut", yoyo: true, '
+                          f'repeat: {max(0, int((a + dur - vao - 0.5) / 1.2) - 1)} }}, {vao + 0.5:.3f});')  # hữu hạn, đủ phủ hết cảnh
+            t = vao + 1.8
+            while t < a + dur - 0.3:  # chớp mắt: ảnh nhắm mắt phủ lên ảnh mở mắt (cùng hình dáng) trong 0,14 s
+                dan_js.append(f'tl.set("#dan-{k}-nham", {{ opacity: 1 }}, {t:.3f}); '
+                              f'tl.set("#dan-{k}-nham", {{ opacity: 0 }}, {t + 0.14:.3f});')
+                t += 2.8
     sfx_tags = [f'<audio id="sfx-{k}" src="assets/sfx/{f}.mp3" data-start="{round(t, 3)}" data-volume="{v}"></audio>'
                 for k, (f, t, v) in enumerate(sorted(sfx, key=lambda e: e[1])) if 0 <= t < total - 0.1]
 
@@ -299,6 +322,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
 {base}
       #phu-de {{ position: absolute; inset: 0; pointer-events: none; z-index: 10; }}
       .cap {{ position: absolute; left: 0; right: 0; margin: 0 auto; text-align: center; {cap_css} }}
+      .dan {{ position: absolute; bottom: 200px; width: 280px; height: 280px; z-index: 6; pointer-events: none; }}
+      .dan img {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }}
+      .dan-phai {{ right: 70px; }} .dan-trai {{ left: 70px; }}
       .tr {{ position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }}
       .tr-p {{ position: absolute; inset: 0; }}
       .tr-vang {{ background: #FFC800; }} .tr-muc {{ background: #111111; }} .tr-dip {{ background: #000; opacity: 0; }}
@@ -313,6 +339,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       {chr(10).join(hosts)}
       {stage_close}
       {chr(10).join(trs)}
+      {chr(10).join(dan_tags)}
       <div id="phu-de" class="clip" data-start="0" data-duration="{total}" data-track-index="5" data-track-kind="captions">
         {chr(10).join(caps)}
       </div>
@@ -322,6 +349,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     <script>
       const tl = gsap.timeline({{ paused: true }});
       {chr(10).join(tr_js)}
+      {chr(10).join(dan_js)}
       window.__timelines["main"] = tl;
     </script>
   </body>

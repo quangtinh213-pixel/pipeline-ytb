@@ -264,3 +264,19 @@ def test_check_values_thoi_gian_years_in_source():
 def test_validate_thoi_gian_row_missing_years_is_error_not_crash():
     thieu = _tg(hang=[{"nhan": "A"}, {"nhan": "B", "tu": 2024, "den": 2028}])
     assert any("tu < den" in e for e in _tg_errors(thieu))
+
+
+def test_validate_dan_pose_and_corner(tmp_path):
+    ok = canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "trai"}), TIMING, tmp_path, NGUON)
+    assert _errors(ok) == []
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "bay"}), TIMING, tmp_path, NGUON)))
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan={"the": "chao", "goc": "giua"}), TIMING, tmp_path, NGUON)))
+    assert any("dan" in e for e in _errors(canh.validate(_sc((0, 6), (6, 12), dan="chao"), TIMING, tmp_path, NGUON)))
+
+
+def test_validate_dan_phrase_must_be_spoken_in_scene(tmp_path):
+    timing = {"duration": 12.0, "words": [{"w": "năm", "start": 1.0, "end": 1.3}, {"w": "trăm", "start": 1.3, "end": 1.6}]}
+    sc = {"scenes": [{"id": "c0", "mau": "so-lon", "start": 0, "end": 6, "dan": {"the": "nghi", "tu": "năm trăm"}},
+                     {"id": "c1", "mau": "so-lon", "start": 6, "end": 12, "dan": {"the": "nghi", "tu": "năm trăm"}}]}
+    errs = _errors(canh.validate(sc, timing, tmp_path, NGUON))
+    assert len(errs) == 1 and "c1" in errs[0] and "năm trăm" in errs[0]

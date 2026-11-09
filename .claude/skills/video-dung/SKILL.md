@@ -40,6 +40,10 @@ Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường t�
 - **Tỉ lệ cảnh** (chuẩn kênh mẫu, docs/nghien-cuu/kenh-mau-motcongnghe-2026-11-09.md mục 4; `tttc.chat_luong` đo):
   đồ họa tự dựng (`minh-hoa`, `quy-trinh`, `so-sanh`, `thoi-gian`, `so-lon`, `bieu-do`, `chuong`) ≥ 70%;
   bằng chứng (`trich-bao`, `trang-nguon`) 8–18%; ảnh/video đời thật (`b-roll`, `nhan-vat`) ≤ 15%. Không 3 cảnh liền cùng mẫu.
+- **Nhân vật dẫn chuyện "Túi"** (mọi mẫu): `dan: {the: chao|ngac-nhien|nghi, goc?: phai|trai, tu?: "cụm lời đọc"}` — hiện ở góc dưới,
+  bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô và chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các
+  khoảnh khắc "bất ngờ" (số lớn, đảo chiều, câu hỏi hứa): `chao` khi mở chương, `ngac-nhien` trước một con số gây sốc, `nghi` khi
+  đặt câu hỏi. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.
