@@ -5,7 +5,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
-from tttc import nhan_vat
+from tttc import ngon_ngu, nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
 MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian"}
@@ -64,6 +64,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
         if c.get("dan") is not None:
             msgs += _check_dan(c, timing.get("words", []), kit)
+        msgs += [f"Lỗi: {cid} {k} có vẻ là tiếng Anh: «{t}»; mọi chữ trên màn hình phải là tiếng Việt"
+                 for k, t in ngon_ngu.man_hinh(c) if ngon_ngu.la_tieng_anh(t)]
         if c.get("dong", "") not in DONG:
             msgs.append(f"Lỗi: {cid} dong không hợp lệ: {c['dong']} (chọn {', '.join(sorted(DONG - {''}))})")
         if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
@@ -206,6 +208,11 @@ def _check_quote(c: dict, src: dict | None) -> list[str]:
         out.append(f"Lỗi: {c['id']} cụm tô vàng không nằm trong đoạn trích")
     if len(trich.split()) > 25:
         out.append(f"Lỗi: {c['id']} đoạn trích dài quá 25 từ")
+    tv = c.get("trich_vi", "")
+    if not tv and ngon_ngu.la_tieng_anh(trich, toi_thieu=2):  # câu trích là cả câu, không phải nhãn tên riêng
+        out.append(f"Lỗi: {c['id']} trích bằng tiếng Anh: thêm trich_vi (bản dịch tiếng Việt của kênh) và to_vang_vi để hiện lên màn hình")
+    if tv and c.get("to_vang_vi") and _norm(c["to_vang_vi"]) not in _norm(tv):
+        out.append(f"Lỗi: {c['id']} to_vang_vi không nằm trong trich_vi")
     return out
 
 

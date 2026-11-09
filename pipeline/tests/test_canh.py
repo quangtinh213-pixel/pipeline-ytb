@@ -141,6 +141,36 @@ TRICH = [{"id": "b1", "gia_tri": "", "trich_dan": "Giá RAM DDR5 tăng gấp ba 
           "url": "https://vnexpress.net/abc", "ngay_truy_cap": "2026-11-07", "trang_thai": "xac-minh"}]
 
 
+EN_SRC = [{"id": "e1", "gia_tri": "", "trich_dan": "Vietnam: [D:1] National Security X; [D:3] Chemical and Biological X"}]
+
+
+def _qe(**extra):
+    base = dict(mau="trich-bao", nguon_id="e1", trich="Vietnam: [D:1] National Security X", to_vang="National Security X")
+    return _sc((0, 6), (6, 12), **{**base, **extra})
+
+
+def test_english_quote_needs_vietnamese_translation_for_screen(tmp_path):
+    errs = _errors(canh.validate(_qe(), TIMING, tmp_path, EN_SRC, kit=None))
+    assert any("trich_vi" in e for e in errs)
+    ok = _qe(trich_vi="Việt Nam: nhóm D:1 an ninh quốc gia", to_vang_vi="an ninh quốc gia")
+    assert _errors(canh.validate(ok, TIMING, tmp_path, EN_SRC, kit=None)) == []
+
+
+def test_translation_must_be_vietnamese_and_contain_the_highlight(tmp_path):
+    en = _qe(trich_vi="Vietnam is in the D:1 national security group", to_vang_vi="national security")
+    assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, EN_SRC, kit=None)))
+    lech = _qe(trich_vi="Việt Nam thuộc nhóm D:1", to_vang_vi="an ninh quốc gia")
+    assert any("to_vang_vi" in e for e in _errors(canh.validate(lech, TIMING, tmp_path, EN_SRC, kit=None)))
+
+
+def test_english_label_on_screen_is_an_error(tmp_path):
+    sc = _sc((0, 6), (6, 12), mau="minh-hoa", svg="chip", nhan="Export controls on AI chips")
+    errs = _errors(canh.validate(sc, TIMING, _svg(tmp_path, "chip"), NGUON, kit=None))
+    assert any("tiếng Anh" in e and "nhan" in e for e in errs)
+    ok = _sc((0, 6), (6, 12), mau="minh-hoa", svg="chip", nhan="Siết xuất khẩu chip AI")
+    assert _errors(canh.validate(ok, TIMING, _svg(tmp_path, "chip"), NGUON, kit=None)) == []
+
+
 def test_trich_bao_must_quote_source_exactly(tmp_path):
     sc = _sc((0, 6), (6, 12), mau="trich-bao", nguon_id="b1",
              trich="Giá RAM DDR5 tăng gấp ba lần chỉ trong sáu tháng", to_vang="tăng gấp ba lần")

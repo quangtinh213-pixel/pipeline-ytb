@@ -9,10 +9,11 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
 - trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
-- trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich)
+- trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich); trich nguồn tiếng Anh thì
+               bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi)
 - quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
 - so-sanh:     trai, phai {nhan, svg, so?, don_vi?, to? (0–1, cỡ hình tương đối)}, don_vi?, ti_le? ("gấp ~700 lần"),
-               nguon_id (bắt buộc nếu có so), dong? (cho huy hiệu VS, mặc định dap)
+               nguon_id (bắt buộc nếu có so), dong? (cho huy hiệu SO, mặc định dap)
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
 - b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01")
 Mọi mẫu: dan? {the, goc? phai|trai, huong? (hướng nhìn; mặc định nghiêng về giữa màn hình), tu?} – nhân vật dẫn chuyện; có
@@ -49,7 +50,7 @@ DEFAULT_STEPS = {
     "so-lon": [0.05, 1.6],             # bắt đầu đếm, dòng dưới
     "trang-nguon": [0.8],              # zoom vào số
     "nhan-vat": [0.8],                 # thẻ vai trò
-    "so-sanh": [0.5, 1.1, 1.8],        # bên trái, bên phải (+VS), nhãn tỉ lệ
+    "so-sanh": [0.5, 1.1, 1.8],        # bên trái, bên phải (+SO), nhãn tỉ lệ
     "chuong": [],
     "trich-bao": [0.9],                # tô vàng
     "b-roll": [0.5],                   # nhãn chương
@@ -139,7 +140,8 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         n = by_id[c["nguon_id"]]
         return {"bao": n.get("ten") or urlparse(n["url"]).netloc.removeprefix("www."),
                 "ngay": f"{date.fromisoformat(n['ngay_truy_cap']):%d/%m/%Y}",
-                "tieu_de": c["trich"], "to_vang": c.get("to_vang", "")}
+                "tieu_de": c.get("trich_vi") or c["trich"], "to_vang": c.get("to_vang_vi" if c.get("trich_vi") else "to_vang", ""),
+                "dich": "Bản dịch của kênh" if c.get("trich_vi") else ""}
     if m == "thoi-gian":
         return {"tieu_de": c.get("tieu_de", ""), "nguon": src(c.get("nguon_id")),
                 "truc": json.dumps(c["truc"], ensure_ascii=False),

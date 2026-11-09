@@ -10,16 +10,18 @@
                      box-shadow: 0 30px 70px rgba(0,0,0,0.45); }
     #root .tb-bang { position: absolute; left: 50%; top: -26px; width: 220px; height: 52px; margin-left: -110px;
                      background: rgba(255,200,0,0.82); transform: rotate(2deg); }
-    #root .tb-dau { display: flex; justify-content: space-between; align-items: baseline;
+    #root .tb-dau { display: flex; justify-content: space-between; align-items: flex-end; gap: 40px;
                     border-bottom: 3px solid {{theme:kem.muc}}; padding-bottom: 18px; margin-bottom: 34px; }
-    #root .tb-bao { font: 900 34px/1 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: {{theme:kem.muc}}; }
+    #root .tb-bao { flex: 1; font: 900 32px/1.25 var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; color: {{theme:kem.muc}}; }
     #root .tb-ngay { font: 600 28px/1 var(--font-display); color: {{theme:kem.muted}}; }
     #root .tb-tieu-de { font: 800 82px/1.2 var(--font-display); color: {{theme:kem.muc}}; letter-spacing: -0.015em; }
+    #root .tb-dich { margin-top: 26px; font: 600 28px/1 var(--font-display); letter-spacing: 0.04em; color: {{theme:kem.muted}}; }
+    #root .tb-dich:empty { display: none; }
     #root .tb-to { background-image: linear-gradient({{theme:nhan.0}}, {{theme:nhan.0}}); background-repeat: no-repeat;
                    background-position: 0 88%; background-size: 0% 46%; padding: 0 4px; }
   </style>
   <div id="root" data-composition-id="trich-bao" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"bao","type":"string","label":"Tên báo / cơ quan","default":"Tên báo"},{"id":"ngay","type":"string","label":"Ngày","default":""},{"id":"tieu_de","type":"string","label":"Đoạn trích (nguyên văn)","default":"Đoạn trích"},{"id":"to_vang","type":"string","label":"Cụm tô vàng","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.9]"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+       data-composition-variables='[{"id":"bao","type":"string","label":"Tên báo / cơ quan","default":"Tên báo"},{"id":"ngay","type":"string","label":"Ngày","default":""},{"id":"tieu_de","type":"string","label":"Đoạn trích (nguyên văn hoặc bản dịch tiếng Việt)","default":"Đoạn trích"},{"id":"dich","type":"string","label":"Nhãn bản dịch","default":""},{"id":"to_vang","type":"string","label":"Cụm tô vàng","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.9]"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
     <div id="tb-san" class="san">
       <div id="tb-khung" class="tb-khung">
         <div class="tb-nghieng">
@@ -29,6 +31,7 @@
             <div class="tb-dau"><span id="tb-bao" class="tb-bao" data-var-text="bao">Tên báo</span>
               <span id="tb-ngay" class="tb-ngay" data-var-text="ngay"></span></div>
             <div id="tb-tieu-de" class="tb-tieu-de"></div>
+            <div id="tb-dich" class="tb-dich" data-var-text="dich"></div>
           </div>
         </div>
       </div>

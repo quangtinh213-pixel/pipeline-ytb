@@ -74,6 +74,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   từng cảnh; **không tự đổi mốc** (cần đổi thì sửa tay và chạy lại `tttc.canh`).
 - Chuẩn kênh mẫu: 2,8–4,5 s/cảnh (cảnh báo ngoài 2,5–6 s, lỗi ngoài 1,5–10 s), khoảng 165–220 cảnh/11 phút.
   Đổi mẫu liên tục, không 3 cảnh liền cùng mẫu.
+- **Mọi chữ hiện trên màn hình là tiếng Việt** (nhãn, tiêu đề, trích, đơn vị, chữ trên hình); tên riêng và viết tắt (Nvidia, GPU) giữ nguyên. Trích nguồn tiếng Anh: `trich` giữ nguyên văn để kiểm chứng với `trich_dan`, rồi viết `trich_vi` (bản dịch sát nghĩa của kênh, không thêm ý) và `to_vang_vi` (cụm nằm trong `trich_vi`); màn hình chỉ hiện bản dịch kèm nhãn "Bản dịch của kênh". `tttc.canh` báo Lỗi nếu còn chữ có vẻ tiếng Anh.
 - Mỗi số hiện trên màn hình phải có `nguon_id` (hoặc `bieu_do.nguon_id`) trỏ vào `nguon.json`; giá trị lấy từ nguồn, không gõ tay khác đi.
 - Đầu mỗi beat của kịch bản là một cảnh `chuong`.
 - Nhãn `minh-hoa` ≤ 5 từ; nhãn là ý chính, không lặp nguyên lời đọc.

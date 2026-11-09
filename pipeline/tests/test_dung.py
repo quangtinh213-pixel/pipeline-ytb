@@ -229,6 +229,37 @@ def test_compose_trich_bao_and_broll(video):
     assert (out / "assets" / "broll" / "pexels-303.mp4").exists()
 
 
+def test_trich_bao_shows_vietnamese_translation_with_label(video):
+    nguon = json.loads((video / "nguon.json").read_text(encoding="utf-8"))
+    nguon.append({"id": "e1", "gia_tri": "", "trich_dan": "Vietnam: [D:1] National Security X", "ten": "Luật xuất khẩu Mỹ (EAR)",
+                  "url": "https://ecfr.gov/x", "ngay_truy_cap": "2026-11-09", "trang_thai": "xac-minh"})
+    (video / "nguon.json").write_text(json.dumps(nguon, ensure_ascii=False), encoding="utf-8")
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"] += [{"id": "c5", "mau": "trich-bao", "start": 20, "end": 25, "nguon_id": "e1", "trich": "Vietnam: [D:1] National Security X",
+                      "to_vang": "National Security X", "trich_vi": "Việt Nam: nhóm D:1, an ninh quốc gia", "to_vang_vi": "an ninh quốc gia"}]
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    vals = _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))["c5"]
+    assert vals["tieu_de"] == "Việt Nam: nhóm D:1, an ninh quốc gia" and vals["to_vang"] == "an ninh quốc gia"
+    assert vals["dich"] == "Bản dịch của kênh"
+    assert "National" not in json.dumps(vals, ensure_ascii=False)  # nguyên văn Anh không hiện lên màn hình
+
+
+def test_trich_bao_without_translation_has_no_translation_label(video):
+    nguon = json.loads((video / "nguon.json").read_text(encoding="utf-8"))
+    nguon.append({"id": "b1", "gia_tri": "", "trich_dan": "Giá RAM tăng gấp ba lần.", "ten": "VnExpress",
+                  "url": "https://vnexpress.net/x", "ngay_truy_cap": "2026-11-07", "trang_thai": "xac-minh"})
+    (video / "nguon.json").write_text(json.dumps(nguon, ensure_ascii=False), encoding="utf-8")
+    sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
+    sc["scenes"] += [{"id": "c5", "mau": "trich-bao", "start": 20, "end": 25, "nguon_id": "b1", "trich": "Giá RAM tăng gấp ba lần"}]
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    assert _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))["c5"]["dich"] == ""
+
+
+def test_so_sanh_badge_is_vietnamese():
+    html = (dung.TPL / "so-sanh.html").read_text(encoding="utf-8")
+    assert ">VS<" not in html and ">SO<" in html
+
+
 def test_source_line_tu_tinh_shows_formula():
     n = {"id": "t1", "gia_tri": "15 năm", "trang_thai": "tu-tinh", "cong_thuc": "2026 − 2011", "dau_vao": []}
     assert dung._source_line(n) == "Tự tính: 2026 − 2011"
