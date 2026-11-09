@@ -3,7 +3,7 @@ import json
 import os
 from pathlib import Path
 
-STEPS = ["chu-de", "nguon", "kich-ban", "kiem", "duyet-1", "giong", "canh", "hinh",
+STEPS = ["chu-de", "nguon", "kich-ban", "phan-bien-giong", "kiem", "duyet-1", "giong", "canh", "hinh",
          "render", "shorts", "dong-goi", "duyet-2", "dang"]
 STATUSES = {"chua-chay", "xong", "loi", "cho-duyet", "da-duyet"}
 FILE = "trang-thai.json"
@@ -12,9 +12,12 @@ FILE = "trang-thai.json"
 def load(video_dir) -> dict:
     p = Path(video_dir) / FILE
     data = json.loads(p.read_text(encoding="utf-8")) if p.exists() else {}
-    data.setdefault("steps", {})
+    steps = data.setdefault("steps", {})
+    # video đã qua điểm duyệt 1 từ trước khi có bước phan-bien-giong thì coi như đã xong, không bị đẩy lùi
+    qua_duyet_1 = any(steps.get(s, {}).get("status", "chua-chay") != "chua-chay" for s in STEPS[STEPS.index("duyet-1"):])
     for s in STEPS:
-        data["steps"].setdefault(s, {"status": "chua-chay", "note": ""})
+        steps.setdefault(s, {"status": "xong", "note": "video có trước bước này"}
+                         if s == "phan-bien-giong" and qua_duyet_1 else {"status": "chua-chay", "note": ""})
     return data
 
 
