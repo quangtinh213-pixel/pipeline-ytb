@@ -64,6 +64,7 @@ Claude là đạo diễn: quyết mỗi cảnh phục vụ điều gì trước 
    và kết quả `uv run python -m tttc.chat_luong V` (bảng số đo), cùng nội dung `pipeline/phong-cach/giam-khao-hinh.md`. Nó ghi `V/dao-dien-cham.json`.
    Claude sửa `dao-dien.json` theo cảnh khô và ẩn dụ vượt nguồn nó chỉ ra, chạy lại bước 4, chấm lại: **tối đa 2 vòng sửa**.
    Giám khảo là một agent chứ không phải người xem thật; điểm chỉ là mốc, phép thử thật là retention sau khi đăng.
+   Chưa được phép tạo subagent thì dùng agy làm giám khảo: ghép nội dung `giam-khao-hinh.md` + `dao-dien.json` (kèm mẫu, nhãn, lời đọc từng cảnh) + `nguon.json` + bảng số đo rồi gọi `tttc.phan_bien.goi`; vòng 2 dùng `--conversation` cũ (cách làm và kết quả thử: docs/nghien-cuu/do-kho-nen-2026-11-09.md). Giám khảo chấm dễ tay và chưa bắt được ẩn dụ vượt nguồn: người viết `an_du` vẫn phải tự kiểm từng ẩn dụ với `nguon.json`.
 
 ## 2. canh
 Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường từng mẫu). **Video có `dao-dien.json` thì `canh.json` đã được sinh ở mục 1b:**

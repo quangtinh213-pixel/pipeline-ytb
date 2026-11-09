@@ -19,7 +19,7 @@ MUC_TIEU = {
     "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 230)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
 # Chỉ số "độ khô" (spec 2026-11-09-chat-luong-hinh-anh-design.md mục 7): cảnh báo, hiệu chỉnh sau chạy khô.
-MUC_TIEU["do_kho"] = {"phong_min": 5, "phong_lien_max": 2, "lap_max": 0, "may_quay_min": 0.20, "cham_min": 3,
+MUC_TIEU["do_kho"] = {"phong_min": 5, "phong_lien_max": 2, "lap_max": 0, "may_quay_min": 0.15, "cham_min": 3,
                       "cham_tb_min": 4.0}
 NHIP_CAM_XUC_DU = {"mo", "dinh", "dao-chieu", "chot"}
 EMPTY = "Lỗi: canh.json không có cảnh nào"

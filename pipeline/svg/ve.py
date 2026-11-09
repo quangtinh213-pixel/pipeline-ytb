@@ -739,7 +739,25 @@ def phong_co_quan():
     return _phong(ex)
 
 
+def cua_hep():
+    """Bức tường có một lối vào hẹp phát sáng vàng: 'cánh cửa vốn đã hẹp'."""
+    p = box(0, 0, 0, 200, 30, 130)
+    p.append(on_left(0, 0, 0, 200, 30, 130, 0.43, 0.0, 0.57, 0.72, INK, 3))
+    p.append(on_left(0, 0, 0, 200, 30, 130, 0.455, 0.0, 0.545, 0.69, Y, 3))
+    p += box(-10, 30, 0, 220, 40, 8, DARK, DARK, DARK)  # bậc thềm
+    return p
+
+
+def bac_thang():
+    """Ba bậc cao thấp, bậc cao nhất vàng: các bậc quản lý khác nhau của cùng một loại hàng."""
+    p = box(0, 0, 0, 160, 60, 90, Y, Y2, Y3)
+    p += box(0, 60, 0, 160, 60, 60)
+    p += box(0, 120, 0, 160, 60, 30)
+    return p
+
+
 ITEMS = {
+    "cua-hep": cua_hep, "bac-thang": bac_thang,
     "toa-nha-quoc-hoi": toa_nha_quoc_hoi, "dien-thoai": dien_thoai, "chip": chip, "laptop": laptop,
     "tien": tien, "tai-lieu": tai_lieu, "nha-may": nha_may, "may-chu": may_chu,
     "co-viet-nam": co_viet_nam, "bieu-do-nen": bieu_do_nen,

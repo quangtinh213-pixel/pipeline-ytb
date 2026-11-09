@@ -227,7 +227,11 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
     allowed = {(v, sc) for s in srcs for _, v, sc in tokens(s["gia_tri"])}
     out = []
     for v, scale in pairs:
-        num = vi_value(v) if isinstance(v, str) else float(v)
+        try:
+            num = vi_value(v) if isinstance(v, str) else float(v)
+        except ValueError:
+            out.append(f"Lỗi: {c['id']} hiện «{v}» không phải số; ngày tháng và chữ dùng mẫu minh-hoa hay chuong")
+            continue
         if (num, scale) not in allowed:
             out.append(f"Lỗi: {c['id']} hiện {v}{' ' + scale if scale else ''} không khớp nguồn "
                        f"{[s['id'] for s in srcs]}")

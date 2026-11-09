@@ -114,6 +114,12 @@ def test_screen_value_must_match_source(tmp_path):
     assert _errors(canh.validate(scale, TIMING, tmp_path, SRC))
 
 
+def test_non_numeric_screen_value_is_an_error_not_a_crash(tmp_path):
+    sc = _sc((0, 6), (6, 12), so="8/11", nhan="Ngày", nguon_id="p1")  # ngày tháng không phải số: báo Lỗi, không văng traceback
+    errs = _errors(canh.validate(sc, TIMING, tmp_path, SRC))
+    assert any("8/11" in e and "số" in e for e in errs)
+
+
 def test_chart_values_must_match_source(tmp_path):
     chart = {"kieu": "cot", "nhan_x": ["A", "B"], "gia_tri": [522500, 999], "don_vi": "đ", "nguon_id": "p1"}
     sc = _sc((0, 6), (6, 12), mau="bieu-do", bieu_do=chart)

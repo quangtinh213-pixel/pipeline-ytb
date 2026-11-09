@@ -108,5 +108,12 @@ def test_kiem_do_kho_clean_when_all_metrics_met():
     assert [m for m in cl.kiem(so_do) if "độ khô" in m] == []
 
 
+def test_camera_threshold_matches_director_rule():
+    """Camera chỉ bắt buộc ở cảnh minh-hoa trọng điểm (~30% cảnh, ~một nửa là minh-hoa): chạy thử đo 18,75%, ngưỡng 15%."""
+    base = {"so_phong": 5, "phong_lien_max": 2, "vat_chinh_lap": 0}
+    assert [m for m in cl.kiem({**_ok_base(), "do_kho": {**base, "ti_le_may_quay": 0.1875}}) if "camera" in m] == []
+    assert any("camera" in m for m in cl.kiem({**_ok_base(), "do_kho": {**base, "ti_le_may_quay": 0.10}}))
+
+
 def test_old_callers_without_director_files_still_work():
     assert "do_kho" in cl.do(_canh(["minh-hoa"], [3]), _timing(3, 8))
