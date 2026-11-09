@@ -54,7 +54,10 @@ def dung_prompt(vong: int, loi_doc: str, tu_cam_text: str, phan_tich: str, triag
          "Hãy PHÊ BÌNH, không viết lại cả đoạn, không đổi con số, không dùng tool, không sửa file.\n"
          "Nêu tối đa 12 vấn đề, mỗi vấn đề: câu trích nguyên văn | loại (sáo rỗng, văn dịch, nhịp đều, khó đọc to, "
          "bịa trải nghiệm, từ cấm, đao to búa lớn) | mức (nặng/vừa/nhẹ) | gợi ý sửa ngắn.\n"
-         "Cuối cùng chấm 1–5 bốn tiêu chí: tự nhiên khi đọc to; đúng tình huống kể; nhịp; chi tiết cụ thể.\n\n"
+         "Cuối cùng chấm 1–5 bốn tiêu chí: tự nhiên khi đọc to; đúng tình huống kể; nhịp; chi tiết cụ thể.\n"
+         "Ràng buộc của kênh (đừng gợi ý ngược lại): (1) lời đọc đã viết số, tên riêng và thuật ngữ thành chữ để giọng đọc máy "
+         "đọc đúng, nên đừng gợi ý đổi sang chữ số hay viết tắt; (2) câu cuối mời người xem bình luận một con số là bắt buộc "
+         "theo thẻ phong cách, chỉ góp ý cách nói, đừng bảo bỏ; (3) phần phiên âm tên riêng là có chủ ý.\n\n"
          f"## Danh sách từ cấm\n{tu_cam_text}\n\n## Phân tích mẫu giọng\n{phan_tich}\n\n## Lời đọc\n{loi_doc}\n")
     if vong >= 2:
         p += (f"\n## Bảng triage vòng 1 (nhận/bỏ kèm lý do)\n{triage_md}\n\n"
