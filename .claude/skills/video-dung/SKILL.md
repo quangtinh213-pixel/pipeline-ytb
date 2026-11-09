@@ -21,8 +21,11 @@ Kiểm `giong-timing.json`: `words[-1].end ≤ duration`.
 
 ## 2. canh
 Viết `V/canh.json` theo docstring đầu `tttc/dung.py` (6 mẫu, trường từng mẫu):
-- Cắt cảnh **đúng ranh giới từ** trong `giong-timing.json`; cảnh liền nhau, cảnh đầu 0, cảnh cuối = `duration`.
-- 4–8 s/cảnh, 80–120 cảnh/11 phút. Đổi mẫu liên tục, không 3 cảnh liền cùng mẫu.
+- Chạy `uv run python -m tttc.chia V` để có `V/canh-khung.json`: mốc `start/end` đã cắt đúng ranh giới từ, cảnh liền
+  nhau, cảnh đầu 0, cảnh cuối = `duration`, kèm `loi` (lời đọc của cảnh). Chép sang `canh.json`, điền `mau` và nội dung
+  từng cảnh; **không tự đổi mốc** (cần đổi thì sửa tay và chạy lại `tttc.canh`).
+- Chuẩn kênh mẫu: 2,8–4,5 s/cảnh (cảnh báo ngoài 2,5–6 s, lỗi ngoài 1,5–10 s), khoảng 165–220 cảnh/11 phút.
+  Đổi mẫu liên tục, không 3 cảnh liền cùng mẫu.
 - Mỗi số hiện trên màn hình phải có `nguon_id` (hoặc `bieu_do.nguon_id`) trỏ vào `nguon.json`; giá trị lấy từ nguồn, không gõ tay khác đi.
 - Đầu mỗi beat của kịch bản là một cảnh `chuong`.
 - Nhãn `minh-hoa` ≤ 5 từ; nhãn là ý chính, không lặp nguyên lời đọc.

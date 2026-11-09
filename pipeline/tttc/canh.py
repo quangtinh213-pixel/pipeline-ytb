@@ -11,6 +11,8 @@ MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "tr
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
+CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
+CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
 
 def _norm(s: str) -> str:
@@ -52,10 +54,10 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         seen.add(cid)
         if c["mau"] not in MAU:
             msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
-        if dur < 2 or dur > 12:
-            msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép 2–12 s)")
-        elif dur < 4 or dur > 8:
-            msgs.append(f"Cảnh báo: {cid} dài {dur:.1f} s (nên 4–8 s)")
+        if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
+            msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép {CANH_MIN_LOI:g}–{CANH_MAX_LOI:g} s)")
+        elif dur < CANH_MIN_CB or dur > CANH_MAX_CB:
+            msgs.append(f"Cảnh báo: {cid} dài {dur:.1f} s (nên {CANH_MIN_CB:g}–{CANH_MAX_CB:g} s)")
         if c.get("svg") and not (Path(svg_dir) / f"{c['svg']}.svg").exists():
             msgs.append(f"Lỗi: {cid} cần hình {c['svg']}.svg chưa có trong thư viện")
         nid = (c.get("bieu_do") or {}).get("nguon_id") or c.get("nguon_id")

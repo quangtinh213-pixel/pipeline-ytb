@@ -38,11 +38,11 @@ def test_validate_first_starts_zero_last_ends_duration(tmp_path):
 
 
 def test_validate_flags_long_or_short_scene(tmp_path):
-    t = {"duration": 16.0}
-    msgs = canh.validate(_sc((0, 1.5), (1.5, 3), (3, 16)), t, tmp_path, NGUON)
-    assert len(_errors(msgs)) == 3  # 1,5 s; 1,5 s; 13 s
-    warn = canh.validate(_sc((0, 3), (3, 12)), TIMING, tmp_path, NGUON)
-    assert _errors(warn) == [] and len([m for m in warn if m.startswith("Cảnh báo")]) == 2
+    msgs = canh.validate(_sc((0, 1.2), (1.2, 13.2)), {"duration": 13.2}, tmp_path, NGUON)
+    assert len(_errors(msgs)) == 2  # 1,2 s (dưới 1,5) và 12 s (trên 10)
+    warn = canh.validate(_sc((0, 2), (2, 9)), {"duration": 9.0}, tmp_path, NGUON)
+    assert _errors(warn) == [] and len([m for m in warn if m.startswith("Cảnh báo")]) == 2  # 2 s và 7 s
+    assert canh.validate(_sc((0, 3), (3, 6)), {"duration": 6.0}, tmp_path, NGUON) == []
 
 
 def test_validate_unknown_template(tmp_path):
