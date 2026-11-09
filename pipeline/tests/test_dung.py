@@ -227,3 +227,8 @@ def test_compose_trich_bao_and_broll(video):
     scene = (out / "compositions" / "c6.html").read_text(encoding="utf-8")
     assert 'src="assets/broll/pexels-303.mp4"' in scene and "muted" in scene
     assert (out / "assets" / "broll" / "pexels-303.mp4").exists()
+
+
+def test_source_line_tu_tinh_shows_formula():
+    n = {"id": "t1", "gia_tri": "15 năm", "trang_thai": "tu-tinh", "cong_thuc": "2026 − 2011", "dau_vao": []}
+    assert dung._source_line(n) == "Tự tính: 2026 − 2011"

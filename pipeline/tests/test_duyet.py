@@ -80,3 +80,11 @@ def test_review_2_shows_quality_warnings(tmp_path):
     (d / "giong-timing.json").write_text(json.dumps({"duration": 18.0, "words": []}), encoding="utf-8")
     html = duyet.render_review_2(d).read_text(encoding="utf-8")
     assert "Độ dài trung bình" in html
+
+
+def test_sources_table_shows_formula_for_tu_tinh(tmp_path):
+    d = _video(tmp_path)
+    tt = {"id": "t1", "gia_tri": "15 năm", "trang_thai": "tu-tinh", "cong_thuc": "2026 − 2011", "dau_vao": ["p1"]}
+    (d / "nguon.json").write_text(json.dumps(NGUON + [tt], ensure_ascii=False), encoding="utf-8")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert "#t1" in html and "2026 − 2011" in html

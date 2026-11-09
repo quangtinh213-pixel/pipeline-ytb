@@ -97,3 +97,27 @@ def test_english_decimal_with_unit_flagged():
     errs = check("Giá chip là 2.5 USD.", NGUON)
     assert any("2,5" in e for e in errs)
     assert check("Gemini 2.5 Pro ra mắt.", NGUON) == []
+
+
+TT = {"id": "t1", "gia_tri": "15 năm", "trich_dan": "", "url": "", "ngay_truy_cap": "2026-11-09",
+      "anh_chup": "", "trang_thai": "tu-tinh", "cong_thuc": "2026 − 2011", "dau_vao": ["s1"]}
+
+
+def test_tu_tinh_requires_formula_and_inputs():
+    line = "Đã 15 năm, mình tự tính. [#t1]"
+    no_formula = dict(TT, cong_thuc="")
+    bad_input = dict(TT, dau_vao=["zz"])
+    assert any("cong_thuc" in e for e in check(line, NGUON + [no_formula]))
+    assert any("zz" in e for e in check(line, NGUON + [bad_input]))
+    assert check(line, NGUON + [TT]) == []
+
+
+def test_tu_tinh_requires_label_phrase():
+    errs = check("Đã 15 năm rồi. [#t1]", NGUON + [TT])
+    assert len(errs) == 1 and "tự tính" in errs[0]
+    assert check("Phép tính này là mình tự ướm, tròn 15 năm. [#t1]", NGUON + [TT]) == []
+
+
+def test_tu_tinh_value_still_matched():
+    errs = check("Đã 16 năm, mình tự tính. [#t1]", NGUON + [TT])
+    assert len(errs) == 1 and "không khớp" in errs[0]

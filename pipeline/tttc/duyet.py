@@ -26,10 +26,15 @@ def _sources_table(nguon: list[dict]) -> str:
     rows = []
     for n in nguon:
         shot = f'<a href="{escape(n["anh_chup"])}">ảnh</a>' if n.get("anh_chup") else "—"
+        if n["trang_thai"] == "tu-tinh":
+            trich = f'Tự tính: {n.get("cong_thuc", "")} (từ {", ".join("#" + i for i in n.get("dau_vao", []))})'
+        else:
+            trich = n["trich_dan"]
+        url = f'<a href="{escape(n["url"])}">{escape(n["url"])}</a>' if n.get("url") else "—"
         rows.append(
             f'<tr><td class="tag">#{escape(n["id"])}</td><td>{escape(n["gia_tri"])}</td>'
-            f'<td>{escape(n["trich_dan"])}</td><td><a href="{escape(n["url"])}">{escape(n["url"])}</a></td>'
-            f'<td>{escape(n["ngay_truy_cap"])}</td><td class="st-{escape(n["trang_thai"])}">'
+            f'<td>{escape(trich)}</td><td>{url}</td>'
+            f'<td>{escape(n.get("ngay_truy_cap", "—"))}</td><td class="st-{escape(n["trang_thai"])}">'
             f'{escape(n["trang_thai"])}</td><td>{shot}</td></tr>')
     return ('<div class="scroll"><table><tr><th>ID</th><th>Giá trị</th><th>Trích dẫn</th><th>URL</th>'
             '<th>Ngày</th><th>Trạng thái</th><th>Chụp</th></tr>' + "".join(rows) + "</table></div>")

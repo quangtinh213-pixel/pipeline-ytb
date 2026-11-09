@@ -65,6 +65,8 @@ def _num(x) -> float:
 
 
 def _source_line(nguon: dict) -> str:
+    if nguon.get("trang_thai") == "tu-tinh":
+        return f"Tự tính: {nguon['cong_thuc']}"
     host = urlparse(nguon["url"]).netloc.removeprefix("www.")
     d = date.fromisoformat(nguon["ngay_truy_cap"])
     return f"Nguồn: {host}, {d:%d/%m/%Y}"

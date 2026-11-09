@@ -17,6 +17,7 @@ LIST_MARK = re.compile(r"^\s*(?:\d+[.)]|[-*>])\s+")
 URL = re.compile(r"https?://\S+")
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?!\[#)")
 WARN = ("sơ bộ", "chưa chính thức")
+WARN_TU_TINH = ("tự tính", "tự ướm", "mình tính", "không phải dự báo")
 # "2.5 USD": dấu chấm thập phân kiểu Mỹ, NUM không bắt được; chỉ xét khi có đơn vị để không vướng "Gemini 2.5"
 EN_DECIMAL = re.compile(r"(?<![\d.,])\d+\.\d{1,2}(?=" + UNIT_AFTER.pattern + ")", re.I)
 
@@ -51,6 +52,15 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
     script_md = unicodedata.normalize("NFC", script_md)
     by_id = {n["id"]: n for n in nguon}
     errs = []
+    for n in nguon:  # số tự suy ra từ số khác: phải ghi công thức và trỏ về các số gốc
+        if n.get("trang_thai") != "tu-tinh":
+            continue
+        if not str(n.get("cong_thuc", "")).strip():
+            errs.append(f"Nguồn [#{n['id']}] tự tính thiếu cong_thuc")
+        if not n.get("dau_vao"):
+            errs.append(f"Nguồn [#{n['id']}] tự tính thiếu dau_vao (các nguồn gốc của phép tính)")
+        errs += [f"Nguồn [#{n['id']}] tự tính trỏ tới dau_vao [#{i}] không có trong nguon.json"
+                 for i in n.get("dau_vao") or [] if i not in by_id]
     for line in script_md.splitlines():
         if line.lstrip().startswith("#"):
             continue
@@ -84,6 +94,8 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
                     errs.append(f"Nguồn [#{s['id']}] chưa xác minh, không được dùng: {sent.strip()}")
                 elif s["trang_thai"] == "so-bo" and not any(w in low for w in WARN):
                     errs.append(f"Nguồn [#{s['id']}] là số sơ bộ, câu cần ghi 'sơ bộ': {sent.strip()}")
+                elif s["trang_thai"] == "tu-tinh" and not any(w in low for w in WARN_TU_TINH):
+                    errs.append(f"Nguồn [#{s['id']}] là số tự tính, câu cần nói rõ 'mình tự tính': {sent.strip()}")
     return errs
 
 

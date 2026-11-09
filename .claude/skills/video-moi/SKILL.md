@@ -40,7 +40,10 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
   - `ten`: tên báo/cơ quan để hiện trên màn hình (vd "VnExpress", "Bộ Tài chính"); bỏ trống thì dùng tên miền.
   - `anh_chup`: chụp trang bằng trình duyệt có sẵn, lưu `nguon/<id>.png`.
   - `trang_thai`: `xac-minh` (đọc thấy trong nguồn gốc) | `so-bo` (nguồn tự ghi là sơ bộ/ước tính) |
-    `chua-xac-minh` (chỉ thấy ở tin thứ cấp).
+    `chua-xac-minh` (chỉ thấy ở tin thứ cấp) | `tu-tinh` (số do mình suy ra từ số khác: hiệu năm, tỉ lệ, "gấp N lần").
+  - `tu-tinh` bắt buộc thêm `cong_thuc` (vd `"2026 − 2011"`) và `dau_vao` (danh sách id nguồn gốc dùng trong phép tính);
+    `gia_tri` là kết quả. Không ghi `xac-minh` cho số tự tính. Câu dùng số này phải nói rõ "mình tự tính" (hoặc
+    "tự ướm", "không phải dự báo của ai").
 - Trang chặn truy cập tự động (Bloomberg, báo trả phí...): **không** thay bằng tin thứ cấp. Ghi `chua-xac-minh`
   và nêu trong `chu-de.md`.
 - Không bao giờ bịa số. Không tìm được thì không dùng số đó.
