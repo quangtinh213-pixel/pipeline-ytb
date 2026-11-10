@@ -15,7 +15,8 @@ NHOM = {
 }
 MUC_TIEU = {
     "tb_giay": (2.8, 4.5), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_max": 0.40,
-    "bang_chung": (0.08, 0.18), "doi_that_min": 0.45, "chay_max": 2,
+    "bang_chung": (0.08, 0.35),  # user 11/11/2026: muốn nhiều ảnh chụp bài báo hơn, nới trần từ 18%
+    "doi_that_min": 0.45, "chay_max": 2,
     "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 265)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
 # Chỉ số "độ khô" (spec 2026-11-09-chat-luong-hinh-anh-design.md mục 7): cảnh báo, hiệu chỉnh sau chạy khô.

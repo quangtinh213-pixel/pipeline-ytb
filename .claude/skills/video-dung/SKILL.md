@@ -91,10 +91,21 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   Với mỗi cảnh, hỏi trước: có ảnh hay clip đời thật nào cho thấy đúng thứ đang nói không? Có thì dùng `b-roll`
   (clip, hoặc ảnh tĩnh: `broll.nhap` nhận .jpg/.png và tự phóng chậm, bắt buộc `do_dai`). Chỉ dùng đồ họa tự dựng
   (`so-lon`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chuong`) khi bất đắc dĩ: con số cần đọc được,
-  so sánh, quy trình, hoặc không có hình thật nào hợp và sạch bản quyền.
-  Ngưỡng: ảnh/video đời thật (`b-roll`, `nhan-vat`) ≥ 45%; đồ họa ≤ 40%; bằng chứng (`trich-bao`, `trang-nguon`) 8–18%.
+  so sánh, quy trình, hoặc không có hình thật nào hợp.
+  Ngưỡng: ảnh/video đời thật (`b-roll`, `nhan-vat`) ≥ 45%; đồ họa ≤ 40%; bằng chứng (`trich-bao`, `trang-nguon`) 8–35%.
   Không 3 cảnh liền cùng mẫu (trừ `b-roll`, miễn là clip khác nhau).
-  Nguồn hình chỉ từ Pexels, Pixabay, Wikimedia Commons, có ghi công; không lấy ảnh báo chí hay ảnh trang bán hàng.
+- **Nguồn hình** (user chốt 11/11/2026: không cần kiểm giấy phép, chỉ ghi tên nguồn trên hình). Hình phải cho thấy
+  **đúng thứ lời đọc đang nhắc**, không phải cảnh chung chung. Với mỗi cảnh, thử theo thứ tự:
+  1. Lời đọc dẫn một nguồn (bài báo, nghị định, công văn, báo cáo, trang giá, biểu đồ gốc, gợi ý tìm kiếm Google,
+     bản lưu Wayback để so trước–sau, bình luận dưới video của kênh, Google Maps) → `trang-nguon` chụp bằng `tttc.chup`.
+  2. Có ảnh thật của đúng sự việc (ảnh trong bài báo nguồn, ảnh hãng, ảnh tìm trên mạng, ảnh user tự chụp, ảnh chụp
+     tay bài đăng mạng xã hội) → tải về rồi `broll.nhap(<tệp ảnh>, V, ghi_cong="Ảnh: <tên báo/hãng>", do_dai=...)`.
+  3. Có clip thật (keynote, bản tin, clip phản ứng, clip user tự quay, quay màn hình app) → `uv run yt-dlp
+     --download-sections "*<bắt đầu>-<kết thúc>" -o <tệp> <url>` rồi `broll.nhap(<tệp>, V, ghi_cong="Video: <kênh>",
+     do_dai=...)`. Mỗi đoạn ≤ 5 s (tránh Content ID); `nhap` đã bỏ tiếng gốc.
+  4. Tình huống không có hình thật → ảnh AI sinh, `ghi_cong="Minh họa"`; không dùng làm bằng chứng.
+  5. Sau cùng mới tới kho b-roll chung và đồ họa tự dựng.
+  Tệp user thả vào `V/tu-quay/` dùng trước mọi nguồn khác. Quay màn hình app: user tự che số tài khoản, số dư trước.
 - **Nhân vật dẫn chuyện "Nhịp"** (mọi mẫu): `dan: {the, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}`; `the` ∈ chao, ngac-nhien, nghi, xac-nhan, bo-ngo, tinh-toan; `huong` ∈ truoc, nghieng-trai, nghieng-phai (mặc định nghiêng về giữa màn hình theo `goc`). Bộ ảnh lấy từ `pipeline/nhan-vat/kit.json` (bắt buộc; `tttc.canh` báo Lỗi nếu cặp biểu cảm × hướng không có). Hiện ở góc dưới, bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô; chỉ góc `truoc` có chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các khoảnh khắc: `chao` khi mở chương, `ngac-nhien` trước số gây sốc, `nghi` khi đặt câu hỏi hay nguồn lạ, `xac-nhan` khi số khớp nguồn, `bo-ngo` khi nói chưa kiểm được, `tinh-toan` khi mình tự tính. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng. Tạo lại bộ nhân vật: `docs/nghien-cuu/nhan-vat-tobyflow.md`.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
@@ -125,8 +136,10 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
      `video` = tên tệp trả về. Một clip dùng cho một cảnh mỗi video.
   Không tìm được clip đạt sau 2 lượt từ khoá: đổi cảnh đó sang `minh-hoa` hoặc `so-lon`, không dùng clip kém.
   Có khoá Pexels trong Keychain thì `broll.search`/`pick`/`download` thay cho bước 3–4.
-- Ảnh trang nguồn: chụp lại trang bằng trình duyệt ở độ phân giải ≥ 1600 px rộng, lưu `V/nguon/<id>.png`;
-  `khung` là vùng chứa con số (x,y,w,h theo % ảnh).
+- Ảnh trang nguồn: `uv run python -m tttc.chup <url> V/nguon/<id>.png "<câu trích nguyên văn, ngắn>"` – lệnh in ra
+  `khung` (x,y,w,h theo % ảnh) quanh câu đó, ghi vào cảnh. Báo "không thấy câu trích" thì rút câu ngắn lại (câu vắt
+  qua chữ đậm/đường dẫn không khớp). Trang đòi đăng nhập (mạng xã hội): nhờ user chụp tay vào `V/tu-quay/`.
+  Xem lại ảnh trước khi dùng: còn banner che chữ thì chụp lại bằng trình duyệt có sẵn.
 
 ## 3. hinh
 - Cảnh `minh-hoa` cần hình chưa có trong `pipeline/svg/`: thêm hàm vào `pipeline/svg/ve.py` theo `svg/README.md`,

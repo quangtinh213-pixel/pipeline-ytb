@@ -9,6 +9,8 @@ dependencies = [
   "keyring>=25",
   "google-api-python-client>=2.150",
   "google-auth-oauthlib>=1.2",
+  "playwright>=1.48",
+  "yt-dlp",
   # shortcut: máy Intel Mac, cryptography>=49 không còn wheel x86_64; bỏ ràng buộc khi đổi máy Apple Silicon
   "cryptography<49",
 ]
