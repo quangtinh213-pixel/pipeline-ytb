@@ -27,3 +27,37 @@ def huong_mac_dinh(goc: str) -> str:
 
 def tep(the: str, huong: str, nham: bool = False) -> str:
     return f"{the}-{huong}{'-nham' if nham else ''}.png"
+
+
+# ---- Lời nhắc tạo bộ nhân vật bằng mô hình ảnh (TobyFlow/Flow). Nhân vật "Nhịp": brief đã được người dùng duyệt 10/11/2026
+# (docs/nghien-cuu/nhan-dien-ung-vien.md mục 3). Biểu cảm × góc → kit.json; mô tả bằng tiếng Anh vì mô hình ảnh hiểu tốt hơn.
+BIEU_CAM = {
+    "chao": "friendly greeting: eyes are two bright accent-colour arcs, small smile line, antenna dot glowing",
+    "ngac-nhien": "surprised: eyes are two wide bright circles, mouth a small open oval, antenna dot flaring",
+    "nghi": "sceptical: one eye a flat bar and the other a small circle, mouth a flat line, antenna tilted",
+    "xac-nhan": "confirming: eyes are happy curved lines, mouth a gentle smile, a tiny check-mark glow on the screen corner",
+    "bo-ngo": "uncertain: eyes are two small dots at different heights, mouth a wavy line, a faint question-mark glow",
+    "tinh-toan": "calculating: eyes are two thin horizontal scanning lines, mouth a short dash, antenna dot pulsing",
+}
+GOC = {
+    "truoc": "front view, facing the camera directly",
+    "nghieng-trai": "three-quarter view turned to the left of the frame",
+    "nghieng-phai": "three-quarter view turned to the right of the frame",
+    "ngang": "side profile view",
+}
+BRIEF = (
+    "A small friendly robot mascot named Nhip in clean isometric flat illustration style. Rounded-cube white-grey body and head, "
+    "the face is a dark LED screen showing the eyes and mouth as glowing lines in the accent colour {acc}, a short antenna with a glowing dot "
+    "{acc}, soft shading using {acc2} and {acc3}, thin dark outlines {ink}. Not a human: no hair, no glasses, no clothes, no hands waving. "
+    "Plain solid flat background of one uniform colour {bg}, character centred and fully visible. "
+    "no text, no logo, no real person, no watermark, flat vector look."
+)
+
+
+def tao_prompt(the: str, huong: str, nham: bool = False) -> str:
+    """Lời nhắc tạo một dáng: nhân vật + biểu cảm + góc + màu của theme; nham=True thêm 'eyes closed' (ảnh chớp mắt)."""
+    from tttc import theme  # nhập trễ: theme đọc brand/theme.json lúc import
+    acc, acc2, acc3 = theme.TH["nhan"]
+    brief = BRIEF.format(acc=acc, acc2=acc2, acc3=acc3, ink=theme.TH["nen"], bg="#7DFF7D")
+    p = f"{brief} Expression: {BIEU_CAM[the]}. Camera angle: {GOC[huong]}."
+    return p + (" The character has eyes closed (the LED eyes are switched off, as in a blink)." if nham else "")

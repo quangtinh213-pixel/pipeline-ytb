@@ -1,4 +1,4 @@
-from tttc import nhan_vat
+from tttc import nhan_vat, theme
 
 KIT = {"the": ["chao", "nghi"], "huong": ["truoc", "nghieng-trai", "nghieng-phai", "ngang"],
        "dang": [["chao", "truoc"], ["chao", "nghieng-trai"], ["nghi", "truoc"]], "nham": [["chao", "truoc"]]}
@@ -21,3 +21,23 @@ def test_doc_kit_reads_default_path_at_call_time(tmp_path, monkeypatch):
     (tmp_path / "kit.json").write_text('{"the": ["chao"], "huong": [], "dang": [], "nham": []}', encoding="utf-8")
     monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "kit.json")
     assert nhan_vat.doc_kit()["the"] == ["chao"]
+
+
+def test_prompt_has_brief_expression_angle_and_palette():
+    p = nhan_vat.tao_prompt("ngac-nhien", "nghieng-trai")
+    assert "no text" in p and "no logo" in p and "no real person" in p and "flat" in p
+    assert nhan_vat.BIEU_CAM["ngac-nhien"] in p and nhan_vat.GOC["nghieng-trai"] in p
+    assert theme.TH["nhan"][0] in p and "eyes closed" not in p
+    assert "eyes closed" in nhan_vat.tao_prompt("chao", "truoc", nham=True)
+
+
+def test_six_expressions_and_four_angles_defined():
+    assert len(nhan_vat.BIEU_CAM) == 6 and len(nhan_vat.GOC) == 4
+    assert {"chao", "ngac-nhien", "nghi"} <= set(nhan_vat.BIEU_CAM)  # tên cũ giữ nguyên để cảnh cũ vẫn chạy
+    assert set(nhan_vat.GOC) == {"truoc", "nghieng-trai", "nghieng-phai", "ngang"}
+
+
+def test_unknown_expression_or_angle_raises():
+    import pytest
+    with pytest.raises(KeyError):
+        nhan_vat.tao_prompt("buon", "truoc")
