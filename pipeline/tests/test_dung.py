@@ -561,3 +561,12 @@ def test_ban_do_scene_file_and_group():
     assert 'data-composition-id="b1"' in s and "b1-bn-" in s and "function dongLap" in s and "Natural Earth" in s
     from tttc import chat_luong
     assert "ban-do" in chat_luong.NHOM["do-hoa"]
+
+
+def test_so_lon_counts_from_start_value_when_given():
+    base = {"id": "s1", "mau": "so-lon", "start": 0, "end": 6, "so": 522500, "sau": " đ", "nguon_id": "p1"}
+    v = dung._vars(dict(base, tu=132000), {}, {})
+    assert v["tu"] == 132000 and v["tu_hien"] == "132.000"
+    v0 = dung._vars(base, {}, {})
+    assert v0["tu"] == 0 and v0["tu_hien"] == ""
+    assert "tu_hien" in (dung.TPL / "so-lon.html").read_text(encoding="utf-8")

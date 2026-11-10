@@ -17,7 +17,7 @@
     #root .sl-nhan { margin-top: 34px; color: var(--ink); font: 800 56px/1.15 var(--font-display); }
   </style>
   <div id="root" data-composition-id="so-lon" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"svg","type":"string","label":"Hình nền mờ","default":"assets/svg/tien.svg"},{"id":"huong","type":"string","label":"Mũi tên (len/xuong/rỗng)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":""}]'>
+       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"tu","type":"number","label":"Giá trị bắt đầu đếm","default":0},{"id":"tu_hien","type":"string","label":"Chuỗi giá trị bắt đầu (rỗng = đếm từ 0)","default":""},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"svg","type":"string","label":"Hình nền mờ","default":"assets/svg/tien.svg"},{"id":"huong","type":"string","label":"Mũi tên (len/xuong/rỗng)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":""}]'>
     <div id="sl-san" class="san">
       <div id="sl-icon" class="sl-icon" data-layout-ignore><img data-var-src="svg" src="assets/svg/tien.svg" alt=""></div>
       <div id="sl-wrap" class="sl-wrap">
@@ -39,16 +39,17 @@
     const mt = document.querySelector("#sl-muiten");
     if (v.huong === "xuong") document.querySelector("#sl-muiten-img").src = "assets/svg/mui-ten-xuong.svg";
     if (v.huong !== "len" && v.huong !== "xuong") mt.style.display = "none";
-    const el = document.querySelector("#sl-so"), obj = { x: 0 }, target = Number(v.so);
+    const el = document.querySelector("#sl-so"), target = Number(v.so), start = v.tu_hien ? Number(v.tu) : 0, obj = { x: start };
     // Khung cuối hiện đúng chuỗi số của nguồn (không làm tròn); lúc đếm giữ cùng số chữ số thập phân.
     const hien = String(v.so_hien), dec = (hien.split(",")[1] || "").length;
-    const fmt = x => (v.truoc || "") + (x >= target ? hien : x.toLocaleString("vi-VN",
+    const xong = x => start <= target ? x >= target : x <= target;  // đếm lên hoặc đếm xuống
+    const fmt = x => (v.truoc || "") + (xong(x) ? hien : (v.tu_hien && x === start) ? v.tu_hien : x.toLocaleString("vi-VN",
       { minimumFractionDigits: dec, maximumFractionDigits: dec })) + (v.sau || "");
-    el.textContent = fmt(0);
+    el.textContent = fmt(start);
     const tl = gsap.timeline({ paused: true }), d0 = at(0, 0.05);
     tl.fromTo("#sl-icon", { x: 120, opacity: 0 }, { x: 0, opacity: 0.14, duration: 1.0, ease: "expo.out" }, 0);
     tl.fromTo("#sl-so", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
-    tl.fromTo(obj, { x: 0 }, { x: target, duration: 1.3, ease: "power3.out",
+    tl.fromTo(obj, { x: start }, { x: target, duration: 1.3, ease: "power3.out",
               onUpdate: () => { el.textContent = fmt(obj.x); } }, d0);
     tl.fromTo("#sl-wrap", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out" }, d0 + 1.3);
     tl.to("#sl-wrap", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.5)" }, d0 + 1.42);

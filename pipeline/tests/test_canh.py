@@ -121,6 +121,14 @@ def test_non_numeric_screen_value_is_an_error_not_a_crash(tmp_path):
     assert any("8/11" in e and "số" in e for e in errs)
 
 
+def test_big_number_start_value_must_match_source_too(tmp_path):
+    ok = _sc((0, 6), (6, 12), so=522500, tu=132000, sau=" đ", nguon_id="p1")
+    src = [{"id": "p1", "gia_tri": "132.000 đ → 522.500 đ"}]
+    assert _errors(canh.validate(ok, TIMING, tmp_path, src)) == []
+    bad = _sc((0, 6), (6, 12), so=522500, tu=140000, sau=" đ", nguon_id="p1")
+    assert any("140" in e for e in _errors(canh.validate(bad, TIMING, tmp_path, src)))
+
+
 def test_chart_values_must_match_source(tmp_path):
     chart = {"kieu": "cot", "nhan_x": ["A", "B"], "gia_tri": [522500, 999], "don_vi": "đ", "nguon_id": "p1"}
     sc = _sc((0, 6), (6, 12), mau="bieu-do", bieu_do=chart)

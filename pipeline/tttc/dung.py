@@ -5,7 +5,7 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?, dong? bob|xoay|dap|chop (mặc định bob),
                san_khau? (phông: nen-dat mặc định, hoặc phần sau "san-khau-" của svg/san-khau-*.svg), bo_cuc? [1–4 {svg, x, y, to}] (thay phu;
                x,y 0–1 trên sàn, to 0,2–1,5), may_quay? dung|day-vao|keo-ra|lia|he-lo
-- so-lon:      so (số hoặc chuỗi "5,3"), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
+- so-lon:      so (số hoặc chuỗi "5,3"), tu? (giá trị cũ: số đếm từ đó tới so, cũng phải khớp nguồn), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
 - trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
@@ -132,7 +132,8 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                                      ensure_ascii=False),
                 "may_quay": c.get("may_quay") or "dung", "thoi_luong": round(c.get("end", 0) - c.get("start", 0), 3)}
     if m == "so-lon":
-        return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "truoc": c.get("truoc", ""),
+        return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "tu": _num(c["tu"]) if c.get("tu") is not None else 0,
+                "tu_hien": vi_number(c["tu"]) if c.get("tu") is not None else "", "truoc": c.get("truoc", ""),
                 "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
                 "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", ""), "dong": c.get("dong", "")}
     if m == "bieu-do":

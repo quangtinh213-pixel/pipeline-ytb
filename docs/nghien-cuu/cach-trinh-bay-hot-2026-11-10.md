@@ -25,7 +25,7 @@ Mục đích: tìm cách trình bày chuyên nghiệp hơn, rõ ràng hơn, dễ
 | # | Cách trình bày | Thấy ở | Hợp pipeline? | Việc cần làm |
 |---|---|---|---|---|
 | 1 | Hình lớn chiếm 60–80% khung, chữ ≤ 20% | cả ba | **Rất hợp, đang thiếu** | Phóng to nội dung mẫu `quy-trinh`, `so-sanh`, cảnh `minh-hoa` đơn lẻ; quy tắc kích cỡ tối thiểu |
-| 2 | Số lớn đếm tăng (counter) | Sam Szuchan, Momoboo | Hợp (`so-lon` đã có, thiếu đếm tăng) | Thêm hiệu ứng đếm lên giá trị trong `so-lon` |
+| 2 | Số lớn đếm tăng (counter) | Sam Szuchan, Momoboo | **Đã có** (`so-lon`, `bieu-do`, `so-sanh` đều đếm tăng từ 0; ghi nhầm "thiếu" ở bản đầu, đã sửa 10/11) | Đã thêm `tu` cho `so-lon`: đếm từ giá trị cũ lên (hoặc xuống) giá trị mới, giá trị cũ cũng phải khớp nguồn |
 | 3 | Ảnh chụp tài liệu + ô sáng quét đúng cụm | Money Bureau, Sam Szuchan | Hợp (`trich-bao`, `to_vang` đã có) | **Hiện bản dịch tiếng Việt** thay vì nguyên văn Anh; ô sáng quét vào cụm đã dịch |
 | 4 | Ẩn dụ vật lý đặt cạnh số: bập bênh, domino, đồng hồ đo, cánh cửa hẹp | Money Bureau | **Rất hợp** (bước đạo diễn đã có `an_du`) | Vẽ thêm vào thư viện SVG: `bap-benh`, `domino`, `dong-ho-do` |
 | 5 | Bản đồ vector phẳng tối giản, chấm toạ độ phát sáng, vòng khoanh quốc gia | Sam Szuchan; Johnny Harris/Vox (kinh nghiệm) | **Rất hợp với đề xuất khẩu chip** (Mỹ, Việt Nam, Malaysia, Thái Lan) | **Đã làm 10/11:** mẫu `ban-do` với hình nước thật từ Natural Earth 50m (phạm vi công cộng, tải từ kho GitHub nvkelso/natural-earth-vector, 3,08 MB, rút gọn còn 214 KB trong `pipeline/du-lieu/nuoc.json`) |
@@ -54,7 +54,7 @@ Mục đích: tìm cách trình bày chuyên nghiệp hơn, rõ ràng hơn, dễ
 2. **Phóng to và dọn bố cục** ở `quy-trinh`, `so-sanh`, `minh-hoa` đơn lẻ, dòng nguồn một dòng, nhãn lớn hơn, đo "tỉ lệ khung hình được dùng" (mục 3, số 1 và 12). *(Đã làm một phần: `quy-trinh` phóng hình 240→420 px, nhãn 36→46 px, tiêu đề 52→68 px; nhãn `so-sanh` 46 px. Chưa có thước đo "tỉ lệ khung được dùng" và chưa kiểm thời gian đọc.)*
 3. **Vẽ lại sáu phông** thành môi trường nhận ra được (cảng có cần cẩu và chồng container, trung tâm dữ liệu có hàng tủ máy, thành phố có đường chân trời…), sàn khác nhau theo chủ đề. *(Đã làm: phòng máy chủ, nhà máy, cảng, thành phố, sàn giao dịch, cơ quan, mỗi phông một sàn riêng và vật dựng ở hai cạnh sau; xem `svg/README.md`.)*
 4. **Thêm ẩn dụ vật lý vào thư viện** (bập bênh, domino, đồng hồ đo, bản đồ) và **mẫu `ban-do`** cho các đề xuất khẩu, thuế, chuỗi cung ứng.
-5. **Số lớn đếm tăng** và **biểu đồ thanh xếp hạng** cho đề về giá, thị phần, chi tiêu.
+5. **Đếm số lớn từ giá trị cũ** *(đã làm: `tu` trong `so-lon`)* và **biểu đồ thanh xếp hạng** cho đề về giá, thị phần, chi tiêu *(chưa làm)*.
 6. **Thử A/B phụ đề** đủ câu và từ khóa động sau khi đăng (cần retention thật).
 
 ## 6. Rủi ro và điều chưa biết

@@ -251,7 +251,8 @@ def _unit_scale(text: str) -> str:
 def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
     """Số hiện trên màn hình (so-lon, bieu-do, so-sanh, thoi-gian) phải có nguồn và khớp giá trị + quy mô trong nguồn."""
     if c["mau"] == "so-lon" and "so" in c:
-        pairs = [(c["so"], _unit_scale(c.get("truoc", "") + " " + c.get("sau", "")))]
+        sc = _unit_scale(c.get("truoc", "") + " " + c.get("sau", ""))
+        pairs = [(c["so"], sc)] + ([(c["tu"], sc)] if c.get("tu") is not None else [])  # tu = giá trị cũ để đếm từ đó lên
     elif c["mau"] == "bieu-do" and c.get("bieu_do"):
         scale = _unit_scale(c["bieu_do"].get("don_vi", ""))
         pairs = [(v, scale) for v in c["bieu_do"]["gia_tri"]]
