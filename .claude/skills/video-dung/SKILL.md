@@ -148,11 +148,12 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
      tới khi qua, `export` png → `V/thumbnails/2.png`; > 2 MB thì xuất lại nhỏ hơn (YouTube từ chối). Tạo bản nhỏ:
      `Image.open(p).resize((168, 94), Image.LANCZOS).save(V/thumbnails/2-168px.png)`.
      CoDesign hỏng/chưa đăng nhập: dùng `thumb.make` như phương án 1 và ghi lý do trong `dong-goi.md`.
-   - Phương án chia đôi (khuôn kênh mẫu, thay cho một trong ba phương án): `tttc.thumb.chia_doi(trai, phai, dong, out, ghi_cong)`.
-     `trai` = chân dung từ `anh.search` → `anh.pick` → `anh.download` (giấy phép tự do, có ghi công; `pick` trả None thì
-     `trai=None`, ảnh phải được cắt đôi); `phai` = `thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`
-     của cảnh minh họa đẹp nhất (bỏ dải phụ đề); `dong` ≤ 2 dòng, mỗi dòng 3–5 chữ; `ghi_cong` = `anh/ghi-cong.json:ghi_cong`.
-     Không dùng ảnh người thật ngoài Wikimedia Commons, không logo hãng.
+   - Phương án khung (khung riêng của kênh, thay cho một trong ba phương án): `tttc.thumb.khung(anh_chinh, anh_phu, dong, out, ghi_cong)`:
+     chữ lớn bên trái (≤ 2 dòng, mỗi dòng 2–4 chữ, dòng cuối tô màu nhấn), ô ảnh bo góc viền màu nhấn bên phải, thanh nhấn dọc mép trái,
+     nhân vật Nhịp đứng ở góc ô. `anh_phu` = ảnh trong ô, ưu tiên `thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`
+     của cảnh minh họa hay bản đồ đẹp nhất (bỏ dải phụ đề); `anh_chinh` = ảnh nền phủ kín (tuỳ chọn, được làm tối), thường để `None`;
+     `ghi_cong` = `anh/ghi-cong.json:ghi_cong` nếu ảnh có ghi công. Không ảnh người thật ngoài Wikimedia Commons, không logo hãng.
+     Khung này cố ý không chia đôi, không hộp chữ vàng, không vòng "VS" (khuôn của kênh mẫu); xem `docs/nghien-cuu/nhan-dien-ung-vien.md`.
    - Phương án 3: TobyFlow `gen_image` (gọi `list_capabilities` trước, poll `get_job`) tạo **nền 16:9**. Prompt phải ghi:
      không chữ, không mặt người thật, không logo hãng, tông tối gần đen với điểm nhấn vàng #FFC800, một vật thể chính.
      Tải ảnh về `V/thumbnails/nen-3.png`, rồi `thumb.make(lines, V/thumbnails/3.png, background=V/thumbnails/nen-3.png)`.

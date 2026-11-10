@@ -52,47 +52,10 @@ def _halves(path):
 DONG = ["VIETTEL ĐANG LÀM ĐIỀU", "MÀ NVIDIA CHƯA DÁM LÀM?"]
 
 
-def test_chia_doi_sizes(tmp_path):
-    big, small = thumb.chia_doi(_solid(tmp_path / "l.png", (0, 160, 0)), _solid(tmp_path / "r.png", (30, 30, 30)),
-                                DONG, tmp_path / "t.png")
-    assert Image.open(big).size == (1280, 720) and Image.open(small).size == (168, 94)
 
 
-def test_chia_doi_uses_left_image_on_left(tmp_path):
-    big, _ = thumb.chia_doi(_solid(tmp_path / "l.png", (0, 160, 0)), _solid(tmp_path / "r.png", (30, 30, 30)),
-                            DONG, tmp_path / "t.png")
-    img = Image.open(big).convert("RGB")
-    assert img.getpixel((150, 150))[1] > 120 and img.getpixel((1150, 150)) == (30, 30, 30)
 
 
-def test_chia_doi_uses_brand_yellow_in_label_area(tmp_path):
-    _, small = thumb.chia_doi(_solid(tmp_path / "l.png", (0, 0, 0)), _solid(tmp_path / "r.png", (0, 0, 0)),
-                              DONG, tmp_path / "t.png")
-    bottom = Image.open(small).convert("RGB").crop((0, 66, 168, 94))
-    px = bottom.load()
-    ar, ag, ab = theme.rgb(theme.TH["nhan"][0])
-    accent = sum(1 for x in range(168) for y in range(28) if abs(px[x, y][0] - ar) + abs(px[x, y][1] - ag) + abs(px[x, y][2] - ab) < 60)
-    assert accent / (168 * 28) >= 0.12  # vùng nhãn dùng màu nhấn của theme
-
-
-def test_chia_doi_without_left_image_splits_right_image(tmp_path):
-    big, _ = thumb.chia_doi(None, _halves(tmp_path / "r.png"), DONG, tmp_path / "t.png")
-    img = Image.open(big).convert("RGB")
-    assert img.getpixel((200, 150))[0] > 150 and img.getpixel((1100, 150))[2] > 150
-
-
-def test_chia_doi_long_credit_stays_inside(tmp_path):
-    black = _solid(tmp_path / "r.png", (0, 0, 0))
-    big, _ = thumb.chia_doi(None, black, DONG, tmp_path / "t.png", ghi_cong="Ảnh: " + "Nguyễn Văn A " * 20)
-    g = Image.open(big).convert("L")
-    assert g.crop((680, 22, 790, 50)).getextrema()[1] < 100  # chữ ghi công không tràn sang trái vùng 460 px
-    assert g.crop((800, 22, 1262, 50)).getextrema()[1] > 200  # nhưng có hiện chữ
-
-
-def test_chia_doi_rejects_more_than_two_lines(tmp_path):
-    import pytest
-    with pytest.raises(ValueError):
-        thumb.chia_doi(None, _solid(tmp_path / "r.png", (0, 0, 0)), ["A", "B", "C"], tmp_path / "t.png")
 
 
 def test_khung_tu_video_returns_png(tmp_path):
@@ -120,10 +83,47 @@ def test_make_takes_colours_from_theme(tmp_path, monkeypatch):
     assert Image.open(big).getpixel((0, 0)) == (10, 11, 12)
 
 
-def test_chia_doi_takes_accent_from_theme(tmp_path, monkeypatch):
-    from tttc import theme
-    monkeypatch.setattr(theme, "TH", {**theme.TH, "nhan": ["#00AAFF", "#0088CC", "#006699"]})
-    right = tmp_path / "r.png"
-    Image.new("RGB", (400, 400), (40, 40, 40)).save(right)
-    big, _ = thumb.chia_doi(None, right, ["MỘT"], tmp_path / "c.png")
-    assert Image.open(big).getpixel((3, 3)) == (0, 170, 255)  # viền khung theo màu nhấn của theme
+def test_khung_makes_1280x720_and_168px_and_validates_lines(tmp_path):
+    import pytest
+    a = tmp_path / "a.png"
+    Image.new("RGB", (800, 800), (40, 40, 40)).save(a)
+    big, small = thumb.khung(None, a, ["MỘT", "HAI"], tmp_path / "t.png", "Ảnh: X")
+    assert Image.open(big).size == (1280, 720) and Image.open(small).size == (168, 94)
+    with pytest.raises(ValueError):
+        thumb.khung(None, a, ["A", "B", "C"], tmp_path / "t2.png")
+    with pytest.raises(ValueError):
+        thumb.khung(None, a, [], tmp_path / "t3.png")
+
+
+def test_khung_puts_photo_in_right_box_accent_bar_on_left_and_text_on_left(tmp_path):
+    a = tmp_path / "a.png"
+    Image.new("RGB", (800, 800), (200, 60, 60)).save(a)
+    big, _ = thumb.khung(None, a, ["VIỆT NAM", "ĐÃ CÓ TÊN?"], tmp_path / "t.png")
+    img = Image.open(big).convert("RGB")
+    assert img.getpixel((960, 320)) == (200, 60, 60)                          # ảnh nằm trong ô bên phải
+    assert img.getpixel((8, 360)) == theme.rgb(theme.TH["nhan"][0])           # thanh nhấn dọc mép trái theo theme
+    assert img.getpixel((10, 700)) != img.getpixel((960, 320))                 # nền ngoài ô là màu nền, không phải ảnh
+    left = img.crop((40, 60, 680, 660)).convert("L")
+    assert left.getextrema()[1] > 220                                          # có chữ sáng ở nửa trái
+
+
+def test_khung_background_photo_is_darkened_and_credit_stays_inside(tmp_path, monkeypatch):
+    monkeypatch.setattr(thumb, "NHAN_VAT", tmp_path / "khong-co.png")  # tách nhân vật ra để chỉ đo chữ ghi công
+    a, bg = tmp_path / "a.png", tmp_path / "bg.png"
+    Image.new("RGB", (800, 800), (40, 40, 40)).save(a)
+    Image.new("RGB", (1600, 900), (250, 250, 250)).save(bg)
+    big, _ = thumb.khung(bg, a, ["MỘT"], tmp_path / "t.png", ghi_cong="Ảnh: " + "Nguyễn Văn A " * 30)
+    img = Image.open(big).convert("RGB")
+    assert max(img.getpixel((640, 20))) < 140  # ảnh nền sáng bị làm tối
+    g = img.convert("L")
+    assert g.crop((1110, 630, 1280, 720)).getextrema()[1] < 140  # chữ ghi công (căn trái dưới ô ảnh, ≤ 400 px) không tràn sang phải
+
+
+def test_khung_takes_accent_and_background_from_theme(tmp_path, monkeypatch):
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "nhan": ["#00AAFF", "#0088CC", "#006699"], "nen": "#0A0B0C"})
+    a = tmp_path / "a.png"
+    Image.new("RGB", (400, 400), (40, 40, 40)).save(a)
+    big, _ = thumb.khung(None, a, ["MỘT"], tmp_path / "c.png")
+    img = Image.open(big).convert("RGB")
+    assert img.getpixel((8, 360)) == (0, 170, 255) and img.getpixel((300, 700)) == (10, 11, 12)
+
