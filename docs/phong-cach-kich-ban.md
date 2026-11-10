@@ -59,4 +59,4 @@ Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay
 
 - Mỗi chương mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối chương trả lời.
 - Bảng giá, trang nguồn, biểu đồ có tên nguồn ở góc; số tự tính có nhãn.
-- Bảng màu lấy từ `brand/theme.json` (khi đã có); màu phụ theo ý nghĩa: xanh miễn phí, tiết kiệm; đỏ giới hạn, thuế, rủi ro; lam AI, dữ liệu; tím gói cao cấp.
+- Bảng màu lấy từ `brand/theme.json` (nhận diện Nhịp Công Nghệ, 10/11/2026): nền xanh đen `#08181C`, nhấn ngọc lam `#22D3EE`, chữ trắng; màu phụ theo ý nghĩa: xanh lá miễn phí, tiết kiệm; đỏ giới hạn, thuế, rủi ro; lam AI, dữ liệu; tím gói cao cấp. Nhân vật dẫn chuyện: robot Nhịp (`pipeline/nhan-vat/`).

@@ -8,7 +8,7 @@ from pathlib import Path
 import requests
 
 API = "https://commons.wikimedia.org/w/api.php"
-UA = {"User-Agent": "TuiTienCongNghe-pipeline/0.1"}
+UA = {"User-Agent": "NhipCongNghe-pipeline/0.1"}
 FREE = re.compile(r"^(public domain|pd\b.*|cc0.*|cc by(-sa)? \d(\.\d)?.*)$", re.I)
 PD = re.compile(r"^(public domain|pd\b.*|cc0.*)$", re.I)
 

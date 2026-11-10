@@ -1,7 +1,7 @@
 [project]
 name = "tttc"
 version = "0.1.0"
-description = "Pipeline video tự động – Túi Tiền Công Nghệ"
+description = "Pipeline video tự động – Nhịp Công Nghệ"
 requires-python = ">=3.11"
 dependencies = [
   "requests>=2.32",

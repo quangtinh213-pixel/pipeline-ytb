@@ -33,7 +33,7 @@ def test_search_parses_fixture_in_rank_order():
     assert [r["file"] for r in res][:2] == ["File:Jensen Huang (cropped).jpg",
                                             "File:Jensen huang stanford 2026-04-30 008.jpg"]
     assert res[1]["giay_phep"] == "CC BY-SA 4.0" and res[1]["url"].startswith("https://")
-    assert "TuiTienCongNghe" in calls[0]["User-Agent"] and "@" not in calls[0]["User-Agent"]
+    assert "NhipCongNghe" in calls[0]["User-Agent"] and "@" not in calls[0]["User-Agent"]
 
 
 def test_pick_rejects_nonfree_license():

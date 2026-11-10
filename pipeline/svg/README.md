@@ -6,8 +6,8 @@ Vẽ bằng `ve.py` để mọi hình cùng một kiểu. Thêm hình mới = th
 
 ## Quy ước
 - Isometric 30°, dựng bằng `box()` (hộp) và `on_left/on_right/on_top()` (chi tiết trên mặt hộp).
-- Mặt hộp: nóc `#FFFFFF`, trái `#BDBDBD`, phải `#6E6E6E`; khối tối dùng `#2A2A2A`; điểm nhấn vàng `#FFC800` (mặt tối hơn `#E0B000`, `#C79C00`).
-- Nét `#111111` dày 6 (chi tiết 2–4). Nền trong suốt; cảnh đặt trên nền `#111111`.
+- Mặt hộp: nóc `#FFFFFF`, trái `#BDBDBD`, phải `#6E6E6E`; khối tối dùng `#2A2A2A`; điểm nhấn ngọc lam `#22D3EE` (mặt tối hơn `#10A8C4`, `#0B7F96`). Mọi màu lấy từ `brand/theme.json` (đổi nhận diện: sửa theme rồi `uv run python -m tttc.theme ap-dung`).
+- Nét `#08181C` dày 6 (chi tiết 2–4). Nền trong suốt; cảnh đặt trên nền `#08181C`.
 - Không chữ trong SVG (chữ là nhãn của mẫu cảnh). Không logo hãng.
 - Ngoại lệ màu duy nhất: cờ thật phải đúng màu cờ.
 - `save()` tự canh khung nhìn vuông 400×400 quanh hình.
