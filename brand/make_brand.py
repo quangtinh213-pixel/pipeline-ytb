@@ -1,6 +1,6 @@
 """Tạo logo, avatar và banner của kênh Nhịp Công Nghệ từ brand/theme.json và bộ nhân vật. Chạy: python3 make_brand.py
 
-Kích thước (kiểm 10/11/2026 trên các trang hướng dẫn kích thước YouTube): avatar 800×800 (YouTube cắt tròn, hiển thị tới 98 px);
+Kích thước (kiểm 10/11/2026 trên các trang hướng dẫn kích thước YouTube): avatar 800×800 (YouTube cắt tròn; Studio yêu cầu ít nhất 98×98 px, tối đa 4 MB);
 banner 2560×1440, vùng an toàn 1546×423 ở giữa (mọi chữ và nhân vật nằm trong vùng này); tệp ≤ 6 MB.
 """
 import json
