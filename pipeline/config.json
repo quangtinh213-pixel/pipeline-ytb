@@ -17,7 +17,7 @@
   "playlist_id": "PLf9v4rPuuCys",
   "vieneu": {
     "voice": "Quốc Tuấn",
-    "toc_do": 0.9,
+    "toc_do": 1.1,
     "phat_am": {
       "GPT-6": "GPT sáu",
       "Gemini 4": "Gemini bốn",
@@ -31,9 +31,11 @@
       "Washington": "Oa sinh tơn",
       "FPT Cloud": "ép pê tê clao",
       "Viettel": "Viết ten",
-      "FP tám": "ép pê tám"
+      "FP tám": "ép pê tám",
+      "niche": "ních",
+      "cabin": "ca bin"
     },
-    "wpm_du_kien": 226
+    "wpm_du_kien": 269
   },
   "doi_thu": {
     "ten": "@MotCongNghe",
