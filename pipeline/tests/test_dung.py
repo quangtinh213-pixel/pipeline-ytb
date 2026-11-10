@@ -570,3 +570,27 @@ def test_so_lon_counts_from_start_value_when_given():
     v0 = dung._vars(base, {}, {})
     assert v0["tu"] == 0 and v0["tu_hien"] == ""
     assert "tu_hien" in (dung.TPL / "so-lon.html").read_text(encoding="utf-8")
+
+
+XH = {"id": "x1", "mau": "xep-hang", "start": 0, "end": 7, "tieu_de": "Giá trị thị trường", "don_vi": "nghìn tỷ USD", "nguon_id": "p1",
+      "hang": [{"nhan": "Nvidia", "so": 4.5}, {"nhan": "AMD", "so": 1.2}, {"nhan": "Intel", "so": 0.8}], "noi_bat": 0}
+
+
+def test_vars_xep_hang():
+    v = dung._vars(XH, {}, {})
+    h = json.loads(v["hang"])
+    assert h[0] == {"nhan": "Nvidia", "so": 4.5, "so_hien": "4,5", "noi_bat": True} and h[2]["noi_bat"] is False
+    assert v["tieu_de"] == "Giá trị thị trường" and v["don_vi"] == "nghìn tỷ USD" and v["dong"] == "dap"
+
+
+def test_steps_and_sfx_xep_hang_one_per_row():
+    st = dung.steps(XH, [])
+    assert st == pytest.approx([0.4, 0.8, 1.2])
+    assert [(f, v) for f, _, v in dung.sfx_events(XH, st)] == [("pop", 0.2)] * 3
+
+
+def test_xep_hang_scene_file_and_group():
+    s = dung._scene_file("xep-hang", "x1")
+    assert 'data-composition-id="x1"' in s and "x1-xh-" in s and "function dongLap" in s
+    from tttc import chat_luong
+    assert "xep-hang" in chat_luong.NHOM["do-hoa"]

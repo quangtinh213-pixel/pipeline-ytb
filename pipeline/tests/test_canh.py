@@ -479,3 +479,32 @@ def test_ban_do_labels_must_be_vietnamese_and_short(tmp_path):
     assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, NGUON, kit=None)))
     long = _bd(diem=[{"nhan": "Một hai ba bốn năm sáu bảy", "vi_do": 1, "kinh_do": 1}, {"nhan": "B", "vi_do": 1, "kinh_do": 2}])
     assert any("nhãn dài" in m for m in canh.validate(long, TIMING, tmp_path, NGUON, kit=None))
+
+
+XH_SRC = [{"id": "x1", "gia_tri": "Nvidia 4,5 nghìn tỷ USD; AMD 1,2 nghìn tỷ USD; Intel 0,8 nghìn tỷ USD"}]
+
+
+def _xh(**c):
+    base = {"hang": [{"nhan": "Nvidia", "so": 4.5}, {"nhan": "AMD", "so": 1.2}, {"nhan": "Intel", "so": 0.8}],
+            "don_vi": "nghìn tỷ USD", "nguon_id": "x1", "noi_bat": 0}
+    return {"scenes": [dict({"id": "c0", "mau": "xep-hang", "start": 0, "end": 6}, **{**base, **c}),
+                       {"id": "c1", "mau": "chuong", "start": 6, "end": 12, "so": "Phần 2"}]}
+
+
+def test_xep_hang_valid_scene_has_no_errors(tmp_path):
+    assert _errors(canh.validate(_xh(), TIMING, tmp_path, XH_SRC, kit=None)) == []
+
+
+def test_xep_hang_rejects_bad_rows_and_unsourced_values(tmp_path):
+    def errs(sc, src=XH_SRC):
+        return _errors(canh.validate(sc, TIMING, tmp_path, src, kit=None))
+    assert any("2–8" in e for e in errs(_xh(hang=[{"nhan": "A", "so": 1}])))
+    assert any("noi_bat" in e for e in errs(_xh(noi_bat=7)))
+    assert any("so" in e for e in errs(_xh(hang=[{"nhan": "A"}, {"nhan": "B", "so": 2}])))
+    assert any("9.9" in e for e in errs(_xh(hang=[{"nhan": "A", "so": 9.9}, {"nhan": "B", "so": 1.2}])))  # không khớp nguồn
+    assert any("nguon_id" in e for e in errs(_xh(nguon_id=None)))
+
+
+def test_xep_hang_labels_must_be_vietnamese(tmp_path):
+    en = _xh(hang=[{"nhan": "The biggest chip maker", "so": 4.5}, {"nhan": "AMD", "so": 1.2}])
+    assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, XH_SRC, kit=None)))

@@ -1,0 +1,65 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .xh-tieu-de { position: absolute; left: 160px; top: 90px; right: 160px; color: var(--ink);
+                        font: 900 68px/1.15 var(--font-display); letter-spacing: -0.01em; }
+    #root .xh-khung { position: absolute; left: 160px; right: 160px; top: 240px; bottom: 170px; }
+    #root .xh-hang { position: absolute; left: 0; right: 0; display: flex; align-items: center; }
+    #root .xh-nhan { width: 380px; flex: none; text-align: right; padding-right: 32px; color: var(--ink);
+                     font: 800 46px/1.1 var(--font-display); }
+    #root .xh-rail { position: relative; flex: 1; height: 100%; }
+    #root .xh-thanh { position: absolute; left: 0; top: 12%; height: 76%; background: var(--bar); border-radius: 0 14px 14px 0;
+                      transform-origin: left center; }
+    #root .xh-hang.noi-bat .xh-thanh { background: var(--accent); }
+    #root .xh-so { position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; color: var(--ink);
+                   font: 900 52px/1 var(--font-display); padding-left: 44px; }
+    #root .xh-don-vi { font: 700 34px/1 var(--font-display); color: var(--muted); padding-left: 10px; }
+    #root .xh-truc { position: absolute; left: 380px; top: 0; bottom: 0; width: 5px; background: var(--muted); transform-origin: top center; }
+  </style>
+  <div id="root" data-composition-id="xep-hang" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"hang","type":"string","label":"Các hàng (JSON: nhan, so, so_hien, noi_bat)","default":"[{\"nhan\":\"A\",\"so\":2,\"so_hien\":\"2\",\"noi_bat\":true},{\"nhan\":\"B\",\"so\":1,\"so_hien\":\"1\",\"noi_bat\":false}]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của thanh nổi bật","default":"dap"}]'>
+    <div id="xh-san" class="san">
+      <div id="xh-tieu-de" class="xh-tieu-de" data-var-text="tieu_de"></div>
+      <div id="xh-khung" class="xh-khung" data-layout-allow-overflow><div id="xh-truc" class="xh-truc"></div></div>
+      <div id="xh-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
+  </div>
+  <script>
+    /*__DONG__*/
+    // Các hàng dựng một lần lúc khởi tạo từ biến (tất định); chuyển động nằm trên timeline.
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#xh-san").classList.add("nen-" + (v.nen || "toi"));
+    const hang = JSON.parse(v.hang), n = hang.length, khung = document.querySelector("#xh-khung");
+    const KH = 1920 - 320 - 380, RAIL = KH - 360;  // bề rộng thanh dài nhất chừa chỗ cho số và đơn vị
+    const cao = 650, hh = Math.min(120, cao / n), max = Math.max(...hang.map(h => h.so), 1e-9);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#xh-tieu-de", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
+    tl.fromTo("#xh-truc", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.out" }, 0);
+    let hl = -1;
+    hang.forEach((h, i) => {
+      const t0 = at(i, 0.4 + 0.4 * i), w = Math.max(14, RAIL * h.so / max);
+      const el = document.createElement("div");
+      el.id = "xh-hang-" + i; el.className = "xh-hang" + (h.noi_bat ? " noi-bat" : "");
+      el.style.top = i * (cao / n) + (cao / n - hh) / 2 + "px"; el.style.height = hh + "px";
+      const nhan = document.createElement("div"); nhan.className = "xh-nhan"; nhan.textContent = h.nhan;
+      const rail = document.createElement("div"); rail.className = "xh-rail";
+      const thanh = document.createElement("div"); thanh.id = "xh-thanh-" + i; thanh.className = "xh-thanh"; thanh.style.width = w + "px";
+      const so = document.createElement("div"); so.id = "xh-so-" + i; so.className = "xh-so"; so.style.left = w + "px";
+      const dec = (String(h.so_hien).split(",")[1] || "").length, obj = { x: 0 };
+      const fmt = x => (x >= h.so ? h.so_hien : x.toLocaleString("vi-VN", { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+      const num = document.createElement("span"); num.textContent = fmt(0);
+      const dv = document.createElement("span"); dv.className = "xh-don-vi"; dv.textContent = v.don_vi;
+      so.append(num, dv); rail.append(thanh, so); el.append(nhan, rail); khung.appendChild(el);
+      if (h.noi_bat) hl = i;
+      tl.fromTo(nhan, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.25 }, t0);
+      tl.fromTo(thanh, { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, t0);
+      tl.fromTo(so, { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.1);
+      tl.fromTo(obj, { x: 0 }, { x: h.so, duration: 0.75, ease: "power3.out", onUpdate: () => { num.textContent = fmt(obj.x); } }, t0);
+    });
+    const tEnd = at(n - 1, 0.4 + 0.4 * (n - 1)) + 0.8;
+    if (hl >= 0) dongLap(tl, "#xh-thanh-" + hl, v.dong, tEnd, 12);
+    tl.fromTo("#xh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    window.__timelines["xep-hang"] = tl;
+  </script>
+</template>

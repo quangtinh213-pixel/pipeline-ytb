@@ -12,6 +12,8 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich); trich nguồn tiếng Anh thì
                bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi)
 - quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
+- xep-hang:    tieu_de?, hang [2–8 {nhan, so}] theo đúng thứ tự hiển thị (tác giả tự xếp), don_vi, nguon_id (bắt buộc: mọi số phải khớp nguồn),
+               noi_bat? (chỉ số hàng), dong? (cho thanh nổi bật, mặc định dap); thanh ngang dài theo số, số đếm tăng ở đầu thanh
 - ban-do:      tieu_de?, diem [2–6 {nhan, vi_do, kinh_do, noi_bat?}], noi? [{tu, den, nhan?}] (mũi tên cong nối hai điểm theo chỉ số),
                nguon_id?, dong? (vòng sáng ở điểm nổi bật, mặc định dap); bản đồ vị trí theo toạ độ (hình nước từ du-lieu/nuoc.json, Natural Earth); diem có thể ghi nuoc (mã ADM0_A3, vd VNM) để tô sáng nước đó
 - so-sanh:     trai, phai {nhan, svg, so?, don_vi?, to? (0–1, cỡ hình tương đối)}, don_vi?, ti_le? ("gấp ~700 lần"),
@@ -45,7 +47,7 @@ PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
 SFX = PIPE / "am-thanh" / "sfx"
 PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
-          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-"}
+          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-", "xep-hang": "xh-"}
 # Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
 DEFAULT_STEPS = {
     "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
@@ -173,6 +175,11 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                 "nguon": src(c.get("nguon_id")),
                 "buoc": json.dumps([{"nhan": b["nhan"], "svg": f"assets/svg/{b['svg']}.svg" if b.get("svg") else ""}
                                     for b in c["buoc"]], ensure_ascii=False)}
+    if m == "xep-hang":
+        nb = c.get("noi_bat", -1)
+        return {"tieu_de": c.get("tieu_de", ""), "don_vi": c.get("don_vi", ""), "nguon": src(c.get("nguon_id")), "dong": c.get("dong", "dap"),
+                "hang": json.dumps([{"nhan": h["nhan"], "so": _num(h["so"]), "so_hien": vi_number(h["so"]), "noi_bat": i == nb}
+                                    for i, h in enumerate(c["hang"])], ensure_ascii=False)}
     if m == "ban-do":
         return {"tieu_de": c.get("tieu_de", ""), "nguon": src(c.get("nguon_id")), "dong": c.get("dong", "dap"),
                 "nuoc": _nuoc_json(c["diem"]),
@@ -193,6 +200,8 @@ def steps(c: dict, words: list[dict]) -> list[float]:
         base = [round(0.5 + 0.55 * i, 3) for i in range(len(c["buoc"]))]
     elif c["mau"] == "thoi-gian":
         base = [round(0.5 + 0.6 * i, 3) for i in range(len(c["hang"]))]
+    elif c["mau"] == "xep-hang":
+        base = [round(0.4 + 0.4 * i, 3) for i in range(len(c["hang"]))]
     elif c["mau"] == "ban-do":
         nd = len(c["diem"])
         base = [round(0.5 + 0.55 * i, 3) for i in range(nd)] + [round(0.5 + 0.55 * nd + 0.5 * j, 3) for j in range(len(c.get("noi") or []))]
@@ -223,6 +232,8 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("pop", t, 0.2) for t in st[:6]]
     if m == "thoi-gian":
         return [("whoosh-short", t, 0.2) for t in st[:5]]
+    if m == "xep-hang":
+        return [("pop", t, 0.2) for t in st[:8]]
     if m == "ban-do":
         nd = len(c["diem"])
         return [("pop", t, 0.2) for t in st[:nd]] + [("whoosh-short", t, 0.2) for t in st[nd:]]

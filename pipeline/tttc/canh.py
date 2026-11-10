@@ -8,7 +8,7 @@ from pathlib import Path
 from tttc import ban_do as _ban_do, ngon_ngu, nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do", "xep-hang"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -94,6 +94,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs += _check_so_sanh(c, svg_dir)
         if c["mau"] == "ban-do":
             msgs += _check_ban_do(c)
+        if c["mau"] == "xep-hang":
+            msgs += _check_xep_hang(c)
         if c["mau"] == "thoi-gian":
             msgs += _check_thoi_gian(c)
         if c["mau"] == "trich-bao":
@@ -113,6 +115,8 @@ def _nhan_pills(c: dict) -> list[str]:
         return [c[k]["nhan"] for k in ("trai", "phai") if isinstance(c.get(k), dict) and c[k].get("nhan")]
     if c["mau"] == "quy-trinh":
         return [b["nhan"] for b in c.get("buoc") or [] if b.get("nhan")]
+    if c["mau"] == "xep-hang":
+        return [h["nhan"] for h in c.get("hang") or [] if isinstance(h, dict) and h.get("nhan")]
     if c["mau"] == "ban-do":
         return [x["nhan"] for k in ("diem", "noi") for x in c.get(k) or [] if isinstance(x, dict) and x.get("nhan")]
     return []
@@ -141,6 +145,20 @@ def _check_minh_hoa(c: dict, svg_dir: Path) -> list[str]:
                       and 0.2 <= b.get("to", 1.0) <= 1.5 and (Path(svg_dir) / f"{b.get('svg')}.svg").exists())
                 if not ok:
                     out.append(f"Lỗi: {cid} bo_cuc có đạo cụ sai: {b} (cần svg có trong thư viện, x và y trong 0–1, to trong 0,2–1,5)")
+    return out
+
+
+def _check_xep_hang(c: dict) -> list[str]:
+    """Thanh xếp hạng: 2–8 hàng có nhãn và số (số được _check_values đối chiếu nguồn), noi_bat là chỉ số hàng."""
+    hang, out = c.get("hang") or [], []
+    if not 2 <= len(hang) <= 8:
+        out.append(f"Lỗi: {c['id']} xep-hang cần 2–8 hàng (đang {len(hang)})")
+    for i, h in enumerate(hang):
+        if not isinstance(h, dict) or not h.get("nhan") or isinstance(h.get("so"), bool) or not isinstance(h.get("so"), (int, float, str)):
+            out.append(f"Lỗi: {c['id']} hàng {i} cần nhan và so")
+    nb = c.get("noi_bat")
+    if nb is not None and not (isinstance(nb, int) and not isinstance(nb, bool) and 0 <= nb < len(hang)):
+        out.append(f"Lỗi: {c['id']} noi_bat={nb} nằm ngoài các hàng")
     return out
 
 
@@ -258,6 +276,11 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
         pairs = [(v, scale) for v in c["bieu_do"]["gia_tri"]]
     elif c["mau"] == "thoi-gian":  # năm trên các thanh là số hiện trên màn hình; vạch trục chỉ là thang đo
         pairs = [(h[k], "") for h in c.get("hang") or [] for k in ("tu", "den") if isinstance(h.get(k), (int, float))]
+        if not pairs:
+            return []
+    elif c["mau"] == "xep-hang":
+        sc = _unit_scale(c.get("don_vi", ""))
+        pairs = [(h["so"], sc) for h in c.get("hang") or [] if isinstance(h, dict) and h.get("so") is not None]
         if not pairs:
             return []
     elif c["mau"] == "so-sanh":  # mỗi bên có thể có đơn vị riêng ("tỷ transistor" so với "triệu transistor")
