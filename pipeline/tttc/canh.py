@@ -13,7 +13,7 @@ SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
-DAN_THE, DAN_GOC = {"chao", "ngac-nhien", "nghi"}, {"phai", "trai"}  # nhân vật dẫn chuyện "Túi" (svg/tui-*.svg)
+DAN_GOC = {"phai", "trai"}  # góc màn hình của nhân vật dẫn chuyện (bộ nhân vật: pipeline/nhan-vat/kit.json)
 MAY_QUAY = {"", "dung", "day-vao", "keo-ra", "lia", "he-lo"}  # camera áp lên "thế giới" của cảnh minh-hoa
 DONG = {"", "bob", "xoay", "dap", "chop", "tilt", "tho"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
@@ -206,13 +206,14 @@ def _check_quy_trinh(c: dict, svg_dir: Path) -> list[str]:
 
 def _check_dan(c: dict, words: list[dict], kit: dict | None = None) -> list[str]:
     d = c["dan"]
-    the_ok = kit["the"] if kit else DAN_THE
+    if not kit:
+        return [f"Lỗi: {c['id']} có dan nhưng chưa có bộ nhân vật (pipeline/nhan-vat/kit.json)"]
+    the_ok = kit["the"]
     if not isinstance(d, dict) or d.get("the") not in the_ok or d.get("goc", "phai") not in DAN_GOC:
         return [f"Lỗi: {c['id']} dan phải là {{the: {'|'.join(sorted(the_ok))}, goc?: phai|trai, huong?, tu?: cụm}}"]
-    if kit:
-        huong = d.get("huong") or nhan_vat.huong_mac_dinh(d.get("goc", "phai"))
-        if not nhan_vat.hop_le(d["the"], huong, kit):
-            return [f"Lỗi: {c['id']} dan {d['the']} không có huong '{huong}' trong bộ nhân vật (kit.json:dang)"]
+    huong = d.get("huong") or nhan_vat.huong_mac_dinh(d.get("goc", "phai"))
+    if not nhan_vat.hop_le(d["the"], huong, kit):
+        return [f"Lỗi: {c['id']} dan {d['the']} không có huong '{huong}' trong bộ nhân vật (kit.json:dang)"]
     if d.get("tu") and phrase_time(words, d["tu"], c["start"], c["end"]) is None:
         return [f"Lỗi: {c['id']} dan.tu '{d['tu']}' nhưng giọng đọc không nói cụm này trong cảnh"]
     return []

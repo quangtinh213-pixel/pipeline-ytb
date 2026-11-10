@@ -2,7 +2,7 @@
 
 kit.json: {"the": [biểu cảm], "huong": [truoc|nghieng-trai|nghieng-phai|ngang...], "dang": [[the, huong], ...],
            "nham": [[the, huong], ...]}  ("nham" = cặp có thêm ảnh nhắm mắt để chớp). Tệp ảnh: tep(the, huong[, nham]).
-Chưa có kit.json thì canh/compose dùng nhân vật SVG cũ (svg/tui-*.svg).
+Cảnh có `dan` bắt buộc có kit.json (nhân vật SVG "Túi" cũ đã gỡ 10/11/2026).
 """
 import json
 from pathlib import Path

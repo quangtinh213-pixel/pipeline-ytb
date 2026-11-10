@@ -89,10 +89,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **Tỉ lệ cảnh** (chuẩn kênh mẫu, docs/nghien-cuu/kenh-mau-motcongnghe-2026-11-09.md mục 4; `tttc.chat_luong` đo):
   đồ họa tự dựng (`minh-hoa`, `quy-trinh`, `so-sanh`, `thoi-gian`, `so-lon`, `bieu-do`, `chuong`) ≥ 70%;
   bằng chứng (`trich-bao`, `trang-nguon`) 8–18%; ảnh/video đời thật (`b-roll`, `nhan-vat`) ≤ 15%. Không 3 cảnh liền cùng mẫu.
-- **Nhân vật dẫn chuyện "Túi"** (mọi mẫu): `dan: {the: chao|ngac-nhien|nghi, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}` (khi có `pipeline/nhan-vat/kit.json`: `the` và `huong` lấy từ bộ nhân vật; `huong` mặc định nghiêng về giữa màn hình; `tttc.canh` báo Lỗi nếu cặp không có trong kit) — hiện ở góc dưới,
-  bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô và chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các
-  khoảnh khắc "bất ngờ" (số lớn, đảo chiều, câu hỏi hứa): `chao` khi mở chương, `ngac-nhien` trước một con số gây sốc, `nghi` khi
-  đặt câu hỏi. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng.
+- **Nhân vật dẫn chuyện "Nhịp"** (mọi mẫu): `dan: {the, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}`; `the` ∈ chao, ngac-nhien, nghi, xac-nhan, bo-ngo, tinh-toan; `huong` ∈ truoc, nghieng-trai, nghieng-phai (mặc định nghiêng về giữa màn hình theo `goc`). Bộ ảnh lấy từ `pipeline/nhan-vat/kit.json` (bắt buộc; `tttc.canh` báo Lỗi nếu cặp biểu cảm × hướng không có). Hiện ở góc dưới, bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô; chỉ góc `truoc` có chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các khoảnh khắc: `chao` khi mở chương, `ngac-nhien` trước số gây sốc, `nghi` khi đặt câu hỏi hay nguồn lạ, `xac-nhan` khi số khớp nguồn, `bo-ngo` khi nói chưa kiểm được, `tinh-toan` khi mình tự tính. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng. Tạo lại bộ nhân vật: `docs/nghien-cuu/nhan-vat-tobyflow.md`.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.

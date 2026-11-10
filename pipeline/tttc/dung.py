@@ -21,7 +21,7 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
 - b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01")
 Mọi mẫu: dan? {the, goc? phai|trai, huong? (hướng nhìn; mặc định nghiêng về giữa màn hình), tu?} – nhân vật dẫn chuyện; có
-pipeline/nhan-vat/kit.json thì lấy PNG biểu cảm × hướng (tttc/nhan_vat.py), không thì svg/tui-*.svg.
+pipeline/nhan-vat/kit.json (bắt buộc khi có dan) cho PNG biểu cảm × hướng (tttc/nhan_vat.py).
 Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
 Nền tự gán: chương vàng, nhân vật kem, còn lại tối/kem đổi theo chương. Chuyển cảnh tự gán (transitions()).
 """
@@ -387,12 +387,11 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             ra = phrase_time(timing.get("words", []), d["tu"], c["start"], c["end"]) if d.get("tu") else None
             vao = round(a + (ra - c["start"] if ra is not None else 0.3), 3)
             the, goc = d["the"], d.get("goc", "phai")
-            if kit:
-                huong = d.get("huong") or nhan_vat.huong_mac_dinh(goc)
-                co_nham = [the, huong] in kit["nham"]
-                mo, nham = f"assets/nv/{nhan_vat.tep(the, huong)}", f"assets/nv/{nhan_vat.tep(the, huong, True)}"
-            else:
-                co_nham, mo, nham = True, f"assets/svg/tui-{the}.svg", f"assets/svg/tui-{the}-nham.svg"
+            if not kit:
+                raise ValueError(f"cảnh {c['id']} có dan nhưng chưa có bộ nhân vật (pipeline/nhan-vat/kit.json)")
+            huong = d.get("huong") or nhan_vat.huong_mac_dinh(goc)
+            co_nham = [the, huong] in kit["nham"]
+            mo, nham = f"assets/nv/{nhan_vat.tep(the, huong)}", f"assets/nv/{nhan_vat.tep(the, huong, True)}"
             dan_tags.append(
                 f'<div id="dan-{k}" class="clip dan dan-{goc}" data-start="{a}" data-duration="{dur}" '
                 f'data-track-index="3"><img src="{mo}" alt="">'

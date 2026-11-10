@@ -399,9 +399,19 @@ def _video_with_dan(video, **dan_extra):
 
 
 @pytest.fixture(autouse=True)
-def _khong_kit(tmp_path, monkeypatch):
+def _kit_nho(tmp_path, monkeypatch):
+    """Bộ nhân vật mini (ảnh giả) để test không phụ thuộc bộ thật; test nào cần kit khác thì tự đặt lại nhan_vat.KIT."""
+    from PIL import Image
     from tttc import nhan_vat
-    monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "khong-co-kit" / "kit.json")  # mặc định không có bộ nhân vật PNG
+    d = tmp_path / "kit-nho"
+    d.mkdir()
+    dang = [[t, g] for t in ("chao", "ngac-nhien") for g in ("truoc", "nghieng-trai", "nghieng-phai")]
+    for t, g in dang:
+        for nham in (False, True):
+            Image.new("RGBA", (30, 40), (0, 200, 220, 255)).save(d / nhan_vat.tep(t, g, nham))
+    (d / "kit.json").write_text(json.dumps({"the": ["chao", "ngac-nhien"], "huong": ["truoc", "nghieng-trai", "nghieng-phai"],
+                                           "dang": dang, "nham": dang}), encoding="utf-8")
+    monkeypatch.setattr(nhan_vat, "KIT", d / "kit.json")
 
 
 def _kit_png(tmp_path, monkeypatch, nham):
@@ -437,9 +447,16 @@ def test_compose_adds_mascot_clip_for_scene_with_dan(video):
     html = (out / "index.html").read_text(encoding="utf-8")
     m = re.search(r'<div id="dan-1" class="clip dan dan-phai" data-start="([\d.]+)" data-duration="([\d.]+)"', html)
     assert m and float(m.group(1)) == 4 and float(m.group(2)) == 5  # đúng đầu và độ dài cảnh c2
-    assert 'src="assets/svg/tui-ngac-nhien.svg"' in html and 'src="assets/svg/tui-ngac-nhien-nham.svg"' in html
-    assert (out / "assets" / "svg" / "tui-ngac-nhien-nham.svg").exists()
+    assert 'src="assets/nv/ngac-nhien-nghieng-trai.png"' in html and 'src="assets/nv/ngac-nhien-nghieng-trai-nham.png"' in html
+    assert (out / "assets" / "nv" / "ngac-nhien-nghieng-trai-nham.png").exists()
     assert 'id="dan-0"' not in html and html.count('class="clip dan') == 1
+
+
+def test_compose_dan_without_character_kit_is_a_clear_error(video, tmp_path, monkeypatch):
+    from tttc import nhan_vat
+    monkeypatch.setattr(nhan_vat, "KIT", tmp_path / "khong-co" / "kit.json")
+    with pytest.raises(ValueError, match="kit.json"):
+        dung.compose(_video_with_dan(video))
 
 
 def test_compose_scene_range_keeps_mascot_inside_range(video):
