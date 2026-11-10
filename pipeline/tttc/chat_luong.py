@@ -14,9 +14,9 @@ NHOM = {
     "doi-that": {"b-roll", "nhan-vat"},
 }
 MUC_TIEU = {
-    "tb_giay": (2.8, 4.5), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_min": 0.70,
-    "bang_chung": (0.08, 0.18), "doi_that_max": 0.15, "chay_max": 2,
-    "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 230)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
+    "tb_giay": (2.8, 4.5), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_max": 0.40,
+    "bang_chung": (0.08, 0.18), "doi_that_min": 0.45, "chay_max": 2,
+    "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 265)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
 # Chỉ số "độ khô" (spec 2026-11-09-chat-luong-hinh-anh-design.md mục 7): cảnh báo, hiệu chỉnh sau chạy khô.
 MUC_TIEU["do_kho"] = {"phong_min": 5, "phong_lien_max": 2, "lap_max": 0, "may_quay_min": 0.15, "cham_min": 3,
@@ -74,7 +74,7 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
     chay = best = 0
     prev = None
     for c in sc:
-        chay = chay + 1 if c["mau"] == prev else 1
+        chay = chay + 1 if c["mau"] == prev and c["mau"] != "b-roll" else 1  # b-roll liền nhau là clip khác nhau
         best, prev = max(best, chay), c["mau"]
     steps = [_buoc(c, words) for c in sc]
     sfx = sum(len(dung.sfx_events(c, st)) for c, st in zip(sc, steps))
@@ -98,13 +98,14 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
     if so_do["tren_8"] / n > muc["tren_8_max"]:
         out.append(f"Cảnh báo: {so_do['tren_8']} cảnh dài hơn 8 s (quá {muc['tren_8_max']:.0%} số cảnh)")
     t = so_do["ti_le"]
-    if t["do-hoa"] < muc["do_hoa_min"]:
-        out.append(f"Cảnh báo: Đồ họa tự dựng {t['do-hoa']:.0%}, chuẩn ≥ {muc['do_hoa_min']:.0%}")
+    # user chốt 10/11/2026: ưu tiên ảnh thật và b-roll, đồ họa chỉ khi bất đắc dĩ (số liệu, quy trình)
+    if t["do-hoa"] > muc["do_hoa_max"]:
+        out.append(f"Cảnh báo: Đồ họa tự dựng {t['do-hoa']:.0%}, chuẩn ≤ {muc['do_hoa_max']:.0%}")
     lo, hi = muc["bang_chung"]
     if not lo <= t["bang-chung"] <= hi:
         out.append(f"Cảnh báo: Cảnh bằng chứng {t['bang-chung']:.0%}, chuẩn {lo:.0%}–{hi:.0%}")
-    if t["doi-that"] > muc["doi_that_max"]:
-        out.append(f"Cảnh báo: Ảnh/video đời thật {t['doi-that']:.0%}, chuẩn ≤ {muc['doi_that_max']:.0%}")
+    if t["doi-that"] < muc["doi_that_min"]:
+        out.append(f"Cảnh báo: Ảnh/video đời thật {t['doi-that']:.0%}, chuẩn ≥ {muc['doi_that_min']:.0%}")
     if so_do["chay_dai_nhat"] > muc["chay_max"]:
         out.append(f"Cảnh báo: {so_do['chay_dai_nhat']} cảnh liền cùng một mẫu (tối đa {muc['chay_max']})")
     if so_do["su_kien_phut"] < muc["su_kien_phut_min"]:

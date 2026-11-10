@@ -86,9 +86,14 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **Nhịp con**: mỗi cảnh ghi `nhip` = các cụm từ giọng đọc nói trong cảnh, theo thứ tự bước của mẫu
   (`DEFAULT_STEPS` trong `tttc/dung.py`; `bieu-do` = một cụm cho mỗi cột + một cụm cho cột nổi bật).
   Mục tiêu: hình đổi khoảng 2 s một lần. `tttc.canh` báo lỗi nếu cụm không có trong lời đọc của cảnh.
-- **Tỉ lệ cảnh** (chuẩn kênh mẫu, docs/nghien-cuu/kenh-mau-motcongnghe-2026-11-09.md mục 4; `tttc.chat_luong` đo):
-  đồ họa tự dựng (`minh-hoa`, `quy-trinh`, `so-sanh`, `thoi-gian`, `so-lon`, `bieu-do`, `chuong`) ≥ 70%;
-  bằng chứng (`trich-bao`, `trang-nguon`) 8–18%; ảnh/video đời thật (`b-roll`, `nhan-vat`) ≤ 15%. Không 3 cảnh liền cùng mẫu.
+- **Tỉ lệ cảnh** (user chốt 10/11/2026, thay chuẩn kênh mẫu; `tttc.chat_luong` đo): **ưu tiên ảnh thật và b-roll**.
+  Với mỗi cảnh, hỏi trước: có ảnh hay clip đời thật nào cho thấy đúng thứ đang nói không? Có thì dùng `b-roll`
+  (clip, hoặc ảnh tĩnh: `broll.nhap` nhận .jpg/.png và tự phóng chậm, bắt buộc `do_dai`). Chỉ dùng đồ họa tự dựng
+  (`so-lon`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chuong`) khi bất đắc dĩ: con số cần đọc được,
+  so sánh, quy trình, hoặc không có hình thật nào hợp và sạch bản quyền.
+  Ngưỡng: ảnh/video đời thật (`b-roll`, `nhan-vat`) ≥ 45%; đồ họa ≤ 40%; bằng chứng (`trich-bao`, `trang-nguon`) 8–18%.
+  Không 3 cảnh liền cùng mẫu (trừ `b-roll`, miễn là clip khác nhau).
+  Nguồn hình chỉ từ Pexels, Pixabay, Wikimedia Commons, có ghi công; không lấy ảnh báo chí hay ảnh trang bán hàng.
 - **Nhân vật dẫn chuyện "Nhịp"** (mọi mẫu): `dan: {the, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}`; `the` ∈ chao, ngac-nhien, nghi, xac-nhan, bo-ngo, tinh-toan; `huong` ∈ truoc, nghieng-trai, nghieng-phai (mặc định nghiêng về giữa màn hình theo `goc`). Bộ ảnh lấy từ `pipeline/nhan-vat/kit.json` (bắt buộc; `tttc.canh` báo Lỗi nếu cặp biểu cảm × hướng không có). Hiện ở góc dưới, bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô; chỉ góc `truoc` có chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các khoảnh khắc: `chao` khi mở chương, `ngac-nhien` trước số gây sốc, `nghi` khi đặt câu hỏi hay nguồn lạ, `xac-nhan` khi số khớp nguồn, `bo-ngo` khi nói chưa kiểm được, `tinh-toan` khi mình tự tính. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng. Tạo lại bộ nhân vật: `docs/nghien-cuu/nhan-vat-tobyflow.md`.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một

@@ -53,7 +53,9 @@ def download(item: dict, video_dir, get=requests.get) -> Path:
     if not path.exists():
         r = get(item["link"], timeout=120)
         r.raise_for_status()
-        path.write_bytes(r.content)
+        tmp = path.with_suffix(".tmp")
+        tmp.write_bytes(r.content)
+        tmp.replace(path)  # ghi nguyên tử: tải dở không để lại tệp cắt cụt bị coi là đã có
     log = d / "ghi-cong.json"
     credits = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []
     if not any(c["tep"] == path.name for c in credits):
@@ -65,6 +67,7 @@ def download(item: dict, video_dir, get=requests.get) -> Path:
 
 KHO = Path(__file__).resolve().parent.parent / "broll-kho"
 VIDEO_EXT = {".mp4", ".mov", ".webm", ".m4v", ".mkv"}
+ANH_EXT = {".jpg", ".jpeg", ".png", ".webp"}
 
 
 def _ascii(s: str) -> str:
@@ -101,8 +104,14 @@ def quet_kho(kho: Path = KHO) -> list[dict]:
 def _chuan_hoa(src: Path, out: Path, bat_dau: float = 0.0, do_dai: float | None = None, crf: int = 20) -> None:
     """1920×1080 phủ kín (cắt mép), 30 fps, H.264, bỏ tiếng."""
     cut = (["-ss", str(bat_dau)] if bat_dau else []) + (["-t", str(do_dai)] if do_dai else [])
+    zoom = ""
+    if Path(src).suffix.lower() in ANH_EXT:  # ảnh tĩnh: lặp thành clip, phóng chậm tới 108% cho đỡ đứng hình
+        if not do_dai:
+            raise ValueError("Ảnh tĩnh phải có do_dai")
+        cut = ["-loop", "1", "-framerate", "30", "-t", str(do_dai)]
+        zoom = ",zoompan=z='min(1+0.0004*on,1.08)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *cut, "-i", str(src), "-an",
-                    "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080",
+                    "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080" + zoom,
                     "-r", "30", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", str(crf), str(out)], check=True)
 
 
@@ -154,15 +163,14 @@ def soi(clip: Path, out_png, w: int = 320, h: int = 180) -> Path:
     return out
 
 
-def nhap(src: Path, video_dir, ghi_cong: str, bat_dau: float = 0.0, do_dai: float | None = None) -> Path:
+def nhap(src: Path, video_dir, ghi_cong: str, bat_dau: float = 0.0, do_dai: float | None = None, hau_to: str = "") -> Path:
     """Cắt clip từ kho vào V/broll/: 1920×1080 phủ kín (cắt mép), 30 fps, H.264, bỏ tiếng; ghi công một lần."""
     if not ghi_cong.strip():
         raise ValueError("B-roll phải có ghi công (vd 'Video: Tên tác giả trên Pexels')")
     src = Path(src)
     d = Path(video_dir) / "broll"
     d.mkdir(parents=True, exist_ok=True)
-    # shortcut: tên ra theo tên clip gốc, một clip chỉ dùng một đoạn mỗi video; cần nhiều đoạn thì thêm hậu tố
-    out = d / f"{_slug(src.stem)}.mp4"
+    out = d / f"{_slug(src.stem)}{hau_to}.mp4"  # hau_to: lấy nhiều đoạn khác nhau từ cùng một clip
     _chuan_hoa(src, out, bat_dau, do_dai)
     log = d / "ghi-cong.json"
     credits = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []

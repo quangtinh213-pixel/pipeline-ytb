@@ -56,7 +56,9 @@ def test_kiem_warns_on_slow_pace():
 
 def test_kiem_passes_channel_like_profile():
     m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
-    assert [e for e in cl.kiem(m) if "độ khô" not in e] == []  # mẫu cũ chỉ có một phông nên bị báo độ khô, đúng ý đo
+    loi = [e for e in cl.kiem(m) if "độ khô" not in e]  # mẫu cũ chỉ có một phông nên bị báo độ khô, đúng ý đo
+    # mẫu kênh cũ (70% đồ họa) nay bị báo hai tỉ lệ: user chốt ưu tiên ảnh thật và b-roll
+    assert len(loi) == 2 and "Đồ họa" in loi[0] and "đời thật" in loi[1]
     assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 180 <= m["toc_do"] <= 230
 
 
@@ -117,3 +119,9 @@ def test_camera_threshold_matches_director_rule():
 
 def test_old_callers_without_director_files_still_work():
     assert "do_kho" in cl.do(_canh(["minh-hoa"], [3]), _timing(3, 8))
+
+
+def test_kiem_ti_le_uu_tien_doi_that():
+    maus = ["b-roll"] * 5 + ["trich-bao", "so-lon", "b-roll", "bieu-do", "minh-hoa"]  # 60% đời thật, b-roll liền nhau
+    m = cl.do(_canh(maus * 2, [3.5] * 20), _timing(70, 234))
+    assert not [e for e in cl.kiem(m) if "Đồ họa" in e or "đời thật" in e or "liền cùng" in e]

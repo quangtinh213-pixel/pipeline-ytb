@@ -178,3 +178,13 @@ def test_soi_makes_three_frame_strip(tmp_path):
     from PIL import Image
     out = broll.soi(_clip(tmp_path / "a.mp4", secs=2, audio=False), tmp_path / "soi.jpg")
     assert Image.open(out).size == (3 * 320, 180)
+
+
+def test_nhap_anh_tinh_thanh_clip(tmp_path):
+    from PIL import Image
+    src = tmp_path / "tiem-dien-thoai.jpg"
+    Image.new("RGB", (800, 600), "red").save(src)
+    out = broll.nhap(src, tmp_path / "v", ghi_cong="Ảnh: A trên Wikimedia Commons", do_dai=2)
+    assert out.suffix == ".mp4" and abs(broll._duration(out) - 2) < 0.2
+    with pytest.raises(ValueError):
+        broll.nhap(src, tmp_path / "v2", ghi_cong="Ảnh: A")
