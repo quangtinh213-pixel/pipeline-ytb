@@ -37,17 +37,19 @@ def test_kiem_rejects_accent_equal_to_semantic_colour_and_low_contrast():
 
 def test_kiem_warns_black_yellow_pair_only_for_a_new_identity():
     th = theme.load()
-    assert not any("đen–vàng" in m for m in theme.kiem(th))  # theme hiện tại là bản sao của hiện trạng
+    assert not any("đen–vàng" in m for m in theme.kiem(th))  # nhận diện Nhịp Công Nghệ không còn cặp đen–vàng
+    th = {**th, "nen": "#111111", "nhan": ["#FFC800", "#E0B000", "#C79C00"], "ten": "hien-tai"}
+    assert not any("đen–vàng" in m for m in theme.kiem(th))  # bản cũ tên hien-tai được miễn
     th["ten"] = "kenh-moi"
     assert any(m.startswith("Cảnh báo") and "đen–vàng" in m for m in theme.kiem(th))
 
 
 def test_derived_constants_match_current_code():
-    assert theme.VANG == ("#FFC800", "#E0B000", "#C79C00") and theme.SAC["xanh"][0] == "#00D084"
+    assert theme.VANG == ("#22D3EE", "#10A8C4", "#0B7F96") and theme.SAC["xanh"][0] == "#00D084"  # nhấn ngọc lam của Nhịp Công Nghệ
 
 
 def test_brand_colors_are_the_svg_palette():
-    assert theme.brand_colors() == {"#111111", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#FFC800", "#E0B000", "#C79C00"}
+    assert theme.brand_colors() == {"#08181C", "#FFFFFF", "#BDBDBD", "#6E6E6E", "#2A2A2A", "#22D3EE", "#10A8C4", "#0B7F96"}
 
 
 def test_ap_dung_runs_generators_then_checks_theme():

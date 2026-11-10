@@ -1,6 +1,6 @@
 from PIL import Image, ImageStat
 
-from tttc import thumb
+from tttc import theme, thumb
 
 
 def test_make_sizes(tmp_path):
@@ -12,7 +12,7 @@ def test_make_sizes(tmp_path):
 def test_make_uses_brand_colors(tmp_path):
     big, _ = thumb.make([("ĐỦ?", "yellow")], tmp_path / "t.png")
     colors = {c for _, c in Image.open(big).convert("RGB").getcolors(1_000_000)}
-    assert (17, 17, 17) in colors and (255, 200, 0) in colors
+    assert theme.rgb(theme.TH["nen"]) in colors and theme.rgb(theme.TH["nhan"][0]) in colors
 
 
 def test_make_with_background_darkens(tmp_path):
@@ -70,8 +70,9 @@ def test_chia_doi_uses_brand_yellow_in_label_area(tmp_path):
                               DONG, tmp_path / "t.png")
     bottom = Image.open(small).convert("RGB").crop((0, 66, 168, 94))
     px = bottom.load()
-    yellow = sum(1 for x in range(168) for y in range(28) if px[x, y][0] > 200 and px[x, y][1] > 150 and px[x, y][2] < 80)
-    assert yellow / (168 * 28) >= 0.12
+    ar, ag, ab = theme.rgb(theme.TH["nhan"][0])
+    accent = sum(1 for x in range(168) for y in range(28) if abs(px[x, y][0] - ar) + abs(px[x, y][1] - ag) + abs(px[x, y][2] - ab) < 60)
+    assert accent / (168 * 28) >= 0.12  # vùng nhãn dùng màu nhấn của theme
 
 
 def test_chia_doi_without_left_image_splits_right_image(tmp_path):

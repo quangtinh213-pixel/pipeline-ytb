@@ -1,23 +1,65 @@
 {
-  "ten": "hien-tai",
-  "nen": "#111111",
-  "nen_sang": "#1F1F1F",
+  "ten": "Nhịp Công Nghệ",
+  "nen": "#08181C",
+  "nen_sang": "#0F2830",
   "muc": "#FFFFFF",
-  "muted": "#BDBDBD",
-  "duong": "#2A2A2A",
-  "thanh": "#4A4A4A",
-  "nhan": ["#FFC800", "#E0B000", "#C79C00"],
-  "chu_tren_nhan": "#111111",
-  "vang_nen": {"muted": "#4A3A00"},
-  "kem": {"nen": "#FBF6EC", "nen_2": "#EFE6D3", "lot": "#E9DFCB", "muc": "#111111", "muted": "#5C5548",
-          "duong": "#D9CFBC", "thanh": "#BDB3A0"},
-  "sac": {
-    "xanh": ["#00D084", "#00A368", "#007A4D", "#111111"],
-    "do": ["#FF4D4D", "#CC3333", "#9E2626", "#FFFFFF"],
-    "lam": ["#2979FF", "#1C54B2", "#143F85", "#FFFFFF"],
-    "tim": ["#7C4DFF", "#5C35C7", "#44279A", "#FFFFFF"]
+  "muted": "#A9C4CB",
+  "duong": "#16363F",
+  "thanh": "#35606B",
+  "nhan": [
+    "#22D3EE",
+    "#10A8C4",
+    "#0B7F96"
+  ],
+  "chu_tren_nhan": "#08181C",
+  "vang_nen": {
+    "muted": "#05505E"
   },
-  "ve": {"ink": "#111111", "trang": "#FFFFFF", "sang": "#BDBDBD", "vua": "#6E6E6E", "toi": "#2A2A2A"},
-  "duyet": {"khung": "#1A1A1A", "loi": "#FF6B6B"},
+  "kem": {
+    "nen": "#FBF6EC",
+    "nen_2": "#EFE6D3",
+    "lot": "#E9DFCB",
+    "muc": "#111111",
+    "muted": "#5C5548",
+    "duong": "#D9CFBC",
+    "thanh": "#BDB3A0"
+  },
+  "sac": {
+    "xanh": [
+      "#00D084",
+      "#00A368",
+      "#007A4D",
+      "#111111"
+    ],
+    "do": [
+      "#FF4D4D",
+      "#CC3333",
+      "#9E2626",
+      "#FFFFFF"
+    ],
+    "lam": [
+      "#2979FF",
+      "#1C54B2",
+      "#143F85",
+      "#FFFFFF"
+    ],
+    "tim": [
+      "#7C4DFF",
+      "#5C35C7",
+      "#44279A",
+      "#FFFFFF"
+    ]
+  },
+  "ve": {
+    "ink": "#08181C",
+    "trang": "#FFFFFF",
+    "sang": "#BDBDBD",
+    "vua": "#6E6E6E",
+    "toi": "#2A2A2A"
+  },
+  "duyet": {
+    "khung": "#1A1A1A",
+    "loi": "#FF6B6B"
+  },
   "font": "Inter"
 }

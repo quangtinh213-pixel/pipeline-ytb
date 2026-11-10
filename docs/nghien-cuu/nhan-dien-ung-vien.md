@@ -35,3 +35,6 @@ Chưa làm: so với thumbnail 8–10 kênh công nghệ Việt khác (công c�
 - Tính cách: điềm tĩnh, hay hoài nghi có lý lẽ; "chớp xung" khi gặp con số lạ, gật nhẹ khi nguồn khớp; không ba hoa.
 - Bộ biểu cảm (kit): `chao`, `ngac-nhien`, `nghi` (giữ tên cũ để cảnh cũ vẫn chạy) cộng `xac-nhan` (số khớp nguồn) và `bo-ngo` (chưa kiểm được); các hướng nhìn `truoc`, `nghieng-trai`, `nghieng-phai`, `ngang`; mỗi cặp biểu cảm × hướng có ảnh nhắm mắt (mắt LED tắt một nhịp) để chớp.
 - "Túi" hiện tại (khối vàng xếp tầng, gần giống phong cách Mọt về màu) sẽ được thay khi bộ nhân vật mới tạo xong; đến lúc đó `kit.json` chưa có thì mẫu cảnh vẫn dùng Túi.
+
+## 4. Giọng (chọn 10/11/2026)
+Nghe thử Mai Anh, Thùy Dung, Minh Triết, Quang Sơn và Quốc Tuấn; bạn **giữ Quốc Tuấn** (giữ `vieneu.voice`, không cần đo lại tốc độ). Chưa so với giọng kênh mẫu.
