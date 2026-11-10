@@ -32,12 +32,12 @@ def tep(the: str, huong: str, nham: bool = False) -> str:
 # ---- Lời nhắc tạo bộ nhân vật bằng mô hình ảnh (TobyFlow/Flow). Nhân vật "Nhịp": brief đã được người dùng duyệt 10/11/2026
 # (docs/nghien-cuu/nhan-dien-ung-vien.md mục 3). Biểu cảm × góc → kit.json; mô tả bằng tiếng Anh vì mô hình ảnh hiểu tốt hơn.
 BIEU_CAM = {
-    "chao": "friendly greeting: eyes are two bright accent-colour arcs, small smile line, antenna dot glowing",
-    "ngac-nhien": "surprised: eyes are two wide bright circles, mouth a small open oval, antenna dot flaring",
-    "nghi": "sceptical: one eye a flat bar and the other a small circle, mouth a flat line, antenna tilted",
-    "xac-nhan": "confirming: eyes are happy curved lines, mouth a gentle smile, a tiny check-mark glow on the screen corner",
-    "bo-ngo": "uncertain: eyes are two small dots at different heights, mouth a wavy line, a faint question-mark glow",
-    "tinh-toan": "calculating: eyes are two thin horizontal scanning lines, mouth a short dash, antenna dot pulsing",
+    "chao": "friendly greeting: eyes are two bright accent-colour arcs, small smile line, antenna dot bright",
+    "ngac-nhien": "surprised: eyes are two wide bright circles, mouth a small open oval, antenna dot slightly bigger",
+    "nghi": "sceptical: one eye a flat bar and the other a small circle, mouth a flat line, antenna bent sideways",
+    "xac-nhan": "confirming: eyes are happy curved lines, mouth a gentle smile, a small check mark drawn inside the screen corner",
+    "bo-ngo": "uncertain: eyes are two small dots at different heights, mouth a wavy line, a small question mark drawn inside the screen only",
+    "tinh-toan": "calculating: eyes are two thin horizontal scanning lines, mouth a short dash, antenna dot normal size",
 }
 GOC = {
     "truoc": "front view, facing the camera directly",
@@ -56,7 +56,7 @@ BRIEF = (
 
 NGAN = ("The same small cube-robot mascot Nhip as in the reference images (keep the exact design, proportions, colours and outlines), "
         "isometric flat vector look, plain solid uniform bright chroma-key green background, character centred and fully visible, "
-        "no text, no logo, no real person, no watermark.")
+        "no text, no logo, no real person, no watermark, no glow, no halo, no rays, no extra effects outside the body.")
 
 
 def tao_prompt(the: str, huong: str, nham: bool = False, ngan: bool = False) -> str:

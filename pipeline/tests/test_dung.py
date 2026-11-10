@@ -411,6 +411,7 @@ def _kit_png(tmp_path, monkeypatch, nham):
     d.mkdir()
     for n in ("chao-nghieng-trai", "chao-nghieng-trai-nham"):
         Image.new("RGBA", (40, 60), (255, 200, 0, 255)).save(d / f"{n}.png")
+    Image.new("RGBA", (40, 60), (255, 0, 0, 255)).save(d / "khong-dung.png")
     (d / "kit.json").write_text(json.dumps({"the": ["chao"], "huong": ["nghieng-trai"], "dang": [["chao", "nghieng-trai"]],
                                            "nham": [["chao", "nghieng-trai"]] if nham else []}), encoding="utf-8")
     monkeypatch.setattr(nhan_vat, "KIT", d / "kit.json")
@@ -422,6 +423,7 @@ def test_compose_uses_kit_png_with_default_direction_and_blink(video, tmp_path, 
     html = (out / "index.html").read_text(encoding="utf-8")
     assert 'src="assets/nv/chao-nghieng-trai.png"' in html and 'id="dan-1-nham" src="assets/nv/chao-nghieng-trai-nham.png"' in html
     assert (out / "assets" / "nv" / "chao-nghieng-trai.png").exists() and "assets/svg/tui-" not in html.split("<style")[0]
+    assert not (out / "assets" / "nv" / "khong-dung.png").exists()  # chỉ chép ảnh mà cảnh thật sự dùng
 
 
 def test_compose_kit_without_blink_pair_omits_blink_image_and_script(video, tmp_path, monkeypatch):

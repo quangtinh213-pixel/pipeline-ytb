@@ -49,3 +49,10 @@ def test_short_prompt_relies_on_references_but_keeps_hard_rules():
     for must in ("no text", "no logo", "no real person", "reference", nhan_vat.BIEU_CAM["nghi"], nhan_vat.GOC["ngang"], "chroma-key green"):
         assert must in short
     assert "eyes closed" in nhan_vat.tao_prompt("nghi", "truoc", nham=True, ngan=True)
+
+
+def test_expressions_have_no_glow_halos_that_pick_up_the_green_background():
+    for the, mo_ta in nhan_vat.BIEU_CAM.items():
+        low = mo_ta.lower()
+        assert not any(w in low for w in ("glow", "flaring", "pulsing", "halo", "ring", "wave", "ray")), the
+    assert "no glow" in nhan_vat.tao_prompt("ngac-nhien", "truoc", ngan=True)

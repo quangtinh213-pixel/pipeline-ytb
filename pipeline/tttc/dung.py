@@ -313,8 +313,17 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     kit = nhan_vat.doc_kit()  # có bộ nhân vật PNG thì dùng, không thì nhân vật SVG cũ
     if kit:
         (o / "assets" / "nv").mkdir()
-        for f in nhan_vat.KIT.parent.glob("*.png"):
-            shutil.copy(f, o / "assets" / "nv" / f.name)
+        can = set()  # chỉ chép ảnh mà các cảnh trong khoảng dựng thật sự dùng (kit đầy đủ nặng hàng MB)
+        for c in scenes:
+            dn = c.get("dan")  # không dùng tên d: đó là thư mục video
+            if dn:
+                hg = dn.get("huong") or nhan_vat.huong_mac_dinh(dn.get("goc", "phai"))
+                can.add(nhan_vat.tep(dn["the"], hg))
+                if [dn["the"], hg] in kit["nham"]:
+                    can.add(nhan_vat.tep(dn["the"], hg, True))
+        for n in can:
+            if (nhan_vat.KIT.parent / n).exists():
+                shutil.copy(nhan_vat.KIT.parent / n, o / "assets" / "nv" / n)
     nhac = _read_json(CONFIG, {}).get("nhac_nen")
     if nhac and not (PIPE / nhac).is_file():
         raise FileNotFoundError(f"Không thấy nhạc nền {nhac} (config.json:nhac_nen)")
