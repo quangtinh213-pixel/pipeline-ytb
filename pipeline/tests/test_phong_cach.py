@@ -182,12 +182,13 @@ def test_main_exit_code_follows_errors(tmp_path, capsys):
 
 
 BASELINE = [Path(__file__).resolve().parents[2] / "videos" / v for v in
-            ("2026-11-15-nvidia-siet-chip/kich-ban-v2.md", "2026-11-13-goi-ai-dang-tien/kich-ban.md")]
+            ("2026-11-15-nvidia-siet-chip/kich-ban-v2.md", "2026-11-11-cam-nhap-may-cu/kich-ban.md")]
 
 
-@pytest.mark.skipif(not all(p.exists() for p in BASELINE), reason="kịch bản đã duyệt không có trong máy này")
 @pytest.mark.parametrize("p", BASELINE, ids=lambda p: p.parent.name)
 def test_approved_scripts_stay_clean(p):
+    if not p.exists():
+        pytest.skip("kịch bản đã duyệt không có trong máy này")
     assert phong_cach.kiem(p.read_text(encoding="utf-8")) == []
 
 

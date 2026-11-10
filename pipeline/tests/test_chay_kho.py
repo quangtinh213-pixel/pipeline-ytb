@@ -10,7 +10,8 @@ def _unmet(d, n):
     return [m for m in chay_kho.kiem(d) if m.startswith(f"Chưa đạt {n}:")]
 
 
-def test_criterion_1_duyet_2_after_15h_is_unmet(tmp_path):
+def test_criterion_1_duyet_2_after_15h_is_unmet(tmp_path, monkeypatch):
+    monkeypatch.setattr(tt, "review_current", lambda *_: True)
     tt.set_step(tmp_path, "duyet-2", "da-duyet", now=datetime(2026, 11, 10, 15, 20, tzinfo=VN))
     assert _unmet(tmp_path, 1)
     tt.set_step(tmp_path, "duyet-2", "da-duyet", now=datetime(2026, 11, 10, 14, 50, tzinfo=VN))
@@ -18,6 +19,7 @@ def test_criterion_1_duyet_2_after_15h_is_unmet(tmp_path):
 
 
 def test_criterion_1_unmet_while_review_2_not_done(tmp_path):
+    tt.set_step(tmp_path, "duyet-2", "cho-duyet", now=datetime(2026, 11, 10, 14, 0, tzinfo=VN))
     assert _unmet(tmp_path, 1)
 
 
@@ -27,12 +29,14 @@ def test_criterion_2_manual_interventions(tmp_path):
     assert _unmet(tmp_path, 2) and "1" in _unmet(tmp_path, 2)[0]
 
 
-def test_criterion_5_every_step_needs_an_end_time(tmp_path):
+def test_criterion_5_every_step_needs_start_and_end_times(tmp_path):
     for s in tt.STEPS[: tt.STEPS.index("duyet-2") + 1]:
-        tt.set_step(tmp_path, s, "xong", now=datetime(2026, 11, 10, 10, 0, tzinfo=VN))
+        tt.set_step(tmp_path, s, "dang-chay", now=datetime(2026, 11, 10, 9, 0, tzinfo=VN))
+        status = "da-duyet" if s in ("duyet-1", "duyet-2") else "xong"
+        tt.set_step(tmp_path, s, status, now=datetime(2026, 11, 10, 10, 0, tzinfo=VN))
     assert not _unmet(tmp_path, 5)
     steps = tt.load(tmp_path)
-    steps["steps"]["giong"].pop("ket_thuc")
+    steps["steps"]["giong"].pop("bat_dau")
     (tmp_path / "trang-thai.json").write_text(__import__("json").dumps(steps), encoding="utf-8")
     assert _unmet(tmp_path, 5) and "giong" in _unmet(tmp_path, 5)[0]
 

@@ -21,15 +21,23 @@ def _json(p: Path):
 
 def _msgs_chat_luong(d: Path) -> list[str] | None:
     canh, timing = _json(d / "canh.json"), _json(d / "giong-timing.json")
-    return None if canh is None or timing is None else chat_luong.kiem(chat_luong.do(canh, timing))
+    if canh is None or timing is None:
+        return None
+    return chat_luong.kiem(chat_luong.do(canh, timing, _json(d / "dao-dien.json"), _json(d / "dao-dien-cham.json")))
 
 
 def _c1(d: Path):
-    kt = tt.load(d)["steps"]["duyet-2"].get("ket_thuc")
-    if not kt:
-        return "Chưa đạt 1: duyệt 2 chưa xong (chưa có giờ kết thúc)"
-    t = datetime.fromisoformat(kt).astimezone(tt.VN)
-    if (t.hour, t.minute) > HAN:
+    steps = tt.load(d)["steps"]
+    step = steps["duyet-2"]
+    if step["status"] != "da-duyet" or not step.get("ket_thuc"):
+        return "Chưa đạt 1: chưa duyệt 2 hoặc thiếu giờ duyệt"
+    if not tt.review_current(d, "duyet-2"):
+        return "Chưa đạt 1: hồ sơ duyệt 2 thiếu biên nhận hoặc tệp đã thay đổi"
+    t = datetime.fromisoformat(step["ket_thuc"]).astimezone(tt.VN)
+    start = steps["chu-de"].get("bat_dau")
+    if start and t.date() != datetime.fromisoformat(start).astimezone(tt.VN).date():
+        return "Chưa đạt 1: chọn đề và duyệt 2 phải cùng ngày"
+    if (t.hour, t.minute) >= HAN:
         return f"Chưa đạt 1: duyệt 2 xong lúc {t:%H:%M}, mục tiêu trước 15:00"
 
 
@@ -73,12 +81,17 @@ def _c4(d: Path):
 
 def _c5(d: Path):
     steps = tt.load(d)["steps"]
-    thieu = [s for s in tt.STEPS[: tt.STEPS.index("duyet-2") + 1] if "ket_thuc" not in steps[s]]
+    thieu = [s for s in tt.STEPS[: tt.STEPS.index("duyet-2") + 1]
+             if steps[s]["status"] != ("da-duyet" if s in ("duyet-1", "duyet-2") else "xong")
+             or not all(steps[s].get(k) for k in ("bat_dau", "ket_thuc"))
+             or datetime.fromisoformat(steps[s]["ket_thuc"]) < datetime.fromisoformat(steps[s]["bat_dau"])]
     if thieu:
-        return "Chưa đạt 5: thiếu giờ kết thúc ở các bước " + ", ".join(thieu)
+        return "Chưa đạt 5: bước chưa xong hoặc thiếu mốc giờ hợp lệ: " + ", ".join(thieu)
 
 
 def _c6(d: Path):
+    if not (d / "dao-dien-cham.json").is_file():
+        return "Chưa đạt 6: thiếu hồ sơ giám khảo hình ảnh"
     ds = [m for m in (_msgs_chat_luong(d) or []) if "độ khô" in m]  # chỉ số của kế hoạch hình ảnh; chưa có thì không có thông báo
     if ds:
         return "Chưa đạt 6: " + "; ".join(ds)

@@ -37,15 +37,21 @@ def do_kho(canh: dict, dao_dien: dict | None = None, cham: dict | None = None) -
     có dao-dien-cham.json (điểm giám khảo 1–5) thì thêm điểm."""
     sc = canh["scenes"]
     mh = [c for c in sc if c["mau"] == "minh-hoa"]
-    phong = [c.get("san_khau", "nen-dat") for c in mh]
+    phong = [c.get("san_khau", "nen-dat") if c["mau"] == "minh-hoa" else None for c in sc]
     chay = best = 0
     prev = None
     for p in phong:
-        chay = chay + 1 if p == prev else 1
+        chay = 0 if p is None else chay + 1 if p == prev else 1
         best, prev = max(best, chay), p
-    lap = sum(bool(c.get("svg")) and c["svg"] in {x.get("svg") for x in mh[max(0, i - 7):i]} for i, c in enumerate(mh))
-    out = {"so_phong": len(set(phong)), "phong_lien_max": best, "vat_chinh_lap": lap,
-           "ti_le_may_quay": sum(c.get("may_quay") not in (None, "", "dung") for c in sc) / len(sc) if sc else 0.0}
+    lap = sum(c["mau"] == "minh-hoa" and bool(c.get("svg")) and
+              any(x["mau"] == "minh-hoa" and x.get("svg") == c["svg"] for x in sc[max(0, i - 7):i])
+              for i, c in enumerate(sc))
+    clip_lap = sum(c["mau"] == "b-roll" and bool(c.get("video")) and
+                   any(x["mau"] == "b-roll" and x.get("video") == c["video"] for x in sc[max(0, i - 7):i])
+                   for i, c in enumerate(sc))
+    out = {"so_phong": len(set(phong) - {None}), "so_canh_minh_hoa": len(mh), "phong_lien_max": best,
+           "vat_chinh_lap": lap, "clip_lap": clip_lap,
+           "ti_le_may_quay": sum(c.get("may_quay") not in (None, "", "dung") for c in mh) / len(mh) if mh else 0.0}
     if dao_dien is not None:
         mau = {c["id"]: c["mau"] for c in sc}
         thieu = 0
@@ -117,14 +123,18 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
         out.append(f"Cảnh báo: Tốc độ đọc {so_do['toc_do']:.0f} từ/phút, chuẩn {lo}–{hi}")
     k, m = so_do.get("do_kho"), muc["do_kho"]
     if k:
-        if k["so_phong"] < m["phong_min"]:
-            out.append(f"Cảnh báo: độ khô: {k['so_phong']} phông khác nhau, cần ≥ {m['phong_min']}")
+        so_minh_hoa = k.get("so_canh_minh_hoa", m["phong_min"])
+        phong_min = min(m["phong_min"], so_minh_hoa)
+        if k["so_phong"] < phong_min:
+            out.append(f"Cảnh báo: độ khô: {k['so_phong']} phông khác nhau, cần ≥ {phong_min}")
         if k["phong_lien_max"] > m["phong_lien_max"]:
             out.append(f"Cảnh báo: độ khô: {k['phong_lien_max']} cảnh liền cùng phông (tối đa {m['phong_lien_max']})")
         if k["vat_chinh_lap"] > m["lap_max"]:
             out.append(f"Cảnh báo: độ khô: {k['vat_chinh_lap']} cảnh lặp hình chính trong cửa sổ 8 cảnh")
-        if k["ti_le_may_quay"] < m["may_quay_min"]:
-            out.append(f"Cảnh báo: độ khô: chỉ {k['ti_le_may_quay']:.0%} cảnh có camera, chuẩn ≥ {m['may_quay_min']:.0%}")
+        if so_minh_hoa and k["ti_le_may_quay"] < m["may_quay_min"]:
+            out.append(f"Cảnh báo: độ khô: chỉ {k['ti_le_may_quay']:.0%} cảnh minh họa có camera, chuẩn ≥ {m['may_quay_min']:.0%}")
+        if k.get("clip_lap"):
+            out.append(f"Cảnh báo: độ khô: {k['clip_lap']} cảnh dùng lại cùng tệp b-roll trong cửa sổ 8 cảnh")
         if k.get("trong_diem_thieu"):
             out.append(f"Cảnh báo: độ khô: {k['trong_diem_thieu']} cảnh trọng điểm thiếu ẩn dụ hoặc camera")
         if k.get("nhip_cam_xuc_du") is False:

@@ -1,4 +1,5 @@
 """Sổ trạng thái của một video: videos/<slug>/trang-thai.json."""
+import hashlib
 import json
 import os
 import sys
@@ -44,6 +45,9 @@ def set_step(video_dir, step: str, status: str, note: str = "", now: datetime | 
     t = (now or datetime.now(VN)).isoformat()
     data = load(video_dir)
     cur = {**data["steps"][step], "status": status, "note": note}  # giữ bat_dau/ket_thuc đã có
+    if step in ("duyet-1", "duyet-2"):
+        cur.pop("ban_duyet", None)
+        cur.pop("chon", None)
     if status == "dang-chay" and data["steps"][step].get("status") != "dang-chay":
         cur["bat_dau"] = t
         cur.pop("ket_thuc", None)
@@ -63,8 +67,12 @@ def gio(video_dir) -> dict:
 
 
 def set_field(video_dir, key: str, value) -> None:
+    set_fields(video_dir, **{key: value})
+
+
+def set_fields(video_dir, **fields) -> None:
     data = load(video_dir)
-    data[key] = value
+    data.update(fields)
     _save(video_dir, data)
 
 
@@ -87,8 +95,8 @@ def kho(videos_root) -> list[Path]:
         if not (d / FILE).exists():
             continue
         data = load(d)
-        if (data.get("loai") == "evergreen" and data["steps"]["duyet-2"]["status"] == "da-duyet"
-                and data["steps"]["dang"]["status"] != "xong"):
+        if (data.get("loai") == "evergreen" and not data.get("video_id")
+                and data["steps"]["dang"]["status"] != "xong" and review_current(d, "duyet-2")):
             out.append(d)
     return out
 
@@ -98,8 +106,93 @@ def is_approved(video_dir) -> bool:
     return all(steps[s]["status"] == "da-duyet" for s in ("duyet-1", "duyet-2"))
 
 
+def _digest(path: Path) -> str:
+    with path.open("rb") as f:
+        return hashlib.file_digest(f, "sha256").hexdigest()
+
+
+def _review_files(video_dir, step: str, state: dict) -> dict:
+    d = Path(video_dir)
+    if step == "duyet-1":
+        sources = json.loads((d / "nguon.json").read_text(encoding="utf-8"))
+        files = ["kich-ban.md", "nguon.json", "nghe-thu.mp3", *(s["anh_chup"] for s in sources if s.get("anh_chup"))]
+        return {name: _digest(d / name) for name in files}
+    if step != "duyet-2":
+        raise ValueError(f"Bước duyệt không hợp lệ: {step}")
+    if not review_current(d, "duyet-1"):
+        raise ValueError("Kịch bản hoặc nguồn thay đổi, cần duyệt 1 lại")
+    package = json.loads((d / "dong-goi.json").read_text(encoding="utf-8"))
+    package.pop("shorts", None)  # Shorts được làm và xác nhận riêng sau video dài.
+    return {
+        "duyet-1": state["steps"]["duyet-1"]["ket_thuc"],
+        "final.mp4": _digest(d / "final.mp4"),
+        "phu-de.srt": _digest(d / "phu-de.srt"),
+        "dong-goi": package,
+        "thumbnails": [_digest(d / opt["file_thumb"]) for opt in package["phuong_an"]],
+    }
+
+
+def review_current(video_dir, step: str) -> bool:
+    state = load(video_dir)
+    cur = state["steps"][step]
+    if cur["status"] != "da-duyet" or "ban_duyet" not in cur:
+        return False
+    try:
+        return (cur["ban_duyet"] == _review_files(video_dir, step, state)
+                and (step != "duyet-2" or cur["chon"] == state.get("chon")))
+    except (OSError, ValueError, KeyError):
+        return False
+
+
+def prepare_review(video_dir, step: str) -> None:
+    state = load(video_dir)
+    if state.get("video_id"):
+        raise ValueError("Video đã có ID YouTube, chỉ dùng hồ sơ này để đối chiếu")
+    if step == "duyet-2":
+        from tttc.dung import check_av
+
+        if any(state["steps"][s]["status"] != "xong" for s in ("giong", "render", "dong-goi")):
+            raise ValueError("Cần hoàn tất giọng, render và đóng gói trước khi gửi duyệt 2")
+        d = Path(video_dir)
+        if errors := check_av(d / "final.mp4", d / "giong.mp3"):
+            raise ValueError("Kiểm hình–tiếng chưa đạt: " + " / ".join(errors))
+    snapshot = _review_files(video_dir, step, state)
+    cur = state["steps"][step]
+    cur.update(status="cho-duyet", ban_duyet=snapshot)
+    cur.pop("ket_thuc", None)
+    _save(video_dir, state)
+
+
+def approve_review(video_dir, step: str, choice: int | None = None) -> None:
+    state = load(video_dir)
+    cur = state["steps"][step]
+    if cur["status"] != "cho-duyet" or cur.get("ban_duyet") != _review_files(video_dir, step, state):
+        raise ValueError("Bản gửi duyệt đã thay đổi hoặc chưa được gửi, hãy tạo lại trang duyệt")
+    if step == "duyet-2":
+        if choice is None or not 1 <= choice <= len(cur["ban_duyet"]["thumbnails"]):
+            raise ValueError("Chọn một phương án tiêu đề và thumbnail đã gửi")
+        cur["chon"] = state["chon"] = choice
+    else:
+        from tttc.kiem import check
+
+        d = Path(video_dir)
+        errors = check((d / "kich-ban.md").read_text(encoding="utf-8"),
+                       json.loads((d / "nguon.json").read_text(encoding="utf-8")))
+        if errors:
+            raise ValueError("Kiểm nguồn chưa đạt:\n" + "\n".join(errors))
+        for s in STEPS[STEPS.index("giong"):STEPS.index("duyet-2") + 1]:
+            state["steps"][s] = {"status": "chua-chay", "note": ""}
+        state.pop("chon", None)
+    cur.update(status="da-duyet", ket_thuc=datetime.now(VN).isoformat())
+    _save(video_dir, state)
+
+
 if __name__ == "__main__" and len(sys.argv) == 3 and sys.argv[1] == "gio":
     g = gio(sys.argv[2])
     for k, v in g["buoc"].items():
         print(f"{k}: {v // 60:02}:{v % 60:02}")
     print("tổng:", "chưa đủ mốc" if g["tong"] is None else f"{g['tong'] // 3600}h{g['tong'] % 3600 // 60:02}")
+elif __name__ == "__main__" and len(sys.argv) == 4 and sys.argv[1] == "gui-duyet":
+    prepare_review(sys.argv[2], sys.argv[3])
+elif __name__ == "__main__" and len(sys.argv) in (4, 5) and sys.argv[1] == "duyet":
+    approve_review(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) == 5 else None)

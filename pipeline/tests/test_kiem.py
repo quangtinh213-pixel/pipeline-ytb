@@ -52,7 +52,8 @@ def test_unverified_source_blocked():
 
 
 def test_number_words_ok():
-    assert check("Gói Plus giá năm trăm hai mươi hai nghìn đồng. [#p1]", NGUON) == []
+    assert check("Gói Plus giá năm trăm hai mươi hai nghìn năm trăm đồng. [#p1]", NGUON) == []
+    assert check("Gói Plus giá năm trăm hai mươi hai nghìn đồng. [#p1]", NGUON)
 
 
 def test_dates_times_and_small_counts_ignored():
@@ -89,8 +90,17 @@ def test_wrong_scale_rejected():
 
 def test_spoken_number_words_need_source():
     errs = check("Apple mất ba nghìn tỷ đô.", NGUON)
-    assert errs and "chữ" in errs[0]
-    assert check("Apple mất ba nghìn tỷ đô. [#p1]", NGUON) == []
+    assert errs and "không có nguồn" in errs[0]
+    assert check("Apple mất ba nghìn tỷ đô. [#p1]", NGUON)
+
+
+def test_checks_spoken_decimal_and_currency():
+    source = [dict(NGUON[0], gia_tri="15,89 triệu đồng")]
+    assert check("Giá mười lăm phẩy tám chín triệu đồng. [#p1]", source) == []
+    assert check("Giá mười bảy triệu đồng. [#p1]", source)
+    assert check("Giá 15,89 triệu USD. [#p1]", source)
+    assert check("Giá mười lăm triệu tám trăm chín mươi nghìn đồng. [#p1]", source) == []
+    assert check("Giá 15,89 triệu đồng. [#p1] Một câu khác.", source) == []
 
 
 def test_english_decimal_with_unit_flagged():

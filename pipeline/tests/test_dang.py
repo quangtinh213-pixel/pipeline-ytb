@@ -3,7 +3,7 @@ import json
 
 import pytest
 
-from tttc import dang
+from tttc import dang, dung
 from tttc import trang_thai as tt
 
 GOI = {
@@ -61,21 +61,29 @@ class FakeYT:
 
 
 @pytest.fixture
-def video(tmp_path):
+def video(tmp_path, monkeypatch):
+    monkeypatch.setattr(dung, "check_av", lambda *_: [])
     d = tmp_path / "videos" / "2099-11-13-goi-ai"
     (d / "thumbnails").mkdir(parents=True)
     (d / "shorts").mkdir()
     for f in ["final.mp4", "shorts/1.mp4", "thumbnails/1.png", "thumbnails/2.png"]:
         (d / f).write_bytes(b"x")
     (d / "phu-de.srt").write_text("1\n00:00:00,000 --> 00:00:01,000\nA\n\n", encoding="utf-8")
+    (d / "kich-ban.md").write_text("Kịch bản thử.", encoding="utf-8")
+    (d / "nguon.json").write_text("[]", encoding="utf-8")
+    (d / "nghe-thu.mp3").write_bytes(b"x")
     (d / "dong-goi.json").write_text(json.dumps(GOI, ensure_ascii=False), encoding="utf-8")
     tt.set_field(d, "chon", 2)
     return d
 
 
 def _approve(d):
-    tt.set_step(d, "duyet-1", "da-duyet")
-    tt.set_step(d, "duyet-2", "da-duyet")
+    tt.prepare_review(d, "duyet-1")
+    tt.approve_review(d, "duyet-1")
+    for step in ("giong", "render", "dong-goi"):
+        tt.set_step(d, step, "xong")
+    tt.prepare_review(d, "duyet-2")
+    tt.approve_review(d, "duyet-2", 2)
 
 
 def test_publish_at_converts_vn_time():
@@ -169,6 +177,55 @@ def test_upload_short_twice_uploads_once(video, tmp_path):
     dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
     dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
     assert [n for n, _ in yt.log].count("videos.insert") == 1
+    assert len(list(csv.DictReader((tmp_path / "t.csv").open(encoding="utf-8")))) == 1
+
+
+def test_short_retry_restores_tracker_after_write_failure(video, tmp_path, monkeypatch):
+    _approve(video)
+    yt, tracker = FakeYT(), tmp_path / "t.csv"
+    with monkeypatch.context() as m:
+        def fail(*args):
+            raise OSError("tracker unavailable")
+
+        m.setattr(dang, "_track", fail)
+        with pytest.raises(OSError):
+            dang.upload_short(video, 0, youtube=yt, tracker=tracker)
+    assert dang.upload_short(video, 0, youtube=yt, tracker=tracker) == "vid123"
+    assert [n for n, _ in yt.log].count("videos.insert") == 1
+    assert "vid123" in tracker.read_text()
+
+
+def test_unknown_insert_outcome_requires_studio_reconciliation(video, tmp_path, monkeypatch):
+    _approve(video)
+    yt = FakeYT()
+    tracker = tmp_path / "t.csv"
+    with monkeypatch.context() as m:
+        def lose_response(*args, **kwargs):
+            raise OSError("response lost")
+
+        m.setattr(FakeReq, "execute", lose_response)
+        with pytest.raises(OSError, match="response lost"):
+            dang.upload_short(video, 0, youtube=yt, tracker=tracker)
+    with pytest.raises(RuntimeError, match="Đối chiếu"):
+        dang.upload_short(video, 0, youtube=yt, tracker=tracker)
+    assert not yt.log
+
+
+@pytest.mark.parametrize("file", ["final.mp4", "kich-ban.md", "nguon.json", "phu-de.srt", "thumbnails/2.png"])
+def test_upload_rejects_changed_approved_asset(video, tmp_path, file):
+    _approve(video)
+    (video / file).write_bytes(b"changed")
+    yt = FakeYT()
+    with pytest.raises(PermissionError):
+        dang.upload(video, "13/11/2099", "19:00", youtube=yt, tracker=tmp_path / "t.csv")
+    assert yt.log == []
+
+
+def test_approval_rejects_changed_pending_preview(video):
+    tt.prepare_review(video, "duyet-1")
+    (video / "nghe-thu.mp3").write_bytes(b"changed")
+    with pytest.raises(ValueError, match="đã thay đổi"):
+        tt.approve_review(video, "duyet-1")
 
 
 def test_past_publish_time_refused(video):

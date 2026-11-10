@@ -177,7 +177,8 @@ def test_next_step_after_review_2_is_dang_not_shorts(tmp_path):
     assert tt.next_step(tmp_path) == "dang"
 
 
-def test_kho_lists_approved_unpublished_evergreen_only(tmp_path):
+def test_kho_lists_approved_unpublished_evergreen_only(tmp_path, monkeypatch):
+    monkeypatch.setattr(tt, "review_current", lambda d, s: tt.load(d)["steps"][s]["status"] == "da-duyet")
     def mk(name, loai, duyet2, dang):
         d = tmp_path / name
         d.mkdir()

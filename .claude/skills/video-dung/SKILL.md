@@ -1,27 +1,28 @@
 ---
 name: video-dung
-description: Chặng 2 của pipeline video của kênh – giọng ElevenLabs, chia cảnh, hình minh họa, render HyperFrames, Shorts, đóng gói tiêu đề/thumbnail/mô tả, rồi dừng ở điểm duyệt 2. Dùng khi người dùng gõ /video-dung, "dựng video", hoặc nói "duyệt phương án N" cho video đang chờ duyệt 2.
+description: Chặng 2 của pipeline video của kênh – giọng VieNeu, chia cảnh, hình minh họa, render HyperFrames, Shorts, đóng gói tiêu đề/thumbnail/mô tả, rồi dừng ở điểm duyệt 2. Dùng khi người dùng gõ /video-dung, "dựng video", hoặc nói "duyệt phương án N" cho video đang chờ duyệt 2.
 ---
 
 # /video-dung [thư mục video]
 
 Spec mục 4. Chạy Python trong `pipeline/` bằng `uv run`. V = `../videos/<slug>`.
-Mỗi bước: `set_step(V, <bước>, "xong")`; lỗi thì `set_step(V, <bước>, "loi", "<lý do>")`, dừng và báo.
+Mỗi bước: ghi `set_step(V, <bước>, "dang-chay")` trước khi làm, rồi `set_step(V, <bước>, "xong")` khi hoàn thành.
+Lỗi thì ghi `set_step(V, <bước>, "loi", "<lý do>")`, dừng và báo. Ghi giờ bắt đầu duyệt 2 trước khi chuẩn bị trang.
 
 ## 0. Điều kiện
-- `duyet-1` phải `da-duyet`. Không thì dừng: "Chạy /video-moi và duyệt kịch bản trước."
-- Người dùng nói "duyệt phương án N" cho video `duyet-2=cho-duyet`: `set_field(V, "chon", N)`,
-  `set_step(V, "duyet-2", "da-duyet")`, báo "Chạy /video-dang". Hết.
+- `trang_thai.review_current(V, "duyet-1")` phải đạt. Nếu cần, chạy /video-moi và gửi duyệt lại.
+- Khi người dùng duyệt phương án N của bản đã gửi, chạy `uv run python -m tttc.trang_thai duyet V duyet-2 N`.
+  Nếu tệp thay đổi thì gửi duyệt lại. Trong đợt chạy khô, dừng ở duyệt 2.
 - Người dùng ghi chỗ cần sửa ở duyệt 2: sửa đúng bước liên quan (cảnh → bước 2–4, tiêu đề → bước 5), chạy lại từ đó.
 - Đọc `next_step(V)`, bắt đầu từ bước chưa xong.
 
 ## 1. giong
-`uv run python -m tttc.tts V` (khoá ElevenLabs trong Keychain). Đoạn đã có thì không gọi lại (không mất tiền).
-
-**Giọng VieNeu-TTS chạy trong máy** (không tốn tiền, không cần khoá; cần `~/Documents/VieNeu-TTS` đã cài): thay cho `tttc.tts`:
+**Giọng VieNeu-TTS chạy trong máy** (cần `~/Documents/VieNeu-TTS` đã cài):
 
     uv run python -m tttc.giong_vieneu nghe-thu <thư mục> "Hải Đăng" "Thiện Minh"   # nghe thử giọng, một lần
     uv run python -m tttc.giong_vieneu V                                              # tạo giong.mp3 + giong-timing.json
+
+Khi người dùng chọn ElevenLabs, dùng `uv run python -m tttc.tts V` với khóa trong Keychain.
 
 Cấu hình trong `config.json:vieneu` (tuỳ chọn): `voice` (mặc định "Hải Đăng"), `pause_cau` (0,25 s), `pause_doan` (0,5 s),
 `python` (mặc định python của VieNeu-TTS), `phat_am` = `{"ChatGPT": "chát gi pi ti"}` đổi chữ **chỉ để gửi cho giọng đọc**
@@ -175,7 +176,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 
 ## 6. duyet-2
 - `uv run python -c "from tttc.duyet import render_review_2; print(render_review_2('V'))"`
-- `set_step(V, "duyet-2", "cho-duyet")`; gửi `duyet-2.html` (SendUserFile, render) cùng `frames/soi-hinh.png`.
+- `uv run python -m tttc.trang_thai gui-duyet V duyet-2` ngay sau khi tạo trang, trước khi gửi `duyet-2.html` và `frames/soi-hinh.png`.
 - Tóm tắt: độ dài video, số cảnh, 3 tiêu đề, cảnh báo còn lại. **Dừng.** Không tự chọn phương án.
 
 ## 7. shorts (sau khi đăng video dài, buổi tối)

@@ -90,6 +90,19 @@ def test_do_kho_defaults_missing_stage_to_nen_dat():
     assert cl.do_kho({"scenes": [_mh(0, "chip"), _mh(1, "laptop")]})["so_phong"] == 1
 
 
+def test_do_kho_separates_illustration_camera_from_broll():
+    clip = {"mau": "b-roll", "video": "one.mp4"}
+    scenes = [_mh(0, "chip", mq="day-vao"), clip, clip, _mh(3, "laptop")]
+    got = cl.do_kho({"scenes": scenes})
+    assert (got["ti_le_may_quay"], got["phong_lien_max"], got["clip_lap"]) == (0.5, 1, 1)
+
+
+def test_broll_only_does_not_require_illustration_stages():
+    result = _ok_base()
+    result["do_kho"] = cl.do_kho({"scenes": [{"mau": "b-roll", "video": "one.mp4"}]})
+    assert not [m for m in cl.kiem(result) if "độ khô" in m]
+
+
 def test_do_kho_reads_director_and_judge():
     dd = {"scenes": [{"id": "c0", "trong_diem": True, "an_du": "", "may_quay": "", "nhip_cam_xuc": "mo"},
                      {"id": "c1", "trong_diem": True, "an_du": "cái cân", "may_quay": "day-vao", "nhip_cam_xuc": "chot"}]}

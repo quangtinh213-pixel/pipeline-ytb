@@ -85,12 +85,12 @@ Hiện trạng đọc từ ba tệp SKILL và hai video đã dựng (`videos/202
 | H1 | **Ghi giờ từng bước**: `trang-thai.json` lưu thời điểm bắt đầu/kết thúc mỗi bước; có lệnh in thời lượng từng bước và tổng | Hai video hiện có chạy lại một bước bất kỳ thì ra số giờ; có báo cáo tổng từ chọn đề đến duyệt 2 |
 | H2 | **Phần cơ học của `canh.json` tự động** (mốc từ `canh-khung.json`, cảnh `chuong` ở đầu beat, `nguon_id`, `nhip`, ánh xạ biến mẫu). Phần sáng tạo (ý đồ, phông, ẩn dụ, camera) do bước đạo diễn trong `2026-11-09-chat-luong-hinh-anh-design.md` | `canh.json` sinh từ `dao-dien.json` đạt `tttc.canh` 0 lỗi và `tttc.chat_luong` 0 lỗi mà không sửa tay phần cơ học; ghi số cảnh phải sửa |
 | H3 | **Khóa kịch bản trước giọng**: giọng văn do spec 4 lo (danh sách cấm, biên tập ba lượt, phản biện 2 vòng với agy, nghe thử 60 giây); ước tính tốc độ đọc chạy trước điểm duyệt 1 | Không còn video phải làm lại giọng chỉ vì "mùi máy" hoặc độ dài |
-| H4 | **Tốc độ đọc**: chỉnh `vieneu.toc_do` và độ dài kịch bản mục tiêu để tốc độ đo thật nằm trong 180–230 từ/phút (hiện 234 và 249) | Hai video thử đo trong ngưỡng, hoặc ngưỡng được sửa có lý do ghi trong `docs/nghien-cuu/` |
+| H4 | **Tốc độ đọc**. Cổng hiện dùng 180–265 từ/phút, tính theo đơn vị tách bằng khoảng trắng. Lượt chạy lại bắt đầu ở `vieneu.toc_do=1.0`, đã đo 249 trên kịch bản Nvidia. | Đo trên giọng hoàn chỉnh của hai video mới và nghe bản thử trước duyệt 1. |
 | H5 | **Ánh xạ lại cảnh khi kịch bản đổi** sau khi đã có cảnh (video nvidia phải làm tay: `canh-remap.json`) | Một lệnh chuyển cảnh cũ sang mốc mới, báo cảnh nào cần xem lại |
 | H6 | **Shorts tách khỏi đường găng**: dựng ở khoảng tối, đăng sáng hôm sau | Chặng dựng video dài không chờ Shorts |
 | H7 | **Radar** theo mục 4.2 + đọc RSS đối thủ (`https://www.youtube.com/feeds/videos.xml?channel_id=UC91zSg_iPgJZZL6KB91BewQ`, đã chạy thử: 15 video gần nhất kèm giờ đăng và view) | Ghi `chu-de.md` đúng định dạng; mỗi video của họ được ghi vào sổ theo mục 9 |
 | H8 | **Kho dự trữ evergreen**: video đã qua duyệt 2, chưa đăng, đánh dấu `loai: evergreen` trong `trang-thai.json` | Luôn có ≥ 3 video khi chạy thật |
-| H9 | **Hạn mức YouTube**: kiểm hạn mức thật của dự án Google Cloud. `dang.py` gọi `videos.insert` cho video dài và từng Short, cộng `thumbnails.set`, `captions.insert`, `playlistItems.insert`. Theo hiểu biết của tôi (chưa kiểm) mỗi `videos.insert` tốn 1.600 đơn vị trên hạn mức mặc định 10.000/ngày, nên 1 video + 3 Shorts đã tới khoảng 6.900 | Biết con số thật; nếu không đủ cho 1 video + Shorts/ngày kèm dư để chạy lại, xin tăng hạn mức hoặc giảm Shorts |
+| H9 | **Hạn mức YouTube**. Theo [bảng chính thức của Google](https://developers.google.com/youtube/data/determine_quota_cost), `videos.insert` có hạn mức mặc định riêng 100 lượt/ngày. Một video dài và ba Shorts dùng bốn lượt upload. Thumbnail, phụ đề và playlist tính vào hạn mức của nhóm endpoint còn lại. | Đối chiếu hạn mức thực tế của dự án Google Cloud trước đợt chạy thật. |
 
 Cập nhật kèm theo: ba tệp SKILL (`video-moi`, `video-dung`, `video-dang`) nhắc "Túi Tiền Công Nghệ" và luật chọn đề cũ; `video-moi` bỏ phụ thuộc vào `lich-4-tuan-dinh-vi-A.md`.
 
@@ -110,6 +110,10 @@ Ba ngày liên tiếp: hai ngày đề evergreen (thành kho dự trữ) và m�
 Trượt một ngày thì sửa chỗ vỡ rồi chạy lại đủ ba ngày liên tiếp. Đạt cả ba ngày, kho dự trữ ≥ 3 video (H8), hạn mức YouTube đã kiểm (H9): ngày đó là **G**, bắt đầu chạy thật.
 
 ## 8. Hai video đang có
+
+**Mốc khởi động lại 10/11/2026.** Hai hồ sơ TikTok Shop – Shopee và Gói AI đã chuyển ra khỏi thư mục sản xuất. Lượt chạy khô bắt đầu bằng đề mới, với hai biên nhận duyệt và giờ bắt đầu/kết thúc cho từng bước. Dùng lệnh `python -m tttc.chay_kho V` sau duyệt 2. Video máy cũ và Nvidia đã phát hành được giữ làm mốc lịch sử.
+
+Hồ sơ ngày 09/11:
 
 - `goi-ai-dang-tien` (đã qua duyệt 2, chưa đăng, dựng bằng nhận diện cũ): giữ lại, không đăng bằng nhận diện cũ. Muốn dùng thì render lại (~25 phút) sau khi spec 2 xong.
 - `nvidia-siet-chip` (sổ ghi đã đăng): bạn đổi thumbnail, tên, avatar, banner trong YouTube Studio sau khi spec 2 xong.

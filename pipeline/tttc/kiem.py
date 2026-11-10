@@ -3,6 +3,7 @@ import json
 import re
 import sys
 import unicodedata
+from decimal import Decimal
 from pathlib import Path
 
 TAG = re.compile(r"\[#([\w-]+)\]")
@@ -11,6 +12,23 @@ NUM = re.compile(r"(?<![\d.,])(\d{1,3}(?:[ .]\d{3})+(?:,\d+)?|\d+(?:,\d+)?)(?!\d
                  r"(?:\s*(%|nghìn|ngàn|triệu|tỷ)(?!\w))?", re.I)
 UNIT_AFTER = re.compile(r"\s*(%|nghìn|ngàn|triệu|tỷ|usd|đô|đồng|đ|\$|gb|tb)(?!\w)", re.I)
 NUM_WORDS = re.compile(r"(?<!\w)(trăm|nghìn|ngàn|triệu|tỷ|phần trăm)(?!\w)", re.I)
+WORDS = {w: i for i, w in enumerate("không một hai ba bốn năm sáu bảy tám chín".split())}
+WORDS.update(mốt=1, tư=4, lăm=5)
+DIGIT = "(?:" + "|".join(WORDS) + ")"
+TAIL = "(?:" + "|".join(w for w in WORDS if w != "năm") + ")"
+PAIR = rf"(?:{DIGIT}\s+mươi(?:\s+{TAIL})?|mười(?:\s+{TAIL})?|{DIGIT})"
+TRIAD = rf"(?:{DIGIT}\s+trăm(?:\s+(?:lẻ|linh)\s+{DIGIT}|\s+{PAIR})?|{PAIR})"
+THOUSANDS = rf"{TRIAD}\s+(?:nghìn|ngàn)"
+MILLIONS = rf"{TRIAD}\s+triệu"
+BILLIONS = rf"{TRIAD}\s+(?:(?:nghìn|ngàn)\s+)?tỷ"
+SPELLED = re.compile(
+    rf"(?<![\w,])(?:{BILLIONS}(?:\s+{MILLIONS})?(?:\s+{THOUSANDS})?(?:\s+{TRIAD})?"
+    rf"|{MILLIONS}(?:\s+{THOUSANDS})?(?:\s+{TRIAD})?|{THOUSANDS}(?:\s+{TRIAD})?|{TRIAD})"
+    rf"(?:\s+phẩy\s+{DIGIT}(?:\s+{DIGIT})*)?(?!\w)", re.I)
+UNITS = re.compile(r"\s*(phần trăm|%|USD|đô la Mỹ|đô la|đô|\$|đồng|VND|đ|₫|GB|TB|gi-ga-bai|tê-ra-bai)(?!\w)", re.I)
+UNIT_NAMES = {"đ": "vnd", "₫": "vnd", "đồng": "vnd", "$": "usd", "đô": "usd",
+              "đô la": "usd", "đô la mỹ": "usd", "phần trăm": "%", "gi-ga-bai": "gb", "tê-ra-bai": "tb"}
+SCALE_VALUE = {"": 1, "%": 1, "nghìn": 1000, "triệu": 10**6, "tỷ": 10**9, "nghìn-tỷ": 10**12}
 DATE_TIME = re.compile(r"\b\d{1,2}/\d{1,2}/\d{4}\b|\b\d{1,2}:\d{2}\b")
 PLACEHOLDER = re.compile(r"\[[^\]]*(?:\.\.\.|…|ĐIỀN|ĐỔI|TODO|TBD)[^\]]*\]")
 LIST_MARK = re.compile(r"^\s*(?:\d+[.)]|[-*>])\s+")
@@ -43,9 +61,45 @@ def tokens(text: str, keep_small: bool = True) -> list[tuple[str, float, str]]:
     return out
 
 
-def _numbers(text: str) -> list[tuple[str, float, str]]:
-    text = URL.sub(" ", TAG.sub(" ", DATE_TIME.sub(" ", PLACEHOLDER.sub(" ", text))))
-    return tokens(text, keep_small=False)
+def _spoken_value(match: re.Match) -> str:
+    whole, sep, decimal = match.group().lower().partition(" phẩy ")
+    whole = re.sub(r"(?:nghìn|ngàn) tỷ", "nghìn-tỷ", whole)
+    total = group = last = 0
+    for w in whole.split():
+        if w in WORDS:
+            last = WORDS[w]
+            group += last
+        elif w == "trăm":
+            group += last * 99
+        elif w == "mươi":
+            group += last * 9
+        elif w == "mười":
+            group += 10
+        elif w in ("tỷ", "triệu", "nghìn", "ngàn", "nghìn-tỷ"):
+            total += group * SCALE_VALUE[_scale(w)]
+            group = last = 0
+    return str(total + group) + ("," + "".join(str(WORDS[w]) for w in decimal.split()) if sep else "")
+
+
+def _claims(text: str, keep_small: bool = False) -> list[tuple[str, Decimal, str]]:
+    # Số bằng chữ dùng đúng phần kịch bản đưa vào TTS, kể cả số đọc có phần thập phân.
+    text = SPELLED.sub(_spoken_value, re.sub(r"\s+", " ", text))
+    out = []
+    for m in NUM.finditer(text):
+        raw, scale = m.group(1), _scale(m.group(2))
+        end = m.end()
+        if scale == "nghìn" and (ty := re.match(r"\s+tỷ\b", text[end:], re.I)):
+            scale, end = "nghìn-tỷ", end + ty.end()
+        unit_match = UNITS.match(text, end)
+        unit = unit_match.group(1).lower() if unit_match else scale if scale == "%" else ""
+        unit = UNIT_NAMES.get(unit, unit)
+        if not keep_small and not scale and not unit and raw.isdigit() and int(raw) < 13:
+            continue
+        # shortcut: dấu âm viết dạng "âm" hoặc dấu trừ liền với số.
+        sign = -1 if re.search(r"(?:[-−]|\bâm )$", text[:m.start()], re.I) else 1
+        value = Decimal(raw.replace(" ", "").replace(".", "").replace(",", "."))
+        out.append((text[m.start():end].strip(), sign * value * SCALE_VALUE[scale], unit))
+    return out
 
 
 def check(script_md: str, nguon: list[dict]) -> list[str]:
@@ -67,12 +121,15 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
         for ph in PLACEHOLDER.findall(line):
             errs.append(f"Còn chỗ giữ chỗ chưa điền: {ph}")
         declared = False  # lời khai "mình tính ra" đã xuất hiện ở câu nào đó trước trong cùng đoạn
-        for sent in SENT_SPLIT.split(LIST_MARK.sub("", line)):
+        # Thẻ đặt sau dấu chấm vẫn thuộc câu vừa kết thúc.
+        line = re.sub(r"([.!?])((?:\s*\[#[\w-]+\])+)", r"\2\1", LIST_MARK.sub("", line))
+        for sent in SENT_SPLIT.split(line):
             before, declared = declared, declared or any(w in sent.lower() for w in WARN_TU_TINH)
             ids = TAG.findall(sent)
             for x in (m.group(0) for m in EN_DECIMAL.finditer(URL.sub(" ", sent))):
                 errs.append(f"Số {x} dùng dấu chấm thập phân, phải viết dấu phẩy ({x.replace('.', ',')}): {sent.strip()}")
-            nums = _numbers(sent)
+            clean = URL.sub(" ", TAG.sub(" ", DATE_TIME.sub(" ", PLACEHOLDER.sub(" ", sent))))
+            nums = _claims(clean)
             srcs = []
             for i in ids:
                 if i not in by_id:
@@ -85,10 +142,10 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
             if not ids and NUM_WORDS.search(sent):
                 errs.append(f"Số viết bằng chữ không có nguồn: {sent.strip()}")
                 continue
-            allowed = {(v, sc) for s in srcs for _, v, sc in tokens(unicodedata.normalize("NFC", s["gia_tri"]))}
-            for raw, v, sc in nums:
-                if srcs and (v, sc) not in allowed:
-                    errs.append(f"Số {raw}{' ' + sc if sc else ''} không khớp giá trị nguồn "
+            allowed = {(v, unit) for s in srcs for _, v, unit in _claims(unicodedata.normalize("NFC", s["gia_tri"]), True)}
+            for raw, v, unit in nums:
+                if srcs and (v, unit) not in allowed:
+                    errs.append(f"Số {raw} không khớp giá trị hoặc đơn vị nguồn "
                                 f"{[s['id'] for s in srcs]}: {sent.strip()}")
             low = sent.lower()
             for s in srcs:

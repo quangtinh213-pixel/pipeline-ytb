@@ -18,7 +18,7 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 
 ## Mỗi video
 1. Chọn video: thư mục do người dùng nêu, hoặc thư mục duy nhất có `duyet-2=da-duyet` và `dang` chưa xong.
-2. `tt.is_approved` phải đúng; không thì dừng và nói bước nào chưa duyệt. Không có ngoại lệ.
+2. `tt.review_current(V, "duyet-2")` phải đúng. Khi hồ sơ cũ thiếu biên nhận hoặc tệp đã thay đổi, quay về bước duyệt tương ứng.
 3. Ngày/giờ: ngày theo tên thư mục, giờ `config.json:gio_dang_mac_dinh` (15:30, trước khung 17:00–20:00 của đối thủ).
 4. **Xác nhận với người dùng trước khi upload** (một câu): tiêu đề đã chọn, ngày giờ đăng (giờ Việt Nam),
    số Shorts và giờ từng Short. Đợi "ok".
@@ -30,4 +30,6 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 ## Lỗi thường gặp
 - `quotaExceeded`: hạn mức API trong ngày đã hết; thử lại sau 0 giờ giờ Thái Bình Dương (14:00–15:00 giờ VN).
 - `thumbnails.set` 403: kênh chưa xác minh số điện thoại → người dùng xác minh ở youtube.com/verify.
-- Upload hỏng giữa chừng: video có thể đã tạo dạng riêng tư; kiểm Studio trước khi chạy lại để tránh trùng.
+- Nếu `upload_dang_cho_id` có giá trị, đối chiếu Studio trước khi thử lại. Nếu Studio đã có video, ghi ID và giờ hẹn vào
+  `video_id` / `lich_dang` (video dài) hoặc `short_ids` / `short_lich` (Short). Chỉ xóa cờ sau khi đối chiếu và lưu kết quả.
+- `video_id` + `lich_dang` hoặc `short_ids` + `short_lich` ghi nhận upload và giờ hẹn. Chỉ ghi giờ công khai thật vào sổ sau khi đối chiếu Studio.

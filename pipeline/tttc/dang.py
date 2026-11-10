@@ -1,7 +1,10 @@
 """Đăng YouTube: riêng tư + hẹn giờ, chỉ khi đã qua cả 2 điểm duyệt."""
 import csv
+import fcntl
 import json
+import os
 import sys
+from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -61,8 +64,8 @@ def build_body(video_dir, when: str) -> dict:
 
 
 def _guard(video_dir: Path) -> None:
-    if not tt.is_approved(video_dir):
-        raise PermissionError("Video chưa qua đủ 2 điểm duyệt, không upload")
+    if not tt.review_current(video_dir, "duyet-2"):
+        raise PermissionError("Thiếu biên nhận duyệt hoặc tệp đã thay đổi, cần duyệt lại trước khi upload")
 
 
 def _media(path: Path, mime: str):
@@ -70,60 +73,106 @@ def _media(path: Path, mime: str):
     return MediaFileUpload(str(path), mimetype=mime, resumable=mime.startswith("video"))
 
 
+def _insert(d: Path, yt, body: dict, path: Path, key: str) -> str:
+    if tt.load(d).get("upload_dang_cho_id"):
+        raise RuntimeError("Lần tải trước chưa xác nhận được ID. Đối chiếu YouTube Studio trước khi thử lại.")
+    request = yt.videos().insert(part="snippet,status", body=body, media_body=_media(path, "video/mp4"))
+    tt.set_field(d, "upload_dang_cho_id", key)
+    return request.execute(num_retries=RETRIES)["id"]
+
+
+@contextmanager
+def _lock(path: Path):
+    with path.open("a") as f:
+        fcntl.flock(f, fcntl.LOCK_EX)
+        yield
+
+
 def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
-    theo_doi.migrate(tracker)  # sổ cũ thiếu cột so sánh với đối thủ thì thêm cột, giữ nguyên dòng cũ
-    new = not tracker.exists()
-    with tracker.open("a", encoding="utf-8", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=FIELDS)
-        if new:
+    link = f"https://youtu.be/{vid}"
+    with _lock(tracker.with_name(f".{tracker.name}.lock")):
+        fields, rows = FIELDS, []
+        if tracker.exists():
+            with tracker.open(encoding="utf-8", newline="") as f:
+                reader = csv.DictReader(f)
+                fields = list(dict.fromkeys([*(reader.fieldnames or []), *FIELDS]))
+                rows = list(reader)
+        if any(r["link"] == link for r in rows):
+            return
+        rows.append({"ngay": when_vn.split()[0], "tieu_de": title, "gio_dang": when_vn, "link": link})
+        tmp = tracker.with_name(f".{tracker.name}.tmp")
+        with tmp.open("w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
             w.writeheader()
-        w.writerow({"ngay": when_vn.split()[0], "tieu_de": title, "gio_dang": when_vn,
-                    "link": f"https://youtu.be/{vid}"})
+            w.writerows(rows)
+        os.replace(tmp, tracker)
 
 
 def upload(video_dir, date_vn: str, time_vn: str, youtube=None, tracker: Path = TRACKER,
            playlist_id: str | None = None) -> str:
     d = Path(video_dir)
-    _guard(d)
+    with _lock(d / ".dang.lock"):
+        return _upload(d, date_vn, time_vn, youtube, Path(tracker), playlist_id)
+
+
+def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlist_id: str | None) -> str:
     state = tt.load(d)
     if state["steps"]["dang"]["status"] == "xong":
         return state["video_id"]
-    body = build_body(d, publish_at(date_vn, time_vn))
+    _guard(d)
+    vid = state.get("video_id")
+    when = f"{date_vn} {time_vn}"
+    if vid and state.get("lich_dang") != when:
+        raise ValueError("Video đã có ID với lịch khác hoặc thiếu lịch đã ghi, đối chiếu YouTube Studio trước")
+    title = _chosen(d)["tieu_de"]
+    body = build_body(d, publish_at(date_vn, time_vn)) if not vid else None
     yt = youtube or client()
     if playlist_id is None:
         playlist_id = json.loads(CONFIG.read_text(encoding="utf-8")).get("playlist_id") or None
-    vid = state.get("video_id")
     if not vid:  # lưu id ngay sau khi tạo: bước sau hỏng thì chạy lại không tạo video thứ hai
-        vid = yt.videos().insert(part="snippet,status", body=body,
-                                 media_body=_media(d / "final.mp4", "video/mp4")).execute(num_retries=RETRIES)["id"]
-        tt.set_field(d, "video_id", vid)
+        vid = _insert(d, yt, body, d / "final.mp4", "video")
+        tt.set_fields(d, video_id=vid, lich_dang=when, upload_dang_cho_id=None)
     yt.thumbnails().set(videoId=vid, media_body=_media(d / _chosen(d)["file_thumb"], "image/png")).execute(num_retries=RETRIES)
     if not state.get("phu_de_ok"):  # chạy lại sau lỗi bước playlist không thêm bản phụ đề thứ hai
         yt.captions().insert(part="snippet", body={"snippet": {"videoId": vid, "language": "vi", "name": "Tiếng Việt"}},
                              media_body=_media(d / "phu-de.srt", "application/octet-stream")).execute(num_retries=RETRIES)
         tt.set_field(d, "phu_de_ok", True)
-    if playlist_id:
+    if playlist_id and state.get("playlist_ok") != playlist_id:
         yt.playlistItems().insert(part="snippet", body={"snippet": {
             "playlistId": playlist_id, "resourceId": {"kind": "youtube#video", "videoId": vid}}}).execute(num_retries=RETRIES)
-    _track(Path(tracker), body["snippet"]["title"], f"{date_vn} {time_vn}", vid)
+        tt.set_field(d, "playlist_ok", playlist_id)
+    _track(tracker, title, when, vid)
     tt.set_step(d, "dang", "xong", f"https://youtu.be/{vid}")
     return vid
 
 
 def upload_short(video_dir, index: int, youtube=None, tracker: Path = TRACKER) -> str:
     d = Path(video_dir)
-    _guard(d)
-    done = tt.load(d).get("short_ids") or {}
-    if str(index) in done:
-        return done[str(index)]
+    with _lock(d / ".dang.lock"):
+        return _upload_short(d, index, youtube, Path(tracker))
+
+
+def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
+    state = tt.load(d)
+    done, schedules = state.get("short_ids") or {}, state.get("short_lich") or {}
+    key = str(index)
     goi = _goi(d)
+    if not 0 <= index < len(goi.get("shorts", [])):
+        raise ValueError("Chỉ số Short không tồn tại")
     s = goi["shorts"][index]
+    when = f"{s['ngay']} {s['gio']}"
+    if key in done:
+        saved = schedules.get(key, {"tieu_de": s["tieu_de"], "gio": when})
+        _track(tracker, saved["tieu_de"], saved["gio"], done[key])
+        return done[key]
+    _guard(d)
     body = _body(s["tieu_de"], goi["mo_ta"], goi.get("tags", []), publish_at(s["ngay"], s["gio"]))
     yt = youtube or client()
-    vid = yt.videos().insert(part="snippet,status", body=body,
-                             media_body=_media(d / s["file"], "video/mp4")).execute(num_retries=RETRIES)["id"]
-    tt.set_field(d, "short_ids", dict(done, **{str(index): vid}))
-    _track(Path(tracker), s["tieu_de"], f"{s['ngay']} {s['gio']}", vid)
+    vid = _insert(d, yt, body, d / s["file"], f"short:{key}")
+    done[key] = vid
+    schedules[key] = {"tieu_de": s["tieu_de"], "gio": when}
+    tt.set_fields(d, short_ids=done, short_lich=schedules, upload_dang_cho_id=None)
+    _track(tracker, s["tieu_de"], when, vid)
     return vid
 
 

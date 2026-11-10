@@ -471,16 +471,25 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     return o
 
 
-def _probe(path: Path, stream: str | None = None) -> float:
+def _probe(path: Path, stream: str | None = None) -> float | None:
     sel = ["-select_streams", stream, "-show_entries", "stream=duration"] if stream else ["-show_entries", "format=duration"]
     r = subprocess.run(["ffprobe", "-v", "error", *sel, "-of", "csv=p=0", str(path)],
                        capture_output=True, text=True, check=True)
-    return float(r.stdout.strip().splitlines()[0])
+    value = r.stdout.strip().splitlines()
+    return float(value[0]) if value and value[0] != "N/A" else None
 
 
 def check_av(video_mp4, audio, tol: float = 0.5) -> list[str]:
-    v, a = _probe(Path(video_mp4), "v:0"), _probe(Path(audio))
-    return [] if abs(v - a) <= tol else [f"Hình {v:.2f} s lệch tiếng {a:.2f} s quá {tol} s"]
+    try:
+        v = _probe(Path(video_mp4), "v:0")
+        a = _probe(Path(video_mp4), "a:0")
+        voice = _probe(Path(audio))
+    except (subprocess.CalledProcessError, ValueError) as e:
+        return [f"Không đọc được thời lượng hình–tiếng: {e}"]
+    if v is None or a is None or voice is None:
+        return ["Thiếu luồng hình/tiếng trong MP4 hoặc thiếu thời lượng giọng gốc"]
+    return [f"Hình {v:.2f} s lệch {label} {t:.2f} s quá {tol} s"
+            for label, t in (("tiếng trong MP4", a), ("giọng gốc", voice)) if abs(v - t) > tol]
 
 
 def contact_sheet(video_mp4, scenes: dict, out_png) -> Path:

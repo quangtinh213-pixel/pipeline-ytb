@@ -104,6 +104,13 @@ def test_check_av_detects_drift(tmp_path):
     assert len(errs) == 1 and "lệch" in errs[0]
 
 
+def test_check_av_rejects_mp4_without_audio(tmp_path):
+    v = _tone(tmp_path / "v.mp4", 1, video=True)
+    silent = tmp_path / "silent.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-i", str(v), "-an", "-c:v", "copy", str(silent)], check=True)
+    assert "Thiếu luồng" in dung.check_av(silent, _tone(tmp_path / "a.mp3", 1))[0]
+
+
 def test_contact_sheet_size(tmp_path):
     v = _tone(tmp_path / "v.mp4", 6, video=True)
     sc = {"scenes": [{"id": "a", "start": 0, "end": 2}, {"id": "b", "start": 2, "end": 4},

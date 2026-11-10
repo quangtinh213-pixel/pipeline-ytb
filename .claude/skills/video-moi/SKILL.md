@@ -11,13 +11,14 @@ Sổ trạng thái: `tttc.trang_thai` (`load`, `set_step`, `set_field`, `next_st
 
 ## 0. Mở hoặc tiếp tục
 
-- Nếu người dùng nói "duyệt" cho video đang `duyet-1=cho-duyet`: chạy lại `tttc.kiem` một lần; sạch thì
-  `set_step(dir, "duyet-1", "da-duyet")` và báo "Chạy /video-dung để dựng". Còn lỗi thì báo lỗi, không duyệt.
+- Khi người dùng duyệt đúng bản đã gửi, chạy `uv run python -m tttc.trang_thai duyet V duyet-1`. Lệnh kiểm lại nguồn
+  và so đúng bản kịch bản, nguồn, nghe thử đã gửi. Nếu tệp thay đổi thì tạo và gửi lại trang duyệt.
 - Nếu người dùng ghi chỗ cần sửa: sửa `kich-ban.md`/`nguon.json`, quay lại bước 4.
 - Video mới: tạo `videos/<yyyy-mm-dd-slug>/` (ngày = ngày đăng dự kiến, mặc định hôm nay; slug ascii không dấu, ≤ 5 từ).
 - Video đã có: đọc `next_step`, bỏ qua bước đã `xong`.
 
-Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "loi", "<lý do>")` và dừng, báo người dùng.
+Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `set_step(..., "xong")` khi xong. Hỏng thì ghi
+`set_step(..., "loi", "<lý do>")` rồi dừng, báo người dùng. Với bước duyệt, ghi giờ bắt đầu trước khi chuẩn bị trang gửi duyệt.
 
 ## 1. chu-de
 
@@ -100,6 +101,6 @@ Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước
 
 - Tạo bản nghe thử: `uv run python -m tttc.giong_vieneu thu-60s ../videos/<slug>` (nghe-thu.mp3, đính kèm trang duyệt).
 - `uv run python -c "from tttc.duyet import render_review_1; print(render_review_1('../videos/<slug>'))"`
-- `set_step(dir, "duyet-1", "cho-duyet")`
+- `uv run python -m tttc.trang_thai gui-duyet V duyet-1` ngay sau khi tạo trang, trước khi gửi. V là thư mục video.
 - Gửi `duyet-1.html` cho người dùng (SendUserFile, display render). Tóm tắt 3 dòng: đề, số nguồn, cảnh báo còn lại.
 - **Dừng.** Không tự duyệt thay người dùng.
