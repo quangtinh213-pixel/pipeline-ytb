@@ -5,7 +5,7 @@ import sys
 import unicodedata
 from pathlib import Path
 
-from tttc import ngon_ngu, nhan_vat
+from tttc import ban_do as _ban_do, ngon_ngu, nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
 MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do"}
@@ -153,6 +153,9 @@ def _check_ban_do(c: dict) -> list[str]:
         if not isinstance(d, dict) or not d.get("nhan"):
             out.append(f"Lỗi: {c['id']} điểm {i} thiếu nhan")
             continue
+        ma = d.get("nuoc")
+        if ma and (data := _ban_do.doc()) is not None and ma not in data["nuoc"]:
+            out.append(f"Lỗi: {c['id']} điểm '{d['nhan']}' nuoc '{ma}' không có trong dữ liệu bản đồ (mã ADM0_A3, ví dụ VNM, USA)")
         for k, lim in (("vi_do", 90), ("kinh_do", 180)):
             v = d.get(k)
             if not isinstance(v, (int, float)) or isinstance(v, bool) or not -lim <= v <= lim:

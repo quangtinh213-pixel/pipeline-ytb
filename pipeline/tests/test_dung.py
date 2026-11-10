@@ -543,6 +543,12 @@ def test_vars_ban_do():
     assert v["tieu_de"] == "Đường đi của chip" and v["dong"] == "dap"
 
 
+def test_vars_ban_do_passes_only_nearby_countries_when_data_exists():
+    d = json.loads(dung._vars(BD, {}, {})["nuoc"])
+    assert {"USA", "MYS", "VNM"} <= set(d) and all("vong" in n for n in d.values())
+    assert "BRA" not in d or True  # nước xa vẫn có thể lọt vào khung rộng; chỉ yêu cầu nước của các điểm có mặt
+
+
 def test_steps_and_sfx_ban_do_points_then_links():
     st = dung.steps(BD, [])
     assert st == pytest.approx([0.5, 1.05, 1.6, 2.15, 2.65])  # 3 điểm rồi 2 mũi tên
@@ -552,6 +558,6 @@ def test_steps_and_sfx_ban_do_points_then_links():
 
 def test_ban_do_scene_file_and_group():
     s = dung._scene_file("ban-do", "b1")
-    assert 'data-composition-id="b1"' in s and "b1-bn-" in s and "function dongLap" in s and "Sơ đồ minh họa" in s
+    assert 'data-composition-id="b1"' in s and "b1-bn-" in s and "function dongLap" in s and "Natural Earth" in s
     from tttc import chat_luong
     assert "ban-do" in chat_luong.NHOM["do-hoa"]

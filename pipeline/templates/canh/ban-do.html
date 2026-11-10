@@ -18,11 +18,11 @@
     #root .bn-ghi { position: absolute; left: 160px; bottom: 150px; color: var(--muted); font: 600 28px/1 var(--font-display); }
   </style>
   <div id="root" data-composition-id="ban-do" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"diem","type":"string","label":"Các điểm (JSON: nhan, vi_do, kinh_do, noi_bat)","default":"[{\"nhan\":\"A\",\"vi_do\":10,\"kinh_do\":0,\"noi_bat\":false},{\"nhan\":\"B\",\"vi_do\":20,\"kinh_do\":30,\"noi_bat\":true}]"},{"id":"noi","type":"string","label":"Mũi tên (JSON: tu, den, nhan)","default":"[]"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của điểm nổi bật","default":"dap"}]'>
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"diem","type":"string","label":"Các điểm (JSON: nhan, vi_do, kinh_do, noi_bat)","default":"[{\"nhan\":\"A\",\"vi_do\":10,\"kinh_do\":0,\"noi_bat\":false},{\"nhan\":\"B\",\"vi_do\":20,\"kinh_do\":30,\"noi_bat\":true}]"},{"id":"noi","type":"string","label":"Mũi tên (JSON: tu, den, nhan)","default":"[]"},{"id":"nuoc","type":"string","label":"Hình các nước (JSON)","default":"{}"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của điểm nổi bật","default":"dap"}]'>
     <div id="bn-san" class="san">
       <div id="bn-tieu-de" class="bn-tieu-de" data-var-text="tieu_de"></div>
       <svg id="bn-svg" class="bn-svg" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg"></svg>
-      <div id="bn-ghi" class="bn-ghi">Sơ đồ minh họa, không theo tỉ lệ</div>
+      <div id="bn-ghi" class="bn-ghi">Bản đồ minh họa · dữ liệu: Natural Earth</div>
       <div id="bn-nguon" class="dong-nguon" data-var-text="nguon"></div>
     </div>
   </div>
@@ -35,15 +35,33 @@
     san.classList.add("nen-" + (v.nen || "toi"));
     const diem = JSON.parse(v.diem), noi = JSON.parse(v.noi || "[]"), nd = diem.length;
     const svg = document.querySelector("#bn-svg"), NS = "http://www.w3.org/2000/svg";
-    // Phép chiếu chữ nhật: vừa khít các điểm, chừa lề; hai trục co giãn riêng để sơ đồ lấp đầy khung (đã ghi "không theo tỉ lệ").
+    // Phép chiếu chữ nhật đều (kinh độ và vĩ độ cùng tỉ lệ): vừa khít các điểm, chừa lề.
     const lons = diem.map(d => d.kinh_do), lats = diem.map(d => d.vi_do);
     const lo0 = Math.min(...lons), lo1 = Math.max(...lons), la0 = Math.min(...lats), la1 = Math.max(...lats);
     const padLo = Math.max(8, 0.12 * (lo1 - lo0)), padLa = Math.max(8, 0.25 * (la1 - la0));
     const W = 1480, H = 640, L0 = 220, T0 = 250;
-    const sx = W / (lo1 - lo0 + 2 * padLo), sy = H / (la1 - la0 + 2 * padLa);
+    const sx = Math.min(W / (lo1 - lo0 + 2 * padLo), H / (la1 - la0 + 2 * padLa)), sy = sx;
     const mLo = (lo0 + lo1) / 2, mLa = (la0 + la1) / 2;
     const X = lo => L0 + W / 2 + (lo - mLo) * sx, Y = la => T0 + H / 2 - (la - mLa) * sy;
     const mk = (tag, attrs) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); svg.appendChild(e); return e; };
+    // Hình các nước (cắt trong khung bản đồ) rồi lưới kinh vĩ tuyến
+    const cp = mk("clipPath", { id: "bn-cat" }); const cr = document.createElementNS(NS, "rect");
+    for (const [k, x] of Object.entries({ x: L0, y: T0, width: W, height: H })) cr.setAttribute(k, x);
+    cp.appendChild(cr);
+    const lop = mk("g", { "clip-path": "url(#bn-cat)" });
+    const duong = vong => "M" + vong.map(([lo, la]) => X(lo).toFixed(1) + "," + Y(la).toFixed(1)).join("L") + "Z";
+    const nuoc = JSON.parse(v.nuoc || "{}"), sang = {};
+    for (const [ma, n] of Object.entries(nuoc)) {
+      const dd = n.vong.map(duong).join("");
+      const e = document.createElementNS(NS, "path");
+      e.setAttribute("d", dd); e.setAttribute("fill", "var(--line)"); e.setAttribute("fill-opacity", "0.55");
+      e.setAttribute("stroke", "var(--muted)"); e.setAttribute("stroke-opacity", "0.5"); e.setAttribute("stroke-width", "1.5");
+      e.setAttribute("stroke-linejoin", "round"); lop.appendChild(e);
+      const s = document.createElementNS(NS, "path");
+      s.setAttribute("d", dd); s.setAttribute("fill", "var(--accent)"); s.setAttribute("fill-opacity", "0");
+      s.setAttribute("stroke", "var(--accent)"); s.setAttribute("stroke-width", "2"); s.setAttribute("stroke-opacity", "0"); lop.appendChild(s);
+      sang[ma] = s;
+    }
     // Lưới kinh vĩ tuyến
     const buoc = (lo1 - lo0 + 2 * padLo) > 80 ? 20 : 10;
     for (let lo = Math.ceil((mLo - W / 2 / sx) / buoc) * buoc; lo <= mLo + W / 2 / sx; lo += buoc)
@@ -97,6 +115,9 @@
       g.append(vong, cham, nhan);
       san.appendChild(g);
       if (d.noi_bat) hl = i;
+      if (d.nuoc && sang[d.nuoc]) {  // tô sáng nước của điểm cùng lúc điểm hiện
+        tl.to(sang[d.nuoc], { attr: { "fill-opacity": d.noi_bat ? 0.85 : 0.45, "stroke-opacity": 1 }, duration: 0.4 }, t0);
+      }
       tl.fromTo(cham, { scale: 0, transformOrigin: "50% 50%" }, { scale: 1, duration: 0.45, ease: "back.out(2.2)" }, t0);
       tl.fromTo(nhan, { opacity: 0, y: tren ? 10 : -10 }, { opacity: 1, y: 0, duration: 0.25 }, t0 + 0.1);
     });

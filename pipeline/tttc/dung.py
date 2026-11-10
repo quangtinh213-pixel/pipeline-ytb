@@ -13,7 +13,7 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
                bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi)
 - quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
 - ban-do:      tieu_de?, diem [2–6 {nhan, vi_do, kinh_do, noi_bat?}], noi? [{tu, den, nhan?}] (mũi tên cong nối hai điểm theo chỉ số),
-               nguon_id?, dong? (vòng sáng ở điểm nổi bật, mặc định dap); sơ đồ vị trí theo toạ độ, không phải bản đồ theo tỉ lệ
+               nguon_id?, dong? (vòng sáng ở điểm nổi bật, mặc định dap); bản đồ vị trí theo toạ độ (hình nước từ du-lieu/nuoc.json, Natural Earth); diem có thể ghi nuoc (mã ADM0_A3, vd VNM) để tô sáng nước đó
 - so-sanh:     trai, phai {nhan, svg, so?, don_vi?, to? (0–1, cỡ hình tương đối)}, don_vi?, ti_le? ("gấp ~700 lần"),
                nguon_id (bắt buộc nếu có so), dong? (cho huy hiệu SO, mặc định dap)
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
@@ -36,7 +36,7 @@ from urllib.parse import urlparse
 
 from PIL import Image
 
-from tttc import grain, nhan_vat, theme
+from tttc import ban_do, grain, nhan_vat, theme
 from tttc.canh import cues, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
@@ -103,6 +103,17 @@ def _source_line(nguon: dict) -> str:
     return f"Nguồn: {host}, {d:%d/%m/%Y}"
 
 
+def _nuoc_json(diem: list[dict]) -> str:
+    """Hình các nước quanh các điểm của cảnh bản đồ (khung rộng hơn vùng chứa điểm); chưa có dữ liệu thì rỗng, chỉ còn lưới."""
+    data = ban_do.doc()
+    if data is None:
+        return "{}"
+    los, las = [d["kinh_do"] for d in diem], [d["vi_do"] for d in diem]
+    pl, pa = max(25, 0.5 * (max(los) - min(los))), max(25, 0.5 * (max(las) - min(las)))
+    return json.dumps(ban_do.chon(data["nuoc"], min(los) - pl, max(los) + pl, min(las) - pa, max(las) + pa),
+                      ensure_ascii=False, separators=(",", ":"))
+
+
 def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None) -> dict:
     broll_credits = broll_credits or {}
     src = lambda nid: " · ".join(_source_line(by_id[n]) for n in (nid if isinstance(nid, list) else [nid])
@@ -163,6 +174,7 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                                     for b in c["buoc"]], ensure_ascii=False)}
     if m == "ban-do":
         return {"tieu_de": c.get("tieu_de", ""), "nguon": src(c.get("nguon_id")), "dong": c.get("dong", "dap"),
+                "nuoc": _nuoc_json(c["diem"]),
                 "diem": json.dumps([dict(d, noi_bat=bool(d.get("noi_bat"))) for d in c["diem"]], ensure_ascii=False),
                 "noi": json.dumps([{"tu": e["tu"], "den": e["den"], "nhan": e.get("nhan", "")} for e in c.get("noi") or []],
                                   ensure_ascii=False)}

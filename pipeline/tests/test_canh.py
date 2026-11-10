@@ -459,6 +459,13 @@ def test_ban_do_rejects_bad_points_and_links(tmp_path):
     assert any("noi" in e for e in errs(noi=[{"tu": 1, "den": 1}]))
 
 
+def test_ban_do_country_code_must_exist_in_map_data(tmp_path):
+    ok = _bd(diem=[{"nhan": "Mỹ", "vi_do": 38.9, "kinh_do": -77.0, "nuoc": "USA"}, {"nhan": "Việt Nam", "vi_do": 21, "kinh_do": 105.8, "nuoc": "VNM"}], noi=[{"tu": 0, "den": 1}])
+    assert _errors(canh.validate(ok, TIMING, tmp_path, NGUON, kit=None)) == []
+    bad = _bd(diem=[{"nhan": "Mỹ", "vi_do": 38.9, "kinh_do": -77.0, "nuoc": "XXX"}, {"nhan": "Việt Nam", "vi_do": 21, "kinh_do": 105.8}], noi=[{"tu": 0, "den": 1}])
+    assert any("nuoc" in e and "XXX" in e for e in _errors(canh.validate(bad, TIMING, tmp_path, NGUON, kit=None)))
+
+
 def test_ban_do_labels_must_be_vietnamese_and_short(tmp_path):
     en = _bd(diem=[{"nhan": "United States of America", "vi_do": 38.9, "kinh_do": -77.0}, {"nhan": "Malaysia", "vi_do": 3.1, "kinh_do": 101.7}])
     assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, NGUON, kit=None)))
