@@ -39,8 +39,8 @@ Mỗi bước: xong thì `set_step(..., "xong")`; hỏng thì `set_step(..., "lo
   - `trang_thai`: `xac-minh` (đọc thấy trong nguồn gốc) | `so-bo` (nguồn tự ghi là sơ bộ/ước tính) |
     `chua-xac-minh` (chỉ thấy ở tin thứ cấp) | `tu-tinh` (số do mình suy ra từ số khác: hiệu năm, tỉ lệ, "gấp N lần").
   - `tu-tinh` bắt buộc thêm `cong_thuc` (vd `"2026 − 2011"`) và `dau_vao` (danh sách id nguồn gốc dùng trong phép tính);
-    `gia_tri` là kết quả. Không ghi `xac-minh` cho số tự tính. Câu dùng số này phải nói rõ "mình tự tính" (hoặc
-    "tự ướm", "không phải dự báo của ai").
+    `gia_tri` là kết quả. Không ghi `xac-minh` cho số tự tính. Câu dùng số này phải nói "tính ra…" (hoặc
+    "tự tính", "không phải dự báo của ai"); không xưng "mình".
 - Trang chặn truy cập tự động (Bloomberg, báo trả phí...): **không** thay bằng tin thứ cấp. Ghi `chua-xac-minh`
   và nêu trong `chu-de.md`.
 - Không bao giờ bịa số. Không tìm được thì không dùng số đó.
@@ -64,7 +64,7 @@ trong nguon.json, đang ngồi quán cà phê kể lại cho một đứa bạn 
 [CHỦ ĐỀ]: {đề, lời hứa một câu, nguon.json}
 [MẪU GIỌNG]: {pipeline/phong-cach/phan-tich-giong.md + các đoạn trong pipeline/phong-cach/mau-giong/}
 [QUY TẮC BẮT BUỘC]:
-1. Giọng điệu: thẳng thắn, gãy gọn, chân thật, hơi tự giễu khi hợp, như trò chuyện 1-1.
+1. Giọng điệu: phân tích có nguồn và chuyên môn, xen kẽ ví dụ đời thường và châm biếm theo mục 8 thẻ phong cách (châm biếm tình huống và con số, không châm biếm cá nhân, không bịa ý đồ); thẳng, gãy gọn, như trò chuyện 1-1. Không xưng "mình", không kể thao tác của người dẫn ("mình mở ra xem", "mình tự tính"); vào thẳng sự việc, nhịp nhanh.
 2. Cấm mở bài sáo rỗng và kết bài đúc kết đạo lý; mở bằng sự kiện + cặp số + câu hỏi (theo thẻ phong cách).
 3. Cấm tuyệt đối mọi mục trong pipeline/phong-cach/tu-cam.json.
 4. Nhịp: xen câu rất ngắn (3–5 từ) với câu vừa; cho phép câu lửng và câu hỏi tu từ ngắn;

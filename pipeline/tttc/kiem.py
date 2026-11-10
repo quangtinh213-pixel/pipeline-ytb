@@ -17,7 +17,7 @@ LIST_MARK = re.compile(r"^\s*(?:\d+[.)]|[-*>])\s+")
 URL = re.compile(r"https?://\S+")
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?!\[#)")
 WARN = ("sơ bộ", "chưa chính thức")
-WARN_TU_TINH = ("tự tính", "tự ướm", "mình tính", "không phải dự báo")
+WARN_TU_TINH = ("tự tính", "tự ướm", "tính ra", "mình tính", "mình chia", "mình nhân", "ước tính độc lập", "không phải dự báo")
 # "2.5 USD": dấu chấm thập phân kiểu Mỹ, NUM không bắt được; chỉ xét khi có đơn vị để không vướng "Gemini 2.5"
 EN_DECIMAL = re.compile(r"(?<![\d.,])\d+\.\d{1,2}(?=" + UNIT_AFTER.pattern + ")", re.I)
 
@@ -66,7 +66,9 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
             continue
         for ph in PLACEHOLDER.findall(line):
             errs.append(f"Còn chỗ giữ chỗ chưa điền: {ph}")
+        declared = False  # lời khai "mình tính ra" đã xuất hiện ở câu nào đó trước trong cùng đoạn
         for sent in SENT_SPLIT.split(LIST_MARK.sub("", line)):
+            before, declared = declared, declared or any(w in sent.lower() for w in WARN_TU_TINH)
             ids = TAG.findall(sent)
             for x in (m.group(0) for m in EN_DECIMAL.finditer(URL.sub(" ", sent))):
                 errs.append(f"Số {x} dùng dấu chấm thập phân, phải viết dấu phẩy ({x.replace('.', ',')}): {sent.strip()}")
@@ -94,8 +96,8 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
                     errs.append(f"Nguồn [#{s['id']}] chưa xác minh, không được dùng: {sent.strip()}")
                 elif s["trang_thai"] == "so-bo" and not any(w in low for w in WARN):
                     errs.append(f"Nguồn [#{s['id']}] là số sơ bộ, câu cần ghi 'sơ bộ': {sent.strip()}")
-                elif s["trang_thai"] == "tu-tinh" and not any(w in low for w in WARN_TU_TINH):
-                    errs.append(f"Nguồn [#{s['id']}] là số tự tính, câu cần nói rõ 'mình tự tính': {sent.strip()}")
+                elif s["trang_thai"] == "tu-tinh" and not (before or any(w in low for w in WARN_TU_TINH)):
+                    errs.append(f"Nguồn [#{s['id']}] là số tự tính, câu cần nói rõ 'tính ra' hoặc 'tự tính': {sent.strip()}")
     return errs
 
 

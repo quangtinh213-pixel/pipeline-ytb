@@ -5,8 +5,8 @@ Công thức cập nhật 09/11/2026 theo định vị đối đầu (docs/super
 
 ## 1. Người dẫn và lập trường
 
-- **Tôn chỉ:** tin nóng công nghệ–kinh tế có góc Việt Nam. Nói bằng số liệu, dẫn nguồn tận gốc.
-- **Người dẫn:** người theo dõi công nghệ và kinh tế, điềm tĩnh, khách quan, không tung hô tiếp thị. Xưng "mình – các bạn", kể như nói với một người bạn, nhưng lập luận chặt.
+- **Tôn chỉ:** tin nóng công nghệ–kinh tế có góc Việt Nam. Phân tích có nguồn và có chuyên môn, xen kẽ chuyện đời thường và châm biếm (user chốt 10/11/2026; luật ở mục 8).
+- **Người dẫn:** người theo dõi công nghệ và kinh tế, phân tích chắc tay, không tung hô tiếp thị; nghiêm ở số liệu, tếu ở cách kể. **Không xưng "mình"** (user chốt 10/11/2026): lời đọc không có ngôi thứ nhất, không kể thao tác của người dẫn ("mình mở ra xem", "mình mở ra đọc", "mình tự tính"); vào thẳng sự việc. Số tự suy ra nói "tính ra…", nhãn trên màn hình ghi "kênh tự tính". Nhận định nói "nhận định của kênh". Vẫn kể như nói với một người bạn ("bạn"), lập luận chặt. Các chỗ còn ghi "mình" bên dưới đọc theo luật này.
 - **Vai kể:** một người theo dõi công nghệ, sáng nay vừa đọc xong các tài liệu gốc trong `nguon.json`, ngồi quán cà phê kể lại cho một đứa bạn thân chưa đọc. Giọng thẳng, hơi tự giễu khi hợp, từ ngữ hằng ngày, không thuật ngữ nếu không cần. **Không bịa trải nghiệm cá nhân hay giai thoại** ("hồi mình nợ thẻ…", "3 giờ sáng mắt díp lại…"): chi tiết cụ thể chỉ lấy từ nguồn (số, ngày, câu trích, tên bảng giá) hoặc ví dụ đời thường nói rõ là ví dụ ("hình dung thế này", "giả sử").
 - **Lập trường:** bám số liệu có nguồn. **Phán quyết** (mua ngay, chờ, thay thế) kèm tiêu chí công khai và **điều kiện đổi ý** là **tùy chọn**, dùng khi đề có lựa chọn cụ thể cho người xem; không bắt buộc ở mọi video. Có chính kiến thì chính kiến luôn đứng trên số liệu có nguồn (xem mục 5).
 - **Không làm:** lời khuyên đầu tư hay tài chính cá nhân hóa ("bạn nên mua"); phán xét thương hiệu ("hãng hút máu", "dịch vụ tệ"); so "mô hình nào thông minh hơn" khi không có bằng chứng; suy diễn ý đồ của hãng.
@@ -53,10 +53,25 @@ Không trộn tầng 3 vào tầng 1. Một nhận xét về chất lượng hay
 - **Kết không nhai lại.** Kết = trả lời câu hỏi của tiêu đề (cộng phán quyết và điều kiện đổi ý nếu có) + câu mời đoán một con số. Không liệt kê "Một, hai, ba" lại những gì vừa nói.
 - **Chi tiết cụ thể, bản địa, có nguồn** thay cho ví dụ quốc dân dịch từ tiếng Anh (thẻ gym, máy chạy bộ phơi đồ). Ví dụ đời thường mỗi 1–2 phút, ưu tiên thứ người Việt gặp hằng ngày.
 - **Tự hỏi tự đáp có chừng mực:** chỉ khi chuyển ý thật, không phải công tắc mở mỗi chương.
+- **Từ trend:** tra `pipeline/phong-cach/tu-trend.json`, tối đa 1–2 từ mỗi video, chỉ từ có `hop_kenh` là "co" và `da_doc_trang` là true, đúng nghĩa, không nhồi; không dùng thì thôi.
 - **Mở và đóng không thủ tục.** Lời khai báo (ngày ghi nhận, giá có thể đổi) gói gọn một câu, đặt chỗ nó có lý do xuất hiện, không đứng riêng thành một đoạn "ba lưu ý".
+
+## 8. Đời thường và châm biếm (user chốt 10/11/2026)
+
+Xương sống vẫn là phân tích có nguồn; đời thường và châm biếm là gia vị xen vào, không thay thế.
+
+- **Chuyên môn:** mỗi chương có ít nhất một chỗ giải thích cơ chế (vì sao luật viết thế, mã HS là gì, tiền chạy đường nào), không chỉ kể lại tin.
+- **Đời thường:** mỗi chương một ví dụ người Việt gặp hằng ngày (tiệm điện thoại đầu ngõ, nhóm Zalo gia đình, ngày lĩnh lương), nói rõ là ví dụ, không bịa giai thoại.
+- **Châm biếm:** tối đa 1–2 câu mỗi beat, đặt sau khi đã nêu số liệu, để người nghe cười rồi nhớ con số.
+  - Nhắm vào **tình huống, nghịch lý của con số, câu chữ văn bản, thói quen chung** (kể cả của người xem và của chính kênh).
+  - **Không** nhắm vào cá nhân có tên, không chế giễu ngoại hình, vùng miền, người thu nhập thấp; với doanh nghiệp và cơ quan chỉ châm biếm điều đã có nguồn, không bịa ý đồ (luật mục 1 và mục 5 vẫn giữ).
+  - Câu châm biếm **không mang số liệu mới** và không làm sai nghĩa số liệu đã nêu; nghe phải rõ là câu đùa, không lẫn với câu trích.
+- **Không đùa** ở đoạn nói về thiệt hại của người thật (mất việc, mất tiền, tai nạn).
+- Từ trend (mục 6) tính vào hạn mức châm biếm của beat.
 
 ## 7. Nhịp và hình
 
 - Mỗi chương mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối chương trả lời.
+- **Hình:** ưu tiên ảnh minh họa thực tế và b-roll (user chốt 10/11/2026); đồ họa tự dựng chỉ khi bất đắc dĩ (con số, so sánh, quy trình). Dòng `[TRÊN MÀN HÌNH]` vì thế tả trước hết cảnh thật cần thấy.
 - Bảng giá, trang nguồn, biểu đồ có tên nguồn ở góc; số tự tính có nhãn.
 - Bảng màu lấy từ `brand/theme.json` (nhận diện Nhịp Công Nghệ, 10/11/2026): nền xanh đen `#08181C`, nhấn ngọc lam `#22D3EE`, chữ trắng; màu phụ theo ý nghĩa: xanh lá miễn phí, tiết kiệm; đỏ giới hạn, thuế, rủi ro; lam AI, dữ liệu; tím gói cao cấp. Nhân vật dẫn chuyện: robot Nhịp (`pipeline/nhan-vat/`).

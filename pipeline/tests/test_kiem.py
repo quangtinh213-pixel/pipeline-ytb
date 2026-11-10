@@ -135,3 +135,7 @@ def test_tu_tinh_label_may_sit_in_previous_sentence_of_same_paragraph():
     assert any("tự tính" in e for e in check(far, NGUON + [TT]))
     none = "Đã rất lâu rồi. Đã 15 năm. [#t1]"
     assert any("tự tính" in e for e in check(none, NGUON + [TT]))
+
+
+def test_tu_tinh_khong_xung_minh():
+    assert check("Tính ra là 15 năm. [#t1]", NGUON + [TT]) == check("Đã 15 năm, mình tự tính. [#t1]", NGUON + [TT])
