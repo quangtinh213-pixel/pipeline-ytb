@@ -54,7 +54,7 @@ Mục đích: tìm cách trình bày chuyên nghiệp hơn, rõ ràng hơn, dễ
 2. **Phóng to và dọn bố cục** ở `quy-trinh`, `so-sanh`, `minh-hoa` đơn lẻ, dòng nguồn một dòng, nhãn lớn hơn, đo "tỉ lệ khung hình được dùng" (mục 3, số 1 và 12). *(Đã làm một phần: `quy-trinh` phóng hình 240→420 px, nhãn 36→46 px, tiêu đề 52→68 px; nhãn `so-sanh` 46 px. Chưa có thước đo "tỉ lệ khung được dùng" và chưa kiểm thời gian đọc.)*
 3. **Vẽ lại sáu phông** thành môi trường nhận ra được (cảng có cần cẩu và chồng container, trung tâm dữ liệu có hàng tủ máy, thành phố có đường chân trời…), sàn khác nhau theo chủ đề. *(Đã làm: phòng máy chủ, nhà máy, cảng, thành phố, sàn giao dịch, cơ quan, mỗi phông một sàn riêng và vật dựng ở hai cạnh sau; xem `svg/README.md`.)*
 4. **Thêm ẩn dụ vật lý vào thư viện** (bập bênh, domino, đồng hồ đo, bản đồ) và **mẫu `ban-do`** cho các đề xuất khẩu, thuế, chuỗi cung ứng.
-5. **Đếm số lớn từ giá trị cũ** *(đã làm: `tu` trong `so-lon`)* và **biểu đồ thanh xếp hạng** cho đề về giá, thị phần, chi tiêu *(đã làm 10/11: mẫu `xep-hang`, tĩnh, chưa có kiểu chạy theo năm và chưa gắn logo hãng vì bản quyền)*.
+5. **Đếm số lớn từ giá trị cũ** *(đã làm: `tu` trong `so-lon`)* và **biểu đồ thanh xếp hạng** cho đề về giá, thị phần, chi tiêu *(đã làm 10/11: mẫu `xep-hang`, có cả kiểu chạy theo năm với `moc`; chưa gắn logo hãng vì bản quyền)*.
 6. **Thử A/B phụ đề** đủ câu và từ khóa động sau khi đăng (cần retention thật).
 
 ## 6. Rủi ro và điều chưa biết

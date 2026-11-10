@@ -11,16 +11,19 @@
     #root .xh-thanh { position: absolute; left: 0; top: 12%; height: 76%; background: var(--bar); border-radius: 0 14px 14px 0;
                       transform-origin: left center; }
     #root .xh-hang.noi-bat .xh-thanh { background: var(--accent); }
-    #root .xh-so { position: absolute; top: 50%; transform: translateY(-50%); white-space: nowrap; color: var(--ink);
-                   font: 900 52px/1 var(--font-display); padding-left: 44px; }
+    #root .xh-so { position: absolute; left: 0; top: 0; height: 100%; display: flex; align-items: center; white-space: nowrap; color: var(--ink);
+                   font: 900 52px/1 var(--font-display); }
+    #root .xh-so-chip { margin-left: 28px; padding: 8px 18px; background: var(--tren-muc); border-radius: 12px; white-space: nowrap; }
     #root .xh-don-vi { font: 700 34px/1 var(--font-display); color: var(--muted); padding-left: 10px; }
+    #root .xh-nam { position: absolute; right: 160px; bottom: 150px; color: var(--ink); opacity: 0.16; font: 900 280px/1 var(--font-display); letter-spacing: -0.04em; }
     #root .xh-truc { position: absolute; left: 380px; top: 0; bottom: 0; width: 5px; background: var(--muted); transform-origin: top center; }
   </style>
   <div id="root" data-composition-id="xep-hang" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"hang","type":"string","label":"Các hàng (JSON: nhan, so, so_hien, noi_bat)","default":"[{\"nhan\":\"A\",\"so\":2,\"so_hien\":\"2\",\"noi_bat\":true},{\"nhan\":\"B\",\"so\":1,\"so_hien\":\"1\",\"noi_bat\":false}]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của thanh nổi bật","default":"dap"}]'>
+       data-composition-variables='[{"id":"tieu_de","type":"string","label":"Tiêu đề","default":""},{"id":"hang","type":"string","label":"Các hàng (JSON: nhan, so, so_hien, noi_bat)","default":"[{\"nhan\":\"A\",\"so\":2,\"so_hien\":\"2\",\"noi_bat\":true},{\"nhan\":\"B\",\"so\":1,\"so_hien\":\"1\",\"noi_bat\":false}]"},{"id":"don_vi","type":"string","label":"Đơn vị","default":""},{"id":"moc","type":"string","label":"Các mốc năm (JSON, rỗng = xếp hạng tĩnh)","default":"[]"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp của thanh nổi bật","default":"dap"}]'>
     <div id="xh-san" class="san">
       <div id="xh-tieu-de" class="xh-tieu-de" data-var-text="tieu_de"></div>
       <div id="xh-khung" class="xh-khung" data-layout-allow-overflow><div id="xh-truc" class="xh-truc"></div></div>
+      <div id="xh-nam" class="xh-nam"></div>
       <div id="xh-nguon" class="dong-nguon" data-var-text="nguon"></div>
     </div>
   </div>
@@ -32,32 +35,63 @@
     document.querySelector("#xh-san").classList.add("nen-" + (v.nen || "toi"));
     const hang = JSON.parse(v.hang), n = hang.length, khung = document.querySelector("#xh-khung");
     const KH = 1920 - 320 - 380, RAIL = KH - 360;  // bề rộng thanh dài nhất chừa chỗ cho số và đơn vị
-    const cao = 650, hh = Math.min(120, cao / n), max = Math.max(...hang.map(h => h.so), 1e-9);
+    const cao = 650, hh = Math.min(120, cao / n);
     const tl = gsap.timeline({ paused: true });
+    let hl = -1;
     tl.fromTo("#xh-tieu-de", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
     tl.fromTo("#xh-truc", { scaleY: 0 }, { scaleY: 1, duration: 0.4, ease: "power2.out" }, 0);
-    let hl = -1;
+    const moc = JSON.parse(v.moc || "[]"), dua = moc.length > 1, K = dua ? moc.length : 1;
+    const gia = h => dua ? h.so : [h.so], hien = h => dua ? h.so_hien : [h.so_hien];
+    const max = Math.max(...hang.flatMap(gia), 1e-9), slot = cao / n;
+    // Hạng của từng hàng ở mỗi mốc (giá trị giảm dần; bằng nhau giữ thứ tự khai báo)
+    const hangTai = k => hang.map((h, i) => i).sort((a, b) => gia(hang[b])[k] - gia(hang[a])[k] || a - b);
+    const rank = Array.from({ length: K }, (_, k) => { const o = hangTai(k), r = []; o.forEach((i, p) => r[i] = p); return r; });
+    const dem = [];
     hang.forEach((h, i) => {
-      const t0 = at(i, 0.4 + 0.4 * i), w = Math.max(14, RAIL * h.so / max);
+      const gs = gia(h), t0 = at(0, 0.4), w = Math.max(14, RAIL * gs[0] / max);
+      const dec = (String(hien(h)[0]).split(",")[1] || "").length, fmtDec = k => (String(hien(h)[k]).split(",")[1] || "").length;
       const el = document.createElement("div");
       el.id = "xh-hang-" + i; el.className = "xh-hang" + (h.noi_bat ? " noi-bat" : "");
-      el.style.top = i * (cao / n) + (cao / n - hh) / 2 + "px"; el.style.height = hh + "px";
+      el.style.top = (slot - hh) / 2 + "px"; el.style.height = hh + "px"; gsap.set(el, { y: rank[0][i] * slot });
       const nhan = document.createElement("div"); nhan.className = "xh-nhan"; nhan.textContent = h.nhan;
       const rail = document.createElement("div"); rail.className = "xh-rail";
-      const thanh = document.createElement("div"); thanh.id = "xh-thanh-" + i; thanh.className = "xh-thanh"; thanh.style.width = w + "px";
-      const so = document.createElement("div"); so.id = "xh-so-" + i; so.className = "xh-so"; so.style.left = w + "px";
-      const dec = (String(h.so_hien).split(",")[1] || "").length, obj = { x: 0 };
-      const fmt = x => (x >= h.so ? h.so_hien : x.toLocaleString("vi-VN", { minimumFractionDigits: dec, maximumFractionDigits: dec }));
-      const num = document.createElement("span"); num.textContent = fmt(0);
+      const thanh = document.createElement("div"); thanh.id = "xh-thanh-" + i; thanh.className = "xh-thanh"; thanh.style.width = RAIL + "px";  // thanh dài nhất = RAIL; độ dài theo giá trị bằng scaleX (không animate width/left)
+      const so = document.createElement("div"); so.id = "xh-so-" + i; so.className = "xh-so";
+      const num = document.createElement("span");
       const dv = document.createElement("span"); dv.className = "xh-don-vi"; dv.textContent = v.don_vi;
-      so.append(num, dv); rail.append(thanh, so); el.append(nhan, rail); khung.appendChild(el);
+      const chip = document.createElement("div"); chip.className = "xh-so-chip"; chip.append(num, dv); so.append(chip); rail.append(thanh, so); el.append(nhan, rail); khung.appendChild(el);
+      dem.push({ i, num, thanh, so, el });
       if (h.noi_bat) hl = i;
-      tl.fromTo(nhan, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.25 }, t0);
-      tl.fromTo(thanh, { scaleX: 0 }, { scaleX: 1, duration: 0.7, ease: "power3.out" }, t0);
-      tl.fromTo(so, { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.1);
-      tl.fromTo(obj, { x: 0 }, { x: h.so, duration: 0.75, ease: "power3.out", onUpdate: () => { num.textContent = fmt(obj.x); } }, t0);
+      const ghi = (x, k) => { const d = fmtDec(k); return Math.abs(x - gs[k]) < 1e-9 ? hien(h)[k] : x.toLocaleString("vi-VN", { minimumFractionDigits: d, maximumFractionDigits: d }); };
+      const tai = (k, tk, dur) => {  // mốc k: thanh dài ra/ngắn lại, số đếm tới giá trị, hàng đổi chỗ theo hạng mới
+        const obj = { x: k === 0 ? 0 : gs[k - 1] };
+        tl.to(thanh, { scaleX: gs[k] / max, duration: dur, ease: "power3.out" }, tk);
+        tl.to(so, { x: RAIL * gs[k] / max, duration: dur, ease: "power3.out" }, tk);
+        tl.to(el, { y: rank[k][i] * slot, duration: dur, ease: "power2.inOut" }, tk);
+        tl.to(obj, { x: gs[k], duration: dur, ease: "power3.out", onUpdate: () => { num.textContent = ghi(obj.x, k); } }, tk);
+      };
+      num.textContent = ghi(0, 0); gsap.set(so, { x: w }); gsap.set(thanh, { scaleX: w / RAIL });
+      tl.fromTo(nhan, { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.25 }, dua ? t0 : at(i, 0.4 + 0.4 * i));
+      if (!dua) {  // tĩnh: mỗi hàng hiện lần lượt, thanh dựng từ 0 và số đếm tăng
+        const tk = at(i, 0.4 + 0.4 * i), obj = { x: 0 };
+        tl.fromTo(thanh, { scaleX: 0 }, { scaleX: w / RAIL, duration: 0.7, ease: "power3.out" }, tk);
+        tl.fromTo(so, { opacity: 0 }, { opacity: 1, duration: 0.2 }, tk + 0.1);
+        tl.fromTo(obj, { x: 0 }, { x: gs[0], duration: 0.75, ease: "power3.out", onUpdate: () => { num.textContent = ghi(obj.x, 0); } }, tk);
+      } else {
+        tl.fromTo(thanh, { scaleX: 0 }, { scaleX: w / RAIL, duration: 0.8, ease: "power3.out" }, t0);
+        tl.fromTo(so, { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.1);
+        const obj0 = { x: 0 };
+        tl.fromTo(obj0, { x: 0 }, { x: gs[0], duration: 0.8, ease: "power3.out", onUpdate: () => { num.textContent = ghi(obj0.x, 0); } }, t0);
+        for (let k = 1; k < K; k++) tai(k, at(k, 0.4 + 1.3 * k), 1.0);
+      }
     });
-    const tEnd = at(n - 1, 0.4 + 0.4 * (n - 1)) + 0.8;
+    if (dua) {
+      const nam = document.querySelector("#xh-nam");
+      moc.forEach((m, k) => { const tk = at(k, 0.4 + 1.3 * k); tl.call(() => { nam.textContent = m; }, null, tk); });
+      nam.textContent = moc[0];
+      tl.fromTo(nam, { opacity: 0 }, { opacity: 0.16, duration: 0.4 }, 0.4);
+    }
+    const tEnd = (dua ? at(K - 1, 0.4 + 1.3 * (K - 1)) + 1.1 : at(n - 1, 0.4 + 0.4 * (n - 1)) + 0.8);
     if (hl >= 0) dongLap(tl, "#xh-thanh-" + hl, v.dong, tEnd, 12);
     tl.fromTo("#xh-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
     window.__timelines["xep-hang"] = tl;

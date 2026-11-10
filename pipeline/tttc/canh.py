@@ -153,9 +153,16 @@ def _check_xep_hang(c: dict) -> list[str]:
     hang, out = c.get("hang") or [], []
     if not 2 <= len(hang) <= 8:
         out.append(f"Lỗi: {c['id']} xep-hang cần 2–8 hàng (đang {len(hang)})")
+    moc = c.get("moc") or []
+    if moc and not (2 <= len(moc) <= 10 and all(isinstance(m, str) and m for m in moc)):
+        out.append(f"Lỗi: {c['id']} moc cần 2–10 nhãn năm/mốc dạng chữ (đang {len(moc)})")
     for i, h in enumerate(hang):
-        if not isinstance(h, dict) or not h.get("nhan") or isinstance(h.get("so"), bool) or not isinstance(h.get("so"), (int, float, str)):
-            out.append(f"Lỗi: {c['id']} hàng {i} cần nhan và so")
+        so = h.get("so") if isinstance(h, dict) else None
+        ok_one = lambda x: isinstance(x, (int, float, str)) and not isinstance(x, bool)
+        if not isinstance(h, dict) or not h.get("nhan") or not (ok_one(so) and not moc or isinstance(so, list) and moc and all(ok_one(x) for x in so)):
+            out.append(f"Lỗi: {c['id']} hàng {i} cần nhan và so" + (" (một số cho mỗi mốc trong moc)" if moc else ""))
+        elif moc and len(so) != len(moc):
+            out.append(f"Lỗi: {c['id']} hàng {i} có {len(so)} giá trị nhưng moc có {len(moc)} mốc")
     nb = c.get("noi_bat")
     if nb is not None and not (isinstance(nb, int) and not isinstance(nb, bool) and 0 <= nb < len(hang)):
         out.append(f"Lỗi: {c['id']} noi_bat={nb} nằm ngoài các hàng")
@@ -280,7 +287,8 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
             return []
     elif c["mau"] == "xep-hang":
         sc = _unit_scale(c.get("don_vi", ""))
-        pairs = [(h["so"], sc) for h in c.get("hang") or [] if isinstance(h, dict) and h.get("so") is not None]
+        pairs = [(x, sc) for h in c.get("hang") or [] if isinstance(h, dict) and h.get("so") is not None
+                 for x in (h["so"] if isinstance(h["so"], list) else [h["so"]])]
         if not pairs:
             return []
     elif c["mau"] == "so-sanh":  # mỗi bên có thể có đơn vị riêng ("tỷ transistor" so với "triệu transistor")

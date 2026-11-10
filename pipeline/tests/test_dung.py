@@ -594,3 +594,18 @@ def test_xep_hang_scene_file_and_group():
     assert 'data-composition-id="x1"' in s and "x1-xh-" in s and "function dongLap" in s
     from tttc import chat_luong
     assert "xep-hang" in chat_luong.NHOM["do-hoa"]
+
+
+RACE = dict(XH, moc=["2022", "2024", "2026"], hang=[{"nhan": "Nvidia", "so": [0.4, 3.3, 4.5]}, {"nhan": "TSMC", "so": [1.2, 0.9, 1.4]}])
+
+
+def test_vars_xep_hang_race_passes_series_and_frames():
+    v = dung._vars(RACE, {}, {})
+    h = json.loads(v["hang"])
+    assert h[0]["so"] == [0.4, 3.3, 4.5] and h[0]["so_hien"] == ["0,4", "3,3", "4,5"] and json.loads(v["moc"]) == ["2022", "2024", "2026"]
+    assert json.loads(dung._vars(XH, {}, {})["moc"]) == []
+
+
+def test_steps_xep_hang_race_one_per_frame():
+    assert dung.steps(RACE, []) == pytest.approx([0.4, 1.7, 3.0])
+    assert [f for f, _, _ in dung.sfx_events(RACE, dung.steps(RACE, []))] == ["pop"] * 3

@@ -508,3 +508,26 @@ def test_xep_hang_rejects_bad_rows_and_unsourced_values(tmp_path):
 def test_xep_hang_labels_must_be_vietnamese(tmp_path):
     en = _xh(hang=[{"nhan": "The biggest chip maker", "so": 4.5}, {"nhan": "AMD", "so": 1.2}])
     assert any("tiếng Anh" in e for e in _errors(canh.validate(en, TIMING, tmp_path, XH_SRC, kit=None)))
+
+
+RACE_SRC = [{"id": "x1", "gia_tri": "2022: 0,4 nghìn tỷ USD; 1,2 nghìn tỷ USD; 2024: 3,3 nghìn tỷ USD; 0,9 nghìn tỷ USD; 2026: 4,5 nghìn tỷ USD; 1,4 nghìn tỷ USD"}]
+
+
+def _race(**c):
+    base = {"moc": ["2022", "2024", "2026"], "don_vi": "nghìn tỷ USD", "nguon_id": "x1", "noi_bat": 0,
+            "hang": [{"nhan": "Nvidia", "so": [0.4, 3.3, 4.5]}, {"nhan": "TSMC", "so": [1.2, 0.9, 1.4]}]}
+    return {"scenes": [dict({"id": "c0", "mau": "xep-hang", "start": 0, "end": 8}, **{**base, **c}),
+                       {"id": "c1", "mau": "chuong", "start": 8, "end": 12, "so": "Phần 2"}]}
+
+
+def test_xep_hang_race_valid_scene_has_no_errors(tmp_path):
+    t = {"duration": 12.0, "words": [], "paragraphs": []}
+    assert _errors(canh.validate(_race(), t, tmp_path, RACE_SRC, kit=None)) == []
+
+
+def test_xep_hang_race_rejects_length_mismatch_and_unsourced_values(tmp_path):
+    t = {"duration": 12.0, "words": [], "paragraphs": []}
+    errs = lambda sc: _errors(canh.validate(sc, t, tmp_path, RACE_SRC, kit=None))
+    assert any("moc" in e for e in errs(_race(hang=[{"nhan": "A", "so": [1, 2]}, {"nhan": "B", "so": [1, 2, 3]}])))
+    assert any("7.7" in e for e in errs(_race(hang=[{"nhan": "A", "so": [0.4, 7.7, 4.5]}, {"nhan": "B", "so": [1.2, 0.9, 1.4]}])))
+    assert any("moc" in e for e in errs(_race(moc=["2022"])))
