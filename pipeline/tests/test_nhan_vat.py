@@ -41,3 +41,11 @@ def test_unknown_expression_or_angle_raises():
     import pytest
     with pytest.raises(KeyError):
         nhan_vat.tao_prompt("buon", "truoc")
+
+
+def test_short_prompt_relies_on_references_but_keeps_hard_rules():
+    full, short = nhan_vat.tao_prompt("nghi", "ngang"), nhan_vat.tao_prompt("nghi", "ngang", ngan=True)
+    assert len(short) < len(full) * 0.7
+    for must in ("no text", "no logo", "no real person", "reference", nhan_vat.BIEU_CAM["nghi"], nhan_vat.GOC["ngang"], "chroma-key green"):
+        assert must in short
+    assert "eyes closed" in nhan_vat.tao_prompt("nghi", "truoc", nham=True, ngan=True)

@@ -54,10 +54,15 @@ BRIEF = (
 )
 
 
-def tao_prompt(the: str, huong: str, nham: bool = False) -> str:
+NGAN = ("The same small cube-robot mascot Nhip as in the reference images (keep the exact design, proportions, colours and outlines), "
+        "isometric flat vector look, plain solid uniform bright chroma-key green background, character centred and fully visible, "
+        "no text, no logo, no real person, no watermark.")
+
+
+def tao_prompt(the: str, huong: str, nham: bool = False, ngan: bool = False) -> str:
     """Lời nhắc tạo một dáng: nhân vật + biểu cảm + góc + màu của theme; nham=True thêm 'eyes closed' (ảnh chớp mắt)."""
     from tttc import theme  # nhập trễ: theme đọc brand/theme.json lúc import
     acc, acc2, acc3 = theme.TH["nhan"]
-    brief = BRIEF.format(acc=acc, acc2=acc2, acc3=acc3, ink=theme.TH["nen"])
+    brief = NGAN if ngan else BRIEF.format(acc=acc, acc2=acc2, acc3=acc3, ink=theme.TH["nen"])  # ngan: thiết kế đã nằm trong ảnh tham chiếu
     p = f"{brief} Expression: {BIEU_CAM[the]}. Camera angle: {GOC[huong]}."
     return p + (" The character has eyes closed (the LED eyes are switched off, as in a blink)." if nham else "")
