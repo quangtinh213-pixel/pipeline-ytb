@@ -84,8 +84,10 @@ def test_tu_cam_opening_only_in_first_40_words():
 
 
 def test_tu_cam_closing_only_in_last_60_words():
-    assert _w(phong_cach.tu_cam(_script(_filler(100) + " Tóm lại, chip đắt.")), "kết bài")
-    assert _w(phong_cach.tu_cam(_script("Tóm lại, chip đắt. " + _filler(100))), "kết bài") == []
+    # "tóm lại" đã bỏ khỏi danh sách cấm theo template user (11/11/2026); "hãy nhớ rằng" vẫn bị cấm
+    assert _w(phong_cach.tu_cam(_script(_filler(100) + " Hãy nhớ rằng chip đắt.")), "kết bài")
+    assert _w(phong_cach.tu_cam(_script("Hãy nhớ rằng chip đắt. " + _filler(100))), "kết bài") == []
+    assert _w(phong_cach.tu_cam(_script(_filler(100) + " Tóm lại, chip đắt.")), "kết bài") == []
 
 
 def test_tu_cam_ignores_quoted_source_text():
@@ -108,11 +110,11 @@ def test_hedging_cap():
     assert _w(_mui("Mình nghĩ vậy. Bạn tự xem nhé."), "rào đón") == []
 
 
-def test_short_sentences_needed_for_rhythm():
-    flat = " ".join(["Câu này dài mười hai chữ để đủ độ dài chuẩn thôi nhé bạn."] * 30)
-    assert len(_w(_mui(flat), "câu ngắn")) == 1
-    mixed = flat + " " + " ".join(["Đúng thế.", "Không hẳn.", "Vậy là xong."] * 6)
-    assert _w(_mui(mixed), "câu ngắn") == []
+def test_qua_nhieu_so_mot_doan_va_so_le():
+    day = "Phí là 28,76 phần trăm. Tổng thu 40,6 phần trăm. Tài xế còn 52,7 phần trăm. Khoản thưởng 860 tỷ đồng, hỗ trợ xăng 52 tỷ đồng."
+    assert len(_w(_mui(day), "con số")) == 1 and len(_w(_mui(day), "số lẻ")) == 1
+    gon = "Khách trả một khoản, Grab giữ gần 40 phần trăm."
+    assert _w(_mui(gon), "con số") == [] and _w(_mui(gon), "số lẻ") == []
 
 
 def test_ending_must_not_recap_with_triad():
@@ -206,3 +208,26 @@ def test_main_prints_estimate_when_config_has_wpm(tmp_path, capsys, monkeypatch)
     (tmp_path / "kich-ban.md").write_text(_long(head=OK_HEAD, tail="Bạn đoán năm nào?"), encoding="utf-8")
     phong_cach.main(str(tmp_path))
     assert "ước tính 10.0 phút ở 230 từ/phút" in capsys.readouterr().out
+
+
+def _mau(loai: str, n: int) -> str:
+    return f"# Tiêu đề\nLoại: {loai}\n\n" + _script(_filler(n))
+
+
+def test_template_loai_dat_khung_do_dai_rieng():
+    assert phong_cach.loai_cua(_mau("gia", 300)) == "gia"
+    assert phong_cach.loai_cua(_script(_filler(300))) is None
+    assert _w(phong_cach.kiem(_mau("gia", 300)), "khung") == []  # đúng khung 250–400, không đòi hook số/câu hỏi
+    assert len(_w(phong_cach.kiem(_mau("gia", 100)), "khung 250–400")) == 1
+    assert len(_w(phong_cach.kiem(_mau("shorts", 150)), "khung")) == 0
+    assert len(_w(phong_cach.kiem(_script(_filler(300))), "khung 2000")) == 1  # không có Loại: vẫn là video dài
+
+
+def test_template_loai_la_la_loi():
+    assert len(_w(phong_cach.kiem(_mau("khong-co", 300)), "Lỗi: loại")) == 1
+
+
+def test_template_tom_lai_va_mình_khong_bi_chan():
+    spoken = "Anh em ơi, hãng ra máy mới. No cap, pin đỡ hơn. Tóm lại là xịn nhưng không đỉnh. Anh em thấy sao, comment cho mình biết với?"
+    bad = phong_cach.kiem(f"# T\nLoại: ra-mat\n\n" + _script(spoken))
+    assert _w(bad, "Lỗi") == []

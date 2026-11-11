@@ -1,5 +1,5 @@
 {
- "ghi_chu": "Kho từ trend để TRA KHI VIẾT, không bắt buộc dùng. Luật: tối đa 1–2 từ mỗi video, chỉ khi hợp mạch, không nhồi; không dùng từ có hop_kenh=khong. Mỗi mục có nguồn đã đọc; mục nào không đọc được trang gốc thì da_doc_trang=false và không dùng vào lời đọc. Từ lóng già đi nhanh: mục quá 6 tháng kể từ giai_doan nên kiểm lại. Cập nhật lần cuối 10/11/2026; bản mới nhất tìm được là nửa đầu 2026 (đăng 24/07/2026), chưa có tổng hợp nửa cuối 2026.",
+ "ghi_chu": "Kho từ trend để TRA KHI VIẾT, không bắt buộc dùng. Luật: tối đa 1–2 từ mỗi video, chỉ khi hợp mạch, không nhồi; không dùng từ có hop_kenh=khong. Mỗi mục có nguồn đã đọc; mục nào không đọc được trang gốc thì da_doc_trang=false và không dùng vào lời đọc. Từ lóng già đi nhanh: mục quá 6 tháng kể từ giai_doan nên kiểm lại. Cập nhật lần cuối 10/11/2026; bản mới nhất tìm được là nửa đầu 2026 (đăng 24/07/2026), chưa có tổng hợp nửa cuối 2026. Từ 11/11/2026 bộ từ của template user được thêm với nguồn là chính template; với video theo template, hạn mức theo mục 10 thẻ phong cách (mỗi đoạn tối đa 1 từ), không còn 1–2 từ mỗi video.",
  "ngay_cap_nhat": "2026-11-10",
  "muc": [
   {
@@ -145,6 +145,96 @@
    "hop_kenh": "it",
    "luu_y": "Mới chỉ thấy tóm tắt từ kết quả tìm kiếm, chưa mở trang gốc.",
    "da_doc_trang": false
+  },
+  {
+   "tu": "Đỉnh của chóp",
+   "nghia": "Rất xuất sắc; dùng cả để trêu lời tự khen của hãng.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Hợp câu châm biếm lời quảng cáo có nguồn.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Xịn sò",
+   "nghia": "Chất lượng tốt, đẳng cấp.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Dùng khi khen điểm thật sự tốt đã có số liệu.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "No cap",
+   "nghia": "Nói thật, không nói điêu.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Mở câu nhận định; không đi trước câu chưa có nguồn.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Mid",
+   "nghia": "Tầm thường, không nổi bật.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Hợp chấm điểm tính năng trung bình sau khi nêu số liệu.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Hype",
+   "nghia": "Sự rầm rộ, kỳ vọng thổi phồng.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Hợp tin ra mắt, tin giá.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Cháy phố",
+   "nghia": "Rất nổi, rất rầm rộ; trong template dùng cho độ ồn của marketing.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Câu châm biếm nhắm lời quảng cáo có nguồn.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Rò rỉ như cơm bữa",
+   "nghia": "Tin rò rỉ xuất hiện dày đặc, thành chuyện thường.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Chỉ dùng cho tin rò rỉ; vẫn ghi rõ chưa chính thức.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Aura",
+   "nghia": "Khí chất, sức hút; trong template dùng cho độ ấn tượng của phần demo.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Hợp tin AI khi đối chiếu demo với dùng thực tế.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Slay",
+   "nghia": "Làm cực tốt, ấn tượng.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Hợp hook tin AI.",
+   "da_doc_trang": true
+  },
+  {
+   "tu": "Anh em ơi",
+   "nghia": "Cách gọi người xem thân mật.",
+   "giai_doan": "theo template user 11/2026",
+   "nguon": "Bộ template kịch bản của user (docs/template-kich-ban.md, 11/11/2026)",
+   "hop_kenh": "co",
+   "luu_y": "Mở hook; luân phiên với \"bạn\".",
+   "da_doc_trang": true
   }
  ]
 }

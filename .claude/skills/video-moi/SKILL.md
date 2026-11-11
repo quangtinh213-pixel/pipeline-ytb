@@ -26,6 +26,7 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 - Không có: quét tin 24 giờ qua từ `pipeline/config.json:nguon_tin`, và đọc RSS đối thủ bằng `cd pipeline && uv run python -m tttc.radar rss` (chỉ lấy tiêu đề, giờ đăng, số view làm tín hiệu; không lấy lời, kịch bản, hình của họ).
 - Chấm mỗi đề (`tttc.radar.cham_diem`): cú sốc trong 48 giờ (0–2), số lớn nêu được từ nguồn gốc (0–2), góc Việt Nam (0–2, **nặng gấp đôi**). Đạt khi ≥ 4 điểm; cùng điểm thì đề có góc Việt Nam xếp trước, rồi đề mới hơn. Góc Việt Nam bằng 0 **không tự động loại**. Xếp bằng `radar.xep_hang`.
 - Chấm câu "nóng" bằng dữ liệu: gọi skill `yt-viral` cho ngách (tin công nghệ–kinh tế tiếng Việt) xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
+- **Chọn loại template** (ưu tiên từ 11/11/2026, `docs/template-kich-ban.md`, mục 10 thẻ phong cách): phân đề vào một loại `ra-mat`, `ro-ri`, `gia`, `bao-mat`, `ai`, `cap-nhat` hoặc `shorts` và ghi vào `chu-de.md`. Đề không thuộc loại nào, hoặc cần phân tích sâu 8–14 phút, thì làm video dài theo mục 3 thẻ phong cách (không ghi `Loại:`).
 - Ghi `chu-de.md` bằng `radar.ghi_chu_de(V, top, ho_da_dang)`: 3 đề tốt nhất, mỗi đề có điểm từng câu, link tin gốc, cờ "họ đã đăng cùng sự kiện" (đối chiếu RSS). Họ đã đăng cùng đề thì **vẫn làm**, chỉ ghi cờ. Đề 1 là đề được làm tiếp; người dùng đổi ở điểm duyệt 1.
 
 ## 2. nguon
@@ -48,14 +49,15 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 
 ## 3. kich-ban
 
-- Gọi skill `yt-script` với đề, lời hứa, `nguon.json` và **thẻ phong cách `docs/phong-cach-kich-ban.md`**. Khung 6 đoạn của kênh:
-  móc 15 giây → bối cảnh/số → chuyện thật sự đổi gì → hệ quả cho người Việt → hai việc cần ngóng → kết trả lời câu hỏi tiêu đề.
+- Gọi skill `yt-script` với đề, lời hứa, `nguon.json` và **thẻ phong cách `docs/phong-cach-kich-ban.md`**.
+  - **Có loại template:** dùng đúng khung của loại đó trong `docs/template-kich-ban.md` (HOOK, PHÂN TÍCH, CHÂM BIẾM, TÁC ĐỘNG, KẾT), điền `[...]` bằng số và sự kiện có nguồn, thêm dòng `Loại: <khóa>` ngay dưới tiêu đề `kich-ban.md`. Khung từ theo `phong_cach.LOAI`; giọng, từ trend, "mình" theo mục 10.
+  - **Không có loại (video dài):** khung 6 đoạn của kênh: móc 15 giây → bối cảnh/số → chuyện thật sự đổi gì → hệ quả cho người Việt → hai việc cần ngóng → kết trả lời câu hỏi tiêu đề.
 - Định dạng `kich-ban.md`:
   - Mỗi beat: `#### Beat N: <tên>`, dòng `[TRÊN MÀN HÌNH]: ...`, rồi `**Lời đọc:**` và các đoạn lời đọc ngay dưới.
   - Câu nào có số (cả trên màn hình lẫn lời đọc) gắn `[#id]` ngay sau dấu chấm câu.
   - Trong **lời đọc**, số viết thành chữ để TTS đọc đúng ("năm trăm hai mươi hai nghìn năm trăm đồng"); trên màn hình giữ chữ số.
   - Số từ nguồn `so-bo` phải có chữ "sơ bộ" hoặc "chưa chính thức" trong câu.
-  - 10–13 phút ≈ 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm tiết; `tttc.phong_cach` kiểm).
+  - Video dài 10–13 phút ≈ 2.000–2.600 từ lời đọc (~200 từ/phút; từ = âm tiết; `tttc.phong_cach` kiểm); loại template theo bảng mục 10.
 
 - **Khung giao việc cho `yt-script`** (điền `{...}`; spec giọng văn `docs/superpowers/specs/2026-11-09-giong-van-kich-ban-design.md`, Phụ lục A):
 
@@ -65,19 +67,21 @@ trong nguon.json, đang ngồi quán cà phê kể lại cho một đứa bạn 
 [CHỦ ĐỀ]: {đề, lời hứa một câu, nguon.json}
 [MẪU GIỌNG]: {pipeline/phong-cach/phan-tich-giong.md + các đoạn trong pipeline/phong-cach/mau-giong/}
 [QUY TẮC BẮT BUỘC]:
-1. Giọng điệu: phân tích có nguồn và chuyên môn, xen kẽ ví dụ đời thường và châm biếm theo mục 8 thẻ phong cách (châm biếm tình huống và con số, không châm biếm cá nhân, không bịa ý đồ); thẳng, gãy gọn, như trò chuyện 1-1. Không xưng "mình", không kể thao tác của người dẫn ("mình mở ra xem", "mình tự tính"); vào thẳng sự việc, nhịp nhanh.
-2. Cấm mở bài sáo rỗng và kết bài đúc kết đạo lý; mở bằng sự kiện + cặp số + câu hỏi (theo thẻ phong cách).
+1. Giọng điệu: phân tích có nguồn và chuyên môn, xen kẽ ví dụ đời thường và châm biếm theo mục 8 thẻ phong cách (châm biếm tình huống và con số, không châm biếm cá nhân, không bịa ý đồ); thẳng, gãy gọn, như trò chuyện 1-1. Video dài không theo template: không xưng "mình", không kể thao tác của người dẫn ("mình mở ra xem", "mình tự tính"); vào thẳng sự việc, nhịp nhanh. Video theo template (mục 10): xưng "mình" như template, gọi người xem "bạn"/"anh em", từ trend tối đa 1 từ mỗi đoạn, vẫn không kể thao tác hay trải nghiệm bịa.
+2. Cấm mở bài sáo rỗng và kết bài đúc kết đạo lý; video dài mở bằng sự kiện + cặp số + câu hỏi (theo thẻ phong cách), video theo template mở bằng HOOK của mẫu.
 3. Cấm tuyệt đối mọi mục trong pipeline/phong-cach/tu-cam.json.
-4. Nhịp: xen câu rất ngắn (3–5 từ) với câu vừa; cho phép câu lửng và câu hỏi tu từ ngắn;
+4. Nhịp: câu vừa là chính; câu rất ngắn (3–5 từ) chỉ đặt ở cú chốt, tối đa một câu mỗi đoạn; cho phép câu lửng và câu hỏi tu từ ngắn;
    từ đệm chỉ trong danh sách cho phép.
 5. Chi tiết cụ thể lấy từ nguồn (số, ngày, câu trích, tên) thay cho tính từ cảm thán;
    ví dụ đời thường phải nói rõ là ví dụ.
 6. Không bịa trải nghiệm cá nhân hay giai thoại.
-7. Mọi câu có số gắn [#id], không đổi giá trị so với nguon.json.
+7. Mọi câu có số gắn [#id]. Viết cho tai (mục 9 thẻ phong cách): mỗi đoạn 2–3 con số, số lẻ đọc tròn kèm
+   "gần/khoảng/hơn/chừng" (lệch nguồn ≤ 5%), số chính xác ghi ở [TRÊN MÀN HÌNH]; kể việc bằng chữ nói, không chép
+   chữ công văn; mỗi chương một con người có trong nguồn và một chỗ nói với "bạn".
 8. Đọc to thành tiếng phải nghe tự nhiên, không vấp.
 ```
-- **Biên tập hai lượt** trên bản nháp (đừng viết lại từ đầu): lượt 1 "Đọc lại, gạch bỏ mọi câu sáo rỗng không thêm thông tin."; lượt 2 "Viết lại sao cho đọc to thành tiếng không vấp, nghe như nói trực tiếp, không như đọc văn bản." Hai lượt không được đổi con số, thẻ `[#id]`, câu "sơ bộ" hoặc "mình tự tính".
-- `cd pipeline && uv run python -m tttc.phong_cach ../videos/<slug>` tới `0 Lỗi` (Lỗi là từ cấm, mở/kết bài sáo rỗng, dịch thô; chặn duyệt 1). Đọc từng cảnh báo nhịp và sửa hoặc ghi lý do giữ. Rồi `set_step(dir, "kich-ban", "xong")`.
+- **Biên tập ba lượt** trên bản nháp (đừng viết lại từ đầu): lượt 1 "Đọc lại, gạch bỏ mọi câu sáo rỗng không thêm thông tin."; lượt 2 "Viết lại sao cho đọc to thành tiếng không vấp, nghe như nói trực tiếp, không như đọc văn bản."; lượt 3 (mục 9 thẻ phong cách) "Từng chương: kể lại bằng miệng cho một người bạn, rồi sửa chữ theo lời kể đó: đoạn nào quá ba con số thì giữ số chính, làm tròn, đẩy số còn lại lên [TRÊN MÀN HÌNH]; đổi chữ công văn thành chữ nói; gom câu dè dặt." Ba lượt không được bỏ thẻ `[#id]`, chữ "sơ bộ" hay "tính ra"; con số chỉ được làm tròn trong 5% kèm từ ước lượng.
+- `cd pipeline && uv run python -m tttc.phong_cach ../videos/<slug>` tới `0 Lỗi` (Lỗi là từ cấm, mở/kết bài sáo rỗng, dịch thô; chặn duyệt 1). Đọc từng cảnh báo (nhịp, đoạn dày số, số lẻ đọc thành tiếng) và sửa hoặc ghi lý do giữ. Rồi `set_step(dir, "kich-ban", "xong")`.
 
 ## 4. phan-bien-giong (agy, đúng 2 vòng)
 
