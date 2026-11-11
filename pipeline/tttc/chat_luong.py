@@ -9,7 +9,8 @@ from pathlib import Path
 from tttc import dung
 
 NHOM = {
-    "do-hoa": {"minh-hoa", "quy-trinh", "so-sanh", "thoi-gian", "so-lon", "bieu-do", "chuong", "ban-do", "xep-hang"},
+    "do-hoa": {"minh-hoa", "quy-trinh", "so-sanh", "thoi-gian", "so-lon", "bieu-do", "chuong", "ban-do", "xep-hang",
+               "chu-dong", "phan-tram", "mo-dau", "ket-thuc"},
     "bang-chung": {"trich-bao", "trang-nguon"},
     "doi-that": {"b-roll", "nhan-vat"},
 }
@@ -91,7 +92,7 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
     sfx += sum(kind != "dip" for _, kind in dung.transitions(sc))
     dan = sum(1 for c in sc if dung.dan_cua(c))
     dau = sc[0]  # khung đầu phải có chữ hoặc số để giữ người xem (user duyệt 12/11/2026)
-    mo_dau = dau["mau"] in {"so-lon", "so-sanh", "trich-bao", "bieu-do", "trang-nguon", "xep-hang"} or (
+    mo_dau = dau["mau"] in {"so-lon", "so-sanh", "trich-bao", "bieu-do", "trang-nguon", "xep-hang", "phan-tram", "chu-dong"} or (
         dau["mau"] == "b-roll" and bool(dau.get("tu_khoa") or dau.get("chia")))
     return {"so_canh": n, "tb_giay": sum(durs) / n, "duoi_1_5": sum(d < 1.5 for d in durs),
             "tren_8": sum(d > 8 for d in durs), "ti_le": ti_le, "chay_dai_nhat": best,

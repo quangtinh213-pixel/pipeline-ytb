@@ -7,7 +7,7 @@ import re
 
 DAU_VIET = re.compile(r"[ăâđêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ]", re.I)
 TU_TOI_THIEU = 4
-O_CHU = ("nhan", "so", "chuong", "tieu_de", "ti_le", "chu_thich", "vai", "truoc", "sau", "don_vi", "tu_khoa")
+O_CHU = ("nhan", "so", "chuong", "tieu_de", "ti_le", "chu_thich", "vai", "truoc", "sau", "don_vi", "tu_khoa", "cau", "nho", "moi", "nut", "nut_xong", "khung")
 
 
 def la_tieng_anh(text: str, toi_thieu: int = TU_TOI_THIEU) -> bool:

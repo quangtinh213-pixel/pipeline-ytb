@@ -1,0 +1,86 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .pt-vong { position: absolute; left: 190px; top: 170px; width: 680px; height: 680px; }
+    #root .pt-vong svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    #root .pt-ray { fill: none; stroke: var(--line); stroke-width: 46; }
+    #root .pt-day { fill: none; stroke: var(--accent); stroke-width: 46; stroke-linecap: round; }
+    #root .pt-vach { fill: none; stroke: var(--muted); stroke-width: 3; opacity: 0.35; }
+    #root .pt-dau { position: absolute; left: 50%; top: 0; width: 100%; height: 100%; margin-left: -50%; }
+    #root .pt-cham { position: absolute; left: 50%; top: 23px; width: 26px; height: 26px; margin: -13px 0 0 -13px;
+                     border-radius: 50%; background: {{theme:muc}}; box-shadow: 0 0 24px 8px color-mix(in srgb, var(--accent) 70%, transparent); }
+    #root .nen-kem .pt-cham { background: var(--accent); box-shadow: none; }
+    #root .pt-giua { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; }
+    #root .pt-so { color: var(--ink); font: 900 190px/1 var(--font-display); letter-spacing: -0.045em; white-space: nowrap; }
+    #root .pt-so small { font-size: 0.48em; letter-spacing: -0.02em; margin-left: 0.04em; color: var(--accent); }
+    #root .nen-kem .pt-so small, #root .nen-vang .pt-so small { color: var(--ink); }
+    #root .pt-phai { position: absolute; left: 980px; right: 150px; top: 0; bottom: 80px;
+                     display: flex; flex-direction: column; justify-content: center; }
+    #root .pt-tieu { color: var(--accent); font: 800 34px/1 var(--font-display); letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 28px; }
+    #root .nen-kem .pt-tieu, #root .nen-vang .pt-tieu { color: var(--muted); }
+    #root .pt-nhan { color: var(--ink); font: 800 76px/1.12 var(--font-display); letter-spacing: -0.02em; }
+    #root .pt-nhan span { display: inline-block; margin-right: 0.22em; }
+    #root .pt-gach { margin-top: 40px; width: 160px; height: 10px; border-radius: 5px; background: var(--accent); transform-origin: left center; }
+    #root .pt-sang { position: absolute; left: 530px; top: 510px; width: 1100px; height: 1100px; margin: -550px 0 0 -550px; border-radius: 50%;
+                     background: radial-gradient(circle, color-mix(in srgb, var(--accent) 18%, transparent) 0%, transparent 62%); }
+    #root .nen-kem .pt-sang, #root .nen-vang .pt-sang { display: none; }
+  </style>
+  <div id="root" data-composition-id="phan-tram" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"so","type":"number","label":"Phần trăm (0–100)","default":50},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"50"},{"id":"sau","type":"string","label":"Ký hiệu sau số","default":"%"},{"id":"tieu_de","type":"string","label":"Dòng nhỏ phía trên","default":""},{"id":"nhan","type":"string","label":"Ý nghĩa của con số","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="pt-san" class="san">
+      <div id="pt-sang" class="pt-sang" data-layout-ignore></div>
+      <div id="pt-vong" class="pt-vong">
+        <svg viewBox="0 0 680 680">
+          <circle id="pt-vach" class="pt-vach" cx="340" cy="340" r="268" stroke-dasharray="2 26"/>
+          <circle class="pt-ray" cx="340" cy="340" r="317"/>
+          <circle id="pt-day" class="pt-day" cx="340" cy="340" r="317" transform="rotate(-90 340 340)"
+                  stroke-dasharray="1991.77" stroke-dashoffset="1991.77"/>
+        </svg>
+        <div id="pt-dau" class="pt-dau"><div id="pt-cham" class="pt-cham"></div></div>
+        <div class="pt-giua"><div id="pt-so" class="pt-so">0</div></div>
+      </div>
+      <div class="pt-phai">
+        <div id="pt-tieu" class="pt-tieu" data-var-text="tieu_de"></div>
+        <div id="pt-nhan" class="pt-nhan"></div>
+        <div id="pt-gach" class="pt-gach"></div>
+      </div>
+      <div id="pt-nguon" class="dong-nguon" data-var-text="nguon"></div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#pt-san").classList.add("nen-" + (v.nen || "toi"));
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    const target = Math.max(0, Math.min(100, Number(v.so))), hien = String(v.so_hien), dec = (hien.split(",")[1] || "").length;
+    const el = document.querySelector("#pt-so"), sau = v.sau ?? "%";
+    const ve = x => { el.innerHTML = ""; el.append(x >= target ? hien : x.toLocaleString("vi-VN", { minimumFractionDigits: dec, maximumFractionDigits: dec }));
+                      if (sau) { const s = document.createElement("small"); s.textContent = sau; el.append(s); } };
+    ve(target);
+    if (el.scrollWidth > 560) el.style.fontSize = Math.floor(190 * 560 / el.scrollWidth) + "px";
+    ve(0);
+    const nhan = document.querySelector("#pt-nhan");
+    String(v.nhan || "").split(/\s+/).filter(Boolean).forEach((w, i) => {
+      const s = document.createElement("span"); s.id = "pt-tu-" + i; s.textContent = w; nhan.appendChild(s);
+    });
+    const C = 1991.77, obj = { p: 0 }, d0 = at(0, 0.35), dur = 1.5;
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#pt-sang", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.4, ease: "power2.out" }, 0);
+    tl.fromTo("#pt-vong", { scale: 0.86, opacity: 0, filter: "blur(10px)" }, { scale: 1, opacity: 1, filter: "blur(0px)", duration: 0.6, ease: "expo.out" }, 0);
+    tl.fromTo("#pt-vach", { rotation: -40, svgOrigin: "340 340" }, { rotation: 0, svgOrigin: "340 340", duration: 2.4, ease: "power2.out" }, 0);
+    tl.fromTo("#pt-cham", { opacity: 0 }, { opacity: 1, duration: 0.15 }, d0);
+    // vòng chạy tới đúng phần trăm, chấm sáng đi ở đầu vòng, số đếm cùng nhịp
+    tl.fromTo(obj, { p: 0 }, { p: target, duration: dur, ease: "power3.out", onUpdate: () => {
+      document.querySelector("#pt-day").setAttribute("stroke-dashoffset", (C * (1 - obj.p / 100)).toFixed(2));
+      document.querySelector("#pt-dau").style.transform = "rotate(" + (obj.p * 3.6).toFixed(2) + "deg)";
+      ve(obj.p);
+    } }, d0);
+    tl.fromTo("#pt-so", { scale: 1 }, { scale: 1.07, duration: 0.12, ease: "power2.out" }, d0 + dur - 0.2);
+    tl.to("#pt-so", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.55)" }, d0 + dur - 0.08);
+    const t1 = at(1, 0.6);
+    tl.fromTo("#pt-tieu", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, Math.min(t1, 0.5));
+    tl.fromTo("#pt-nhan span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.07 }, t1);
+    tl.fromTo("#pt-gach", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power3.inOut" }, t1 + 0.3);
+    tl.fromTo("#pt-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.8);
+    window.__timelines["phan-tram"] = tl;
+  </script>
+</template>

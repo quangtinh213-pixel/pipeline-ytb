@@ -148,10 +148,10 @@ def test_compose_assigns_grounds(video):
 
 def test_compose_adds_transitions(video):
     html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
-    assert re.search(r'id="tr-1"[^>]*data-start="3.7"', html) and 'class="tr-p tr-muc"' in html  # rời chương
-    assert 'id="tr-2"' not in html                                                         # cắt thẳng
+    assert re.search(r'id="tr-1"[^>]*data-start="3.62"', html) and 'class="tr-p tr-muc-2"' in html  # rời chương: ba lớp
+    assert re.search(r'id="tr-2"[^>]*data-start="8.7"', html) and "tr-iris" in html  # vào so-lon: mống mắt
     assert re.search(r'id="tr-3"[^>]*data-start="13.7"', html) and "tr-dip" in html
-    assert 'tl.fromTo("#tr-1-p"' in html
+    assert 'tl.fromTo(["#tr-1-p0"' in html
 
 
 def test_compose_maps_new_variables(video):

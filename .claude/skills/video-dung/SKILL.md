@@ -103,7 +103,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **Tỉ lệ cảnh** (user chốt 10/11/2026, thay chuẩn kênh mẫu; `tttc.chat_luong` đo): **ưu tiên ảnh thật và b-roll**.
   Với mỗi cảnh, hỏi trước: có ảnh hay clip đời thật nào cho thấy đúng thứ đang nói không? Có thì dùng `b-roll`
   (clip, hoặc ảnh tĩnh: `broll.nhap` nhận .jpg/.png và tự phóng chậm, bắt buộc `do_dai`). Chỉ dùng đồ họa tự dựng
-  (`so-lon`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chuong`) khi bất đắc dĩ: con số cần đọc được,
+  (`so-lon`, `phan-tram`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chu-dong`, `chuong`) khi bất đắc dĩ: con số cần đọc được,
   so sánh, quy trình, hoặc không có hình thật nào hợp.
   Ngưỡng: ảnh/video đời thật (`b-roll`, `nhan-vat`) ≥ 45%; đồ họa ≤ 40%; bằng chứng (`trich-bao`, `trang-nguon`) 8–35%.
   Không 3 cảnh liền cùng mẫu (trừ `b-roll`, miễn là clip khác nhau).
@@ -132,6 +132,11 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **`thoi-gian`** (so nhịp nhiều bên theo năm: "Singapore 2 năm, Ấn Độ 4 năm, mình thì sao"): `truc` {tu, den, don_vi},
   `hang` 2–5 phần tử `{nhan, tu, den, noi_bat?}`; năm trên thanh phải có trong `gia_tri` của `nguon_id` (hoặc là nguồn
   `tu-tinh`); một hàng một cụm `nhip`.
+- **`chu-dong`** (câu chốt, câu hỏi xoáy, kết luận của chương; tối đa 1–2 lần mỗi chương): `cau` ≤ 16 từ, nên chép đúng lời đọc để từng chữ hiện đúng lúc giọng nói tới; `nhan_tu` = cụm trong `cau` được tô màu nhấn và gạch dạ quang; `nho` = dòng nhỏ phía trên (≤ 5 từ, vd "Câu hỏi", "Điểm mấu chốt"). Không dùng thay phụ đề cho câu thường.
+- **`phan-tram`** (tỉ lệ, "một phần tư", "7 trên 10 người"): `so` 0–100, `nhan` = ý nghĩa con số, `tieu_de?`, `nguon_id` bắt buộc (khớp nguồn như `so-lon`; tỉ lệ tự tính dùng nguồn `tu-tinh`). Vòng tròn chạy tới đúng tỉ lệ, số đếm cùng nhịp.
+- **`mo-dau`** (logo kênh, 2–3 s): đặt ngay **sau** đoạn móc câu (không ở giây 0), `cau?` = câu hỏi của video. Một lần mỗi video.
+- **`ket-thuc`** (màn hình kết thúc): luôn là cảnh cuối, dài ≥ 5 s (lý tưởng 8–10 s), lời đọc là lời chào/kêu gọi đăng ký. `cau?`, `moi?`, `nut?`, `nut_xong?`, `khung?`. Khi đăng, đặt 2 phần tử video gợi ý của YouTube Studio đúng vào hai khung bên phải.
+- **Chuyển cảnh tự gán**: vào chương ba lớp màu nhấn quét qua, rời chương ba lớp tối, vào `so-lon`/`phan-tram`/`mo-dau`/`ket-thuc` mống mắt khép–mở, còn lại chớp tối hoặc cắt thẳng. Viền tối điện ảnh quanh khung: `config.json:render.vien_toi` (mặc định 0,28; 0 = tắt).
 - **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
   Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
 - **`b-roll`** – clip riêng cho từng video (kho chung chỉ là phần nền):

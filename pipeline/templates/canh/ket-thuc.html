@@ -1,0 +1,79 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    /* Màn kết: cột trái là lời mời, cột phải chừa hai khung 16:9 đúng chỗ đặt "phần tử màn hình kết thúc" của YouTube. */
+    #root .kt-trai { position: absolute; left: 150px; top: 0; bottom: 90px; width: 760px;
+                     display: flex; flex-direction: column; justify-content: center; }
+    #root .kt-hieu { display: flex; align-items: center; gap: 22px; margin-bottom: 44px; }
+    #root .kt-robot { width: 96px; height: 120px; background: url(assets/brand/logo.png) no-repeat -18px -17px / 616px 154px;
+                      mix-blend-mode: lighten; }
+    #root .kt-ten { color: {{theme:muc}}; font: 800 40px/1 var(--font-display); letter-spacing: 0.02em; text-transform: uppercase; }
+    #root .kt-ten b { color: var(--accent); font-weight: 900; }
+    #root .kt-cau { color: {{theme:muc}}; font: 900 104px/1.04 var(--font-display); letter-spacing: -0.03em; }
+    #root .kt-cau span { display: inline-block; margin-right: 0.2em; }
+    #root .kt-loi { margin-top: 30px; color: var(--muted); font: 600 44px/1.3 var(--font-display); }
+    #root .kt-nut { margin-top: 56px; align-self: flex-start; position: relative; display: flex; align-items: center; gap: 22px;
+                    background: var(--accent); color: var(--accent-ink); padding: 26px 46px 26px 34px; border-radius: 999px;
+                    font: 900 46px/1 var(--font-display); text-transform: uppercase; letter-spacing: 0.01em; }
+    #root .kt-nut-xam { position: absolute; inset: 0; border-radius: 999px; background: {{theme:thanh}}; opacity: 0; }
+    #root .kt-nut-chu { position: relative; display: grid; }
+    #root .kt-nut-chu > span { grid-area: 1 / 1; white-space: nowrap; }
+    #root .kt-nut-xong { opacity: 0; }
+    #root .kt-chuong { position: relative; width: 50px; height: 50px; transform-origin: 50% 10%; }
+    #root .kt-chuong svg { width: 100%; height: 100%; }
+    #root .kt-khung { position: absolute; right: 150px; width: 700px; height: 394px; border-radius: 22px;
+                      background: color-mix(in srgb, {{theme:nen_sang}} 80%, transparent);
+                      box-shadow: inset 0 0 0 3px color-mix(in srgb, var(--accent) 45%, transparent), 0 30px 80px rgba(0,0,0,0.45);
+                      display: flex; align-items: center; justify-content: center; overflow: hidden; }
+    #root .kt-khung-1 { top: 128px; } #root .kt-khung-2 { top: 556px; }
+    #root .kt-khung span { color: var(--muted); font: 700 34px/1 var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+    #root .kt-quet { position: absolute; top: -20%; bottom: -20%; width: 180px; left: -260px; transform: skewX(-18deg);
+                     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent); }
+  </style>
+  <div id="root" data-composition-id="ket-thuc" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"cau","type":"string","label":"Câu lớn","default":"Xem tiếp nhé"},{"id":"moi","type":"string","label":"Lời mời","default":"Đăng ký để không bỏ lỡ video mới"},{"id":"nut","type":"string","label":"Chữ trên nút","default":"Đăng ký"},{"id":"nut_xong","type":"string","label":"Chữ sau khi bấm","default":"Đã đăng ký"},{"id":"khung","type":"string","label":"Nhãn trong khung video","default":"Video tiếp theo"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+    <div id="kt-san" class="san nen-toi">
+      <div class="kt-trai">
+        <div id="kt-hieu" class="kt-hieu"><div class="kt-robot"></div><div id="kt-ten" class="kt-ten"></div></div>
+        <div id="kt-cau" class="kt-cau"></div>
+        <div id="kt-loi" class="kt-loi" data-var-text="moi"></div>
+        <div id="kt-nut" class="kt-nut">
+          <div id="kt-nut-xam" class="kt-nut-xam"></div>
+          <div id="kt-chuong" class="kt-chuong"><svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a1.6 1.6 0 0 0-1.6 1.6v.6A6.4 6.4 0 0 0 5.6 10.4v4.4L4 17.2v.8h16v-.8l-1.6-2.4v-4.4a6.4 6.4 0 0 0-4.8-6.2v-.6A1.6 1.6 0 0 0 12 2Zm-2.4 17.2a2.4 2.4 0 0 0 4.8 0Z"/></svg></div>
+          <span class="kt-nut-chu"><span id="kt-nut-chu" data-var-text="nut"></span><span id="kt-nut-xong" class="kt-nut-xong" data-var-text="nut_xong"></span></span>
+        </div>
+      </div>
+      <div id="kt-khung-1" class="kt-khung kt-khung-1"><span data-var-text="khung"></span><i id="kt-quet-1" class="kt-quet"></i></div>
+      <div id="kt-khung-2" class="kt-khung kt-khung-2"><span data-var-text="khung"></span><i id="kt-quet-2" class="kt-quet"></i></div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const ten = "{{theme:ten}}".split(/\s+/);
+    document.querySelector("#kt-ten").innerHTML = "<b>" + ten[0] + "</b> " + ten.slice(1).join(" ");
+    const cau = document.querySelector("#kt-cau");
+    String(v.cau || "").split(/\s+/).filter(Boolean).forEach((w, i) => {
+      const s = document.createElement("span"); s.id = "kt-tu-" + i; s.textContent = w; cau.appendChild(s);
+    });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#kt-hieu", { opacity: 0, x: -30 }, { opacity: 1, x: 0, duration: 0.5, ease: "expo.out" }, 0.05);
+    tl.fromTo("#kt-cau span", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.16, stagger: 0.08 }, 0.2);
+    tl.fromTo("#kt-loi", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22 }, 0.6);
+    tl.fromTo("#kt-nut", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.6)" }, 0.8);
+    // khung video trượt vào từ phải, lệch nhau; vệt sáng quét qua mời mắt nhìn sang
+    tl.fromTo("#kt-khung-1", { opacity: 0, x: 160 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.3);
+    tl.fromTo("#kt-khung-2", { opacity: 0, x: 160 }, { opacity: 1, x: 0, duration: 0.7, ease: "expo.out" }, 0.42);
+    tl.fromTo("#kt-quet-1", { x: 0 }, { x: 1200, duration: 0.9, ease: "power2.inOut" }, 1.1);
+    tl.fromTo("#kt-quet-2", { x: 0 }, { x: 1200, duration: 0.9, ease: "power2.inOut" }, 1.25);
+    // bấm nút: nhún xuống, chuyển xám, đổi chữ, chuông lắc
+    const tb = 1.9;
+    tl.to("#kt-nut", { scale: 0.93, duration: 0.1, ease: "power2.in" }, tb);
+    tl.to("#kt-nut", { scale: 1, duration: 0.45, ease: "elastic.out(1, 0.6)" }, tb + 0.1);
+    tl.to("#kt-nut-xam", { opacity: 1, duration: 0.2 }, tb + 0.08);
+    tl.to("#kt-nut", { color: "{{theme:muc}}", duration: 0.2 }, tb + 0.08);
+    tl.to("#kt-nut-chu", { opacity: 0, duration: 0.1 }, tb + 0.1);
+    tl.to("#kt-nut-xong", { opacity: 1, duration: 0.15 }, tb + 0.14);
+    tl.fromTo("#kt-chuong", { rotation: 0 }, { keyframes: { rotation: [0, 22, -18, 14, -9, 5, 0] }, duration: 0.9, ease: "none" }, tb + 0.3);
+    window.__timelines["ket-thuc"] = tl;
+  </script>
+</template>

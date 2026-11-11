@@ -1,0 +1,68 @@
+<template>
+  <style>
+    #root { position: absolute; inset: 0; }
+    #root .md-vong { position: absolute; left: 50%; top: 46%; width: 900px; height: 900px; margin: -450px 0 0 -450px;
+                     border-radius: 50%; border: 3px solid var(--accent); opacity: 0; }
+    #root .md-sang { position: absolute; left: 50%; top: 46%; width: 1500px; height: 1500px; margin: -750px 0 0 -750px; border-radius: 50%;
+                     background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent) 0%, transparent 58%); }
+    #root .md-giua { position: absolute; left: 0; right: 0; top: 0; bottom: 90px; display: flex; flex-direction: column;
+                     align-items: center; justify-content: center; }
+    #root .md-hieu { display: flex; align-items: center; gap: 56px; }
+    #root .md-robot { width: 250px; height: 310px; background: url(assets/brand/logo.png) no-repeat -48px -45px / 1600px 400px;
+                      mix-blend-mode: lighten; }
+    #root .md-chu { display: flex; flex-direction: column; gap: 6px; }
+    #root .md-nhip { color: var(--accent); font: 900 150px/0.95 var(--font-display); letter-spacing: -0.02em; }
+    #root .md-nhip span { display: inline-block; }
+    #root .md-cn { color: {{theme:muc}}; font: 900 132px/1 var(--font-display); letter-spacing: -0.02em; white-space: nowrap; }
+    #root .md-gach { margin-top: 54px; width: 980px; height: 6px; border-radius: 3px;
+                     background: linear-gradient(90deg, transparent, var(--accent) 20%, var(--accent) 80%, transparent); transform-origin: center; }
+    #root .md-cau { margin-top: 40px; color: var(--muted); font: 700 50px/1.2 var(--font-display); text-align: center; max-width: 1400px; }
+    #root .md-cau span { display: inline-block; margin-right: 0.22em; }
+  </style>
+  <div id="root" data-composition-id="mo-dau" data-width="1920" data-height="1080"
+       data-composition-variables='[{"id":"cau","type":"string","label":"Câu hỏi của video (dòng dưới logo)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+    <div id="md-san" class="san nen-toi" data-layout-allow-overflow>
+      <div id="md-sang" class="md-sang" data-layout-ignore></div>
+      <div id="md-vong-0" class="md-vong" data-layout-ignore></div>
+      <div id="md-vong-1" class="md-vong" data-layout-ignore></div>
+      <div id="md-vong-2" class="md-vong" data-layout-ignore></div>
+      <div class="md-giua">
+        <div class="md-hieu">
+          <div id="md-robot" class="md-robot"></div>
+          <div class="md-chu">
+            <div id="md-nhip" class="md-nhip"></div>
+            <div id="md-cn" class="md-cn"></div>
+          </div>
+        </div>
+        <div id="md-gach" class="md-gach"></div>
+        <div id="md-cau" class="md-cau"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    // chữ thương hiệu: dòng 1 tách từng chữ cái cho hiệu ứng đánh tên
+    const ten = "{{theme:ten}}".toLocaleUpperCase("vi").split(/\s+/);
+    document.querySelector("#md-cn").textContent = ten.slice(1).join(" ");
+    const nhip = document.querySelector("#md-nhip");
+    Array.from(ten[0]).forEach((ch, i) => {
+      const s = document.createElement("span"); s.id = "md-ky-" + i; s.textContent = ch; nhip.appendChild(s);
+    });
+    const cau = document.querySelector("#md-cau");
+    String(v.cau || "").split(/\s+/).filter(Boolean).forEach((w, i) => {
+      const s = document.createElement("span"); s.id = "md-tu-" + i; s.textContent = w; cau.appendChild(s);
+    });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#md-sang", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.0, ease: "power2.out" }, 0);
+    // ba vòng "nhịp" lan ra từ tâm, cách nhau một phách
+    [0, 1, 2].forEach(k => tl.fromTo("#md-vong-" + k, { scale: 0.2, opacity: 0.9 },
+      { scale: 1.6, opacity: 0, duration: 1.3, ease: "power2.out" }, 0.05 + k * 0.22));
+    tl.fromTo("#md-robot", { scale: 0.5, opacity: 0, y: 40 }, { scale: 1, opacity: 1, y: 0, duration: 0.6, ease: "back.out(1.7)" }, 0.08);
+    tl.fromTo("#md-nhip span", { opacity: 0.0, filter: "blur(10px)", x: -14 },
+              { opacity: 1, filter: "blur(0px)", x: 0, duration: 0.22, ease: "power3.out", stagger: 0.06 }, 0.22);
+    tl.fromTo("#md-cn", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", duration: 0.5, ease: "power4.inOut" }, 0.4);
+    tl.fromTo("#md-gach", { scaleX: 0, opacity: 0 }, { scaleX: 1, opacity: 1, duration: 0.6, ease: "expo.out" }, 0.62);
+    tl.fromTo("#md-cau span", { opacity: 0, filter: "blur(6px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.14, stagger: 0.07 }, 0.85);
+    window.__timelines["mo-dau"] = tl;
+  </script>
+</template>

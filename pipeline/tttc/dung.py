@@ -21,6 +21,12 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - thoi-gian:   tieu_de?, truc {tu, den, don_vi}, hang [2–5 phần tử {nhan, tu, den, noi_bat?}], nguon_id (năm phải có trong nguồn)
 - b-roll:      video (tệp trong broll/, tải bằng tttc.broll), nhan, so? ("01"), tu_khoa? (≤ 5 từ bật to giữa khung theo nhip[1]),
                chia? {so, truoc?, sau?, nhan} (video lùi sang trái, số hiện ở nửa phải theo nhip[2]); có số thì cần nguon_id
+- chu-dong:    cau (câu chốt ≤ 16 từ, nên trùng lời đọc: từng chữ hiện đúng lúc giọng nói tới), nhan_tu? (cụm trong cau được tô
+               màu nhấn và gạch dạ quang), nho? (dòng nhỏ phía trên, ≤ 5 từ)
+- phan-tram:   so (0–100), sau? (mặc định "%"), tieu_de?, nhan (ý nghĩa con số), nguon_id (bắt buộc); vòng tròn chạy tới đúng tỉ lệ
+- mo-dau:      cau? (câu hỏi của video) – logo kênh hiện ra với ba vòng "nhịp"; đặt ngay sau đoạn móc câu, không đặt ở giây 0
+- ket-thuc:    cau? ("Xem tiếp nhé"), moi?, nut?, nut_xong?, khung? – cảnh cuối ≥ 5 s, chừa hai khung 16:9 bên phải cho phần tử
+               màn hình kết thúc của YouTube (đặt video gợi ý đúng vào hai khung trong YouTube Studio)
 Mọi mẫu: dan? {the, goc? phai|trai, huong? (hướng nhìn; mặc định nghiêng về giữa màn hình), tu?} – nhân vật dẫn chuyện; có
 pipeline/nhan-vat/kit.json (bắt buộc khi có dan) cho PNG biểu cảm × hướng (tttc/nhan_vat.py).
 Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
@@ -41,7 +47,7 @@ from urllib.parse import urlparse
 from PIL import Image
 
 from tttc import ban_do, grain, nhan_vat, theme
-from tttc.canh import cues, phrase_time
+from tttc.canh import _norm, cues, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
 
@@ -49,7 +55,8 @@ PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
 SFX = PIPE / "am-thanh" / "sfx"
 PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
-          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-", "xep-hang": "xh-"}
+          "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-", "xep-hang": "xh-",
+          "chu-dong": "cd-", "phan-tram": "pt-", "mo-dau": "md-", "ket-thuc": "kt-"}
 # Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
 DEFAULT_STEPS = {
     "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
@@ -60,6 +67,9 @@ DEFAULT_STEPS = {
     "chuong": [],
     "trich-bao": [0.9],                # tô vàng
     "b-roll": [0.5, 0.3, 0.6],         # nhãn, từ khoá bật lên, khung chia đôi
+    "phan-tram": [0.35, 0.6],          # vòng bắt đầu chạy, dòng ý nghĩa
+    "mo-dau": [],
+    "ket-thuc": [],
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 # Màu phụ theo ý nghĩa (canh.json: sac): (nhấn, bóng, bóng tối, màu chữ trên nhấn). Mặc định không ghi sac = vàng thương hiệu.
@@ -196,7 +206,31 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                 "tu_khoa": c.get("tu_khoa", ""), "nguon": src(c.get("nguon_id")),
                 "chia": json.dumps({"so_hien": vi_number(ch["so"]), "truoc": ch.get("truoc", ""), "sau": ch.get("sau", ""),
                                     "nhan": ch.get("nhan", "")}, ensure_ascii=False) if ch else ""}
+    if m == "chu-dong":
+        return {"cau": c["cau"], "nhan_tu": c.get("nhan_tu", ""), "nho": c.get("nho", "")}
+    if m == "phan-tram":
+        return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "sau": c.get("sau", "%"), "tieu_de": c.get("tieu_de", ""),
+                "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
+    if m == "mo-dau":
+        return {"cau": c.get("cau", "")}
+    if m == "ket-thuc":
+        return {k: c[k] for k in ("cau", "nut", "nut_xong", "khung") if c.get(k)} | ({"moi": c["moi"]} if c.get("moi") else {})
     raise ValueError(f"mẫu không có: {m}")
+
+
+def moc_tu(cau: str, words: list[dict], start: float, end: float) -> list[float]:
+    """Giây (tính từ đầu cảnh) giọng đọc nói tới từng chữ của cau: khớp lần lượt, cho phép lời đọc chen 3 chữ;
+    chữ không khớp hiện ngay sau chữ trước."""
+    win = [w for w in words if start - 0.01 <= w["start"] < end]
+    out, j, prev = [], 0, 0.2
+    for tok in (_norm(t) for t in cau.split()):
+        hit = next((k for k in range(j, min(j + 4, len(win))) if _norm(win[k]["w"]) == tok), None)
+        if hit is not None:
+            prev, j = round(max(0.0, win[hit]["start"] - start), 3), hit + 1
+        else:
+            prev = round(prev + 0.08, 3)
+        out.append(prev)
+    return out
 
 
 def steps(c: dict, words: list[dict]) -> list[float]:
@@ -213,6 +247,8 @@ def steps(c: dict, words: list[dict]) -> list[float]:
     elif c["mau"] == "ban-do":
         nd = len(c["diem"])
         base = [round(0.5 + 0.55 * i, 3) for i in range(nd)] + [round(0.5 + 0.55 * nd + 0.5 * j, 3) for j in range(len(c.get("noi") or []))]
+    elif c["mau"] == "chu-dong":
+        return moc_tu(c["cau"], words, c["start"], c["end"])
     else:
         base = list(DEFAULT_STEPS[c["mau"]])
     for k, ph in enumerate(c.get("nhip") or []):
@@ -253,6 +289,14 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("whoosh-short", 0.05, 0.25)]
     if m == "trich-bao":
         return [("click-soft", st[0], 0.35)]
+    if m == "chu-dong":
+        return [("whoosh-short", 0.0, 0.18)]
+    if m == "phan-tram":
+        return [("whoosh", st[0], 0.2), ("ping", st[0] + 1.4, 0.3)]
+    if m == "mo-dau":
+        return [("impact-bass-1", 0.05, 0.3), ("chime", 0.35, 0.22)]
+    if m == "ket-thuc":
+        return [("whoosh-short", 0.3, 0.25), ("click", 1.9, 0.45), ("chime", 2.2, 0.22)]
     if m == "b-roll":
         return ([("pop", st[1], 0.25)] if c.get("tu_khoa") else []) + ([("whoosh-short", st[2], 0.3)] if c.get("chia") else [])
     return []
@@ -287,12 +331,17 @@ def chuong_doan(scenes: list[dict], t0: float, total: float) -> list[tuple[float
     return [(a, (moc[k + 1][0] if k + 1 < len(moc) else total), ten) for k, (a, ten) in enumerate(moc)]
 
 
+IRIS = {"so-lon", "phan-tram", "mo-dau", "ket-thuc"}  # cảnh mở bằng mống mắt: khép vào tâm, cắt, mở ra
+
+
 def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
-    """(chỉ số cảnh sau đường nối, kiểu): vào chương quét vàng, rời chương quét mực, cứ 3 đường nối có 1 lần chớp tối."""
+    """(chỉ số cảnh sau đường nối, kiểu): vào chương ba lớp màu nhấn quét qua, rời chương ba lớp tối quét qua, vào cảnh
+    con số lớn (so-lon, phan-tram) và logo thì mống mắt khép–mở, cứ 3 đường nối còn lại có 1 lần chớp tối."""
     out = []
     for k in range(1, len(scenes)):
         a, b = scenes[k - 1]["mau"], scenes[k]["mau"]
-        kind = "vang" if b == "chuong" else "muc" if a == "chuong" else "dip" if k % 3 == 0 else ""
+        kind = ("vang" if b == "chuong" else "muc" if a == "chuong" else "iris" if b in IRIS
+                else "dip" if k % 3 == 0 else "")
         if kind:
             out.append((k, kind))
     return out
@@ -358,6 +407,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     else:
         shutil.copy(d / "giong.mp3", o / "assets" / "giong.mp3")
     shutil.copytree(SFX, o / "assets" / "sfx")
+    if any(c["mau"] in ("mo-dau", "ket-thuc") for c in scenes):  # logo kênh cho cảnh mở đầu / kết thúc
+        (o / "assets" / "brand").mkdir()
+        shutil.copy(theme.THEME.parent / "logo-nhip-cong-nghe.png", o / "assets" / "brand" / "logo.png")
     do_grain = float(_render_cfg().get("grain") or 0)
     if do_grain > 0:  # hạt nhiễu mịn chống banding: PNG xám phủ overlay với độ mờ thấp
         grain.tao_grain(o / "assets" / "grain.png")
@@ -391,17 +443,27 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     for k, kind in transitions(scenes):
         seam = round(scenes[k]["start"] - t0, 3)
         a = round(max(0.0, seam - 0.3), 3)
-        cls = "tr-dip" if kind == "dip" else f"tr-{kind}"
         if kind != "dip":
             sfx.append(("whoosh-short", seam - 0.3, 0.35))
-        trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{a}" data-duration="0.6" data-track-index="4">'
-                   f'<div id="tr-{k}-p" class="tr-p {cls}"></div></div>')
         if kind == "dip":  # tối nhanh 3 khung trước cú cắt rồi sáng lại
+            trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{a}" data-duration="0.6" data-track-index="4">'
+                       f'<div id="tr-{k}-p" class="tr-p tr-dip"></div></div>')
             tr_js.append(f'tl.fromTo("#tr-{k}-p", {{ opacity: 0 }}, {{ opacity: 0.6, duration: 0.1 }}, {seam - 0.1:.3f}); '
                          f'tl.to("#tr-{k}-p", {{ opacity: 0, duration: 0.15 }}, {seam:.3f});')
-        else:  # tấm màu quét qua che cú cắt
-            tr_js.append(f'tl.fromTo("#tr-{k}-p", {{ xPercent: -101 }}, {{ xPercent: 0, duration: 0.3, ease: "power3.in" }}, {a:.3f}); '
-                         f'tl.to("#tr-{k}-p", {{ xPercent: 101, duration: 0.3, ease: "power3.out" }}, {seam:.3f});')
+        elif kind == "iris":  # màn tối khép thành vòng tròn vào tâm (che cú cắt) rồi mở ra, viền màu nhấn chạy theo mép
+            trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{a}" data-duration="0.85" data-track-index="4">'
+                       f'<div id="tr-{k}-p" class="tr-p tr-iris"></div><div id="tr-{k}-v" class="tr-vien"></div></div>')
+            tr_js.append(f'tl.fromTo("#tr-{k}-p", {{ "--r": "1150px" }}, {{ "--r": "0px", duration: 0.3, ease: "power3.in" }}, {a:.3f}); '
+                         f'tl.to("#tr-{k}-p", {{ "--r": "1150px", duration: 0.5, ease: "expo.out" }}, {seam:.3f}); '
+                         f'tl.fromTo("#tr-{k}-v", {{ scale: 1 }}, {{ scale: 0, duration: 0.3, ease: "power3.in" }}, {a:.3f}); '
+                         f'tl.to("#tr-{k}-v", {{ scale: 1, duration: 0.5, ease: "expo.out" }}, {seam:.3f});')
+        else:  # ba lớp màu quét qua lệch nhau, lớp cuối cùng màu với nền cảnh đến: che cú cắt mà có chiều sâu
+            trs.append(f'<div id="tr-{k}" class="clip tr" data-start="{round(a - 0.08, 3)}" data-duration="0.76" data-track-index="4">'
+                       + "".join(f'<div id="tr-{k}-p{j}" class="tr-p tr-{kind}-{j}"></div>' for j in range(3)) + '</div>')
+            tr_js.append(f'tl.fromTo(["#tr-{k}-p0", "#tr-{k}-p1", "#tr-{k}-p2"], {{ xPercent: -101 }}, '
+                         f'{{ xPercent: 0, duration: 0.3, ease: "power3.in", stagger: 0.04 }}, {a - 0.08:.3f}); '
+                         f'tl.to(["#tr-{k}-p0", "#tr-{k}-p1", "#tr-{k}-p2"], {{ xPercent: 101, duration: 0.32, ease: "power3.out", '
+                         f'stagger: {{ each: 0.04, from: "end" }} }}, {seam:.3f});')
 
     caps = [f'<div id="cap-{k}" class="clip cap" data-start="{round(a - t0, 3)}" data-duration="{round(b - a, 3)}">'
             f"<span>{escape(t)}</span></div>"
@@ -465,6 +527,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                else "bottom: 36px; font-size: 44px; max-width: 1500px;")
     base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
     nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
+    nhan1, nhan2, thanh = theme.TH["nhan"][1], theme.TH["nhan"][2], theme.TH["thanh"]
+    vien_toi = float(_render_cfg().get("vien_toi", 0.28))  # viền tối điện ảnh quanh khung; 0 = tắt
     grain_css = (f"\n      #root::after {{ content: ''; position: absolute; inset: 0; background: url(assets/grain.png); "
                  f"opacity: {do_grain}; mix-blend-mode: overlay; pointer-events: none; z-index: 9; }}"
                  if do_grain > 0 else "")
@@ -489,7 +553,16 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                 background: rgba({nen_rgb},0.7); padding: 6px 14px; border-radius: 8px; }}
       .tr {{ position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }}
       .tr-p {{ position: absolute; inset: 0; }}
-      .tr-vang {{ background: {nhan0}; }} .tr-muc {{ background: {nen}; }} .tr-dip {{ background: #000; opacity: 0; }}
+      .tr-vang-0 {{ background: {nhan2}; }} .tr-vang-1 {{ background: {nhan1}; }} .tr-vang-2 {{ background: {nhan0}; }}
+      .tr-muc-0 {{ background: {nhan0}; }} .tr-muc-1 {{ background: {thanh}; }} .tr-muc-2 {{ background: {nen}; }}
+      .tr-dip {{ background: #000; opacity: 0; }}
+      .tr-iris {{ --r: 1150px; background: {nen};
+                 -webkit-mask: radial-gradient(circle at 50% 50%, transparent var(--r), #000 calc(var(--r) + 1px));
+                 mask: radial-gradient(circle at 50% 50%, transparent var(--r), #000 calc(var(--r) + 1px)); }}
+      .tr-vien {{ position: absolute; left: 50%; top: 50%; width: 2300px; height: 2300px; margin: -1150px 0 0 -1150px;
+                 border-radius: 50%; box-shadow: 0 0 0 6px {nhan0}, 0 0 40px 6px {nhan0}; }}
+      #vien-toi {{ position: absolute; inset: 0; z-index: 7; pointer-events: none;
+                  background: radial-gradient(ellipse 80% 75% at 50% 48%, transparent 58%, rgba(0,0,0,{vien_toi}) 100%); }}
       .cap span {{ display: inline; background: rgba({nen_rgb},0.82); color: {muc}; padding: 6px 16px;
                   border-radius: 10px; font-weight: 700; line-height: 1.5; box-decoration-break: clone;
                   -webkit-box-decoration-break: clone; }}{grain_css}
@@ -501,6 +574,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       {chr(10).join(hosts)}
       {stage_close}
       {chr(10).join(trs)}
+      {'<div id="vien-toi"></div>' if vien_toi > 0 else ""}
       {chr(10).join(dan_tags)}
       {tien_do}
       <div id="phu-de" class="clip" data-start="0" data-duration="{total}" data-track-index="5" data-track-kind="captions">

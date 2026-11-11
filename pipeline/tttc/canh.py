@@ -8,7 +8,8 @@ from pathlib import Path
 from tttc import ban_do as _ban_do, ngon_ngu, nhan_vat
 from tttc.kiem import NUM, _scale, tokens, vi_value
 
-MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do", "xep-hang"}
+MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do", "xep-hang",
+       "chu-dong", "phan-tram", "mo-dau", "ket-thuc"}
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -98,6 +99,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs += _check_xep_hang(c)
         if c["mau"] == "thoi-gian":
             msgs += _check_thoi_gian(c)
+        if c["mau"] in ("chu-dong", "phan-tram", "mo-dau", "ket-thuc"):
+            msgs += _check_mau_moi(c, dur, sc)
         if c["mau"] == "trich-bao":
             msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
@@ -145,6 +148,33 @@ def _check_minh_hoa(c: dict, svg_dir: Path) -> list[str]:
                       and 0.2 <= b.get("to", 1.0) <= 1.5 and (Path(svg_dir) / f"{b.get('svg')}.svg").exists())
                 if not ok:
                     out.append(f"Lỗi: {cid} bo_cuc có đạo cụ sai: {b} (cần svg có trong thư viện, x và y trong 0–1, to trong 0,2–1,5)")
+    return out
+
+
+def _check_mau_moi(c: dict, dur: float, sc: list[dict]) -> list[str]:
+    cid, m, out = c["id"], c["mau"], []
+    if m == "chu-dong":
+        cau = (c.get("cau") or "").split()
+        if not cau:
+            out.append(f"Lỗi: {cid} chu-dong cần cau")
+        elif len(cau) > 16:
+            out.append(f"Lỗi: {cid} cau dài {len(cau)} từ (≤ 16)")
+        if c.get("nhan_tu") and _norm(c["nhan_tu"]) not in _norm(c.get("cau", "")):
+            out.append(f"Lỗi: {cid} nhan_tu «{c['nhan_tu']}» không nằm trong cau")
+    if m == "phan-tram":
+        try:
+            v = vi_value(c["so"]) if isinstance(c.get("so"), str) else float(c["so"])
+        except (KeyError, TypeError, ValueError):
+            v = None
+        if v is None or not 0 <= v <= 100:
+            out.append(f"Lỗi: {cid} phan-tram cần so trong 0–100 (đang {c.get('so')})")
+    if m == "mo-dau" and c is sc[0]:
+        out.append(f"Cảnh báo: {cid} mo-dau ở giây 0 làm mất móc câu; đặt sau đoạn mở đầu")
+    if m == "ket-thuc":
+        if c is not sc[-1]:
+            out.append(f"Lỗi: {cid} ket-thuc phải là cảnh cuối")
+        if dur < 5:
+            out.append(f"Cảnh báo: {cid} ket-thuc dài {dur:.1f} s; màn hình kết thúc của YouTube cần ≥ 5 s")
     return out
 
 
@@ -288,6 +318,8 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
         pairs = [(h[k], "") for h in c.get("hang") or [] for k in ("tu", "den") if isinstance(h.get(k), (int, float))]
         if not pairs:
             return []
+    elif c["mau"] == "phan-tram" and "so" in c:
+        pairs = [(c["so"], _unit_scale(c.get("sau", "%")))]
     elif c["mau"] == "xep-hang":
         sc = _unit_scale(c.get("don_vi", ""))
         pairs = [(x, sc) for h in c.get("hang") or [] if isinstance(h, dict) and h.get("so") is not None
