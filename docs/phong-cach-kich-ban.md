@@ -75,6 +75,8 @@ Xương sống vẫn là phân tích có nguồn; đời thường và châm bi�
 - Mỗi chương mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối chương trả lời.
 - **Hình:** ưu tiên ảnh minh họa thực tế và b-roll (user chốt 10/11/2026); đồ họa tự dựng chỉ khi bất đắc dĩ (con số, so sánh, quy trình). Dòng `[TRÊN MÀN HÌNH]` vì thế tả trước hết cảnh thật cần thấy.
 - Bảng giá, trang nguồn, biểu đồ có tên nguồn ở góc; số tự tính có nhãn.
+- **Giữ mắt người xem** (user duyệt 12/11/2026): khung đầu đã có số hoặc câu hỏi chính; b-roll mang từ khoá bật lên đúng lúc nói;
+  nền báo vai trò (tối: số liệu; kem: bằng chứng; ngọc lam: chương); minh họa chỉ dùng khi chỉ ra được một quan hệ. Luật chi tiết ở skill video-dung mục 2.
 - Bảng màu lấy từ `brand/theme.json` (nhận diện Nhịp Công Nghệ, 10/11/2026): nền xanh đen `#08181C`, nhấn ngọc lam `#22D3EE`, chữ trắng; màu phụ theo ý nghĩa: xanh lá miễn phí, tiết kiệm; đỏ giới hạn, thuế, rủi ro; lam AI, dữ liệu; tím gói cao cấp. Nhân vật dẫn chuyện: robot Nhịp (`pipeline/nhan-vat/`).
 
 ## 9. Viết cho tai (user chốt 11/11/2026)

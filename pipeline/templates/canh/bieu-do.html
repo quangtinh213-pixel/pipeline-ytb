@@ -3,7 +3,7 @@
     #root { position: absolute; inset: 0; }
     #root .bd-tieu-de { position: absolute; left: 160px; top: 110px; right: 160px; color: var(--ink);
                         font: 900 52px/1.15 var(--font-display); letter-spacing: -0.01em; }
-    #root .bd-khung { position: absolute; left: 160px; right: 160px; top: 290px; bottom: 190px; }
+    #root .bd-khung { position: absolute; left: 160px; right: 160px; top: 380px; bottom: 190px; }  /* chừa 150px trên cột cao nhất cho chip */
     #root .bd-luoi { position: absolute; left: 0; right: 0; height: 2px; background: var(--line); }
     #root .bd-day { position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: var(--muted);
                     transform-origin: left center; }
@@ -54,7 +54,7 @@
       col.className = "bd-cot" + (i === hl ? " noi-bat" : "");
       col.style.left = (gap + i * (1 + gap)) * colW + "px";
       col.style.width = colW + "px";
-      col.style.height = Math.max(0.02, val / max) * 100 + "%";
+      col.style.height = Math.max(0.05, val / max) * 100 + "%";  // cột rất nhỏ vẫn thấy được
       col.innerHTML = '<div class="bd-so" id="bd-so-' + i + '">' + fmt(0, i) + '</div>' +
                       '<div class="bd-nhan">' + labels[i] + '</div>' +
                       (i === hl && v.chu_thich ? '<div class="bd-chip" id="bd-chip"><span>' + v.chu_thich + '</span></div>' : "");

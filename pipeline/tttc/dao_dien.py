@@ -82,6 +82,8 @@ def sinh_canh(dd: dict, khung: dict, timing: dict) -> dict:
                 c["bo_cuc"] = [{"svg": n, "x": SLOT[i][0], "y": SLOT[i][1], "to": 1.0} for i, n in enumerate(d["dao_cu"][:4])]
         if d.get("dan"):
             c["dan"] = d["dan"]
+        if d.get("trong_diem"):
+            c["trong_diem"] = True  # dung.dan_cua cho Nhịp ló ra ở cảnh số trọng điểm
         n = len(dung.DEFAULT_STEPS.get(c["mau"], []))
         if n and "nhip" not in c:
             c["nhip"] = _nhip_tu_dong(words, k["start"], k["end"], n)

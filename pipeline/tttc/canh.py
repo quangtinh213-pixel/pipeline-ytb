@@ -214,6 +214,8 @@ def _check_dan(c: dict, words: list[dict], kit: dict | None = None) -> list[str]
     huong = d.get("huong") or nhan_vat.huong_mac_dinh(d.get("goc", "phai"))
     if not nhan_vat.hop_le(d["the"], huong, kit):
         return [f"Lỗi: {c['id']} dan {d['the']} không có huong '{huong}' trong bộ nhân vật (kit.json:dang)"]
+    if d.get("lau") is not None and not (isinstance(d["lau"], (int, float)) and 0.8 <= d["lau"] <= 6):
+        return [f"Lỗi: {c['id']} dan.lau phải là số giây 0,8–6"]
     if d.get("tu") and phrase_time(words, d["tu"], c["start"], c["end"]) is None:
         return [f"Lỗi: {c['id']} dan.tu '{d['tu']}' nhưng giọng đọc không nói cụm này trong cảnh"]
     return []
@@ -295,6 +297,13 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
     elif c["mau"] == "so-sanh":  # mỗi bên có thể có đơn vị riêng ("tỷ transistor" so với "triệu transistor")
         pairs = [(s["so"], _unit_scale(s.get("don_vi", c.get("don_vi", ""))))
                  for s in (c.get("trai"), c.get("phai")) if isinstance(s, dict) and s.get("so") is not None]
+        if not pairs:
+            return []
+    elif c["mau"] == "b-roll":  # số trong từ khoá bật lên hoặc nửa phải của khung chia đôi
+        ch = c.get("chia") if isinstance(c.get("chia"), dict) else {}
+        pairs = [(raw, sc) for raw, _, sc in tokens(c.get("tu_khoa") or "")]
+        if ch.get("so") is not None:
+            pairs.append((ch["so"], _unit_scale(ch.get("truoc", "") + " " + ch.get("sau", ""))))
         if not pairs:
             return []
     else:

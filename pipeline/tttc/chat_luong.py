@@ -85,12 +85,18 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
         best, prev = max(best, chay), c["mau"]
     steps = [_buoc(c, words) for c in sc]
     sfx = sum(len(dung.sfx_events(c, st)) for c, st in zip(sc, steps))
+    # b-roll chỉ tính bước thật sự hiện: nhãn, từ khoá, khung chia
+    steps = [[t for t, co in zip(st, (c.get("nhan"), c.get("tu_khoa"), c.get("chia"))) if co] if c["mau"] == "b-roll" else st
+             for c, st in zip(sc, steps)]
     sfx += sum(kind != "dip" for _, kind in dung.transitions(sc))
-    dan = sum(1 for c in sc if c.get("dan"))
+    dan = sum(1 for c in sc if dung.dan_cua(c))
+    dau = sc[0]  # khung đầu phải có chữ hoặc số để giữ người xem (user duyệt 12/11/2026)
+    mo_dau = dau["mau"] in {"so-lon", "so-sanh", "trich-bao", "bieu-do", "trang-nguon", "xep-hang"} or (
+        dau["mau"] == "b-roll" and bool(dau.get("tu_khoa") or dau.get("chia")))
     return {"so_canh": n, "tb_giay": sum(durs) / n, "duoi_1_5": sum(d < 1.5 for d in durs),
             "tren_8": sum(d > 8 for d in durs), "ti_le": ti_le, "chay_dai_nhat": best,
             "su_kien_phut": (n + sum(map(len, steps)) + dan) / phut, "sfx_phut": sfx / phut,
-            "toc_do": len(words) / phut, "do_kho": do_kho(canh, dao_dien, cham)}
+            "toc_do": len(words) / phut, "mo_dau": mo_dau, "do_kho": do_kho(canh, dao_dien, cham)}
 
 
 def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
@@ -119,6 +125,8 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
         out.append(f"Cảnh báo: {so_do['su_kien_phut']:.0f} sự kiện hình/phút, chuẩn ≥ {muc['su_kien_phut_min']}")
     if so_do["sfx_phut"] < muc["sfx_phut_min"]:
         out.append(f"Cảnh báo: {so_do['sfx_phut']:.0f} hiệu ứng âm thanh/phút, chuẩn ≥ {muc['sfx_phut_min']}")
+    if so_do.get("mo_dau") is False:
+        out.append("Cảnh báo: cảnh đầu chưa có số hoặc chữ (thêm tu_khoa cho b-roll, hoặc mở bằng so-lon/trich-bao)")
     lo, hi = muc["toc_do"]
     if not lo <= so_do["toc_do"] <= hi:
         out.append(f"Cảnh báo: Tốc độ đọc {so_do['toc_do']:.0f} từ/phút, chuẩn {lo}–{hi}")

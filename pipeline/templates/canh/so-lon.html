@@ -1,12 +1,12 @@
 <template>
   <style>
     #root { position: absolute; inset: 0; }
-    #root .sl-icon { position: absolute; right: -200px; bottom: -260px; width: 760px; height: 760px; opacity: 0.14; }
+    #root .sl-icon { display: none; }  /* hình mờ ở góc làm khung loãng (user duyệt 12/11/2026) */
     #root .sl-icon img { width: 100%; height: 100%; object-fit: contain; }
     #root .sl-wrap { position: absolute; left: 0; right: 0; top: 0; bottom: 60px; text-align: center;
                      display: flex; flex-direction: column; justify-content: center; align-items: center; }
     #root .sl-dong { display: flex; align-items: center; gap: 28px; }
-    #root .sl-so { color: var(--accent); font: 900 220px/1 var(--font-display); letter-spacing: -0.04em;
+    #root .sl-so { color: var(--accent); font: 900 300px/1 var(--font-display); letter-spacing: -0.04em;
                    white-space: nowrap; }
     #root .nen-vang .sl-so, #root .nen-kem .sl-so { color: var(--ink); }
     #root .sl-muiten { width: 170px; height: 170px; }
@@ -14,7 +14,7 @@
     #root .sl-gach { width: 70%; max-width: 1200px; height: 14px; margin-top: 10px; background: var(--accent);
                      border-radius: 7px; transform-origin: left center; }
     #root .nen-vang .sl-gach { background: var(--ink); }
-    #root .sl-nhan { margin-top: 34px; color: var(--ink); font: 800 56px/1.15 var(--font-display); }
+    #root .sl-nhan { margin-top: 34px; color: var(--ink); font: 800 64px/1.15 var(--font-display); max-width: 1500px; }
   </style>
   <div id="root" data-composition-id="so-lon" data-width="1920" data-height="1080"
        data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"tu","type":"number","label":"Giá trị bắt đầu đếm","default":0},{"id":"tu_hien","type":"string","label":"Chuỗi giá trị bắt đầu (rỗng = đếm từ 0)","default":""},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"svg","type":"string","label":"Hình nền mờ","default":"assets/svg/tien.svg"},{"id":"huong","type":"string","label":"Mũi tên (len/xuong/rỗng)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":""}]'>
@@ -45,6 +45,10 @@
     const xong = x => start <= target ? x >= target : x <= target;  // đếm lên hoặc đếm xuống
     const fmt = x => (v.truoc || "") + (xong(x) ? hien : (v.tu_hien && x === start) ? v.tu_hien : x.toLocaleString("vi-VN",
       { minimumFractionDigits: dec, maximumFractionDigits: dec })) + (v.sau || "");
+    // số dài (kèm "tỷ đồng") co cỡ chữ để vừa 1700px, đo bằng chuỗi cuối cùng
+    el.textContent = fmt(target);
+    const rong = el.scrollWidth + (v.huong === "len" || v.huong === "xuong" ? 200 : 0);
+    if (rong > 1700) el.style.fontSize = Math.floor(300 * 1700 / rong) + "px";
     el.textContent = fmt(start);
     const tl = gsap.timeline({ paused: true }), d0 = at(0, 0.05);
     tl.fromTo("#sl-icon", { x: 120, opacity: 0 }, { x: 0, opacity: 0.14, duration: 1.0, ease: "expo.out" }, 0);

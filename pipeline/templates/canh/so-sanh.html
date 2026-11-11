@@ -6,6 +6,8 @@
     #root .ss-trai { left: 200px; } #root .ss-phai { left: 1160px; }
     #root .ss-khung { width: 480px; height: 480px; display: flex; align-items: flex-end; justify-content: center; }
     #root .ss-khung img { object-fit: contain; }
+    #root .ss-cot { width: 220px; background: var(--bar); border-radius: 16px 16px 0 0; transform-origin: 50% 100%; }
+    #root .ss-phai .ss-cot { background: var(--accent); }
     #root .ss-so { margin-top: 26px; color: var(--accent); font: 900 110px/1 var(--font-display); letter-spacing: -0.03em;
                    white-space: nowrap; }
     #root .nen-vang .ss-so, #root .nen-kem .ss-so { color: var(--ink); }
@@ -46,10 +48,22 @@
     document.querySelector("#ss-san").classList.add("nen-" + (v.nen || "toi"));
     const tl = gsap.timeline({ paused: true });
     // Mỗi bên: hình có kích thước theo `to` (cùng đứng trên một đường nền), số đếm lên, đơn vị, nhãn.
+    const T = JSON.parse(v.trai), P = JSON.parse(v.phai);
+    const coSo = T.so !== null && P.so !== null && T.don_vi === P.don_vi;  // cùng đơn vị mới so chiều cao được
+    const lon = coSo ? Math.max(T.so, P.so) : 0;
     function ben(id, side, t0) {
       const s = JSON.parse(side), img = document.querySelector("#" + id + "-img");
-      img.src = s.svg;
-      img.style.width = img.style.height = Math.round(480 * s.to) + "px";
+      if (coSo) {  // cột cao theo số thật: người xem thấy ngay chênh bao nhiêu
+        const cot = document.createElement("div");
+        cot.id = id + "-cot"; cot.className = "ss-cot";
+        cot.style.height = Math.max(12, Math.round(480 * s.so / lon)) + "px";
+        img.replaceWith(cot);
+        tl.fromTo(cot, { scaleY: 0 }, { scaleY: 1, duration: 0.8, ease: "power3.out" }, t0 + 0.25);
+      } else {
+        img.src = s.svg;
+        img.style.width = img.style.height = Math.round(480 * s.to) + "px";
+        tl.fromTo(img, { y: -240, opacity: 0, transformOrigin: "50% 100%" }, { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, t0);
+      }
       document.querySelector("#" + id + "-nhan span").textContent = s.nhan;
       document.querySelector("#" + id + "-dv").textContent = s.don_vi;
       const el = document.querySelector("#" + id + "-so"), obj = { x: 0 };
@@ -60,7 +74,6 @@
         tl.fromTo(obj, { x: 0 }, { x: s.so, duration: 1.0, ease: "power3.out", onUpdate: () => { el.textContent = fmt(obj.x); } }, t0 + 0.25);
         tl.fromTo(el, { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.25);
       }
-      tl.fromTo(img, { y: -240, opacity: 0, transformOrigin: "50% 100%" }, { y: 0, opacity: 1, duration: 0.6, ease: "back.out(1.4)" }, t0);
       tl.fromTo("#" + id + "-dv", { opacity: 0 }, { opacity: 1, duration: 0.2 }, t0 + 0.4);
       tl.fromTo("#" + id + "-nhan", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.22 }, t0 + 0.35);
     }

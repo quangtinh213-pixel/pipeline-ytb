@@ -7,7 +7,7 @@ import re
 
 DAU_VIET = re.compile(r"[ăâđêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ]", re.I)
 TU_TOI_THIEU = 4
-O_CHU = ("nhan", "so", "chuong", "tieu_de", "ti_le", "chu_thich", "vai", "truoc", "sau", "don_vi")
+O_CHU = ("nhan", "so", "chuong", "tieu_de", "ti_le", "chu_thich", "vai", "truoc", "sau", "don_vi", "tu_khoa")
 
 
 def la_tieng_anh(text: str, toi_thieu: int = TU_TOI_THIEU) -> bool:
@@ -29,6 +29,8 @@ def man_hinh(c: dict) -> list[tuple[str, str]]:
         add("trich_vi", c.get("trich_vi"))
     for k in O_CHU:
         add(k, c.get(k))
+    if isinstance(c.get("chia"), dict):
+        add("chia.nhan", c["chia"].get("nhan"))
     for side in ("trai", "phai"):
         if isinstance(c.get(side), dict):
             add(f"{side}.nhan", c[side].get("nhan"))

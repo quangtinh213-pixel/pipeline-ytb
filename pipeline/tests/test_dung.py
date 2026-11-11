@@ -139,11 +139,11 @@ def _host_vals(html):
 def test_compose_assigns_grounds(video):
     vals = _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))
     assert vals["c1"]["nen"] == "vang"           # chương: nền vàng
-    assert vals["c2"]["nen"] == "kem"            # chương 1 (lẻ): nền kem
+    assert vals["c2"]["nen"] == "toi"            # minh họa: nền tối (nền theo vai trò)
     sc = json.loads((video / "canh.json").read_text(encoding="utf-8"))
-    sc["scenes"][1]["nen"] = "toi"               # canh.json ghi đè được
+    sc["scenes"][1]["nen"] = "kem"               # canh.json ghi đè được
     (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
-    assert _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))["c2"]["nen"] == "toi"
+    assert _host_vals((dung.compose(video) / "index.html").read_text(encoding="utf-8"))["c2"]["nen"] == "kem"
 
 
 def test_compose_adds_transitions(video):
@@ -635,3 +635,44 @@ def test_vars_xep_hang_race_passes_series_and_frames():
 def test_steps_xep_hang_race_one_per_frame():
     assert dung.steps(RACE, []) == pytest.approx([0.4, 1.7, 3.0])
     assert [f for f, _, _ in dung.sfx_events(RACE, dung.steps(RACE, []))] == ["pop"] * 3
+
+
+def test_grounds_follow_role():
+    sc = [{"mau": m} for m in ("chuong", "trich-bao", "trang-nguon", "so-lon", "b-roll", "minh-hoa")]
+    assert dung.grounds(sc) == ["vang", "kem", "kem", "toi", "toi", "toi"]
+
+
+def test_source_line_not_repeated_for_same_page():
+    nguon = {n: dict(NGUON[0], id=n) for n in ("p1", "p2", "p3")}
+    c = {"mau": "bieu-do", "nhan": "", "bieu_do": {"nhan_x": ["a"], "gia_tri": [1], "nguon_id": ["p1", "p2", "p3"]}}
+    assert dung._vars(c, nguon, {})["nguon"] == "Nguồn: chatgpt.com, 07/11/2026"
+
+
+def test_vars_broll_keyword_and_split():
+    c = {"mau": "b-roll", "video": "a.mp4", "tu_khoa": "Giảm phí", "nguon_id": "p1",
+         "chia": {"so": 522500, "sau": " đ", "nhan": "Gói Plus"}}
+    v = dung._vars(c, {"p1": NGUON[0]}, {})
+    assert v["tu_khoa"] == "Giảm phí" and json.loads(v["chia"]) == {"so_hien": "522.500", "truoc": "", "sau": " đ", "nhan": "Gói Plus"}
+    assert v["nguon"].startswith("Nguồn: chatgpt.com")
+    assert dung._vars({"mau": "b-roll", "video": "a.mp4"}, {}, {})["chia"] == ""
+    st = [0.5, 0.3, 0.6]
+    assert [e[0] for e in dung.sfx_events(c, st)] == ["pop", "whoosh-short"] and dung.sfx_events({"mau": "b-roll"}, st) == []
+
+
+def test_mascot_peeks_only_on_key_number_scene():
+    assert dung.dan_cua({"mau": "so-lon", "start": 0, "end": 4, "trong_diem": True})["lau"] == dung.PEEK_LAU
+    assert dung.dan_cua({"mau": "so-lon", "start": 0, "end": 4}) is None
+    assert dung.dan_cua({"mau": "so-sanh", "start": 0, "end": 4, "trong_diem": True}) is None  # che số hai bên
+    assert dung.dan_cua({"mau": "so-sanh", "start": 0, "end": 4, "dan": {"the": "nghi"}}) == {"the": "nghi"}
+
+
+def test_chapter_segments_cover_whole_video():
+    sc = [{"mau": "b-roll", "start": 0, "end": 5}, {"mau": "chuong", "start": 5, "end": 9, "chuong": "Một"},
+          {"mau": "so-lon", "start": 9, "end": 20}, {"mau": "chuong", "start": 20, "end": 24, "chuong": "Hai"}]
+    assert dung.chuong_doan(sc, 0, 30) == [(0.0, 5, "Mở đầu"), (5, 20, "Một"), (20, 30, "Hai")]
+    assert dung.chuong_doan(sc[1:], 5, 25)[0] == (0, 15, "Một")
+
+
+def test_compose_adds_chapter_bar_only_for_landscape(video):
+    assert 'id="tien-do"' in (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    assert 'id="tien-do"' not in (dung.compose(video, w=1080, h=1920, out="doc") / "index.html").read_text(encoding="utf-8")

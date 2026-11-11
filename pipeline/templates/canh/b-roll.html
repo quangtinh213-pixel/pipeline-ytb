@@ -11,9 +11,20 @@
                     padding: 18px 28px; text-transform: uppercase; letter-spacing: 0.02em; }
     #root .br-ghi-cong { position: absolute; left: 96px; top: 48px; color: rgba(255,255,255,0.8);
                          font: 500 28px/1.2 var(--font-display); }
+    #root .br-nguon { position: absolute; left: 96px; top: 86px; color: rgba(255,255,255,0.8); font: 500 28px/1.2 var(--font-display); }
+    /* từ khoá bật lên giữa khung, đúng lúc lời đọc nói tới */
+    #root .br-tu-khoa { position: absolute; left: 0; right: 0; top: 380px; text-align: center; }
+    #root .br-tu-khoa span { display: inline-block; background: {{theme:nhan.0}}; color: {{theme:chu_tren_nhan}};
+                             font: 900 104px/1.05 var(--font-display); padding: 22px 46px; border-radius: 22px;
+                             letter-spacing: -0.02em; box-shadow: 0 24px 60px rgba(0,0,0,0.45); max-width: 1500px; }
+    /* chia đôi: video lùi sang trái, nửa phải là số */
+    #root .br-ben { position: absolute; top: 0; bottom: 0; left: 960px; right: 0; background: {{theme:nen}};
+                    display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 60px; }
+    #root .br-ben-so { color: {{theme:nhan.0}}; font: 900 150px/1 var(--font-display); letter-spacing: -0.03em; white-space: nowrap; }
+    #root .br-ben-nhan { margin-top: 28px; color: #fff; font: 800 52px/1.15 var(--font-display); }
   </style>
   <div id="root" data-composition-id="b-roll" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"nhan","type":"string","label":"Nhãn","default":""},{"id":"so","type":"string","label":"Số chương (vd 01)","default":""},{"id":"ghi_cong","type":"string","label":"Ghi công video","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.5]"},{"id":"nen","type":"string","label":"Nền","default":"toi"}]'>
+       data-composition-variables='[{"id":"nhan","type":"string","label":"Nhãn","default":""},{"id":"so","type":"string","label":"Số chương (vd 01)","default":""},{"id":"ghi_cong","type":"string","label":"Ghi công video","default":""},{"id":"tu_khoa","type":"string","label":"Từ khoá bật lên","default":""},{"id":"chia","type":"string","label":"Nửa phải (JSON)","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.5]"},{"id":"nen","type":"string","label":"Nền","default":"toi"}]'>
     <div id="br-cam" class="br-cam">
       <video id="br-video" class="clip" data-start="0" data-media-start="0.5" muted playsinline src="__VIDEO__"></video>
     </div>
@@ -21,6 +32,9 @@
     <div id="br-nhan" class="br-nhan"><span id="br-so" class="br-so" data-var-text="so"></span>
       <span id="br-chu" class="br-chu" data-var-text="nhan"></span></div>
     <div id="br-ghi-cong" class="br-ghi-cong" data-var-text="ghi_cong"></div>
+    <div id="br-nguon" class="br-nguon" data-var-text="nguon"></div>
+    <div id="br-tu-khoa" class="br-tu-khoa"><span data-var-text="tu_khoa"></span></div>
+    <div id="br-ben" class="br-ben"><div id="br-ben-so" class="br-ben-so"></div><div id="br-ben-nhan" class="br-ben-nhan"></div></div>
   </div>
   <script>
     const v = window.__hyperframes.getVariables();
@@ -32,6 +46,21 @@
     tl.fromTo("#br-cam", { scale: 1.0 }, { scale: 1.08, duration: 9, ease: "none" }, 0);
     tl.fromTo("#br-nhan", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, at(0, 0.5));
     tl.fromTo("#br-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
+    if (v.tu_khoa) {
+      const t = at(1, 0.3);
+      tl.fromTo("#br-tu-khoa", { scale: 0.6, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }, t);
+      tl.to("#br-tu-khoa", { opacity: 0, y: -30, duration: 0.3, ease: "power2.in" }, t + 1.8);
+    } else document.querySelector("#br-tu-khoa").style.display = "none";
+    if (v.chia) {
+      const c = JSON.parse(v.chia), t = at(2, 0.6);
+      document.querySelector("#br-ben-so").textContent = c.truoc + c.so_hien + c.sau;
+      document.querySelector("#br-ben-nhan").textContent = c.nhan;
+      tl.fromTo("#br-cam", { clipPath: "inset(0 0% 0 0)", x: 0 }, { clipPath: "inset(0 37.5% 0 0)", x: -240, duration: 0.6, ease: "power3.inOut" }, t);
+      tl.fromTo("#br-ben", { xPercent: 100 }, { xPercent: 0, duration: 0.6, ease: "power3.inOut" }, t);
+      tl.fromTo("#br-ben-so", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.8)" }, t + 0.45);
+      tl.fromTo("#br-ben-nhan", { opacity: 0 }, { opacity: 1, duration: 0.3 }, t + 0.7);
+    } else document.querySelector("#br-ben").style.display = "none";
+    tl.fromTo("#br-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.6);
     window.__timelines["b-roll"] = tl;
   </script>
 </template>

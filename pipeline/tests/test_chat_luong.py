@@ -56,7 +56,7 @@ def test_kiem_warns_on_slow_pace():
 
 def test_kiem_passes_channel_like_profile():
     m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
-    loi = [e for e in cl.kiem(m) if "độ khô" not in e]  # mẫu cũ chỉ có một phông nên bị báo độ khô, đúng ý đo
+    loi = [e for e in cl.kiem(m) if "độ khô" not in e and "cảnh đầu" not in e]  # mẫu cũ một phông, mở bằng chương: báo đúng ý đo
     # mẫu kênh cũ (70% đồ họa) nay bị báo hai tỉ lệ: user chốt ưu tiên ảnh thật và b-roll
     assert len(loi) == 2 and "Đồ họa" in loi[0] and "đời thật" in loi[1]
     assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 180 <= m["toc_do"] <= 230
@@ -138,3 +138,19 @@ def test_kiem_ti_le_uu_tien_doi_that():
     maus = ["b-roll"] * 5 + ["trich-bao", "so-lon", "b-roll", "bieu-do", "minh-hoa"]  # 60% đời thật, b-roll liền nhau
     m = cl.do(_canh(maus * 2, [3.5] * 20), _timing(70, 234))
     assert not [e for e in cl.kiem(m) if "Đồ họa" in e or "đời thật" in e or "liền cùng" in e]
+
+
+def test_kiem_warns_when_first_scene_has_no_text_or_number():
+    def mo(c0):
+        sc = {"scenes": [dict(c0, id="c1", start=0, end=4), {"id": "c2", "mau": "so-lon", "start": 4, "end": 8}]}
+        return cl.kiem(cl.do(sc, _timing(8, 30)))
+    assert any("cảnh đầu" in e for e in mo({"mau": "b-roll", "video": "a.mp4"}))
+    assert not any("cảnh đầu" in e for e in mo({"mau": "b-roll", "video": "a.mp4", "tu_khoa": "Giảm 2.000 đồng"}))
+    assert not any("cảnh đầu" in e for e in mo({"mau": "so-lon"}))
+
+
+def test_broll_counts_only_steps_it_shows():
+    tron = {"scenes": [{"id": "c1", "mau": "b-roll", "start": 0, "end": 60, "video": "a.mp4"}]}
+    co = {"scenes": [dict(tron["scenes"][0], tu_khoa="x", chia={"so": 1})]}
+    assert cl.do(tron, _timing(60, 200))["su_kien_phut"] == 1      # chỉ cảnh, không bước nào hiện
+    assert cl.do(co, _timing(60, 200))["su_kien_phut"] == 3        # cảnh + từ khoá + khung chia

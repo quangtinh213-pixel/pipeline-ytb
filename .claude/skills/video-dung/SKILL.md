@@ -49,6 +49,9 @@ Claude là đạo diễn: quyết mỗi cảnh phục vụ điều gì trước 
 2. **Mỗi beat có một khoảnh khắc nhấn** (đỉnh) và một nhịp thở trước hoặc sau nó.
 3. **Ẩn dụ phải kiểm được.** Hình ẩn dụ không được thêm khẳng định không có nguồn (ví dụ không vẽ đám đông giận dữ khi nguồn không nói về phản ứng công chúng). Mọi số trên màn hình vẫn có `nguon_id`.
 4. **Đa dạng có chủ đích:** đổi phông, vật chính, bố cục khi ý đổi, không đổi chỉ để đổi.
+5. **`minh-hoa` phải chỉ ra một quan hệ** (user duyệt 12/11/2026): ai trả cho ai, cái gì lớn hơn cái gì, cái gì dẫn tới cái gì.
+   Nếu `y` của cảnh chỉ là "cho thấy vật mà lời đọc nhắc" (kính lúp khi nói "xem kỹ", điện thoại khi nói "ứng dụng") thì đó là cảnh khô:
+   đổi sang `so-lon`, `trich-bao`, `trang-nguon` hoặc `b-roll` có `tu_khoa`.
 
 **Cách làm** (giới hạn khoảng 45 phút; vượt thì giảm cảnh trọng điểm xuống ~20%, không bỏ bước):
 1. `uv run python -m tttc.chia V` để có `V/canh-khung.json` (mốc và `loi` từng cảnh).
@@ -83,7 +86,17 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   (máy chủ, chip), `chop` cho điểm nhấn vàng; `""` để đứng yên. Đạo cụ tự nhấp nhô lệch pha.
 - Cho sân khấu có chuyện xảy ra: `minh-hoa` thêm `phu` (1–2 đạo cụ: cay, dong-xu, container, nguoi, mui-ten-len/xuong…);
   `so-lon` thêm `huong` khi số tăng/giảm và `svg` hình nền hợp nghĩa; `bieu-do` thêm `chu_thich` ≤ 2 từ cho cột nổi bật.
-- Nền và chuyển cảnh tự gán theo chương; chỉ ghi `nen` khi muốn phá nhịp có chủ đích.
+- Nền tự gán theo vai trò (user duyệt 12/11/2026): `chuong` vàng; bằng chứng (`trich-bao`, `trang-nguon`, `nhan-vat`) kem; số liệu, minh họa, b-roll tối.
+  Người xem nhận ra "đang xem bằng chứng" qua màu nền; chỉ ghi `nen` khi muốn phá nhịp có chủ đích. Chuyển cảnh tự gán.
+- **Giây đầu có chữ hoặc số** (`tttc.chat_luong` cảnh báo): cảnh đầu là `so-lon`/`so-sanh`/`trich-bao`/`trang-nguon`/`bieu-do`,
+  hoặc `b-roll` có `tu_khoa`/`chia`. Đưa con số hay câu hỏi chính lên khung đầu, đừng mở bằng cảnh stock trống.
+- **`b-roll` không để trống** (gần nửa video là b-roll): thêm `tu_khoa` (≤ 5 từ, ý chính của câu, hiện to giữa khung đúng lúc nói
+  `nhip[1]`, tự tắt sau 1,8 s) cho khoảng một nửa số cảnh b-roll; hoặc `chia: {so, truoc?, sau?, nhan}` (video lùi sang nửa trái, số hiện
+  nửa phải lúc `nhip[2]`) khi lời đọc vừa kể chuyện vừa nêu số. `nhip[0]` vẫn là mốc của `nhan`; để `null` các mốc không dùng.
+  Có số trong `tu_khoa` hay `chia` thì bắt buộc `nguon_id`, `tttc.canh` đối chiếu với nguồn như mọi số khác.
+- **`so-sanh` có số ở cả hai bên cùng đơn vị** thì tự vẽ hai cột cao đúng tỉ lệ thay cho biểu tượng: chọn mẫu này khi chênh lệch là ý chính.
+- **Tự thêm, không cần ghi:** thanh tiến trình chương ở mép trên (tên chương đang xem ở góc phải), và Nhịp ló ra 1,8 s ở cảnh `so-lon`
+  có `trong_diem` (`dao_dien` chép sang `canh.json`). Muốn Nhịp chỉ ló ra một lúc ở cảnh khác: `dan.lau` = số giây (0,8–6).
 - **Nhịp con**: mỗi cảnh ghi `nhip` = các cụm từ giọng đọc nói trong cảnh, theo thứ tự bước của mẫu
   (`DEFAULT_STEPS` trong `tttc/dung.py`; `bieu-do` = một cụm cho mỗi cột + một cụm cho cột nổi bật).
   Mục tiêu: hình đổi khoảng 2 s một lần. `tttc.canh` báo lỗi nếu cụm không có trong lời đọc của cảnh.

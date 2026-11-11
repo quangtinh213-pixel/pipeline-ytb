@@ -533,3 +533,16 @@ def test_xep_hang_race_rejects_length_mismatch_and_unsourced_values(tmp_path):
     assert any("moc" in e for e in errs(_race(hang=[{"nhan": "A", "so": [1, 2]}, {"nhan": "B", "so": [1, 2, 3]}])))
     assert any("7.7" in e for e in errs(_race(hang=[{"nhan": "A", "so": [0.4, 7.7, 4.5]}, {"nhan": "B", "so": [1.2, 0.9, 1.4]}])))
     assert any("moc" in e for e in errs(_race(moc=["2022"])))
+
+
+def test_broll_keyword_and_split_numbers_must_match_source(tmp_path):
+    src = [{"id": "g1", "gia_tri": "Giảm 2.000 đồng; gói 3.000 tỷ đồng"}]
+    def errs(**kw):
+        sc = {"scenes": [dict({"id": "c1", "mau": "b-roll", "start": 0, "end": 4, "video": "a.mp4"}, **kw)]}
+        return _errors(canh.validate(sc, {"duration": 4.0, "words": []}, tmp_path, src, kit=None))
+    assert errs(tu_khoa="Mỗi cuốc bớt phí") == []                      # không có số: không cần nguồn
+    assert any("nguon_id" in e for e in errs(tu_khoa="Bớt 2.000 đồng"))
+    assert errs(tu_khoa="Bớt 2.000 đồng", nguon_id="g1") == []
+    assert any("2.500" in e for e in errs(tu_khoa="Bớt 2.500 đồng", nguon_id="g1"))
+    assert errs(chia={"so": "3.000", "sau": " tỷ đồng", "nhan": "Gói hỗ trợ"}, nguon_id="g1") == []
+    assert any("3.500" in e for e in errs(chia={"so": "3.500", "sau": " tỷ đồng", "nhan": "Gói"}, nguon_id="g1"))
