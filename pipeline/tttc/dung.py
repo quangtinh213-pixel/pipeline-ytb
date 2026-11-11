@@ -340,7 +340,11 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     sfx = []
     for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
-        (o / "compositions" / f"{sid}.html").write_text(_scene_file(c["mau"], sid, c.get("video", "")), encoding="utf-8")
+        page = _scene_file(c["mau"], sid, c.get("video", ""))
+        if h > w:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
+            page = page.replace("</style>", "#root [id$=\"-br-ghi-cong\"], #root [id$=\"-nguon\"] { background: rgba(0,0,0,0.6) !important; "
+                                "color: #fff !important; padding: 6px 16px; border-radius: 10px; }</style>", 1)
+        (o / "compositions" / f"{sid}.html").write_text(page, encoding="utf-8")
         st = steps(c, timing.get("words", []))
         sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
         extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng

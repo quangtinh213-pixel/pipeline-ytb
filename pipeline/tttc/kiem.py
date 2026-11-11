@@ -35,6 +35,8 @@ LIST_MARK = re.compile(r"^\s*(?:\d+[.)]|[-*>])\s+")
 URL = re.compile(r"https?://\S+")
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?!\[#)")
 WARN = ("sơ bộ", "chưa chính thức")
+# user 11/11/2026: lời đọc dùng số tròn cho tai nghe; câu có từ ước lượng thì số được lệch nguồn tối đa 5% ("hơn một nghìn" cho 1.050)
+TRON, TRON_LECH = re.compile(r"\b(?:khoảng|gần|hơn|chừng|xấp xỉ|ngót)\b", re.I), Decimal("0.05")
 WARN_TU_TINH = ("tự tính", "tự ướm", "tính ra", "mình tính", "mình chia", "mình nhân", "ước tính độc lập", "không phải dự báo")
 # "2.5 USD": dấu chấm thập phân kiểu Mỹ, NUM không bắt được; chỉ xét khi có đơn vị để không vướng "Gemini 2.5"
 EN_DECIMAL = re.compile(r"(?<![\d.,])\d+\.\d{1,2}(?=" + UNIT_AFTER.pattern + ")", re.I)
@@ -143,8 +145,12 @@ def check(script_md: str, nguon: list[dict]) -> list[str]:
                 errs.append(f"Số viết bằng chữ không có nguồn: {sent.strip()}")
                 continue
             allowed = {(v, unit) for s in srcs for _, v, unit in _claims(unicodedata.normalize("NFC", s["gia_tri"]), True)}
+            tron = bool(TRON.search(sent))
             for raw, v, unit in nums:
-                if srcs and (v, unit) not in allowed:
+                # lời nói hay bỏ đơn vị ("bớt hai nghìn"): số không đơn vị khớp giá trị nguồn ở bất kỳ đơn vị nào
+                cung = lambda u: u == unit or not unit
+                gan = any(cung(u) and (a == v or tron and abs(v - a) <= abs(a) * TRON_LECH) for a, u in allowed)
+                if srcs and (v, unit) not in allowed and not gan:
                     errs.append(f"Số {raw} không khớp giá trị hoặc đơn vị nguồn "
                                 f"{[s['id'] for s in srcs]}: {sent.strip()}")
             low = sent.lower()

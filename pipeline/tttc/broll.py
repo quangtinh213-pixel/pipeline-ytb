@@ -109,7 +109,8 @@ def _chuan_hoa(src: Path, out: Path, bat_dau: float = 0.0, do_dai: float | None 
         if not do_dai:
             raise ValueError("Ảnh tĩnh phải có do_dai")
         cut = ["-loop", "1", "-framerate", "30", "-t", str(do_dai)]
-        zoom = ",zoompan=z='min(1+0.0004*on,1.08)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30"
+        # phóng to 4× trước: zoompan cắt theo điểm ảnh nguyên của ảnh vào, ảnh nhỏ thì khung nhảy từng bước (giật)
+        zoom = ",scale=7680:4320:flags=lanczos,zoompan=z='min(1+0.0004*on,1.08)':x='iw/2-(iw/zoom/2)':y='ih/2-(ih/zoom/2)':d=1:s=1920x1080:fps=30"
     subprocess.run(["ffmpeg", "-v", "error", "-y", *cut, "-i", str(src), "-an",
                     "-vf", "scale=1920:1080:force_original_aspect_ratio=increase,crop=1920:1080" + zoom,
                     "-r", "30", "-c:v", "libx264", "-pix_fmt", "yuv420p", "-crf", str(crf), str(out)], check=True)

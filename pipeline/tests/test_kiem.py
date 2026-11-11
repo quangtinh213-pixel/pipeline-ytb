@@ -31,6 +31,14 @@ def test_value_mismatch():
     assert len(errs) == 1 and "522.000" in errs[0]
 
 
+def test_so_tron_can_tu_uoc_luong_va_trong_5_phan_tram():
+    assert check("Gói Plus giá khoảng 520.000 đồng mỗi tháng. [#p1]", NGUON) == []
+    assert len(check("Gói Plus giá 520.000 đồng mỗi tháng. [#p1]", NGUON)) == 1  # thiếu từ ước lượng
+    assert len(check("Gói Plus giá khoảng 450.000 đồng mỗi tháng. [#p1]", NGUON)) == 1  # lệch quá 5%
+    assert len(check("Gói Plus giá khoảng 520.000 USD mỗi tháng. [#p1]", NGUON)) == 1  # sai đơn vị
+    assert check("Gói Plus bớt còn khoảng 520 nghìn mỗi tháng. [#p1]", NGUON) == []  # lời nói bỏ chữ đồng
+
+
 def test_placeholder_left():
     errs = check("Khoảng [ĐỔI TỶ GIÁ NGÀY QUAY: 20 USD = ... đ] mỗi tháng.", NGUON)
     assert any("giữ chỗ" in e for e in errs)
