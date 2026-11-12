@@ -75,7 +75,7 @@ def test_compose_maps_variables(video):
 
 def test_compose_adds_captions_from_timing(video):
     html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
-    assert 'data-track-kind="captions"' in html and "Xin chào." in html
+    assert 'data-track-kind="captions"' in html and ">Xin</span> <span" in html and ">chào.</span>" in html
 
 
 def test_compose_scene_range_rebases_time(video):
@@ -676,3 +676,17 @@ def test_chapter_segments_cover_whole_video():
 def test_compose_adds_chapter_bar_only_for_landscape(video):
     assert 'id="tien-do"' in (dung.compose(video) / "index.html").read_text(encoding="utf-8")
     assert 'id="tien-do"' not in (dung.compose(video, w=1080, h=1920, out="doc") / "index.html").read_text(encoding="utf-8")
+
+
+def test_tu_nhan_marks_spoken_numbers_and_scene_keywords():
+    ws = [{"w": x, "start": i * 0.5, "end": i * 0.5 + 0.4} for i, x in enumerate(
+        "Gói này giá năm trăm hai mươi nghìn, rẻ hơn ba lần so với Plus.".split())]
+    sc = [{"start": 0, "end": 5, "nhip": ["rẻ hơn"]}, {"start": 5, "end": 9, "sac": "do", "nhip": ["Plus"]}]
+    out = dung.tu_nhan(ws, sc)
+    assert sorted(out) == [3, 4, 5, 6, 7, 8, 9, 14]  # "ba lần" không có trăm/nghìn: không nhấn
+    assert out[14] == dung.SAC["do"][0] and out[3] == dung.theme.TH["nhan"][0]
+
+
+def test_shorts_captions_are_shorter_and_highlight_current_word(video):
+    html = (dung.compose(video, w=1080, h=1920, out="s") / "index.html").read_text(encoding="utf-8")
+    assert "-webkit-text-stroke" in html and 'tl.to("#cap-0-0", { color:' in html

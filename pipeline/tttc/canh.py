@@ -365,6 +365,11 @@ def _ts(t: float) -> str:
 
 
 def cues(timing: dict, max_chars: int = 42) -> list[tuple[float, float, str]]:
+    text = lambda ws: " ".join(x["w"] for x in ws)
+    return [(g[0]["start"], g[-1]["end"], text(g)) for g in nhom_tu(timing, max_chars)]
+
+
+def nhom_tu(timing: dict, max_chars: int = 42) -> list[list[dict]]:
     """Gom từ thành dòng phụ đề ≤ max_chars (trừ một từ dài hơn nó), ngắt theo nghĩa: bắt buộc sau .!?, ưu tiên sau , ; :
     khi dòng đã ≥ 60% max_chars, và khi buộc ngắt vì vượt max_chars thì lùi về dấu , ; : gần nhất nếu vế đầu ≥ 40% max_chars; không để một từ
     đứng riêng một dòng giữa câu."""
@@ -393,7 +398,7 @@ def cues(timing: dict, max_chars: int = 42) -> list[tuple[float, float, str]]:
                 groups[i - 1:i + 1] = [prev + g]
                 continue
         i += 1
-    return [(g[0]["start"], g[-1]["end"], text(g)) for g in groups]
+    return groups
 
 
 def to_srt(timing: dict, max_chars: int = 42) -> str:

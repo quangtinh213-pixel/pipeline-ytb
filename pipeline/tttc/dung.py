@@ -47,7 +47,7 @@ from urllib.parse import urlparse
 from PIL import Image
 
 from tttc import ban_do, grain, nhan_vat, theme
-from tttc.canh import _norm, cues, phrase_time
+from tttc.canh import _norm, nhom_tu, phrase_time
 from tttc.kiem import vi_value
 from tttc.tron_am import tron
 
@@ -366,6 +366,69 @@ def _scene_file(mau: str, sid: str, video: str = "", dur: float = 0.0) -> str:
     return s
 
 
+SO_DEM = {"không", "một", "mốt", "hai", "ba", "bốn", "tư", "năm", "lăm", "sáu", "bảy", "tám", "chín", "mười", "mươi", "linh",
+          "lẻ", "trăm", "nghìn", "ngàn", "triệu", "tỷ", "tỉ", "rưỡi", "phẩy", "phần"}
+DON_VI_SO = {"trăm", "nghìn", "ngàn", "triệu", "tỷ", "tỉ", "phần"}  # cụm số đọc thành chữ chỉ nhấn khi có từ chỉ độ lớn
+
+
+def tu_nhan(words: list[dict], scenes: list[dict]) -> dict[int, str]:
+    """Chỉ số từ cần nhấn trong phụ đề → màu nhấn: cụm số (có chữ số, hoặc chuỗi số đọc có trăm/nghìn/triệu/tỷ/phần trăm)
+    và cụm từ khoá của cảnh (nhip, tu_khoa). Màu theo sac của cảnh chứa từ, mặc định màu nhấn thương hiệu."""
+    out, n = {}, [_norm(w["w"]) for w in words]
+    mau = lambda t: next((SAC[c["sac"]][0] for c in scenes if c.get("sac") in SAC and c["start"] - 0.01 <= t < c["end"]),
+                         theme.TH["nhan"][0])
+    i = 0
+    while i < len(n):  # cụm số
+        j = i
+        while j < len(n) and (n[j] in SO_DEM or re.search(r"\d", n[j])):
+            j += 1
+        if j > i and (any(re.search(r"\d", x) for x in n[i:j]) or DON_VI_SO & set(n[i:j])) and n[i:j] != ["phần"]:
+            for k in range(i, j + (j < len(n) and n[j - 1] == "phần" and n[j] == "trăm")):
+                out[k] = mau(words[k]["start"])
+        i = max(j, i + 1)
+    for c in scenes:  # từ khoá do tác giả đặt cho cảnh
+        for ph in [p for p in (c.get("nhip") or []) if p] + ([c["tu_khoa"]] if c.get("tu_khoa") else []):
+            toks = _norm(ph).split()
+            for i in range(len(n) - len(toks) + 1):
+                if n[i:i + len(toks)] == toks and c["start"] - 0.01 <= words[i]["start"] < c["end"]:
+                    out.update({k: mau(words[k]["start"]) for k in range(i, i + len(toks))})
+                    break
+    return out
+
+
+def phu_de(timing: dict, scenes: list[dict], t0: float, total: float, doc: bool) -> tuple[list[str], list[str]]:
+    """Phụ đề động: dòng bật lên, từng từ sáng theo giọng đọc, cụm số và từ khoá đổi màu nhấn và nảy nhẹ.
+    Ngang: hộp tối, chữ chưa đọc mờ → trắng khi đọc. Dọc (Shorts): chữ to viền đậm, ít chữ một dòng, từ đang đọc đổi màu."""
+    words = timing.get("words", [])
+    nhan = tu_nhan(words, scenes)
+    muted, nhan0 = theme.TH["muted"], theme.TH["nhan"][0]
+    idx = {id(w): k for k, w in enumerate(words)}
+    tags, js = [], []
+    for k, g in enumerate(nhom_tu(timing, 22 if doc else 42)):
+        a, b = g[0]["start"], g[-1]["end"]
+        if a < t0 - 0.01 or b > t0 + total + 0.01:
+            continue
+        a0 = round(a - t0, 3)
+        spans = []
+        for m, w in enumerate(g):
+            wid, t, mau = f"cap-{k}-{m}", round(w["start"] - t0, 3), nhan.get(idx[id(w)])
+            spans.append(f'<span id="{wid}" class="w{" nb" if mau else ""}">{escape(w["w"])}</span>')
+            if doc:  # từ đang đọc đổi màu nhấn; từ khoá giữ màu, từ thường trở lại trắng
+                js.append(f'tl.to("#{wid}", {{ color: "{mau or nhan0}", scale: {1.18 if mau else 1.08}, duration: 0.08 }}, {t});')
+                js.append(f'tl.to("#{wid}", {{ {"" if mau else "color: \"#fff\", "}scale: 1, duration: 0.12 }}, '
+                          f'{round(max(t + 0.08, w["end"] - t0), 3)});')
+            elif mau:
+                js.append(f'tl.fromTo("#{wid}", {{ color: "{muted}", scale: 1 }}, {{ color: "{mau}", scale: 1.12, duration: 0.1 }}, {t}); '
+                          f'tl.to("#{wid}", {{ scale: 1, duration: 0.2, ease: "back.out(3)" }}, {round(t + 0.1, 3)});')
+            else:
+                js.append(f'tl.fromTo("#{wid}", {{ color: "{muted}" }}, {{ color: "#fff", duration: 0.08 }}, {t});')
+        tags.append(f'<div id="cap-{k}" class="clip cap" data-start="{a0}" data-duration="{round(b - a, 3)}">'
+                    f'<span class="hop">{" ".join(spans)}</span></div>')
+        js.append(f'tl.fromTo("#cap-{k} .hop", {{ opacity: 0, y: 16, scale: {0.85 if doc else 0.97} }}, '
+                  f'{{ opacity: 1, y: 0, scale: 1, duration: 0.2, ease: "{"back.out(2)" if doc else "power2.out"}" }}, {a0});')
+    return tags, js
+
+
 def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int] | None = None,
             out: str = "composition") -> Path:
     d = Path(video_dir)
@@ -476,9 +539,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                          f'tl.to(["#tr-{k}-p0", "#tr-{k}-p1", "#tr-{k}-p2"], {{ xPercent: 101, duration: 0.32, ease: "power3.out", '
                          f'stagger: {{ each: 0.04, from: "end" }} }}, {seam:.3f});')
 
-    caps = [f'<div id="cap-{k}" class="clip cap" data-start="{round(a - t0, 3)}" data-duration="{round(b - a, 3)}">'
-            f"<span>{escape(t)}</span></div>"
-            for k, (a, b, t) in enumerate(cues(timing)) if a >= t0 - 0.01 and b <= t0 + total + 0.01]
+    caps, cap_js = phu_de(timing, scenes, t0, total, h > w)
 
     dan_tags, dan_js = [], []
     if h <= w:  # shortcut: Shorts (khung dọc) chưa có nhân vật; thêm khi có nhu cầu
@@ -534,12 +595,16 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     stage_open = ('<div id="san-khau" style="position:absolute;left:0;top:560px;width:1920px;height:1080px;'
                   'transform:scale(0.5625);transform-origin:0 0">') if vertical else ""
     stage_close = "</div>" if vertical else ""
-    cap_css = ("bottom: 420px; font-size: 64px; max-width: 980px;" if vertical
-               else "bottom: 36px; font-size: 44px; max-width: 1500px;")
-    base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
     nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
     nhan1, nhan2, thanh = theme.TH["nhan"][1], theme.TH["nhan"][2], theme.TH["thanh"]
     vien_toi = float(_render_cfg().get("vien_toi", 0.28))  # viền tối điện ảnh quanh khung; 0 = tắt
+    cap_css = ("bottom: 400px; font-size: 76px; max-width: 960px;" if vertical
+               else "bottom: 36px; font-size: 44px; max-width: 1500px;")
+    hop_css = ("color: #fff; font-weight: 900; line-height: 1.25; letter-spacing: -0.01em; -webkit-text-stroke: 14px "
+               f"{nen}; paint-order: stroke fill; text-shadow: 0 8px 24px rgba(0,0,0,0.55);" if vertical else
+               f"background: rgba(NEN_RGB,0.82); padding: 6px 16px; border-radius: 10px; font-weight: 700; line-height: 1.5;"
+               " box-decoration-break: clone; -webkit-box-decoration-break: clone;")
+    base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
     grain_css = (f"\n      #root::after {{ content: ''; position: absolute; inset: 0; background: url(assets/grain.png); "
                  f"opacity: {do_grain}; mix-blend-mode: overlay; pointer-events: none; z-index: 9; }}"
                  if do_grain > 0 else "")
@@ -575,9 +640,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                  border-radius: 50%; box-shadow: 0 0 0 6px {nhan0}, 0 0 40px 6px {nhan0}; }}
       #vien-toi {{ position: absolute; inset: 0; z-index: 7; pointer-events: none;
                   background: radial-gradient(ellipse 80% 75% at 50% 48%, transparent 58%, rgba(0,0,0,{vien_toi}) 100%); }}
-      .cap span {{ display: inline; background: rgba({nen_rgb},0.82); color: {muc}; padding: 6px 16px;
-                  border-radius: 10px; font-weight: 700; line-height: 1.5; box-decoration-break: clone;
-                  -webkit-box-decoration-break: clone; }}{grain_css}
+      .cap .hop {{ display: inline-block; color: {muc}; {hop_css.replace("NEN_RGB", nen_rgb)} }}
+      .cap .w {{ display: inline-block; transform-origin: 50% 70%;{" margin: 0 0.05em;" if vertical else ""} }}
+      .cap .nb {{ font-weight: 900; }}{grain_css}
     </style>
   </head>
   <body>
@@ -600,6 +665,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       {chr(10).join(tr_js)}
       {chr(10).join(dan_js)}
       {chr(10).join(tien_do_js)}
+      {chr(10).join(cap_js)}
       window.__timelines["main"] = tl;
     </script>
   </body>
