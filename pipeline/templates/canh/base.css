@@ -8,6 +8,7 @@
   --line: {{theme:duong}};
   --bar: {{theme:thanh}};
   --font-display: "{{theme:font}}", sans-serif;
+  --nhan-grad: linear-gradient(90deg, {{theme:nhan.0}} 0%, {{theme:sac.lam.0}} 100%);  /* nhấn ngọc lam → lam */
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--ground); }
@@ -17,7 +18,13 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
 /* Ba nền xen kẽ; đặt lớp nen-* lên khung sân khấu của từng cảnh, màu chữ đổi theo biến. */
 .san { position: absolute; inset: 0; overflow: hidden; }
 .nen-toi { --tren-muc: {{theme:nen}}; --ink: {{theme:muc}}; --muted: {{theme:muted}}; --line: {{theme:duong}}; --bar: {{theme:thanh}}; --accent-ink: {{theme:chu_tren_nhan}};
-           background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) var(--tint, 0%), {{theme:nen_sang}}) 0%, {{theme:nen}} 70%); }
+           /* bốn đốm sáng ở góc (ngọc lam/lam) "thở" theo --tho1/--tho2 do compose tween trong timeline cảnh */
+           background:
+             radial-gradient(circle calc(440px * var(--tho1, 1)) at 4% 8%, color-mix(in srgb, var(--accent) 14%, transparent), transparent),
+             radial-gradient(circle calc(400px * var(--tho2, 1)) at 96% 6%, color-mix(in srgb, {{theme:sac.lam.0}} 13%, transparent), transparent),
+             radial-gradient(circle calc(380px * var(--tho2, 1)) at 3% 95%, color-mix(in srgb, {{theme:sac.lam.0}} 11%, transparent), transparent),
+             radial-gradient(circle calc(420px * var(--tho1, 1)) at 97% 93%, color-mix(in srgb, var(--accent) 12%, transparent), transparent),
+             radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) var(--tint, 0%), {{theme:nen_sang}}) 0%, {{theme:nen}} 70%); }
 .nen-kem { --tren-muc: {{theme:kem.nen}}; --ink: {{theme:kem.muc}}; --muted: {{theme:kem.muted}}; --line: {{theme:kem.duong}}; --bar: {{theme:kem.thanh}}; --accent-ink: {{theme:chu_tren_nhan}};
            background: radial-gradient(ellipse 70% 60% at 50% 45%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.5), {{theme:kem.nen}}) 0%, color-mix(in srgb, var(--accent) calc(var(--tint, 0%) * 0.7), {{theme:kem.nen_2}}) 75%); }
 .nen-vang { --tren-muc: {{theme:nhan.0}}; --ink: {{theme:chu_tren_nhan}}; --muted: {{theme:vang_nen.muted}}; --line: {{theme:nhan.1}}; --bar: {{theme:nhan.2}}; --accent: {{theme:chu_tren_nhan}};
@@ -26,6 +33,13 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
   content: ""; position: absolute; inset: 0; pointer-events: none;
   background-image: radial-gradient(circle, rgba(127,127,127,0.16) 2px, transparent 2.5px);
   background-size: 48px 48px; }
+/* Nét tech trên nền tối (học từ bộ tech-dark, 12/11/2026): chữ nhấn gradient, vạch và vòng phát sáng.
+   #root để thắng luật "#root .x" của từng mẫu; nền kem/vàng giữ màu phẳng. */
+#root .nen-toi .chu-grad { background: var(--nhan-grad); -webkit-background-clip: text; background-clip: text;
+                           color: transparent; -webkit-text-fill-color: transparent;
+                           padding: 0.14em 0.1em; margin: -0.14em -0.1em; }  /* nới vùng tô: nét "đ", dấu thanh tràn khỏi hộp chữ */
+#root .nen-toi .vach-sang { background: var(--nhan-grad); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent); }
+#root .nen-toi .vong-sang { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 55%, transparent)); }
 .nhan-pill { display: inline-block; background: var(--accent); color: var(--accent-ink);
              font: 900 60px/1 var(--font-display); text-transform: uppercase; padding: 18px 34px;
              border-radius: 18px; letter-spacing: -0.01em; white-space: nowrap; }

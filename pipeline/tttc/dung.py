@@ -347,12 +347,23 @@ def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
     return out
 
 
-def _scene_file(mau: str, sid: str, video: str = "") -> str:
+def _tho_js(sid: str, dur: float) -> str:
+    """Đốm sáng nền tối thở (biến --tho1/--tho2 của .nen-toi, base.css) trọn đúng thời lượng cảnh, hữu hạn."""
+    n = max(1, round(dur / 6))  # chu kỳ ~6 s, chia đều cho vừa khít cảnh
+    return (f'{{ const s = document.querySelector(\'[data-composition-id="{sid}"] .nen-toi\'); '
+            f'if (s) tl.fromTo(s, {{ "--tho1": 0.72, "--tho2": 1 }}, {{ "--tho1": 1, "--tho2": 0.72, '
+            f'duration: {round(dur / (2 * n), 3)}, ease: "sine.inOut", yoyo: true, repeat: {2 * n - 1} }}, 0); }}\n    ')
+
+
+def _scene_file(mau: str, sid: str, video: str = "", dur: float = 0.0) -> str:
     s = theme.cssify((TPL / f"{mau}.html").read_text(encoding="utf-8")).replace("__VIDEO__", f"assets/broll/{video}")
     s = s.replace("/*__DONG__*/", (TPL / "dong.js").read_text(encoding="utf-8"))
     s = s.replace(f'data-composition-id="{mau}"', f'data-composition-id="{sid}"')
     s = s.replace(f'__timelines["{mau}"]', f'__timelines["{sid}"]')
-    return re.sub(rf"(?<![\w-]){PREFIX[mau]}", f"{sid}-{PREFIX[mau]}", s)  # id/class riêng cho mỗi lần gắn
+    s = re.sub(rf"(?<![\w-]){PREFIX[mau]}", f"{sid}-{PREFIX[mau]}", s)  # id/class riêng cho mỗi lần gắn
+    if dur > 0:
+        s = s.replace(f'window.__timelines["{sid}"]', _tho_js(sid, dur) + f'window.__timelines["{sid}"]', 1)
+    return s
 
 
 def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int] | None = None,
@@ -418,7 +429,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     sfx = []
     for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
-        page = _scene_file(c["mau"], sid, c.get("video", ""))
+        page = _scene_file(c["mau"], sid, c.get("video", ""), c["end"] - c["start"])
         if h > w:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
             page = page.replace("</style>", "#root [id$=\"-br-ghi-cong\"], #root [id$=\"-nguon\"] { background: rgba(0,0,0,0.6) !important; "
                                 "color: #fff !important; padding: 6px 16px; border-radius: 10px; }</style>", 1)
@@ -548,7 +559,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       .dan-phai {{ right: 70px; }} .dan-trai {{ left: 70px; }}
       #tien-do {{ position: absolute; left: 0; right: 0; top: 0; height: 60px; z-index: 7; pointer-events: none; }}
       .td-doan {{ position: absolute; top: 0; height: 7px; background: rgba(255,255,255,0.22); border-right: 4px solid {nen}; }}
-      .td-day {{ position: absolute; inset: 0; background: {nhan0}; transform-origin: left center; }}
+      .td-day {{ position: absolute; inset: 0; background: linear-gradient(90deg, {nhan0}, {theme.TH["sac"]["lam"][0]}); transform-origin: left center;
+                 box-shadow: 0 0 12px {nhan0}99; }}
       .td-ten {{ position: absolute; right: 40px; top: 18px; color: #fff; font: 700 26px/1 var(--font-display);
                 background: rgba({nen_rgb},0.7); padding: 6px 14px; border-radius: 8px; }}
       .tr {{ position: absolute; inset: 0; z-index: 8; overflow: hidden; pointer-events: none; }}

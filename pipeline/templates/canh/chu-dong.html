@@ -26,7 +26,7 @@
     <div id="cd-san" class="san" data-layout-allow-overflow>
       <div id="cd-sang" class="cd-sang" data-layout-ignore></div>
       <div class="cd-wrap">
-        <div id="cd-nho" class="cd-nho"><div id="cd-vach" class="cd-vach"></div><span id="cd-nho-chu" class="cd-nho-chu" data-var-text="nho"></span></div>
+        <div id="cd-nho" class="cd-nho"><div id="cd-vach" class="cd-vach vach-sang"></div><span id="cd-nho-chu" class="cd-nho-chu" data-var-text="nho"></span></div>
         <div id="cd-cau" class="cd-cau"></div>
       </div>
     </div>
@@ -49,6 +49,8 @@
       s.id = "cd-tu-" + i; s.textContent = w;
       if (a >= 0 && i >= a && i < a + nhan.length) {
         s.className = "cd-nhan";
+        s.textContent = "";  // chữ bọc riêng để tô gradient (nền tối) mà gạch dạ quang vẫn nằm dưới
+        const b = document.createElement("b"); b.className = "chu-grad"; b.textContent = w; s.appendChild(b);
         const g = document.createElement("i"); g.className = "cd-gach"; g.id = "cd-gach-" + i; s.appendChild(g);
         if (i === a + nhan.length - 1) g.style.right = "-0.06em";  // chữ cuối cụm: không kéo qua khoảng trắng
       }
