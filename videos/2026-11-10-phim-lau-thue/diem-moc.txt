@@ -1,0 +1,58 @@
+
+  Hạn mới là 28/2. Hàng Việt chờ quyết định gì từ Mỹ?
+  ---------------------------------------------------
+    SPECIFICITY   96  ###################
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY      100  ####################
+    VERDICT       46  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Hơn 6,7 tỷ lượt vào một mạng phim lậu. Vì sao nhà xuất khẩu Việt phải để ý?
+  ------------------------------------------------------------------------
+    SPECIFICITY   68  #############
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       79  ###############
+    VERDICT       41  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Mỹ gia hạn 3 tháng vụ bản quyền Việt Nam. Web phim lậu dính gì đến thuế hàng Việt?
+  ------------------------------------------------------------------------
+    SPECIFICITY   74  ##############
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       72  ##############
+    VERDICT       40  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Mỹ nhập 28,7 tỷ đô hàng Việt trong một tháng. Phim lậu dính vào câu chuyện này bằng cách nào?
+  ------------------------------------------------------------------------
+    SPECIFICITY   68  #############
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       30  ######
+    VERDICT       35  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Bạn đóng tab phim lậu. Vì sao vụ bản quyền lại có thể đi tới bàn tính thuế?
+  ------------------------------------------------------------------------
+    SPECIFICITY   40  ########
+    ADDRESS       26  #####
+    STAKES        22  ####
+    CURIOSITY     42  ########
+    BREVITY       86  #################
+    VERDICT       35  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  winner: Hạn mới là 28/2. Hàng Việt chờ quyết định gì từ Mỹ?  (46, WEAK)
+

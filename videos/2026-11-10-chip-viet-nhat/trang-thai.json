@@ -1,0 +1,97 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "Chọn lại: tin nóng Việt–Nhật, 8/8 theo radar",
+      "bat_dau": "2026-11-10T20:23:08.422292+07:00",
+      "ket_thuc": "2026-11-10T20:25:01.379680+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "11 mục, 9 ảnh Chrome trực tiếp. Giờ nguồn có phần chồng với bước viết.",
+      "bat_dau": "2026-11-10T20:25:01.381246+07:00",
+      "ket_thuc": "2026-11-10T20:27:52.992389+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "6 beat, 3 chương; đã rà bỏ câu thừa và đọc rà nhịp",
+      "bat_dau": "2026-11-10T20:27:16.852147+07:00",
+      "ket_thuc": "2026-11-10T20:27:53.498616+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "Đúng 2 vòng agy, 12 mục mỗi vòng, đã triage và sửa mục nặng. Điểm vòng 1: 3,5/2,5/3,5/4,5; vòng 2: 4/3,5/4/4,5. Tiêu chí giọng trò chuyện còn dưới 4 trên bản gửi vòng 2, đã sửa góp ý và chuyển người nghe duyệt.",
+      "bat_dau": "2026-11-10T20:27:53.500576+07:00",
+      "ket_thuc": "2026-11-10T20:31:57.907968+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "0 lỗi nguồn; soát độc lập 2 lượt, đã sửa phạm vi khoản tài trợ, điều kiện MST, thì kế hoạch và phân công.",
+      "bat_dau": "2026-11-10T20:31:57.909935+07:00",
+      "ket_thuc": "2026-11-10T20:32:41.484718+07:00"
+    },
+    "duyet-1": {
+      "status": "cho-duyet",
+      "note": "Chuẩn bị trang duyệt và kiểm tra liên kết",
+      "bat_dau": "2026-11-10T20:32:41.486755+07:00",
+      "ban_duyet": {
+        "kich-ban.md": "f50a75ca341ccc115d1673ebfea469b762389a522393482a4623003dc75b3ab5",
+        "nguon.json": "3c3d4fac54bc4f2e314a686a9467ea0139bcbdbbf4001af92f2d79602b540c2b",
+        "nghe-thu.mp3": "a9c224a3df6610e718e1ca80c2a9405ea9661533beb0392668289f6d4f26af5d",
+        "nguon/b1.png": "65eda69f153cc642c75acccf2be5b8e9f86577799bdc656b455e0370a9de91b2",
+        "nguon/b2.png": "7eb3f8e77ad980745c28556a09212368c3f2c006ff20b5210dc1c2b857eb1a23",
+        "nguon/j1.png": "c01dfabae8e7f3c1de28f9a92626a8c7c4610b47b8562738610f051015c55b44",
+        "nguon/b4.png": "704a6c5e067e21f59e154ce92ad8770fc2b46a9888ccdef4e06d174de387eaf9",
+        "nguon/p1.png": "ac7cebe011be091fe56711989a9af05bbbec3f2bcf56f3e7856f1138fc06b226",
+        "nguon/p2.png": "9c247a7dd4eb0150bf1259e40449fac684b5f2906309348b0987af7c8b52af02",
+        "nguon/p3.png": "9ac730cb23dc39799d14c9faa3d0720e538d71809c8600395922348c015293f2",
+        "nguon/k1.png": "dd1afab9c1c9c1b7600fae590e608809bc1bc290b2556bcec2925b91dd38f914",
+        "nguon/k2.png": "8cb44d65a0687bbf6246ea28d133bea849fdaadb30daa8412db5932a7c79a6ac"
+      }
+    },
+    "giong": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dao-dien": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "canh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "hinh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "render": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dong-goi": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "duyet-2": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dang": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  },
+  "loai": "tin-nong",
+  "lan_chay_kho": null,
+  "duyet_1_san_sang_luc": "2026-11-10T20:34:03.001688+07:00",
+  "bien_tap": {
+    "trang_thai": "tam-gac",
+    "ly_do": "Người dùng phản hồi đề chưa có lý do bấm đủ mạnh",
+    "de_thay_the": "2026-11-10-phim-lau-thue"
+  }
+}

@@ -1,0 +1,17 @@
+127 cảnh; 27 trọng điểm; 66 b-roll
+127 cảnh, 27 cảnh trọng điểm (21%), 0 hình còn thiếu
+- Cảnh báo: c069 nhãn dài 6 từ (≤ 5): Số lớn, chưa là tất cả
+0 lỗi, 1 cảnh báo; đã ghi phu-de.srt
+  so_canh: 127
+  tb_giay: 3.75
+  duoi_1_5: 0
+  tren_8: 0
+  ti_le: {'do-hoa': 0.3937007874015748, 'bang-chung': 0.08661417322834646, 'doi-that': 0.5196850393700787}
+  chay_dai_nhat: 2
+  su_kien_phut: 43.67
+  sfx_phut: 12.84
+  toc_do: 257.27
+  do_kho: {'so_phong': 5, 'so_canh_minh_hoa': 31, 'phong_lien_max': 2, 'vat_chinh_lap': 4, 'clip_lap': 0, 'ti_le_may_quay': 0.3870967741935484, 'trong_diem_thieu': 0, 'nhip_cam_xuc_du': True}
+- Cảnh báo: 13 hiệu ứng âm thanh/phút, chuẩn ≥ 15
+- Cảnh báo: độ khô: 4 cảnh lặp hình chính trong cửa sổ 8 cảnh
+0 lỗi, 2 cảnh báo

@@ -1,0 +1,58 @@
+
+  Gần 500 tỷ đồng cho 11 dự án chip. Tiền này mua được thứ gì cho phòng lab Việt Nam?
+  ------------------------------------------------------------------------
+    SPECIFICITY   96  ###################
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       93  ##################
+    VERDICT       46  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Có 16 hồ sơ, Nhật Bản và Việt Nam chọn 6. Các nhóm Việt sẽ tự tay làm gì?
+  ------------------------------------------------------------------------
+    SPECIFICITY   96  ###################
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       79  ###############
+    VERDICT       44  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Việt–Nhật tài trợ gần 500 tỷ đồng cho 11 dự án bán dẫn. Nhóm Việt làm phần nào?
+  ------------------------------------------------------------------------
+    SPECIFICITY   90  ##################
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       58  ###########
+    VERDICT       41  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Gần 500 tỷ đồng để nghiên cứu chip. Cột mốc nào mới cho thấy khoản đầu tư bắt đầu có kết quả?
+  ------------------------------------------------------------------------
+    SPECIFICITY   62  ############
+    ADDRESS       26  #####
+    STAKES        36  #######
+    CURIOSITY     42  ########
+    BREVITY       44  ########
+    VERDICT       36  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      ADDRESS - say 'you' in the first six words
+
+  Nhật chế tạo mẫu, nhóm Việt thiết kế bộ xử lý. Bản phân công của dự án chip mới ghi gì?
+  ------------------------------------------------------------------------
+    SPECIFICITY   46  #########
+    ADDRESS       26  #####
+    STAKES        22  ####
+    CURIOSITY     42  ########
+    BREVITY       37  #######
+    VERDICT       30  WEAK
+    formula      The Question  (1 pattern matched)
+    weakest      STAKES - name what it costs them to keep doing it the current way
+
+  winner: Gần 500 tỷ đồng cho 11 dự án chip. Tiền này mua được thứ gì cho phòng lab Việt Nam?  (46, WEAK)
+

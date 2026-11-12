@@ -1,0 +1,59 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "đề Nvidia do người dùng chọn"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "m1 chưa xác minh (Bloomberg/WSJ trả phí), không dùng"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "V2 sau phản biện, 2107 từ"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "kiem 0 loi; phản biện subagent 16 điểm đã sửa, đổi góc theo EAR D:1"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "V2 duyệt 09/11/2026"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "V3 giọng: kịch bản bớt mùi AI, 8:10"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "133 cảnh V3; giữ cảnh báo: tốc độ đọc 249 từ/phút (giọng VieNeu), 1 chuỗi 3 cảnh cùng mẫu"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "14 b-roll Pexels, 4 ảnh Wikimedia Commons, SVG"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 V3, 8:10, 133 cảnh, check_av rỗng"
+    },
+    "shorts": {
+      "status": "xong",
+      "note": "HOÃN: không làm Shorts tối 09/11 để kịp đăng; làm sau"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "3 thumbnail chia đôi, mô tả 3.774 byte, chương theo giọng V3"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "chọn phương án 1, 09/11/2026"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/E17SceQLG9I"
+    }
+  },
+  "chon": 1,
+  "video_id": "E17SceQLG9I",
+  "phu_de_ok": true
+}

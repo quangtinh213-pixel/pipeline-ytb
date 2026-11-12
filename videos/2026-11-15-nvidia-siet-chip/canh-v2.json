@@ -1,0 +1,1447 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "mau": "trich-bao",
+   "nguon_id": "b1",
+   "trich": "Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.",
+   "to_vang": "Malaysia and Thailand",
+   "start": 0.0,
+   "end": 4.484
+  },
+  {
+   "id": "c002",
+   "mau": "minh-hoa",
+   "svg": "nguoi",
+   "nhan": "Tới lượt Việt Nam?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 4.484,
+   "end": 7.478
+  },
+  {
+   "id": "c003",
+   "mau": "minh-hoa",
+   "svg": "co-viet-nam",
+   "nhan": "Không đứng chờ tới lượt",
+   "start": 7.478,
+   "end": 11.101
+  },
+  {
+   "id": "c004",
+   "mau": "trich-bao",
+   "nguon_id": "e1",
+   "trich": "Vietnam: [D:1] National Security X; [D:3] Chemical & Biological X",
+   "to_vang": "[D:1] National Security X",
+   "start": 11.101,
+   "end": 14.849
+  },
+  {
+   "id": "c005",
+   "mau": "b-roll",
+   "video": "nha-may-chip-32386617.mp4",
+   "nhan": "Bê bối ở Nvidia",
+   "start": 14.849,
+   "end": 18.173
+  },
+  {
+   "id": "c006",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Cánh cửa vốn đã hẹp",
+   "sac": "do",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 18.173,
+   "end": 21.236
+  },
+  {
+   "id": "c007",
+   "mau": "minh-hoa",
+   "svg": "lich",
+   "nhan": "Ngày tám tháng mười một",
+   "start": 21.236,
+   "end": 24.013
+  },
+  {
+   "id": "c008",
+   "mau": "minh-hoa",
+   "svg": "hop-thu",
+   "nhan": "Email gửi toàn công ty",
+   "start": 24.013,
+   "end": 28.127
+  },
+  {
+   "id": "c009",
+   "mau": "trich-bao",
+   "nguon_id": "n1",
+   "trich": "I was unfaithful to my wife. My actions hurt her and our children.",
+   "to_vang": "I was unfaithful to my wife.",
+   "start": 28.127,
+   "end": 30.816
+  },
+  {
+   "id": "c010",
+   "mau": "trich-bao",
+   "nguon_id": "n2",
+   "trich": "The NVIDIA Board is initiating an independent investigation in light of recent reporting",
+   "to_vang": "independent investigation",
+   "start": 30.816,
+   "end": 34.702
+  },
+  {
+   "id": "c011",
+   "mau": "minh-hoa",
+   "svg": "nguoi-nhom",
+   "nhan": "Không phải chuyện gia đình",
+   "start": 34.702,
+   "end": 38.247
+  },
+  {
+   "id": "c012",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Nỗ lực tình báo nước ngoài",
+   "sac": "do",
+   "start": 38.247,
+   "end": 41.434
+  },
+  {
+   "id": "c013",
+   "mau": "quy-trinh",
+   "tieu_de": "Từ lá thư tới giấy phép",
+   "buoc": [
+    {
+     "nhan": "Thư xin lỗi",
+     "svg": "hop-thu"
+    },
+    {
+     "nhan": "Điều tra",
+     "svg": "kinh-lup"
+    },
+    {
+     "nhan": "Luật xuất khẩu",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Giấy phép chip",
+     "svg": "chip"
+    }
+   ],
+   "noi_bat": 3,
+   "start": 41.434,
+   "end": 44.894
+  },
+  {
+   "id": "c014",
+   "mau": "minh-hoa",
+   "svg": "vi-tien",
+   "nhan": "Túi tiền có lo không?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 44.894,
+   "end": 48.218
+  },
+  {
+   "id": "c015",
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Email và lá thư",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 48.218,
+   "end": 51.13
+  },
+  {
+   "id": "c016",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Email",
+    "svg": "hop-thu"
+   },
+   "phai": {
+    "nhan": "Thư Hạ viện",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "start": 51.13,
+   "end": 54.127
+  },
+  {
+   "id": "c017",
+   "mau": "minh-hoa",
+   "svg": "nguoi",
+   "nhan": "Xin lỗi vợ con",
+   "start": 54.127,
+   "end": 57.743
+  },
+  {
+   "id": "c018",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Ủng hộ cuộc điều tra",
+   "start": 57.743,
+   "end": 61.623
+  },
+  {
+   "id": "c019",
+   "mau": "trich-bao",
+   "nguon_id": "n2",
+   "trich": "The NVIDIA Board is initiating an independent investigation in light of recent reporting",
+   "to_vang": "independent",
+   "start": 61.623,
+   "end": 66.689
+  },
+  {
+   "id": "c020",
+   "mau": "minh-hoa",
+   "svg": "nguoi-nhom",
+   "nhan": "Nhóm độc lập giám sát",
+   "start": 66.689,
+   "end": 70.209
+  },
+  {
+   "id": "c021",
+   "mau": "minh-hoa",
+   "svg": "bua-phan-quyet",
+   "nhan": "Luật sư bên ngoài",
+   "start": 70.209,
+   "end": 73.724
+  },
+  {
+   "id": "c022",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Văn bản có nhắc một tên",
+   "start": 73.724,
+   "end": 77.381
+  },
+  {
+   "id": "c023",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "An ninh",
+    "svg": "khien"
+   },
+   "phai": {
+    "nhan": "Tình cảm",
+    "svg": "nguoi"
+   },
+   "start": 77.381,
+   "end": 80.221
+  },
+  {
+   "id": "c024",
+   "mau": "minh-hoa",
+   "svg": "toa-nha-quoc-hoi",
+   "nhan": "Thư của ba chủ tịch ủy ban",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 80.221,
+   "end": 84.718
+  },
+  {
+   "id": "c025",
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "Huang’s interactions with Megaspeed executive Alice Huang, a publicly reported Chinese intelligence asset",
+   "to_vang": "Megaspeed executive Alice Huang",
+   "start": 84.718,
+   "end": 89.706
+  },
+  {
+   "id": "c026",
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "Huang’s interactions with Megaspeed executive Alice Huang, a publicly reported Chinese intelligence asset",
+   "to_vang": "publicly reported Chinese intelligence asset",
+   "start": 89.706,
+   "end": 93.606
+  },
+  {
+   "id": "c027",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Lời báo chí, không phải kết luận",
+   "sac": "do",
+   "start": 93.606,
+   "end": 98.168
+  },
+  {
+   "id": "c028",
+   "mau": "minh-hoa",
+   "svg": "bua-phan-quyet",
+   "nhan": "Chưa có kết luận",
+   "sac": "do",
+   "start": 98.168,
+   "end": 103.236
+  },
+  {
+   "id": "c029",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Chuyện riêng trong email",
+    "svg": "hop-thu"
+   },
+   "phai": {
+    "nhan": "Alice Huang",
+    "svg": "nguoi"
+   },
+   "start": 103.236,
+   "end": 108.046
+  },
+  {
+   "id": "c030",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Văn bản chính thức chưa nối",
+   "sac": "do",
+   "start": 108.046,
+   "end": 112.206
+  },
+  {
+   "id": "c031",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Giữ đúng mức",
+   "start": 112.206,
+   "end": 116.195
+  },
+  {
+   "id": "c032",
+   "mau": "minh-hoa",
+   "svg": "bua-phan-quyet",
+   "nhan": "Chưa có phán quyết",
+   "sac": "do",
+   "start": 116.195,
+   "end": 119.279
+  },
+  {
+   "id": "c033",
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Vì sao chip thành chuyện an ninh",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 119.279,
+   "end": 122.365
+  },
+  {
+   "id": "c034",
+   "mau": "minh-hoa",
+   "svg": "robot",
+   "nhan": "AI từ chatbot tới tạo ảnh",
+   "start": 122.365,
+   "end": 125.151
+  },
+  {
+   "id": "c035",
+   "mau": "b-roll",
+   "video": "bo-mach-chip-6754824.mp4",
+   "nhan": "GPU: chip đồ họa",
+   "start": 125.151,
+   "end": 129.168
+  },
+  {
+   "id": "c036",
+   "mau": "b-roll",
+   "video": "nha-may-chip-32386530.mp4",
+   "nhan": "Nvidia: hãng chip lớn",
+   "start": 129.168,
+   "end": 132.25
+  },
+  {
+   "id": "c037",
+   "mau": "quy-trinh",
+   "tieu_de": "Chip AI và luật",
+   "buoc": [
+    {
+     "nhan": "Nvidia",
+     "svg": "chip"
+    },
+    {
+     "nhan": "Luật xuất khẩu",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Hàng chiến lược",
+     "svg": "khien"
+    }
+   ],
+   "noi_bat": 2,
+   "start": 132.25,
+   "end": 136.197
+  },
+  {
+   "id": "c038",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Megaspeed là ai?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 136.197,
+   "end": 139.719
+  },
+  {
+   "id": "c039",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Sau tường phí",
+   "sac": "do",
+   "start": 139.719,
+   "end": 143.351
+  },
+  {
+   "id": "c040",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Không dùng số của họ",
+   "sac": "do",
+   "start": 143.351,
+   "end": 147.562
+  },
+  {
+   "id": "c041",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Báo trả phí",
+    "svg": "o-khoa"
+   },
+   "phai": {
+    "nhan": "Văn bản chính phủ Mỹ",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "start": 147.562,
+   "end": 150.126
+  },
+  {
+   "id": "c042",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Washington lo gì ở khu vực",
+   "start": 150.126,
+   "end": 153.482
+  },
+  {
+   "id": "c043",
+   "mau": "trich-bao",
+   "nguon_id": "b1",
+   "trich": "Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.",
+   "to_vang": "export licensing requirements",
+   "start": 153.482,
+   "end": 157.108
+  },
+  {
+   "id": "c044",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Bỏ quy tắc AI Diffusion",
+   "start": 157.108,
+   "end": 160.337
+  },
+  {
+   "id": "c045",
+   "mau": "trich-bao",
+   "nguon_id": "b1",
+   "trich": "Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.",
+   "to_vang": "Malaysia and Thailand",
+   "start": 160.337,
+   "end": 165.228
+  },
+  {
+   "id": "c046",
+   "mau": "trich-bao",
+   "nguon_id": "b1",
+   "trich": "Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.",
+   "to_vang": "known instances of diversion",
+   "start": 165.228,
+   "end": 168.975
+  },
+  {
+   "id": "c047",
+   "mau": "quy-trinh",
+   "tieu_de": "Chuyển hướng chip",
+   "buoc": [
+    {
+     "nhan": "Bán cho nước A",
+     "svg": "container"
+    },
+    {
+     "nhan": "Chạy qua nước B",
+     "svg": "cang-bien"
+    },
+    {
+     "nhan": "Nơi Mỹ không muốn",
+     "svg": "o-khoa"
+    }
+   ],
+   "noi_bat": 2,
+   "start": 168.975,
+   "end": 171.916
+  },
+  {
+   "id": "c048",
+   "mau": "b-roll",
+   "video": "cang-container-30281175.mp4",
+   "nhan": "Đi đường vòng",
+   "start": 171.916,
+   "end": 175.029
+  },
+  {
+   "id": "c049",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Nhiều người hiểu nhầm",
+   "start": 175.029,
+   "end": 178.562
+  },
+  {
+   "id": "c050",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Thông cáo: hai nước",
+    "svg": "may-chu"
+   },
+   "phai": {
+    "nhan": "Việt Nam: không nhắc tên",
+    "svg": "co-viet-nam"
+   },
+   "start": 178.562,
+   "end": 182.224
+  },
+  {
+   "id": "c051",
+   "mau": "minh-hoa",
+   "svg": "co-viet-nam",
+   "nhan": "Còn Việt Nam thì sao?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 182.224,
+   "end": 185.18
+  },
+  {
+   "id": "c052",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Thông cáo không nhắc Việt Nam",
+   "start": 185.18,
+   "end": 189.223
+  },
+  {
+   "id": "c053",
+   "mau": "trich-bao",
+   "nguon_id": "e1",
+   "trich": "Vietnam: [D:1] National Security X; [D:3] Chemical & Biological X",
+   "to_vang": "[D:1] National Security X",
+   "start": 189.223,
+   "end": 194.18
+  },
+  {
+   "id": "c054",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Chia nước thành nhóm",
+   "start": 194.18,
+   "end": 198.188
+  },
+  {
+   "id": "c055",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Nhóm an ninh quốc gia",
+   "sac": "do",
+   "start": 198.188,
+   "end": 200.732
+  },
+  {
+   "id": "c056",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Việt Nam",
+    "svg": "co-viet-nam"
+   },
+   "phai": {
+    "nhan": "Malaysia, Thái Lan",
+    "svg": "may-chu"
+   },
+   "start": 200.732,
+   "end": 204.084
+  },
+  {
+   "id": "c057",
+   "mau": "minh-hoa",
+   "svg": "chip",
+   "nhan": "Chip chia thành nhiều bậc",
+   "start": 204.084,
+   "end": 207.96
+  },
+  {
+   "id": "c058",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Dòng mạnh nhất: mọi nơi",
+   "start": 207.96,
+   "end": 210.736
+  },
+  {
+   "id": "c059",
+   "mau": "trich-bao",
+   "nguon_id": "e2",
+   "trich": "License Requirement for the United Arab Emirates (UAE) and Country Groups D:1, D:4, or D:5",
+   "to_vang": "Country Groups D:1, D:4, or D:5",
+   "start": 210.736,
+   "end": 214.911
+  },
+  {
+   "id": "c060",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Vào Việt Nam: phải xin phép",
+   "sac": "do",
+   "start": 214.911,
+   "end": 219.667
+  },
+  {
+   "id": "c061",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Hai nước bị thêm vì vụ việc",
+   "start": 219.667,
+   "end": 223.34
+  },
+  {
+   "id": "c062",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Malaysia, Thái Lan: thêm vì vụ việc",
+    "svg": "may-chu"
+   },
+   "phai": {
+    "nhan": "Việt Nam: xếp sẵn vào nhóm",
+    "svg": "co-viet-nam"
+   },
+   "start": 223.34,
+   "end": 227.464
+  },
+  {
+   "id": "c063",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Câu hỏi sai từ gốc",
+   "sac": "do",
+   "start": 227.464,
+   "end": 230.946
+  },
+  {
+   "id": "c064",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Cánh cửa đã hẹp, có hẹp thêm?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 230.946,
+   "end": 235.859
+  },
+  {
+   "id": "c065",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Luật: phải xin phép",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Duyệt dễ hay khó?",
+    "svg": "dong-ho"
+   },
+   "start": 235.859,
+   "end": 239.298
+  },
+  {
+   "id": "c066",
+   "mau": "minh-hoa",
+   "svg": "dong-ho",
+   "nhan": "Duyệt dễ hay khó, mất bao lâu?",
+   "start": 239.298,
+   "end": 242.233
+  },
+  {
+   "id": "c067",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Mình chưa kiểm được",
+   "start": 242.233,
+   "end": 245.255
+  },
+  {
+   "id": "c068",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Hứa quy tắc thay thế",
+   "start": 245.255,
+   "end": 248.769
+  },
+  {
+   "id": "c069",
+   "mau": "minh-hoa",
+   "svg": "lich",
+   "nhan": "Quy tắc thay thế ra chưa?",
+   "sac": "do",
+   "start": 248.769,
+   "end": 252.918
+  },
+  {
+   "id": "c070",
+   "mau": "chuong",
+   "so": "Phần 4",
+   "chuong": "Chip Nvidia ở Việt Nam",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 252.918,
+   "end": 256.291
+  },
+  {
+   "id": "c071",
+   "mau": "b-roll",
+   "video": "cang-container-10391545.mp4",
+   "nhan": "Chip vẫn vào Việt Nam",
+   "start": 256.291,
+   "end": 259.466
+  },
+  {
+   "id": "c072",
+   "mau": "b-roll",
+   "video": "thanh-pho-viet-nam-31111825.mp4",
+   "nhan": "Chậm nhưng vẫn vào",
+   "start": 259.466,
+   "end": 262.922
+  },
+  {
+   "id": "c073",
+   "mau": "trich-bao",
+   "nguon_id": "v2",
+   "trich": "biến Việt Nam thành \"ngôi nhà thứ hai của NVIDIA\"",
+   "to_vang": "ngôi nhà thứ hai của NVIDIA",
+   "start": 262.922,
+   "end": 266.735
+  },
+  {
+   "id": "c074",
+   "mau": "minh-hoa",
+   "svg": "trung-tam-du-lieu",
+   "nhan": "Trung tâm nghiên cứu AI",
+   "start": 266.735,
+   "end": 270.591
+  },
+  {
+   "id": "c075",
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622.mp4",
+   "nhan": "Trung tâm dữ liệu AI",
+   "start": 270.591,
+   "end": 273.696
+  },
+  {
+   "id": "c076",
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656.mp4",
+   "nhan": "Viettel: siêu máy tính",
+   "start": 273.696,
+   "end": 278.666
+  },
+  {
+   "id": "c077",
+   "mau": "so-lon",
+   "so": 1.5,
+   "nhan": "Hiệu năng siêu máy tính",
+   "nguon_id": "v1",
+   "sau": " ExaFLOPs",
+   "huong": "len",
+   "svg": "may-chu",
+   "start": 278.666,
+   "end": 282.797
+  },
+  {
+   "id": "c078",
+   "mau": "minh-hoa",
+   "svg": "chip",
+   "nhan": "Độ chính xác FP tám",
+   "start": 282.797,
+   "end": 285.895
+  },
+  {
+   "id": "c079",
+   "mau": "minh-hoa",
+   "svg": "robot",
+   "nhan": "Phép tính mỗi giây",
+   "start": 285.895,
+   "end": 290.517
+  },
+  {
+   "id": "c080",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Câu đáng chú ý hơn",
+   "start": 290.517,
+   "end": 294.586
+  },
+  {
+   "id": "c081",
+   "mau": "trich-bao",
+   "nguon_id": "v1",
+   "trich": "do các yếu tố về kiểm soát xuất khẩu, nguồn cung và điều kiện chiến lược",
+   "to_vang": "kiểm soát xuất khẩu",
+   "start": 294.586,
+   "end": 297.464
+  },
+  {
+   "id": "c082",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Cánh cửa không rộng",
+   "start": 297.464,
+   "end": 300.238
+  },
+  {
+   "id": "c083",
+   "mau": "minh-hoa",
+   "svg": "tien",
+   "nhan": "Rồi tới chuyện tiền",
+   "start": 300.238,
+   "end": 303.769
+  },
+  {
+   "id": "c084",
+   "mau": "so-lon",
+   "so": 2,
+   "nhan": "Thuê siêu máy tính AI",
+   "nguon_id": "f1",
+   "sau": " USD mỗi giờ",
+   "svg": "chip",
+   "start": 303.769,
+   "end": 307.721
+  },
+  {
+   "id": "c085",
+   "mau": "trich-bao",
+   "nguon_id": "f1",
+   "trich": "NVIDIA-certified AI supercomputers starting at $2.0/hour",
+   "to_vang": "$2.0/hour",
+   "start": 307.721,
+   "end": 311.373
+  },
+  {
+   "id": "c086",
+   "mau": "so-lon",
+   "so": 600,
+   "nhan": "Một tháng thuê, mười giờ mỗi ngày",
+   "nguon_id": "t2",
+   "sau": " USD",
+   "svg": "tien",
+   "huong": "len",
+   "start": 311.373,
+   "end": 315.156
+  },
+  {
+   "id": "c087",
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295.mp4",
+   "nhan": "Thuê máy theo giờ",
+   "start": 315.156,
+   "end": 319.446
+  },
+  {
+   "id": "c088",
+   "mau": "b-roll",
+   "video": "man-hinh-code-29458457.mp4",
+   "nhan": "Trợ lý ảo tiếng Việt",
+   "start": 319.446,
+   "end": 323.602
+  },
+  {
+   "id": "c089",
+   "mau": "quy-trinh",
+   "tieu_de": "Đường đi của chip",
+   "buoc": [
+    {
+     "nhan": "Chip từ Mỹ",
+     "svg": "chip"
+    },
+    {
+     "nhan": "Giấy phép",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Máy chủ ở Việt Nam",
+     "svg": "may-chu"
+    },
+    {
+     "nhan": "Doanh nghiệp thuê",
+     "svg": "nguoi-nhom"
+    },
+    {
+     "nhan": "Ứng dụng AI",
+     "svg": "dien-thoai"
+    }
+   ],
+   "noi_bat": 1,
+   "start": 323.602,
+   "end": 326.524
+  },
+  {
+   "id": "c090",
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954.mp4",
+   "nhan": "Ứng dụng AI",
+   "start": 326.524,
+   "end": 330.772
+  },
+  {
+   "id": "c091",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Mắt xích đầu: giấy phép",
+   "sac": "do",
+   "start": 330.772,
+   "end": 334.478
+  },
+  {
+   "id": "c092",
+   "mau": "chuong",
+   "so": "Phần 5",
+   "chuong": "Túi tiền của bạn",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 334.478,
+   "end": 338.406
+  },
+  {
+   "id": "c093",
+   "mau": "minh-hoa",
+   "svg": "vi-tien",
+   "nhan": "Tiền trong túi có bị ảnh hưởng?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 338.406,
+   "end": 341.983
+  },
+  {
+   "id": "c094",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Theo những gì đọc được",
+   "start": 341.983,
+   "end": 345.851
+  },
+  {
+   "id": "c095",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Văn bản chính thức",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Giá dịch vụ",
+    "svg": "tien"
+   },
+   "start": 345.851,
+   "end": 350.01
+  },
+  {
+   "id": "c096",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Không một dòng về giá",
+   "start": 350.01,
+   "end": 352.976
+  },
+  {
+   "id": "c097",
+   "mau": "minh-hoa",
+   "svg": "vi-tien",
+   "nhan": "Người dùng phổ thông",
+   "start": 352.976,
+   "end": 356.058
+  },
+  {
+   "id": "c098",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Gói AI bạn trả",
+    "svg": "robot"
+   },
+   "phai": {
+    "nhan": "Điện thoại bạn dùng",
+    "svg": "dien-thoai"
+   },
+   "sac": "xanh",
+   "start": 356.058,
+   "end": 359.702
+  },
+  {
+   "id": "c099",
+   "mau": "b-roll",
+   "video": "day-chuyen-robot-32386590.mp4",
+   "nhan": "Doanh nghiệp thấy trước",
+   "start": 359.702,
+   "end": 362.87
+  },
+  {
+   "id": "c100",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Ý mình, không phải của văn bản",
+   "sac": "tim",
+   "start": 362.87,
+   "end": 365.385
+  },
+  {
+   "id": "c101",
+   "mau": "quy-trinh",
+   "tieu_de": "Nếu Mỹ soi kỹ hơn",
+   "buoc": [
+    {
+     "nhan": "Soi mọi đơn",
+     "svg": "kinh-lup"
+    },
+    {
+     "nhan": "Máy về chậm",
+     "svg": "container"
+    },
+    {
+     "nhan": "Giá thuê khó giảm",
+     "svg": "tien"
+    }
+   ],
+   "noi_bat": 2,
+   "start": 365.385,
+   "end": 370.558
+  },
+  {
+   "id": "c102",
+   "mau": "minh-hoa",
+   "svg": "tien",
+   "nhan": "Giá thuê khó giảm",
+   "sac": "do",
+   "start": 370.558,
+   "end": 373.204
+  },
+  {
+   "id": "c103",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Tăng bao nhiêu? Chưa có số",
+   "start": 373.204,
+   "end": 376.673
+  },
+  {
+   "id": "c104",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Nhóm khởi nghiệp nhỏ",
+    "svg": "nguoi-nhom"
+   },
+   "phai": {
+    "nhan": "Chi phí thuê máy",
+    "svg": "tien"
+   },
+   "start": 376.673,
+   "end": 381.651
+  },
+  {
+   "id": "c105",
+   "mau": "minh-hoa",
+   "svg": "lich",
+   "nhan": "Phải tính lại kế hoạch",
+   "start": 381.651,
+   "end": 385.428
+  },
+  {
+   "id": "c106",
+   "mau": "b-roll",
+   "video": "bang-chung-khoan-38168755.mp4",
+   "nhan": "Cổ phiếu Nvidia",
+   "start": 385.428,
+   "end": 389.593
+  },
+  {
+   "id": "c107",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Không tư vấn mua bán",
+   "sac": "do",
+   "start": 389.593,
+   "end": 393.21
+  },
+  {
+   "id": "c108",
+   "mau": "chuong",
+   "so": "Phần 6",
+   "chuong": "Hai việc cần ngóng",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 393.21,
+   "end": 396.648
+  },
+  {
+   "id": "c109",
+   "mau": "trich-bao",
+   "nguon_id": "n3",
+   "trich": "NVIDIA will host a conference call on Tuesday, November 17, at 2 p.m. PT",
+   "to_vang": "Tuesday, November 17",
+   "start": 396.648,
+   "end": 400.846
+  },
+  {
+   "id": "c110",
+   "mau": "minh-hoa",
+   "svg": "dong-ho",
+   "nhan": "Giờ Mỹ sang giờ Việt",
+   "start": 400.846,
+   "end": 404.518
+  },
+  {
+   "id": "c111",
+   "mau": "minh-hoa",
+   "svg": "lich",
+   "nhan": "Quý đã khép sổ",
+   "start": 404.518,
+   "end": 408.082
+  },
+  {
+   "id": "c112",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Số liệu chốt trước tin nổ",
+   "start": 408.082,
+   "end": 411.458
+  },
+  {
+   "id": "c113",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Ban lãnh đạo Nvidia",
+    "svg": "nguoi"
+   },
+   "phai": {
+    "nhan": "Nhà phân tích",
+    "svg": "nguoi-nhom"
+   },
+   "start": 411.458,
+   "end": 415.047
+  },
+  {
+   "id": "c114",
+   "mau": "minh-hoa",
+   "svg": "nguoi-nhom",
+   "nhan": "Lần đầu từ khi bê bối nổ",
+   "start": 415.047,
+   "end": 418.838
+  },
+  {
+   "id": "c115",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Họ có nhắc cuộc điều tra?",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 418.838,
+   "end": 422.284
+  },
+  {
+   "id": "c116",
+   "mau": "b-roll",
+   "video": "thanh-pho-viet-nam-31111952.mp4",
+   "nhan": "Khách hàng Đông Nam Á",
+   "start": 422.284,
+   "end": 425.277
+  },
+  {
+   "id": "c117",
+   "mau": "minh-hoa",
+   "svg": "lich",
+   "nhan": "Việc thứ hai",
+   "start": 425.277,
+   "end": 428.78
+  },
+  {
+   "id": "c118",
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "Huang’s interactions with Megaspeed executive Alice Huang, a publicly reported Chinese intelligence asset",
+   "to_vang": "Huang’s interactions",
+   "start": 428.78,
+   "end": 432.221
+  },
+  {
+   "id": "c119",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Trình bày kín",
+   "start": 432.221,
+   "end": 437.438
+  },
+  {
+   "id": "c120",
+   "mau": "minh-hoa",
+   "svg": "hop-thu",
+   "nhan": "Tuyên bố, thư mới, tên mới",
+   "start": 437.438,
+   "end": 442.725
+  },
+  {
+   "id": "c121",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Việc thứ ba",
+   "start": 442.725,
+   "end": 445.414
+  },
+  {
+   "id": "c122",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Quy tắc thay thế",
+   "start": 445.414,
+   "end": 449.586
+  },
+  {
+   "id": "c123",
+   "mau": "minh-hoa",
+   "svg": "co-viet-nam",
+   "nhan": "Nếu đụng tới Việt Nam",
+   "start": 449.586,
+   "end": 453.115
+  },
+  {
+   "id": "c124",
+   "mau": "chuong",
+   "so": "Phần 7",
+   "chuong": "Phán quyết",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 453.115,
+   "end": 456.494
+  },
+  {
+   "id": "c125",
+   "mau": "minh-hoa",
+   "svg": "khien",
+   "nhan": "Chưa thấy văn bản nào",
+   "sac": "xanh",
+   "start": 456.494,
+   "end": 460.777
+  },
+  {
+   "id": "c126",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Nhóm cũ",
+    "svg": "o-khoa"
+   },
+   "phai": {
+    "nhan": "Yêu cầu cũ",
+    "svg": "tai-lieu"
+   },
+   "start": 460.777,
+   "end": 463.716
+  },
+  {
+   "id": "c127",
+   "mau": "minh-hoa",
+   "svg": "vi-tien",
+   "nhan": "Người dùng: chưa cần đổi gì",
+   "sac": "xanh",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 463.716,
+   "end": 467.48
+  },
+  {
+   "id": "c128",
+   "mau": "minh-hoa",
+   "svg": "dien-thoai",
+   "nhan": "Không vội đổi gói hay máy",
+   "start": 467.48,
+   "end": 470.941
+  },
+  {
+   "id": "c129",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Tiêu chí: văn bản chính thức",
+   "start": 470.941,
+   "end": 474.527
+  },
+  {
+   "id": "c130",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Washington",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "phai": {
+    "nhan": "Nvidia",
+    "svg": "chip"
+   },
+   "start": 474.527,
+   "end": 479.486
+  },
+  {
+   "id": "c131",
+   "mau": "minh-hoa",
+   "svg": "nguoi-nhom",
+   "nhan": "Người làm AI trong nước",
+   "start": 479.486,
+   "end": 483.048
+  },
+  {
+   "id": "c132",
+   "mau": "minh-hoa",
+   "svg": "tai-lieu",
+   "nhan": "Hợp đồng thuê giữ giá bao lâu?",
+   "start": 483.048,
+   "end": 488.268
+  },
+  {
+   "id": "c133",
+   "mau": "minh-hoa",
+   "svg": "bua-phan-quyet",
+   "nhan": "Mình đổi ý nếu...",
+   "sac": "tim",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 488.268,
+   "end": 491.948
+  },
+  {
+   "id": "c134",
+   "mau": "quy-trinh",
+   "tieu_de": "Điều kiện đổi ý",
+   "buoc": [
+    {
+     "nhan": "Mỹ siết thêm chip",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Quy tắc thay thế",
+     "svg": "bua-phan-quyet"
+    },
+    {
+     "nhan": "Chip đi đường vòng",
+     "svg": "o-khoa"
+    }
+   ],
+   "noi_bat": 2,
+   "sac": "do",
+   "start": 491.948,
+   "end": 495.38
+  },
+  {
+   "id": "c135",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Chip đi đường vòng qua Việt Nam",
+   "sac": "do",
+   "start": 495.38,
+   "end": 498.183
+  },
+  {
+   "id": "c136",
+   "mau": "quy-trinh",
+   "tieu_de": "Từ lá thư tới giá",
+   "buoc": [
+    {
+     "nhan": "Thư xin lỗi",
+     "svg": "hop-thu"
+    },
+    {
+     "nhan": "Giá thuê máy",
+     "svg": "trung-tam-du-lieu"
+    },
+    {
+     "nhan": "Giá ứng dụng",
+     "svg": "dien-thoai"
+    }
+   ],
+   "noi_bat": 2,
+   "start": 498.183,
+   "end": 503.134
+  },
+  {
+   "id": "c137",
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794.mp4",
+   "nhan": "Rồi tới giá ứng dụng",
+   "start": 503.134,
+   "end": 507.026
+  },
+  {
+   "id": "c138",
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Bài viết tuần này",
+    "svg": "hop-thu"
+   },
+   "phai": {
+    "nhan": "Văn bản gốc",
+    "svg": "tai-lieu"
+   },
+   "start": 507.026,
+   "end": 512.205
+  },
+  {
+   "id": "c139",
+   "mau": "minh-hoa",
+   "svg": "kinh-lup",
+   "nhan": "Đọc tận gốc, câu hỏi đổi",
+   "start": 512.205,
+   "end": 514.839
+  },
+  {
+   "id": "c140",
+   "mau": "minh-hoa",
+   "svg": "co-viet-nam",
+   "nhan": "Đoán một con số",
+   "dan": {
+    "the": "nghi"
+   },
+   "start": 514.839,
+   "end": 518.244
+  },
+  {
+   "id": "c141",
+   "mau": "minh-hoa",
+   "svg": "o-khoa",
+   "nhan": "Chung nhóm D một với bao nhiêu nước?",
+   "start": 518.244,
+   "end": 520.977
+  },
+  {
+   "id": "c142",
+   "mau": "minh-hoa",
+   "svg": "hop-thu",
+   "nhan": "Để con số ở bình luận",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 520.977,
+   "end": 525.454
+  }
+ ]
+}

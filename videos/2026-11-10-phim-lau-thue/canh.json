@@ -1,0 +1,1811 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.64,
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "extend for three months the ongoing Section 301 investigation",
+   "to_vang": "three months",
+   "trich_vi": "Gia hạn thêm ba tháng cuộc điều tra đang diễn ra theo Điều 301",
+   "to_vang_vi": "Gia hạn thêm ba tháng",
+   "nhip": [
+    "tra về sở"
+   ]
+  },
+  {
+   "id": "c002",
+   "start": 3.64,
+   "end": 7.078,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-7252685-001.mp4",
+   "nhan": "",
+   "nhip": [
+    "Chuyện trên một"
+   ]
+  },
+  {
+   "id": "c003",
+   "start": 7.078,
+   "end": 10.796,
+   "mau": "minh-hoa",
+   "nhan": "Hai chuyện, một dòng nối",
+   "svg": "laptop",
+   "san_khau": "nen-dat",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "container",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "thuế của một",
+    "hàng ở cảng?",
+    "dòng nối hai"
+   ]
+  },
+  {
+   "id": "c004",
+   "start": 10.796,
+   "end": 14.304,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-003.mp4",
+   "nhan": "",
+   "nhip": [
+    "Mỹ chọn biện"
+   ]
+  },
+  {
+   "id": "c005",
+   "start": 14.304,
+   "end": 19.169,
+   "mau": "trich-bao",
+   "nguon_id": "l2",
+   "trich": "without regard to whether or not such goods or economic sector were involved",
+   "to_vang": "without regard",
+   "trich_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan đến vụ việc hay không",
+   "to_vang_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan",
+   "nhip": [
+    "Đó là lý"
+   ]
+  },
+  {
+   "id": "c006",
+   "start": 19.169,
+   "end": 22.57,
+   "mau": "b-roll",
+   "video": "giay-to-7104084-005.mp4",
+   "nhan": "",
+   "nhip": [
+    "quyết định. Còn"
+   ]
+  },
+  {
+   "id": "c007",
+   "start": 22.57,
+   "end": 26.654,
+   "mau": "trich-bao",
+   "nguon_id": "f1",
+   "trich": "impose 12.5 percent tariffs on products of Vietnam, except as provided",
+   "to_vang": "12.5 percent",
+   "trich_vi": "Áp thuế 12,5% đối với sản phẩm của Việt Nam, trừ các ngoại lệ được quy định",
+   "to_vang_vi": "12,5%",
+   "nhip": [
+    "đã nghe đến"
+   ]
+  },
+  {
+   "id": "c008",
+   "start": 26.654,
+   "end": 31.098,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Bản quyền: đang điều tra",
+    "svg": "tai-lieu",
+    "to": 0.8
+   },
+   "phai": {
+    "nhan": "Lao động: đã có thuế",
+    "svg": "tai-lieu"
+   },
+   "nhip": [
+    "cạnh nhau sẽ",
+    "nào đang áp",
+    "nào còn phải"
+   ]
+  },
+  {
+   "id": "c009",
+   "start": 31.098,
+   "end": 33.94,
+   "mau": "chuong",
+   "so": "Phần 1",
+   "chuong": "Vì sao nói tới phim lậu?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c010",
+   "start": 33.94,
+   "end": 37.092,
+   "mau": "minh-hoa",
+   "nhan": "Họ xem cách thực thi",
+   "dan": {
+    "the": "nghi"
+   },
+   "svg": "kinh-lup",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Việt Nam thực",
+    "quyền sở hữu",
+    "trí tuệ ra"
+   ]
+  },
+  {
+   "id": "c011",
+   "start": 37.092,
+   "end": 40.65,
+   "mau": "b-roll",
+   "video": "giay-to-7841618-010.mp4",
+   "nhan": "",
+   "nhip": [
+    "này đề cập"
+   ]
+  },
+  {
+   "id": "c012",
+   "start": 40.65,
+   "end": 44.843,
+   "mau": "trich-bao",
+   "nguon_id": "u2",
+   "trich": "extensive libraries of pirated movies and TV shows.",
+   "to_vang": "pirated movies and TV shows",
+   "trich_vi": "Những thư viện lớn chứa phim và chương trình truyền hình phát trái phép.",
+   "to_vang_vi": "phát trái phép",
+   "nhip": [
+    "trái phép, hướng"
+   ]
+  },
+  {
+   "id": "c013",
+   "start": 44.843,
+   "end": 48.373,
+   "mau": "minh-hoa",
+   "nhan": "Chỉ một phần thôi",
+   "svg": "tai-lieu",
+   "san_khau": "co-quan",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "container",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Phía Mỹ còn",
+    "việc xử lý",
+    "hàng giả và"
+   ]
+  },
+  {
+   "id": "c014",
+   "start": 48.373,
+   "end": 51.391,
+   "mau": "b-roll",
+   "video": "cang-container-10391545-013.mp4",
+   "nhan": "",
+   "nhip": [
+    "giới, cùng các"
+   ]
+  },
+  {
+   "id": "c015",
+   "start": 51.391,
+   "end": 54.871,
+   "mau": "minh-hoa",
+   "nhan": "Quy mô một mạng",
+   "dan": {
+    "the": "nghi"
+   },
+   "svg": "may-chu",
+   "san_khau": "may-chu",
+   "may_quay": "dung",
+   "nhip": [
+    "mạng từng hoạt",
+    "lớn đến đâu?",
+    "Liên minh Sáng"
+   ]
+  },
+  {
+   "id": "c016",
+   "start": 54.871,
+   "end": 58.403,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656-015.mp4",
+   "nhan": "",
+   "nhip": [
+    "các tên miền"
+   ]
+  },
+  {
+   "id": "c017",
+   "start": 58.403,
+   "end": 61.792,
+   "mau": "so-lon",
+   "so": "6,7",
+   "sau": " tỷ lượt",
+   "nhan": "Fmovies và tên miền liên quan: hơn mức này, 2023–2024",
+   "nguon_id": "a1",
+   "svg": "may-chu",
+   "nhip": [
+    "truy cập từ",
+    "hai nghìn không"
+   ]
+  },
+  {
+   "id": "c018",
+   "start": 61.792,
+   "end": 64.788,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622-017.mp4",
+   "nhan": "",
+   "nhip": [
+    "hai nghìn không"
+   ]
+  },
+  {
+   "id": "c019",
+   "start": 64.788,
+   "end": 68.727,
+   "mau": "minh-hoa",
+   "nhan": "Lượt vào trang",
+   "svg": "laptop",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "cập, tính trên",
+    "mạng. Lượt vào",
+    "là lượt vào"
+   ]
+  },
+  {
+   "id": "c020",
+   "start": 68.727,
+   "end": 72.126,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-019.mp4",
+   "nhan": "",
+   "nhip": [
+    "giá vé xem"
+   ]
+  },
+  {
+   "id": "c021",
+   "start": 72.126,
+   "end": 75.094,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-7055396-020.mp4",
+   "nhan": "",
+   "nhip": [
+    "cứ vào trang"
+   ]
+  },
+  {
+   "id": "c022",
+   "start": 75.094,
+   "end": 78.206,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-853935-021.mp4",
+   "nhan": "",
+   "nhip": [
+    "nhiều lần. Có"
+   ]
+  },
+  {
+   "id": "c023",
+   "start": 78.206,
+   "end": 81.397,
+   "mau": "minh-hoa",
+   "nhan": "Ai thật sự mua vé?",
+   "dan": {
+    "the": "bo-ngo"
+   },
+   "svg": "kinh-lup",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "bao nhiêu người",
+    "mua vé nếu",
+    "đường dẫn biến"
+   ]
+  },
+  {
+   "id": "c024",
+   "start": 81.397,
+   "end": 84.805,
+   "mau": "b-roll",
+   "video": "viet-tay-so-tay-4017221-023.mp4",
+   "nhan": "",
+   "nhip": [
+    "lời được câu"
+   ]
+  },
+  {
+   "id": "c025",
+   "start": 84.805,
+   "end": 87.603,
+   "mau": "minh-hoa",
+   "nhan": "Cần dữ liệu khác",
+   "svg": "tai-lieu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "hại kinh tế",
+    "phải có dữ",
+    "dữ liệu khác."
+   ]
+  },
+  {
+   "id": "c026",
+   "start": 87.603,
+   "end": 91.954,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656-025.mp4",
+   "nhan": "",
+   "nhip": [
+    "bấm phát. Video"
+   ]
+  },
+  {
+   "id": "c027",
+   "start": 91.954,
+   "end": 95.339,
+   "mau": "minh-hoa",
+   "nhan": "Đổi tên, cùng nơi lưu",
+   "svg": "may-chu",
+   "san_khau": "may-chu",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "laptop",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "chỉ nhưng phía",
+    "sau vẫn trỏ",
+    "về cùng một"
+   ]
+  },
+  {
+   "id": "c028",
+   "start": 95.339,
+   "end": 98.27,
+   "mau": "quy-trinh",
+   "tieu_de": "Minh họa cấu trúc",
+   "buoc": [
+    {
+     "nhan": "Người xem",
+     "svg": "nguoi"
+    },
+    {
+     "nhan": "Trang phát",
+     "svg": "laptop"
+    },
+    {
+     "nhan": "Nơi lưu video",
+     "svg": "may-chu"
+    }
+   ]
+  },
+  {
+   "id": "c029",
+   "start": 98.27,
+   "end": 103.513,
+   "mau": "minh-hoa",
+   "nhan": "Ai vận hành?",
+   "svg": "nguoi",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "xem ai vận",
+    "xem cần xử",
+    "đâu thì nguồn"
+   ]
+  },
+  {
+   "id": "c030",
+   "start": 103.513,
+   "end": 108.382,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Chặn địa chỉ",
+    "svg": "o-khoa",
+    "to": 0.8
+   },
+   "phai": {
+    "nhan": "Xử lý mạng phía sau",
+    "svg": "may-chu"
+   },
+   "nhip": [
+    "hình và xử",
+    "đứng phía sau",
+    "việc có phạm"
+   ]
+  },
+  {
+   "id": "c031",
+   "start": 108.382,
+   "end": 113.441,
+   "mau": "minh-hoa",
+   "nhan": "Do liên minh công bố",
+   "svg": "khien",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "liên minh thông",
+    "an Hà Nội",
+    "với họ để"
+   ]
+  },
+  {
+   "id": "c032",
+   "start": 113.441,
+   "end": 116.61,
+   "mau": "b-roll",
+   "video": "giay-to-7054942-031.mp4",
+   "nhan": "",
+   "nhip": [
+    "bố, trước tin"
+   ]
+  },
+  {
+   "id": "c033",
+   "start": 116.61,
+   "end": 120.395,
+   "mau": "minh-hoa",
+   "nhan": "Câu hỏi rộng hơn",
+   "svg": "cao-oc",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "Mỹ đặt câu",
+    "hơn chuyện một",
+    "mở được hay"
+   ]
+  },
+  {
+   "id": "c034",
+   "start": 120.395,
+   "end": 123.692,
+   "mau": "trich-bao",
+   "nguon_id": "u1",
+   "trich": "the failure to provide persistent and effective enforcement to combat online piracy.",
+   "to_vang": "persistent and effective enforcement",
+   "trich_vi": "Việc không bảo đảm thực thi bền bỉ và hiệu quả để chống vi phạm bản quyền trực tuyến.",
+   "to_vang_vi": "bền bỉ và hiệu quả",
+   "nhip": [
+    "đủ sức ngăn"
+   ]
+  },
+  {
+   "id": "c035",
+   "start": 123.692,
+   "end": 127.15,
+   "mau": "b-roll",
+   "video": "ky-van-ban-5311423-034.mp4",
+   "nhan": "",
+   "nhip": [
+    "Vì đối tượng"
+   ]
+  },
+  {
+   "id": "c036",
+   "start": 127.15,
+   "end": 130.176,
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "extend for three months the ongoing Section 301 investigation",
+   "to_vang": "ongoing Section 301 investigation",
+   "trich_vi": "Gia hạn thêm ba tháng cuộc điều tra đang diễn ra theo Điều 301",
+   "to_vang_vi": "cuộc điều tra đang diễn ra",
+   "nhip": [
+    "bảo hộ quyền"
+   ]
+  },
+  {
+   "id": "c037",
+   "start": 130.176,
+   "end": 134.991,
+   "mau": "minh-hoa",
+   "nhan": "Một website",
+   "svg": "laptop",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "cơ quan chức",
+    "hành vi của",
+    "liên quan đến"
+   ]
+  },
+  {
+   "id": "c038",
+   "start": 134.991,
+   "end": 138.197,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Một website",
+    "svg": "laptop",
+    "to": 0.6
+   },
+   "phai": {
+    "nhan": "Cả hệ thống thực thi",
+    "svg": "cao-oc"
+   },
+   "nhip": [
+    "mại, phía Mỹ",
+    "xem cách cả",
+    "hệ thống thực"
+   ]
+  },
+  {
+   "id": "c039",
+   "start": 138.197,
+   "end": 141.801,
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Vì sao một lô hàng liên quan?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c040",
+   "start": 141.801,
+   "end": 145.191,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Website trên mạng",
+    "svg": "laptop",
+    "to": 0.7
+   },
+   "phai": {
+    "nhan": "Thuế ở cửa khẩu",
+    "svg": "container"
+   },
+   "nhip": [
+    "trên mạng. Thuế",
+    "nhập khẩu nằm",
+    "ở cửa khẩu."
+   ]
+  },
+  {
+   "id": "c041",
+   "start": 145.191,
+   "end": 149.197,
+   "mau": "minh-hoa",
+   "nhan": "Thẩm quyền theo luật Mỹ",
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "nhip": [
+    "thẩm quyền xử",
+    "Đại diện Thương",
+    "Mỹ theo luật"
+   ]
+  },
+  {
+   "id": "c042",
+   "start": 149.197,
+   "end": 152.768,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-041.mp4",
+   "nhan": "",
+   "nhip": [
+    "các chính sách"
+   ]
+  },
+  {
+   "id": "c043",
+   "start": 152.768,
+   "end": 157.131,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-042.mp4",
+   "nhan": "",
+   "nhip": [
+    "xác định có"
+   ]
+  },
+  {
+   "id": "c044",
+   "start": 157.131,
+   "end": 160.445,
+   "mau": "minh-hoa",
+   "nhan": "Cần thêm thời gian",
+   "svg": "dong-ho",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "nói họ cần",
+    "thời gian do",
+    "vấn đề phức"
+   ]
+  },
+  {
+   "id": "c045",
+   "start": 160.445,
+   "end": 165.239,
+   "mau": "trich-bao",
+   "nguon_id": "h2",
+   "trich": "no later than February 28, 2027.",
+   "to_vang": "February 28, 2027",
+   "trich_vi": "Chậm nhất ngày 28/02/2027.",
+   "to_vang_vi": "28/02/2027",
+   "dan": {
+    "the": "xac-nhan"
+   },
+   "nhip": [
+    "mươi tám tháng"
+   ]
+  },
+  {
+   "id": "c046",
+   "start": 165.239,
+   "end": 168.788,
+   "mau": "b-roll",
+   "video": "giay-to-7104084-045.mp4",
+   "nhan": "",
+   "nhip": [
+    "ý? Điều luật"
+   ]
+  },
+  {
+   "id": "c047",
+   "start": 168.788,
+   "end": 171.982,
+   "mau": "trich-bao",
+   "nguon_id": "l1",
+   "trich": "impose duties or other import restrictions",
+   "to_vang": "duties or other import restrictions",
+   "trich_vi": "Áp thuế hoặc các hạn chế nhập khẩu khác",
+   "to_vang_vi": "thuế hoặc các hạn chế nhập khẩu khác",
+   "nhip": [
+    "số biện pháp"
+   ]
+  },
+  {
+   "id": "c048",
+   "start": 171.982,
+   "end": 176.377,
+   "mau": "minh-hoa",
+   "nhan": "Cả ngành ngoài vụ việc",
+   "svg": "tai-lieu",
+   "san_khau": "cang",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "container",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "laptop",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "cho phép biện",
+    "tới cả hàng",
+    "của ngành ngoài"
+   ]
+  },
+  {
+   "id": "c049",
+   "start": 176.377,
+   "end": 181.278,
+   "mau": "b-roll",
+   "video": "cang-container-30281175-048.mp4",
+   "nhan": "",
+   "nhip": [
+    "ra ngoài những"
+   ]
+  },
+  {
+   "id": "c050",
+   "start": 181.278,
+   "end": 184.722,
+   "mau": "b-roll",
+   "video": "giay-to-7841618-049.mp4",
+   "nhan": "",
+   "nhip": [
+    "phép Đại diện"
+   ]
+  },
+  {
+   "id": "c051",
+   "start": 184.722,
+   "end": 187.919,
+   "mau": "trich-bao",
+   "nguon_id": "l3",
+   "trich": "enter into binding agreements",
+   "to_vang": "binding agreements",
+   "trich_vi": "Ký kết các thỏa thuận có tính ràng buộc",
+   "to_vang_vi": "thỏa thuận có tính ràng buộc",
+   "nhip": [
+    "khắc phục vấn"
+   ]
+  },
+  {
+   "id": "c052",
+   "start": 187.919,
+   "end": 192.637,
+   "mau": "b-roll",
+   "video": "ky-van-ban-5311423-051.mp4",
+   "nhan": "",
+   "nhip": [
+    "kết gì và"
+   ]
+  },
+  {
+   "id": "c053",
+   "start": 192.637,
+   "end": 195.172,
+   "mau": "minh-hoa",
+   "nhan": "Danh sách hàng hóa",
+   "svg": "tai-lieu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "có thuế mới,",
+    "mở danh sách",
+    "sách hàng hóa."
+   ]
+  },
+  {
+   "id": "c054",
+   "start": 195.172,
+   "end": 198.545,
+   "mau": "b-roll",
+   "video": "tai-nghe-laptop-8865637-053.mp4",
+   "nhan": "",
+   "nhip": [
+    "để đọc. Lấy"
+   ]
+  },
+  {
+   "id": "c055",
+   "start": 198.545,
+   "end": 201.434,
+   "mau": "b-roll",
+   "video": "tai-nghe-laptop-8865637-054.mp4",
+   "nhan": "",
+   "nhip": [
+    "nghe lắp ráp"
+   ]
+  },
+  {
+   "id": "c056",
+   "start": 201.434,
+   "end": 204.193,
+   "mau": "b-roll",
+   "video": "nha-may-chip-32386617-055.mp4",
+   "nhan": "",
+   "nhip": [
+    "đều chẳng vận"
+   ]
+  },
+  {
+   "id": "c057",
+   "start": 204.193,
+   "end": 209.162,
+   "mau": "minh-hoa",
+   "nhan": "Mã hàng: cần đối chiếu",
+   "svg": "container",
+   "san_khau": "cang",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "kinh-lup",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "bên phải xem",
+    "của chiếc tai",
+    "nằm trong danh"
+   ]
+  },
+  {
+   "id": "c058",
+   "start": 209.162,
+   "end": 212.338,
+   "mau": "b-roll",
+   "video": "the-tin-dung-laptop-6994837-057.mp4",
+   "nhan": "",
+   "nhip": [
+    "thì chi phí"
+   ]
+  },
+  {
+   "id": "c059",
+   "start": 212.338,
+   "end": 216.356,
+   "mau": "b-roll",
+   "video": "viet-tay-so-tay-4017221-058.mp4",
+   "nhan": "",
+   "nhip": [
+    "đi theo hướng"
+   ]
+  },
+  {
+   "id": "c060",
+   "start": 216.356,
+   "end": 221.35,
+   "mau": "quy-trinh",
+   "tieu_de": "Ví dụ giả định",
+   "buoc": [
+    {
+     "nhan": "Nhà nhập khẩu",
+     "svg": "container"
+    },
+    {
+     "nhan": "Nhà máy",
+     "svg": "nha-may"
+    },
+    {
+     "nhan": "Người mua",
+     "svg": "nguoi"
+    }
+   ]
+  },
+  {
+   "id": "c061",
+   "start": 221.35,
+   "end": 225.927,
+   "mau": "b-roll",
+   "video": "thanh-toan-the-6755016-060.mp4",
+   "nhan": "",
+   "nhip": [
+    "phí, đổi giá"
+   ]
+  },
+  {
+   "id": "c062",
+   "start": 225.927,
+   "end": 229.144,
+   "mau": "b-roll",
+   "video": "nha-may-chip-32386530-061.mp4",
+   "nhan": "",
+   "nhip": [
+    "nếu khách khó"
+   ]
+  },
+  {
+   "id": "c063",
+   "start": 229.144,
+   "end": 234.026,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-062.mp4",
+   "nhan": "",
+   "nhip": [
+    "nếu bên bán"
+   ]
+  },
+  {
+   "id": "c064",
+   "start": 234.026,
+   "end": 237.493,
+   "mau": "minh-hoa",
+   "nhan": "Giá không tự nhảy",
+   "svg": "thue-phan-tram",
+   "san_khau": "thanh-pho",
+   "may_quay": "dung",
+   "nhip": [
+    "giá bán có",
+    "thương lượng, chứ",
+    "giá ngoài cửa"
+   ]
+  },
+  {
+   "id": "c065",
+   "start": 237.493,
+   "end": 240.796,
+   "mau": "b-roll",
+   "video": "cang-container-10391545-064.mp4",
+   "nhan": "",
+   "nhip": [
+    "thuế suất. Cứ"
+   ]
+  },
+  {
+   "id": "c066",
+   "start": 240.796,
+   "end": 245.808,
+   "mau": "so-lon",
+   "so": "28,7",
+   "sau": " tỷ USD",
+   "nhan": "Mỹ nhập từ Việt Nam · tháng 9/2026",
+   "nguon_id": "c1",
+   "svg": "container",
+   "nhip": [
+    "khoảng hai mươi",
+    "la Mỹ tiền"
+   ]
+  },
+  {
+   "id": "c067",
+   "start": 245.808,
+   "end": 249.673,
+   "mau": "b-roll",
+   "video": "cang-container-30281175-066.mp4",
+   "nhan": "",
+   "nhip": [
+    "Mỹ. Đó là"
+   ]
+  },
+  {
+   "id": "c068",
+   "start": 249.673,
+   "end": 252.821,
+   "mau": "b-roll",
+   "video": "giay-to-7054942-067.mp4",
+   "nhan": "",
+   "nhip": [
+    "cần xem danh"
+   ]
+  },
+  {
+   "id": "c069",
+   "start": 252.821,
+   "end": 256.538,
+   "mau": "minh-hoa",
+   "nhan": "Số lớn chưa đủ",
+   "svg": "container",
+   "san_khau": "cang",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "khien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "khẩu lớn rồi",
+    "toàn bộ hàng",
+    "chịu thuế là"
+   ]
+  },
+  {
+   "id": "c070",
+   "start": 256.538,
+   "end": 260.505,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-069.mp4",
+   "nhan": "",
+   "nhip": [
+    "góc nhìn về"
+   ]
+  },
+  {
+   "id": "c071",
+   "start": 260.505,
+   "end": 263.365,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-7055396-070.mp4",
+   "nhan": "",
+   "nhip": [
+    "giá trị hàng"
+   ]
+  },
+  {
+   "id": "c072",
+   "start": 263.365,
+   "end": 267.272,
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-071.mp4",
+   "nhan": "",
+   "nhip": [
+    "giá và chuyện"
+   ]
+  },
+  {
+   "id": "c073",
+   "start": 267.272,
+   "end": 270.482,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-072.mp4",
+   "nhan": "",
+   "nhip": [
+    "Muốn hiểu một"
+   ]
+  },
+  {
+   "id": "c074",
+   "start": 270.482,
+   "end": 275.286,
+   "mau": "minh-hoa",
+   "nhan": "Hàng gì, điều kiện nào?",
+   "svg": "kinh-lup",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "điều kiện nào",
+    "định sắp tới",
+    "vào mặt hàng"
+   ]
+  },
+  {
+   "id": "c075",
+   "start": 275.286,
+   "end": 280.683,
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Hai hồ sơ cùng tên điều luật",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c076",
+   "start": 280.683,
+   "end": 285.243,
+   "mau": "so-lon",
+   "so": "12,5",
+   "sau": " %",
+   "nhan": "thuộc vụ lao động cưỡng bức, có ngoại lệ",
+   "nguon_id": "f1",
+   "svg": "thue-phan-tram",
+   "nhip": [
+    "cho hàng có",
+    "Nam, kèm ngoại"
+   ]
+  },
+  {
+   "id": "c077",
+   "start": 285.243,
+   "end": 289.576,
+   "mau": "b-roll",
+   "video": "giay-to-7104084-076.mp4",
+   "nhan": "",
+   "nhip": [
+    "ngăn nhập hàng"
+   ]
+  },
+  {
+   "id": "c078",
+   "start": 289.576,
+   "end": 292.289,
+   "mau": "b-roll",
+   "video": "ky-van-ban-5311423-077.mp4",
+   "nhan": "",
+   "nhip": [
+    "là một cuộc"
+   ]
+  },
+  {
+   "id": "c079",
+   "start": 292.289,
+   "end": 296.079,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Vụ bản quyền",
+    "svg": "tai-lieu",
+    "to": 0.8
+   },
+   "phai": {
+    "nhan": "Vụ lao động cưỡng bức",
+    "svg": "tai-lieu"
+   },
+   "nhip": [
+    "cả hai cùng",
+    "hiện dưới tên",
+    "ba trăm lẻ"
+   ]
+  },
+  {
+   "id": "c080",
+   "start": 296.079,
+   "end": 299.419,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-079.mp4",
+   "nhan": "",
+   "nhip": [
+    "công bố mức"
+   ]
+  },
+  {
+   "id": "c081",
+   "start": 299.419,
+   "end": 302.83,
+   "mau": "b-roll",
+   "video": "laptop-ban-dem-7272375-080.mp4",
+   "nhan": "",
+   "nhip": [
+    "quyết định. Nói"
+   ]
+  },
+  {
+   "id": "c082",
+   "start": 302.83,
+   "end": 305.686,
+   "mau": "b-roll",
+   "video": "ky-van-ban-5311423-081.mp4",
+   "nhan": "",
+   "nhip": [
+    "kia thì người"
+   ]
+  },
+  {
+   "id": "c083",
+   "start": 305.686,
+   "end": 308.638,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-082.mp4",
+   "nhan": "",
+   "nhip": [
+    "và phạm vi"
+   ]
+  },
+  {
+   "id": "c084",
+   "start": 308.638,
+   "end": 311.69,
+   "mau": "b-roll",
+   "video": "kho-hang-giao-hang-4156510-083.mp4",
+   "nhan": "",
+   "nhip": [
+    "đơn hàng nội"
+   ]
+  },
+  {
+   "id": "c085",
+   "start": 311.69,
+   "end": 315.075,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-084.mp4",
+   "nhan": "",
+   "nhip": [
+    "rằng Mỹ vừa"
+   ]
+  },
+  {
+   "id": "c086",
+   "start": 315.075,
+   "end": 317.646,
+   "mau": "b-roll",
+   "video": "man-hinh-code-29458457-085.mp4",
+   "nhan": "",
+   "nhip": [
+    "bản đang nói"
+   ]
+  },
+  {
+   "id": "c087",
+   "start": 317.646,
+   "end": 321.923,
+   "mau": "b-roll",
+   "video": "the-tin-dung-laptop-6994837-086.mp4",
+   "nhan": "",
+   "nhip": [
+    "mã hàng và"
+   ]
+  },
+  {
+   "id": "c088",
+   "start": 321.923,
+   "end": 325.09,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-7252685-087.mp4",
+   "nhan": "",
+   "nhip": [
+    "biết mốc dự"
+   ]
+  },
+  {
+   "id": "c089",
+   "start": 325.09,
+   "end": 327.761,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-853935-088.mp4",
+   "nhan": "",
+   "nhip": [
+    "nào mở lại"
+   ]
+  },
+  {
+   "id": "c090",
+   "start": 327.761,
+   "end": 330.481,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Để tính giá",
+    "svg": "tien",
+    "to": 0.8
+   },
+   "phai": {
+    "nhan": "Để biết mốc",
+    "svg": "lich"
+   },
+   "nhip": [
+    "hai loại thông",
+    "tin phục vụ",
+    "hai công việc."
+   ]
+  },
+  {
+   "id": "c091",
+   "start": 330.481,
+   "end": 333.911,
+   "mau": "minh-hoa",
+   "nhan": "Hạn đến, thuế chạy?",
+   "dan": {
+    "the": "nghi"
+   },
+   "svg": "dong-ho",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "câu dễ trượt",
+    "nữa: hạn mới",
+    "thuế tự chạy."
+   ]
+  },
+  {
+   "id": "c092",
+   "start": 333.911,
+   "end": 337.079,
+   "mau": "trich-bao",
+   "nguon_id": "h2",
+   "trich": "no later than February 28, 2027.",
+   "to_vang": "February 28, 2027",
+   "trich_vi": "Chậm nhất ngày 28/02/2027.",
+   "to_vang_vi": "28/02/2027",
+   "nhip": [
+    "ra quyết định"
+   ]
+  },
+  {
+   "id": "c093",
+   "start": 337.079,
+   "end": 342.3,
+   "mau": "minh-hoa",
+   "nhan": "Hạn mới, chưa phải thuế",
+   "svg": "lich",
+   "san_khau": "co-quan",
+   "may_quay": "he-lo",
+   "bo_cuc": [
+    {
+     "svg": "thue-phan-tram",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "xem biện pháp",
+    "tượng nào nằm",
+    "và ngày nào"
+   ]
+  },
+  {
+   "id": "c094",
+   "start": 342.3,
+   "end": 346.395,
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-093.mp4",
+   "nhan": "",
+   "nhip": [
+    "mã hàng thì"
+   ]
+  },
+  {
+   "id": "c095",
+   "start": 346.395,
+   "end": 349.864,
+   "mau": "minh-hoa",
+   "nhan": "Hai email",
+   "dan": {
+    "the": "nghi"
+   },
+   "svg": "hop-thu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "email đến cùng",
+    "lúc. Một email",
+    "dời lịch họp."
+   ]
+  },
+  {
+   "id": "c096",
+   "start": 349.864,
+   "end": 353.648,
+   "mau": "b-roll",
+   "video": "laptop-ban-dem-7272375-095.mp4",
+   "nhan": "",
+   "nhip": [
+    "ký, có giá"
+   ]
+  },
+  {
+   "id": "c097",
+   "start": 353.648,
+   "end": 357.074,
+   "mau": "b-roll",
+   "video": "man-hinh-code-29458457-096.mp4",
+   "nhan": "",
+   "nhip": [
+    "hàng, nhưng chỉ"
+   ]
+  },
+  {
+   "id": "c098",
+   "start": 357.074,
+   "end": 361.294,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Email dời lịch",
+    "svg": "hop-thu",
+    "to": 0.6
+   },
+   "phai": {
+    "nhan": "Phụ lục giá mới",
+    "svg": "tai-lieu"
+   },
+   "nhip": [
+    "làm giá cập",
+    "số. Với hai",
+    "của Mỹ cũng"
+   ]
+  },
+  {
+   "id": "c099",
+   "start": 361.294,
+   "end": 366.397,
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-098.mp4",
+   "nhan": "",
+   "nhip": [
+    "đổi chi phí"
+   ]
+  },
+  {
+   "id": "c100",
+   "start": 366.397,
+   "end": 370.797,
+   "mau": "chuong",
+   "so": "Phần 4",
+   "chuong": "Hai tín hiệu cần theo dõi",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c101",
+   "start": 370.797,
+   "end": 373.899,
+   "mau": "minh-hoa",
+   "nhan": "Tìm phần quyết định",
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "vấn đề nào",
+    "cần hành động?",
+    "phần quyết định."
+   ]
+  },
+  {
+   "id": "c102",
+   "start": 373.899,
+   "end": 377.265,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-853935-101.mp4",
+   "nhan": "",
+   "nhip": [
+    "hãy đọc đoạn"
+   ]
+  },
+  {
+   "id": "c103",
+   "start": 377.265,
+   "end": 380.328,
+   "mau": "minh-hoa",
+   "nhan": "Thuế mới, rồi sao?",
+   "svg": "thue-phan-tram",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "thuế mới, doanh",
+    "nghiệp vẫn cần",
+    "cần hỏi tiếp."
+   ]
+  },
+  {
+   "id": "c104",
+   "start": 380.328,
+   "end": 384.103,
+   "mau": "minh-hoa",
+   "nhan": "Hàng nào, ngoại lệ?",
+   "svg": "kinh-lup",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "danh sách? Có",
+    "ngoại lệ gì?",
+    "Bao giờ áp"
+   ]
+  },
+  {
+   "id": "c105",
+   "start": 384.103,
+   "end": 388.824,
+   "mau": "b-roll",
+   "video": "laptop-ban-dem-7272375-104.mp4",
+   "nhan": "",
+   "nhip": [
+    "đang đề xuất,"
+   ]
+  },
+  {
+   "id": "c106",
+   "start": 388.824,
+   "end": 392.607,
+   "mau": "minh-hoa",
+   "nhan": "Tín hiệu thứ hai",
+   "svg": "may-chu",
+   "san_khau": "may-chu",
+   "may_quay": "dung",
+   "nhip": [
+    "Tín hiệu thứ",
+    "nằm ở việc",
+    "thực thi trên"
+   ]
+  },
+  {
+   "id": "c107",
+   "start": 392.607,
+   "end": 397.317,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622-106.mp4",
+   "nhan": "",
+   "nhip": [
+    "lý địa chỉ"
+   ]
+  },
+  {
+   "id": "c108",
+   "start": 397.317,
+   "end": 401.367,
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-107.mp4",
+   "nhan": "",
+   "nhip": [
+    "của cơ quan"
+   ]
+  },
+  {
+   "id": "c109",
+   "start": 401.367,
+   "end": 404.577,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-108.mp4",
+   "nhan": "",
+   "nhip": [
+    "dẫn biến mất"
+   ]
+  },
+  {
+   "id": "c110",
+   "start": 404.577,
+   "end": 409.269,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Địa chỉ biến mất",
+    "svg": "o-khoa",
+    "to": 0.5
+   },
+   "phai": {
+    "nhan": "Mạng ngừng hoạt động",
+    "svg": "may-chu"
+   },
+   "nhip": [
+    "ngừng hoạt động",
+    "mới cho biết",
+    "đã đi sâu"
+   ]
+  },
+  {
+   "id": "c111",
+   "start": 409.269,
+   "end": 412.984,
+   "mau": "b-roll",
+   "video": "laptop-ban-dem-7272375-110.mp4",
+   "nhan": "",
+   "nhip": [
+    "chiếu cho một"
+   ]
+  },
+  {
+   "id": "c112",
+   "start": 412.984,
+   "end": 416.453,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-111.mp4",
+   "nhan": "",
+   "nhip": [
+    "cần biết có"
+   ]
+  },
+  {
+   "id": "c113",
+   "start": 416.453,
+   "end": 420.168,
+   "mau": "minh-hoa",
+   "nhan": "Đổi địa chỉ, theo được?",
+   "svg": "kinh-lup",
+   "san_khau": "may-chu",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "laptop",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "xử lý có",
+    "được nếu trang",
+    "địa chỉ hay"
+   ]
+  },
+  {
+   "id": "c114",
+   "start": 420.168,
+   "end": 425.336,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-113.mp4",
+   "nhan": "",
+   "nhip": [
+    "quyền còn phải"
+   ]
+  },
+  {
+   "id": "c115",
+   "start": 425.336,
+   "end": 430.256,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-114.mp4",
+   "nhan": "",
+   "nhip": [
+    "khi vụ điều"
+   ]
+  },
+  {
+   "id": "c116",
+   "start": 430.256,
+   "end": 433.281,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656-115.mp4",
+   "nhan": "",
+   "nhip": [
+    "cùng lúc, hãy"
+   ]
+  },
+  {
+   "id": "c117",
+   "start": 433.281,
+   "end": 436.724,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622-116.mp4",
+   "nhan": "",
+   "nhip": [
+    "kiện thực thi."
+   ]
+  },
+  {
+   "id": "c118",
+   "start": 436.724,
+   "end": 440.795,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Sự kiện thực thi",
+    "svg": "bua-phan-quyet",
+    "to": 0.85
+   },
+   "phai": {
+    "nhan": "Sự kiện thương mại",
+    "svg": "thue-phan-tram"
+   },
+   "nhip": [
+    "một sự kiện",
+    "mại. Chúng đi",
+    "chủ đề bản"
+   ]
+  },
+  {
+   "id": "c119",
+   "start": 440.795,
+   "end": 443.883,
+   "mau": "minh-hoa",
+   "nhan": "Khác hồ sơ, khác hệ",
+   "svg": "tai-lieu",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "sơ, cơ quan",
+    "thực hiện và",
+    "quả khác nhau."
+   ]
+  },
+  {
+   "id": "c120",
+   "start": 443.883,
+   "end": 447.948,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-119.mp4",
+   "nhan": "",
+   "nhip": [
+    "để biết tin"
+   ]
+  },
+  {
+   "id": "c121",
+   "start": 447.948,
+   "end": 451.329,
+   "mau": "chuong",
+   "so": "Phần 5",
+   "chuong": "Web phim lậu dính gì tới thuế?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c122",
+   "start": 451.329,
+   "end": 454.032,
+   "mau": "b-roll",
+   "video": "cang-container-10391545-121.mp4",
+   "nhan": "",
+   "nhip": [
+    "điều tra thương"
+   ]
+  },
+  {
+   "id": "c123",
+   "start": 454.032,
+   "end": 458.734,
+   "mau": "trich-bao",
+   "nguon_id": "l2",
+   "trich": "without regard to whether or not such goods or economic sector were involved",
+   "to_vang": "without regard",
+   "trich_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan đến vụ việc hay không",
+   "to_vang_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan",
+   "nhip": [
+    "phép phạm vi"
+   ]
+  },
+  {
+   "id": "c124",
+   "start": 458.734,
+   "end": 464.23,
+   "mau": "b-roll",
+   "video": "cang-container-30281175-123.mp4",
+   "nhan": "",
+   "nhip": [
+    "hôm nay là"
+   ]
+  },
+  {
+   "id": "c125",
+   "start": 464.23,
+   "end": 469.087,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-124.mp4",
+   "nhan": "",
+   "nhip": [
+    "luận điều tra,"
+   ]
+  },
+  {
+   "id": "c126",
+   "start": 469.087,
+   "end": 473.35,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-125.mp4",
+   "nhan": "",
+   "nhip": [
+    "một nếu muốn"
+   ]
+  },
+  {
+   "id": "c127",
+   "start": 473.35,
+   "end": 476.706,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-126.mp4",
+   "nhan": "",
+   "nhip": [
+    "đọc danh sách"
+   ]
+  }
+ ]
+}

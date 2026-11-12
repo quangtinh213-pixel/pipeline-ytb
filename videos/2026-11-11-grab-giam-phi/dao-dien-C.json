@@ -1,0 +1,503 @@
+{
+ "scenes": [
+  {
+   "id": "c066",
+   "y": "Người xem biết phần mới bắt đầu: từng cuốc xe, tài xế trước",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "dan": {
+    "the": "chao"
+   },
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 3",
+    "chuong": "Mỗi cuốc xe đổi thế nào?"
+   }
+  },
+  {
+   "id": "c067",
+   "y": "Đưa người xem về một cuốc xe cụ thể, nhìn từ phía người chạy",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tuoitre-taixe-067.mp4",
+    "nhan": "Tài xế trước"
+   }
+  },
+  {
+   "id": "c068",
+   "y": "Người xem thấy phần tài xế cầm tăng từ 52.000 lên 60.590 ở cuốc 100.000 đồng, mức bị trừ nặng nhất",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Số đếm từ 52.000 lên 60.590 trên nền tối, nhãn nêu rõ cuốc 100.000 đồng ở mức trừ nặng nhất, khớp b2; không vẽ người hay cảnh vui mừng, không nói đây là mức trung bình",
+   "canh": {
+    "mau": "so-lon",
+    "so": "60.590",
+    "tu": "52.000",
+    "sau": " đồng",
+    "nhan": "Tài xế GrabBike thực nhận, cuốc 100.000 đồng, mức trừ nặng nhất",
+    "nguon_id": "b2",
+    "svg": "tien",
+    "huong": "len"
+   }
+  },
+  {
+   "id": "c069",
+   "y": "Nhịp thở sau con số: một cuốc xe máy ngoài phố, thêm chừng tám nghìn rưỡi",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-di-lam-36067569-069.mp4",
+    "nhan": "Thêm mỗi cuốc"
+   }
+  },
+  {
+   "id": "c070",
+   "y": "Người xem đọc chính lời dặn của báo: đây là ngưỡng bất lợi nhất, không phải mức tăng trung bình",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn b4, tô cụm 'không phản ánh mức tăng thu nhập bình quân' để chữ nguồn tự dặn; không thêm hình, không phán ví dụ tốt hay xấu",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "b4",
+    "trich": "minh họa thay đổi ở ngưỡng khấu trừ bất lợi nhất, không phản ánh mức tăng thu nhập bình quân",
+    "to_vang": "không phản ánh mức tăng thu nhập bình quân"
+   }
+  },
+  {
+   "id": "c071",
+   "y": "Cho thấy bối cảnh: dòng xe đông, nơi tiền mỗi cuốc được chia",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-pho-viet-nam-36077795-071.mp4",
+    "nhan": "Một cái trần"
+   }
+  },
+  {
+   "id": "c072",
+   "y": "Người xem đọc đúng câu đặt trần 32% tổng giá trị hành khách thanh toán",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Trang nguồn m3 với câu 'không vượt quá 32%' được khoanh; không thêm hình ẩn dụ để khỏi ngụ ý trần được giữ chắc",
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "m3.png",
+    "khung": "7.1,37.6,43.0,24.8",
+    "nguon_id": "m3"
+   }
+  },
+  {
+   "id": "c073",
+   "y": "Cho biết trần chỉ cắt cuốc nào vượt mức, cuốc khác vẫn thế",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ket-xe-32909774-073.mp4",
+    "nhan": "Cuốc dưới mức: giữ nguyên"
+   }
+  },
+  {
+   "id": "c074",
+   "y": "Người xem hiểu ứng dụng tài xế được hứa hiện từng khoản (chưa kiểm được)",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "san_khau": "nen-dat",
+   "vat_chinh": "dien-thoai",
+   "dao_cu": [
+    "tien",
+    "thue-phan-tram",
+    "tai-lieu"
+   ],
+   "may_quay": "day-vao",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Grab nói: hiện từng khoản",
+    "nguon_id": "m18"
+   }
+  },
+  {
+   "id": "c075",
+   "y": "Cho thấy cách tài xế tự kiểm: chụp lịch sử chuyến rồi cộng trừ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "luot-anh-dien-thoai-6756650-075.mp4",
+    "nhan": "Ảnh lịch sử chuyến"
+   }
+  },
+  {
+   "id": "c076",
+   "y": "Chuyển trục sang người gọi xe: câu hỏi của khán giả",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "dan": {
+    "the": "nghi"
+   },
+   "canh": {
+    "mau": "b-roll",
+    "video": "congthuong-datxe-076.mp4",
+    "nhan": "Còn người gọi xe?"
+   }
+  },
+  {
+   "id": "c077",
+   "y": "Người xem thấy cuốc xe máy càng ngắn càng bớt nhiều, trên 6 km không đổi",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "bieu-do",
+    "nhan": "Phí nền tảng GrabBike từ 10/11",
+    "bieu_do": {
+     "kieu": "cot",
+     "nhan_x": [
+      "Đến 2 km",
+      "Trên 2–6 km",
+      "Trên 6 km"
+     ],
+     "gia_tri": [
+      1000,
+      2000,
+      3000
+     ],
+     "don_vi": "đồng",
+     "noi_bat": 0,
+     "chu_thich": "Trước đây: 3.000 đồng ở cả ba mức",
+     "nguon_id": "g1"
+    }
+   }
+  },
+  {
+   "id": "c078",
+   "y": "Người xem thấy ô tô đi ngắn cũng bớt, nhưng ít hơn ở cuốc dài",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "bieu-do",
+    "nhan": "Phí nền tảng GrabCar từ 10/11",
+    "bieu_do": {
+     "kieu": "cot",
+     "nhan_x": [
+      "Đến 3 km",
+      "Trên 3–4 km"
+     ],
+     "gia_tri": [
+      3000,
+      4000
+     ],
+     "don_vi": "đồng",
+     "noi_bat": 0,
+     "chu_thich": "Trước đây: 5.000 đồng ở cả hai mức",
+     "nguon_id": "g2"
+    }
+   }
+  },
+  {
+   "id": "c079",
+   "y": "Nhịp thở: đưa bảng phí về những cuốc đời thường",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "duong-pho-viet-nam-35306363-079.mp4",
+    "nhan": "Cuốc ngắn lợi nhất"
+   }
+  },
+  {
+   "id": "c080",
+   "y": "Người xem thấy bảng giảm có ngày hết, khớp dòng ngày trên trang Grab",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "g1.png",
+    "khung": "35.8,55.3,46.3,6.0",
+    "nguon_id": "g1"
+   }
+  },
+  {
+   "id": "c081",
+   "y": "Người xem nhận ra luật chơi đổi: từ 26/02 mọi cuốc tính theo 7% tiền cước",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Số 7% đứng một mình trên nền tối, nhãn nêu mốc 26/02/2027, khớp g3; không mũi tên lên xuống để chưa phán lợi hay thiệt",
+   "canh": {
+    "mau": "so-lon",
+    "so": "7",
+    "sau": "%",
+    "nhan": "Phí nền tảng từ 26/02/2027, tính trên tiền cước",
+    "nguon_id": "g3",
+    "svg": "thue-phan-tram"
+   }
+  },
+  {
+   "id": "c082",
+   "y": "Đặt câu hỏi lợi hay thiệt, trả lời trước là tùy cuốc",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-di-lam-36067569-082.mp4",
+    "nhan": "Tùy cuốc dài hay ngắn"
+   }
+  },
+  {
+   "id": "c083",
+   "y": "Chuyển sang tự tính: bắt đầu bằng một cuốc xe máy nhỏ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "dan": {
+    "the": "tinh-toan"
+   },
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-3860709-083.mp4",
+    "nhan": "Tính thử vài cuốc"
+   }
+  },
+  {
+   "id": "c084",
+   "y": "Người xem thấy cuốc ngắn: phí 7% xấp xỉ mức hiện thu",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "1.050",
+    "sau": " đồng",
+    "nhan": "Phí 7% trên cuốc 15.000 đồng, tự tính",
+    "nguon_id": "k11",
+    "svg": "tien"
+   }
+  },
+  {
+   "id": "c085",
+   "y": "Người xem thấy cuốc 60.000 đồng đảo chiều: phí 7% cao hơn 3.000",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Số đếm lên 4.200 trên nền tối, nhãn ghi rõ cước 60.000 đồng và 'tự tính', khớp k8 (60.000 x 7%); không vẽ người hay cảnh bực bội",
+   "canh": {
+    "mau": "so-lon",
+    "so": "4.200",
+    "sau": " đồng",
+    "nhan": "Phí 7% trên cuốc 60.000 đồng, tự tính",
+    "nguon_id": "k8",
+    "svg": "tien",
+    "huong": "len"
+   }
+  },
+  {
+   "id": "c086",
+   "y": "Hai mức phí cạnh nhau: 3.000 và 4.200 cho cuốc 60.000 đồng",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Mức phí 3.000 đồng",
+     "svg": "tien",
+     "so": "3.000",
+     "don_vi": "đồng",
+     "to": 0.7
+    },
+    "phai": {
+     "nhan": "Phí 7%, cước 60.000 đồng",
+     "svg": "tien",
+     "so": "4.200",
+     "don_vi": "đồng",
+     "to": 1.0
+    },
+    "ti_le": "Phí 7%: tự tính",
+    "nguon_id": [
+     "g1",
+     "k8"
+    ]
+   }
+  },
+  {
+   "id": "c087",
+   "y": "Người xem nhớ một điểm: quanh 43.000 đồng tiền cước thì hòa",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Số 43.000 trên nền tối với hình thước đo, nhãn 'tự tính', khớp k7 (3.000 ÷ 7%); thước chỉ là dụng cụ đo, không nói bên nào thắng",
+   "canh": {
+    "mau": "so-lon",
+    "so": "43.000",
+    "sau": " đồng",
+    "nhan": "Điểm hòa của tiền cước, tự tính",
+    "nguon_id": "k7",
+    "svg": "thuoc-do"
+   }
+  },
+  {
+   "id": "c088",
+   "y": "Người xem hiểu ranh giới: dưới điểm hòa trả ít hơn, trên thì nhiều hơn",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "thanh-toan-the-11158789-088.mp4",
+    "nhan": "Điểm hòa là ranh giới"
+   }
+  },
+  {
+   "id": "c089",
+   "y": "Chuyển sang ô tô đi xa, báo trước chênh lệch rõ hơn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giao-thong-hcm-flycam-32971516-089.mp4",
+    "nhan": "Ô tô đi xa"
+   }
+  },
+  {
+   "id": "c090",
+   "y": "Người xem thấy cuốc ô tô 200.000 đồng: phí 14.000 so với tối đa 9.000",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Hai ô tô cạnh nhau, bên phải lớn hơn theo đúng tỉ lệ 14.000 so với 9.000, khớp g2 và k9; không ngụ ý ý đồ của hãng",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Phí tối đa hiện nay",
+     "svg": "oto",
+     "so": "9.000",
+     "don_vi": "đồng",
+     "to": 0.7
+    },
+    "phai": {
+     "nhan": "Phí 7%, cước 200.000 đồng",
+     "svg": "oto",
+     "so": "14.000",
+     "don_vi": "đồng",
+     "to": 1.0
+    },
+    "ti_le": "Phí 7%: tự tính",
+    "nguon_id": [
+     "g2",
+     "k9"
+    ]
+   }
+  },
+  {
+   "id": "c091",
+   "y": "Người xem đọc đúng điều khoản bù: giảm 10% cho chuyến từ 10 km",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "g4",
+    "trich": "ưu đãi giảm 10% trên tổng giá cước cho các chuyến xe có quãng đường từ 10km trở lên",
+    "to_vang": "giảm 10% trên tổng giá cước"
+   }
+  },
+  {
+   "id": "c092",
+   "y": "Người xem thấy phần bù ở cuốc 200.000 đồng là 20.000, lớn hơn phí 14.000",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "20.000",
+    "sau": " đồng",
+    "nhan": "Ưu đãi 10% trên cước 200.000 đồng, tự tính",
+    "nguon_id": "k9",
+    "svg": "tien",
+    "huong": "len"
+   }
+  },
+  {
+   "id": "c093",
+   "y": "Người xem thấy chênh lệch về thời hạn: ưu đãi có ngày hết, phí 7% chưa ghi ngày hết",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Lịch có mốc kết thúc đặt cạnh biểu tượng phí không có lịch: chỉ phản ánh g4 (hết 31/12/2027) và g3 (chưa ghi ngày hết); không nói phí sẽ giữ mãi hay Grab cố ý",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Ưu đãi 10%: hết 31/12/2027",
+     "svg": "lich",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "Phí 7%: chưa ghi ngày hết",
+     "svg": "thue-phan-tram"
+    },
+    "nguon_id": [
+     "g3",
+     "g4"
+    ]
+   }
+  },
+  {
+   "id": "c094",
+   "y": "Nhịp thở sau câu chốt, chuyển sang chi tiết nhỏ trên trang Grab",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tay-cam-dien-thoai-5220470-094.mp4",
+    "nhan": "Một chi tiết nhỏ"
+   }
+  },
+  {
+   "id": "c095",
+   "y": "Người xem đọc đúng chữ: 7% tính trên cả giá cước và phụ phí liên quan",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn g3, tô cụm 'phụ phí liên quan'; không thêm hình để khỏi ngụ ý mức phụ phí cụ thể",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "g3",
+    "trich": "tỷ lệ % tính trên giá cước vận tải và phụ phí liên quan, là 7%",
+    "to_vang": "giá cước vận tải và phụ phí liên quan"
+   }
+  },
+  {
+   "id": "c096",
+   "y": "Cho thấy lúc giá cước nhảy lên: trời mưa, giờ tan tầm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-mua-39734321-096.mp4",
+    "nhan": "Trời mưa, giờ tan tầm"
+   }
+  },
+  {
+   "id": "c097",
+   "y": "Đối lập: phí cố định thì mưa nắng như nhau",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ket-xe-32909774-097.mp4",
+    "nhan": "Mưa nắng vẫn vậy"
+   }
+  },
+  {
+   "id": "c098",
+   "y": "Người xem rút ra điều chốt cho cuốc lúc mưa: cước nhảy thì phí nhảy theo, nên đắt ở hai chỗ",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "an_du": "Biểu tượng phí 7% và tiền cùng có mũi tên lên: chỉ minh họa việc phí tính trên cước và phụ phí (g3) nên cước tăng thì phí tăng; không nêu mức tăng cụ thể, không phán tốt hay xấu",
+   "san_khau": "thanh-pho",
+   "vat_chinh": "thue-phan-tram",
+   "dao_cu": [
+    "tien",
+    "mui-ten-len"
+   ],
+   "may_quay": "day-vao",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Mưa: đắt thêm hai chỗ",
+    "nguon_id": "g3"
+   }
+  }
+ ]
+}

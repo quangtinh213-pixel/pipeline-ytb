@@ -1,0 +1,60 @@
+# Phản biện giọng văn, vòng 2
+
+conversation_id: 8e257b83-8878-4e8e-97ba-8e75166b48ac
+
+## Phản hồi của agy
+
+Dưới đây là phần thẩm định và phê bình biên tập cho **bản 2**.
+
+---
+
+### I. Đánh giá nhanh việc xử lý triage vòng 1
+
+* **Vấn đề nặng chưa xử lý triệt để:** Vấn đề #2 ở vòng 1 (*"kể cả kênh này"*). Bản 2 đổi thành *"kể cả video này"*. Dù đã tránh được chữ "kênh", danh xưng "video này" vẫn phá vỡ tình huống hai người bạn ngồi uống cà phê trò chuyện trực tiếp. 
+* **Vấn đề mới/tồn đọng phát hiện thêm:** Có 1 câu dài tới 35 từ (vượt trần 28 từ theo quy tắc mẫu giọng) ở đoạn nhắc tới Be và GSM; xuất hiện lỗi lặp từ đuôi câu (*"mới biết"* lặp lại 2 lần liên tiếp); và một vài câu hướng dẫn thao tác ứng dụng còn mang văn phong "sách hướng dẫn".
+
+---
+
+### II. Danh sách vấn đề cần chỉnh sửa (9 vấn đề)
+
+1. **"Đừng tin lời ai, kể cả video này."** | `sáo rỗng` | `nặng` | *Gợi ý sửa ngắn:* Vẫn vướng lỗi phá vỡ tình huống quán cà phê. Sửa thành: "Đừng vội tin ai, kể cả mấy lời mình vừa nói."
+2. **"Ủy ban đã kiểm tra cả Be và GSM, yêu cầu các hãng để khách tự chọn có mua bảo hiểm chuyến đi hay không, và khuyên mọi hãng gọi xe tự rà lại giá, phí của mình."** | `khó đọc to` | `nặng` | *Gợi ý sửa ngắn:* Câu dài tới 35 từ (vượt trần 28 từ), gánh 3 vị ngữ liên tiếp, đọc to rất dễ đứt hơi. Tách đôi: "Ủy ban cũng kiểm tra cả Be với GSM, yêu cầu để khách tự chọn bảo hiểm chuyến đi. Họ còn khuyên các hãng khác tự rà lại biểu phí."
+3. **"Cách làm đơn giản: vào mục hoạt động trong ứng dụng, bấm vào một chuyến cũ, dòng phí nền tảng nằm ngay dưới tiền cước."** | `khó đọc to` | `vừa` | *Gợi ý sửa ngắn:* Nhiều dấu phẩy và hai chấm ngắt nhịp vụn, giống sách hướng dẫn. Sửa thành: "Cứ mở mục hoạt động lên, bấm chuyến cũ là thấy dòng phí nền tảng nằm ngay dưới tiền cước."
+4. **"Ai thuộc diện được bồi hoàn thì gửi tài khoản ngân hàng chính chủ trước ba mươi tháng mười một, và chỉ làm theo tin nhắn hay email chính thức của Grab."** | `khó đọc to` | `vừa` | *Gợi ý sửa ngắn:* Giọng văn hành chính/thông cáo báo chí làm chùng không khí trò chuyện. Tinh gọn: "Ai được bồi hoàn thì nhớ gửi số tài khoản chính chủ trước ba mươi tháng mười một, và chỉ làm theo tin nhắn chính thức của Grab thôi."
+5. **"Bài báo cũng nói rõ: tiền khách trả có cả bảo hiểm khách tự chọn, và đây là một chuyến, không phải chuyện của mọi chuyến."** | `văn dịch` | `vừa` | *Gợi ý sửa ngắn:* Cấu trúc giải trình mang dấu vết dịch thuật (*clarifies that... not the case for...*). Sửa thành: "Báo cũng ghi rõ: khách có bấm thêm bảo hiểm, nên đây chỉ là một chuyến cá biệt thôi."
+6. **"Sau đó tới thuế. Giống hóa đơn quán nhậu: món chính thì nhớ, còn khăn lạnh với phí phục vụ thì tới lúc tính tiền mới biết."** | `nhịp đều` | `nhẹ` | *Gợi ý sửa ngắn:* Lặp từ *"mới biết"* ở đuôi hai câu liền kề (ngay sau câu *"...nhìn tiền về ví, mới biết"*). Đổi đuôi câu sau: "...còn khăn lạnh với phí phục vụ thì tới lúc tính tiền mới ngã ngửa."
+7. **"Từ giờ, đáng ngóng hai việc."** | `văn dịch` | `nhẹ` | *Gợi ý sửa ngắn:* Công thức chuyển ý dạng blog/danh sách (*Two things to look forward to*). Sửa khẩu ngữ hơn: "Sắp tới có hai việc đáng ngóng." hoặc "Giờ chỉ cần để ý hai điểm."
+8. **"Đặt cạnh cả gói, phần trả lại mỏng tới mức phải nhìn kỹ mới thấy."** | `đao to búa lớn` | `nhẹ` | *Gợi ý sửa ngắn:* Cách ví von hơi thậm xưng so với thái độ điềm tĩnh của mẫu giọng. Sửa thành: "Đặt cạnh gói gần ba nghìn tỷ thì phần trả lại này chẳng thấm vào đâu."
+9. **"Thử tính rồi thả con số xuống bình luận, xem ai có cuốc tốn nhất."** | `sáo rỗng` | `nhẹ` | *Gợi ý sửa ngắn:* Đã cải thiện nhiều so với bản 1, nhưng từ "thả con số xuống bình luận" vẫn hơi gượng khi giả lập lời kể bạn bè. Làm mềm hơn: "Thử tính rồi quăng con số xuống dưới bình luận, xem cuốc của ai dội nhất."
+
+---
+
+### III. Chấm lại điểm (Thang điểm 1–5)
+
+* **Tự nhiên khi đọc to: 4.0/5** *(tăng 0.5)*
+  *Nhận xét:* Bản 2 trôi chảy hơn rõ rệt. Các câu chuyển ý cộc lốc đã được làm mềm. Chỉ còn sót câu dài 35 từ ở đoạn Be/GSM cần ngắt đôi để máy đọc không bị hụt hơi.
+
+* **Đúng tình huống kể (quán cà phê, bạn thân): 3.8/5** *(tăng 0.8)*
+  *Nhận xét:* Tiến bộ lớn nhờ xóa sạch đại từ xưng hô "kênh" và viết lại câu hỏi tu từ rất đời (*"nhảy vào... làm gì"*). Điểm chưa chạm mức 4.5+ vì vẫn còn sót chữ *"video này"* ở đoạn so sánh lịch sử chuyến.
+
+* **Nhịp: 4.3/5** *(tăng 0.3)*
+  *Nhận xét:* Xử lý rất khéo đoạn bảng tính bằng câu *"Nhưng lên cuốc sáu mươi nghìn là thấy dội..."*, bẻ gãy được chuỗi nhịp đều đều của bản 1. Tiết tấu câu ngắn - dài đan xen rất sát mẫu giọng.
+
+* **Chi tiết cụ thể: 4.8/5** *(giữ nguyên)*
+  *Nhận xét:* Tiếp tục duy trì chất liệu số liệu thực tế, chặt chẽ, dẫn chứng rõ ràng mà không bị sa đà vào cảm tính.
+
+
+## Bảng triage
+
+| # | câu trích | loại | mức | nhận/bỏ | lý do |
+|---|---|---|---|---|---|
+| 1 | Đừng tin lời ai, kể cả video này | sáo rỗng | nặng | bỏ | gợi ý dùng "mình" (đã cấm xưng); giữ nguyên |
+| 2 | Ủy ban đã kiểm tra cả Be và GSM… | khó đọc to | nặng | nhận | tách thành ba câu, giữ [#m15][#m16][#m19] |
+| 3 | Cách làm đơn giản: vào mục hoạt động… | khó đọc to | vừa | nhận | |
+| 4 | Ai thuộc diện được bồi hoàn… | khó đọc to | vừa | bỏ | vừa tách ở vòng 1, giữ ngày và cảnh báo chính chủ |
+| 5 | Bài báo cũng nói rõ… | văn dịch | vừa | nhận | |
+| 6 | mới biết lặp | nhịp đều | nhẹ | nhận | "ngã ngửa" |
+| 7 | Từ giờ, đáng ngóng hai việc | văn dịch | nhẹ | nhận | |
+| 8 | mỏng tới mức phải nhìn kỹ | đao to búa lớn | nhẹ | nhận | thêm [#b3] |
+| 9 | thả con số xuống bình luận | sáo rỗng | nhẹ | bỏ | "quăng" gượng hơn |
+

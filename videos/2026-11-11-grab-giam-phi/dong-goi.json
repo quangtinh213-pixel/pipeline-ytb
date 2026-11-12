@@ -1,0 +1,63 @@
+{
+  "phuong_an": [
+    {
+      "tieu_de": "Grab giảm phí gần 3.000 tỷ: tiền về túi ai?",
+      "chu_thumb": [
+        "227 TỶ",
+        "LÀ GIẢM PHÍ?"
+      ],
+      "file_thumb": "thumbnails/1.png"
+    },
+    {
+      "tieu_de": "Grab hạ trần phí 32%: tài xế và khách được gì?",
+      "chu_thumb": [
+        "AI LỢI",
+        "NHẤT?"
+      ],
+      "file_thumb": "thumbnails/2.png"
+    },
+    {
+      "tieu_de": "Phí nền tảng Grab đổi sang 7%: lợi hay thiệt?",
+      "chu_thumb": [
+        "TỪ 26/02",
+        "ĐẮT HƠN?"
+      ],
+      "file_thumb": "thumbnails/3.png"
+    }
+  ],
+  "mo_ta": "Ngày 10/11/2026, Grab hạ phí nền tảng cho cuốc ngắn và nói sẽ chi gần 3.000 tỷ đồng sau khi Ủy ban Cạnh tranh Quốc gia vào cuộc. Video đọc thẳng văn bản của Bộ Công Thương và trang thông báo của Grab: gói tiền gồm những gì, phần giảm phí thật sự là bao nhiêu, mỗi cuốc xe đổi thế nào, và từ 26/02/2027 phí chuyển sang mức 7%.\n\n⏱ Mốc chương\n00:00 Hai nghìn đồng và ba nghìn tỷ\n00:28 Vì sao Grab giảm phí lúc này?\n02:10 Gần ba nghìn tỷ gồm những gì?\n04:12 Mỗi cuốc xe đổi thế nào?\n06:15 Hai việc cần ngóng\n07:26 Tiền về túi ai?\n\n📌 Cần biết\n- Con số gần 3.000 tỷ đồng là kế hoạch chi dự kiến của Grab theo văn bản của Ủy ban, không phải số tiền đã chi.\n- Phần chừng 227 tỷ đồng cho giảm phí là số kênh tự tính (tổng trừ các phần khác), văn bản không tách riêng.\n- Kết quả xác minh của Ủy ban mới ở mức sơ bộ. Số bồi hoàn gần 3,9 tỷ đồng là số dự kiến.\n- Các ví dụ cuốc xe (100.000 đồng, 15.000 đồng, 60.000 đồng, 200.000 đồng) là phép tính minh họa của kênh, không phải số liệu trung bình.\n- Chuyến GrabCar 37.000 đồng là một chuyến do một tài xế đăng, không đại diện cho mọi chuyến.\n\n📎 Nguồn (truy cập 10/11/2026)\n- Bộ Công Thương: https://moit.gov.vn/tin-tuc/thong-tin-ve-ket-qua-xac-minh-so-bo-cua-uy-ban-canh-tranh-quoc-gia-doi-voi-chinh-sach-gia-phi-cua-grab.html\n- Grab Việt Nam: https://www.grab.com/vn/blog/grab-cap-nhat-ve-phi-nen-tang/\n- Tuổi Trẻ: https://tuoitre.vn/tai-xe-grab-keu-goi-tat-app-2-ngay-chay-cuoc-xe-185km-chi-nhan-duoc-46900-dong-10026090917312805.htm\n- Báo Công Thương: https://congthuong.vn/ra-soat-phi-grab-gan-3-000-ty-dong-huong-toi-nguoi-tieu-dung-tai-xe-480122.html\n- Grab Holdings · báo cáo quý III/2026 (SEC): https://www.sec.gov/Archives/edgar/data/0001855612/000185561226000148/a2026q3-earningspressrelea.htm\n- Vietcombank: https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia\n- Các phép tính minh họa do kênh tự tính từ số liệu trên.\n\n🖼 Ghi công ảnh\n- Ảnh: Tuổi Trẻ\n- Ảnh: Báo Công Thương\n",
+  "tags": [
+    "Grab",
+    "Grab giảm phí",
+    "phí nền tảng Grab",
+    "Ủy ban Cạnh tranh Quốc gia",
+    "Bộ Công Thương",
+    "tài xế công nghệ",
+    "Grab 7%",
+    "phí Grab 2027",
+    "GrabBike",
+    "GrabCar",
+    "cước xe công nghệ",
+    "Nhịp Công Nghệ"
+  ],
+  "shorts": [
+    {
+      "file": "shorts/1.mp4",
+      "tieu_de": "Grab giảm 2.000 đồng mỗi cuốc: bảng phí mới có hạn dùng #shorts",
+      "ngay": "12/11/2026",
+      "gio": "12:00"
+    },
+    {
+      "file": "shorts/2.mp4",
+      "tieu_de": "Gói gần 3.000 tỷ của Grab: tiền thật về túi ai? #shorts",
+      "ngay": "13/11/2026",
+      "gio": "12:00"
+    },
+    {
+      "file": "shorts/3.mp4",
+      "tieu_de": "Phí Grab 7% từ 26/02: cuốc nào đắt hơn? #shorts",
+      "ngay": "14/11/2026",
+      "gio": "12:00"
+    }
+  ]
+}

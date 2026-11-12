@@ -1,0 +1,456 @@
+{
+ "scenes": [
+  {
+   "id": "c099",
+   "y": "Mở phần mới: người xem biết sắp có hai việc cần theo dõi, việc đầu là màn hình của tài xế",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 4",
+    "chuong": "Hai việc cần ngóng",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c100",
+   "y": "Người xem thấy chính câu của Ủy ban nói màn hình tài xế sẽ hiện rõ doanh thu, phí, thuế, khoản khấu trừ từng cuốc",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Trang nguồn tô đúng câu m18, không thêm hình ẩn dụ; không nói màn hình đã hiện đủ, chỉ nêu điều Ủy ban yêu cầu",
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "m18.png",
+    "khung": "7.1,40.7,43.0,18.5",
+    "nguon_id": "m18"
+   }
+  },
+  {
+   "id": "c101",
+   "y": "Người xem đọc được chữ 'báo cáo định kỳ': Ủy ban có cơ chế theo dõi, chưa phải kết luận",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "m14",
+    "trich": "yêu cầu Grab báo cáo định kỳ về tình hình triển khai các giải pháp",
+    "to_vang": "báo cáo định kỳ"
+   }
+  },
+  {
+   "id": "c102",
+   "y": "Nhịp đời thường: nhắn tin cho người quen từng chạy xe",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-853794-102.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c103",
+   "y": "Người xem thấy điều kiện nhận tiền nằm trong văn bản: tài khoản chính chủ, trước 30/11",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "m9b.png",
+    "khung": "7.1,42.3,43.0,15.4",
+    "nguon_id": "m9b"
+   }
+  },
+  {
+   "id": "c104",
+   "y": "Cho người xem nhớ mốc 30/11 và hai kênh liên lạc chính thức (tin nhắn, email của hãng)",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "san_khau": "nen-dat",
+   "vat_chinh": "hop-thu",
+   "dao_cu": [
+    "the-ngan-hang",
+    "lich"
+   ],
+   "may_quay": "dung",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Gửi trước 30/11/2026",
+    "nguon_id": "m9b"
+   }
+  },
+  {
+   "id": "c105",
+   "y": "Người xem thấy ngay ai KHÔNG phải làm gì: tài xế còn chạy",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tuoitre-taixe-105.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c106",
+   "y": "Lời dặn thận trọng chuyển sang việc thứ hai: nhịp thở giữa hai việc",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-nen-trang-4884231-106.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c107",
+   "y": "Người xem thấy việc kiểm tra bảo vệ người tiêu dùng nêu đích danh Grab, Be, GSM",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "m15.png",
+    "khung": "7.1,37.6,43.0,24.8",
+    "nguon_id": "m15"
+   }
+  },
+  {
+   "id": "c108",
+   "y": "Người xem đọc được quyền tự chọn bảo hiểm chuyến đi nằm trong yêu cầu của Ủy ban",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "m16",
+    "trich": "quyền chủ động lựa chọn của người tiêu dùng đối với bảo hiểm chuyến đi, khoản đóng góp trung hòa carbon",
+    "to_vang": "bảo hiểm chuyến đi"
+   }
+  },
+  {
+   "id": "c109",
+   "y": "Việc rà lại giá, phí là khuyến nghị cho mọi hãng, cảnh bấm máy tính gợi việc tự rà",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-3860709-109.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c110",
+   "y": "Nhịp thở: thị trường gọi xe ngoài đường, chờ xem hãng nào làm theo",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-pho-viet-nam-36077795-110.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c111",
+   "y": "Người xem hình dung ngay lúc đặt xe để kiểm dòng bảo hiểm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tay-cam-dien-thoai-5220470-111.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c112",
+   "y": "Người xem nhớ một ngày cụ thể: 26/02/2027, mốc phí nền tảng chuyển sang 7%",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Tờ lịch phóng lớn vào một ngày, kèm biểu tượng phần trăm: đúng g3 (phí 7% từ 26/02/2027); không thêm điều gì về ngày đó",
+   "san_khau": "nen-dat",
+   "vat_chinh": "lich",
+   "dao_cu": [
+    "thue-phan-tram"
+   ],
+   "may_quay": "day-vao",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ghi lịch: 26/02/2027",
+    "nguon_id": "g3"
+   }
+  },
+  {
+   "id": "c113",
+   "y": "Hình ảnh ứng dụng đặt xe: nơi lịch sử chuyến nằm",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "congthuong-datxe-113.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c114",
+   "y": "Người xem thấy thao tác mở chuyến cũ để tìm dòng phí",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-6611954-114.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c115",
+   "y": "Người xem thấy việc chụp lại chuyến từ bây giờ là thao tác nhỏ, ai cũng làm được",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "luot-anh-dien-thoai-6756650-115.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c116",
+   "y": "Người xem hình dung hai tấm ảnh đặt cạnh nhau: hôm nay và tháng hai",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Ảnh chụp bây giờ",
+     "svg": "dien-thoai"
+    },
+    "phai": {
+     "nhan": "Ảnh chụp tháng hai",
+     "svg": "dien-thoai"
+    }
+   }
+  },
+  {
+   "id": "c117",
+   "y": "Mở phần cuối: câu hỏi của cả video được nêu thành tiêu đề",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": true,
+   "an_du": "Chương chỉ nêu câu hỏi, chưa hàm ý câu trả lời; không hình ẩn dụ thêm",
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 5",
+    "chuong": "Tiền về túi ai?",
+    "dan": {
+     "the": "nghi"
+    }
+   }
+  },
+  {
+   "id": "c118",
+   "y": "Đưa người xem về người chạy xe máy, nhân vật của câu trả lời đầu tiên",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tuoitre-taixe-118.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c119",
+   "y": "Người xem thấy sàn thực nhận của tài xế GrabBike nhích từ 52% lên 60,59%, ở cuốc bị trừ nặng nhất",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Bậc thang mờ phía sau số đếm 52 lên 60,59: sàn nâng một bậc, khớp m5, m7; nhãn nói rõ là mức tối thiểu ở cuốc bị trừ nặng nhất (b4: không phải thu nhập bình quân); không vẽ người hay cảm xúc",
+   "canh": {
+    "mau": "so-lon",
+    "so": "60,59",
+    "tu": "52",
+    "sau": "%",
+    "huong": "len",
+    "nhan": "Mức nhận tối thiểu, tài xế GrabBike",
+    "nguon_id": [
+     "m5",
+     "m7"
+    ],
+    "svg": "bac-thang"
+   }
+  },
+  {
+   "id": "c120",
+   "y": "Chuyển sang người đi xe: đời thường của hành khách",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "xe-may-di-lam-36067569-120.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c121",
+   "y": "Người xem thấy hai giai đoạn của hành khách: bớt 1–2 nghìn rồi chuyển sang 7%",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Hai bên chỉ đặt giai đoạn g1 và g3 cạnh nhau, mũi tên xuống chỉ mức bớt có thật của cuốc ngắn; không nói bên nào rẻ hơn với mọi chuyến",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Đến 25/02: bớt 1–2 nghìn",
+     "svg": "mui-ten-xuong"
+    },
+    "phai": {
+     "nhan": "Từ 26/02/2027",
+     "svg": "thue-phan-tram",
+     "so": "7",
+     "don_vi": "%"
+    },
+    "nguon_id": [
+     "g1",
+     "g3"
+    ]
+   }
+  },
+  {
+   "id": "c122",
+   "y": "Người xem thấy phần lớn gói là khuyến mại và thưởng/hỗ trợ, phần giảm phí còn lại là nhỏ",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Ba cột cộng đúng 2.950,9 tỷ (1.808 + 915,9 + 227), nhãn phân biệt phần nguồn nêu (m11) và phần tự tính (k1, k3); không đánh giá tốt hay xấu",
+   "canh": {
+    "mau": "bieu-do",
+    "nhan": "Gói 2.950,9 tỷ đồng chia ra",
+    "bieu_do": {
+     "kieu": "cot",
+     "nhan_x": [
+      "Khuyến mại hành khách",
+      "Thưởng, hỗ trợ, bồi hoàn",
+      "Phần còn lại"
+     ],
+     "gia_tri": [
+      1808,
+      915.9,
+      227
+     ],
+     "don_vi": "tỷ đồng",
+     "noi_bat": 0,
+     "chu_thich": "Tự tính: 61% gói",
+     "nguon_id": [
+      "m11",
+      "k3",
+      "k1",
+      "k2",
+      "m12"
+     ]
+    }
+   }
+  },
+  {
+   "id": "c123",
+   "y": "Nhịp thở trước ý chính: nhìn kỹ văn bản",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7732805-123.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c124",
+   "y": "Người xem nhận ra điều đáng giá nhất là con số 32%: cái trần",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Khiên mờ sau số 32%: trần là giới hạn trên của tổng phí theo m3; không ngụ ý Grab từng cố vượt trần",
+   "dan": {
+    "the": "xac-nhan"
+   },
+   "canh": {
+    "mau": "so-lon",
+    "so": "32",
+    "sau": "%",
+    "nhan": "Trần tổng phí Grab hưởng",
+    "nguon_id": "m3",
+    "svg": "khien"
+   }
+  },
+  {
+   "id": "c125",
+   "y": "Người xem đọc được câu về trần 32% ngay trên trang Bộ Công Thương",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "m3.png",
+    "khung": "7.1,37.6,43.0,24.8",
+    "nguon_id": "m3"
+   }
+  },
+  {
+   "id": "c126",
+   "y": "Nhịp thở: cuốc đường quen thuộc của người xem, chuẩn bị tự tính",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ket-xe-32909774-126.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c127",
+   "y": "Người xem thấy phép tự tính chỉ gồm vài bước: cước nhân 7%, so với phí đang trả, ra thêm hay bớt",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Ba bước nối nhau dán nhãn 'Cách tự tính', không số cụ thể của chuyến nào; mức 7% đúng g3; không dự đoán kết quả",
+   "dan": {
+    "the": "tinh-toan"
+   },
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cách tự tính",
+    "buoc": [
+     {
+      "nhan": "Tiền cước",
+      "svg": "tien"
+     },
+     {
+      "nhan": "Nhân bảy phần trăm",
+      "svg": "thue-phan-tram"
+     },
+     {
+      "nhan": "So với phí đang trả",
+      "svg": "thuoc-do"
+     }
+    ],
+    "noi_bat": 1,
+    "nguon_id": "g3"
+   }
+  },
+  {
+   "id": "c128",
+   "y": "Người xem tự hỏi con số của mình: tốn thêm hay bớt",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-7055396-128.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c129",
+   "y": "Kết: lời mời thả số vào bình luận, xem ai có cuốc tốn nhất",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "an_du": "Bong bóng thoại và điện thoại chỉ biểu thị khung bình luận, lời mời tham gia; không số liệu, không ngụ ý kết quả",
+   "san_khau": "nen-dat",
+   "vat_chinh": "bong-bong",
+   "dao_cu": [
+    "dien-thoai"
+   ],
+   "may_quay": "keo-ra",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Thả số vào bình luận"
+   }
+  }
+ ]
+}

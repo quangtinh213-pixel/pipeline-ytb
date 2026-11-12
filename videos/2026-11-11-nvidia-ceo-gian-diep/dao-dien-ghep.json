@@ -1,0 +1,1190 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "_moi": true,
+   "_gan": "c001",
+   "_r": 0.65,
+   "loi": "Anh em ơi, một lá thư xin lỗi dài vài đoạn vừa làm Nvidia bay khoảng"
+  },
+  {
+   "id": "c002",
+   "_moi": true,
+   "_gan": "c002",
+   "_r": 0.46,
+   "loi": "một trăm chín mươi tỷ đô chỉ trong một phiên. No cap,"
+  },
+  {
+   "id": "c003",
+   "_moi": true,
+   "_gan": "c079",
+   "_r": 0.41,
+   "loi": "con số này lớn hơn cả ngân sách của nhiều quốc gia. Thư gì mà ghê vậy?"
+  },
+  {
+   "id": "c004",
+   "_moi": true,
+   "_gan": "c003",
+   "_r": 0.71,
+   "loi": "Chủ nhật tám tháng mười một, ông Jensen Huang viết thư cho nhân viên."
+  },
+  {
+   "id": "c005",
+   "y": "Người xem tự đọc câu mở đầu của lá thư trên chính trang tin của Nvidia",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n1.png",
+    "khung": "8.1,47.0,55.7,6.0",
+    "nguon_id": "n1"
+   },
+   "an_du": "Tô đúng câu 'I was unfaithful to my wife.' trên trang nguồn n1; chữ thật làm bằng chứng, không thêm hình ngoài",
+   "_tu": "c004",
+   "_r": 0.89
+  },
+  {
+   "id": "c006",
+   "y": "Người xem thấy phản ứng thị trường ngay hôm sau",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "4,3",
+    "truoc": "",
+    "sau": "%",
+    "nhan": "Cổ phiếu Nvidia giảm ngày 09/11",
+    "nguon_id": "n14",
+    "svg": "bieu-do-nen",
+    "huong": "xuong"
+   },
+   "_tu": "c005",
+   "_r": 1.0
+  },
+  {
+   "id": "c007",
+   "y": "Chuyển sang thị trường: biểu đồ nến giá giảm cho cảm giác phiên rơi",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "bang-chung-khoan-37978559-005.mp4",
+    "nhan": ""
+   },
+   "_tu": "c006",
+   "_r": 0.92
+  },
+  {
+   "id": "c008",
+   "y": "Người xem thấy chính CNBC nói thư không nêu tên ai: khoảng trống nơi tin đồn lọt vào",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n40",
+    "trich": "though he did not disclose with whom he had the relationship",
+    "to_vang": "did not disclose with whom he had the relationship",
+    "trich_vi": "dù ông không nói rõ quan hệ đó là với ai",
+    "to_vang_vi": "không nói rõ quan hệ đó là với ai"
+   },
+   "an_du": "Trích nguyên văn CNBC (n40) bằng chữ, không kèm hình người; không ngụ ý ai là người đó",
+   "_tu": "c007",
+   "_r": 0.94
+  },
+  {
+   "id": "c009",
+   "y": "Người xem hiểu đây là cáo buộc từ báo chí, nhãn nói rõ chưa kiểm chứng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7841618-007.mp4",
+    "nhan": "Cáo buộc, chưa kiểm chứng"
+   },
+   "an_du": "Tay cầm tập giấy chỉ gợi 'hồ sơ, kết luận'; nhãn ghi 'chưa kiểm chứng' đúng n9; không thêm hình người, không ngụ ý bà ấy có tội",
+   "_tu": "c008",
+   "_r": 1.0
+  },
+  {
+   "id": "c010",
+   "_moi": true,
+   "_gan": "c010",
+   "_r": 0.76,
+   "loi": "Trung Quốc bác bỏ, gọi cáo buộc là vô căn cứ."
+  },
+  {
+   "id": "c011",
+   "y": "Người xem nắm câu hỏi trung tâm của video: đời tư hay an ninh quốc gia, chưa có đáp án",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Chuyện đời tư",
+     "svg": "nguoi",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "An ninh quốc gia",
+     "svg": "khien",
+     "to": 0.8
+    }
+   },
+   "an_du": "Hai vế đặt cạnh nhau đúng như câu hỏi trong lời đọc; không nghiêng về vế nào, không số, không khẳng định",
+   "dan": {
+    "the": "nghi"
+   },
+   "_tu": "c011",
+   "_r": 0.94
+  },
+  {
+   "id": "c012",
+   "y": "Báo trước cách làm: tách phần có văn bản chính thức",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7104084-011.mp4",
+    "nhan": "Đã xác nhận, văn bản chính thức"
+   },
+   "_tu": "c012",
+   "_r": 0.91
+  },
+  {
+   "id": "c013",
+   "y": "Người xem có bản đồ ba phần của video: đã xác nhận, mới là cáo buộc, mốc sắp tới",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Ba phần để tách",
+    "buoc": [
+     {
+      "nhan": "Đã xác nhận",
+      "svg": "tai-lieu"
+     },
+     {
+      "nhan": "Mới là cáo buộc",
+      "svg": "kinh-lup"
+     },
+     {
+      "nhan": "Mốc tuần tới",
+      "svg": "lich"
+     }
+    ],
+    "noi_bat": 1
+   },
+   "_tu": "c013",
+   "_r": 0.85
+  },
+  {
+   "id": "c014",
+   "_moi": true,
+   "_gan": "c014",
+   "_r": 0.74,
+   "loi": "Trong mớ tin lẫn lộn này, cái gì là chắc? Có ba thứ,"
+  },
+  {
+   "id": "c015",
+   "_moi": true,
+   "_gan": "c015",
+   "_r": 0.72,
+   "loi": "và cả ba đều kiểm được trên trang của chính Nvidia."
+  },
+  {
+   "id": "c016",
+   "y": "Gợi hành động viết thư: bàn tay đặt bút",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "viet-tay-so-tay-4017221-015.mp4",
+    "nhan": "Lá thư ngày 08/11"
+   },
+   "_tu": "c016",
+   "_r": 0.86
+  },
+  {
+   "id": "c017",
+   "y": "Gợi việc xin lỗi nhiều bên bằng chữ ký trên giấy",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-016.mp4",
+    "nhan": "Xin lỗi nhiều bên"
+   },
+   "_tu": "c017",
+   "_r": 0.9
+  },
+  {
+   "id": "c018",
+   "y": "Người xem tự đọc dòng ông nói hội đồng đã mở điều tra độc lập",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n2.png",
+    "khung": "8.1,42.4,55.7,15.1",
+    "nguon_id": "n2"
+   },
+   "_tu": "c018",
+   "_r": 0.97
+  },
+  {
+   "id": "c019",
+   "_moi": true,
+   "_gan": "c019",
+   "_r": 0.6,
+   "loi": "Cuối thư ông xin để gia đình được yên. Hai là thông cáo của hội đồng cùng ngày."
+  },
+  {
+   "id": "c020",
+   "y": "Người xem biết hội đồng mở điều tra sau các báo cáo: giấy tờ chính thức",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7054942-020.mp4",
+    "nhan": "Điều tra sau các báo cáo"
+   },
+   "_tu": "c021",
+   "_r": 0.89
+  },
+  {
+   "id": "c021",
+   "y": "Người xem thấy câu quan trọng nằm trên trang chính thức",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n4.png",
+    "khung": "8.1,45.5,55.7,9.0",
+    "nguon_id": "n4"
+   },
+   "_tu": "c022",
+   "_r": 1.0
+  },
+  {
+   "id": "c022",
+   "y": "Người xem đọc nguyên văn câu then chốt: hội đồng chưa thấy dấu hiệu bị lộ",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n4",
+    "trich": "the Board has no reason to believe that either national security or NVIDIA secrets were compromised",
+    "to_vang": "no reason to believe",
+    "trich_vi": "hội đồng không có lý do để tin rằng an ninh quốc gia hay bí mật của Nvidia đã bị lộ",
+    "to_vang_vi": "không có lý do để tin"
+   },
+   "an_du": "Trích nguyên văn n4 bằng chữ, tô đúng cụm 'no reason to believe'; không hình ngụ ý bị lộ hay không",
+   "_tu": "c023",
+   "_r": 1.0
+  },
+  {
+   "id": "c023",
+   "_moi": true,
+   "_gan": "c024",
+   "_r": 0.71,
+   "loi": "Đó là lời của bên đang điều tra chuyện của chính mình. Chưa phải kết luận."
+  },
+  {
+   "id": "c024",
+   "_moi": true,
+   "_gan": "c113",
+   "_r": 0.48,
+   "loi": "Ba là người điều tra. Ngày mười tháng mười một,"
+  },
+  {
+   "id": "c025",
+   "y": "Người xem đọc tên người điều tra trên thông cáo",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n5.png",
+    "khung": "8.1,44.0,55.7,12.0",
+    "nguon_id": "n5"
+   },
+   "_tu": "c026",
+   "_r": 0.83
+  },
+  {
+   "id": "c026",
+   "y": "Người xem hình dung người điều tra: một cựu công tố cùng hãng luật",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-026.mp4",
+    "nhan": "Cựu công tố, hãng Wachtell"
+   },
+   "_tu": "c027",
+   "_r": 0.94
+  },
+  {
+   "id": "c027",
+   "_moi": true,
+   "_gan": "c033",
+   "_r": 0.79,
+   "loi": "Sáng thứ Hai, ông Huang vẫn đến trụ sở Santa Clara họp buổi sáng như thường."
+  },
+  {
+   "id": "c028",
+   "_moi": true,
+   "_gan": "c035",
+   "_r": 0.71,
+   "loi": "Theo CNBC, ông mở đầu bằng lời xin lỗi nhân viên rồi chuyển sang công việc, không nhận câu hỏi."
+  },
+  {
+   "id": "c029",
+   "y": "Người xem thấy phản ứng của nhân viên theo CNBC: bị sốc",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n35.png",
+    "khung": "21.2,44.9,43.0,10.2",
+    "nguon_id": "n35"
+   },
+   "_tu": "c037",
+   "_r": 1.0
+  },
+  {
+   "id": "c030",
+   "y": "Mở chương mới, báo cho người xem biết đang chuyển ý",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 2",
+    "chuong": "Điều gì mới chỉ là cáo buộc"
+   },
+   "dan": {
+    "the": "chao"
+   },
+   "_tu": "c038",
+   "_r": 1.0
+  },
+  {
+   "id": "c031",
+   "y": "Người xem thấy Fortune ghi rõ hai người cùng họ nhưng không có quan hệ họ hàng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n38.png",
+    "khung": "13.8,44.4,49.4,11.2",
+    "nguon_id": "n38"
+   },
+   "_tu": "c039",
+   "_r": 0.96
+  },
+  {
+   "id": "c032",
+   "y": "Người xem biết bà là ai theo Bloomberg, bằng chữ trích, không hình người",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n23",
+    "trich": "a former television journalist who became a semiconductor power broker renting advanced chips to China's top firms",
+    "to_vang": "a former television journalist",
+    "trich_vi": "cựu nhà báo truyền hình, trở thành người có thế lực trong ngành bán dẫn, cho các hãng hàng đầu Trung Quốc thuê chip tiên tiến",
+    "to_vang_vi": "cựu nhà báo truyền hình"
+   },
+   "_tu": "c040",
+   "_r": 0.95
+  },
+  {
+   "id": "c033",
+   "_moi": true,
+   "_gan": "c041",
+   "_r": 0.69,
+   "loi": "Hồ sơ Singapore ghi bà từng là giám đốc công ty Megaspeed năm hai nghìn không trăm hai mươi ba."
+  },
+  {
+   "id": "c034",
+   "y": "Megaspeed là gì: người xem thấy dãy máy tính của một công ty điện toán",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-5028622-042.mp4",
+    "nhan": "Megaspeed: điện toán, Singapore"
+   },
+   "_tu": "c043",
+   "_r": 0.9
+  },
+  {
+   "id": "c035",
+   "_moi": true,
+   "_gan": "c045",
+   "_r": 0.73,
+   "loi": "Báo cáo nói khách thuê có cả Alibaba, dùng năng lực tính toán đặt ngoài lãnh thổ Trung Quốc."
+  },
+  {
+   "id": "c036",
+   "_moi": true,
+   "_gan": "c049",
+   "_r": 0.4,
+   "loi": "Nghe thì giống quán net cho thuê giờ chơi, nhưng với chip trí tuệ nhân tạo"
+  },
+  {
+   "id": "c037",
+   "_moi": true,
+   "_gan": "c050",
+   "_r": 0.71,
+   "loi": "thì chỗ này nhạy cảm, vì Mỹ đang hạn chế bán chip mạnh sang Trung Quốc."
+  },
+  {
+   "id": "c038",
+   "_moi": true,
+   "_gan": "c051",
+   "_r": 0.62,
+   "loi": "Năm ngoái Mỹ đã điều tra xem Megaspeed có chuyển chip trái phép không."
+  },
+  {
+   "id": "c039",
+   "_moi": true,
+   "_gan": "c053",
+   "_r": 0.58,
+   "loi": "Nvidia nói họ là dịch vụ đám mây được phép."
+  },
+  {
+   "id": "c040",
+   "_moi": true,
+   "_gan": "c054",
+   "_r": 0.53,
+   "loi": "Megaspeed phủ nhận. Singapore cũng có điều tra riêng."
+  },
+  {
+   "id": "c041",
+   "y": "Người xem đọc lời Nvidia cuối tháng mười, ghi rõ là lời Nvidia",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n21",
+    "trich": "The diversion allegations against this regional cloud were thoroughly investigated and debunked last year",
+    "to_vang": "thoroughly investigated and debunked last year",
+    "trich_vi": "Các cáo buộc chuyển hướng chip qua dịch vụ đám mây khu vực này đã được điều tra kỹ và bác bỏ từ năm ngoái",
+    "to_vang_vi": "điều tra kỹ và bác bỏ từ năm ngoái"
+   },
+   "_tu": "c056",
+   "_r": 0.95
+  },
+  {
+   "id": "c042",
+   "_moi": true,
+   "_gan": "c061",
+   "_r": 0.69,
+   "loi": "Phần nặng nhất là ngày hai mươi chín tháng mười, New York Times đưa tin:"
+  },
+  {
+   "id": "c043",
+   "y": "Người xem hiểu đây là cáo buộc từ báo chí, nhãn nói rõ chưa kiểm chứng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7841618-007.mp4",
+    "nhan": "Cáo buộc, chưa kiểm chứng"
+   },
+   "an_du": "Tay cầm tập giấy chỉ gợi 'hồ sơ, kết luận'; nhãn ghi 'chưa kiểm chứng' đúng n9; không thêm hình người, không ngụ ý bà ấy có tội",
+   "_tu": "c008",
+   "_r": 0.85
+  },
+  {
+   "id": "c044",
+   "y": "Người xem đọc nguyên chữ Financial Times, ghi rõ qua CNBC",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n12",
+    "trich": "The CEO was in a romantic relationship with Alice Huang, a former Megaspeed executive, according to The Financial Times",
+    "to_vang": "in a romantic relationship with Alice Huang",
+    "trich_vi": "Giám đốc điều hành có quan hệ tình cảm với bà Alice Huang, cựu lãnh đạo Megaspeed, theo Financial Times",
+    "to_vang_vi": "có quan hệ tình cảm với bà Alice Huang"
+   },
+   "an_du": "Trích nguyên văn n12 bằng chữ; chỉ nêu 'theo Financial Times', không hình người, không thêm chi tiết",
+   "_tu": "c063",
+   "_r": 1.0
+  },
+  {
+   "id": "c045",
+   "_moi": true,
+   "_gan": "c064",
+   "_r": 0.65,
+   "loi": "Căn cứ của kết luận tình báo chưa được công bố. Cáo buộc gián điệp đến giờ vẫn chưa được chứng minh."
+  },
+  {
+   "id": "c046",
+   "_moi": true,
+   "_gan": "c067",
+   "_r": 0.54,
+   "loi": "Tháng mười năm ngoái có tin hai người từng uống rượu cùng nhau ở sự kiện"
+  },
+  {
+   "id": "c047",
+   "_moi": true,
+   "_gan": "c094",
+   "_r": 0.62,
+   "loi": "ngành năm hai nghìn không trăm hai mươi bốn. Khi đó Nvidia nói khách"
+  },
+  {
+   "id": "c048",
+   "y": "Người xem đọc lời Nvidia lúc đó",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n44",
+    "trich": "may ask him to visit to provide updates on the market",
+    "to_vang": "provide updates on the market",
+    "trich_vi": "có thể mời ông đến để cập nhật tình hình thị trường",
+    "to_vang_vi": "cập nhật tình hình thị trường"
+   },
+   "_tu": "c068",
+   "_r": 0.8
+  },
+  {
+   "id": "c049",
+   "_moi": true,
+   "_gan": "c069",
+   "_r": 0.59,
+   "loi": "Cuối tháng mười năm nay, theo Fortune, ông Huang nói các lần tiếp xúc"
+  },
+  {
+   "id": "c050",
+   "_moi": true,
+   "_gan": "c070",
+   "_r": 0.64,
+   "loi": "liên quan Megaspeed và hoàn toàn bình thường. Mình tính ra,"
+  },
+  {
+   "id": "c051",
+   "y": "Người xem thấy khoảng cách ngắn giữa bài báo và lá thư",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "10",
+    "truoc": "",
+    "sau": " ngày",
+    "nhan": "Từ bài báo NYT đến thư nhận lỗi",
+    "nguon_id": "k3",
+    "svg": "lich"
+   },
+   "an_du": "Số 10 ngày là phép tự tính của kênh (k3, ghi 'Tự tính' trên màn hình); chỉ là khoảng thời gian, không nói bài báo là nguyên nhân của thư",
+   "dan": {
+    "the": "tinh-toan",
+    "tu": "Mình tính ra"
+   },
+   "_tu": "c071",
+   "_r": 0.88
+  },
+  {
+   "id": "c052",
+   "_moi": true,
+   "_gan": "c073",
+   "_r": 0.77,
+   "loi": "Phiên thứ Hai, như đã nói, cổ phiếu giảm mạnh."
+  },
+  {
+   "id": "c053",
+   "y": "Người xem thấy phiên thứ Ba giảm sâu hơn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "5,47",
+    "truoc": "",
+    "sau": "%",
+    "nhan": "Cổ phiếu giảm thêm ngày 10/11",
+    "nguon_id": "n6",
+    "svg": "do-thi-roi",
+    "huong": "xuong"
+   },
+   "_tu": "c074",
+   "_r": 0.8
+  },
+  {
+   "id": "c054",
+   "y": "Người xem thấy mốc 4.000 tỷ: tụt dưới rồi đóng cửa vẫn trên",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "4.000",
+    "truoc": "",
+    "sau": " tỷ USD",
+    "nhan": "Mốc vốn hóa: có lúc tụt dưới",
+    "nguon_id": "n8",
+    "svg": "bieu-do-nen"
+   },
+   "_tu": "c075",
+   "_r": 0.81
+  },
+  {
+   "id": "c055",
+   "y": "Người xem tự thấy đường đi của giá qua hai phiên, và con số tự tính 9,5%",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "bieu-do",
+    "nhan": "Giá cổ phiếu Nvidia",
+    "bieu_do": {
+     "kieu": "cot",
+     "nhan_x": [
+      "Trước thư",
+      "Đóng 09/11",
+      "Sau 10/11"
+     ],
+     "gia_tri": [
+      186.64,
+      178.67,
+      168.9
+     ],
+     "don_vi": "USD",
+     "noi_bat": 2,
+     "chu_thich": "−9,5%",
+     "nguon_id": [
+      "k1",
+      "n15"
+     ]
+    }
+   },
+   "an_du": "Ba mốc giá lấy từ n15 và phép tự tính k1 (nhãn 'Sau 10/11' là giá tính từ mức giảm 5,47%); −9,5% là tự tính của kênh",
+   "dan": {
+    "the": "tinh-toan",
+    "tu": "mình tính ra"
+   },
+   "_tu": "c076",
+   "_r": 0.98
+  },
+  {
+   "id": "c056",
+   "y": "Người xem thấy Decrypt ghi con số hơn 470 tỷ, là ước tính",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n18.png",
+    "khung": "28.8,33.2,37.3,33.7",
+    "nguon_id": "n18"
+   },
+   "_tu": "c077",
+   "_r": 0.97
+  },
+  {
+   "id": "c057",
+   "y": "Người xem thấy cỡ con số lớn nhất, kèm nhãn ước tính sơ bộ",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "470",
+    "truoc": "",
+    "sau": " tỷ USD",
+    "nhan": "Vốn hóa có thể đã mất sau hai phiên, từ mức này trở lên (ước tính sơ bộ)",
+    "nguon_id": "n18",
+    "svg": "do-thi-roi",
+    "huong": "xuong"
+   },
+   "an_du": "Số kèm 'hơn' và nhãn 'ước tính sơ bộ' đúng n18 (khi phiên thứ Ba chưa đóng); hình đồ thị rơi chỉ là nền",
+   "_tu": "c078",
+   "_r": 1.0
+  },
+  {
+   "id": "c058",
+   "y": "Người xem cảm được chênh lệch cỡ: một lá thư vài đoạn so với con số vốn hóa bốc hơi",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Một lá thư vài đoạn",
+     "svg": "tai-lieu",
+     "to": 0.3
+    },
+    "phai": {
+     "nhan": "Vốn hóa bốc hơi",
+     "svg": "tien"
+    }
+   },
+   "an_du": "So cỡ 'lá thư' với 'con số' đúng lời đọc; không số mới; hình không khẳng định thư là nguyên nhân duy nhất",
+   "_tu": "c079",
+   "_r": 0.95
+  },
+  {
+   "id": "c059",
+   "_moi": true,
+   "_gan": "c080",
+   "_r": 0.19,
+   "loi": "Lá thư xin lỗi thì ngắn, còn số tiền bay đi thì dài."
+  },
+  {
+   "id": "c060",
+   "y": "Người xem thấy người đi kiện là một cổ đông có tên, theo Law Commentary",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n37.png",
+    "khung": "25.4,45.8,44.5,21.1",
+    "nguon_id": "n37"
+   },
+   "_tu": "c083",
+   "_r": 1.0
+  },
+  {
+   "id": "c061",
+   "y": "Người xem tự đọc dòng vụ kiện tập thể nộp tại San Jose",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n16.png",
+    "khung": "25.4,45.8,44.6,21.1",
+    "nguon_id": "n16"
+   },
+   "_tu": "c084",
+   "_r": 0.92
+  },
+  {
+   "id": "c062",
+   "y": "Người xem đọc nội dung đơn kiện: nói gây hiểu lầm",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n17",
+    "trich": "alleges that Nvidia made misleading statements about its dealings with Singapore-based Megaspeed International",
+    "to_vang": "misleading statements",
+    "trich_vi": "cáo buộc Nvidia đã đưa ra các tuyên bố gây hiểu lầm về quan hệ làm ăn với Megaspeed International, đặt tại Singapore",
+    "to_vang_vi": "các tuyên bố gây hiểu lầm"
+   },
+   "_tu": "c085",
+   "_r": 0.92
+  },
+  {
+   "id": "c063",
+   "y": "Người xem nhớ đây mới là đơn khởi kiện, chưa có phán quyết",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Đơn kiện, chưa phán quyết",
+    "nguon_id": "n16"
+   },
+   "an_du": "Búa phán quyết cùng nhãn 'chưa phán quyết' đúng lời đọc 'chưa có phán quyết nào'; không ngụ ý ai thắng",
+   "san_khau": "co-quan",
+   "vat_chinh": "bua-phan-quyet",
+   "dao_cu": [
+    "tai-lieu"
+   ],
+   "may_quay": "day-vao",
+   "_tu": "c088",
+   "_r": 0.95
+  },
+  {
+   "id": "c064",
+   "y": "Người xem thấy AMD và Broadcom tăng cùng phiên Nvidia giảm, số liệu CNBC",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "bieu-do",
+    "nhan": "Cổ phiếu tăng ngày 09/11",
+    "bieu_do": {
+     "kieu": "cot",
+     "nhan_x": [
+      "AMD",
+      "Broadcom"
+     ],
+     "gia_tri": [
+      13,
+      10
+     ],
+     "don_vi": "%",
+     "noi_bat": 0,
+     "nguon_id": "n46"
+    }
+   },
+   "an_du": "Hai cột lấy từ n46 (Broadcom 'hơn 10%'); không nói cú rơi của Nvidia là nguyên nhân, đúng lời CNBC không nói",
+   "_tu": "c089",
+   "_r": 0.97
+  },
+  {
+   "id": "c065",
+   "y": "Cả ngành chip không cùng rơi",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "nha-may-chip-32386617-090.mp4",
+    "nhan": "Cả ngành không rơi cùng"
+   },
+   "_tu": "c091",
+   "_r": 0.86
+  },
+  {
+   "id": "c066",
+   "y": "Mở chương mới, báo cho người xem biết đang chuyển ý",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 4",
+    "chuong": "Người Việt đứng ở đâu"
+   },
+   "dan": {
+    "the": "chao"
+   },
+   "_tu": "c092",
+   "_r": 0.97
+  },
+  {
+   "id": "c067",
+   "y": "Người xem thấy Hà Nội, nơi Nvidia có mặt",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ha-noi-092.mp4",
+    "nhan": "Hà Nội"
+   },
+   "_tu": "c093",
+   "_r": 1.0
+  },
+  {
+   "id": "c068",
+   "y": "Gợi thời điểm: đầu tháng mười hai năm 2024",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "duong-pho-viet-nam-35306363-093.mp4",
+    "nhan": "Đầu tháng 12/2024"
+   },
+   "_tu": "c094",
+   "_r": 1.0
+  },
+  {
+   "id": "c069",
+   "y": "Người xem tự đọc dòng thỏa thuận ký tại Hà Nội",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n29.png",
+    "khung": "12.9,42.8,52.7,24.9",
+    "nguon_id": "n29"
+   },
+   "_tu": "c095",
+   "_r": 1.0
+  },
+  {
+   "id": "c070",
+   "y": "Người xem thấy ông Huang cùng người Việt: Nvidia gắn với Việt Nam có thật",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "jensen-ha-noi-095.mp4",
+    "nhan": "Ông Huang ở Việt Nam"
+   },
+   "an_du": "Ảnh thật có ông Huang cùng người Việt (nguồn Wikimedia Commons), dùng cho câu 'chứng kiến'; không ngụ ý ai liên quan vụ việc",
+   "_tu": "c096",
+   "_r": 0.96
+  },
+  {
+   "id": "c071",
+   "y": "Người xem thấy trung tâm dữ liệu AI được mở rộng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-5028622-097.mp4",
+    "nhan": "Mở rộng trung tâm dữ liệu AI"
+   },
+   "_tu": "c098",
+   "_r": 1.0
+  },
+  {
+   "id": "c072",
+   "y": "Người xem tự đọc dòng nói trung tâm dữ liệu của Viettel đã dùng công nghệ Nvidia",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "n41.png",
+    "khung": "12.9,42.8,52.7,24.9",
+    "nguon_id": "n41"
+   },
+   "_tu": "c099",
+   "_r": 1.0
+  },
+  {
+   "id": "c073",
+   "y": "Người xem thấy con số của nhà máy AI hợp tác với Việt Nam",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "200",
+    "truoc": "",
+    "sau": " triệu USD",
+    "nhan": "Nhà máy AI FPT và Nvidia công bố",
+    "nguon_id": "n30",
+    "svg": "nha-may"
+   },
+   "an_du": "Số lấy từ n30, nhãn ghi 'công bố' (tháng 4/2024); hình nhà máy chỉ mờ làm nền",
+   "_tu": "c100",
+   "_r": 0.98
+  },
+  {
+   "id": "c074",
+   "y": "Nhịp thở: Hà Nội, chỗ dư chấn có thể tới",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ha-noi-100.mp4",
+    "nhan": "Dư chấn ở đây"
+   },
+   "_tu": "c101",
+   "_r": 1.0
+  },
+  {
+   "id": "c075",
+   "_moi": true,
+   "_gan": "c104",
+   "_r": 0.41,
+   "loi": "Dư chấn thôi. Với mình, doanh nghiệp Việt đang dùng hạ tầng Nvidia"
+  },
+  {
+   "id": "c076",
+   "_moi": true,
+   "_gan": "c104",
+   "_r": 0.76,
+   "loi": "rồi sẽ phải trả lời khách hàng về rủi ro nhà cung cấp."
+  },
+  {
+   "id": "c077",
+   "y": "Người dùng bình thường: hiện chưa thấy nguồn nói giá bị ảnh hưởng",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-853794-104.mp4",
+    "nhan": "Người dùng: chưa thấy ảnh hưởng"
+   },
+   "_tu": "c105",
+   "_r": 1.0
+  },
+  {
+   "id": "c078",
+   "y": "Việc cần theo dõi nếu Mỹ có động thái mới",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "capitol-105.mp4",
+    "nhan": "Động thái mới của Mỹ"
+   },
+   "_tu": "c106",
+   "_r": 0.86
+  },
+  {
+   "id": "c079",
+   "y": "Mở chương mới, báo cho người xem biết đang chuyển ý",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 5",
+    "chuong": "Hai mốc cần ngóng"
+   },
+   "dan": {
+    "the": "chao"
+   },
+   "_tu": "c113",
+   "_r": 0.93
+  },
+  {
+   "id": "c080",
+   "y": "Người xem thấy nơi Hạ viện làm việc: sắp có trát hoặc buổi họp",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "capitol-113.mp4",
+    "nhan": "Ủy ban Đối ngoại Hạ viện"
+   },
+   "_tu": "c114",
+   "_r": 0.93
+  },
+  {
+   "id": "c081",
+   "y": "Người xem đọc mốc hạn chót 11/11 bằng chữ gốc",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "n19",
+    "trich": "prepared to subpoena Huang unless the CEO responded by Wednesday, November 11",
+    "to_vang": "unless the CEO responded by Wednesday, November 11",
+    "trich_vi": "sẵn sàng ra trát đối với ông Huang trừ khi ông trả lời trước thứ Tư, 11 tháng 11",
+    "to_vang_vi": "trừ khi ông trả lời trước thứ Tư, 11 tháng 11"
+   },
+   "an_du": "Trích nguyên văn n19, tô mốc 11/11; đây là lời dọa chưa thành trát (lời đọc nói rõ chưa có trát nào)",
+   "_tu": "c115",
+   "_r": 1.0
+  },
+  {
+   "id": "c082",
+   "_moi": true,
+   "_gan": "c116",
+   "_r": 0.74,
+   "loi": "Theo báo chí, chưa có trát nào được ban hành. Rồi đến ngày mười bảy,"
+  },
+  {
+   "id": "c083",
+   "_moi": true,
+   "_gan": "c118",
+   "_r": 0.75,
+   "loi": "Nvidia dự kiến báo cáo kết quả quý, hôm sau là buổi họp kín mà các nghị sĩ đề nghị."
+  },
+  {
+   "id": "c084",
+   "y": "Người xem nhớ ông Huang vẫn là CEO, chưa có quyết định",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "nvidia-tru-so-118.mp4",
+    "nhan": "Vẫn là Giám đốc điều hành"
+   },
+   "_tu": "c119",
+   "_r": 0.97
+  },
+  {
+   "id": "c085",
+   "_moi": true,
+   "_gan": "c123",
+   "_r": 0.67,
+   "loi": "Theo ghi chú của một nhà phân tích phố Wall, giới đầu tư đang ước chừng"
+  },
+  {
+   "id": "c086",
+   "_moi": true,
+   "_gan": "c125",
+   "_r": 0.72,
+   "loi": "khoảng mười lăm phần trăm khả năng ông bị cách chức và tám mươi lăm phần trăm khả năng ông ở lại sau điều tra."
+  },
+  {
+   "id": "c087",
+   "y": "Nhịp thở: sàn chứng khoán, 'chuyện của phố Wall'",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "nyse-125.mp4",
+    "nhan": "Chuyện của phố Wall"
+   },
+   "_tu": "c126",
+   "_r": 1.0
+  },
+  {
+   "id": "c088",
+   "_moi": true,
+   "_gan": "c132",
+   "_r": 0.76,
+   "loi": "Tóm lại, phần đời tư thì ông Huang đã tự nhận trong thư."
+  },
+  {
+   "id": "c089",
+   "_moi": true,
+   "_gan": "c133",
+   "_r": 0.56,
+   "loi": "Phần lớn hơn vẫn đang treo. Kết luận tình báo là cáo buộc,"
+  },
+  {
+   "id": "c090",
+   "y": "Người xem nhớ lại câu của hội đồng: chưa có lý do để tin",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "con-dau-7344550-133.mp4",
+    "nhan": "Chưa có lý do để tin"
+   },
+   "_tu": "c134",
+   "_r": 0.85
+  },
+  {
+   "id": "c091",
+   "y": "Người xem nhớ điều chắc chắn duy nhất: con số đi cùng chuyện này",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "190",
+    "truoc": "",
+    "sau": " tỷ USD",
+    "nhan": "Vốn hóa mất trong phiên 09/11 (khoảng)",
+    "nguon_id": "n14",
+    "svg": "do-thi-roi",
+    "huong": "xuong"
+   },
+   "an_du": "Số lặp lại cảnh mở (n14) để khép vòng; giữ chữ 'khoảng', không ngụ ý nguyên nhân",
+   "dan": {
+    "the": "xac-nhan"
+   },
+   "_tu": "c135",
+   "_r": 0.98
+  },
+  {
+   "id": "c092",
+   "y": "Người xem thấy nơi diễn ra buổi họp kín mà câu hỏi nhắm tới",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "capitol-135.mp4",
+    "nhan": "18/11: họp kín ở Hạ viện"
+   },
+   "an_du": "Ảnh Capitol là bối cảnh cho 'buổi họp kín ở Hạ viện' trong câu hỏi mở của lời đọc; không ngụ ý kết quả",
+   "_tu": "c136",
+   "_r": 1.0
+  },
+  {
+   "id": "c093",
+   "_moi": true,
+   "_gan": "c137",
+   "_r": 0.72,
+   "loi": "Gõ một nếu bạn nghĩ ông ấy sẽ đến, gõ hai nếu bạn"
+  },
+  {
+   "id": "c094",
+   "y": "Lời kêu gọi bình luận: điện thoại với bong bóng chat",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Comment cho mình biết"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "dien-thoai",
+   "dao_cu": [
+    "bong-bong"
+   ],
+   "may_quay": "day-vao",
+   "_tu": "c138",
+   "_r": 0.82
+  }
+ ]
+}

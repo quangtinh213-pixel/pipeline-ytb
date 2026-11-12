@@ -1,0 +1,527 @@
+[
+ {
+  "id": "n1",
+  "gia_tri": "Thư ông Jensen Huang gửi nhân viên ngày 08/11/2026: nhận đã không chung thủy với vợ, xin lỗi vợ con, nhân viên, hội đồng quản trị, đối tác và cổ đông",
+  "trich_dan": "I was unfaithful to my wife.",
+  "url": "https://nvidianews.nvidia.com/news/a-message-to-our-company",
+  "ten": "Nvidia",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n2",
+  "gia_tri": "Trong thư, ông Huang nói hội đồng quản trị đã mở điều tra độc lập về các lo ngại an ninh quốc gia, ông ủng hộ và sẽ hợp tác đầy đủ",
+  "trich_dan": "NVIDIA’s Board of Directors has initiated an independent investigation",
+  "url": "https://nvidianews.nvidia.com/news/a-message-to-our-company",
+  "ten": "Nvidia",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n2.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n3",
+  "gia_tri": "Thông cáo hội đồng quản trị 08/11/2026: điều tra độc lập sau các báo cáo ông Huang là mục tiêu của một nỗ lực tình báo nước ngoài",
+  "trich_dan": "recent reporting that founder and CEO Jensen Huang has been the target of a foreign intelligence effort",
+  "url": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+  "ten": "Nvidia",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n3.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n4",
+  "gia_tri": "Hội đồng nói chưa có lý do tin an ninh quốc gia hay bí mật của Nvidia bị lộ",
+  "trich_dan": "the Board has no reason to believe that either national security or NVIDIA secrets were compromised",
+  "url": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+  "ten": "Nvidia",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n4.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n5",
+  "gia_tri": "Ngày 10/11/2026 hội đồng thuê ông Joon H. Kim và hãng Wachtell, Lipton, Rosen & Katz điều tra",
+  "trich_dan": "retained former acting U.S. Attorney of the Southern District of New York Joon H. Kim and his firm Wachtell, Lipton, Rosen & Katz",
+  "url": "https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board",
+  "ten": "Nvidia",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n5.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n6",
+  "gia_tri": "Cổ phiếu Nvidia giảm 5,47% ngày 10/11/2026",
+  "trich_dan": "shares sank 5.47% on Tuesday",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n6.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n7",
+  "gia_tri": "Cổ phiếu Nvidia đóng cửa giảm hơn 4% ngày 09/11/2026",
+  "trich_dan": "closed more than 4% lower on Monday",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n7.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n8",
+  "gia_tri": "Vốn hóa suýt xuống dưới 4.000 tỷ USD ngày 10/11/2026, đóng cửa vẫn trên mốc đó",
+  "trich_dan": "briefly dipped below $4 trillion in market cap during afternoon trading, but bounced back to close above that level",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n8.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n9",
+  "gia_tri": "New York Times ngày 29/10/2026: quan chức Mỹ kết luận bà Alice Huang là tài sản tình báo của Trung Quốc (cáo buộc, chưa kiểm chứng độc lập)",
+  "trich_dan": "a Chinese intelligence asset, funneling information to Beijing",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC (dẫn New York Times)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n9.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n10",
+  "gia_tri": "Tổng thống Trump ngày 09/11/2026: FBI đang xem xét \"một việc khác\"",
+  "trich_dan": "I know the FBI is looking into it in terms of something else",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n10.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n11",
+  "gia_tri": "Ghi chú của nhà phân tích Dan Ives (Yorkville Ives & Co): giới đầu tư đang gán chừng 15% khả năng ông Huang bị cách chức CEO, 85% ông ở lại sau điều tra",
+  "trich_dan": "roughly a 15% chance he is removed as CEO of Nvidia with a high probability (85%) he stays on as CEO",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n11.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n12",
+  "gia_tri": "Financial Times: ông Huang có quan hệ tình cảm với bà Alice Huang, cựu lãnh đạo Megaspeed",
+  "trich_dan": "The CEO was in a romantic relationship with Alice Huang, a former Megaspeed executive, according to The Financial Times",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html",
+  "ten": "CNBC (dẫn Financial Times)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n12.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n13",
+  "gia_tri": "Họp sáng 09/11/2026: ông Huang xin lỗi rồi chuyển sang công việc, không nhận câu hỏi",
+  "trich_dan": "Huang didn’t take any questions and quickly pivoted to business",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n13.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n14",
+  "gia_tri": "Phiên 09/11/2026: Nvidia giảm 4,3%, bốc hơi khoảng 190 tỷ USD vốn hóa",
+  "trich_dan": "wiping approximately $190 billion from the company's market value",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n14.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n15",
+  "gia_tri": "Đóng cửa 09/11/2026: 178,67 USD một cổ phiếu, giảm 7,97 USD",
+  "trich_dan": "Nvidia shares closed at $178.67 on November 9, down $7.97 from the previous trading session",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n15.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n16",
+  "gia_tri": "Vụ kiện tập thể của cổ đông nộp ngày 09/11/2026 tại tòa liên bang San Jose",
+  "trich_dan": "The proposed class action, filed November 9, 2026, in federal court in San Jose, California",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n16.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n17",
+  "gia_tri": "Đơn kiện cáo buộc Nvidia nói gây hiểu lầm về quan hệ với Megaspeed",
+  "trich_dan": "alleges that Nvidia made misleading statements about its dealings with Singapore-based Megaspeed International",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n17.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n18",
+  "gia_tri": "Hai phiên 09–10/11/2026 trên đà xóa hơn 470 tỷ USD vốn hóa (ước tính khi phiên 10/11 chưa đóng)",
+  "trich_dan": "on track to erase more than $470 billion in market value",
+  "url": "https://decrypt.co/382974/nvidia-erases-2026-gains-republicans-threaten-ceo-subpoena",
+  "ten": "Decrypt",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n18.png",
+  "trang_thai": "so-bo"
+ },
+ {
+  "id": "n19",
+  "gia_tri": "Chủ tịch Ủy ban Đối ngoại Hạ viện Brian Mast dọa ra trát nếu ông Huang không trả lời trước 11/11/2026 (chưa có trát nào được ban hành)",
+  "trich_dan": "prepared to subpoena Huang unless the CEO responded by Wednesday, November 11",
+  "url": "https://decrypt.co/382974/nvidia-erases-2026-gains-republicans-threaten-ceo-subpoena",
+  "ten": "Decrypt",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n19.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n20",
+  "gia_tri": "Nvidia dự kiến báo cáo quý ngày 17/11/2026, một ngày trước buổi làm việc kín 18/11 mà Hạ viện đề nghị (một số nguồn khác ghi 18/11; Nvidia chưa xác nhận trên trang chính thức đã đọc)",
+  "trich_dan": "Nvidia is scheduled to report quarterly earnings on November 17, one day before the congressional briefing requested by House Republicans",
+  "url": "https://decrypt.co/382974/nvidia-erases-2026-gains-republicans-threaten-ceo-subpoena",
+  "ten": "Decrypt",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n20.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n21",
+  "gia_tri": "Nvidia (29/10/2026): cáo buộc chuyển chip đã được điều tra kỹ và bác bỏ từ năm ngoái",
+  "trich_dan": "The diversion allegations against this regional cloud were thoroughly investigated and debunked last year",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n21.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n22",
+  "gia_tri": "Ông Huang (10/2026): quan hệ với bà Alice Huang liên quan tới Megaspeed và \"hoàn toàn bình thường\"",
+  "trich_dan": "it was all completely normal and not unusual",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n22.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n23",
+  "gia_tri": "Bloomberg: bà Alice Huang là cựu nhà báo truyền hình, thành người cho các hãng hàng đầu Trung Quốc thuê chip",
+  "trich_dan": "a former television journalist who became a semiconductor power broker renting advanced chips to China's top firms",
+  "url": "https://uk.finance.yahoo.com/news/alice-huang-suspected-china-spy-101526066.html",
+  "ten": "Bloomberg",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n23.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n24",
+  "gia_tri": "Hồ sơ Malaysia (một báo cáo dẫn lại, chưa kiểm chứng độc lập): công ty liên quan Megaspeed mua ít nhất 4,8 tỷ USD thiết bị dùng công nghệ Nvidia, 6/2024–2/2026",
+  "trich_dan": "purchased at least $4.8 billion in advanced equipment incorporating Nvidia technology",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo (dẫn hồ sơ doanh nghiệp Malaysia)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n24.png",
+  "trang_thai": "so-bo"
+ },
+ {
+  "id": "n25",
+  "gia_tri": "Bộ Ngoại giao Trung Quốc (Guo Jiakun): cáo buộc là \"hoàn toàn vô căn cứ\"",
+  "trich_dan": "purely unsubstantiated",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n25.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n26",
+  "gia_tri": "Cáo buộc gián điệp chưa được chứng minh",
+  "trich_dan": "The espionage allegations remain unproven",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n26.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n27",
+  "gia_tri": "Megaspeed phủ nhận sai phạm",
+  "trich_dan": "Megaspeed has denied wrongdoing",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n27.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n28",
+  "gia_tri": "Theo báo cáo, Megaspeed cho khách Trung Quốc, gồm Alibaba, thuê năng lực tính toán đặt ngoài Trung Quốc",
+  "trich_dan": "Megaspeed reportedly leased computing capacity to Chinese customers, including Alibaba",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n28.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n29",
+  "gia_tri": "Hà Nội, 05/12/2024: Nvidia ký thỏa thuận lập trung tâm nghiên cứu AI, Thủ tướng Phạm Minh Chính và ông Huang chứng kiến",
+  "trich_dan": "which was signed last week in Ha Noi in the presence of Prime Minister Pham Minh Chinh and visiting NVIDIA CEO Jensen Huang",
+  "url": "https://en.baochinhphu.vn/significant-step-forward-to-turn-viet-nam-into-regional-tech-hub-the-diplomat-111241210091139064.htm",
+  "ten": "Cổng Thông tin Chính phủ",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n29.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n30",
+  "gia_tri": "FPT và Nvidia công bố (4/2024) \"nhà máy AI\" 200 triệu USD",
+  "trich_dan": "In April, FPT announced that it and NVIDIA would build a US$200 million AI",
+  "url": "https://en.baochinhphu.vn/significant-step-forward-to-turn-viet-nam-into-regional-tech-hub-the-diplomat-111241210091139064.htm",
+  "ten": "Cổng Thông tin Chính phủ",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n30.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n31",
+  "gia_tri": "Doanh thu công nghiệp công nghệ số Việt Nam 10 tháng đầu 2026 ước đạt 254,6 tỷ USD",
+  "trich_dan": "doanh thu ngành công nghiệp công nghệ số Việt Nam trong 10 tháng đầu năm 2026 ước đạt 254,6 tỷ USD",
+  "url": "https://cafef.vn/doanh-thu-cong-nghiep-cong-nghe-so-viet-nam-dat-hon-250-ty-usd-188261110075659693.chn",
+  "ten": "CafeF (dẫn Bộ Khoa học và Công nghệ)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n31.png",
+  "trang_thai": "so-bo"
+ },
+ {
+  "id": "n32",
+  "gia_tri": "New York Times (10/2025): ông Huang và bà Alice Huang từng được thấy uống rượu cùng nhau ở một sự kiện ngành năm 2024",
+  "trich_dan": "Jensen and Alice had been seen drinking together at an industry event in 2024",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune (dẫn New York Times)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n32.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n33",
+  "gia_tri": "Nvidia (12/2025): Megaspeed là dịch vụ đám mây được phép theo quy định kiểm soát xuất khẩu",
+  "trich_dan": "a cloud service permitted under the export control rules",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n33.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n34",
+  "gia_tri": "Hồ sơ Singapore: bà Alice Huang là giám đốc Megaspeed từ tháng 3 đến tháng 11/2023",
+  "trich_dan": "served as a director at Megaspeed International from March through November 2023",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo (dẫn hồ sơ Singapore)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n34.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n35",
+  "gia_tri": "Một nhân viên Nvidia nói với CNBC là họ bị sốc trước thông tin của ông Huang",
+  "trich_dan": "One employee told CNBC that they were shocked by Jensen Huang’s revelations",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n35.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n36",
+  "gia_tri": "Sau lễ ký, ông Huang và Thủ tướng Phạm Minh Chính nâng ly bia hơi ở một quán ở Hà Nội",
+  "trich_dan": "toasted with glasses of bia hoi at a Ha Noi restaurant",
+  "url": "https://en.baochinhphu.vn/significant-step-forward-to-turn-viet-nam-into-regional-tech-hub-the-diplomat-111241210091139064.htm",
+  "ten": "Cổng Thông tin Chính phủ",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n36.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n37",
+  "gia_tri": "Cổ đông Mark Kistenmacher là nguyên đơn, cho rằng nhà đầu tư thua lỗ vì Nvidia giấu thông tin",
+  "trich_dan": "Shareholder Mark Kistenmacher claims investors suffered financial losses because Nvidia concealed information",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n37.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n38",
+  "gia_tri": "Bà Alice Huang, lãnh đạo Megaspeed, không có quan hệ họ hàng với ông Jensen Huang",
+  "trich_dan": "Megaspeed executive Alice Huang (no relation)",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n38.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n39",
+  "gia_tri": "Bloomberg (12/2025): chính phủ Mỹ điều tra Megaspeed, xem công ty có chuyển chip Nvidia sang Trung Quốc trái phép không",
+  "trich_dan": "the U.S. government was investigating Megaspeed and whether the company had illegally diverted Nvidia chips to China",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune (dẫn Bloomberg)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n39.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n40",
+  "gia_tri": "Thư của ông Huang không nêu tên người có quan hệ cùng",
+  "trich_dan": "though he did not disclose with whom he had the relationship",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n40.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n41",
+  "gia_tri": "Thỏa thuận 05/12/2024 mở rộng một trung tâm dữ liệu AI của Viettel, vốn đã dùng công nghệ Nvidia",
+  "trich_dan": "will involve the expansion of an AI data center owned by the Vietnamese military-owned Viettel Group, which already uses Nvidia technology",
+  "url": "https://en.baochinhphu.vn/significant-step-forward-to-turn-viet-nam-into-regional-tech-hub-the-diplomat-111241210091139064.htm",
+  "ten": "Cổng Thông tin Chính phủ",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n41.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n42",
+  "gia_tri": "Tin này kéo theo sự soi xét việc ông Huang tiếp tục ủng hộ bán thêm chip AI cho Trung Quốc",
+  "trich_dan": "drawn increased scrutiny on his continued support for more AI chip sales to China",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n42.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n43",
+  "gia_tri": "Tổng thống Trump ngày 09/11/2026: ông nghĩ ông Huang sẽ ổn",
+  "trich_dan": "I think that he’ll be in good shape",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n43.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n44",
+  "gia_tri": "Nvidia (10/2025): khách hàng có thể mời ông Huang đến cập nhật tình hình thị trường",
+  "trich_dan": "may ask him to visit to provide updates on the market",
+  "url": "https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/",
+  "ten": "Fortune (dẫn phát ngôn viên Nvidia)",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n44.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n45",
+  "gia_tri": "Đơn kiện đại diện nhà đầu tư mua cổ phiếu Nvidia từ 09/10/2025 đến 08/11/2026",
+  "trich_dan": "between October 9, 2025, and November 8, 2026",
+  "url": "https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair",
+  "ten": "Law Commentary",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n45.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n46",
+  "gia_tri": "Cùng phiên 09/11/2026: AMD tăng 13%, Broadcom tăng hơn 10%",
+  "trich_dan": "AMD gained 13% on Monday, while Broadcom added just over 10%",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n46.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n47",
+  "gia_tri": "Hãng Rosen Law Firm đứng đơn kiện, cáo buộc bị đơn đưa tuyên bố sai hoặc gây hiểu lầm",
+  "trich_dan": "The Rosen Law Firm’s suit alleges the defendants made false or misleading statements",
+  "url": "https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html",
+  "ten": "CNBC",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n47.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n48",
+  "gia_tri": "Singapore xác nhận có một cuộc điều tra riêng về Megaspeed",
+  "trich_dan": "Singapore confirmed a separate investigation into Megaspeed",
+  "url": "https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html",
+  "ten": "Yahoo",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "nguon/n48.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "k1",
+  "gia_tri": "Khoảng 9,5% sau hai phiên (từ 186,64 USD xuống khoảng 168,9 USD một cổ phiếu)",
+  "trich_dan": "",
+  "url": "",
+  "ten": "Kênh tự tính",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "",
+  "trang_thai": "tu-tinh",
+  "cong_thuc": "186,64 = 178,67 + 7,97; 178,67 × (1 − 5,47%) ≈ 168,9; (186,64 − 168,9) ÷ 186,64 ≈ 9,5%",
+  "dau_vao": [
+   "n15",
+   "n6"
+  ]
+ },
+ {
+  "id": "k2",
+  "gia_tri": "Khoảng 75%: 190 ÷ 254,6",
+  "trich_dan": "",
+  "url": "",
+  "ten": "Kênh tự tính",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "",
+  "trang_thai": "tu-tinh",
+  "cong_thuc": "190 ÷ 254,6 ≈ 0,746 (vốn hóa mất một phiên so với doanh thu 10 tháng; hai thứ khác bản chất, chỉ để so cỡ)",
+  "dau_vao": [
+   "n14",
+   "n31"
+  ]
+ },
+ {
+  "id": "k3",
+  "gia_tri": "10 ngày",
+  "trich_dan": "",
+  "url": "",
+  "ten": "Kênh tự tính",
+  "ngay_truy_cap": "2026-11-11",
+  "anh_chup": "",
+  "trang_thai": "tu-tinh",
+  "cong_thuc": "08/11/2026 − 29/10/2026 = 10 ngày",
+  "dau_vao": [
+   "n1",
+   "n9"
+  ]
+ }
+]

@@ -1,0 +1,862 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 4.331,
+   "loi": "Từ ngày một tháng một năm hai nghìn không trăm hai mươi bảy, điện thoại cũ bị cấm nhập vào Việt Nam."
+  },
+  {
+   "id": "c002",
+   "start": 4.331,
+   "end": 8.165,
+   "loi": "Máy tính cũ cũng vậy. Nghe như chuyện mới tinh. Có thật là mới không?"
+  },
+  {
+   "id": "c003",
+   "start": 8.165,
+   "end": 10.736,
+   "loi": "Trong chính thông tư đó có một chi tiết lạ. Văn bản"
+  },
+  {
+   "id": "c004",
+   "start": 10.736,
+   "end": 13.681,
+   "loi": "mà nó thay thế ký ngày mười lăm tháng mười năm hai nghìn không trăm mười tám."
+  },
+  {
+   "id": "c005",
+   "start": 13.681,
+   "end": 16.934,
+   "loi": "Tên văn bản cũ cũng có đúng mấy chữ \"đã qua sử dụng cấm nhập khẩu\"."
+  },
+  {
+   "id": "c006",
+   "start": 16.934,
+   "end": 20.527,
+   "loi": "Tính ra là hơn tám năm. Một lệnh cấm đủ tuổi đi học tiểu học,"
+  },
+  {
+   "id": "c007",
+   "start": 20.527,
+   "end": 23.925,
+   "loi": "mà mấy tờ báo lớn vẫn đưa như tin sốt dẻo. Cổ điển, tôn trọng."
+  },
+  {
+   "id": "c008",
+   "start": 23.925,
+   "end": 28.748,
+   "loi": "Vậy cái gì thật sự đổi? Và người đang nhắm một cái máy cũ ngoài tiệm đầu ngõ có phải lo không?"
+  },
+  {
+   "id": "c009",
+   "start": 28.748,
+   "end": 33.861,
+   "loi": "Câu trả lời nằm trong toàn văn Thông tư sáu mươi ba của Bộ Khoa học và Công nghệ, kể cả cái phụ lục."
+  },
+  {
+   "id": "c010",
+   "start": 33.861,
+   "end": 36.718,
+   "loi": "Thông tư cấm nhập cái gì? Thân văn bản ngắn lắm."
+  },
+  {
+   "id": "c011",
+   "start": 36.718,
+   "end": 40.096,
+   "loi": "Phần nặng nằm ở phụ lục, một cái bảng mã hàng hóa, gọi là mã HS."
+  },
+  {
+   "id": "c012",
+   "start": 40.096,
+   "end": 43.924,
+   "loi": "Nghe khá niche, nhưng hải quan nhìn đúng mã này để biết món hàng thuộc loại gì."
+  },
+  {
+   "id": "c013",
+   "start": 43.924,
+   "end": 47.048,
+   "loi": "Đếm trong phụ lục, tính ra mười ba nhóm mã bốn chữ số."
+  },
+  {
+   "id": "c014",
+   "start": 47.048,
+   "end": 50.84,
+   "loi": "Thông tư không ghi sẵn con số này. Nhóm quen nhất là tám năm một bảy."
+  },
+  {
+   "id": "c015",
+   "start": 50.84,
+   "end": 53.743,
+   "loi": "Mô tả ghi: bộ điện thoại, kể cả điện thoại thông minh."
+  },
+  {
+   "id": "c016",
+   "start": 53.743,
+   "end": 58.413,
+   "loi": "Kế đó là tám bốn bảy một, máy xử lý dữ liệu tự động, nói kiểu thường ngày là máy tính."
+  },
+  {
+   "id": "c017",
+   "start": 58.413,
+   "end": 61.627,
+   "loi": "Rồi tới mấy thứ ít ai nghĩ tới như micro, loa, tai nghe,"
+  },
+  {
+   "id": "c018",
+   "start": 61.627,
+   "end": 64.192,
+   "loi": "camera kỹ thuật số, cả màn hình với máy chiếu."
+  },
+  {
+   "id": "c019",
+   "start": 64.192,
+   "end": 66.769,
+   "loi": "Nói gọn là gần hết cái bàn làm việc của dân văn phòng."
+  },
+  {
+   "id": "c020",
+   "start": 66.769,
+   "end": 69.301,
+   "loi": "Hình dung vậy cho dễ, thông tư không viết thế."
+  },
+  {
+   "id": "c021",
+   "start": 69.301,
+   "end": 73.002,
+   "loi": "Danh mục còn xuống tận mạch in, mạch điện tử tích hợp, dây và cáp điện."
+  },
+  {
+   "id": "c022",
+   "start": 73.002,
+   "end": 76.691,
+   "loi": "Tức là cả thứ nằm bên trong cái máy. Tới sợi cáp cũng có mã riêng."
+  },
+  {
+   "id": "c023",
+   "start": 76.691,
+   "end": 79.37,
+   "loi": "Văn bản nhà nước mà, không bỏ sót sợi dây nào."
+  },
+  {
+   "id": "c024",
+   "start": 79.37,
+   "end": 82.945,
+   "loi": "Có một quy tắc đọc bảng đáng để ý. Bảng ghi tới nhóm bốn chữ số"
+  },
+  {
+   "id": "c025",
+   "start": 82.945,
+   "end": 85.678,
+   "loi": "thì mọi mã tám chữ số nằm trong nhóm đó đều dính."
+  },
+  {
+   "id": "c026",
+   "start": 85.678,
+   "end": 89.028,
+   "loi": "Mà nhóm điện thoại ghi đúng bốn chữ số. Nghĩa là cả nhóm."
+  },
+  {
+   "id": "c027",
+   "start": 89.028,
+   "end": 93.568,
+   "loi": "Vậy là điện thoại cũ, máy tính cũ, tai nghe cũ, màn hình cũ đều nằm trong danh mục."
+  },
+  {
+   "id": "c028",
+   "start": 93.568,
+   "end": 97.945,
+   "loi": "Miễn là hàng đã qua sử dụng và đi từ nước ngoài vào, trừ vài ngoại lệ sẽ nói ngay sau đây."
+  },
+  {
+   "id": "c029",
+   "start": 97.945,
+   "end": 102.098,
+   "loi": "Tới đây nhiều người sẽ hỏi: máy tân trang thì sao? Thông tư trả lời thẳng."
+  },
+  {
+   "id": "c030",
+   "start": 102.098,
+   "end": 104.92,
+   "loi": "Sản phẩm tân trang có mã thuộc danh mục thì bị cấm nhập."
+  },
+  {
+   "id": "c031",
+   "start": 104.92,
+   "end": 110.163,
+   "loi": "Thông tư định nghĩa luôn: tân trang là máy cũ được sửa, thay linh kiện để chạy ngon và nhìn bề ngoài như mới."
+  },
+  {
+   "id": "c032",
+   "start": 110.163,
+   "end": 114.634,
+   "loi": "Tức là đẹp như mới vẫn không qua cửa. Lột xác kiểu gì thì trên giấy vẫn là máy cũ."
+  },
+  {
+   "id": "c033",
+   "start": 114.634,
+   "end": 120.059,
+   "loi": "Linh kiện cũng vậy. Bộ phận, phụ kiện, cụm linh kiện đã qua sử dụng của các món trong danh mục cũng bị cấm nhập."
+  },
+  {
+   "id": "c034",
+   "start": 120.059,
+   "end": 122.739,
+   "loi": "Ví dụ như một cái màn hình bóc từ máy cũ ở nước ngoài."
+  },
+  {
+   "id": "c035",
+   "start": 122.739,
+   "end": 125.781,
+   "loi": "Đó chỉ là ví dụ, văn bản không ghi cụ thể món nào."
+  },
+  {
+   "id": "c036",
+   "start": 125.781,
+   "end": 128.724,
+   "loi": "Có ngoại lệ không? Có, nhưng không dành cho người mua lẻ."
+  },
+  {
+   "id": "c037",
+   "start": 128.724,
+   "end": 131.269,
+   "loi": "Trừ khi nhà bạn đang xây nhà máy chip. Máy móc,"
+  },
+  {
+   "id": "c038",
+   "start": 131.269,
+   "end": 134.81,
+   "loi": "dây chuyền cũ nhập về cho dự án làm chip bán dẫn thì không thuộc danh mục."
+  },
+  {
+   "id": "c039",
+   "start": 134.81,
+   "end": 138.935,
+   "loi": "Thiết bị cho đào tạo, nghiên cứu cũng vậy. Miễn là đạt đúng mấy tiêu chí trong luật."
+  },
+  {
+   "id": "c040",
+   "start": 138.935,
+   "end": 142.956,
+   "loi": "Trong bảng còn một ngoại lệ nhỏ hơn. Máy in, máy photocopy đen trắng đời cũ,"
+  },
+  {
+   "id": "c041",
+   "start": 142.956,
+   "end": 146.671,
+   "loi": "loại chạy từ ba mươi lăm bản một phút khổ A bốn trở lên, được loại trừ."
+  },
+  {
+   "id": "c042",
+   "start": 146.671,
+   "end": 149.742,
+   "loi": "Đó là máy của tiệm photo, đâu phải máy để bàn ở nhà."
+  },
+  {
+   "id": "c043",
+   "start": 149.742,
+   "end": 153.608,
+   "loi": "Còn lô nào đã có giấy cho phép nhập trước ngày thông tư có hiệu lực thì vẫn đi tiếp."
+  },
+  {
+   "id": "c044",
+   "start": 153.608,
+   "end": 157.755,
+   "loi": "Cứ đúng nội dung với thời hạn ghi trên giấy là được. Giờ tới câu hỏi từ đầu video."
+  },
+  {
+   "id": "c045",
+   "start": 157.755,
+   "end": 161.56,
+   "loi": "Lệnh cấm này mới tới đâu? Bằng chứng nằm ngay trong Thông tư sáu mươi ba."
+  },
+  {
+   "id": "c046",
+   "start": 161.56,
+   "end": 165.325,
+   "loi": "Phần điều khoản thi hành ghi: Thông tư mười một năm hai nghìn không trăm mười tám hết hiệu lực."
+  },
+  {
+   "id": "c047",
+   "start": 165.325,
+   "end": 170.581,
+   "loi": "Và nó gọi văn bản cũ bằng đủ tên: danh mục sản phẩm công nghệ thông tin đã qua sử dụng cấm nhập khẩu."
+  },
+  {
+   "id": "c048",
+   "start": 170.581,
+   "end": 174.681,
+   "loi": "Đặt hai cái tên cạnh nhau. Cũ là \"công nghệ thông tin\". Mới là \"công nghệ số\"."
+  },
+  {
+   "id": "c049",
+   "start": 174.681,
+   "end": 179.746,
+   "loi": "Phần còn lại giống nhau. Như trò tìm điểm khác nhau giữa hai bức tranh, mà tìm mãi chỉ ra đúng một điểm."
+  },
+  {
+   "id": "c050",
+   "start": 179.746,
+   "end": 183.364,
+   "loi": "Vậy một danh mục cấm nhập đồ cũ đã có từ năm hai nghìn không trăm mười tám."
+  },
+  {
+   "id": "c051",
+   "start": 183.364,
+   "end": 186.113,
+   "loi": "Cái đó ghi ngay trong văn bản. Theo VnExpress,"
+  },
+  {
+   "id": "c052",
+   "start": 186.113,
+   "end": 190.904,
+   "loi": "ở họp báo ngày bốn tháng mười một, Cục trưởng Nguyễn Khắc Lịch cho biết đây không phải quy định mới,"
+  },
+  {
+   "id": "c053",
+   "start": 190.904,
+   "end": 195.969,
+   "loi": "các cơ quan chỉ đồng bộ lại về mặt pháp lý. Dịch cabin ra tiếng thường thì đại khái là: thay biển tên."
+  },
+  {
+   "id": "c054",
+   "start": 195.969,
+   "end": 201.147,
+   "loi": "Bài báo còn dẫn lời ông về một mốc xa hơn nữa, nhưng chưa tra được văn bản gốc nên không bàn ở đây."
+  },
+  {
+   "id": "c055",
+   "start": 201.147,
+   "end": 204.524,
+   "loi": "Thế cái mới là gì? Muốn biết thì phải mở bản cũ ra so."
+  },
+  {
+   "id": "c056",
+   "start": 204.524,
+   "end": 209.034,
+   "loi": "Bảng mã của nó chưa mở được, chỉ có phần điều khoản qua bản dịch tiếng Anh trên LuatVietnam."
+  },
+  {
+   "id": "c057",
+   "start": 209.034,
+   "end": 213.544,
+   "loi": "Và hai câu tưởng là mới thì đều có sẵn. Hàng tân trang thuộc danh mục thì bản cũ đã cấm nhập."
+  },
+  {
+   "id": "c058",
+   "start": 213.544,
+   "end": 217.313,
+   "loi": "Linh kiện, phụ kiện cũ cũng vậy. Điện thoại có nằm trong bảng cũ không?"
+  },
+  {
+   "id": "c059",
+   "start": 217.313,
+   "end": 219.925,
+   "loi": "Bảng thì chưa kiểm được tận mắt. Nhưng trên Dân trí,"
+  },
+  {
+   "id": "c060",
+   "start": 219.925,
+   "end": 224.835,
+   "loi": "luật sư Nguyễn Văn Duy nói Thông tư mười một đã cấm nhập nhiều loại điện thoại, máy tính và linh kiện cũ."
+  },
+  {
+   "id": "c061",
+   "start": 224.835,
+   "end": 229.26,
+   "loi": "Nên thêm bớt cụ thể nhóm nào thì chưa dám nói. Cái đổi thấy rõ là phần căn cứ."
+  },
+  {
+   "id": "c062",
+   "start": 229.26,
+   "end": 233.017,
+   "loi": "Thông tư mới mở đầu bằng Luật Công nghiệp công nghệ số và Luật Quản lý ngoại thương."
+  },
+  {
+   "id": "c063",
+   "start": 233.017,
+   "end": 236.242,
+   "loi": "Khớp với lời Cục trưởng vừa rồi. Cái mốc ngày một tháng một đó,"
+  },
+  {
+   "id": "c064",
+   "start": 236.242,
+   "end": 238.814,
+   "loi": "vì thế giống ngày đổi biển tên hơn là ngày dựng hàng rào."
+  },
+  {
+   "id": "c065",
+   "start": 238.814,
+   "end": 241.515,
+   "loi": "Hàng rào thì, theo các văn bản vừa kể, đã có từ trước."
+  },
+  {
+   "id": "c066",
+   "start": 241.515,
+   "end": 244.776,
+   "loi": "Như quán phở đầu ngõ đổi biển từ \"gia truyền\" sang \"gia truyền chuẩn vị\"."
+  },
+  {
+   "id": "c067",
+   "start": 244.776,
+   "end": 248.351,
+   "loi": "Nồi nước dùng vẫn thế. Ví dụ cho vui thôi, nhưng đại ý là vậy."
+  },
+  {
+   "id": "c068",
+   "start": 248.351,
+   "end": 251.025,
+   "loi": "Vì sao lại cấm? Thông tư không giải thích."
+  },
+  {
+   "id": "c069",
+   "start": 251.025,
+   "end": 254.886,
+   "loi": "Văn bản luật thường thế: trong giấy chỉ ghi cấm, còn vì sao thì mời nghe họp báo."
+  },
+  {
+   "id": "c070",
+   "start": 254.886,
+   "end": 258.085,
+   "loi": "Theo VnExpress, ông Lịch nêu thế này: nếu tất cả hàng hóa,"
+  },
+  {
+   "id": "c071",
+   "start": 258.085,
+   "end": 261.864,
+   "loi": "thiết bị cũ được nhập khẩu vào Việt Nam thì sẽ sinh ra rác thải điện tử."
+  },
+  {
+   "id": "c072",
+   "start": 261.864,
+   "end": 265.466,
+   "loi": "Ai từng mở ngăn kéo ra, thấy mấy cái điện thoại chết nằm cạnh một nắm cáp sạc,"
+  },
+  {
+   "id": "c073",
+   "start": 265.466,
+   "end": 269.24,
+   "loi": "thì hình dung được rác điện tử trông thế nào. Đó mới là một cái ngăn kéo."
+  },
+  {
+   "id": "c074",
+   "start": 269.24,
+   "end": 272.296,
+   "loi": "Bài báo còn kể thêm mấy lý do nữa: sợ lộ dữ liệu cá nhân,"
+  },
+  {
+   "id": "c075",
+   "start": 272.296,
+   "end": 276.321,
+   "loi": "nguy cơ cháy nổ ở thiết bị xuống cấp, với lại hỗ trợ doanh nghiệp trong nước."
+  },
+  {
+   "id": "c076",
+   "start": 276.321,
+   "end": 279.015,
+   "loi": "Mấy lý do này đúng hay sai, video này không chấm."
+  },
+  {
+   "id": "c077",
+   "start": 279.015,
+   "end": 282.886,
+   "loi": "Không có số liệu về lượng rác điện tử hay số vụ cháy nào để đối chiếu."
+  },
+  {
+   "id": "c078",
+   "start": 282.886,
+   "end": 287.376,
+   "loi": "Không có số thì không phán. Chỉ ghi lại một điều: phía phản biện cũng có lý của họ."
+  },
+  {
+   "id": "c079",
+   "start": 287.376,
+   "end": 291.736,
+   "loi": "Trên Thanh Niên có ý kiến rằng không nên đánh đồng mọi điện thoại, máy tính cũ với rác thải điện tử."
+  },
+  {
+   "id": "c080",
+   "start": 291.736,
+   "end": 294.793,
+   "loi": "Tranh luận đó còn dài, và nó nằm ngoài cái bảng mã này."
+  },
+  {
+   "id": "c081",
+   "start": 294.793,
+   "end": 297.877,
+   "loi": "Giờ tới phần chạm vào ví. Người mua máy cũ bị gì?"
+  },
+  {
+   "id": "c082",
+   "start": 297.877,
+   "end": 301.309,
+   "loi": "Câu đầu tiên ai cũng hỏi: sang năm còn được mua bán máy cũ không?"
+  },
+  {
+   "id": "c083",
+   "start": 301.309,
+   "end": 304.613,
+   "loi": "Cái tiệm treo biển \"thu mua máy cũ giá cao\" đầu ngõ có phải dẹp không?"
+  },
+  {
+   "id": "c084",
+   "start": 304.613,
+   "end": 308.419,
+   "loi": "Thông tư chỉ nói về nhập khẩu. Tên của nó là danh mục cấm nhập khẩu."
+  },
+  {
+   "id": "c085",
+   "start": 308.419,
+   "end": 311.568,
+   "loi": "Cả phần điều khoản không có chỗ nào nói về việc mua bán trong nước."
+  },
+  {
+   "id": "c086",
+   "start": 311.568,
+   "end": 314.206,
+   "loi": "Dân trí có hỏi luật sư Nguyễn Văn Duy đúng câu này."
+  },
+  {
+   "id": "c087",
+   "start": 314.206,
+   "end": 319.339,
+   "loi": "Ông nói việc mua bán thiết bị cũ đang lưu hành hợp pháp tại Việt Nam không thuộc phạm vi cấm của thông tư."
+  },
+  {
+   "id": "c088",
+   "start": 319.339,
+   "end": 322.625,
+   "loi": "Tức là theo luật sư, cái máy đang lưu hành hợp pháp thì bạn bán lại,"
+  },
+  {
+   "id": "c089",
+   "start": 322.625,
+   "end": 325.736,
+   "loi": "hay ra tiệm mua lại của người khác, thông tư này không đụng tới."
+  },
+  {
+   "id": "c090",
+   "start": 325.736,
+   "end": 329.589,
+   "loi": "Còn hàng xách tay? Món mà nhà nào cũng có một người quen \"bên đó gửi về\"."
+  },
+  {
+   "id": "c091",
+   "start": 329.589,
+   "end": 334.036,
+   "loi": "Cũng theo luật sư Duy trên Dân trí: hàng cũ thuộc danh mục thì không được nhập để kinh doanh,"
+  },
+  {
+   "id": "c092",
+   "start": 334.036,
+   "end": 337.024,
+   "loi": "dù mang theo hành lý, gửi chuyển phát hay có khai báo hải quan."
+  },
+  {
+   "id": "c093",
+   "start": 337.024,
+   "end": 341.749,
+   "loi": "Ông cũng bảo cần phân biệt hàng mang về cho nhu cầu cá nhân với hàng đưa qua biên giới để buôn bán."
+  },
+  {
+   "id": "c094",
+   "start": 341.749,
+   "end": 345.264,
+   "loi": "Phân biệt ra sao thì bài báo không nói kỹ, nên không suy thêm ở đây."
+  },
+  {
+   "id": "c095",
+   "start": 345.264,
+   "end": 350.322,
+   "loi": "Luật sư còn khuyên các tiệm lập giấy biên nhận khi thu máy, ghi rõ số IMEI hoặc số sê-ri."
+  },
+  {
+   "id": "c096",
+   "start": 350.322,
+   "end": 354.873,
+   "loi": "Với người mua, đó là câu nên hỏi trước khi trả tiền: máy này tiệm thu từ đâu, có giấy không?"
+  },
+  {
+   "id": "c097",
+   "start": 354.873,
+   "end": 359.09,
+   "loi": "Tiệm nào trả lời được thì bạn đỡ một mối lo. Mà đấy là góc nhìn của một luật sư thôi,"
+  },
+  {
+   "id": "c098",
+   "start": 359.09,
+   "end": 363.857,
+   "loi": "chưa phải hướng dẫn của cơ quan nhà nước. Ai sống bằng nghề này thì vẫn nên hỏi hải quan cho chắc."
+  },
+  {
+   "id": "c099",
+   "start": 363.857,
+   "end": 367.171,
+   "loi": "Luật sư trên báo thì đọc miễn phí, nhưng người giữ cửa là hải quan."
+  },
+  {
+   "id": "c100",
+   "start": 367.171,
+   "end": 370.419,
+   "loi": "Câu thứ hai mới là câu khó. Giá máy cũ có lên không?"
+  },
+  {
+   "id": "c101",
+   "start": 370.419,
+   "end": 374.037,
+   "loi": "Ví dụ nhé. Ngày mười tháng mười một, trang máy cũ của CellphoneS"
+  },
+  {
+   "id": "c102",
+   "start": 374.037,
+   "end": 378.109,
+   "loi": "niêm yết một chiếc iPhone mười lăm Plus, bản một trăm hai mươi tám gi-ga-bai, loại cũ đẹp."
+  },
+  {
+   "id": "c103",
+   "start": 378.109,
+   "end": 381.688,
+   "loi": "Giá mười lăm triệu tám trăm chín mươi nghìn đồng. Ngay cạnh là một mức giá bị gạch:"
+  },
+  {
+   "id": "c104",
+   "start": 381.688,
+   "end": 386.618,
+   "loi": "hai mươi hai triệu chín trăm chín mươi nghìn đồng. Tính ra khoản chênh là bảy triệu một trăm nghìn đồng."
+  },
+  {
+   "id": "c105",
+   "start": 386.618,
+   "end": 390.583,
+   "loi": "Nói rõ hai điều kẻo hiểu nhầm. Mức giá gạch là con số cửa hàng tự đặt cạnh,"
+  },
+  {
+   "id": "c106",
+   "start": 390.583,
+   "end": 395.0,
+   "loi": "chưa chắc đúng là giá máy mới hôm nay. Giá gạch thì ai đi mua đồ điện máy cũng quen rồi:"
+  },
+  {
+   "id": "c107",
+   "start": 395.0,
+   "end": 399.131,
+   "loi": "gạch càng đậm, lòng càng xao xuyến. Chiếc máy cũ đó đi từ nguồn nào cũng chưa rõ."
+  },
+  {
+   "id": "c108",
+   "start": 399.131,
+   "end": 403.822,
+   "loi": "Nhưng một khoản chênh kiểu đó, nếu đúng là so với máy mới, chính là lý do người ta mua máy cũ."
+  },
+  {
+   "id": "c109",
+   "start": 403.822,
+   "end": 406.471,
+   "loi": "Câu hỏi là nó có teo lại không. Trên Tuổi Trẻ,"
+  },
+  {
+   "id": "c110",
+   "start": 406.471,
+   "end": 409.763,
+   "loi": "đại diện CellphoneS là ông Nguyễn Lạc Huy tả nguồn máy cũ có hai chân."
+  },
+  {
+   "id": "c111",
+   "start": 409.763,
+   "end": 412.279,
+   "loi": "Một chân là hàng nhập từ nước ngoài, gồm cả hàng nhập lậu."
+  },
+  {
+   "id": "c112",
+   "start": 412.279,
+   "end": 415.66,
+   "loi": "Chân kia là thu gom trong nước, từ người dùng bán lại hoặc lên đời."
+  },
+  {
+   "id": "c113",
+   "start": 415.66,
+   "end": 420.591,
+   "loi": "Theo ông Huy, chân nhập khẩu bị siết thì nguồn hẹp lại, giá máy cũ khi đó khó giảm, thậm chí nhích nhẹ."
+  },
+  {
+   "id": "c114",
+   "start": 420.591,
+   "end": 424.002,
+   "loi": "Còn tăng mạnh thì sao? Cũng bài đó ghi: doanh nghiệp và chuyên gia cùng"
+  },
+  {
+   "id": "c115",
+   "start": 424.002,
+   "end": 428.603,
+   "loi": "nhận định khó có đợt tăng giá đồng loạt hay khan hàng diện rộng từ đầu năm hai nghìn không trăm hai mươi bảy."
+  },
+  {
+   "id": "c116",
+   "start": 428.603,
+   "end": 431.579,
+   "loi": "Đây là nhận định của người trong ngành, chưa phải số liệu đo được."
+  },
+  {
+   "id": "c117",
+   "start": 431.579,
+   "end": 434.347,
+   "loi": "Người bán máy nói về giá máy thì nên nghe, nhưng để đó."
+  },
+  {
+   "id": "c118",
+   "start": 434.347,
+   "end": 437.158,
+   "loi": "Cũng như hỏi thợ cắt tóc xem đã tới lúc cắt tóc chưa."
+  },
+  {
+   "id": "c119",
+   "start": 437.158,
+   "end": 441.631,
+   "loi": "Có một cách nghĩ thế này. Nếu bảng năm hai nghìn không trăm mười tám đã gồm điện thoại,"
+  },
+  {
+   "id": "c120",
+   "start": 441.631,
+   "end": 445.195,
+   "loi": "như lời luật sư trên Dân trí, thì cửa nhập máy cũ vốn đã hẹp từ hồi đó."
+  },
+  {
+   "id": "c121",
+   "start": 445.195,
+   "end": 447.916,
+   "loi": "Khi ấy một văn bản đổi tên khó tự nó làm giá nhảy."
+  },
+  {
+   "id": "c122",
+   "start": 447.916,
+   "end": 451.112,
+   "loi": "Giá mà nhảy thì lý do nằm ở chỗ khác: người ta kiểm tra gắt hơn."
+  },
+  {
+   "id": "c123",
+   "start": 451.112,
+   "end": 454.449,
+   "loi": "Nhận định đó chỉ dựa vào đúng một việc: quy định có đổi thật hay không."
+  },
+  {
+   "id": "c124",
+   "start": 454.449,
+   "end": 458.452,
+   "loi": "Vậy từ giờ tới Tết dương, ngóng cái gì? Thứ nhất là chuyện kiểm tra."
+  },
+  {
+   "id": "c125",
+   "start": 458.452,
+   "end": 461.916,
+   "loi": "Theo Tuổi Trẻ, chính ông Huy cũng nói hàng cũ trôi nổi, nhập lậu vẫn"
+  },
+  {
+   "id": "c126",
+   "start": 461.916,
+   "end": 465.038,
+   "loi": "còn trên thị trường, và có thể có đầu nậu gom hàng trước hạn."
+  },
+  {
+   "id": "c127",
+   "start": 465.038,
+   "end": 468.274,
+   "loi": "Một chuyên gia giấu tên trong bài thì lo chuyện khác. Siết người làm đúng"
+  },
+  {
+   "id": "c128",
+   "start": 468.274,
+   "end": 471.49,
+   "loi": "mà kênh không chính thức vẫn lách được, thì người làm đúng chịu thiệt."
+  },
+  {
+   "id": "c129",
+   "start": 471.49,
+   "end": 474.55,
+   "loi": "Chưa thấy văn bản nào nói từ năm sau sẽ kiểm tra ra sao."
+  },
+  {
+   "id": "c130",
+   "start": 474.55,
+   "end": 478.278,
+   "loi": "Nên chỗ này chưa có gì để kết luận. Thứ hai là nguồn máy trong nước."
+  },
+  {
+   "id": "c131",
+   "start": 478.278,
+   "end": 482.317,
+   "loi": "Nếu chân nhập khẩu hẹp lại, máy cũ sẽ phải đến từ người dùng trong nước nhiều hơn."
+  },
+  {
+   "id": "c132",
+   "start": 482.317,
+   "end": 487.216,
+   "loi": "Bạn để ý mấy chương trình thu cũ đổi mới. Giá họ trả cho cái máy cũ của bạn là tín hiệu sớm nhất."
+  },
+  {
+   "id": "c133",
+   "start": 487.216,
+   "end": 490.161,
+   "loi": "Giá thu vào mà nhích lên, giá bán ra sẽ theo sau."
+  },
+  {
+   "id": "c134",
+   "start": 490.161,
+   "end": 494.076,
+   "loi": "Cái máy cũ nằm trong ngăn kéo nhà bạn, hóa ra cũng là một chỉ báo kinh tế."
+  },
+  {
+   "id": "c135",
+   "start": 494.076,
+   "end": 497.88,
+   "loi": "Quay lại câu hỏi ở đầu. Cái lệnh cấm tám năm tuổi đó, tính ra là thế,"
+  },
+  {
+   "id": "c136",
+   "start": 497.88,
+   "end": 502.372,
+   "loi": "rốt cuộc lần này đổi cái gì? Cái đổi thấy rõ: tên gọi và căn cứ pháp lý."
+  },
+  {
+   "id": "c137",
+   "start": 502.372,
+   "end": 507.432,
+   "loi": "Từ \"công nghệ thông tin\" sang \"công nghệ số\". Còn hai câu về hàng tân trang và linh kiện thì bản cũ đã có."
+  },
+  {
+   "id": "c138",
+   "start": 507.432,
+   "end": 511.879,
+   "loi": "Còn từng mã giữa bảng mới với bảng năm hai nghìn không trăm mười tám thì chưa đối chiếu được."
+  },
+  {
+   "id": "c139",
+   "start": 511.879,
+   "end": 516.124,
+   "loi": "Chuyện mua bán máy cũ trong nước thì vẫn như cũ, theo lời luật sư trên Dân trí."
+  },
+  {
+   "id": "c140",
+   "start": 516.124,
+   "end": 520.621,
+   "loi": "Còn giá thì chưa ai có số. Nhận định này sẽ đổi nếu có văn bản hướng dẫn kiểm tra mới,"
+  },
+  {
+   "id": "c141",
+   "start": 520.621,
+   "end": 523.365,
+   "loi": "hoặc nếu giá thu cũ ở các chuỗi lớn nhích lên trước Tết."
+  },
+  {
+   "id": "c142",
+   "start": 523.365,
+   "end": 527.322,
+   "loi": "Chiếc iPhone mười lăm Plus cũ hôm nay giá mười lăm triệu tám trăm chín mươi nghìn đồng."
+  },
+  {
+   "id": "c143",
+   "start": 527.322,
+   "end": 530.733,
+   "loi": "Thử đoán xem, tới ngày một tháng một năm sau nó còn bao nhiêu?"
+  }
+ ]
+}

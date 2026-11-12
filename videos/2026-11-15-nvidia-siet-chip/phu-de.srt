@@ -1,0 +1,1080 @@
+1
+00:00:00,000 --> 00:00:01,922
+Năm ngoái, Mỹ bắt chip AI xuất sang
+
+2
+00:00:01,943 --> 00:00:04,027
+Malaysia và Thái Lan phải có thêm giấy
+
+3
+00:00:04,049 --> 00:00:04,346
+phép.
+
+4
+00:00:04,622 --> 00:00:06,269
+Nghe vậy, chắc nhiều bạn nghĩ ngay tới
+
+5
+00:00:06,283 --> 00:00:07,883
+nước mình: bao giờ tới lượt Việt Nam?
+
+6
+00:00:08,400 --> 00:00:10,230
+Mình đọc lại văn bản gốc thì thấy không
+
+7
+00:00:10,252 --> 00:00:10,696
+phải vậy.
+
+8
+00:00:10,965 --> 00:00:13,013
+Việt Nam chẳng phải chờ gì cả, vì trong
+
+9
+00:00:13,038 --> 00:00:15,259
+luật xuất khẩu của Mỹ, nước mình nằm sẵn ở
+
+10
+00:00:15,267 --> 00:00:17,320
+một nhóm bị soi kỹ hơn cả hai nước kia.
+
+11
+00:00:17,841 --> 00:00:19,923
+Vậy khi tuần này cả nước Mỹ đang bàn về
+
+12
+00:00:19,936 --> 00:00:22,066
+một bê bối ở Nvidia, cánh cửa vốn đã hẹp
+
+13
+00:00:22,083 --> 00:00:23,729
+của Việt Nam có hẹp thêm không?
+
+14
+00:00:24,258 --> 00:00:25,857
+Chuyện bắt đầu từ ngày tám tháng mười một.
+
+15
+00:00:26,122 --> 00:00:28,283
+Jensen Huang, người sáng lập kiêm giám đốc
+
+16
+00:00:28,299 --> 00:00:30,406
+điều hành Nvidia, gửi email cho toàn công
+
+17
+00:00:30,427 --> 00:00:32,432
+ty và viết rằng ông đã không chung thủy
+
+18
+00:00:32,452 --> 00:00:32,841
+với vợ.
+
+19
+00:00:33,108 --> 00:00:35,216
+Cũng hôm đó, hội đồng quản trị Nvidia mở
+
+20
+00:00:35,229 --> 00:00:37,329
+một cuộc điều tra độc lập, nhưng họ điều
+
+21
+00:00:37,350 --> 00:00:39,455
+tra chuyện khác: báo chí gần đây đưa tin
+
+22
+00:00:39,471 --> 00:00:41,524
+ông là mục tiêu của một nỗ lực tình báo
+
+23
+00:00:41,541 --> 00:00:42,132
+nước ngoài.
+
+24
+00:00:42,661 --> 00:00:43,355
+Nghe thì xa.
+
+25
+00:00:43,622 --> 00:00:45,568
+Nhưng từ bức thư xin lỗi đó tới tấm giấy
+
+26
+00:00:45,587 --> 00:00:47,533
+phép mua chip của Việt Nam chỉ cách nhau
+
+27
+00:00:47,552 --> 00:00:48,008
+vài bước.
+
+28
+00:00:48,281 --> 00:00:49,194
+Mình đi từng bước.
+
+29
+00:00:49,468 --> 00:00:51,419
+Rồi nói luôn túi tiền của bạn có bị đụng
+
+30
+00:00:51,439 --> 00:00:51,941
+tới không.
+
+31
+00:00:52,467 --> 00:00:54,373
+Email của ông không nhắc tên ai, cũng
+
+32
+00:00:54,393 --> 00:00:55,589
+không nhắc công ty nào.
+
+33
+00:00:55,859 --> 00:00:57,883
+Ông xin lỗi vợ con và đồng nghiệp, nhắc
+
+34
+00:00:57,904 --> 00:00:59,987
+tới những lo ngại về an ninh quốc gia mà
+
+35
+00:01:00,000 --> 00:01:02,126
+báo chí nêu, rồi nói ông ủng hộ cuộc điều
+
+36
+00:01:02,146 --> 00:01:02,382
+tra.
+
+37
+00:01:02,652 --> 00:01:03,290
+Chỉ có vậy.
+
+38
+00:01:03,812 --> 00:01:05,797
+Tuyên bố của hội đồng quản trị còn dè dặt
+
+39
+00:01:05,812 --> 00:01:06,031
+hơn.
+
+40
+00:01:06,300 --> 00:01:08,485
+Cuộc điều tra do một nhóm thành viên độc
+
+41
+00:01:08,502 --> 00:01:10,790
+lập giám sát, có luật sư bên ngoài hỗ trợ,
+
+42
+00:01:10,811 --> 00:01:12,893
+và họ nói hiện chưa có lý do để tin an
+
+43
+00:01:12,906 --> 00:01:15,149
+ninh quốc gia hay bí mật của Nvidia đã bị
+
+44
+00:01:15,162 --> 00:01:15,359
+lộ.
+
+45
+00:01:15,876 --> 00:01:17,965
+Cái tên nằm ở một văn bản khác, gửi trước
+
+46
+00:01:17,989 --> 00:01:20,031
+đó ba ngày, và văn bản đó nói về an ninh
+
+47
+00:01:20,051 --> 00:01:21,640
+chứ không phải chuyện tình cảm.
+
+48
+00:01:22,160 --> 00:01:24,090
+Ngày năm tháng mười một, ba chủ tịch ủy
+
+49
+00:01:24,102 --> 00:01:25,918
+ban của Hạ viện Mỹ gửi thư cho Jensen
+
+50
+00:01:25,946 --> 00:01:26,258
+Huang.
+
+51
+00:01:26,535 --> 00:01:28,745
+Họ lo về những lần ông tiếp xúc với Alice
+
+52
+00:01:28,771 --> 00:01:30,800
+Huang, một lãnh đạo công ty Megaspeed,
+
+53
+00:01:30,847 --> 00:01:33,013
+người mà thư gọi là tài sản tình báo của
+
+54
+00:01:33,030 --> 00:01:35,031
+Trung Quốc, theo như báo chí đưa tin.
+
+55
+00:01:35,553 --> 00:01:37,613
+Chữ "theo như báo chí đưa tin" quan trọng.
+
+56
+00:01:37,890 --> 00:01:39,776
+Đó là lời của báo, các nghị sĩ nhắc lại,
+
+57
+00:01:39,794 --> 00:01:41,680
+còn kết luận của tòa án hay cơ quan điều
+
+58
+00:01:41,698 --> 00:01:42,791
+tra thì mình chưa thấy.
+
+59
+00:01:43,063 --> 00:01:44,874
+Cũng không văn bản nào mình đọc nói bà
+
+60
+00:01:44,885 --> 00:01:46,732
+Alice Huang dính tới chuyện riêng trong
+
+61
+00:01:46,754 --> 00:01:47,055
+email.
+
+62
+00:01:47,331 --> 00:01:49,354
+Hai chuyện chỉ bị báo chí đặt cạnh nhau.
+
+63
+00:01:49,628 --> 00:01:51,259
+Văn bản chính thức thì chưa nối chúng lại.
+
+64
+00:01:51,774 --> 00:01:53,851
+Nên mình chỉ nói đúng những gì đang có:
+
+65
+00:01:53,867 --> 00:01:56,053
+một cuộc điều tra, một lá thư, và chưa có
+
+66
+00:01:56,065 --> 00:01:56,882
+phán quyết nào.
+
+67
+00:01:57,403 --> 00:01:59,257
+Mình nói rõ vì sao chip của một hãng lại
+
+68
+00:01:59,272 --> 00:02:00,485
+làm Quốc hội phải gửi thư.
+
+69
+00:02:00,753 --> 00:02:03,072
+AI bây giờ, từ chatbot tới công cụ tạo
+
+70
+00:02:03,091 --> 00:02:05,645
+ảnh, đều huấn luyện và chạy trên loại chip
+
+71
+00:02:05,669 --> 00:02:08,233
+xử lý đồ họa, gọi tắt là GPU, và Nvidia là
+
+72
+00:02:08,247 --> 00:02:10,686
+một trong những hãng lớn nhất làm ra nó.
+
+73
+00:02:10,955 --> 00:02:12,962
+Mỹ quản loại chip này bằng luật xuất khẩu,
+
+74
+00:02:12,985 --> 00:02:14,709
+y như quản một loại hàng chiến lược.
+
+75
+00:02:15,231 --> 00:02:17,452
+Còn Megaspeed thì báo chí Mỹ có điều tra,
+
+76
+00:02:17,473 --> 00:02:19,641
+nhưng các bài đó nằm sau tường phí, mình
+
+77
+00:02:19,662 --> 00:02:20,922
+không đọc được bản gốc.
+
+78
+00:02:21,193 --> 00:02:23,327
+Nên mình sẽ không đọc con số nào của họ
+
+79
+00:02:23,339 --> 00:02:25,518
+lên đây, kể cả khi báo Việt đã dịch lại.
+
+80
+00:02:25,790 --> 00:02:26,694
+Chuyện đó để sau.
+
+81
+00:02:27,214 --> 00:02:29,200
+Cái mình đọc được là văn bản của chính phủ
+
+82
+00:02:29,215 --> 00:02:29,386
+Mỹ.
+
+83
+00:02:29,651 --> 00:02:31,793
+Nó không nhắc gì tới Megaspeed, nhưng cho
+
+84
+00:02:31,809 --> 00:02:33,848
+thấy Washington đang lo chuyện gì ở khu
+
+85
+00:02:33,864 --> 00:02:34,306
+vực này.
+
+86
+00:02:34,827 --> 00:02:37,023
+Tháng năm năm ngoái, Bộ Thương mại Mỹ bỏ
+
+87
+00:02:37,035 --> 00:02:39,223
+một quy tắc cũ tên là AI Diffusion, đồng
+
+88
+00:02:39,244 --> 00:02:41,486
+thời thêm yêu cầu giấy phép khi xuất chip
+
+89
+00:02:41,507 --> 00:02:43,102
+AI sang Malaysia và Thái Lan.
+
+90
+00:02:43,373 --> 00:02:45,553
+Lý do họ ghi rất ngắn là đã biết có những
+
+91
+00:02:45,578 --> 00:02:47,767
+vụ chip bị chuyển hướng, tức chip bán cho
+
+92
+00:02:47,783 --> 00:02:49,863
+nước này rồi lặng lẽ chạy sang một nước
+
+93
+00:02:49,884 --> 00:02:51,280
+khác mà Mỹ không muốn bán.
+
+94
+00:02:51,551 --> 00:02:52,115
+Đi đường vòng.
+
+95
+00:02:52,633 --> 00:02:54,944
+Bạn có thể đã đọc đâu đó rằng xuất chip AI
+
+96
+00:02:54,957 --> 00:02:56,984
+sang cả Đông Nam Á giờ cần giấy phép.
+
+97
+00:02:57,260 --> 00:02:59,249
+Thông cáo gốc không nói vậy, nó chỉ ghi
+
+98
+00:02:59,266 --> 00:02:59,943
+tên hai nước.
+
+99
+00:03:00,217 --> 00:03:02,251
+Việt Nam không có trong thông cáo đó, và
+
+100
+00:03:02,263 --> 00:03:04,135
+đó cũng là chỗ nhiều người hiểu nhầm.
+
+101
+00:03:04,659 --> 00:03:06,624
+Việt Nam không cần thông cáo riêng, vì tên
+
+102
+00:03:06,639 --> 00:03:08,462
+nước mình đã nằm sẵn trong bộ luật xuất
+
+103
+00:03:08,481 --> 00:03:09,064
+khẩu của Mỹ.
+
+104
+00:03:09,329 --> 00:03:11,327
+Bộ luật này chia các nước thành từng nhóm,
+
+105
+00:03:11,349 --> 00:03:13,166
+và Việt Nam ở nhóm Đê một, nhóm Mỹ xếp
+
+106
+00:03:13,181 --> 00:03:14,525
+theo lý do an ninh quốc gia.
+
+107
+00:03:14,794 --> 00:03:16,796
+Malaysia với Thái Lan thì không thuộc nhóm
+
+108
+00:03:16,814 --> 00:03:17,171
+Đê nào.
+
+109
+00:03:17,690 --> 00:03:20,199
+Về chip AI, luật chia chip làm nhiều bậc.
+
+110
+00:03:20,473 --> 00:03:22,318
+Dòng mạnh nhất cần giấy phép khi đi tới
+
+111
+00:03:22,333 --> 00:03:24,271
+bất cứ đâu, còn dòng thấp hơn một bậc cần
+
+112
+00:03:24,286 --> 00:03:26,224
+giấy phép khi đi tới nhóm Đê một cùng mấy
+
+113
+00:03:26,239 --> 00:03:26,728
+nhóm khác.
+
+114
+00:03:27,000 --> 00:03:29,197
+Nói gọn lại, theo luật hiện hành, chip AI
+
+115
+00:03:29,210 --> 00:03:31,447
+của Mỹ muốn vào Việt Nam là phải xin phép.
+
+116
+00:03:31,973 --> 00:03:33,888
+Hai nước kia bị thêm yêu cầu vì có vụ
+
+117
+00:03:33,900 --> 00:03:35,912
+việc, còn Việt Nam thì được xếp sẵn vào
+
+118
+00:03:35,928 --> 00:03:36,813
+nhóm đó từ trước.
+
+119
+00:03:37,091 --> 00:03:37,779
+Nghe hơi ngược.
+
+120
+00:03:38,054 --> 00:03:39,701
+Nhưng như vậy thì hỏi "bao giờ tới lượt
+
+121
+00:03:39,717 --> 00:03:40,696
+Việt Nam" là chưa đúng.
+
+122
+00:03:40,965 --> 00:03:42,938
+Cái cần hỏi là cánh cửa vốn đã hẹp rồi, nó
+
+123
+00:03:42,949 --> 00:03:43,800
+có hẹp thêm không?
+
+124
+00:03:44,326 --> 00:03:45,728
+Có hai điều mình chưa kiểm được.
+
+125
+00:03:45,999 --> 00:03:47,768
+Điều thứ nhất: luật bắt phải xin phép,
+
+126
+00:03:47,790 --> 00:03:49,658
+nhưng mỗi đơn được duyệt dễ hay khó, mất
+
+127
+00:03:49,673 --> 00:03:51,262
+bao lâu thì văn bản này không nói.
+
+128
+00:03:51,531 --> 00:03:53,744
+Thứ hai, khi bỏ quy tắc cũ, Bộ Thương mại
+
+129
+00:03:53,761 --> 00:03:56,024
+Mỹ viết rằng sẽ ban hành quy tắc thay thế,
+
+130
+00:03:56,045 --> 00:03:58,259
+mà quy tắc đó đã ra chưa, nội dung ra sao
+
+131
+00:03:58,276 --> 00:03:59,791
+thì mình chưa xác nhận được.
+
+132
+00:04:00,316 --> 00:04:02,729
+Dù phải xin phép, chip Nvidia vẫn đang vào
+
+133
+00:04:02,747 --> 00:04:03,289
+Việt Nam.
+
+134
+00:04:03,562 --> 00:04:04,759
+Chậm, nhưng vẫn vào.
+
+135
+00:04:05,033 --> 00:04:06,339
+Và đang làm khá nhiều việc.
+
+136
+00:04:06,862 --> 00:04:08,755
+Cuối năm hai nghìn không trăm hai mươi
+
+137
+00:04:08,774 --> 00:04:10,818
+bốn, Chính phủ Việt Nam ký thỏa thuận với
+
+138
+00:04:10,834 --> 00:04:12,882
+Nvidia để lập một trung tâm nghiên cứu và
+
+139
+00:04:12,894 --> 00:04:14,885
+phát triển AI cùng một trung tâm dữ liệu
+
+140
+00:04:14,904 --> 00:04:15,085
+AI.
+
+141
+00:04:15,351 --> 00:04:17,366
+Báo Chính phủ ghi lại lời Thủ tướng hôm đó
+
+142
+00:04:17,378 --> 00:04:19,343
+về quyết tâm biến Việt Nam thành ngôi nhà
+
+143
+00:04:19,358 --> 00:04:20,271
+thứ hai của Nvidia.
+
+144
+00:04:20,801 --> 00:04:23,315
+Đầu năm nay, Viettel đưa vào chạy siêu máy
+
+145
+00:04:23,334 --> 00:04:25,367
+tính Nvidia Đê Gê Ích Bê hai trăm.
+
+146
+00:04:25,646 --> 00:04:27,835
+Báo ghi hiệu năng một phẩy năm ExaFLOPs ở
+
+147
+00:04:27,843 --> 00:04:29,867
+độ chính xác FP tám, tức một nghìn năm
+
+148
+00:04:29,884 --> 00:04:31,638
+trăm triệu tỷ phép tính mỗi giây.
+
+149
+00:04:31,913 --> 00:04:33,860
+Con số đó khó hình dung, nhưng có một câu
+
+150
+00:04:33,875 --> 00:04:35,677
+khác trong bài đáng chú ý hơn: vì kiểm
+
+151
+00:04:35,696 --> 00:04:37,545
+soát xuất khẩu, nguồn cung và điều kiện
+
+152
+00:04:37,564 --> 00:04:39,460
+chiến lược, không phải quốc gia nào cũng
+
+153
+00:04:39,479 --> 00:04:40,674
+dễ tiếp cận nền tảng này.
+
+154
+00:04:40,943 --> 00:04:42,713
+Chính bài báo cũng thừa nhận cánh cửa này
+
+155
+00:04:42,727 --> 00:04:43,216
+không rộng.
+
+156
+00:04:43,737 --> 00:04:45,967
+Còn chuyện tiền thì FPT Cloud đang cho
+
+157
+00:04:45,985 --> 00:04:48,312
+thuê siêu máy tính AI chứng nhận Nvidia,
+
+158
+00:04:48,349 --> 00:04:50,401
+giá khởi điểm hai đô la Mỹ một giờ.
+
+159
+00:04:50,674 --> 00:04:52,580
+Một suất thuê ở giá khởi điểm đó, chạy
+
+160
+00:04:52,600 --> 00:04:54,703
+mười giờ mỗi ngày trong ba mươi ngày, mình
+
+161
+00:04:54,723 --> 00:04:56,040
+nhân ra sáu trăm đô la Mỹ.
+
+162
+00:04:56,556 --> 00:04:58,004
+Đây là mắt xích gần bạn nhất.
+
+163
+00:04:58,278 --> 00:05:00,060
+Một công ty khởi nghiệp làm trợ lý ảo
+
+164
+00:05:00,071 --> 00:05:01,940
+tiếng Việt, hay một nhóm sinh viên huấn
+
+165
+00:05:01,959 --> 00:05:03,835
+luyện mô hình, thường không mua chip mà
+
+166
+00:05:03,847 --> 00:05:04,536
+thuê theo giờ.
+
+167
+00:05:04,805 --> 00:05:06,987
+Chip từ Mỹ, qua giấy phép, vào máy chủ ở
+
+168
+00:05:06,995 --> 00:05:09,267
+Việt Nam, cho doanh nghiệp thuê, rồi thành
+
+169
+00:05:09,292 --> 00:05:11,511
+ứng dụng AI bạn mở trên điện thoại: chuỗi
+
+170
+00:05:11,536 --> 00:05:13,607
+đó dài, và mắt xích đầu tiên là một tờ
+
+171
+00:05:13,620 --> 00:05:14,182
+giấy phép.
+
+172
+00:05:14,707 --> 00:05:16,645
+Giờ tới chuyện túi tiền, và mình trả lời
+
+173
+00:05:16,661 --> 00:05:18,503
+theo những gì đọc được, không theo tin
+
+174
+00:05:18,519 --> 00:05:18,738
+đồn.
+
+175
+00:05:19,007 --> 00:05:21,112
+Email của Jensen Huang, tuyên bố của hội
+
+176
+00:05:21,128 --> 00:05:23,276
+đồng quản trị, thư của các nghị sĩ, thông
+
+177
+00:05:23,301 --> 00:05:25,354
+cáo của Bộ Thương mại Mỹ: không văn bản
+
+178
+00:05:25,371 --> 00:05:27,372
+nào có một dòng nói về giá dịch vụ cho
+
+179
+00:05:27,388 --> 00:05:27,984
+người dùng.
+
+180
+00:05:28,259 --> 00:05:30,101
+Nên với người dùng phổ thông, tuần này
+
+181
+00:05:30,116 --> 00:05:32,005
+chưa có dấu hiệu gì cho thấy gói AI bạn
+
+182
+00:05:32,021 --> 00:05:33,858
+đang trả hay chiếc điện thoại bạn đang
+
+183
+00:05:33,877 --> 00:05:35,334
+dùng sẽ đắt lên vì chuyện này.
+
+184
+00:05:35,603 --> 00:05:36,495
+Chưa có gì cả.
+
+185
+00:05:37,014 --> 00:05:38,811
+Người có thể thấy trước là phía doanh
+
+186
+00:05:38,834 --> 00:05:40,679
+nghiệp, và đây là ý của mình chứ không
+
+187
+00:05:40,702 --> 00:05:41,736
+phải của văn bản nào.
+
+188
+00:05:42,005 --> 00:05:44,218
+Nếu bê bối khiến Washington soi kỹ hơn mọi
+
+189
+00:05:44,235 --> 00:05:46,348
+đơn xin phép đi về Đông Nam Á thì máy về
+
+190
+00:05:46,360 --> 00:05:48,569
+chậm hơn, mà máy về chậm thì giá thuê theo
+
+191
+00:05:48,590 --> 00:05:49,446
+giờ khó mà giảm.
+
+192
+00:05:49,721 --> 00:05:51,840
+Chưa có con số nào về giá nên mình không
+
+193
+00:05:51,865 --> 00:05:52,154
+đoán.
+
+194
+00:05:52,429 --> 00:05:54,340
+Chỉ biết với một nhóm khởi nghiệp nhỏ,
+
+195
+00:05:54,359 --> 00:05:56,419
+tiền thuê máy mỗi tháng là khoản chi lớn,
+
+196
+00:05:56,438 --> 00:05:58,551
+không giảm như kỳ vọng là họ phải tính lại
+
+197
+00:05:58,567 --> 00:05:59,034
+kế hoạch.
+
+198
+00:05:59,562 --> 00:06:01,672
+Còn nếu bạn đang giữ cổ phiếu Nvidia qua
+
+199
+00:06:01,689 --> 00:06:03,855
+ứng dụng đầu tư nước ngoài, mình không tư
+
+200
+00:06:03,868 --> 00:06:04,522
+vấn mua bán.
+
+201
+00:06:04,792 --> 00:06:06,513
+Mình chỉ kể mấy mốc sắp có tin.
+
+202
+00:06:07,035 --> 00:06:09,256
+Mốc đầu tiên là buổi Nvidia họp trực tuyến
+
+203
+00:06:09,281 --> 00:06:11,358
+với các nhà phân tích về kết quả quý ba
+
+204
+00:06:11,371 --> 00:06:13,443
+năm tài khóa hai không hai bảy, vào thứ
+
+205
+00:06:13,460 --> 00:06:15,324
+Ba, mười bảy tháng mười một giờ Mỹ.
+
+206
+00:06:15,591 --> 00:06:17,455
+Mình tính ra giờ Việt Nam là khoảng năm
+
+207
+00:06:17,470 --> 00:06:18,579
+giờ sáng ngày mười tám.
+
+208
+00:06:18,848 --> 00:06:20,990
+Quý này khép sổ từ ngày hai mươi lăm tháng
+
+209
+00:06:21,014 --> 00:06:23,056
+mười, nên số liệu phần lớn đã chốt trước
+
+210
+00:06:23,080 --> 00:06:25,032
+khi tin nổ ra, đừng chờ nó phản ánh bê
+
+211
+00:06:25,044 --> 00:06:25,276
+bối.
+
+212
+00:06:25,546 --> 00:06:27,620
+Đây là lần đầu ban lãnh đạo trả lời giới
+
+213
+00:06:27,640 --> 00:06:29,816
+phân tích kể từ khi chuyện nổ ra, nên mình
+
+214
+00:06:29,836 --> 00:06:31,761
+để ý xem họ có nhắc tới cuộc điều tra
+
+215
+00:06:31,777 --> 00:06:33,957
+không, và có nói gì về khách hàng Đông Nam
+
+216
+00:06:33,973 --> 00:06:34,404
+Á không.
+
+217
+00:06:34,933 --> 00:06:36,682
+Mốc thứ hai cũng rơi vào ngày mười tám
+
+218
+00:06:36,697 --> 00:06:38,624
+tháng mười một: ba chủ tịch ủy ban Hạ viện
+
+219
+00:06:38,642 --> 00:06:40,573
+đề nghị Jensen Huang tới trình bày kín với
+
+220
+00:06:40,587 --> 00:06:40,754
+họ.
+
+221
+00:06:41,018 --> 00:06:42,955
+Thư yêu cầu ông nhận lời, hoặc đưa ra ngày
+
+222
+00:06:42,974 --> 00:06:44,183
+khác, trước ngày mười một.
+
+223
+00:06:44,451 --> 00:06:46,499
+Trình bày kín thì nội dung có thể không
+
+224
+00:06:46,524 --> 00:06:48,683
+được công bố, nên cái đáng xem là thứ lọt
+
+225
+00:06:48,700 --> 00:06:50,916
+ra sau đó: một tuyên bố của ủy ban, một lá
+
+226
+00:06:50,928 --> 00:06:52,462
+thư mới, hay một cái tên mới.
+
+227
+00:06:52,732 --> 00:06:53,382
+Cứ chờ xem.
+
+228
+00:06:53,904 --> 00:06:56,023
+Và còn một mốc chưa có ngày, là quy tắc
+
+229
+00:06:56,040 --> 00:06:57,994
+thay thế mà Bộ Thương mại Mỹ đã hứa.
+
+230
+00:06:58,266 --> 00:07:00,387
+Nếu nó ra và đụng tới Việt Nam, mình sẽ
+
+231
+00:07:00,400 --> 00:07:01,228
+làm video ngay.
+
+232
+00:07:01,754 --> 00:07:03,766
+Quay lại câu hỏi đầu video: cánh cửa vốn
+
+233
+00:07:03,782 --> 00:07:05,843
+đã hẹp với Việt Nam có hẹp thêm vì bê bối
+
+234
+00:07:05,859 --> 00:07:06,375
+này không?
+
+235
+00:07:06,653 --> 00:07:07,208
+Chưa thấy.
+
+236
+00:07:07,484 --> 00:07:09,301
+Ít nhất là theo các văn bản mình đọc hôm
+
+237
+00:07:09,315 --> 00:07:09,521
+nay.
+
+238
+00:07:09,789 --> 00:07:11,869
+Việt Nam vẫn ở nhóm cũ, với yêu cầu giấy
+
+239
+00:07:11,889 --> 00:07:12,334
+phép cũ.
+
+240
+00:07:12,850 --> 00:07:14,879
+Kết luận của mình cho túi tiền người dùng
+
+241
+00:07:14,898 --> 00:07:16,979
+phổ thông là chưa cần đổi gì, đừng vội đổi
+
+242
+00:07:16,994 --> 00:07:18,929
+gói dịch vụ hay thiết bị nào chỉ vì tin
+
+243
+00:07:18,944 --> 00:07:19,169
+này.
+
+244
+00:07:19,438 --> 00:07:21,538
+Tiêu chí của mình là văn bản chính thức:
+
+245
+00:07:21,563 --> 00:07:23,778
+khi nào có văn bản thay đổi cách Mỹ đối xử
+
+246
+00:07:23,791 --> 00:07:25,951
+với chip đi Việt Nam thì mới đáng lo, còn
+
+247
+00:07:25,967 --> 00:07:28,046
+bây giờ đây vẫn là chuyện của Washington
+
+248
+00:07:28,092 --> 00:07:28,629
+và Nvidia.
+
+249
+00:07:28,912 --> 00:07:29,608
+Chỉ vậy thôi.
+
+250
+00:07:29,883 --> 00:07:32,083
+Người làm AI trong nước thì khác, nếu công
+
+251
+00:07:32,104 --> 00:07:34,150
+việc của bạn dựa vào thuê máy chạy chip
+
+252
+00:07:34,170 --> 00:07:36,272
+Nvidia thì nên xem hợp đồng thuê giữ giá
+
+253
+00:07:36,288 --> 00:07:36,991
+được bao lâu.
+
+254
+00:07:37,511 --> 00:07:39,748
+Mình sẽ đổi ý nếu Mỹ ra văn bản siết thêm
+
+255
+00:07:39,769 --> 00:07:41,848
+chip vào Việt Nam, ví dụ trong quy tắc
+
+256
+00:07:41,865 --> 00:07:43,998
+thay thế họ đã hứa, hoặc nếu có văn bản
+
+257
+00:07:44,016 --> 00:07:46,198
+chính thức nào nói chip đã đi đường vòng
+
+258
+00:07:46,220 --> 00:07:46,951
+qua Việt Nam.
+
+259
+00:07:47,222 --> 00:07:49,287
+Khi đó chuyện của một lá thư xin lỗi bên
+
+260
+00:07:49,303 --> 00:07:51,469
+kia đại dương sẽ thành chuyện giá thuê máy
+
+261
+00:07:51,485 --> 00:07:53,651
+của doanh nghiệp Việt, và có thể thành giá
+
+262
+00:07:53,667 --> 00:07:54,607
+ứng dụng bạn dùng.
+
+263
+00:07:55,131 --> 00:07:57,159
+Tuần này nhiều bài viết nói Đông Nam Á bị
+
+264
+00:07:57,170 --> 00:07:59,085
+siết, còn văn bản gốc kể một câu chuyện
+
+265
+00:07:59,112 --> 00:08:00,160
+khác và chi tiết hơn.
+
+266
+00:08:00,430 --> 00:08:02,309
+Giờ tới lượt bạn đoán: trong luật xuất
+
+267
+00:08:02,329 --> 00:08:04,314
+khẩu của Mỹ, Việt Nam đang chung nhóm Đê
+
+268
+00:08:04,325 --> 00:08:05,714
+một với bao nhiêu nước khác?
+
+269
+00:08:05,988 --> 00:08:08,066
+Để con số của bạn ở bình luận nhé, video
+
+270
+00:08:08,091 --> 00:08:09,152
+sau mình đọc đáp án.
+

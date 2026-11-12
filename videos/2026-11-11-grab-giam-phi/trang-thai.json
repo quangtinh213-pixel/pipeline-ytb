@@ -1,0 +1,180 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "Đề 8/8: Grab giảm phí từ 12:00 10/11; kênh đối thủ chưa đăng; yt-viral chưa chạy, dùng RSS",
+      "bat_dau": "2026-11-10T23:37:31.447817+07:00",
+      "ket_thuc": "2026-11-10T23:37:32.262292+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "37 mục nguồn gốc (Bộ Công Thương, Grab, Tuổi Trẻ, Báo Công Thương, SEC, Vietcombank) + 11 phép tự tính; 6 ảnh trang chụp bằng Chrome không giao diện; bỏ số thị phần vì chỉ có nguồn thứ cấp",
+      "bat_dau": "2026-11-10T23:37:32.267170+07:00",
+      "ket_thuc": "2026-11-10T23:42:42.463758+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "6 beat, 3 chương; hai lượt biên tập; 0 Lỗi phong cách, 0 lỗi nguồn",
+      "bat_dau": "2026-11-10T23:42:42.497261+07:00",
+      "ket_thuc": "2026-11-10T23:46:55.109164+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "vòng 1: 12 mục (nhận 11, bỏ 1), điểm 3,5/3/3,5/4,8; vòng 2: 9 mục (nhận 6, bỏ 3), điểm 4/3,8/4,3/4,8. Giọng trò chuyện 3,8 trên bản gửi vòng 2, đã sửa góp ý, chuyển người duyệt nghe.",
+      "bat_dau": "2026-11-11T11:26:57.346446+07:00",
+      "ket_thuc": "2026-11-11T11:31:15.595113+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "0 lỗi nguồn; soát độc lập 22 phát hiện (5 nặng), đã sửa các mục nặng và phần lớn mục vừa, mục còn lại ghi ở kiem-nguon-doc-lap.md",
+      "bat_dau": "2026-11-11T11:31:15.596666+07:00",
+      "ket_thuc": "2026-11-11T11:38:04.479093+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "Chuẩn bị nghe thử và trang duyệt",
+      "bat_dau": "2026-11-11T00:32:00.564881+07:00",
+      "ban_duyet": {
+        "kich-ban.md": "c6df33e1ba61c80cbdc353ec66b11a6eff60d31fde7d917c3538664901da7de5",
+        "nguon.json": "e91a86f20126b686bbd21a78b6549d5e7ed595dd820aa1cd9feb037683e41bc9",
+        "nghe-thu.mp3": "1e1e6ce82361c878adcadd4d2dad6d543774c63a4991ed27d0a724edc822220c",
+        "nguon/moit.png": "b909bc516c3e3dd9974ea65a928cd833de536ad43060a848c2336bbc4c8328da",
+        "nguon/grab.png": "6dafcd80b8f6ac05f93183ef4c80b064f8cc175d8cb257f1921bb3cb33486161",
+        "nguon/tuoitre.png": "8a0762c57712aa69052b24afa2c632e701cc9383e05c40086101ed72d12e313f",
+        "nguon/congthuong.png": "257b6681fcc0ed200082f88e339d7489dbaf7da92ed847915612128252a6c125",
+        "nguon/sec.png": "9dbda058fa2ee86492ff38b72ac1b695996790d2e910a4db252cd024d2e083a7",
+        "nguon/vcb.png": "3531fc1802b0b1222d8b8e65dd132362a2ed9e7821e4ff9ac76aeeaa45296e38"
+      },
+      "ket_thuc": "2026-11-11T11:43:11.251492+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "VieNeu Quốc Tuấn toc_do 1.0",
+      "bat_dau": "2026-11-11T11:51:57.948150+07:00",
+      "ket_thuc": "2026-11-11T11:58:01.854711+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "129 cảnh, 38 trọng điểm; giám khảo 2 vòng: điểm 3/3/3/4 TB 3,0, giữ có lý do (xem dao-dien-cham.json)",
+      "bat_dau": "2026-11-11T11:58:01.856021+07:00",
+      "ket_thuc": "2026-11-11T12:17:08.839906+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "",
+      "ket_thuc": "2026-11-11T12:17:08.841755+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "b-roll 59 clip/ảnh, trang nguồn có khung; chat_luong 0 lỗi, 4 cảnh báo giữ có lý do (2 phông, sfx 14/phút, giám khảo TB 3,0)",
+      "bat_dau": "2026-11-11T12:17:08.842489+07:00",
+      "ket_thuc": "2026-11-11T12:17:14.682862+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 8,2 phút, check_av rỗng",
+      "bat_dau": "2026-11-11T12:17:14.684163+07:00",
+      "ket_thuc": "2026-11-11T12:32:32.024719+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "3 phương án tiêu đề/thumbnail, mô tả, chương, tags",
+      "ket_thuc": "2026-11-11T12:32:32.026747+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "",
+      "ban_duyet": {
+        "duyet-1": "2026-11-11T11:43:11.251492+07:00",
+        "final.mp4": "f3e3a137397b2cd6faad594448b31e1ae54f37f8a92eb1ffc5c5214e54429f06",
+        "phu-de.srt": "fc0722dc4ca70162f106103450e36cd7e7f9d0d2d47b1e4fc43057076f727f46",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "Grab giảm phí gần 3.000 tỷ: tiền về túi ai?",
+              "chu_thumb": [
+                "227 TỶ",
+                "LÀ GIẢM PHÍ?"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "Grab hạ trần phí 32%: tài xế và khách được gì?",
+              "chu_thumb": [
+                "AI LỢI",
+                "NHẤT?"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "Phí nền tảng Grab đổi sang 7%: lợi hay thiệt?",
+              "chu_thumb": [
+                "TỪ 26/02",
+                "ĐẮT HƠN?"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Ngày 10/11/2026, Grab hạ phí nền tảng cho cuốc ngắn và nói sẽ chi gần 3.000 tỷ đồng sau khi Ủy ban Cạnh tranh Quốc gia vào cuộc. Video đọc thẳng văn bản của Bộ Công Thương và trang thông báo của Grab: gói tiền gồm những gì, phần giảm phí thật sự là bao nhiêu, mỗi cuốc xe đổi thế nào, và từ 26/02/2027 phí chuyển sang mức 7%.\n\n⏱ Mốc chương\n00:00 Hai nghìn đồng và ba nghìn tỷ\n00:28 Vì sao Grab giảm phí lúc này?\n02:10 Gần ba nghìn tỷ gồm những gì?\n04:12 Mỗi cuốc xe đổi thế nào?\n06:15 Hai việc cần ngóng\n07:26 Tiền về túi ai?\n\n📌 Cần biết\n- Con số gần 3.000 tỷ đồng là kế hoạch chi dự kiến của Grab theo văn bản của Ủy ban, không phải số tiền đã chi.\n- Phần chừng 227 tỷ đồng cho giảm phí là số kênh tự tính (tổng trừ các phần khác), văn bản không tách riêng.\n- Kết quả xác minh của Ủy ban mới ở mức sơ bộ. Số bồi hoàn gần 3,9 tỷ đồng là số dự kiến.\n- Các ví dụ cuốc xe (100.000 đồng, 15.000 đồng, 60.000 đồng, 200.000 đồng) là phép tính minh họa của kênh, không phải số liệu trung bình.\n- Chuyến GrabCar 37.000 đồng là một chuyến do một tài xế đăng, không đại diện cho mọi chuyến.\n\n📎 Nguồn (truy cập 10/11/2026)\n- Bộ Công Thương: https://moit.gov.vn/tin-tuc/thong-tin-ve-ket-qua-xac-minh-so-bo-cua-uy-ban-canh-tranh-quoc-gia-doi-voi-chinh-sach-gia-phi-cua-grab.html\n- Grab Việt Nam: https://www.grab.com/vn/blog/grab-cap-nhat-ve-phi-nen-tang/\n- Tuổi Trẻ: https://tuoitre.vn/tai-xe-grab-keu-goi-tat-app-2-ngay-chay-cuoc-xe-185km-chi-nhan-duoc-46900-dong-10026090917312805.htm\n- Báo Công Thương: https://congthuong.vn/ra-soat-phi-grab-gan-3-000-ty-dong-huong-toi-nguoi-tieu-dung-tai-xe-480122.html\n- Grab Holdings · báo cáo quý III/2026 (SEC): https://www.sec.gov/Archives/edgar/data/0001855612/000185561226000148/a2026q3-earningspressrelea.htm\n- Vietcombank: https://www.vietcombank.com.vn/vi-VN/KHCN/Cong-cu-Tien-ich/Ty-gia\n- Các phép tính minh họa do kênh tự tính từ số liệu trên.\n\n🖼 Ghi công ảnh\n- Ảnh: Tuổi Trẻ\n- Ảnh: Báo Công Thương\n",
+          "tags": [
+            "Grab",
+            "Grab giảm phí",
+            "phí nền tảng Grab",
+            "Ủy ban Cạnh tranh Quốc gia",
+            "Bộ Công Thương",
+            "tài xế công nghệ",
+            "Grab 7%",
+            "phí Grab 2027",
+            "GrabBike",
+            "GrabCar",
+            "cước xe công nghệ",
+            "Nhịp Công Nghệ"
+          ]
+        },
+        "thumbnails": [
+          "f7ee99c460e0c9360c08c0ebfb57e30b7ea52097df3a950eb7eb312f515481ba",
+          "95cd92b14745a74274f8885a5f63db7f048de9f79b5b2b27e26bc4fa49e7cb59",
+          "6641342a946c9c333be27f3221dd6bb01261c37603ee590bb7be5d9ea22dbfde"
+        ]
+      },
+      "chon": 1,
+      "ket_thuc": "2026-11-11T16:20:25.475271+07:00"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/GXoScbOFOQE",
+      "ket_thuc": "2026-11-11T16:21:18.016234+07:00"
+    },
+    "shorts": {
+      "status": "xong",
+      "note": "3 Short: cảnh 0–6, 116–128, 80–92; hẹn 12–14/11 12:00, chưa upload",
+      "ket_thuc": "2026-11-11T16:34:41.605372+07:00"
+    }
+  },
+  "loai": "tin-nong",
+  "chon": 1,
+  "upload_dang_cho_id": null,
+  "video_id": "GXoScbOFOQE",
+  "lich_dang": "11/11/2026 16:50",
+  "phu_de_ok": true,
+  "playlist_ok": "PLf9v4rPuuCys",
+  "short_ids": {
+    "0": "jTg0GLl69qs",
+    "1": "PWdqAhbq60U",
+    "2": "XwsTqRMwMWA"
+  },
+  "short_lich": {
+    "0": {
+      "tieu_de": "Grab giảm 2.000 đồng mỗi cuốc: bảng phí mới có hạn dùng #shorts",
+      "gio": "12/11/2026 12:00"
+    },
+    "1": {
+      "tieu_de": "Gói gần 3.000 tỷ của Grab: tiền thật về túi ai? #shorts",
+      "gio": "13/11/2026 12:00"
+    },
+    "2": {
+      "tieu_de": "Phí Grab 7% từ 26/02: cuốc nào đắt hơn? #shorts",
+      "gio": "14/11/2026 12:00"
+    }
+  }
+}

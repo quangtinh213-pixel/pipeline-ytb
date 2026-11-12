@@ -1,0 +1,77 @@
+
+  "Mỹ gia hạn 3 tháng: Hàng Việt có lo?"
+  36 chars   score 98/100
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              36 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (3)
+    ok              open question in the title
+
+  "6,7 tỷ lượt vào web lậu: Hàng Việt liên quan gì?"
+  48 chars   score 84/100
+    x  mobile       a mobile feed shows about "6,7 tỷ lượt vào web lậu: Hàng Việt liên..." - check the subject survives
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              48 characters, inside the 60-character desktop cut
+    ok              carries a concrete figure (6,7)
+    ok              open question in the title
+
+  "Web phim lậu, vì sao doanh nghiệp Việt phải theo dõi?"
+  53 chars   score 84/100
+    x  mobile       a mobile feed shows about "Web phim lậu, vì sao doanh nghiệp Việt..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    ok              53 characters, inside the 60-character desktop cut
+    ok              open question in the title
+    ok              thumbnail and title carry different words
+
+  "Web phim lậu dính gì đến thuế hàng Việt?"
+  40 chars   score 80/100
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              40 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Phim lậu, vì sao hàng Việt phải để ý?"
+  37 chars   score 80/100
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h - the thumbnail should say what the title does not
+    ok              37 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Mỹ điều tra bản quyền: Hàng Việt chờ gì?"
+  40 chars   score 80/100
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              40 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Vì sao Mỹ đưa phim lậu vào hồ sơ thương mại?"
+  44 chars   score 66/100
+    x  mobile       a mobile feed shows about "Vì sao Mỹ đưa phim lậu vào hồ sơ thương..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h - the thumbnail should say what the title does not
+    ok              44 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Từ phim lậu đến thuế hàng Việt, đường nào?"
+  42 chars   score 66/100
+    x  mobile       a mobile feed shows about "Từ phim lậu đến thuế hàng Việt, đường..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              42 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Mỹ gia hạn điều tra, hàng Việt có thêm thuế?"
+  44 chars   score 66/100
+    x  mobile       a mobile feed shows about "Mỹ gia hạn điều tra, hàng Việt có thêm..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              44 characters, inside the 60-character desktop cut
+    ok              open question in the title
+
+  "Phim lậu và hàng Việt: Mỹ vừa đổi mốc nào?"
+  42 chars   score 66/100
+    x  mobile       a mobile feed shows about "Phim lậu và hàng Việt: Mỹ vừa đổi mốc..." - check the subject survives
+    x  no-number    no number, date or name - the most reliable single fix
+    x  duplicate    thumbnail repeats the title on h, n - the thumbnail should say what the title does not
+    ok              42 characters, inside the 60-character desktop cut
+    ok              open question in the title
+

@@ -1,0 +1,142 @@
+[
+ {
+  "id": "n1",
+  "ten": "NVIDIA Newsroom",
+  "gia_tri": "Email của Jensen Huang gửi nhân viên ngày 8/11/2026, thừa nhận không chung thủy",
+  "trich_dan": "I was unfaithful to my wife. My actions hurt her and our children.",
+  "url": "https://nvidianews.nvidia.com/news/a-message-to-our-company",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/n1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n2",
+  "ten": "NVIDIA · Hội đồng quản trị",
+  "gia_tri": "Hội đồng quản trị mở điều tra độc lập ngày 8/11/2026, do một ủy ban các thành viên độc lập giám sát",
+  "trich_dan": "The NVIDIA Board is initiating an independent investigation in light of recent reporting",
+  "url": "https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/n2.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "n3",
+  "ten": "NVIDIA Newsroom",
+  "gia_tri": "Họp báo kết quả quý III tài khóa 2027 ngày thứ Ba 17/11/2026, 2 giờ chiều giờ Thái Bình Dương; quý kết thúc 25/10/2026",
+  "trich_dan": "NVIDIA will host a conference call on Tuesday, November 17, at 2 p.m. PT",
+  "url": "https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/n3.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "t1",
+  "ten": "Ước tính độc lập của kênh",
+  "gia_tri": "5 giờ sáng 18/11/2026 giờ Việt Nam",
+  "cong_thuc": "2 giờ chiều 17/11 giờ Thái Bình Dương (UTC−8 vào tháng 11) + 15 giờ = 5 giờ sáng 18/11 (UTC+7)",
+  "dau_vao": [
+   "n3"
+  ],
+  "trich_dan": "",
+  "url": "",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "",
+  "trang_thai": "tu-tinh"
+ },
+ {
+  "id": "h1",
+  "ten": "Hạ viện Mỹ · Ủy ban đặc biệt về Trung Quốc",
+  "gia_tri": "Thư ngày 5/11/2026 của 3 chủ tịch ủy ban Hạ viện; mời điều trần kín ngày 18/11/2026; trả lời trước 11/11/2026",
+  "trich_dan": "Huang’s interactions with Megaspeed executive Alice Huang, a publicly reported Chinese intelligence asset",
+  "url": "https://chinaselectcommittee.house.gov/media/press-releases/moolenaar-mast-and-crawford-seek-briefing-from-jensen-huang-on-ties-to-chinese-intelligence-asset",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/h1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "b1",
+  "ten": "Bộ Thương mại Mỹ (BIS)",
+  "gia_tri": "Thông cáo 13/5/2025: bỏ quy tắc AI Diffusion (ban hành 15/1/2025, hạn tuân thủ 15/5/2025); thêm yêu cầu giấy phép xuất khẩu chip AI sang Malaysia và Thái Lan; sẽ có quy tắc thay thế",
+  "trich_dan": "Imposing additional export licensing requirements for exports of SI chips to Malaysia and Thailand, due to known instances of diversion.",
+  "url": "https://www.bis.gov/press-release/department-commerce-announces-rescission-biden-era-artificial-intelligence-diffusion-rule-strengthens",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/b1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "e1",
+  "ten": "Luật xuất khẩu Mỹ (EAR) · Phụ lục nhóm nước",
+  "gia_tri": "Việt Nam thuộc nhóm D:1 (an ninh quốc gia) và D:3; Malaysia và Thái Lan không thuộc nhóm D",
+  "trich_dan": "Vietnam: [D:1] National Security X; [D:3] Chemical & Biological X",
+  "url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-740/appendix-Supplement%20No.%201%20to%20Part%20740",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "",
+  "ghi_chu": "Đọc qua API eCFR (bản 01/11/2026); trang web chặn chụp tự động bằng CAPTCHA, cần chụp tay",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "e2",
+  "ten": "Luật xuất khẩu Mỹ (EAR) · Điều 742.6",
+  "gia_tri": "Điều 742.6: chip AI 3A090.a cần giấy phép tới mọi điểm đến; chip 3A090.b cần giấy phép tới UAE và nhóm D:1, D:4, D:5 (trừ nước cũng thuộc A:5, A:6)",
+  "trich_dan": "License Requirement for the United Arab Emirates (UAE) and Country Groups D:1, D:4, or D:5",
+  "url": "https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-742/section-742.6",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "",
+  "ghi_chu": "Đọc qua API eCFR (bản 01/11/2026), §742.6(a)(6)(iii)(A)–(B); trang web chặn chụp tự động",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "v1",
+  "ten": "Báo Điện tử Chính phủ",
+  "gia_tri": "Viettel vận hành siêu máy tính NVIDIA DGX B200 ngày 6/2/2026; hiệu năng 1,5 ExaFLOPs FP8, tức 1.500 triệu tỷ phép tính mỗi giây",
+  "trich_dan": "do các yếu tố về kiểm soát xuất khẩu, nguồn cung và điều kiện chiến lược, không phải doanh nghiệp hay quốc gia nào cũng có thể dễ dàng tiếp cận",
+  "url": "https://baochinhphu.vn/viettel-van-hanh-he-thong-sieu-may-tinh-cua-nvidia-dau-tien-tai-viet-nam-10226020615345696.htm",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/v1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "v2",
+  "ten": "Báo Điện tử Chính phủ",
+  "gia_tri": "Ngày 5/12/2024 ký thỏa thuận Chính phủ – NVIDIA thành lập Trung tâm Nghiên cứu và Phát triển AI và Trung tâm Dữ liệu AI tại Việt Nam",
+  "trich_dan": "biến Việt Nam thành \"ngôi nhà thứ hai của NVIDIA\"",
+  "url": "https://baochinhphu.vn/chinh-phu-viet-nam-va-nvidia-hop-tac-thanh-lap-trung-tam-nghien-cuu-va-phat-trien-trung-tam-du-lieu-ai-102241205191337156.htm",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/v2.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "f1",
+  "ten": "FPT Cloud · Bảng giá",
+  "gia_tri": "Siêu máy tính AI chứng nhận NVIDIA từ 2,0 USD mỗi giờ",
+  "trich_dan": "NVIDIA-certified AI supercomputers starting at $2.0/hour",
+  "url": "https://fptcloud.com/en/pricing/",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "nguon/f1.png",
+  "trang_thai": "xac-minh"
+ },
+ {
+  "id": "t2",
+  "ten": "Ước tính độc lập của kênh",
+  "gia_tri": "600 USD mỗi tháng cho một suất thuê giá khởi điểm chạy 10 giờ mỗi ngày trong 30 ngày",
+  "cong_thuc": "2,0 USD/giờ × 10 giờ × 30 ngày",
+  "dau_vao": [
+   "f1"
+  ],
+  "trich_dan": "",
+  "url": "",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "",
+  "trang_thai": "tu-tinh"
+ },
+ {
+  "id": "m1",
+  "ten": "VnExpress (dẫn Bloomberg, WSJ)",
+  "gia_tri": "Megaspeed cam kết mua khoảng 2 tỷ USD chip Nvidia; nhập ít nhất 4,6 tỷ USD thiết bị Nvidia, khoảng 136.000 GPU",
+  "trich_dan": "Megaspeed nhập khẩu ít nhất 4,6 tỷ USD thiết bị Nvidia từ năm 2023 đến tháng 11/2025",
+  "url": "https://vnexpress.net/megaspeed-cong-ty-dung-sau-nhung-lo-chip-nvidia-ty-usd-5142300.html",
+  "ngay_truy_cap": "2026-11-09",
+  "anh_chup": "",
+  "trang_thai": "chua-xac-minh"
+ }
+]

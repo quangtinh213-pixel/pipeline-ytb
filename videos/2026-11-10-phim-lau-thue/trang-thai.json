@@ -1,0 +1,156 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "Đề 8/8; thử 10 tiêu đề với thumbnail. Tin mới là gia hạn điều tra, không phải quyết định thuế.",
+      "bat_dau": "2026-11-10T20:41:52.570279+07:00",
+      "ket_thuc": "2026-11-10T20:42:41.026299+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "9 mục nguồn, 8 ảnh trang gốc. Số Census đối chiếu PDF cố định với tóm tắt.",
+      "bat_dau": "2026-11-10T20:42:41.028323+07:00",
+      "ket_thuc": "2026-11-10T20:46:34.318618+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "Đã biên tập lời đọc và rà mốc số",
+      "bat_dau": "2026-11-10T20:44:29.778866+07:00",
+      "ket_thuc": "2026-11-10T20:45:47.784210+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "Hai vòng agy và hai bảng triage. Điểm vòng 2 trước sửa: 4/3,5/4/4,8. Giọng trò chuyện dưới 4, đã sửa và chuyển người duyệt nghe.",
+      "bat_dau": "2026-11-10T20:45:47.785493+07:00",
+      "ket_thuc": "2026-11-10T20:50:25.401408+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "0 lỗi nguồn; đối chiếu độc lập, sau đó sửa phạm vi IP, ngữ cảnh Fmovies, 12,5% và trích đoạn.",
+      "bat_dau": "2026-11-10T20:50:25.403178+07:00",
+      "ket_thuc": "2026-11-10T20:50:46.790831+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "Tạo và kiểm trang duyệt sau khi khóa lời.",
+      "bat_dau": "2026-11-10T20:50:46.792274+07:00",
+      "ban_duyet": {
+        "kich-ban.md": "8ac4e079487d96b5ff068e4e5f4a6b62c9933803a6a383adfef25c8a83629179",
+        "nguon.json": "44895ec293c8267b5c348fa2fc1780f607b3790124b211d14c4fc21ea9227c93",
+        "nghe-thu.mp3": "f105d0747a5ba6e3d48d6ce21f8328178c34e942efde46b32a90aa29fd6ce354",
+        "nguon/h1.png": "470289833bc0e01a3e8c58b3976e5d29065898c22bd1aa39719f4ceadb95dd4b",
+        "nguon/h2.png": "658cbc6e1bc98b38ee03092219c9b1db52c309d395fdd944c64e0a171e736150",
+        "nguon/u1.png": "84114ac9ff4709f8cdcd0349f7378f3c7217a094b5ce81557142fcd1b4cfbb4f",
+        "nguon/l1.png": "9282bc42692a34abb91eee42179c594b7c74077db24b26cfdbdd6a96b4725d28",
+        "nguon/l2.png": "d79662845841fd882e396f1673c2fa8acd3c4b2b55a6ce1280f6ca6b6802520f",
+        "nguon/a1.png": "d0dbcb6a35893501beaf1d9800ffb86f76073e36f2ad54616dce048297c207a1",
+        "nguon/c1.png": "ebd6f7f6b32b9f8c8fbb80185d034b825055ea2ff5392c03dfc6f15327328388",
+        "nguon/f1.png": "5f6d2c6b23d706370d01e8c4ade4f411494a00ec39c729057f151df2902f01c2"
+      },
+      "ket_thuc": "2026-11-10T20:58:29.205658+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "VieNeu Quốc Tuấn 1,0; 141 câu, 7:57; giọng tạo xong 21:07, ghi trạng thái ở phiên sau",
+      "bat_dau": "2026-11-10T20:58:29.293092+07:00",
+      "ket_thuc": "2026-11-10T23:00:18.305897+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "Đạo diễn đủ 127 cảnh, 27 trọng điểm; giám khảo agy 1 vòng (4/4/4/5 … hai beat đa dạng 3, đã đổi 2 cảnh khô); không ưu tiên mẫu nào",
+      "bat_dau": "2026-11-10T23:09:41.893472+07:00",
+      "ket_thuc": "2026-11-10T23:31:50.204167+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "canh.json sinh từ dao-dien.json; 0 lỗi",
+      "bat_dau": "2026-11-10T23:01:27.033978+07:00",
+      "ket_thuc": "2026-11-10T23:31:50.205926+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "không cần vẽ hình mới; clip b-roll từ kho đã soi, soi lại trên bảng contact sheet",
+      "ket_thuc": "2026-11-10T23:31:50.206820+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 7:57; check_av rỗng; số lớn kiểm khung cuối đúng (6,7 / 28,7 / 12,5)",
+      "bat_dau": "2026-11-10T23:31:50.207666+07:00",
+      "ket_thuc": "2026-11-10T23:53:10.094562+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "3 cặp tiêu đề/thumbnail từ bước chọn đề; mốc chương theo cảnh chuong; mô tả có nguồn; shorts để rỗng",
+      "ket_thuc": "2026-11-10T23:53:10.097921+07:00"
+    },
+    "duyet-2": {
+      "status": "cho-duyet",
+      "note": "",
+      "ban_duyet": {
+        "duyet-1": "2026-11-10T20:58:29.205658+07:00",
+        "final.mp4": "6ec5748b342cc9f92ed0a154bf12a56f7b88d3849028fc92719c696a2ea7ba88",
+        "phu-de.srt": "0ffdccc80d3a232ed2b41e846d3d02d82a654069aad09218ef4b413d2446454e",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "Web phim lậu dính gì đến thuế hàng Việt?",
+              "chu_thumb": [
+                "HẠN",
+                "28/2"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "Mỹ gia hạn 3 tháng: Hàng Việt có lo?",
+              "chu_thumb": [
+                "VỤ",
+                "PHIM LẬU"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "Mỹ dời hạn điều tra tới 28/2: phim lậu liên quan gì thuế?",
+              "chu_thumb": [
+                "THUẾ",
+                "HÀNG VIỆT?"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Mỹ vừa gia hạn thêm ba tháng vụ điều tra sở hữu trí tuệ ở Việt Nam, hạn ra quyết định chậm nhất là 28/02/2027. Vậy web phim lậu liên quan gì đến thuế của một lô hàng ở cảng? Video đọc thẳng các văn bản gốc: điều luật nào nối hai chuyện, mức thuế 12,5% thuộc hồ sơ nào, và hai tín hiệu đáng theo dõi tiếp theo.\n\n⏱ Mốc chương\n00:00 Từ nút phát đến cửa khẩu\n00:31 Vì sao nói tới phim lậu?\n02:18 Vì sao một lô hàng liên quan?\n04:35 Hai hồ sơ cùng tên điều luật\n06:06 Hai tín hiệu cần theo dõi\n07:27 Web phim lậu dính gì tới thuế?\n\n📌 Cần biết\n- Hiện chưa có quyết định áp thuế nào trong vụ điều tra bản quyền này. Điều luật chỉ cho phép Mỹ chọn biện pháp, kể cả với hàng hóa ngoài vụ việc; video không dự báo kết quả.\n- Mức thuế 12,5% thuộc một hồ sơ khác (vụ lao động cưỡng bức), kèm ngoại lệ trong phụ lục.\n- Số hơn 6,7 tỷ lượt truy cập là số liệu của Liên minh Sáng tạo và Giải trí (ACE) về mạng Fmovies và các tên miền liên quan trong giai đoạn 01/2023–06/2024, tính lượt truy cập chứ không phải số vé bị mất.\n- Ví dụ tai nghe, đơn hàng nội thất và hai email là ví dụ giả định; sơ đồ ba lớp người xem, trang phát, nơi lưu video là minh họa cấu trúc, không mô tả một trang cụ thể.\n- Video không phải tư vấn pháp lý hay tư vấn thuế.\n\n📎 Nguồn\n- USTR · Gia hạn: https://public-inspection.federalregister.gov/2026-22868.pdf (truy cập 10/11/2026)\n- USTR · Mở điều tra: https://ustr.gov/sites/default/files/files/Press/Releases/2026/USTR%20301%20Vietnam%20IP%20FRN.pdf (truy cập 10/11/2026)\n- Bộ luật Hoa Kỳ: https://uscode.house.gov/us/usc/119-118/t19/s2411/ (truy cập 10/11/2026)\n- ACE: https://www.alliance4creativity.com/news/vietnamese-authorities-with-support-from-ace-take-down-worlds-largest-piracy-ring/ (truy cập 10/11/2026)\n- U.S. Census Bureau / BEA: https://www.bea.gov/sites/default/files/2026-11/trad0926.pdf#page=28 (truy cập 10/11/2026)\n- USTR · Vụ lao động cưỡng bức: https://public-inspection.federalregister.gov/2026-15181.pdf (truy cập 10/11/2026)",
+          "tags": [
+            "phim lậu",
+            "thuế hàng Việt",
+            "Mỹ điều tra Việt Nam",
+            "Điều 301",
+            "USTR",
+            "bản quyền",
+            "thuế nhập khẩu Mỹ",
+            "xuất khẩu Việt Nam",
+            "thuế 12,5%",
+            "Fmovies",
+            "điều tra sở hữu trí tuệ",
+            "Túi Tiền Người Việt"
+          ]
+        },
+        "thumbnails": [
+          "4f3e5d86afacef5ace2cc85579f542189fc129d930b0d045f8790ba8eda9d484",
+          "11f16a8b83a932766aa28015a84a7a1a1bf2380f37fed6c771fa493797c1c324",
+          "134bbbb1a7ae09e2c32475b57edc1ef572098f7bc807f5c8d4d52542e2cc6f36"
+        ]
+      }
+    },
+    "dang": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  },
+  "loai": "tin-nong",
+  "lan_chay_kho": 1,
+  "de_thay_the": "2026-11-10-chip-viet-nhat",
+  "duyet_1_san_sang_luc": "2026-11-10T20:51:36.087085+07:00"
+}

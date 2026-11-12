@@ -1,0 +1,1938 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.972,
+   "mau": "b-roll",
+   "video": "xe-may-pho-viet-nam-36077795-001.mp4",
+   "nhan": "",
+   "nhip": [
+    "hai cây số"
+   ]
+  },
+  {
+   "id": "c002",
+   "start": 3.972,
+   "end": 8.276,
+   "mau": "so-lon",
+   "so": "3.000",
+   "truoc": "",
+   "sau": " tỷ đồng",
+   "nhan": "Grab dự kiến chi, gần",
+   "nguon_id": "b3",
+   "svg": "tien",
+   "nhip": [
+    "số lớn hơn",
+    "chi gần ba"
+   ]
+  },
+  {
+   "id": "c003",
+   "start": 8.276,
+   "end": 10.794,
+   "mau": "b-roll",
+   "video": "giay-to-7054942-003.mp4",
+   "nhan": "",
+   "nhip": [
+    "tranh Quốc gia"
+   ]
+  },
+  {
+   "id": "c004",
+   "start": 10.794,
+   "end": 14.217,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Một cuốc ngắn",
+    "svg": "dong-xu",
+    "to": 0.45
+   },
+   "phai": {
+    "nhan": "Cả gói dự kiến chi",
+    "svg": "tien"
+   },
+   "nhip": [
+    "cuốc, và gần",
+    "ba nghìn tỷ.",
+    "thì hào phóng."
+   ]
+  },
+  {
+   "id": "c005",
+   "start": 14.217,
+   "end": 18.166,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-005.mp4",
+   "nhan": "",
+   "nhip": [
+    "chạy xe, hay"
+   ]
+  },
+  {
+   "id": "c006",
+   "start": 18.166,
+   "end": 22.817,
+   "mau": "trang-nguon",
+   "anh": "g1.png",
+   "khung": "35.8,55.3,46.3,6.0",
+   "nguon_id": "g1",
+   "nhip": [
+    "ít ai đọc"
+   ]
+  },
+  {
+   "id": "c007",
+   "start": 22.817,
+   "end": 27.814,
+   "mau": "b-roll",
+   "video": "congthuong-datxe-007.mp4",
+   "nhan": "Hết hạn: đổi cách tính",
+   "nhip": [
+    "một số cuốc,"
+   ]
+  },
+  {
+   "id": "c008",
+   "start": 27.814,
+   "end": 32.081,
+   "mau": "chuong",
+   "so": "Phần 1",
+   "chuong": "Vì sao Grab giảm phí lúc này?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c009",
+   "start": 32.081,
+   "end": 36.787,
+   "mau": "trich-bao",
+   "nguon_id": "t1",
+   "trich": "lời kêu gọi tài xế cùng tắt ứng dụng Grab trong hai ngày 12 và 13-9 xuất hiện tại nhiều hội nhóm",
+   "to_vang": "tắt ứng dụng Grab trong hai ngày 12 và 13-9",
+   "nhip": [
+    "ứng dụng Grab"
+   ]
+  },
+  {
+   "id": "c010",
+   "start": 36.787,
+   "end": 40.472,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-010.mp4",
+   "nhan": "",
+   "nhip": [
+    "Một tài xế"
+   ]
+  },
+  {
+   "id": "c011",
+   "start": 40.472,
+   "end": 44.087,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Khách trả",
+    "svg": "the-ngan-hang",
+    "so": "37.000",
+    "don_vi": " đồng"
+   },
+   "phai": {
+    "nhan": "Tài xế nhận",
+    "svg": "vi-tien",
+    "so": "19.500",
+    "don_vi": " đồng",
+    "to": 0.53
+   },
+   "nguon_id": "t2",
+   "nhip": [
+    "bảy nghìn, người",
+    "nhận về chừng",
+    "mười chín nghìn"
+   ]
+  },
+  {
+   "id": "c012",
+   "start": 44.087,
+   "end": 48.196,
+   "mau": "trich-bao",
+   "nguon_id": "t2",
+   "trich": "số tiền tài xế nhận tương đương khoảng 52,7% tổng số tiền khách thanh toán",
+   "to_vang": "52,7% tổng số tiền khách thanh toán",
+   "nhip": [
+    "Báo cũng lưu"
+   ]
+  },
+  {
+   "id": "c013",
+   "start": 48.196,
+   "end": 52.174,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-013.mp4",
+   "nhan": "",
+   "nhip": [
+    "thuế chứ không"
+   ]
+  },
+  {
+   "id": "c014",
+   "start": 52.174,
+   "end": 55.653,
+   "mau": "b-roll",
+   "video": "xe-may-di-lam-36067569-014.mp4",
+   "nhan": "",
+   "nhip": [
+    "cuốc xe bị"
+   ]
+  },
+  {
+   "id": "c015",
+   "start": 55.653,
+   "end": 60.054,
+   "mau": "quy-trinh",
+   "tieu_de": "Hai khoản phí trên một cuốc",
+   "buoc": [
+    {
+     "nhan": "Tiền cước",
+     "svg": "tien"
+    },
+    {
+     "nhan": "Phí nền tảng: bạn trả",
+     "svg": "nguoi"
+    },
+    {
+     "nhan": "Phí app: tài xế trả",
+     "svg": "vi-tien"
+    }
+   ],
+   "noi_bat": 2,
+   "nguon_id": "m17"
+  },
+  {
+   "id": "c016",
+   "start": 60.054,
+   "end": 64.518,
+   "mau": "trang-nguon",
+   "anh": "m17.png",
+   "khung": "7.1,40.7,43.0,18.5",
+   "nguon_id": "m17",
+   "dan": {
+    "the": "nghi"
+   },
+   "nhip": [
+    "trừ thay đổi"
+   ]
+  },
+  {
+   "id": "c017",
+   "start": 64.518,
+   "end": 68.482,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-017.mp4",
+   "nhan": "",
+   "nhip": [
+    "khó biết trước"
+   ]
+  },
+  {
+   "id": "c018",
+   "start": 68.482,
+   "end": 72.126,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-018.mp4",
+   "nhan": "",
+   "nhip": [
+    "mới biết. Sau"
+   ]
+  },
+  {
+   "id": "c019",
+   "start": 72.126,
+   "end": 75.993,
+   "mau": "b-roll",
+   "video": "pho-36082304-019.mp4",
+   "nhan": "",
+   "nhip": [
+    "nhớ, còn khăn"
+   ]
+  },
+  {
+   "id": "c020",
+   "start": 75.993,
+   "end": 78.782,
+   "mau": "b-roll",
+   "video": "thanh-toan-the-11158789-020.mp4",
+   "nhan": "",
+   "nhip": [
+    "mới ngã ngửa."
+   ]
+  },
+  {
+   "id": "c021",
+   "start": 78.782,
+   "end": 82.054,
+   "mau": "trang-nguon",
+   "anh": "m4.png",
+   "khung": "7.1,42.3,43.0,15.4",
+   "nguon_id": "m4",
+   "nhip": [
+    "mươi phần trăm"
+   ]
+  },
+  {
+   "id": "c022",
+   "start": 82.054,
+   "end": 85.023,
+   "mau": "so-lon",
+   "so": "52",
+   "sau": " %",
+   "nhan": "Tài xế thực nhận, mức thấp nhất trước đây",
+   "nguon_id": "m7",
+   "svg": "vi-tien",
+   "nhip": [
+    "chạy cầm về",
+    "mươi hai phần"
+   ]
+  },
+  {
+   "id": "c023",
+   "start": 85.023,
+   "end": 88.355,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Khách trả",
+    "svg": "the-ngan-hang",
+    "so": "100.000",
+    "don_vi": " đồng"
+   },
+   "phai": {
+    "nhan": "Tài xế nhận, trừ nặng",
+    "svg": "vi-tien",
+    "so": "52.000",
+    "don_vi": " đồng",
+    "to": 0.52
+   },
+   "nguon_id": "b2",
+   "dan": {
+    "the": "xac-nhan"
+   },
+   "nhip": [
+    "trăm nghìn, tài",
+    "xế còn năm",
+    "mươi hai nghìn."
+   ]
+  },
+  {
+   "id": "c024",
+   "start": 88.355,
+   "end": 93.356,
+   "mau": "trang-nguon",
+   "anh": "m1.png",
+   "khung": "7.1,43.9,43.0,12.3",
+   "nguon_id": "m1",
+   "nhip": [
+    "nhận phản ánh"
+   ]
+  },
+  {
+   "id": "c025",
+   "start": 93.356,
+   "end": 96.062,
+   "mau": "b-roll",
+   "video": "giay-to-7841618-025.mp4",
+   "nhan": "",
+   "nhip": [
+    "cả đại diện"
+   ]
+  },
+  {
+   "id": "c026",
+   "start": 96.062,
+   "end": 99.399,
+   "mau": "trang-nguon",
+   "anh": "m20.png",
+   "khung": "7.1,37.6,43.0,24.8",
+   "nguon_id": "m20",
+   "nhip": [
+    "vài nước Đông"
+   ]
+  },
+  {
+   "id": "c027",
+   "start": 99.399,
+   "end": 102.345,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-027.mp4",
+   "nhan": "",
+   "nhip": [
+    "quả, mới là"
+   ]
+  },
+  {
+   "id": "c028",
+   "start": 102.345,
+   "end": 105.969,
+   "mau": "so-lon",
+   "so": "6",
+   "sau": " nhóm giải pháp",
+   "nhan": "Grab tự đề xuất, kết quả xác minh sơ bộ",
+   "nguon_id": "m21",
+   "svg": "tai-lieu",
+   "nhip": [
+    "sáu việc sẽ",
+    "báo Grab gửi"
+   ]
+  },
+  {
+   "id": "c029",
+   "start": 105.969,
+   "end": 110.469,
+   "mau": "trang-nguon",
+   "anh": "g5.png",
+   "khung": "33.2,43.9,48.9,12.3",
+   "nguon_id": "g5",
+   "nhip": [
+    "với thông lệ"
+   ]
+  },
+  {
+   "id": "c030",
+   "start": 110.469,
+   "end": 114.16,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Thông báo gửi khách, 05/11",
+    "svg": "tai-lieu",
+    "to": 0.85
+   },
+   "phai": {
+    "nhan": "Kết quả Ủy ban, 05/11",
+    "svg": "tai-lieu"
+   },
+   "nguon_id": [
+    "g5",
+    "m1"
+   ],
+   "nhip": [
+    "đợt rà soát.",
+    "hai văn bản",
+    "ra cùng một"
+   ]
+  },
+  {
+   "id": "c031",
+   "start": 114.16,
+   "end": 116.954,
+   "mau": "b-roll",
+   "video": "duong-pho-viet-nam-35306363-031.mp4",
+   "nhan": "",
+   "nhip": [
+    "vào chuyện cước"
+   ]
+  },
+  {
+   "id": "c032",
+   "start": 116.954,
+   "end": 121.727,
+   "mau": "b-roll",
+   "video": "giao-thong-hcm-flycam-32971516-032.mp4",
+   "nhan": "",
+   "nhip": [
+    "thành phố, tài"
+   ]
+  },
+  {
+   "id": "c033",
+   "start": 121.727,
+   "end": 126.436,
+   "mau": "minh-hoa",
+   "nhan": "Ví dụ: ứng dụng lớn",
+   "svg": "dien-thoai",
+   "san_khau": "thanh-pho",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "oto",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    },
+    {
+     "svg": "cao-oc",
+     "x": 0.24,
+     "y": 0.3,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "tự đặt phí",
+    "không còn là",
+    "riêng của một"
+   ]
+  },
+  {
+   "id": "c034",
+   "start": 126.436,
+   "end": 129.603,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-034.mp4",
+   "nhan": "",
+   "nhip": [
+    "là canh chừng"
+   ]
+  },
+  {
+   "id": "c035",
+   "start": 129.603,
+   "end": 134.522,
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Gần ba nghìn tỷ gồm những gì?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c036",
+   "start": 134.522,
+   "end": 139.418,
+   "mau": "so-lon",
+   "so": "2.950,9",
+   "sau": " tỷ đồng",
+   "nhan": "Khoảng, kế hoạch cho 5 nhóm giải pháp đầu",
+   "nguon_id": "m12",
+   "svg": "tien",
+   "nhip": [
+    "bản của Ủy",
+    "hai nghìn chín"
+   ]
+  },
+  {
+   "id": "c037",
+   "start": 139.418,
+   "end": 144.466,
+   "mau": "trang-nguon",
+   "anh": "m21.png",
+   "khung": "7.1,45.4,43.0,9.2",
+   "nguon_id": "m21",
+   "nhip": [
+    "Đây là tiền"
+   ]
+  },
+  {
+   "id": "c038",
+   "start": 144.466,
+   "end": 148.608,
+   "mau": "bieu-do",
+   "nhan": "Cơ cấu gói 2.950,9 tỷ đồng",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "Khuyến mại khách",
+     "Thưởng tài xế",
+     "Phần còn lại",
+     "Xăng, sạc",
+     "Bồi hoàn"
+    ],
+    "gia_tri": [
+     1808,
+     860,
+     227,
+     52,
+     3.9
+    ],
+    "don_vi": "tỷ đồng",
+    "noi_bat": 0,
+    "chu_thich": "LÁT TO NHẤT",
+    "nguon_id": [
+     "m11",
+     "m10",
+     "k1",
+     "m10b",
+     "m9",
+     "m12"
+    ]
+   }
+  },
+  {
+   "id": "c039",
+   "start": 148.608,
+   "end": 151.719,
+   "mau": "b-roll",
+   "video": "thanh-toan-the-6755016-039.mp4",
+   "nhan": "",
+   "nhip": [
+    "trăm cả gói"
+   ]
+  },
+  {
+   "id": "c040",
+   "start": 151.719,
+   "end": 154.913,
+   "mau": "b-roll",
+   "video": "congthuong-datxe-040.mp4",
+   "nhan": "",
+   "nhip": [
+    "vốn vẫn phát."
+   ]
+  },
+  {
+   "id": "c041",
+   "start": 154.913,
+   "end": 158.31,
+   "mau": "so-lon",
+   "so": "406",
+   "sau": " triệu USD",
+   "nhan": "Ưu đãi người dùng quý III/2026, toàn tập đoàn",
+   "nguon_id": "s3",
+   "svg": "dien-thoai",
+   "nhip": [
+    "bốn trăm triệu",
+    "cho ưu đãi"
+   ]
+  },
+  {
+   "id": "c042",
+   "start": 158.31,
+   "end": 161.893,
+   "mau": "b-roll",
+   "video": "xe-giao-hang-6867866-042.mp4",
+   "nhan": "",
+   "nhip": [
+    "khu vực. Trong"
+   ]
+  },
+  {
+   "id": "c043",
+   "start": 161.893,
+   "end": 166.068,
+   "mau": "trang-nguon",
+   "anh": "m11.png",
+   "khung": "7.1,42.3,43.0,15.4",
+   "nguon_id": "m11",
+   "nhip": [
+    "tiền đằng nào"
+   ]
+  },
+  {
+   "id": "c044",
+   "start": 166.068,
+   "end": 170.188,
+   "mau": "b-roll",
+   "video": "giay-to-7054942-044.mp4",
+   "nhan": "",
+   "dan": {
+    "the": "bo-ngo"
+   },
+   "nhip": [
+    "giảm giá với"
+   ]
+  },
+  {
+   "id": "c045",
+   "start": 170.188,
+   "end": 173.743,
+   "mau": "b-roll",
+   "video": "thanh-toan-the-11158789-045.mp4",
+   "nhan": "",
+   "nhip": [
+    "thị phát ở"
+   ]
+  },
+  {
+   "id": "c046",
+   "start": 173.743,
+   "end": 178.397,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-046.mp4",
+   "nhan": "Giảm theo quãng đường",
+   "nhip": [
+    "thì giống siêu"
+   ]
+  },
+  {
+   "id": "c047",
+   "start": 178.397,
+   "end": 181.202,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-047.mp4",
+   "nhan": "",
+   "nhip": [
+    "tăng lại thì"
+   ]
+  },
+  {
+   "id": "c048",
+   "start": 181.202,
+   "end": 185.204,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Phiếu khuyến mại",
+    "svg": "tui-xach",
+    "to": 1.0
+   },
+   "phai": {
+    "nhan": "Phần giảm phí: tự tính",
+    "svg": "thue-phan-tram",
+    "to": 0.35
+   },
+   "nhip": [
+    "phiếu khuyến mại",
+    "hơn phần hạ",
+    "niêm yết rất"
+   ]
+  },
+  {
+   "id": "c049",
+   "start": 185.204,
+   "end": 189.439,
+   "mau": "trang-nguon",
+   "anh": "m10.png",
+   "khung": "7.1,40.7,43.0,18.5",
+   "nguon_id": "m10",
+   "nhip": [
+    "mươi tỷ thưởng"
+   ]
+  },
+  {
+   "id": "c050",
+   "start": 189.439,
+   "end": 192.985,
+   "mau": "b-roll",
+   "video": "sac-xe-dien-9790134-050.mp4",
+   "nhan": "Tiền xăng, tiền sạc",
+   "nhip": [
+    "xăng, tiền sạc."
+   ]
+  },
+  {
+   "id": "c051",
+   "start": 192.985,
+   "end": 196.24,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-051.mp4",
+   "nhan": "",
+   "nhip": [
+    "trong đó. Thưởng"
+   ]
+  },
+  {
+   "id": "c052",
+   "start": 196.24,
+   "end": 201.014,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-052.mp4",
+   "nhan": "",
+   "nhip": [
+    "thứ ba mới"
+   ]
+  },
+  {
+   "id": "c053",
+   "start": 201.014,
+   "end": 204.575,
+   "mau": "b-roll",
+   "video": "giao-thong-hcm-flycam-32971516-053.mp4",
+   "nhan": "",
+   "nhip": [
+    "nghìn không trăm"
+   ]
+  },
+  {
+   "id": "c054",
+   "start": 204.575,
+   "end": 209.213,
+   "mau": "trang-nguon",
+   "anh": "b1.png",
+   "khung": "11.6,38.0,54.2,24.0",
+   "nguon_id": "b1",
+   "nhip": [
+    "bị trừ quá"
+   ]
+  },
+  {
+   "id": "c055",
+   "start": 209.213,
+   "end": 212.678,
+   "mau": "trich-bao",
+   "nguon_id": "m13",
+   "trich": "do biến động cung - cầu tại một số thời điểm hoặc lỗi thuật toán",
+   "to_vang": "lỗi thuật toán",
+   "nhip": [
+    "cầu lên xuống,"
+   ]
+  },
+  {
+   "id": "c056",
+   "start": 212.678,
+   "end": 216.903,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Bồi hoàn: dự kiến",
+    "svg": "tien",
+    "so": "3,9",
+    "don_vi": "tỷ đồng",
+    "to": 0.15
+   },
+   "phai": {
+    "nhan": "Cả gói: kế hoạch",
+    "svg": "tien",
+    "so": "2.950,9",
+    "don_vi": "tỷ đồng",
+    "to": 1.0
+   },
+   "nguon_id": [
+    "m9",
+    "m12"
+   ],
+   "nhip": [
+    "bốn tỷ, con",
+    "bộ. Đặt cạnh",
+    "gần ba nghìn"
+   ]
+  },
+  {
+   "id": "c057",
+   "start": 216.903,
+   "end": 220.116,
+   "mau": "b-roll",
+   "video": "xe-may-di-lam-36067569-057.mp4",
+   "nhan": "Chỉ số ít chuyến",
+   "nhip": [
+    "chỉ bồi cho"
+   ]
+  },
+  {
+   "id": "c058",
+   "start": 220.116,
+   "end": 222.921,
+   "mau": "minh-hoa",
+   "nhan": "Giảm phí chiếm bao nhiêu?",
+   "dan": {
+    "the": "nghi"
+   },
+   "svg": "kinh-lup",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "thue-phan-tram",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "giảm phí, thứ",
+    "được nói tới",
+    "tới đầu tiên?"
+   ]
+  },
+  {
+   "id": "c059",
+   "start": 222.921,
+   "end": 226.713,
+   "mau": "so-lon",
+   "so": "227",
+   "sau": " tỷ đồng",
+   "nhan": "Phần còn lại sau khi trừ các lát: tự tính",
+   "nguon_id": "k1",
+   "svg": "tien",
+   "dan": {
+    "the": "tinh-toan"
+   },
+   "nhip": [
+    "kể, tính ra",
+    "hai trăm hai"
+   ]
+  },
+  {
+   "id": "c060",
+   "start": 226.713,
+   "end": 230.621,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-060.mp4",
+   "nhan": "",
+   "nhip": [
+    "cũng không nói"
+   ]
+  },
+  {
+   "id": "c061",
+   "start": 230.621,
+   "end": 235.401,
+   "mau": "b-roll",
+   "video": "tien-mat-5466769-061.mp4",
+   "nhan": "Quy ra đô la",
+   "nhip": [
+    "theo tỷ giá"
+   ]
+  },
+  {
+   "id": "c062",
+   "start": 235.401,
+   "end": 240.087,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Cả gói quy USD",
+    "svg": "tien",
+    "so": "114",
+    "don_vi": "triệu USD",
+    "to": 0.32
+   },
+   "phai": {
+    "nhan": "Doanh thu quý III/2026",
+    "svg": "bieu-do-nen",
+    "so": "1.112",
+    "don_vi": "triệu USD",
+    "to": 1.0
+   },
+   "ti_le": "khoảng 10% (tự tính)",
+   "nguon_id": [
+    "k10",
+    "s1",
+    "v1"
+   ],
+   "nhip": [
+    "bốn triệu đô",
+    "một phần mười",
+    "một quý của"
+   ]
+  },
+  {
+   "id": "c063",
+   "start": 240.087,
+   "end": 243.258,
+   "mau": "bieu-do",
+   "nhan": "Gói gần 3.000 tỷ chia theo phần trăm",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "Khuyến mại khách",
+     "Tài xế: thưởng, bồi hoàn",
+     "Phần còn lại"
+    ],
+    "gia_tri": [
+     61,
+     31,
+     7.7
+    ],
+    "don_vi": "%",
+    "noi_bat": 0,
+    "chu_thich": "HƠN NỬA",
+    "nguon_id": [
+     "k2",
+     "k3",
+     "k1"
+    ]
+   }
+  },
+  {
+   "id": "c064",
+   "start": 243.258,
+   "end": 246.881,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-064.mp4",
+   "nhan": "",
+   "nhip": [
+    "kiện. Phần giảm"
+   ]
+  },
+  {
+   "id": "c065",
+   "start": 246.881,
+   "end": 251.639,
+   "mau": "trang-nguon",
+   "anh": "m12.png",
+   "khung": "7.1,42.3,43.0,15.4",
+   "nguon_id": "m12",
+   "nhip": [
+    "nguồn không tách"
+   ]
+  },
+  {
+   "id": "c066",
+   "start": 251.639,
+   "end": 254.77,
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Mỗi cuốc xe đổi thế nào?",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c067",
+   "start": 254.77,
+   "end": 257.305,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-067.mp4",
+   "nhan": "Tài xế trước",
+   "nhip": [
+    "ở mức bị"
+   ]
+  },
+  {
+   "id": "c068",
+   "start": 257.305,
+   "end": 261.38,
+   "mau": "so-lon",
+   "so": "60.590",
+   "tu": "52.000",
+   "sau": " đồng",
+   "nhan": "Tài xế GrabBike thực nhận, cuốc 100.000 đồng, mức trừ nặng nhất",
+   "nguon_id": "b2",
+   "svg": "tien",
+   "huong": "len",
+   "nhip": [
+    "mươi hai nghìn,",
+    "máy cầm hơn"
+   ]
+  },
+  {
+   "id": "c069",
+   "start": 261.38,
+   "end": 264.611,
+   "mau": "b-roll",
+   "video": "xe-may-di-lam-36067569-069.mp4",
+   "nhan": "Thêm mỗi cuốc",
+   "nhip": [
+    "đồng cho một"
+   ]
+  },
+  {
+   "id": "c070",
+   "start": 264.611,
+   "end": 269.349,
+   "mau": "trich-bao",
+   "nguon_id": "b4",
+   "trich": "minh họa thay đổi ở ngưỡng khấu trừ bất lợi nhất, không phản ánh mức tăng thu nhập bình quân",
+   "to_vang": "không phản ánh mức tăng thu nhập bình quân",
+   "nhip": [
+    "bất lợi nhất,"
+   ]
+  },
+  {
+   "id": "c071",
+   "start": 269.349,
+   "end": 272.161,
+   "mau": "b-roll",
+   "video": "xe-may-pho-viet-nam-36077795-071.mp4",
+   "nhan": "Một cái trần",
+   "nhip": [
+    "tiền là nhờ"
+   ]
+  },
+  {
+   "id": "c072",
+   "start": 272.161,
+   "end": 275.86,
+   "mau": "trang-nguon",
+   "anh": "m3.png",
+   "khung": "7.1,37.6,43.0,24.8",
+   "nguon_id": "m3",
+   "nhip": [
+    "ba mươi hai"
+   ]
+  },
+  {
+   "id": "c073",
+   "start": 275.86,
+   "end": 278.86,
+   "mau": "b-roll",
+   "video": "ket-xe-32909774-073.mp4",
+   "nhan": "Cuốc dưới mức: giữ nguyên",
+   "nhip": [
+    "thì cái trần"
+   ]
+  },
+  {
+   "id": "c074",
+   "start": 278.86,
+   "end": 283.866,
+   "mau": "minh-hoa",
+   "nhan": "Grab nói: hiện từng khoản",
+   "nguon_id": "m18",
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "thue-phan-tram",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    },
+    {
+     "svg": "tai-lieu",
+     "x": 0.24,
+     "y": 0.3,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "của tài xế",
+    "rõ hơn từng",
+    "thu, phí, thuế,"
+   ]
+  },
+  {
+   "id": "c075",
+   "start": 283.866,
+   "end": 287.528,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-075.mp4",
+   "nhan": "Ảnh lịch sử chuyến",
+   "nhip": [
+    "sử chuyến lên"
+   ]
+  },
+  {
+   "id": "c076",
+   "start": 287.528,
+   "end": 291.812,
+   "mau": "b-roll",
+   "video": "congthuong-datxe-076.mp4",
+   "nhan": "Còn người gọi xe?",
+   "dan": {
+    "the": "nghi"
+   },
+   "nhip": [
+    "Còn bạn, người"
+   ]
+  },
+  {
+   "id": "c077",
+   "start": 291.812,
+   "end": 296.875,
+   "mau": "bieu-do",
+   "nhan": "Phí nền tảng GrabBike từ 10/11",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "Đến 2 km",
+     "Trên 2–6 km",
+     "Trên 6 km"
+    ],
+    "gia_tri": [
+     1000,
+     2000,
+     3000
+    ],
+    "don_vi": "đồng",
+    "noi_bat": 0,
+    "chu_thich": "Trước đây: 3.000 đồng ở cả ba mức",
+    "nguon_id": "g1"
+   }
+  },
+  {
+   "id": "c078",
+   "start": 296.875,
+   "end": 301.295,
+   "mau": "bieu-do",
+   "nhan": "Phí nền tảng GrabCar từ 10/11",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "Đến 3 km",
+     "Trên 3–4 km"
+    ],
+    "gia_tri": [
+     3000,
+     4000
+    ],
+    "don_vi": "đồng",
+    "noi_bat": 0,
+    "chu_thich": "Trước đây: 5.000 đồng ở cả hai mức",
+    "nguon_id": "g2"
+   }
+  },
+  {
+   "id": "c079",
+   "start": 301.295,
+   "end": 305.517,
+   "mau": "b-roll",
+   "video": "duong-pho-viet-nam-35306363-079.mp4",
+   "nhan": "Cuốc ngắn lợi nhất",
+   "nhip": [
+    "buýt. Mấy cuốc"
+   ]
+  },
+  {
+   "id": "c080",
+   "start": 305.517,
+   "end": 310.403,
+   "mau": "trang-nguon",
+   "anh": "g1.png",
+   "khung": "35.8,55.3,46.3,6.0",
+   "nguon_id": "g1",
+   "nhip": [
+    "tháng hai năm"
+   ]
+  },
+  {
+   "id": "c081",
+   "start": 310.403,
+   "end": 315.511,
+   "mau": "so-lon",
+   "so": "7",
+   "sau": "%",
+   "nhan": "Phí nền tảng từ 26/02/2027, tính trên tiền cước",
+   "nguon_id": "g3",
+   "svg": "thue-phan-tram",
+   "nhip": [
+    "đổi hẳn cách",
+    "tảng bằng bảy"
+   ]
+  },
+  {
+   "id": "c082",
+   "start": 315.511,
+   "end": 318.734,
+   "mau": "b-roll",
+   "video": "xe-may-di-lam-36067569-082.mp4",
+   "nhan": "Tùy cuốc dài hay ngắn",
+   "nhip": [
+    "thiệt? Tùy cuốc"
+   ]
+  },
+  {
+   "id": "c083",
+   "start": 318.734,
+   "end": 322.092,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-083.mp4",
+   "nhan": "Tính thử vài cuốc",
+   "dan": {
+    "the": "tinh-toan"
+   },
+   "nhip": [
+    "liền. Cuốc xe"
+   ]
+  },
+  {
+   "id": "c084",
+   "start": 322.092,
+   "end": 325.565,
+   "mau": "so-lon",
+   "so": "1.050",
+   "sau": " đồng",
+   "nhan": "Phí 7% trên cuốc 15.000 đồng, tự tính",
+   "nguon_id": "k11",
+   "svg": "tien",
+   "nhip": [
+    "nghìn, ngang mức",
+    "thu với cuốc"
+   ]
+  },
+  {
+   "id": "c085",
+   "start": 325.565,
+   "end": 329.211,
+   "mau": "so-lon",
+   "so": "4.200",
+   "sau": " đồng",
+   "nhan": "Phí 7% trên cuốc 60.000 đồng, tự tính",
+   "nguon_id": "k8",
+   "svg": "tien",
+   "huong": "len",
+   "nhip": [
+    "nghìn là thấy",
+    "tính ra hơn"
+   ]
+  },
+  {
+   "id": "c086",
+   "start": 329.211,
+   "end": 332.533,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Mức phí 3.000 đồng",
+    "svg": "tien",
+    "so": "3.000",
+    "don_vi": "đồng",
+    "to": 0.7
+   },
+   "phai": {
+    "nhan": "Phí 7%, cước 60.000 đồng",
+    "svg": "tien",
+    "so": "4.200",
+    "don_vi": "đồng",
+    "to": 1.0
+   },
+   "ti_le": "Phí 7%: tự tính",
+   "nguon_id": [
+    "g1",
+    "k8"
+   ],
+   "nhip": [
+    "nghìn bây giờ.",
+    "So với mức",
+    "phí trước đợt"
+   ]
+  },
+  {
+   "id": "c087",
+   "start": 332.533,
+   "end": 335.119,
+   "mau": "so-lon",
+   "so": "43.000",
+   "sau": " đồng",
+   "nhan": "Điểm hòa của tiền cước, tự tính",
+   "nguon_id": "k7",
+   "svg": "thuoc-do",
+   "nhip": [
+    "nằm quanh bốn",
+    "ba nghìn tiền"
+   ]
+  },
+  {
+   "id": "c088",
+   "start": 335.119,
+   "end": 338.595,
+   "mau": "b-roll",
+   "video": "thanh-toan-the-11158789-088.mp4",
+   "nhan": "Điểm hòa là ranh giới",
+   "nhip": [
+    "trên mức đó"
+   ]
+  },
+  {
+   "id": "c089",
+   "start": 338.595,
+   "end": 341.658,
+   "mau": "b-roll",
+   "video": "giao-thong-hcm-flycam-32971516-089.mp4",
+   "nhan": "Ô tô đi xa",
+   "nhip": [
+    "hơn. Cuốc hai"
+   ]
+  },
+  {
+   "id": "c090",
+   "start": 341.658,
+   "end": 345.765,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Phí tối đa hiện nay",
+    "svg": "oto",
+    "so": "9.000",
+    "don_vi": "đồng",
+    "to": 0.7
+   },
+   "phai": {
+    "nhan": "Phí 7%, cước 200.000 đồng",
+    "svg": "oto",
+    "so": "14.000",
+    "don_vi": "đồng",
+    "to": 1.0
+   },
+   "ti_le": "Phí 7%: tự tính",
+   "nguon_id": [
+    "g2",
+    "k9"
+   ],
+   "nhip": [
+    "ra mười bốn",
+    "trong khi giờ",
+    "tối đa chín"
+   ]
+  },
+  {
+   "id": "c091",
+   "start": 345.765,
+   "end": 349.385,
+   "mau": "trich-bao",
+   "nguon_id": "g4",
+   "trich": "ưu đãi giảm 10% trên tổng giá cước cho các chuyến xe có quãng đường từ 10km trở lên",
+   "to_vang": "giảm 10% trên tổng giá cước",
+   "nhip": [
+    "được giảm một"
+   ]
+  },
+  {
+   "id": "c092",
+   "start": 349.385,
+   "end": 353.281,
+   "mau": "so-lon",
+   "so": "20.000",
+   "sau": " đồng",
+   "nhan": "Ưu đãi 10% trên cước 200.000 đồng, tự tính",
+   "nguon_id": "k9",
+   "svg": "tien",
+   "huong": "len",
+   "nhip": [
+    "mươi nghìn. Có",
+    "bù hết hạn"
+   ]
+  },
+  {
+   "id": "c093",
+   "start": 353.281,
+   "end": 357.423,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Ưu đãi 10%: hết 31/12/2027",
+    "svg": "lich",
+    "to": 0.8
+   },
+   "phai": {
+    "nhan": "Phí 7%: chưa ghi hạn",
+    "svg": "lich"
+   },
+   "nguon_id": [
+    "g3",
+    "g4"
+   ],
+   "nhip": [
+    "thì chưa ghi",
+    "hết. Khuyến mại",
+    "hạn, phí thì"
+   ]
+  },
+  {
+   "id": "c094",
+   "start": 357.423,
+   "end": 360.619,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-094.mp4",
+   "nhan": "Một chi tiết nhỏ",
+   "nhip": [
+    "nhỏ trên trang"
+   ]
+  },
+  {
+   "id": "c095",
+   "start": 360.619,
+   "end": 363.641,
+   "mau": "trich-bao",
+   "nguon_id": "g3",
+   "trich": "tỷ lệ % tính trên giá cước vận tải và phụ phí liên quan, là 7%",
+   "to_vang": "giá cước vận tải và phụ phí liên quan",
+   "nhip": [
+    "tiền cước lẫn"
+   ]
+  },
+  {
+   "id": "c096",
+   "start": 363.641,
+   "end": 368.378,
+   "mau": "b-roll",
+   "video": "xe-may-mua-39734321-096.mp4",
+   "nhan": "Ví dụ giả định",
+   "nhip": [
+    "nhảy lên, phần"
+   ]
+  },
+  {
+   "id": "c097",
+   "start": 368.378,
+   "end": 371.055,
+   "mau": "b-roll",
+   "video": "ket-xe-32909774-097.mp4",
+   "nhan": "",
+   "nhip": [
+    "thì mưa hay"
+   ]
+  },
+  {
+   "id": "c098",
+   "start": 371.055,
+   "end": 374.614,
+   "mau": "minh-hoa",
+   "nhan": "Phí 7% gồm phụ phí",
+   "nguon_id": "g3",
+   "svg": "thue-phan-tram",
+   "san_khau": "thanh-pho",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "gọi xe lúc",
+    "sẽ đắt thêm",
+    "ở cả hai"
+   ]
+  },
+  {
+   "id": "c099",
+   "start": 374.614,
+   "end": 379.041,
+   "mau": "chuong",
+   "so": "Phần 4",
+   "chuong": "Hai việc cần ngóng",
+   "dan": {
+    "the": "chao"
+   }
+  },
+  {
+   "id": "c100",
+   "start": 379.041,
+   "end": 384.524,
+   "mau": "trang-nguon",
+   "anh": "m18.png",
+   "khung": "7.1,40.7,43.0,18.5",
+   "nguon_id": "m18",
+   "nhip": [
+    "được cái trần"
+   ]
+  },
+  {
+   "id": "c101",
+   "start": 384.524,
+   "end": 389.756,
+   "mau": "trich-bao",
+   "nguon_id": "m14",
+   "trich": "yêu cầu Grab báo cáo định kỳ về tình hình triển khai các giải pháp",
+   "to_vang": "báo cáo định kỳ",
+   "nhip": [
+    "sẽ xem xét"
+   ]
+  },
+  {
+   "id": "c102",
+   "start": 389.756,
+   "end": 393.048,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-102.mp4",
+   "nhan": "",
+   "nhip": [
+    "Grab nữa thì"
+   ]
+  },
+  {
+   "id": "c103",
+   "start": 393.048,
+   "end": 396.624,
+   "mau": "trang-nguon",
+   "anh": "m9b.png",
+   "khung": "7.1,42.3,43.0,15.4",
+   "nguon_id": "m9b",
+   "nhip": [
+    "được đề nghị"
+   ]
+  },
+  {
+   "id": "c104",
+   "start": 396.624,
+   "end": 400.147,
+   "mau": "minh-hoa",
+   "nhan": "Gửi trước 30/11/2026",
+   "nguon_id": "m9b",
+   "svg": "hop-thu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "the-ngan-hang",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "lich",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "mươi tháng mười",
+    "qua tin nhắn",
+    "hoặc email của"
+   ]
+  },
+  {
+   "id": "c105",
+   "start": 400.147,
+   "end": 403.867,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-105.mp4",
+   "nhan": "",
+   "nhip": [
+    "gì. Đề phòng"
+   ]
+  },
+  {
+   "id": "c106",
+   "start": 403.867,
+   "end": 408.105,
+   "mau": "b-roll",
+   "video": "dien-thoai-nen-trang-4884231-106.mp4",
+   "nhan": "",
+   "nhip": [
+    "tới trước. Việc"
+   ]
+  },
+  {
+   "id": "c107",
+   "start": 408.105,
+   "end": 412.18,
+   "mau": "trang-nguon",
+   "anh": "m15.png",
+   "khung": "7.1,37.6,43.0,24.8",
+   "nguon_id": "m15",
+   "nhip": [
+    "người tiêu dùng"
+   ]
+  },
+  {
+   "id": "c108",
+   "start": 412.18,
+   "end": 416.523,
+   "mau": "trich-bao",
+   "nguon_id": "m16",
+   "trich": "quyền chủ động lựa chọn của người tiêu dùng đối với bảo hiểm chuyến đi, khoản đóng góp trung hòa carbon",
+   "to_vang": "bảo hiểm chuyến đi",
+   "nhip": [
+    "tự chọn có"
+   ]
+  },
+  {
+   "id": "c109",
+   "start": 416.523,
+   "end": 420.044,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-109.mp4",
+   "nhan": "",
+   "nhip": [
+    "tự rà lại"
+   ]
+  },
+  {
+   "id": "c110",
+   "start": 420.044,
+   "end": 422.557,
+   "mau": "b-roll",
+   "video": "xe-may-pho-viet-nam-36077795-110.mp4",
+   "nhan": "",
+   "nhip": [
+    "im lặng, cứ"
+   ]
+  },
+  {
+   "id": "c111",
+   "start": 422.557,
+   "end": 427.814,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-111.mp4",
+   "nhan": "",
+   "nhip": [
+    "bảo hiểm chuyến"
+   ]
+  },
+  {
+   "id": "c112",
+   "start": 427.814,
+   "end": 430.349,
+   "mau": "minh-hoa",
+   "nhan": "Ghi lịch: 26/02/2027",
+   "nguon_id": "g3",
+   "svg": "lich",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "thue-phan-tram",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "ngày hai mươi",
+    "sáu tháng hai",
+    "hai năm sau."
+   ]
+  },
+  {
+   "id": "c113",
+   "start": 430.349,
+   "end": 433.805,
+   "mau": "b-roll",
+   "video": "congthuong-datxe-113.mp4",
+   "nhan": "",
+   "nhip": [
+    "so. Cứ mở"
+   ]
+  },
+  {
+   "id": "c114",
+   "start": 433.805,
+   "end": 437.394,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-114.mp4",
+   "nhan": "",
+   "nhip": [
+    "phí nền tảng"
+   ]
+  },
+  {
+   "id": "c115",
+   "start": 437.394,
+   "end": 440.537,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-115.mp4",
+   "nhan": "",
+   "nhip": [
+    "đi từ bây"
+   ]
+  },
+  {
+   "id": "c116",
+   "start": 440.537,
+   "end": 443.548,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Ảnh chụp bây giờ",
+    "svg": "dien-thoai"
+   },
+   "phai": {
+    "nhan": "Ảnh chụp tháng hai",
+    "svg": "dien-thoai"
+   },
+   "nhip": [
+    "quãng đường đó,",
+    "rồi đặt hai",
+    "ảnh cạnh nhau."
+   ]
+  },
+  {
+   "id": "c117",
+   "start": 443.548,
+   "end": 447.775,
+   "mau": "chuong",
+   "so": "Phần 5",
+   "chuong": "Tiền về túi ai?",
+   "dan": {
+    "the": "nghi"
+   }
+  },
+  {
+   "id": "c118",
+   "start": 447.775,
+   "end": 451.4,
+   "mau": "b-roll",
+   "video": "tuoitre-taixe-118.mp4",
+   "nhan": "",
+   "nhip": [
+    "hơn: ở cuốc"
+   ]
+  },
+  {
+   "id": "c119",
+   "start": 451.4,
+   "end": 455.863,
+   "mau": "so-lon",
+   "so": "60,59",
+   "tu": "52",
+   "sau": "%",
+   "huong": "len",
+   "nhan": "Mức nhận tối thiểu, tài xế GrabBike",
+   "nguon_id": [
+    "m5",
+    "m7"
+   ],
+   "svg": "bac-thang",
+   "nhip": [
+    "mươi phần trăm.",
+    "trừ quá tay"
+   ]
+  },
+  {
+   "id": "c120",
+   "start": 455.863,
+   "end": 459.347,
+   "mau": "b-roll",
+   "video": "xe-may-di-lam-36067569-120.mp4",
+   "nhan": "",
+   "nhip": [
+    "đi xe, bớt"
+   ]
+  },
+  {
+   "id": "c121",
+   "start": 459.347,
+   "end": 462.962,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Đến 25/02: bớt 1–2 nghìn",
+    "svg": "lich"
+   },
+   "phai": {
+    "nhan": "Từ 26/02/2027",
+    "svg": "thue-phan-tram",
+    "so": "7",
+    "don_vi": "%"
+   },
+   "nguon_id": [
+    "g1",
+    "g3"
+   ],
+   "nhip": [
+    "cuối tháng hai,",
+    "rồi chuyển sang",
+    "mức bảy phần"
+   ]
+  },
+  {
+   "id": "c122",
+   "start": 462.962,
+   "end": 466.978,
+   "mau": "bieu-do",
+   "nhan": "Gói 2.950,9 tỷ đồng chia ra",
+   "bieu_do": {
+    "kieu": "cot",
+    "nhan_x": [
+     "Khuyến mại hành khách",
+     "Thưởng, hỗ trợ, bồi hoàn",
+     "Phần còn lại"
+    ],
+    "gia_tri": [
+     1808,
+     915.9,
+     227
+    ],
+    "don_vi": "tỷ đồng",
+    "noi_bat": 0,
+    "chu_thich": "Tự tính: 61% gói",
+    "nguon_id": [
+     "m11",
+     "k3",
+     "k1",
+     "k2",
+     "m12"
+    ]
+   }
+  },
+  {
+   "id": "c123",
+   "start": 466.978,
+   "end": 470.101,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-123.mp4",
+   "nhan": "",
+   "nhip": [
+    "trong gói lại"
+   ]
+  },
+  {
+   "id": "c124",
+   "start": 470.101,
+   "end": 473.7,
+   "mau": "so-lon",
+   "so": "32",
+   "sau": "%",
+   "nhan": "Trần tổng phí Grab hưởng",
+   "nguon_id": "m3",
+   "svg": "thuoc-do",
+   "dan": {
+    "the": "xac-nhan"
+   },
+   "nhip": [
+    "trăm, và cái",
+    "sẽ hiện rõ"
+   ]
+  },
+  {
+   "id": "c125",
+   "start": 473.7,
+   "end": 477.851,
+   "mau": "trang-nguon",
+   "anh": "m3.png",
+   "khung": "7.1,37.6,43.0,24.8",
+   "nguon_id": "m3",
+   "nhip": [
+    "trần là cam"
+   ]
+  },
+  {
+   "id": "c126",
+   "start": 477.851,
+   "end": 482.279,
+   "mau": "b-roll",
+   "video": "ket-xe-32909774-126.mp4",
+   "nhan": "",
+   "nhip": [
+    "dõi. Giờ thử"
+   ]
+  },
+  {
+   "id": "c127",
+   "start": 482.279,
+   "end": 485.788,
+   "mau": "quy-trinh",
+   "tieu_de": "Cách tự tính",
+   "buoc": [
+    {
+     "nhan": "Tiền cước",
+     "svg": "tien"
+    },
+    {
+     "nhan": "Nhân bảy phần trăm",
+     "svg": "thue-phan-tram"
+    },
+    {
+     "nhan": "So với phí đang trả",
+     "svg": "thuoc-do"
+    }
+   ],
+   "noi_bat": 1,
+   "nguon_id": "g3",
+   "dan": {
+    "the": "tinh-toan"
+   }
+  },
+  {
+   "id": "c128",
+   "start": 485.788,
+   "end": 488.469,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-7055396-128.mp4",
+   "nhan": "",
+   "nhip": [
+    "thêm hay bớt"
+   ]
+  },
+  {
+   "id": "c129",
+   "start": 488.469,
+   "end": 492.554,
+   "mau": "minh-hoa",
+   "nhan": "Thả số vào bình luận",
+   "svg": "bong-bong",
+   "san_khau": "nen-dat",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "con số xuống",
+    "luận, xem ai",
+    "có cuốc tốn"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,856 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 4.484,
+   "loi": "Năm ngoái, Mỹ bắt chip AI xuất sang Malaysia và Thái Lan phải có thêm giấy phép."
+  },
+  {
+   "id": "c002",
+   "start": 4.484,
+   "end": 7.478,
+   "loi": "Nhiều người nghe tin đó và hỏi: tới lượt Việt Nam chưa?"
+  },
+  {
+   "id": "c003",
+   "start": 7.478,
+   "end": 11.101,
+   "loi": "Câu trả lời làm mình bất ngờ. Việt Nam không đứng chờ tới lượt."
+  },
+  {
+   "id": "c004",
+   "start": 11.101,
+   "end": 14.849,
+   "loi": "Việt Nam nằm sẵn trong một nhóm nước bị soi kỹ hơn cả hai nước kia."
+  },
+  {
+   "id": "c005",
+   "start": 14.849,
+   "end": 18.173,
+   "loi": "Vậy tuần này, khi cả nước Mỹ bàn về một bê bối ở Nvidia,"
+  },
+  {
+   "id": "c006",
+   "start": 18.173,
+   "end": 21.236,
+   "loi": "cánh cửa vốn đã hẹp với Việt Nam có hẹp thêm không?"
+  },
+  {
+   "id": "c007",
+   "start": 21.236,
+   "end": 24.013,
+   "loi": "Chuyện bắt đầu ngày tám tháng mười một. Jensen Huang,"
+  },
+  {
+   "id": "c008",
+   "start": 24.013,
+   "end": 28.127,
+   "loi": "người sáng lập và là giám đốc điều hành Nvidia, gửi email cho toàn công ty."
+  },
+  {
+   "id": "c009",
+   "start": 28.127,
+   "end": 30.816,
+   "loi": "Ông viết: tôi đã không chung thủy với vợ mình."
+  },
+  {
+   "id": "c010",
+   "start": 30.816,
+   "end": 34.702,
+   "loi": "Cùng ngày, hội đồng quản trị Nvidia mở một cuộc điều tra độc lập."
+  },
+  {
+   "id": "c011",
+   "start": 34.702,
+   "end": 38.247,
+   "loi": "Lý do họ nêu không phải chuyện gia đình. Lý do là báo chí gần đây"
+  },
+  {
+   "id": "c012",
+   "start": 38.247,
+   "end": 41.434,
+   "loi": "đưa tin ông là mục tiêu của một nỗ lực tình báo nước ngoài."
+  },
+  {
+   "id": "c013",
+   "start": 41.434,
+   "end": 44.894,
+   "loi": "Từ một lá thư xin lỗi, tới tấm giấy phép mua chip của Việt Nam,"
+  },
+  {
+   "id": "c014",
+   "start": 44.894,
+   "end": 48.218,
+   "loi": "khoảng cách ngắn hơn bạn tưởng. Cuối video, mình trả lời thẳng:"
+  },
+  {
+   "id": "c015",
+   "start": 48.218,
+   "end": 51.13,
+   "loi": "túi tiền của bạn có gì phải lo không. Đọc kỹ email,"
+  },
+  {
+   "id": "c016",
+   "start": 51.13,
+   "end": 54.127,
+   "loi": "bạn sẽ thấy nó không nhắc tên ai, không nhắc công ty nào."
+  },
+  {
+   "id": "c017",
+   "start": 54.127,
+   "end": 57.743,
+   "loi": "Ông xin lỗi vợ con, xin lỗi đồng nghiệp, nhắc tới những lo ngại"
+  },
+  {
+   "id": "c018",
+   "start": 57.743,
+   "end": 61.623,
+   "loi": "về an ninh quốc gia mà báo chí nêu, và nói ông ủng hộ cuộc điều tra."
+  },
+  {
+   "id": "c019",
+   "start": 61.623,
+   "end": 66.689,
+   "loi": "Tuyên bố của hội đồng quản trị cũng dè dặt. Cuộc điều tra do một nhóm thành viên độc lập giám sát,"
+  },
+  {
+   "id": "c020",
+   "start": 66.689,
+   "end": 70.209,
+   "loi": "có luật sư bên ngoài hỗ trợ. Và họ nói chưa có lý do để tin"
+  },
+  {
+   "id": "c021",
+   "start": 70.209,
+   "end": 73.724,
+   "loi": "rằng an ninh quốc gia hay bí mật của Nvidia đã bị lộ."
+  },
+  {
+   "id": "c022",
+   "start": 73.724,
+   "end": 77.381,
+   "loi": "Có một văn bản khác, gửi trước đó ba ngày, thì có nhắc một cái tên."
+  },
+  {
+   "id": "c023",
+   "start": 77.381,
+   "end": 80.221,
+   "loi": "Nhưng nó nói về an ninh, không nói chuyện tình cảm."
+  },
+  {
+   "id": "c024",
+   "start": 80.221,
+   "end": 84.718,
+   "loi": "Ngày năm tháng mười một, ba chủ tịch ủy ban của Hạ viện Mỹ gửi thư cho Jensen Huang."
+  },
+  {
+   "id": "c025",
+   "start": 84.718,
+   "end": 89.706,
+   "loi": "Họ lo ngại về những lần ông tiếp xúc với Alice Huang, một lãnh đạo của công ty Megaspeed."
+  },
+  {
+   "id": "c026",
+   "start": 89.706,
+   "end": 93.606,
+   "loi": "Thư gọi bà là người được báo chí đưa tin là tài sản tình báo của Trung Quốc."
+  },
+  {
+   "id": "c027",
+   "start": 93.606,
+   "end": 98.168,
+   "loi": "Chú ý mấy chữ \"được báo chí đưa tin\". Đó là lời báo chí, được các nghị sĩ nhắc lại."
+  },
+  {
+   "id": "c028",
+   "start": 98.168,
+   "end": 103.236,
+   "loi": "Chưa phải kết luận của tòa án, cũng chưa phải kết luận của cơ quan điều tra nào mà mình đọc được."
+  },
+  {
+   "id": "c029",
+   "start": 103.236,
+   "end": 108.046,
+   "loi": "Và không văn bản nào mình đọc nói bà Alice Huang liên quan tới chuyện riêng trong email."
+  },
+  {
+   "id": "c030",
+   "start": 108.046,
+   "end": 112.206,
+   "loi": "Hai chuyện được báo chí đặt cạnh nhau. Văn bản chính thức thì chưa nối chúng lại."
+  },
+  {
+   "id": "c031",
+   "start": 112.206,
+   "end": 116.195,
+   "loi": "Nên trong video này, mình giữ đúng mức đó. Có một cuộc điều tra."
+  },
+  {
+   "id": "c032",
+   "start": 116.195,
+   "end": 119.279,
+   "loi": "Có một lá thư. Chưa có phán quyết. Trước hết,"
+  },
+  {
+   "id": "c033",
+   "start": 119.279,
+   "end": 122.365,
+   "loi": "vì sao chip của một hãng lại khiến Quốc hội phải gửi thư?"
+  },
+  {
+   "id": "c034",
+   "start": 122.365,
+   "end": 125.151,
+   "loi": "AI ngày nay, từ chatbot tới công cụ tạo ảnh,"
+  },
+  {
+   "id": "c035",
+   "start": 125.151,
+   "end": 129.168,
+   "loi": "được huấn luyện và chạy trên loại chip xử lý đồ họa, gọi tắt là GPU."
+  },
+  {
+   "id": "c036",
+   "start": 129.168,
+   "end": 132.25,
+   "loi": "Nvidia là một trong những hãng lớn nhất làm loại chip này."
+  },
+  {
+   "id": "c037",
+   "start": 132.25,
+   "end": 136.197,
+   "loi": "Và Mỹ quản loại chip đó bằng luật xuất khẩu, giống như quản hàng chiến lược."
+  },
+  {
+   "id": "c038",
+   "start": 136.197,
+   "end": 139.719,
+   "loi": "Megaspeed là ai? Báo chí Mỹ đã điều tra công ty này."
+  },
+  {
+   "id": "c039",
+   "start": 139.719,
+   "end": 143.351,
+   "loi": "Nhưng các bài đó nằm sau tường phí. Mình không đọc được bản gốc,"
+  },
+  {
+   "id": "c040",
+   "start": 143.351,
+   "end": 147.562,
+   "loi": "nên mình không đọc con số nào của họ lên đây, kể cả khi báo Việt đã dịch lại."
+  },
+  {
+   "id": "c041",
+   "start": 147.562,
+   "end": 150.126,
+   "loi": "Cái mình đọc được là văn bản của chính phủ Mỹ."
+  },
+  {
+   "id": "c042",
+   "start": 150.126,
+   "end": 153.482,
+   "loi": "Văn bản đó không nhắc tới Megaspeed. Nhưng nó cho thấy"
+  },
+  {
+   "id": "c043",
+   "start": 153.482,
+   "end": 157.108,
+   "loi": "Washington lo chuyện gì ở khu vực mình. Tháng năm năm ngoái,"
+  },
+  {
+   "id": "c044",
+   "start": 157.108,
+   "end": 160.337,
+   "loi": "Bộ Thương mại Mỹ bỏ một quy tắc cũ tên là AI Diffusion."
+  },
+  {
+   "id": "c045",
+   "start": 160.337,
+   "end": 165.228,
+   "loi": "Cùng lúc, họ thêm yêu cầu giấy phép khi xuất chip AI sang Malaysia và Thái Lan."
+  },
+  {
+   "id": "c046",
+   "start": 165.228,
+   "end": 168.975,
+   "loi": "Lý do họ ghi rất ngắn: đã biết có những vụ chip bị chuyển hướng."
+  },
+  {
+   "id": "c047",
+   "start": 168.975,
+   "end": 171.916,
+   "loi": "Chuyển hướng nghĩa là gì? Chip được bán cho một nước."
+  },
+  {
+   "id": "c048",
+   "start": 171.916,
+   "end": 175.029,
+   "loi": "Rồi lặng lẽ chạy sang một nước khác, nơi Mỹ không muốn bán."
+  },
+  {
+   "id": "c049",
+   "start": 175.029,
+   "end": 178.562,
+   "loi": "Đi đường vòng. Bạn có thể đã đọc đâu đó rằng xuất chip AI"
+  },
+  {
+   "id": "c050",
+   "start": 178.562,
+   "end": 182.224,
+   "loi": "sang cả Đông Nam Á giờ cần giấy phép. Thông cáo gốc không nói vậy."
+  },
+  {
+   "id": "c051",
+   "start": 182.224,
+   "end": 185.18,
+   "loi": "Nó chỉ ghi tên hai nước. Thế còn Việt Nam?"
+  },
+  {
+   "id": "c052",
+   "start": 185.18,
+   "end": 189.223,
+   "loi": "Thông cáo đó không nhắc tới Việt Nam. Và đây là chỗ nhiều người hiểu nhầm."
+  },
+  {
+   "id": "c053",
+   "start": 189.223,
+   "end": 194.18,
+   "loi": "Không cần một thông cáo riêng, vì Việt Nam đã có tên trong chính bộ luật xuất khẩu của Mỹ."
+  },
+  {
+   "id": "c054",
+   "start": 194.18,
+   "end": 198.188,
+   "loi": "Bộ luật đó chia các nước thành từng nhóm. Việt Nam nằm trong nhóm Đê một,"
+  },
+  {
+   "id": "c055",
+   "start": 198.188,
+   "end": 200.732,
+   "loi": "nhóm mà Mỹ xếp theo lý do an ninh quốc gia."
+  },
+  {
+   "id": "c056",
+   "start": 200.732,
+   "end": 204.084,
+   "loi": "Malaysia và Thái Lan thì không nằm trong nhóm Đê nào."
+  },
+  {
+   "id": "c057",
+   "start": 204.084,
+   "end": 207.96,
+   "loi": "Rồi tới điều khoản về chip AI. Luật chia chip làm nhiều bậc."
+  },
+  {
+   "id": "c058",
+   "start": 207.96,
+   "end": 210.736,
+   "loi": "Dòng mạnh nhất cần giấy phép khi đi tới bất cứ đâu."
+  },
+  {
+   "id": "c059",
+   "start": 210.736,
+   "end": 214.911,
+   "loi": "Dòng thấp hơn một bậc cần giấy phép khi đi tới nhóm Đê một, cùng mấy nhóm khác."
+  },
+  {
+   "id": "c060",
+   "start": 214.911,
+   "end": 219.667,
+   "loi": "Nói gọn: chip AI của Mỹ muốn vào Việt Nam thì phải có giấy phép, theo luật hiện hành."
+  },
+  {
+   "id": "c061",
+   "start": 219.667,
+   "end": 223.34,
+   "loi": "Malaysia và Thái Lan bị thêm yêu cầu năm ngoái vì có vụ việc."
+  },
+  {
+   "id": "c062",
+   "start": 223.34,
+   "end": 227.464,
+   "loi": "Việt Nam thì vì được xếp sẵn vào nhóm đó. Nghe hơi ngược, đúng không?"
+  },
+  {
+   "id": "c063",
+   "start": 227.464,
+   "end": 230.946,
+   "loi": "Nên câu hỏi \"tới lượt Việt Nam chưa\" sai từ gốc. Câu đúng phải là:"
+  },
+  {
+   "id": "c064",
+   "start": 230.946,
+   "end": 235.859,
+   "loi": "cánh cửa vốn đã hẹp, có hẹp thêm không? Có một điểm mình chưa kiểm được, và mình nói thẳng."
+  },
+  {
+   "id": "c065",
+   "start": 235.859,
+   "end": 239.298,
+   "loi": "Luật quy định phải xin phép. Nhưng mỗi đơn được duyệt dễ hay khó,"
+  },
+  {
+   "id": "c066",
+   "start": 239.298,
+   "end": 242.233,
+   "loi": "mất bao lâu, thì mình không đọc được trong văn bản này."
+  },
+  {
+   "id": "c067",
+   "start": 242.233,
+   "end": 245.255,
+   "loi": "Còn một lý do nữa để để ý. Khi bỏ quy tắc cũ,"
+  },
+  {
+   "id": "c068",
+   "start": 245.255,
+   "end": 248.769,
+   "loi": "Bộ Thương mại Mỹ viết rằng họ sẽ ban hành một quy tắc thay thế."
+  },
+  {
+   "id": "c069",
+   "start": 248.769,
+   "end": 252.918,
+   "loi": "Quy tắc thay thế đó đã ra chưa, nội dung ra sao, mình chưa kiểm được."
+  },
+  {
+   "id": "c070",
+   "start": 252.918,
+   "end": 256.291,
+   "loi": "Dù phải xin phép, chip Nvidia vẫn đang vào Việt Nam."
+  },
+  {
+   "id": "c071",
+   "start": 256.291,
+   "end": 259.466,
+   "loi": "Chậm, nhưng vẫn vào. Và đang làm khá nhiều việc."
+  },
+  {
+   "id": "c072",
+   "start": 259.466,
+   "end": 262.922,
+   "loi": "Cuối năm hai nghìn không trăm hai mươi bốn, Chính phủ Việt Nam"
+  },
+  {
+   "id": "c073",
+   "start": 262.922,
+   "end": 266.735,
+   "loi": "ký thỏa thuận với Nvidia để lập một trung tâm nghiên cứu và phát triển AI,"
+  },
+  {
+   "id": "c074",
+   "start": 266.735,
+   "end": 270.591,
+   "loi": "cùng một trung tâm dữ liệu AI. Báo Chính phủ ghi lại lời Thủ tướng hôm đó,"
+  },
+  {
+   "id": "c075",
+   "start": 270.591,
+   "end": 273.696,
+   "loi": "về quyết tâm biến Việt Nam thành ngôi nhà thứ hai của Nvidia."
+  },
+  {
+   "id": "c076",
+   "start": 273.696,
+   "end": 278.666,
+   "loi": "Đầu năm nay, Viettel đưa vào chạy siêu máy tính Nvidia Đê Gê Ích Bê hai trăm."
+  },
+  {
+   "id": "c077",
+   "start": 278.666,
+   "end": 282.797,
+   "loi": "Báo Chính phủ ghi hiệu năng một phẩy năm ExaFLOPs ở độ chính xác FP tám,"
+  },
+  {
+   "id": "c078",
+   "start": 282.797,
+   "end": 285.895,
+   "loi": "tức một nghìn năm trăm triệu tỷ phép tính mỗi giây."
+  },
+  {
+   "id": "c079",
+   "start": 285.895,
+   "end": 290.517,
+   "loi": "Con số đó khó hình dung. Cái đáng chú ý hơn là một câu trong chính bài báo ấy."
+  },
+  {
+   "id": "c080",
+   "start": 290.517,
+   "end": 294.586,
+   "loi": "Bài viết nói thẳng: vì kiểm soát xuất khẩu, nguồn cung và điều kiện chiến lược,"
+  },
+  {
+   "id": "c081",
+   "start": 294.586,
+   "end": 297.464,
+   "loi": "không phải quốc gia nào cũng dễ tiếp cận nền tảng này."
+  },
+  {
+   "id": "c082",
+   "start": 297.464,
+   "end": 300.238,
+   "loi": "Bài báo đã nói rõ: cánh cửa này không rộng."
+  },
+  {
+   "id": "c083",
+   "start": 300.238,
+   "end": 303.769,
+   "loi": "Rồi tới chuyện tiền. FPT Cloud đang cho thuê siêu máy"
+  },
+  {
+   "id": "c084",
+   "start": 303.769,
+   "end": 307.721,
+   "loi": "tính AI chứng nhận Nvidia, giá khởi điểm hai đô la Mỹ một giờ."
+  },
+  {
+   "id": "c085",
+   "start": 307.721,
+   "end": 311.373,
+   "loi": "Thử đặt con số đó vào một tháng. Một suất thuê ở giá khởi điểm,"
+  },
+  {
+   "id": "c086",
+   "start": 311.373,
+   "end": 315.156,
+   "loi": "chạy mười giờ mỗi ngày, ba mươi ngày, mình nhân ra sáu trăm đô la Mỹ."
+  },
+  {
+   "id": "c087",
+   "start": 315.156,
+   "end": 319.446,
+   "loi": "Đây là mắt xích gần bạn nhất. Một công ty khởi nghiệp làm trợ lý ảo tiếng Việt,"
+  },
+  {
+   "id": "c088",
+   "start": 319.446,
+   "end": 323.602,
+   "loi": "một nhóm sinh viên huấn luyện mô hình, họ không mua chip. Họ thuê theo giờ."
+  },
+  {
+   "id": "c089",
+   "start": 323.602,
+   "end": 326.524,
+   "loi": "Chip từ Mỹ, qua giấy phép, vào máy chủ đặt ở Việt Nam,"
+  },
+  {
+   "id": "c090",
+   "start": 326.524,
+   "end": 330.772,
+   "loi": "cho doanh nghiệp Việt thuê, rồi thành ứng dụng AI tiếng Việt bạn mở trên điện thoại."
+  },
+  {
+   "id": "c091",
+   "start": 330.772,
+   "end": 334.478,
+   "loi": "Dây chuyền đó dài. Và mắt xích đầu tiên là một tờ giấy phép."
+  },
+  {
+   "id": "c092",
+   "start": 334.478,
+   "end": 338.406,
+   "loi": "Giờ tới câu bạn đang chờ. Tiền trong túi bạn có bị ảnh hưởng không?"
+  },
+  {
+   "id": "c093",
+   "start": 338.406,
+   "end": 341.983,
+   "loi": "Mình trả lời theo những gì đọc được, không theo những gì nghe đồn."
+  },
+  {
+   "id": "c094",
+   "start": 341.983,
+   "end": 345.851,
+   "loi": "Email của Jensen Huang, tuyên bố của hội đồng quản trị, thư của các nghị sĩ,"
+  },
+  {
+   "id": "c095",
+   "start": 345.851,
+   "end": 350.01,
+   "loi": "thông cáo của Bộ Thương mại Mỹ: không văn bản nào nói tới giá dịch vụ cho người dùng."
+  },
+  {
+   "id": "c096",
+   "start": 350.01,
+   "end": 352.976,
+   "loi": "Không một dòng. Nên với người dùng phổ thông,"
+  },
+  {
+   "id": "c097",
+   "start": 352.976,
+   "end": 356.058,
+   "loi": "tuần này chưa có dấu hiệu gì cho thấy gói AI bạn đang trả,"
+  },
+  {
+   "id": "c098",
+   "start": 356.058,
+   "end": 359.702,
+   "loi": "hay chiếc điện thoại bạn đang dùng, sẽ đắt lên vì cái email này."
+  },
+  {
+   "id": "c099",
+   "start": 359.702,
+   "end": 362.87,
+   "loi": "Người có thể thấy trước là phía doanh nghiệp. Mình đoán thế này,"
+  },
+  {
+   "id": "c100",
+   "start": 362.87,
+   "end": 365.385,
+   "loi": "và đây là ý của mình, không phải của văn bản nào."
+  },
+  {
+   "id": "c101",
+   "start": 365.385,
+   "end": 370.558,
+   "loi": "Nếu bê bối làm Washington soi kỹ hơn mọi đơn xin phép đi về Đông Nam Á, thì máy về chậm hơn."
+  },
+  {
+   "id": "c102",
+   "start": 370.558,
+   "end": 373.204,
+   "loi": "Máy về chậm thì giá thuê theo giờ khó mà giảm."
+  },
+  {
+   "id": "c103",
+   "start": 373.204,
+   "end": 376.673,
+   "loi": "Giá thuê sẽ tăng bao nhiêu? Mình không có số nào để nói."
+  },
+  {
+   "id": "c104",
+   "start": 376.673,
+   "end": 381.651,
+   "loi": "Nên mình không nói. Với một nhóm khởi nghiệp nhỏ, khoản thuê máy hằng tháng là chi phí lớn."
+  },
+  {
+   "id": "c105",
+   "start": 381.651,
+   "end": 385.428,
+   "loi": "Chỉ cần nó không giảm như kỳ vọng, họ đã phải tính lại kế hoạch."
+  },
+  {
+   "id": "c106",
+   "start": 385.428,
+   "end": 389.593,
+   "loi": "Còn nếu bạn đang cầm cổ phiếu Nvidia qua một ứng dụng đầu tư nước ngoài:"
+  },
+  {
+   "id": "c107",
+   "start": 389.593,
+   "end": 393.21,
+   "loi": "mình không tư vấn mua bán. Mình chỉ nói cho bạn ngày nào có tin."
+  },
+  {
+   "id": "c108",
+   "start": 393.21,
+   "end": 396.648,
+   "loi": "Ngay phần tiếp theo. Việc đầu tiên: Nvidia sẽ họp trực"
+  },
+  {
+   "id": "c109",
+   "start": 396.648,
+   "end": 400.846,
+   "loi": "tuyến với các nhà phân tích về kết quả quý ba của năm tài khóa hai không hai bảy,"
+  },
+  {
+   "id": "c110",
+   "start": 400.846,
+   "end": 404.518,
+   "loi": "vào thứ Ba, mười bảy tháng mười một, giờ Mỹ. Mình tính ra giờ Việt Nam"
+  },
+  {
+   "id": "c111",
+   "start": 404.518,
+   "end": 408.082,
+   "loi": "thì rơi vào khoảng năm giờ sáng ngày mười tám. Quý này của Nvidia đã"
+  },
+  {
+   "id": "c112",
+   "start": 408.082,
+   "end": 411.458,
+   "loi": "khép sổ từ ngày hai mươi lăm tháng mười. Tức là số liệu quý này"
+  },
+  {
+   "id": "c113",
+   "start": 411.458,
+   "end": 415.047,
+   "loi": "phần lớn được chốt trước khi tin nổ ra. Đây là lần đầu ban"
+  },
+  {
+   "id": "c114",
+   "start": 415.047,
+   "end": 418.838,
+   "loi": "lãnh đạo Nvidia trả lời các nhà phân tích kể từ khi bê bối nổ ra."
+  },
+  {
+   "id": "c115",
+   "start": 418.838,
+   "end": 422.284,
+   "loi": "Mình sẽ nghe hai thứ. Họ có nhắc tới cuộc điều tra không."
+  },
+  {
+   "id": "c116",
+   "start": 422.284,
+   "end": 425.277,
+   "loi": "Và họ có nói gì về khách hàng ở Đông Nam Á không."
+  },
+  {
+   "id": "c117",
+   "start": 425.277,
+   "end": 428.78,
+   "loi": "Việc thứ hai: cũng ngày mười tám tháng mười một, ba chủ tịch ủy ban Hạ viện"
+  },
+  {
+   "id": "c118",
+   "start": 428.78,
+   "end": 432.221,
+   "loi": "đề nghị Jensen Huang tới trình bày kín với họ. Thư yêu cầu ông nhận lời,"
+  },
+  {
+   "id": "c119",
+   "start": 432.221,
+   "end": 437.438,
+   "loi": "hoặc đưa ra ngày khác, trước ngày mười một. Buổi trình bày kín thì nội dung có thể không được công bố."
+  },
+  {
+   "id": "c120",
+   "start": 437.438,
+   "end": 442.725,
+   "loi": "Cái đáng xem là thứ lọt ra sau đó: một tuyên bố của ủy ban, một lá thư mới, hay một cái tên mới."
+  },
+  {
+   "id": "c121",
+   "start": 442.725,
+   "end": 445.414,
+   "loi": "Và có một việc thứ ba, không có ngày cụ thể."
+  },
+  {
+   "id": "c122",
+   "start": 445.414,
+   "end": 449.586,
+   "loi": "Quy tắc thay thế mà Bộ Thương mại Mỹ đã hứa. Nếu nó ra và đụng tới Việt Nam,"
+  },
+  {
+   "id": "c123",
+   "start": 449.586,
+   "end": 453.115,
+   "loi": "mình sẽ làm video ngay. Quay lại câu hỏi ở đầu video."
+  },
+  {
+   "id": "c124",
+   "start": 453.115,
+   "end": 456.494,
+   "loi": "Cánh cửa vốn đã hẹp với Việt Nam có hẹp thêm vì bê bối này không?"
+  },
+  {
+   "id": "c125",
+   "start": 456.494,
+   "end": 460.777,
+   "loi": "Chưa thấy. Theo các văn bản mình đọc hôm nay, chưa có văn bản nào nói vậy."
+  },
+  {
+   "id": "c126",
+   "start": 460.777,
+   "end": 463.716,
+   "loi": "Việt Nam vẫn ở nhóm cũ, với yêu cầu giấy phép cũ."
+  },
+  {
+   "id": "c127",
+   "start": 463.716,
+   "end": 467.48,
+   "loi": "Phán quyết của mình cho túi tiền người dùng phổ thông: chưa cần đổi gì."
+  },
+  {
+   "id": "c128",
+   "start": 467.48,
+   "end": 470.941,
+   "loi": "Không cần vội đổi gói dịch vụ hay thiết bị nào vì cái tin này."
+  },
+  {
+   "id": "c129",
+   "start": 470.941,
+   "end": 474.527,
+   "loi": "Tiêu chí của mình đơn giản. Chừng nào chưa có văn bản chính thức"
+  },
+  {
+   "id": "c130",
+   "start": 474.527,
+   "end": 479.486,
+   "loi": "thay đổi cách Mỹ đối xử với chip đi Việt Nam, đây vẫn là chuyện của Washington và của Nvidia."
+  },
+  {
+   "id": "c131",
+   "start": 479.486,
+   "end": 483.048,
+   "loi": "Với người làm AI trong nước thì khác. Nếu công việc của bạn dựa"
+  },
+  {
+   "id": "c132",
+   "start": 483.048,
+   "end": 488.268,
+   "loi": "vào việc thuê máy chạy chip Nvidia, đây là lúc nên biết hợp đồng thuê của mình giữ giá được bao lâu."
+  },
+  {
+   "id": "c133",
+   "start": 488.268,
+   "end": 491.948,
+   "loi": "Mình sẽ đổi ý nếu Mỹ ra văn bản siết thêm chip vào Việt Nam,"
+  },
+  {
+   "id": "c134",
+   "start": 491.948,
+   "end": 495.38,
+   "loi": "ví dụ trong quy tắc thay thế họ đã hứa. Hoặc nếu có văn bản"
+  },
+  {
+   "id": "c135",
+   "start": 495.38,
+   "end": 498.183,
+   "loi": "chính thức nào nói chip đã đi đường vòng qua Việt Nam."
+  },
+  {
+   "id": "c136",
+   "start": 498.183,
+   "end": 503.134,
+   "loi": "Lúc đó, một lá thư xin lỗi ở bên kia đại dương sẽ thành chuyện giá thuê máy của doanh nghiệp Việt."
+  },
+  {
+   "id": "c137",
+   "start": 503.134,
+   "end": 507.026,
+   "loi": "Và rồi, có thể, thành giá ứng dụng bạn dùng. Một điều cuối."
+  },
+  {
+   "id": "c138",
+   "start": 507.026,
+   "end": 512.205,
+   "loi": "Nhiều bài viết tuần này nói Đông Nam Á bị siết. Văn bản gốc kể một câu chuyện khác, và chi tiết hơn."
+  },
+  {
+   "id": "c139",
+   "start": 512.205,
+   "end": 514.839,
+   "loi": "Đọc tận gốc, đôi khi câu hỏi đổi luôn."
+  },
+  {
+   "id": "c140",
+   "start": 514.839,
+   "end": 518.244,
+   "loi": "Còn bây giờ, tới lượt bạn đoán. Trong luật xuất khẩu của Mỹ,"
+  },
+  {
+   "id": "c141",
+   "start": 518.244,
+   "end": 520.977,
+   "loi": "Việt Nam đang chung nhóm Đê một với bao nhiêu nước khác?"
+  },
+  {
+   "id": "c142",
+   "start": 520.977,
+   "end": 525.454,
+   "loi": "Đoán một con số rồi để ở bình luận nhé. Video sau mình đọc đáp án."
+  }
+ ]
+}

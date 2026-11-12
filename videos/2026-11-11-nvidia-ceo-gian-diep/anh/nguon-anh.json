@@ -1,0 +1,56 @@
+{
+ "nvidia-tru-so": {
+  "tep": "anh/nvidia-tru-so.jpg",
+  "nguoi": "Coolcaesar",
+  "giay_phep": "CC BY-SA 4.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:NVIDIA_Headquarters.jpg"
+ },
+ "nvidia-bien": {
+  "tep": "anh/nvidia-bien.jpg",
+  "nguoi": "Will Buckner",
+  "giay_phep": "CC BY 2.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:Nvidia_sign.jpg"
+ },
+ "jensen-huang": {
+  "tep": "anh/jensen-huang.jpg",
+  "nguoi": "Anderseidesvik",
+  "giay_phep": "CC BY-SA 4.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:Jensen_huang_stanford_2026-04-30_023.jpg"
+ },
+ "capitol": {
+  "tep": "anh/capitol.jpg",
+  "nguoi": "Noclip",
+  "giay_phep": "Public domain",
+  "trang": "https://commons.wikimedia.org/wiki/File:Capitol_Building_Full_View.jpg"
+ },
+ "ha-noi": {
+  "tep": "anh/ha-noi.jpg",
+  "nguoi": "NKSTTSSHNVN",
+  "giay_phep": "CC BY-SA 4.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:Hanoi_Skyline_-_NKS.jpg"
+ },
+ "h100": {
+  "tep": "anh/h100.png",
+  "nguoi": "极客湾Geekerwan",
+  "giay_phep": "CC BY 3.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:NVIDIA_H100_(%E6%9E%81%E5%AE%A2%E6%B9%BEGeekerwan)_002.png"
+ },
+ "nyse": {
+  "tep": "anh/nyse.jpg",
+  "nguoi": "Arild Vågen",
+  "giay_phep": "CC BY-SA 4.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:New_York_Stock_Exchange_August_2017_02.jpg"
+ },
+ "wall-street": {
+  "tep": "anh/wall-street.jpg",
+  "nguoi": "Carlos Delgado",
+  "giay_phep": "CC BY-SA 3.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:Wall_Street_-_New_York_Stock_Exchange.jpg"
+ },
+ "jensen-ha-noi": {
+  "tep": "anh/jensen-ha-noi.jpg",
+  "nguoi": "VQTCS",
+  "giay_phep": "CC BY 4.0",
+  "trang": "https://commons.wikimedia.org/wiki/File:Director_L%C3%AA_Nguy%E1%BB%85n_Thi%C3%AAn_Nga_and_NVIDIA_Founder_and_CEO_Jensen_Huang.jpg"
+ }
+}

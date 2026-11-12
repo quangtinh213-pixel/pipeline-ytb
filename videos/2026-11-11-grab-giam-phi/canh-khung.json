@@ -1,0 +1,778 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.972,
+   "loi": "Trưa mười tháng mười một, cuốc Grab Bike dưới hai cây số bớt hai nghìn đồng tiền phí."
+  },
+  {
+   "id": "c002",
+   "start": 3.972,
+   "end": 8.276,
+   "loi": "Cùng lúc, báo đưa một con số lớn hơn nhiều: Grab dự kiến chi gần ba nghìn tỷ đồng,"
+  },
+  {
+   "id": "c003",
+   "start": 8.276,
+   "end": 10.794,
+   "loi": "sau khi Ủy ban Cạnh tranh Quốc gia vào cuộc."
+  },
+  {
+   "id": "c004",
+   "start": 10.794,
+   "end": 14.217,
+   "loi": "Hai nghìn một cuốc, và gần ba nghìn tỷ. Nghe thì hào phóng."
+  },
+  {
+   "id": "c005",
+   "start": 14.217,
+   "end": 18.166,
+   "loi": "Nhưng tiền thật rơi vào túi ai: người chạy xe, hay bạn, người bấm gọi xe?"
+  },
+  {
+   "id": "c006",
+   "start": 18.166,
+   "end": 22.817,
+   "loi": "Và có một dòng nhỏ trên trang của Grab mà ít ai đọc tới: bảng phí mới này có hạn dùng."
+  },
+  {
+   "id": "c007",
+   "start": 22.817,
+   "end": 27.814,
+   "loi": "Hết hạn thì đổi sang cách tính khác, và với một số cuốc, bạn sẽ trả nhiều hơn bây giờ."
+  },
+  {
+   "id": "c008",
+   "start": 27.814,
+   "end": 32.081,
+   "loi": "Vì sao một hãng gọi xe tự dưng giảm phí? Chuyện bắt đầu từ tài xế."
+  },
+  {
+   "id": "c009",
+   "start": 32.081,
+   "end": 36.787,
+   "loi": "Đầu tháng chín, trên mạng lan lời rủ nhau tắt ứng dụng Grab hai ngày, theo báo Tuổi Trẻ."
+  },
+  {
+   "id": "c010",
+   "start": 36.787,
+   "end": 40.472,
+   "loi": "Kèm theo là ảnh chụp lịch sử chuyến. Một tài xế ô tô đưa lên một cuốc:"
+  },
+  {
+   "id": "c011",
+   "start": 40.472,
+   "end": 44.087,
+   "loi": "khách trả ba mươi bảy nghìn, người này nhận về chừng mười chín nghìn rưỡi."
+  },
+  {
+   "id": "c012",
+   "start": 44.087,
+   "end": 48.196,
+   "loi": "Chạy trọn một cuốc, cầm về hơn một nửa. Báo cũng lưu ý đây chỉ là một chuyến,"
+  },
+  {
+   "id": "c013",
+   "start": 48.196,
+   "end": 52.174,
+   "loi": "và phần chênh còn gồm phí nền tảng, thuế chứ không phải tiền Grab thu hết."
+  },
+  {
+   "id": "c014",
+   "start": 52.174,
+   "end": 55.653,
+   "loi": "Vậy nửa kia đi đâu? Một cuốc xe bị cắt ở hai chỗ."
+  },
+  {
+   "id": "c015",
+   "start": 55.653,
+   "end": 60.054,
+   "loi": "Bạn trả thêm phí nền tảng, ngoài tiền cước. Tài xế bị trừ phí sử dụng ứng dụng,"
+  },
+  {
+   "id": "c016",
+   "start": 60.054,
+   "end": 64.518,
+   "loi": "và mức trừ này mỗi chuyến một khác. Mức trừ thay đổi theo từng chuyến nghĩa là gì?"
+  },
+  {
+   "id": "c017",
+   "start": 64.518,
+   "end": 68.482,
+   "loi": "Theo nhiều tài xế, lúc bấm nhận cuốc khó biết trước mình sẽ bị trừ bao nhiêu."
+  },
+  {
+   "id": "c018",
+   "start": 68.482,
+   "end": 72.126,
+   "loi": "Chạy xong, nhìn tiền về ví, mới biết. Sau đó tới thuế."
+  },
+  {
+   "id": "c019",
+   "start": 72.126,
+   "end": 75.993,
+   "loi": "Giống hóa đơn quán nhậu: món chính thì nhớ, còn khăn lạnh với phí phục vụ"
+  },
+  {
+   "id": "c020",
+   "start": 75.993,
+   "end": 78.782,
+   "loi": "thì tới lúc tính tiền mới ngã ngửa. Cộng lại,"
+  },
+  {
+   "id": "c021",
+   "start": 78.782,
+   "end": 82.054,
+   "loi": "có cuốc xe máy Grab giữ hơn bốn mươi phần trăm số tiền khách trả."
+  },
+  {
+   "id": "c022",
+   "start": 82.054,
+   "end": 85.023,
+   "loi": "Trừ thêm thuế, người chạy cầm về năm mươi hai phần trăm."
+  },
+  {
+   "id": "c023",
+   "start": 85.023,
+   "end": 88.355,
+   "loi": "Khách trả một trăm nghìn, tài xế còn năm mươi hai nghìn."
+  },
+  {
+   "id": "c024",
+   "start": 88.355,
+   "end": 93.356,
+   "loi": "Từ cuối tháng tám, Ủy ban Cạnh tranh Quốc gia đã nhận phản ánh của tài xế về giá cước và phí."
+  },
+  {
+   "id": "c025",
+   "start": 93.356,
+   "end": 96.062,
+   "loi": "Ủy ban gọi Grab lên, gọi cả đại diện tài xế,"
+  },
+  {
+   "id": "c026",
+   "start": 96.062,
+   "end": 99.399,
+   "loi": "rồi lấy cách Grab tính phí ở vài nước Đông Nam Á ra so."
+  },
+  {
+   "id": "c027",
+   "start": 99.399,
+   "end": 102.345,
+   "loi": "Đầu tháng mười một có kết quả, mới là xác minh sơ bộ."
+  },
+  {
+   "id": "c028",
+   "start": 102.345,
+   "end": 105.969,
+   "loi": "Grab tự đề xuất sáu việc sẽ làm. Thông báo Grab gửi khách"
+  },
+  {
+   "id": "c029",
+   "start": 105.969,
+   "end": 110.469,
+   "loi": "thì kể một câu chuyện khác: đổi phí để hợp với thông lệ thị trường và giữ dịch vụ bền vững."
+  },
+  {
+   "id": "c030",
+   "start": 110.469,
+   "end": 114.16,
+   "loi": "Không một chữ về đợt rà soát. Dù hai văn bản ra cùng một ngày."
+  },
+  {
+   "id": "c031",
+   "start": 114.16,
+   "end": 116.954,
+   "loi": "Mà Ủy ban Cạnh tranh nhảy vào chuyện cước xe làm gì?"
+  },
+  {
+   "id": "c032",
+   "start": 116.954,
+   "end": 121.727,
+   "loi": "Khi một ứng dụng chiếm phần lớn các cuốc trong thành phố, tài xế khó bỏ sang chỗ khác."
+  },
+  {
+   "id": "c033",
+   "start": 121.727,
+   "end": 126.436,
+   "loi": "Khách cũng vậy. Lúc đó, tự đặt phí bao nhiêu không còn là chuyện riêng của một công ty."
+  },
+  {
+   "id": "c034",
+   "start": 126.436,
+   "end": 129.603,
+   "loi": "Việc của cơ quan cạnh tranh là canh chừng những chỗ thế này."
+  },
+  {
+   "id": "c035",
+   "start": 129.603,
+   "end": 134.522,
+   "loi": "Gần ba nghìn tỷ đồng. Nghe như Grab vừa trả lại cho tài xế và khách một cục tiền lớn."
+  },
+  {
+   "id": "c036",
+   "start": 134.522,
+   "end": 139.418,
+   "loi": "Mở gói ra thì thấy khác. Văn bản của Ủy ban ghi chừng hai nghìn chín trăm năm mươi tỷ,"
+  },
+  {
+   "id": "c037",
+   "start": 139.418,
+   "end": 144.466,
+   "loi": "cho năm việc đầu trong sáu việc Grab đề xuất. Đây là tiền theo kế hoạch, chưa phải tiền đã chi."
+  },
+  {
+   "id": "c038",
+   "start": 144.466,
+   "end": 148.608,
+   "loi": "Lát to nhất là khuyến mại cho khách trong quý bốn: hơn một nghìn tám trăm tỷ."
+  },
+  {
+   "id": "c039",
+   "start": 148.608,
+   "end": 151.719,
+   "loi": "Tính ra hơn sáu mươi phần trăm cả gói là mã giảm giá."
+  },
+  {
+   "id": "c040",
+   "start": 151.719,
+   "end": 154.913,
+   "loi": "Mà mã giảm giá thì Grab vốn vẫn phát. Riêng quý ba,"
+  },
+  {
+   "id": "c041",
+   "start": 154.913,
+   "end": 158.31,
+   "loi": "cả tập đoàn chi hơn bốn trăm triệu đô la cho ưu đãi người dùng,"
+  },
+  {
+   "id": "c042",
+   "start": 158.31,
+   "end": 161.893,
+   "loi": "tính trên mọi dịch vụ ở cả khu vực. Trong khoản khuyến mại kia,"
+  },
+  {
+   "id": "c043",
+   "start": 161.893,
+   "end": 166.068,
+   "loi": "bao nhiêu là tiền thêm, bao nhiêu là tiền đằng nào cũng chi, văn bản không nói."
+  },
+  {
+   "id": "c044",
+   "start": 166.068,
+   "end": 170.188,
+   "loi": "Nên chỗ này chưa kết luận được. Mã giảm giá với giảm phí khác nhau hẳn."
+  },
+  {
+   "id": "c045",
+   "start": 170.188,
+   "end": 173.743,
+   "loi": "Mã giảm giá giống phiếu khuyến mại siêu thị phát ở cửa: hôm nay có,"
+  },
+  {
+   "id": "c046",
+   "start": 173.743,
+   "end": 178.397,
+   "loi": "mai hết, hãng tự quyết phát cho ai. Giảm phí thì giống siêu thị hạ giá niêm yết trên kệ:"
+  },
+  {
+   "id": "c047",
+   "start": 178.397,
+   "end": 181.202,
+   "loi": "ai mua cũng được, và muốn tăng lại thì phải báo trước."
+  },
+  {
+   "id": "c048",
+   "start": 181.202,
+   "end": 185.204,
+   "loi": "Trong gói này, phần phiếu khuyến mại to hơn phần hạ giá niêm yết rất nhiều."
+  },
+  {
+   "id": "c049",
+   "start": 185.204,
+   "end": 189.439,
+   "loi": "Lát thứ hai cho tài xế: chừng tám trăm sáu mươi tỷ thưởng và hỗ trợ trong quý bốn,"
+  },
+  {
+   "id": "c050",
+   "start": 189.439,
+   "end": 192.985,
+   "loi": "cộng thêm năm mươi hai tỷ tiền xăng, tiền sạc. Thưởng giờ cao điểm,"
+  },
+  {
+   "id": "c051",
+   "start": 192.985,
+   "end": 196.24,
+   "loi": "bữa ăn, đồng phục đều nằm trong đó. Thưởng thì có điều kiện."
+  },
+  {
+   "id": "c052",
+   "start": 196.24,
+   "end": 201.014,
+   "loi": "Bật ứng dụng lên chưa chắc đã có phần. Lát thứ ba mới là tiền trả lại đúng nghĩa."
+  },
+  {
+   "id": "c053",
+   "start": 201.014,
+   "end": 204.575,
+   "loi": "Grab rà lại các chuyến từ năm hai nghìn không trăm hai mươi bốn tới nay,"
+  },
+  {
+   "id": "c054",
+   "start": 204.575,
+   "end": 209.213,
+   "loi": "thấy cứ mười nghìn chuyến thì khoảng mười ba chuyến bị trừ quá ba mươi lăm phần trăm doanh thu."
+  },
+  {
+   "id": "c055",
+   "start": 209.213,
+   "end": 212.678,
+   "loi": "Grab giải thích là do cung cầu lên xuống, hoặc lỗi thuật toán."
+  },
+  {
+   "id": "c056",
+   "start": 212.678,
+   "end": 216.903,
+   "loi": "Tiền bồi hoàn: gần bốn tỷ, con số sơ bộ. Đặt cạnh cả gói gần ba nghìn tỷ,"
+  },
+  {
+   "id": "c057",
+   "start": 216.903,
+   "end": 220.116,
+   "loi": "phần trả lại nhỏ xíu, vì chỉ bồi cho một số ít chuyến."
+  },
+  {
+   "id": "c058",
+   "start": 220.116,
+   "end": 222.921,
+   "loi": "Còn phần giảm phí, thứ được nói tới đầu tiên?"
+  },
+  {
+   "id": "c059",
+   "start": 222.921,
+   "end": 226.713,
+   "loi": "Lấy tổng trừ các lát vừa kể, tính ra còn chừng hai trăm hai mươi bảy tỷ."
+  },
+  {
+   "id": "c060",
+   "start": 226.713,
+   "end": 230.621,
+   "loi": "Văn bản không tách riêng con số này, cũng không nói nó tính cho bao lâu."
+  },
+  {
+   "id": "c061",
+   "start": 230.621,
+   "end": 235.401,
+   "loi": "Đặt cả gói cạnh sức của Grab thì sao? Đổi theo tỷ giá Vietcombank tối mười tháng mười một,"
+  },
+  {
+   "id": "c062",
+   "start": 235.401,
+   "end": 240.087,
+   "loi": "tính ra chừng một trăm mười bốn triệu đô la, cỡ một phần mười doanh thu một quý của cả tập đoàn."
+  },
+  {
+   "id": "c063",
+   "start": 240.087,
+   "end": 243.258,
+   "loi": "Vậy gần ba nghìn tỷ gồm gì? Hơn nửa là khuyến mại."
+  },
+  {
+   "id": "c064",
+   "start": 243.258,
+   "end": 246.881,
+   "loi": "Gần một phần ba là thưởng có điều kiện. Phần giảm phí là phần còn lại,"
+  },
+  {
+   "id": "c065",
+   "start": 246.881,
+   "end": 251.639,
+   "loi": "chừng hai trăm hai mươi bảy tỷ, tính ra, và nguồn không tách riêng phần khách thấy trên hóa đơn."
+  },
+  {
+   "id": "c066",
+   "start": 251.639,
+   "end": 254.77,
+   "loi": "Thế từng cuốc xe khác đi bao nhiêu? Tài xế trước."
+  },
+  {
+   "id": "c067",
+   "start": 254.77,
+   "end": 257.305,
+   "loi": "Quay lại cuốc một trăm nghìn ở mức bị trừ nặng nhất:"
+  },
+  {
+   "id": "c068",
+   "start": 257.305,
+   "end": 261.38,
+   "loi": "trước đây người chạy cầm năm mươi hai nghìn, nay tài xế xe máy cầm hơn sáu mươi nghìn."
+  },
+  {
+   "id": "c069",
+   "start": 261.38,
+   "end": 264.611,
+   "loi": "Thêm chừng tám nghìn năm trăm đồng cho một cuốc. Báo Công Thương,"
+  },
+  {
+   "id": "c070",
+   "start": 264.611,
+   "end": 269.349,
+   "loi": "nơi đưa ví dụ này, cũng dặn: đây là ngưỡng bất lợi nhất, không phải mức tăng thu nhập trung bình."
+  },
+  {
+   "id": "c071",
+   "start": 269.349,
+   "end": 272.161,
+   "loi": "Tài xế giữ lại được thêm tiền là nhờ một cái trần."
+  },
+  {
+   "id": "c072",
+   "start": 272.161,
+   "end": 275.86,
+   "loi": "Từ nay, tổng phần Grab hưởng không quá ba mươi hai phần trăm tiền khách trả."
+  },
+  {
+   "id": "c073",
+   "start": 275.86,
+   "end": 278.86,
+   "loi": "Cuốc nào vốn đã dưới mức đó thì cái trần này không đụng tới."
+  },
+  {
+   "id": "c074",
+   "start": 278.86,
+   "end": 283.866,
+   "loi": "Grab cũng nói ứng dụng của tài xế sẽ hiện rõ hơn từng khoản: doanh thu, phí, thuế, khấu trừ."
+  },
+  {
+   "id": "c075",
+   "start": 283.866,
+   "end": 287.528,
+   "loi": "Trước đây có tài xế đưa ảnh lịch sử chuyến lên mạng để tự cộng trừ,"
+  },
+  {
+   "id": "c076",
+   "start": 287.528,
+   "end": 291.812,
+   "loi": "như những tấm ảnh lan hồi tháng chín. Còn bạn, người gọi xe thì sao?"
+  },
+  {
+   "id": "c077",
+   "start": 291.812,
+   "end": 296.875,
+   "loi": "Xe máy dưới hai cây số bớt hai nghìn, từ hai tới sáu cây số bớt một nghìn, xa hơn thì giữ nguyên."
+  },
+  {
+   "id": "c078",
+   "start": 296.875,
+   "end": 301.295,
+   "loi": "Ô tô dưới ba cây số còn ba nghìn, từ ba tới bốn cây số còn bốn nghìn."
+  },
+  {
+   "id": "c079",
+   "start": 301.295,
+   "end": 305.517,
+   "loi": "Ra chợ, đón con, chạy ra bến xe buýt. Mấy cuốc ngắn kiểu đó lợi nhất."
+  },
+  {
+   "id": "c080",
+   "start": 305.517,
+   "end": 310.403,
+   "loi": "Nhưng bảng này có hạn dùng: tới hết hai mươi lăm tháng hai năm sau, tính ra một trăm lẻ tám ngày."
+  },
+  {
+   "id": "c081",
+   "start": 310.403,
+   "end": 315.511,
+   "loi": "Từ hai mươi sáu tháng hai, Grab đổi hẳn cách tính: phí nền tảng bằng bảy phần trăm tiền cước."
+  },
+  {
+   "id": "c082",
+   "start": 315.511,
+   "end": 318.734,
+   "loi": "Bảy phần trăm thì lợi hay thiệt? Tùy cuốc dài hay ngắn."
+  },
+  {
+   "id": "c083",
+   "start": 318.734,
+   "end": 322.092,
+   "loi": "Tính thử vài cuốc là thấy liền. Cuốc xe máy mười lăm nghìn:"
+  },
+  {
+   "id": "c084",
+   "start": 322.092,
+   "end": 325.565,
+   "loi": "phí tính ra chừng một nghìn, ngang mức đang thu với cuốc ngắn nhất."
+  },
+  {
+   "id": "c085",
+   "start": 325.565,
+   "end": 329.211,
+   "loi": "Nhưng lên cuốc sáu mươi nghìn là thấy dội: phí tính ra hơn bốn nghìn,"
+  },
+  {
+   "id": "c086",
+   "start": 329.211,
+   "end": 332.533,
+   "loi": "đắt hơn mức ba nghìn bây giờ. So với mức phí trước đợt giảm,"
+  },
+  {
+   "id": "c087",
+   "start": 332.533,
+   "end": 335.119,
+   "loi": "điểm hòa tính ra nằm quanh bốn mươi ba nghìn tiền cước."
+  },
+  {
+   "id": "c088",
+   "start": 335.119,
+   "end": 338.595,
+   "loi": "Dưới mức đó bạn trả ít hơn, trên mức đó bạn trả nhiều hơn."
+  },
+  {
+   "id": "c089",
+   "start": 338.595,
+   "end": 341.658,
+   "loi": "Ô tô đi xa còn rõ hơn. Cuốc hai trăm nghìn,"
+  },
+  {
+   "id": "c090",
+   "start": 341.658,
+   "end": 345.765,
+   "loi": "bảy phần trăm tính ra mười bốn nghìn, trong khi giờ bạn trả tối đa chín nghìn."
+  },
+  {
+   "id": "c091",
+   "start": 345.765,
+   "end": 349.385,
+   "loi": "Grab có bù: chuyến từ mười cây số được giảm một phần mười tiền cước,"
+  },
+  {
+   "id": "c092",
+   "start": 349.385,
+   "end": 353.281,
+   "loi": "ví dụ này tính ra hai mươi nghìn. Có điều khoản bù hết hạn cuối năm sau."
+  },
+  {
+   "id": "c093",
+   "start": 353.281,
+   "end": 357.423,
+   "loi": "Mức bảy phần trăm thì chưa ghi ngày hết. Khuyến mại có hạn, phí thì không."
+  },
+  {
+   "id": "c094",
+   "start": 357.423,
+   "end": 360.619,
+   "loi": "Bài cũ. Còn một chi tiết nhỏ trên trang của Grab:"
+  },
+  {
+   "id": "c095",
+   "start": 360.619,
+   "end": 363.641,
+   "loi": "bảy phần trăm tính trên cả tiền cước lẫn phụ phí liên quan."
+  },
+  {
+   "id": "c096",
+   "start": 363.641,
+   "end": 368.378,
+   "loi": "Hôm trời mưa, giờ tan tầm, khi giá cước nhảy lên, phần phí nền tảng cũng nhảy theo."
+  },
+  {
+   "id": "c097",
+   "start": 368.378,
+   "end": 371.055,
+   "loi": "Mức phí cố định bây giờ thì mưa hay nắng vẫn vậy."
+  },
+  {
+   "id": "c098",
+   "start": 371.055,
+   "end": 374.614,
+   "loi": "Từ cuối tháng hai, gọi xe lúc mưa sẽ đắt thêm ở cả hai chỗ."
+  },
+  {
+   "id": "c099",
+   "start": 374.614,
+   "end": 379.041,
+   "loi": "Sắp tới có hai việc đáng ngóng. Việc thứ nhất: cái màn hình của tài xế."
+  },
+  {
+   "id": "c100",
+   "start": 379.041,
+   "end": 384.524,
+   "loi": "Có đủ số trên màn hình, người chạy xe mới tự kiểm được cái trần ba mươi hai phần trăm có được giữ hay không."
+  },
+  {
+   "id": "c101",
+   "start": 384.524,
+   "end": 389.756,
+   "loi": "Ủy ban yêu cầu Grab báo cáo định kỳ, và nói sẽ xem xét xử lý nếu thấy dấu hiệu vi phạm."
+  },
+  {
+   "id": "c102",
+   "start": 389.756,
+   "end": 393.048,
+   "loi": "Quen ai đã nghỉ hẳn không chạy Grab nữa thì nhắn họ một tiếng."
+  },
+  {
+   "id": "c103",
+   "start": 393.048,
+   "end": 396.624,
+   "loi": "Theo Grab, người đã thanh lý hợp đồng được đề nghị gửi tài khoản ngân hàng"
+  },
+  {
+   "id": "c104",
+   "start": 396.624,
+   "end": 400.147,
+   "loi": "chính chủ trước ba mươi tháng mười một, qua tin nhắn hoặc email của hãng."
+  },
+  {
+   "id": "c105",
+   "start": 400.147,
+   "end": 403.867,
+   "loi": "Tài xế còn chạy thì không cần gửi gì. Đề phòng có người lợi dụng,"
+  },
+  {
+   "id": "c106",
+   "start": 403.867,
+   "end": 408.105,
+   "loi": "đừng đưa số tài khoản cho ai gọi tới trước. Việc thứ hai: các hãng còn lại."
+  },
+  {
+   "id": "c107",
+   "start": 408.105,
+   "end": 412.18,
+   "loi": "Ủy ban đã kiểm tra việc bảo vệ người tiêu dùng ở cả Grab, Be và GSM."
+  },
+  {
+   "id": "c108",
+   "start": 412.18,
+   "end": 416.523,
+   "loi": "Ủy ban yêu cầu các hãng tôn trọng quyền khách tự chọn có mua bảo hiểm chuyến đi hay không."
+  },
+  {
+   "id": "c109",
+   "start": 416.523,
+   "end": 420.044,
+   "loi": "Ủy ban còn khuyên mọi hãng gọi xe tự rà lại giá, phí của mình."
+  },
+  {
+   "id": "c110",
+   "start": 420.044,
+   "end": 422.557,
+   "loi": "Hãng nào làm theo, hãng nào im lặng, cứ theo dõi."
+  },
+  {
+   "id": "c111",
+   "start": 422.557,
+   "end": 427.814,
+   "loi": "Bạn cũng tự kiểm được: lần tới đặt xe, xem dòng bảo hiểm chuyến đi có để bạn tự chọn hay không."
+  },
+  {
+   "id": "c112",
+   "start": 427.814,
+   "end": 430.349,
+   "loi": "Và ghi lịch ngày hai mươi sáu tháng hai năm sau."
+  },
+  {
+   "id": "c113",
+   "start": 430.349,
+   "end": 433.805,
+   "loi": "Hôm đó mở lịch sử chuyến ra mà so. Cứ mở mục hoạt động lên,"
+  },
+  {
+   "id": "c114",
+   "start": 433.805,
+   "end": 437.394,
+   "loi": "bấm vào một chuyến cũ là thấy dòng phí nền tảng nằm ngay dưới tiền cước."
+  },
+  {
+   "id": "c115",
+   "start": 437.394,
+   "end": 440.537,
+   "loi": "Chụp lại vài chuyến bạn hay đi từ bây giờ. Tới tháng hai,"
+  },
+  {
+   "id": "c116",
+   "start": 440.537,
+   "end": 443.548,
+   "loi": "đặt lại đúng quãng đường đó, rồi đặt hai tấm ảnh cạnh nhau."
+  },
+  {
+   "id": "c117",
+   "start": 443.548,
+   "end": 447.775,
+   "loi": "Đừng tin lời ai, kể cả video này. Vậy rốt cuộc, tiền thật về túi ai?"
+  },
+  {
+   "id": "c118",
+   "start": 447.775,
+   "end": 451.4,
+   "loi": "Người chạy xe máy có cái sàn cao hơn: ở cuốc bị trừ nặng nhất,"
+  },
+  {
+   "id": "c119",
+   "start": 451.4,
+   "end": 455.863,
+   "loi": "từ năm mươi hai lên hơn sáu mươi phần trăm. Ai từng bị trừ quá tay sẽ được bồi hoàn,"
+  },
+  {
+   "id": "c120",
+   "start": 455.863,
+   "end": 459.347,
+   "loi": "theo kế hoạch của Grab. Còn bạn, người đi xe, bớt một hai nghìn mỗi"
+  },
+  {
+   "id": "c121",
+   "start": 459.347,
+   "end": 462.962,
+   "loi": "cuốc ngắn cho tới cuối tháng hai, rồi chuyển sang mức bảy phần trăm."
+  },
+  {
+   "id": "c122",
+   "start": 462.962,
+   "end": 466.978,
+   "loi": "Phần lớn con số gần ba nghìn tỷ là khuyến mại và thưởng của một quý."
+  },
+  {
+   "id": "c123",
+   "start": 466.978,
+   "end": 470.101,
+   "loi": "Nhìn kỹ thì thứ đáng giá nhất trong gói lại không nằm ở tiền:"
+  },
+  {
+   "id": "c124",
+   "start": 470.101,
+   "end": 473.7,
+   "loi": "cái trần ba mươi hai phần trăm, và cái màn hình sẽ hiện rõ hơn từng khoản."
+  },
+  {
+   "id": "c125",
+   "start": 473.7,
+   "end": 477.851,
+   "loi": "Khuyến mại hết sau một quý. Còn cái trần là cam kết với cơ quan cạnh tranh,"
+  },
+  {
+   "id": "c126",
+   "start": 477.851,
+   "end": 482.279,
+   "loi": "và cơ quan đó nói sẽ tiếp tục theo dõi. Giờ thử với cuốc bạn hay đi nhất:"
+  },
+  {
+   "id": "c127",
+   "start": 482.279,
+   "end": 485.788,
+   "loi": "lấy tiền cước nhân bảy phần trăm. So với phí nền tảng đang trả,"
+  },
+  {
+   "id": "c128",
+   "start": 485.788,
+   "end": 488.469,
+   "loi": "sau tháng hai bạn sẽ tốn thêm hay bớt đi bao nhiêu?"
+  },
+  {
+   "id": "c129",
+   "start": 488.469,
+   "end": 492.554,
+   "loi": "Thử tính rồi thả con số xuống bình luận, xem ai có cuốc tốn nhất."
+  }
+ ]
+}

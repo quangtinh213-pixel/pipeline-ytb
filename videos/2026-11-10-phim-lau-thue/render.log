@@ -1,0 +1,188 @@
+[INFO] [Compiler] Fetched 11 font face(s) for "Inter" from Google Fonts (cached to /Users/quangtinh/.cache/hyperframes/fonts/inter)
+[INFO] [Compiler] Injected deterministic @font-face rules for 1 requested font families
+[INFO] [Compiler] Inlined CDN script: https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js
+[WARN] [Compiler] WARNING: Video "c002-br-video" has sparse keyframes (max interval: 3.97s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-go-phim-7252685-001.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c011-br-video" has sparse keyframes (max interval: 4.07s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7841618-010.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c006-br-video" has sparse keyframes (max interval: 3.93s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7104084-005.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c004-br-video" has sparse keyframes (max interval: 4.03s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7732805-003.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c020-br-video" has sparse keyframes (max interval: 3.9s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/may-tinh-tay-3860709-019.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c016-br-video" has sparse keyframes (max interval: 4.03s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-1085656-015.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c018-br-video" has sparse keyframes (max interval: 3.5s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-5028622-017.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c014-br-video" has sparse keyframes (max interval: 3.53s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-10391545-013.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c022-br-video" has sparse keyframes (max interval: 3.63s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-go-phim-853935-021.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c021-br-video" has sparse keyframes (max interval: 3.5s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/may-tinh-tay-7055396-020.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c024-br-video" has sparse keyframes (max interval: 3.93s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/viet-tay-so-tay-4017221-023.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c026-br-video" has sparse keyframes (max interval: 4.87s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-1085656-025.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c032-br-video" has sparse keyframes (max interval: 3.7s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7054942-031.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c035-br-video" has sparse keyframes (max interval: 3.97s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/ky-van-ban-5311423-034.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c042-br-video" has sparse keyframes (max interval: 4.1s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/con-dau-7344550-041.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c043-br-video" has sparse keyframes (max interval: 3.3s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7732805-042.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c050-br-video" has sparse keyframes (max interval: 3.97s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7841618-049.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c052-br-video" has sparse keyframes (max interval: 5.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/ky-van-ban-5311423-051.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c054-br-video" has sparse keyframes (max interval: 3.9s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/tai-nghe-laptop-8865637-053.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c055-br-video" has sparse keyframes (max interval: 3.4s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/tai-nghe-laptop-8865637-054.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c056-br-video" has sparse keyframes (max interval: 3.27s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/nha-may-chip-32386617-055.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[hyperframes] browserGpuMode probe → hardware (WebGL renderer vendor="Google Inc. (Intel)" renderer="ANGLE (Intel, ANGLE Metal Renderer: Intel(R) UHD Graphics 630, Unspecified Version)")
+[WARN] [Compiler] WARNING: Video "c049-br-video" has sparse keyframes (max interval: 5.43s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-30281175-048.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c059-br-video" has sparse keyframes (max interval: 4.53s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/viet-tay-so-tay-4017221-058.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c058-br-video" has sparse keyframes (max interval: 3.7s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/the-tin-dung-laptop-6994837-057.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c061-br-video" has sparse keyframes (max interval: 5.1s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/thanh-toan-the-6755016-060.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c062-br-video" has sparse keyframes (max interval: 3.73s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/nha-may-chip-32386530-061.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c063-br-video" has sparse keyframes (max interval: 5.4s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/may-tinh-tay-3860709-062.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c068-br-video" has sparse keyframes (max interval: 3.67s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7054942-067.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c065-br-video" has sparse keyframes (max interval: 3.83s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-10391545-064.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c070-br-video" has sparse keyframes (max interval: 4.5s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/con-dau-7344550-069.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c067-br-video" has sparse keyframes (max interval: 4.37s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-30281175-066.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c071-br-video" has sparse keyframes (max interval: 2.17s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/may-tinh-tay-7055396-070.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c073-br-video" has sparse keyframes (max interval: 3.7s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7732805-072.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[WARN] [Compiler] WARNING: Video "c072-br-video" has sparse keyframes (max interval: 4.43s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/go-laptop-van-phong-4928295-071.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c077-br-video" has sparse keyframes (max interval: 4.83s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/giay-to-7104084-076.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c078-br-video" has sparse keyframes (max interval: 3.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/ky-van-ban-5311423-077.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[initSession:screenshot] page.goto start (1ms)
+[WARN] [Compiler] WARNING: Video "c081-br-video" has sparse keyframes (max interval: 3.93s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-ban-dem-7272375-080.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c082-br-video" has sparse keyframes (max interval: 3.37s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/ky-van-ban-5311423-081.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c080-br-video" has sparse keyframes (max interval: 3.87s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/con-dau-7344550-079.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c084-br-video" has sparse keyframes (max interval: 3.57s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/kho-hang-giao-hang-4156510-083.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c085-br-video" has sparse keyframes (max interval: 3.9s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-6611954-084.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c083-br-video" has sparse keyframes (max interval: 3.47s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/con-dau-7344550-082.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c086-br-video" has sparse keyframes (max interval: 3.1s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/man-hinh-code-29458457-085.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c089-br-video" has sparse keyframes (max interval: 3.2s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-go-phim-853935-088.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c088-br-video" has sparse keyframes (max interval: 3.7s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-go-phim-7252685-087.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c087-br-video" has sparse keyframes (max interval: 4.8s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/the-tin-dung-laptop-6994837-086.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c096-br-video" has sparse keyframes (max interval: 4.3s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-ban-dem-7272375-095.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c094-br-video" has sparse keyframes (max interval: 4.6s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/go-laptop-van-phong-4928295-093.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c097-br-video" has sparse keyframes (max interval: 3.93s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/man-hinh-code-29458457-096.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c099-br-video" has sparse keyframes (max interval: 5.63s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/go-laptop-van-phong-4928295-098.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c102-br-video" has sparse keyframes (max interval: 3.87s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-go-phim-853935-101.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c105-br-video" has sparse keyframes (max interval: 5.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-ban-dem-7272375-104.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c109-br-video" has sparse keyframes (max interval: 3.73s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-853794-108.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c108-br-video" has sparse keyframes (max interval: 4.57s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/go-laptop-van-phong-4928295-107.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c111-br-video" has sparse keyframes (max interval: 4.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/laptop-ban-dem-7272375-110.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[initSession:screenshot] page.goto complete (843ms)
+[WARN] [Compiler] WARNING: Video "c107-br-video" has sparse keyframes (max interval: 5.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-5028622-106.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[initSession:screenshot] GSAP proxy flush complete (867ms)
+[WARN] [Compiler] WARNING: Video "c112-br-video" has sparse keyframes (max interval: 3.2s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/luot-anh-dien-thoai-6756650-111.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c115-br-video" has sparse keyframes (max interval: 5.43s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-853794-114.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c114-br-video" has sparse keyframes (max interval: 5.7s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-6611954-113.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c116-br-video" has sparse keyframes (max interval: 3.53s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-1085656-115.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c120-br-video" has sparse keyframes (max interval: 3.77s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/luot-anh-dien-thoai-6756650-119.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c117-br-video" has sparse keyframes (max interval: 3.97s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/trung-tam-du-lieu-5028622-116.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c122-br-video" has sparse keyframes (max interval: 3.23s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-10391545-121.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c126-br-video" has sparse keyframes (max interval: 2.27s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/luot-anh-dien-thoai-6756650-125.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c125-br-video" has sparse keyframes (max interval: 5.37s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-6611954-124.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[WARN] [Compiler] WARNING: Video "c124-br-video" has sparse keyframes (max interval: 6s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/cang-container-30281175-123.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[WARN] [Compiler] WARNING: Video "c127-br-video" has sparse keyframes (max interval: 3.87s). Long GOPs can make preview seeking slower; rendering is unaffected. If preview seeking is slow, re-encode with: ffmpeg -i "assets/broll/dien-thoai-tay-853794-126.mp4" -c:v libx264 -r 30 -g 30 -keyint_min 30 -movflags +faststart -c:a copy output.mp4
+[initSession:screenshot] pollHfReady complete (2359ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (2564ms)
+[initSession:screenshot] applyVideoMetadataHints complete (2565ms)
+[initSession:screenshot] media + fonts + tailwind ready (3685ms)
+[initSession:screenshot] static-frame dedup: disabled (video) (3848ms)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[initSession:screenshot] page.goto start (1ms)
+[initSession:screenshot] page.goto complete (2711ms)
+[initSession:screenshot] GSAP proxy flush complete (2938ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] pollHfReady complete (6837ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (7084ms)
+[initSession:screenshot] applyVideoMetadataHints complete (7277ms)
+[initSession:screenshot] media + fonts + tailwind ready (7328ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (7336ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (7336ms)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=swiftshader, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[BrowserManager] Browser launched (HeadlessChrome/152.0.7977.30, screenshot, gl=--use-gl=angle --use-angle=metal, headlessShell=true, platform=darwin)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto complete (6352ms)
+[initSession:screenshot] page.goto complete (6346ms)
+[initSession:screenshot] page.goto start (0ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] page.goto complete (6376ms)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto start (0ms)
+[initSession:screenshot] page.goto start (0ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] page.goto complete (8158ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] GSAP proxy flush complete (11236ms)
+[initSession:screenshot] GSAP proxy flush complete (12586ms)
+[initSession:screenshot] GSAP proxy flush complete (12598ms)
+[initSession:screenshot] GSAP proxy flush complete (12619ms)
+[initSession:screenshot] page.goto complete (6472ms)
+[initSession:screenshot] pollHfReady complete (12901ms)
+[initSession:screenshot] pollHfReady complete (12909ms)
+[initSession:screenshot] pollHfReady complete (12926ms)
+[initSession:screenshot] pollHfReady complete (12938ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (13116ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (13114ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (13142ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (13156ms)
+[initSession:screenshot] applyVideoMetadataHints complete (13234ms)
+[initSession:screenshot] applyVideoMetadataHints complete (13233ms)
+[initSession:screenshot] applyVideoMetadataHints complete (13239ms)
+[initSession:screenshot] applyVideoMetadataHints complete (13251ms)
+[initSession:screenshot] page.goto complete (6844ms)
+[initSession:screenshot] GSAP proxy flush complete (6925ms)
+[initSession:screenshot] pollHfReady complete (6950ms)
+[initSession:screenshot] media + fonts + tailwind ready (13350ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (7132ms)
+[initSession:screenshot] media + fonts + tailwind ready (13540ms)
+[initSession:screenshot] applyVideoMetadataHints complete (7193ms)
+[initSession:screenshot] page.goto complete (7138ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (13588ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (13588ms)
+[initSession:screenshot] media + fonts + tailwind ready (13621ms)
+[initSession:screenshot] page.goto complete (7308ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (13774ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (13774ms)
+[initSession:screenshot] GSAP proxy flush complete (7369ms)
+[initSession:screenshot] media + fonts + tailwind ready (7448ms)
+[initSession:screenshot] media + fonts + tailwind ready (13804ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (13825ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (13825ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (7567ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (7568ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (13967ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (13967ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] GSAP proxy flush complete (7814ms)
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[HyperFrames] render runtime fps {"canonicalFps":30,"source":"render-options","rawFpsSource":"render-options","rawFps":30}
+[initSession:screenshot] GSAP proxy flush complete (11012ms)
+[initSession:screenshot] pollHfReady complete (11716ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (12117ms)
+[initSession:screenshot] applyVideoMetadataHints complete (12139ms)
+[initSession:screenshot] media + fonts + tailwind ready (12226ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (12320ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (12321ms)
+[initSession:screenshot] pollHfReady complete (13747ms)
+[initSession:screenshot] pollHfReady complete (13801ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (14186ms)
+[initSession:screenshot] pollSubCompositionTimelines complete (ready) (14168ms)
+[initSession:screenshot] applyVideoMetadataHints complete (14217ms)
+[initSession:screenshot] applyVideoMetadataHints complete (14195ms)
+[initSession:screenshot] media + fonts + tailwind ready (14283ms)
+[initSession:screenshot] media + fonts + tailwind ready (14261ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (14574ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (14574ms)
+[initSession:screenshot] captureBeyondViewport downgraded: page content fits the capture viewport (14554ms)
+[initSession:screenshot] static-frame dedup: disabled (before-capture hook / video injection active) (14557ms)
+[FrameCapture] Timed out closing browser; forcing browser process shutdown
+[FrameCapture] Timed out closing browser; forcing browser process shutdown
+[FrameCapture] Timed out closing browser; forcing browser process shutdown
+[FrameCapture] Timed out closing browser; forcing browser process shutdown
+[FrameCapture] Timed out closing browser; forcing browser process shutdown
+/Users/quangtinh/Documents/Youtube/videos/2026-11-10-phim-lau-thue/final.mp4
+exit 0

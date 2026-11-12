@@ -1,0 +1,87 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "người dùng chọn đề; RSS kênh mẫu 404, yt-viral chưa chạy",
+      "ket_thuc": "2026-11-10T13:38:27.071290+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "22 mục; toàn văn thông tư đọc trên LuatVietnam; thiếu ảnh chụp; chưa đọc Thông tư 11/2018",
+      "ket_thuc": "2026-11-10T13:38:27.072677+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "V4: phong cách mới (đời thường + châm biếm), 3 từ trend, không xưng mình",
+      "ket_thuc": "2026-11-10T14:12:08.382018+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "V4 chỉ chạy 1 vòng: 12 mục (nhận 6, nhận một phần 3, bỏ 3 vì trái yêu cầu user), điểm 3,5/3/3,5/4,5; hồ sơ V1 ở phan-bien-v1/",
+      "ket_thuc": "2026-11-10T14:12:08.383135+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "kiem 0 lỗi sau V4; V4 chưa qua subagent soát nói quá nguồn",
+      "ket_thuc": "2026-11-10T14:12:08.383836+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "V4 duyệt 10/11/2026",
+      "ket_thuc": "2026-11-10T14:19:46.612084+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "VieNeu Quốc Tuấn toc_do 1,1",
+      "ket_thuc": "2026-11-10T14:27:54.657265+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "bỏ qua: canh.json sinh từ canh-ke-hoach.py, ưu tiên b-roll nên không dựng sân khấu isometric",
+      "ket_thuc": "2026-11-10T14:42:09.071763+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "143 cảnh: 100 b-roll (70%), 23 bằng chứng (16%), 20 đồ họa (14%)",
+      "ket_thuc": "2026-11-10T14:42:09.073660+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "38 clip Pexels mới, đã soi và bỏ 13 clip có mặt người, logo, chữ nước ngoài; còn cảnh báo sfx 7/phút, tốc độ 269 từ/phút, độ khô (không áp cho b-roll)",
+      "ket_thuc": "2026-11-10T14:42:09.074375+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 V5 8:10; V4 giữ ở final-v4.mp4; check_av rỗng",
+      "ket_thuc": "2026-11-10T16:03:31.497402+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "mốc chương tính lại theo V5",
+      "ket_thuc": "2026-11-10T16:03:31.499643+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "V5 duyệt và upload, 10/11/2026",
+      "ket_thuc": "2026-11-10T16:06:10.446269+07:00"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/w60qG6ipY1s",
+      "ket_thuc": "2026-11-10T18:49:28.639997+07:00"
+    },
+    "shorts": {
+      "status": "xong",
+      "note": "3 Short dựng từ cảnh 95–106, 77–87, 0–6; hẹn 12–14/11/2026 08:00; chưa đăng",
+      "ket_thuc": "2026-11-10T19:05:12.104798+07:00"
+    }
+  },
+  "chon": 2,
+  "video_id": "w60qG6ipY1s",
+  "phu_de_ok": true,
+  "short_ids": {
+    "0": "1g_MjV4nwTY",
+    "1": "vVTh2_0xRCw",
+    "2": "s0OF-ADnF80"
+  }
+}

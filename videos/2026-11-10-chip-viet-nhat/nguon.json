@@ -1,0 +1,112 @@
+[
+  {
+    "id": "b1",
+    "gia_tri": "11 dự án / gần 500 tỷ đồng",
+    "trich_dan": "11 dự án nghiên cứu với tổng giá trị gần 500 tỷ đồng",
+    "url": "https://mst.gov.vn/chuong-trinh-nexus-giai-doan-2025-2026-tai-tro-11-du-an-nghien-cuu-voi-tong-gia-tri-gan-500-ty-dong-197261110112458081.htm",
+    "ten": "Bộ KH&CN",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/b1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b2",
+    "gia_tri": "khoảng 430 tỷ đồng",
+    "trich_dan": "tương đương khoảng 430 tỷ VNĐ",
+    "url": "https://mst.gov.vn/chuong-trinh-nexus-giai-doan-2025-2026-tai-tro-11-du-an-nghien-cuu-voi-tong-gia-tri-gan-500-ty-dong-197261110112458081.htm",
+    "ten": "Bộ KH&CN",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/b2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b3",
+    "gia_tri": "67 tỷ đồng",
+    "trich_dan": "phía Việt Nam là 67 tỷ đồng",
+    "url": "https://mst.gov.vn/chuong-trinh-nexus-giai-doan-2025-2026-tai-tro-11-du-an-nghien-cuu-voi-tong-gia-tri-gan-500-ty-dong-197261110112458081.htm",
+    "ten": "Bộ KH&CN",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/b2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "j1",
+    "gia_tri": "16 hồ sơ / 6 dự án",
+    "trich_dan": "今回の募集には16件の応募があり、両国の専門家による評価、JSTとMSTとの協議により6件の採択を決定しました。",
+    "url": "https://www.jst.go.jp/pr/info/info1885/index.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/j1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "j2",
+    "gia_tri": "42 tháng dự kiến",
+    "trich_dan": "研究実施期間は3.5年間（42カ月）を予定しています。",
+    "url": "https://www.jst.go.jp/pr/info/info1885/index.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/j1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b4",
+    "gia_tri": "5 dự án",
+    "trich_dan": "triển khai 5 dự án nghiên cứu chip bán dẫn",
+    "url": "https://mst.gov.vn/bo-khcn-cong-bo-5-du-an-hop-tac-nghien-cuu-chip-ban-dan-viet-nam-nhat-ban-197260502174842725.htm",
+    "ten": "Bộ KH&CN",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/b4.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "p1",
+    "gia_tri": "Thiết kế CPU và SoC; thử và đánh giá trên FPGA",
+    "trich_dan": "the Vietnamese team will handle CPU and System-on-a-Chip (SoC) design",
+    "url": "https://www.jst.go.jp/aspire/nexus/en/project/index.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/p1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "p2",
+    "gia_tri": "Tổng hợp vật liệu bán dẫn; phía Nhật chế tạo nền linh kiện và tích hợp",
+    "trich_dan": "The Vietnam-based team will conduct controlled synthesis",
+    "url": "https://www.jst.go.jp/aspire/nexus/en/project/index.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/p2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "p3",
+    "gia_tri": "Cố định đầu dò ADN, phân tích tín hiệu, xác thực mẫu",
+    "trich_dan": "DNA probe immobilization, AI/machine-learning-based signal analysis, and real-sample validation",
+    "url": "https://www.jst.go.jp/aspire/nexus/en/project/index.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/p3.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "k1",
+    "gia_tri": "tháng 1 đến tháng 4 năm 2027 (dự kiến)",
+    "trich_dan": "January to April 2027 (tentative)",
+    "url": "https://www.jst.go.jp/aspire/nexus/en/koubo/country/vietnam.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/k1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "k2",
+    "gia_tri": "Điều kiện về thỏa thuận giữa các cơ quan chủ trì",
+    "trich_dan": "an Agreement between the institutions to which both principal investigators (PIs) belong is required",
+    "url": "https://www.jst.go.jp/aspire/nexus/en/koubo/country/vietnam.html",
+    "ten": "JST",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/k2.png",
+    "trang_thai": "xac-minh"
+  }
+]

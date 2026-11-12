@@ -1,0 +1,318 @@
+{
+ "beats": [
+  {
+   "y_nghia": 3,
+   "da_dang": 3,
+   "chieu_sau": 3,
+   "nhip": 3,
+   "ghi_chu": "Khô: c001, c003. Ẩn dụ vượt nguồn: c004 (két sắt = Grab giữ tiền, nguồn chỉ 'dự kiến chi'), c005 (tài xế 'chờ khách'). 27 giây leo/đỉnh liên tục, không nhịp thở; c007 ổn."
+  },
+  {
+   "y_nghia": 3,
+   "da_dang": 3,
+   "chieu_sau": 2,
+   "nhip": 4,
+   "ghi_chu": "Khô: c010, c013, c014, c025, c027, c031. Ẩn dụ vượt nguồn: c033 (điện thoại khổng lồ trùm thành phố, hàm ý thống trị), c032, c030 (hai tờ đối lập, hàm ý Grab kể khác), c019/c020 (quán nhậu, 'ngã ngửa'), c017. Nhịp tốt."
+  },
+  {
+   "y_nghia": 3,
+   "da_dang": 3,
+   "chieu_sau": 3,
+   "nhip": 3,
+   "ghi_chu": "Khô: c039, c040, c050, c057, c060, c061. Ẩn dụ vượt nguồn: c045-c048 (phiếu 'hãng tự quyết', 'báo trước', túi xách vs hạ giá), c052, c062 (cao ốc). 8 đỉnh ngang nhau, dày số."
+  },
+  {
+   "y_nghia": 3,
+   "da_dang": 3,
+   "chieu_sau": 3,
+   "nhip": 4,
+   "ghi_chu": "Khô: c071, c082, c083, c088, c089, c094. Ẩn dụ vượt nguồn: c096-c098 (mưa làm cước nhảy, g3 không nói), c093 (phí 'không lịch' = vô hạn). Mạnh: c070, c085-c087. Nhịp có đỉnh 085-093 rồi thở."
+  },
+  {
+   "y_nghia": 3,
+   "da_dang": 3,
+   "chieu_sau": 2,
+   "nhip": 3,
+   "ghi_chu": "Khô: c102, c105, c109, c110, c111, c113, c114, c115, c116. Ẩn dụ vượt nguồn: c106 (điện thoại gợi lừa đảo). Chỉ c112 có hình mới; phần lớn leo phẳng, đỉnh muộn và yếu."
+  },
+  {
+   "y_nghia": 3,
+   "da_dang": 2,
+   "chieu_sau": 3,
+   "nhip": 4,
+   "ghi_chu": "Khô: c120, c122 (biểu đồ lặp lần ba c038/c063), c123, c126, c128. Ẩn dụ vượt nguồn: c124 (khiên = bảo vệ, 'đáng giá'), c121 (mũi tên xuống đối với 7%). Mạnh: c119, c127. Hồi tưởng lặp hình cũ."
+  }
+ ],
+ "canh_kho": [
+  {
+   "id": "c001",
+   "vi_sao": "xe máy trên phố chép 'cuốc Grab Bike'; hình chung chung"
+  },
+  {
+   "id": "c003",
+   "vi_sao": "giấy tờ stock chép 'vào cuộc'"
+  },
+  {
+   "id": "c010",
+   "vi_sao": "tay cầm điện thoại stock chép 'ảnh chụp lịch sử chuyến'; không thấy ảnh thật"
+  },
+  {
+   "id": "c013",
+   "vi_sao": "máy tính bấm tay chép 'phí nền tảng, thuế'; hình không thêm điều gì"
+  },
+  {
+   "id": "c014",
+   "vi_sao": "xe máy đi làm chép 'cuốc xe thường ngày'"
+  },
+  {
+   "id": "c025",
+   "vi_sao": "giấy tờ stock chép 'Ủy ban gọi Grab lên'"
+  },
+  {
+   "id": "c027",
+   "vi_sao": "giấy tờ stock lần hai, chép 'hồ sơ sơ bộ'"
+  },
+  {
+   "id": "c039",
+   "vi_sao": "thanh toán thẻ chép 'mã giảm giá'"
+  },
+  {
+   "id": "c040",
+   "vi_sao": "ảnh ứng dụng đặt xe chép 'mã giảm giá', không cho thấy mã"
+  },
+  {
+   "id": "c050",
+   "vi_sao": "sạc xe điện chép 'tiền xăng, tiền sạc'"
+  },
+  {
+   "id": "c057",
+   "vi_sao": "xe máy đi làm chép 'số ít chuyến'; hình không nói được 'ít'"
+  },
+  {
+   "id": "c060",
+   "vi_sao": "giấy tờ stock lần ba chép 'văn bản không tách riêng'"
+  },
+  {
+   "id": "c061",
+   "vi_sao": "tiền mặt chép 'đổi ra đô la'"
+  },
+  {
+   "id": "c069",
+   "vi_sao": "xe máy đi làm chép 'thêm tám nghìn rưỡi'"
+  },
+  {
+   "id": "c071",
+   "vi_sao": "xe máy phố chép 'cái trần'; hình lặp c001/c110"
+  },
+  {
+   "id": "c082",
+   "vi_sao": "xe máy đi làm chép 'tùy cuốc dài hay ngắn'"
+  },
+  {
+   "id": "c083",
+   "vi_sao": "máy tính bấm tay chép 'tính thử'"
+  },
+  {
+   "id": "c088",
+   "vi_sao": "thanh toán thẻ chép 'dưới/trên mức'; điểm hòa không có hình"
+  },
+  {
+   "id": "c089",
+   "vi_sao": "flycam giao thông chép 'ô tô đi xa'"
+  },
+  {
+   "id": "c094",
+   "vi_sao": "tay cầm điện thoại chép 'một chi tiết nhỏ'"
+  },
+  {
+   "id": "c102",
+   "vi_sao": "tay cầm điện thoại chép 'nhắn người quen'"
+  },
+  {
+   "id": "c105",
+   "vi_sao": "tài xế stock không cho thấy 'không cần gửi gì'; chép lời"
+  },
+  {
+   "id": "c109",
+   "vi_sao": "máy tính bấm tay chép 'tự rà lại'"
+  },
+  {
+   "id": "c110",
+   "vi_sao": "xe máy phố chép 'theo dõi hãng nào làm theo'"
+  },
+  {
+   "id": "c111",
+   "vi_sao": "tay cầm điện thoại lần n chép 'lúc đặt xe'"
+  },
+  {
+   "id": "c113",
+   "vi_sao": "ứng dụng đặt xe stock chép 'lịch sử chuyến'"
+  },
+  {
+   "id": "c114",
+   "vi_sao": "điện thoại stock chép thao tác bấm chuyến cũ"
+  },
+  {
+   "id": "c115",
+   "vi_sao": "lướt ảnh stock chép 'chụp lại chuyến'"
+  },
+  {
+   "id": "c116",
+   "vi_sao": "hai điện thoại trơn chép 'hai tấm ảnh cạnh nhau'; không cho thấy chênh lệch nào"
+  },
+  {
+   "id": "c120",
+   "vi_sao": "xe máy đi làm chép 'người đi xe'"
+  },
+  {
+   "id": "c122",
+   "vi_sao": "biểu đồ cùng dữ liệu lần ba (c038, c063); không thêm hiểu biết"
+  },
+  {
+   "id": "c123",
+   "vi_sao": "giấy tờ stock lần bốn chép 'nhìn kỹ'"
+  },
+  {
+   "id": "c126",
+   "vi_sao": "kẹt xe chép 'cuốc bạn hay đi'"
+  },
+  {
+   "id": "c128",
+   "vi_sao": "máy tính bấm tay lần ba chép 'tốn thêm hay bớt'"
+  }
+ ],
+ "an_du_vuot_nguon": [
+  {
+   "id": "c098",
+   "ngu_y": "Mưa làm cước nhảy nên phí 7% nhảy theo, mũi tên lên ở cả hai chỗ",
+   "nguon_thieu": "g3 chỉ nói phí 7% tính trên giá cước và 'phụ phí liên quan'; không nói phụ phí gồm tăng giá lúc mưa/giờ tan tầm, cũng không nói mức tăng",
+   "goi_y_sua": "Bỏ hình mưa và mũi tên; chỉ vẽ công thức 'cước + phụ phí' x 7% theo g3, hoặc bỏ cảnh và đổi lời thành 'phí tính theo cước, cước đổi thì phí đổi' không nhắc mưa"
+  },
+  {
+   "id": "c096",
+   "ngu_y": "Hôm trời mưa, giờ tan tầm giá cước nhảy lên (cảnh xe máy dưới mưa)",
+   "nguon_thieu": "Không nguồn nào nói cước nhảy lúc mưa hoặc giờ tan tầm, hay 'phụ phí liên quan' là phụ phí giờ cao điểm",
+   "goi_y_sua": "Dùng ảnh chụp g3 tô cụm 'phụ phí liên quan', bỏ b-roll mưa"
+  },
+  {
+   "id": "c033",
+   "ngu_y": "Điện thoại khổng lồ giữa thành phố hàm ý Grab chiếm thế thống trị; đặt giá không còn là việc riêng",
+   "nguon_thieu": "Không nguồn nào nói thị phần hay vị thế của Grab; lời chỉ là giả định 'khi một ứng dụng chiếm phần lớn'",
+   "goi_y_sua": "Thay bằng cảnh khô có nhãn 'giả định' hoặc bỏ cảnh, kèm trích thông tin về vai trò cơ quan cạnh tranh từ nguồn nếu có"
+  },
+  {
+   "id": "c032",
+   "ngu_y": "Toàn cảnh giao thông TP.HCM hàm ý Grab chiếm phần lớn cuốc xe",
+   "nguon_thieu": "Không có số thị phần của Grab trong nguon.json",
+   "goi_y_sua": "Dùng b-roll đường phố trung tính có nhãn 'ví dụ giả định', hoặc gộp vào c033"
+  },
+  {
+   "id": "c030",
+   "ngu_y": "Hai văn bản đối lập 'hai câu chuyện khác nhau': Grab cố ý không nhắc đợt rà soát",
+   "nguon_thieu": "g5 chỉ ghi lý do Grab nêu với khách; m1 chỉ ghi ngày đăng; không nguồn nào nói Grab biết hoặc cố tình bỏ qua",
+   "goi_y_sua": "Hai tờ cùng kiểu, cùng nhãn ngày, chỉ trích hai câu nguyên văn cạnh nhau, bỏ chữ 'câu chuyện khác'"
+  },
+  {
+   "id": "c093",
+   "ngu_y": "Biểu tượng phí không lịch ngụ ý phí 7% không bao giờ hết",
+   "nguon_thieu": "g3 ghi 'đến khi có thông báo mới', tức không có hạn nhưng có thể đổi; không nói phí tồn tại vĩnh viễn",
+   "goi_y_sua": "Vẽ lịch ở cả hai bên; bên phải để trống kèm nhãn 'đến khi có thông báo mới'"
+  },
+  {
+   "id": "c124",
+   "ngu_y": "Khiên mờ sau 32%: trần là lá chắn bảo vệ, 'thứ đáng giá nhất'",
+   "nguon_thieu": "m3 nói Grab 'được chủ động kiểm soát không vượt quá 32%'; không nói cơ quan thực thi, không nói đã giữ được, màn hình mới chỉ 'sẽ hiện'",
+   "goi_y_sua": "Bỏ khiên, giữ số 32% trên nền trơn hoặc thước đo; thêm nhãn 'Grab chủ động kiểm soát, chưa kiểm được'"
+  },
+  {
+   "id": "c048",
+   "ngu_y": "Túi xách 'phiếu' lớn gấp đôi 'hạ giá niêm yết' hàm ý phần giảm phí nhỏ và kém giá trị",
+   "nguon_thieu": "Văn bản không nói 227 tỷ là 'hạ giá niêm yết', cũng không nói mã giảm giá thuộc 'hãng tự quyết'; tỉ lệ thực 227/1.808 khoảng 1:8, hình vẽ 1:2",
+   "goi_y_sua": "Bỏ hình đồ siêu thị; dùng hai cột đúng tỉ lệ 1.808 và 227 có nhãn 'tự tính'"
+  },
+  {
+   "id": "c045",
+   "ngu_y": "Nhãn 'Phiếu: hãng tự quyết' trên cảnh thanh toán: ý đồ tùy ý của hãng",
+   "nguon_thieu": "Không nguồn nào nói Grab phát/thu mã giảm giá tùy ý",
+   "goi_y_sua": "Bỏ nhãn; dùng m11 trên trang nguồn"
+  },
+  {
+   "id": "c046",
+   "ngu_y": "Nhãn 'Hạ cả bảng giá': giảm phí ai cũng thấy",
+   "nguon_thieu": "g1/g2 chỉ liệt kê mức giảm theo quãng đường; không nói 'cả bảng', và c077 cho thấy trên 6 km không giảm",
+   "goi_y_sua": "Đổi nhãn thành 'Mức giảm theo quãng đường (g1)'"
+  },
+  {
+   "id": "c047",
+   "ngu_y": "Nhãn 'Muốn tăng lại: báo trước' ngụ ý Grab buộc phải báo trước",
+   "nguon_thieu": "Không nguồn nào nói nghĩa vụ báo trước; g3 chỉ có 'đến khi có thông báo mới'",
+   "goi_y_sua": "Bỏ nhãn hoặc bỏ phần lời tương ứng"
+  },
+  {
+   "id": "c052",
+   "ngu_y": "Điện thoại 'bật app chưa chắc có phần': thưởng có điều kiện",
+   "nguon_thieu": "m10 chỉ nói khoảng 860 tỷ cho thưởng, hỗ trợ; không nêu điều kiện",
+   "goi_y_sua": "Dùng trang nguồn m10, bỏ cảnh hoặc bỏ phần lời 'có điều kiện'"
+  },
+  {
+   "id": "c062",
+   "ngu_y": "Tiền nhỏ cạnh cao ốc: gói chẳng là gì với Grab, Grab chịu được dễ",
+   "nguon_thieu": "s1 chỉ có doanh thu quý, không nói lợi nhuận hay khả năng chi; k10 chỉ ra 10%",
+   "goi_y_sua": "Hai thanh cùng hệ trục, nhãn 'doanh thu một quý, tự tính 10%', bỏ hình cao ốc"
+  },
+  {
+   "id": "c004",
+   "ngu_y": "Đồng xu cạnh két sắt: Grab đang giữ cả kho tiền, 'hào phóng'",
+   "nguon_thieu": "b3 chỉ ghi 'dự kiến chi gần 3.000 tỷ'; không nói Grab có sẵn tiền hay hào phóng; cỡ hình 0,45:1 không phản ánh tỉ lệ thật",
+   "goi_y_sua": "Thay két bằng khối 'dự kiến chi' ; hai khối có nhãn số, bỏ két"
+  },
+  {
+   "id": "c019",
+   "ngu_y": "Phở thay cho hóa đơn quán nhậu: phí phụ bị quên, khách 'ngã ngửa'",
+   "nguon_thieu": "m17 chỉ nói phí linh hoạt theo chuyến; không nguồn nào nói phí bị giấu hay khách giật mình",
+   "goi_y_sua": "Bỏ cảnh, hoặc thêm chữ 'ví von của video, không phải nguồn'"
+  },
+  {
+   "id": "c020",
+   "ngu_y": "Cảnh thanh toán thẻ ngụ ý ai cũng 'ngã ngửa' lúc tính tiền",
+   "nguon_thieu": "Không có nguồn về phản ứng của khách hoặc tài xế",
+   "goi_y_sua": "Bỏ hoặc thay bằng ảnh chụp m4"
+  },
+  {
+   "id": "c017",
+   "ngu_y": "Tài xế stock làm chứng 'khó biết trước mình bị trừ bao nhiêu'",
+   "nguon_thieu": "nguon.json không có nguồn cho lời 'theo nhiều tài xế khó biết trước'; m17 chỉ nói 'linh hoạt'",
+   "goi_y_sua": "Dùng ảnh bài báo Tuổi Trẻ nếu có câu này, nếu không bỏ cảnh"
+  },
+  {
+   "id": "c005",
+   "ngu_y": "Tài xế áo xanh 'đang chờ khách' hàm ý họ thiệt thòi",
+   "nguon_thieu": "Nguồn không nói tài xế chờ khách hay hoàn cảnh",
+   "goi_y_sua": "Dùng cảnh khác không ngụ ý hoàn cảnh"
+  },
+  {
+   "id": "c106",
+   "ngu_y": "Điện thoại nền trắng gợi cuộc gọi lừa đảo",
+   "nguon_thieu": "m9b chỉ nói Grab thông báo qua tin nhắn/email; không nguồn nào nói có kẻ giả mạo",
+   "goi_y_sua": "Hiển thị trích m9b 'tin nhắn hoặc email của hãng', bỏ hình điện thoại"
+  },
+  {
+   "id": "c121",
+   "ngu_y": "Mũi tên xuống chỉ ở bên 'đến 25/02' đặt cạnh 7%: ngụ ý sau tháng hai đắt hơn",
+   "nguon_thieu": "g3 chỉ có tỷ lệ 7%; chính video (c087) nói dưới 43.000 đồng trả ít hơn",
+   "goi_y_sua": "Đặt cùng kiểu mũi tên hai bên hoặc không mũi tên, thêm nhãn 'tùy cuốc'"
+  },
+  {
+   "id": "c011",
+   "ngu_y": "Thẻ tài xế vẽ 80% so với thẻ khách: ngụ ý chênh nhỏ hơn thực",
+   "nguon_thieu": "t2 ghi 52,7%; hình 0,8 không khớp",
+   "goi_y_sua": "Đặt to bằng đúng 0,53"
+  },
+  {
+   "id": "c023",
+   "ngu_y": "Thẻ tài xế vẽ 70% so với thẻ khách",
+   "nguon_thieu": "b2: 52.000/100.000 = 0,52",
+   "goi_y_sua": "Đặt to bằng 0,52"
+  }
+ ]
+}

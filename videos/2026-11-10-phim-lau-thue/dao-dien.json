@@ -1,0 +1,1710 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "y": "Người xem thấy ngay câu hỏi của cả video xuất phát từ một thông báo chính thức, không phải lời đồn",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn thông báo gia hạn làm hình đầu tiên, khớp h1; không thêm hình ngoài trang nguồn",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "h1",
+    "trich": "extend for three months the ongoing Section 301 investigation",
+    "to_vang": "three months",
+    "trich_vi": "Gia hạn thêm ba tháng cuộc điều tra đang diễn ra theo Điều 301",
+    "to_vang_vi": "Gia hạn thêm ba tháng"
+   }
+  },
+  {
+   "id": "c002",
+   "y": "Cho người xem thấy chỗ đời thường nhất của chuyện phim lậu: một thao tác trên máy tính",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-go-phim-7252685-001.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c003",
+   "y": "Người xem hiểu hai thứ tưởng xa nhau (trang xem phim, lô hàng) đang bị nối bằng một dòng luật",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Máy tính và container ở hai đầu, một đường nối giữa: chỉ biểu thị câu hỏi 'luật nối thế nào', khớp l2; không ngụ ý đã có thuế",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hai chuyện, một dòng nối"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "laptop",
+   "dao_cu": [
+    "container"
+   ],
+   "may_quay": "lia"
+  },
+  {
+   "id": "c004",
+   "y": "Đặt chuyện vào văn bản luật có thật",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7732805-003.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c005",
+   "y": "Người xem đọc được chính câu luật cho phép phạm vi vượt ra ngoài vụ việc",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn l2, tô cụm 'without regard' để chữ luật tự nói; không thêm hình ẩn dụ",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "l2",
+    "trich": "without regard to whether or not such goods or economic sector were involved",
+    "to_vang": "without regard",
+    "trich_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan đến vụ việc hay không",
+    "to_vang_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan"
+   }
+  },
+  {
+   "id": "c006",
+   "y": "Một nhịp thở: tờ thông báo dời hạn",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7104084-005.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c007",
+   "y": "Người xem thấy mức 12,5% có thật nhưng thuộc hồ sơ khác",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Trích f1 đặt ngay sau câu về hạn mới để thấy hai tờ giấy khác nhau; không dán nhãn 'sẽ áp'",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "f1",
+    "trich": "impose 12.5 percent tariffs on products of Vietnam, except as provided",
+    "to_vang": "12.5 percent",
+    "trich_vi": "Áp thuế 12,5% đối với sản phẩm của Việt Nam, trừ các ngoại lệ được quy định",
+    "to_vang_vi": "12,5%"
+   }
+  },
+  {
+   "id": "c008",
+   "y": "Hai hồ sơ cạnh nhau: cái nào đã áp dụng, cái nào còn phải đợi",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Bản quyền: đang điều tra",
+     "svg": "tai-lieu",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "Lao động: đã có thuế",
+     "svg": "tai-lieu"
+    }
+   }
+  },
+  {
+   "id": "c009",
+   "y": "Mở chương",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 1",
+    "chuong": "Vì sao nói tới phim lậu?",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c010",
+   "y": "Cho thấy Mỹ đang xem cách thực thi chứ chưa nói về một website cụ thể",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Họ xem cách thực thi",
+    "dan": {
+     "the": "nghi"
+    }
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "kinh-lup",
+   "dao_cu": [
+    "tai-lieu"
+   ],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c011",
+   "y": "Chồng hồ sơ để người xem biết mình đang đọc văn bản",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7841618-010.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c012",
+   "y": "Người xem đọc được phần nói về phim lậu đúng chữ",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "u2",
+    "trich": "extensive libraries of pirated movies and TV shows.",
+    "to_vang": "pirated movies and TV shows",
+    "trich_vi": "Những thư viện lớn chứa phim và chương trình truyền hình phát trái phép.",
+    "to_vang_vi": "phát trái phép"
+   }
+  },
+  {
+   "id": "c013",
+   "y": "Đảo kỳ vọng: phim lậu chỉ là một phần trong hồ sơ rộng hơn",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Một tờ hồ sơ có một ngăn sáng, nhiều ngăn mờ: khớp u1/u2 (hàng giả, biên giới và vấn đề khác cùng nằm trong thông báo); không ngụ ý tỉ lệ",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Chỉ một phần thôi"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "tai-lieu",
+   "dao_cu": [
+    "kinh-lup",
+    "container"
+   ],
+   "may_quay": "keo-ra"
+  },
+  {
+   "id": "c014",
+   "y": "Nhắc hàng hóa ở biên giới",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-10391545-013.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c015",
+   "y": "Đặt câu hỏi về quy mô trước khi đưa số",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Quy mô một mạng",
+    "dan": {
+     "the": "nghi"
+    }
+   },
+   "san_khau": "may-chu",
+   "vat_chinh": "may-chu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c016",
+   "y": "Cho thấy mạng nằm trên hạ tầng máy chủ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-1085656-015.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c017",
+   "y": "Người xem nhận con số lớn đúng phạm vi: lượt truy cập của cả mạng",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Số đứng một mình trên nền tối, nhãn nêu đủ đối tượng và kỳ đo của ACE; không vẽ đám đông hay hình tiền",
+   "canh": {
+    "mau": "so-lon",
+    "so": "6,7",
+    "sau": " tỷ lượt",
+    "nhan": "Fmovies và tên miền liên quan: hơn mức này, 2023–2024",
+    "nguon_id": "a1",
+    "svg": "may-chu"
+   }
+  },
+  {
+   "id": "c018",
+   "y": "Một nhịp thở sau số lớn",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-5028622-017.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c019",
+   "y": "Phân biệt lượt vào trang với vé đã bán",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Lượt vào trang"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "laptop",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c020",
+   "y": "Cho thấy phép nhân giá vé là cách tính nhanh",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-3860709-019.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c021",
+   "y": "Chỉ ra chỗ phép tính nhanh sai: một lượt không bằng một vé",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-7055396-020.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c022",
+   "y": "Cho thấy một người có thể mở lại nhiều lần",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-go-phim-853935-021.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c023",
+   "y": "Người xem thấy dấu hỏi nằm đúng chỗ: nguồn không cho biết ai sẽ mua vé",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Kính lúp trên túi tiền, ô giá trị để trống: khớp a1 (nguồn chỉ có lượt truy cập, không có doanh thu hay số vé); không vẽ số tiền hay đám đông",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ai thật sự mua vé?",
+    "dan": {
+     "the": "bo-ngo"
+    }
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "kinh-lup",
+   "dao_cu": [
+    "tien"
+   ],
+   "may_quay": "day-vao"
+  },
+  {
+   "id": "c024",
+   "y": "Nhịp thở: tay lật hồ sơ",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "viet-tay-so-tay-4017221-023.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c025",
+   "y": "Chốt: số này trả lời quy mô, không trả lời thiệt hại",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cần dữ liệu khác"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "tai-lieu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c026",
+   "y": "Mở đoạn giải thích lớp phía sau nút phát",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-1085656-025.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c027",
+   "y": "Người xem thấy tên trang đổi nhưng nơi lưu vẫn ở chỗ cũ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Thẻ trang đổi tên còn khối máy chủ giữ nguyên chỗ: sơ đồ cấu trúc minh họa, dán nhãn; không nói Fmovies đã làm thế",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Đổi tên, cùng nơi lưu"
+   },
+   "san_khau": "may-chu",
+   "vat_chinh": "may-chu",
+   "dao_cu": [
+    "laptop"
+   ],
+   "may_quay": "lia"
+  },
+  {
+   "id": "c028",
+   "y": "Người xem nhìn ba lớp: người xem, trang phát, nơi lưu video",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Ba bước nối nhau dán nhãn 'Minh họa cấu trúc'; không số liệu, không tên trang",
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Minh họa cấu trúc",
+    "buoc": [
+     {
+      "nhan": "Người xem",
+      "svg": "nguoi"
+     },
+     {
+      "nhan": "Trang phát",
+      "svg": "laptop"
+     },
+     {
+      "nhan": "Nơi lưu video",
+      "svg": "may-chu"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c029",
+   "y": "Đặt câu hỏi ai đứng sau",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ai vận hành?"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "nguoi",
+   "dao_cu": [
+    "kinh-lup"
+   ],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c030",
+   "y": "Người xem thấy hai việc khác phạm vi: chặn địa chỉ và xử lý mạng phía sau",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Hai vật cạnh nhau, vật bên phải lớn hơn: chỉ về phạm vi, không về hiệu quả; không số liệu",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Chặn địa chỉ",
+     "svg": "o-khoa",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "Xử lý mạng phía sau",
+     "svg": "may-chu"
+    }
+   }
+  },
+  {
+   "id": "c031",
+   "y": "Cho thấy thông tin do phía liên minh công bố",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Do liên minh công bố"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "khien",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c032",
+   "y": "Nhịp thở",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7054942-031.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c033",
+   "y": "Mở câu hỏi rộng hơn một trang còn mở hay không",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Câu hỏi rộng hơn"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "cao-oc",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c034",
+   "y": "Người xem đọc được chữ 'thực thi bền bỉ và hiệu quả' từ nguồn",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn u1; chỉ đưa câu hồ sơ nêu, không thêm lời kết luận",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "u1",
+    "trich": "the failure to provide persistent and effective enforcement to combat online piracy.",
+    "to_vang": "persistent and effective enforcement",
+    "trich_vi": "Việc không bảo đảm thực thi bền bỉ và hiệu quả để chống vi phạm bản quyền trực tuyến.",
+    "to_vang_vi": "bền bỉ và hiệu quả"
+   }
+  },
+  {
+   "id": "c035",
+   "y": "Nhịp thở",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-034.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c036",
+   "y": "Nhắc đối tượng của điều tra là chính sách",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "h1",
+    "trich": "extend for three months the ongoing Section 301 investigation",
+    "to_vang": "ongoing Section 301 investigation",
+    "trich_vi": "Gia hạn thêm ba tháng cuộc điều tra đang diễn ra theo Điều 301",
+    "to_vang_vi": "cuộc điều tra đang diễn ra"
+   }
+  },
+  {
+   "id": "c037",
+   "y": "Cho thấy một website và hành vi những người liên quan",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Một website"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "laptop",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c038",
+   "y": "Đổi cấp độ câu hỏi: từ một trang sang cả hệ thống",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Hai vật khác cỡ: nhỏ là một trang, lớn là hệ thống; chỉ cấp độ, không ngụ ý Việt Nam yếu hay mạnh",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Một website",
+     "svg": "laptop",
+     "to": 0.6
+    },
+    "phai": {
+     "nhan": "Cả hệ thống thực thi",
+     "svg": "cao-oc"
+    }
+   }
+  },
+  {
+   "id": "c039",
+   "y": "Mở chương",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 2",
+    "chuong": "Vì sao một lô hàng liên quan?",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c040",
+   "y": "Người xem thấy lại cặp đầu video: website nằm trên mạng, thuế nằm ở cửa khẩu",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Cùng cặp hình ở đầu video, lần này thêm vai: cầu nối là thẩm quyền theo luật Mỹ; không thêm khẳng định",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Website trên mạng",
+     "svg": "laptop",
+     "to": 0.7
+    },
+    "phai": {
+     "nhan": "Thuế ở cửa khẩu",
+     "svg": "container"
+    }
+   }
+  },
+  {
+   "id": "c041",
+   "y": "Cho biết cầu nối là thẩm quyền theo luật",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Thẩm quyền theo luật Mỹ"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "bua-phan-quyet",
+   "dao_cu": [],
+   "may_quay": "day-vao"
+  },
+  {
+   "id": "c042",
+   "y": "Cho thấy đây là bước xem xét trên giấy",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "con-dau-7344550-041.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c043",
+   "y": "Cho thấy việc cần xác định có cơ sở hành động hay chưa",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7732805-042.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c044",
+   "y": "Cần thêm thời gian",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cần thêm thời gian"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "dong-ho",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c045",
+   "y": "Người xem đọc đúng ngày hạn mới",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Trích nguyên văn h2, nhân vật xác nhận số khớp nguồn",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "h2",
+    "trich": "no later than February 28, 2027.",
+    "to_vang": "February 28, 2027",
+    "trich_vi": "Chậm nhất ngày 28/02/2027.",
+    "to_vang_vi": "28/02/2027",
+    "dan": {
+     "the": "xac-nhan"
+    }
+   }
+  },
+  {
+   "id": "c046",
+   "y": "Cho thấy doanh nghiệp xuất hàng làm việc với giấy tờ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7104084-045.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c047",
+   "y": "Người xem đọc điều luật liệt kê loại biện pháp",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "l1",
+    "trich": "impose duties or other import restrictions",
+    "to_vang": "duties or other import restrictions",
+    "trich_vi": "Áp thuế hoặc các hạn chế nhập khẩu khác",
+    "to_vang_vi": "thuế hoặc các hạn chế nhập khẩu khác"
+   }
+  },
+  {
+   "id": "c048",
+   "y": "Người xem thấy phạm vi luật cho phép có thể rộng hơn ngành bị điều tra",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Khung mở rộng từ một ngành sang nhiều ngành: chỉ phạm vi luật cho phép (l2), không nói đã có thuế",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cả ngành ngoài vụ việc"
+   },
+   "san_khau": "cang",
+   "vat_chinh": "tai-lieu",
+   "dao_cu": [
+    "container",
+    "laptop"
+   ],
+   "may_quay": "keo-ra"
+  },
+  {
+   "id": "c049",
+   "y": "Nhắc phạm vi có thể vượt ra ngoài bản quyền số",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-30281175-048.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c050",
+   "y": "Báo trước còn một đường khác",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7841618-049.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c051",
+   "y": "Người xem đọc điều luật về thỏa thuận ràng buộc",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "l3",
+    "trich": "enter into binding agreements",
+    "to_vang": "binding agreements",
+    "trich_vi": "Ký kết các thỏa thuận có tính ràng buộc",
+    "to_vang_vi": "thỏa thuận có tính ràng buộc"
+   }
+  },
+  {
+   "id": "c052",
+   "y": "Cho thấy hai bên đọc văn bản cam kết",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-051.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c053",
+   "y": "Cho thấy hướng thứ hai: danh sách hàng hóa",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Danh sách hàng hóa"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "tai-lieu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c054",
+   "y": "Mở ví dụ giả định về một sản phẩm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tai-nghe-laptop-8865637-053.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c055",
+   "y": "Cho thấy món hàng trong ví dụ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "tai-nghe-laptop-8865637-054.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c056",
+   "y": "Cho thấy nơi lắp ráp",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "nha-may-chip-32386617-055.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c057",
+   "y": "Người xem thấy chuyện quyết định nằm ở mã hàng có trong danh sách hay không",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Container thay cho lô hàng giả định, bên cạnh tờ danh sách và kính lúp, nhãn 'giả định'; không nêu hãng hay mã cụ thể",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Mã hàng: cần đối chiếu"
+   },
+   "san_khau": "cang",
+   "vat_chinh": "container",
+   "dao_cu": [
+    "tai-lieu",
+    "kinh-lup"
+   ],
+   "may_quay": "day-vao"
+  },
+  {
+   "id": "c058",
+   "y": "Cho thấy chi phí nhập có thể đổi",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "the-tin-dung-laptop-6994837-057.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c059",
+   "y": "Nhánh khác: miễn hoặc biện pháp khác",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "viet-tay-so-tay-4017221-058.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c060",
+   "y": "Người xem thấy ai đứng đầu chuỗi chịu chi phí trước và ai ở sau",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Chuỗi ba bên nối bằng mũi tên, mỗi bên có thể chia hoặc không chia chi phí: khớp lời đọc ví dụ, dán nhãn giả định; không số liệu",
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Ví dụ giả định",
+    "buoc": [
+     {
+      "nhan": "Nhà nhập khẩu",
+      "svg": "container"
+     },
+     {
+      "nhan": "Nhà máy",
+      "svg": "nha-may"
+     },
+     {
+      "nhan": "Người mua",
+      "svg": "nguoi"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c061",
+   "y": "Cho thấy việc thương lượng chi phí",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "thanh-toan-the-6755016-060.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c062",
+   "y": "Nhịp thở sau chuỗi ví dụ",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "nha-may-chip-32386530-061.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c063",
+   "y": "Cho thấy giá trên kệ phụ thuộc người bán",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-3860709-062.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c064",
+   "y": "Giá không tự nhảy bằng thuế suất",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Giá không tự nhảy"
+   },
+   "san_khau": "thanh-pho",
+   "vat_chinh": "thue-phan-tram",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c065",
+   "y": "Đưa mắt về cảng",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-10391545-064.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c066",
+   "y": "Người xem nhận quy mô nhập khẩu một tháng, gắn đúng nguồn",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Số lớn trên nền tối có hình container mờ, nhãn nêu tháng và hướng nhập; không so với mức thuế",
+   "canh": {
+    "mau": "so-lon",
+    "so": "28,7",
+    "sau": " tỷ USD",
+    "nhan": "Mỹ nhập từ Việt Nam · tháng 9/2026",
+    "nguon_id": "c1",
+    "svg": "container"
+   }
+  },
+  {
+   "id": "c067",
+   "y": "Nhịp thở sau số lớn",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-30281175-066.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c068",
+   "y": "Nhắc cần xem danh sách đi kèm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7054942-067.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c069",
+   "y": "Người xem thấy số nhập lớn không đồng nghĩa mọi hàng chịu thuế",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Container lớn đứng sau tấm khiên mờ: chỉ 'số nhập ≠ phạm vi biện pháp'; không nói hàng nào được miễn",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Số lớn chưa đủ"
+   },
+   "san_khau": "cang",
+   "vat_chinh": "container",
+   "dao_cu": [
+    "khien"
+   ],
+   "may_quay": "lia"
+  },
+  {
+   "id": "c070",
+   "y": "Nhịp thở",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "con-dau-7344550-069.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c071",
+   "y": "Cho thấy góc nhìn bảng thương mại",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-7055396-070.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c072",
+   "y": "Cho thấy góc nhìn bàn đàm phán",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "go-laptop-van-phong-4928295-071.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c073",
+   "y": "Cùng lô hàng hai cách nhìn",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7732805-072.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c074",
+   "y": "Chốt: hàng gì, điều kiện nào, chạm hay không",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hàng gì, điều kiện nào?"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "kinh-lup",
+   "dao_cu": [
+    "tai-lieu"
+   ],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c075",
+   "y": "Mở chương, câu hỏi người xem hay hỏi",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 3",
+    "chuong": "Hai hồ sơ cùng tên điều luật",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c076",
+   "y": "Người xem đọc mức 12,5% và biết nó thuộc vụ lao động cưỡng bức",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Số lớn mang nhãn vụ lao động cưỡng bức, ghi rõ có ngoại lệ; không nhãn 'sẽ áp thêm'",
+   "canh": {
+    "mau": "so-lon",
+    "so": "12,5",
+    "sau": " %",
+    "nhan": "thuộc vụ lao động cưỡng bức, có ngoại lệ",
+    "nguon_id": "f1",
+    "svg": "thue-phan-tram"
+   }
+  },
+  {
+   "id": "c077",
+   "y": "Mở đúng hồ sơ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7104084-076.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c078",
+   "y": "Cho thấy đây là hồ sơ riêng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-077.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c079",
+   "y": "Người xem thấy hai hồ sơ cạnh nhau, cùng tên điều luật nhưng khác vụ",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "an_du": "Hai tờ giống nhau về dáng, nhãn khác nhau: chỉ 'cùng điều luật, khác vụ' (h1, f1); không số liệu",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Vụ bản quyền",
+     "svg": "tai-lieu",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "Vụ lao động cưỡng bức",
+     "svg": "tai-lieu"
+    }
+   }
+  },
+  {
+   "id": "c080",
+   "y": "Một bên đã công bố, một bên chờ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "con-dau-7344550-079.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c081",
+   "y": "Cho thấy hồ sơ vừa dời hạn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-ban-dem-7272375-080.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c082",
+   "y": "Cảnh báo nhầm kết quả",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ky-van-ban-5311423-081.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c083",
+   "y": "Nhịp thở",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "con-dau-7344550-082.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c084",
+   "y": "Mở ví dụ đơn hàng nội thất",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "kho-hang-giao-hang-4156510-083.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c085",
+   "y": "Bên mua gửi một đường dẫn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-6611954-084.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c086",
+   "y": "Việc đầu tiên: xem văn bản nói vụ nào",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "man-hinh-code-29458457-085.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c087",
+   "y": "Bên kế toán cần tờ có thuế suất",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "the-tin-dung-laptop-6994837-086.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c088",
+   "y": "Bên hợp đồng cần mốc theo dõi",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-go-phim-7252685-087.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c089",
+   "y": "Thống nhất lúc mở lại báo giá",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-go-phim-853935-088.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c090",
+   "y": "Hai việc, hai loại thông tin",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Để tính giá",
+     "svg": "tien",
+     "to": 0.8
+    },
+    "phai": {
+     "nhan": "Để biết mốc",
+     "svg": "lich"
+    }
+   }
+  },
+  {
+   "id": "c091",
+   "y": "Nêu câu dễ trượt: hạn mới đến, thuế tự chạy",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hạn đến, thuế chạy?",
+    "dan": {
+     "the": "nghi"
+    }
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "dong-ho",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c092",
+   "y": "Người xem đọc lại đúng ngày hạn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "h2",
+    "trich": "no later than February 28, 2027.",
+    "to_vang": "February 28, 2027",
+    "trich_vi": "Chậm nhất ngày 28/02/2027.",
+    "to_vang_vi": "28/02/2027"
+   }
+  },
+  {
+   "id": "c093",
+   "y": "Người xem thấy lịch ở trước còn ô biện pháp còn trống",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Tờ lịch đã đánh dấu, ô thuế bên cạnh để trống: khớp h2 và l1 (biện pháp chỉ là khả năng); không điền mức thuế nào",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hạn mới, chưa phải thuế"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "lich",
+   "dao_cu": [
+    "thue-phan-tram"
+   ],
+   "may_quay": "he-lo"
+  },
+  {
+   "id": "c094",
+   "y": "Thông báo chưa đưa danh sách mã hàng",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "go-laptop-van-phong-4928295-093.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c095",
+   "y": "Hình dung hai email đến cùng lúc",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hai email",
+    "dan": {
+     "the": "nghi"
+    }
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "hop-thu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c096",
+   "y": "Email thứ nhất: dời lịch họp",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-ban-dem-7272375-095.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c097",
+   "y": "Email thứ hai: phụ lục hợp đồng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "man-hinh-code-29458457-096.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c098",
+   "y": "Người xem thấy chỉ một trong hai tờ đủ thông tin để đổi giá",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Hai thư cạnh nhau, tờ phụ lục dày hơn: ví dụ giả định về loại văn bản, không số liệu",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Email dời lịch",
+     "svg": "hop-thu",
+     "to": 0.6
+    },
+    "phai": {
+     "nhan": "Phụ lục giá mới",
+     "svg": "tai-lieu"
+    }
+   }
+  },
+  {
+   "id": "c099",
+   "y": "Đọc đúng loại giấy trước",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "go-laptop-van-phong-4928295-098.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c100",
+   "y": "Mở chương hai tín hiệu",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 4",
+    "chuong": "Hai tín hiệu cần theo dõi",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c101",
+   "y": "Người xem biết tín hiệu đầu là phần quyết định của văn bản kết luận",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "an_du": "Cán cân đặt giữa tờ văn bản, chưa nghiêng bên nào: chỉ nói 'đọc phần quyết định trước'; không dự báo kết quả",
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Tìm phần quyết định"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "bua-phan-quyet",
+   "dao_cu": [
+    "tai-lieu"
+   ],
+   "may_quay": "day-vao"
+  },
+  {
+   "id": "c102",
+   "y": "Đoạn về biện pháp",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-go-phim-853935-101.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c103",
+   "y": "Chữ thuế mới chưa phải điểm dừng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Thuế mới, rồi sao?"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "thue-phan-tram",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c104",
+   "y": "Ba câu hỏi cần hỏi tiếp",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hàng nào, ngoại lệ?"
+   },
+   "san_khau": "nen-dat",
+   "vat_chinh": "kinh-lup",
+   "dao_cu": [
+    "tai-lieu"
+   ],
+   "may_quay": "day-vao"
+  },
+  {
+   "id": "c105",
+   "y": "Giữ đúng chữ khi kể lại",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-ban-dem-7272375-104.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c106",
+   "y": "Chuyển sang tín hiệu thứ hai",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Tín hiệu thứ hai"
+   },
+   "san_khau": "may-chu",
+   "vat_chinh": "may-chu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c107",
+   "y": "Vụ đóng web trên hạ tầng mạng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-5028622-106.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c108",
+   "y": "Theo dõi thông báo cơ quan và bên giữ quyền",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "go-laptop-van-phong-4928295-107.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c109",
+   "y": "Người làm phim thấy ngay một đường dẫn biến mất",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-853794-108.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c110",
+   "y": "Người xem thấy khác biệt giữa địa chỉ biến mất và mạng đứng sau ngừng hẳn",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Hai trạng thái cạnh nhau, không mũi tên nhân quả: đúng với lời 'mới cho biết xử lý sâu đến đâu'; không khẳng định vụ nào đã ngừng hẳn",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Địa chỉ biến mất",
+     "svg": "o-khoa",
+     "to": 0.5
+    },
+    "phai": {
+     "nhan": "Mạng ngừng hoạt động",
+     "svg": "may-chu"
+    }
+   }
+  },
+  {
+   "id": "c111",
+   "y": "Ví dụ hãng phim đã cấp quyền",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "laptop-ban-dem-7272375-110.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c112",
+   "y": "Cần đầu mối để gửi bằng chứng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "luot-anh-dien-thoai-6756650-111.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c113",
+   "y": "Việc xử lý có theo được khi trang đổi địa chỉ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Đổi địa chỉ, theo được?"
+   },
+   "san_khau": "may-chu",
+   "vat_chinh": "kinh-lup",
+   "dao_cu": [
+    "laptop"
+   ],
+   "may_quay": "lia"
+  },
+  {
+   "id": "c114",
+   "y": "Người xem chỉ thấy nút phát biến mất",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-6611954-113.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c115",
+   "y": "Đáng theo dõi dù chưa có quyết định mới",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-853794-114.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c116",
+   "y": "Giữ đúng thứ tự khi nhìn hai tín hiệu",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-1085656-115.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c117",
+   "y": "Một vụ đóng trang là sự kiện thực thi",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-5028622-116.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c118",
+   "y": "Người xem thấy hai loại sự kiện cùng chủ đề nhưng khác hồ sơ, khác cơ quan",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Hai vật cạnh nhau, không mũi tên giữa chúng: đúng lời 'hồ sơ, cơ quan, hệ quả khác nhau'; không ngụ ý cái này gây ra cái kia",
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Sự kiện thực thi",
+     "svg": "bua-phan-quyet",
+     "to": 0.85
+    },
+    "phai": {
+     "nhan": "Sự kiện thương mại",
+     "svg": "thue-phan-tram"
+    }
+   }
+  },
+  {
+   "id": "c119",
+   "y": "Khác hồ sơ, khác cơ quan, khác hệ quả",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Khác hồ sơ, khác hệ"
+   },
+   "san_khau": "co-quan",
+   "vat_chinh": "tai-lieu",
+   "dao_cu": [],
+   "may_quay": "dung"
+  },
+  {
+   "id": "c120",
+   "y": "Mở đúng văn bản là cách nhanh nhất",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "luot-anh-dien-thoai-6756650-119.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c121",
+   "y": "Mở chương kết",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 5",
+    "chuong": "Web phim lậu dính gì tới thuế?",
+    "dan": {
+     "the": "chao"
+    }
+   }
+  },
+  {
+   "id": "c122",
+   "y": "Việc thực thi bản quyền nằm trong điều tra thương mại",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-10391545-121.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c123",
+   "y": "Người xem đọc lại câu luật làm lý do nhà xuất khẩu theo dõi",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "an_du": "Nhắc lại trích l2 đã dùng ở đầu video để khép vòng; không hình mới",
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "l2",
+    "trich": "without regard to whether or not such goods or economic sector were involved",
+    "to_vang": "without regard",
+    "trich_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan đến vụ việc hay không",
+    "to_vang_vi": "Bất kể hàng hóa hay ngành kinh tế đó có liên quan"
+   }
+  },
+  {
+   "id": "c124",
+   "y": "Bởi vậy nhà xuất khẩu có lý do theo dõi",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "cang-container-30281175-123.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c125",
+   "y": "Lần tới: kết luận, đề xuất hay quyết định chốt",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-6611954-124.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c126",
+   "y": "Mời bình luận số một hoặc số hai",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "luot-anh-dien-thoai-6756650-125.mp4",
+    "nhan": ""
+   }
+  },
+  {
+   "id": "c127",
+   "y": "Khép video",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "dien-thoai-tay-853794-126.mp4",
+    "nhan": ""
+   }
+  }
+ ]
+}

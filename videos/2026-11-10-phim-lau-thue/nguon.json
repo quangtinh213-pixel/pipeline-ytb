@@ -1,0 +1,103 @@
+[
+  {
+    "id": "h1",
+    "gia_tri": "3 tháng / Điều 301",
+    "trich_dan": "extend for three months the ongoing Section 301 investigation",
+    "url": "https://public-inspection.federalregister.gov/2026-22868.pdf",
+    "ten": "USTR · Gia hạn",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/h1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "h2",
+    "gia_tri": "28/02/2027",
+    "trich_dan": "no later than February 28, 2027.",
+    "url": "https://public-inspection.federalregister.gov/2026-22868.pdf",
+    "ten": "USTR · Gia hạn",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/h2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "u1",
+    "gia_tri": "Thực thi chống vi phạm bản quyền trực tuyến",
+    "trich_dan": "the failure to provide persistent and effective enforcement to combat online piracy.",
+    "url": "https://ustr.gov/sites/default/files/files/Press/Releases/2026/USTR%20301%20Vietnam%20IP%20FRN.pdf",
+    "ten": "USTR · Mở điều tra",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/u1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "u2",
+    "gia_tri": "Phim và chương trình truyền hình lậu",
+    "trich_dan": "extensive libraries of pirated movies and TV shows.",
+    "url": "https://ustr.gov/sites/default/files/files/Press/Releases/2026/USTR%20301%20Vietnam%20IP%20FRN.pdf",
+    "ten": "USTR · Mở điều tra",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/u1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "l1",
+    "gia_tri": "Biện pháp có thể gồm thuế hoặc hạn chế nhập khẩu",
+    "trich_dan": "impose duties or other import restrictions",
+    "url": "https://uscode.house.gov/us/usc/119-118/t19/s2411/",
+    "ten": "Bộ luật Hoa Kỳ",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/l1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "l2",
+    "gia_tri": "Biện pháp có thể áp dụng cho ngành ngoài đối tượng điều tra",
+    "trich_dan": "without regard to whether or not such goods or economic sector were involved",
+    "url": "https://uscode.house.gov/us/usc/119-118/t19/s2411/",
+    "ten": "Bộ luật Hoa Kỳ",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/l2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "a1",
+    "gia_tri": "hơn 6,7 tỷ lượt truy cập / 01/2023–06/2024",
+    "trich_dan": "Fmovies and Associated Domains Logged over 6.7 Billion Visits Between January 2023 and June 2024",
+    "url": "https://www.alliance4creativity.com/news/vietnamese-authorities-with-support-from-ace-take-down-worlds-largest-piracy-ring/",
+    "ten": "ACE",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/a1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c1",
+    "gia_tri": "28,7 tỷ USD",
+    "trich_dan": "Vietnam -27,024 -25,046 -190,928 1,714 1,428 13,898 28,738 26,475 204,826",
+    "url": "https://www.bea.gov/sites/default/files/2026-11/trad0926.pdf#page=28",
+    "ten": "U.S. Census Bureau / BEA",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/c1.png",
+    "trang_thai": "xac-minh",
+    "ghi_chu": "Exhibit 14, Imports September 2026, 28,738 triệu USD. Lời đọc làm tròn tới khoảng 28,7 tỷ USD."
+  },
+  {
+    "id": "f1",
+    "gia_tri": "12,5%",
+    "trich_dan": "impose 12.5 percent tariffs on products of Vietnam, except as provided",
+    "url": "https://public-inspection.federalregister.gov/2026-15181.pdf",
+    "ten": "USTR · Vụ lao động cưỡng bức",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/f1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "l3",
+    "gia_tri": "Thỏa thuận ràng buộc cũng là một hướng luật cho phép",
+    "trich_dan": "enter into binding agreements",
+    "url": "https://uscode.house.gov/us/usc/119-118/t19/s2411/",
+    "ten": "Bộ luật Hoa Kỳ",
+    "ngay_truy_cap": "2026-11-10",
+    "anh_chup": "nguon/l1.png",
+    "trang_thai": "xac-minh"
+  }
+]

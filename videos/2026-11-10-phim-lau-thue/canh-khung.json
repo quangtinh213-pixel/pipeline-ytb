@@ -1,0 +1,766 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.64,
+   "loi": "Mỹ vừa gia hạn thêm ba tháng vụ điều tra về sở hữu trí tuệ ở Việt Nam."
+  },
+  {
+   "id": "c002",
+   "start": 3.64,
+   "end": 7.078,
+   "loi": "Trong hồ sơ có web phim lậu. Chuyện trên một cái tab trình duyệt"
+  },
+  {
+   "id": "c003",
+   "start": 7.078,
+   "end": 10.796,
+   "loi": "thì dính gì đến thuế của một lô hàng ở cảng? Có một dòng nối hai chuyện."
+  },
+  {
+   "id": "c004",
+   "start": 10.796,
+   "end": 14.304,
+   "loi": "Nó nằm trong luật thương mại Mỹ. Nếu Mỹ chọn biện pháp với hàng hóa,"
+  },
+  {
+   "id": "c005",
+   "start": 14.304,
+   "end": 19.169,
+   "loi": "luật cho phép họ nhắm cả vào ngành ngoài vụ việc. Đó là lý do nhà xuất khẩu cũng phải để mắt."
+  },
+  {
+   "id": "c006",
+   "start": 19.169,
+   "end": 22.57,
+   "loi": "Tờ giấy vừa công bố dời hạn ra quyết định. Còn mức thuế bổ sung"
+  },
+  {
+   "id": "c007",
+   "start": 22.57,
+   "end": 26.654,
+   "loi": "mười hai phẩy năm phần trăm mà bạn có thể đã nghe đến nằm trong một hồ sơ khác."
+  },
+  {
+   "id": "c008",
+   "start": 26.654,
+   "end": 31.098,
+   "loi": "Xếp hai tờ giấy cạnh nhau sẽ thấy cái nào đang áp dụng, cái nào còn phải đợi."
+  },
+  {
+   "id": "c009",
+   "start": 31.098,
+   "end": 33.94,
+   "loi": "Văn phòng Đại diện Thương mại Mỹ nêu chuyện phim lậu"
+  },
+  {
+   "id": "c010",
+   "start": 33.94,
+   "end": 37.092,
+   "loi": "vì họ đang xem Việt Nam thực thi quyền sở hữu trí tuệ ra sao."
+  },
+  {
+   "id": "c011",
+   "start": 37.092,
+   "end": 40.65,
+   "loi": "Trong thông báo mở điều tra, cơ quan này đề cập các dịch vụ có cả thư"
+  },
+  {
+   "id": "c012",
+   "start": 40.65,
+   "end": 44.843,
+   "loi": "viện phim và chương trình truyền hình phát trái phép, hướng đến người xem quốc tế."
+  },
+  {
+   "id": "c013",
+   "start": 44.843,
+   "end": 48.373,
+   "loi": "Chỉ một phần thôi. Phía Mỹ còn xem việc xử lý hàng giả và kiểm"
+  },
+  {
+   "id": "c014",
+   "start": 48.373,
+   "end": 51.391,
+   "loi": "soát hàng vi phạm ở biên giới, cùng các vấn đề khác."
+  },
+  {
+   "id": "c015",
+   "start": 51.391,
+   "end": 54.871,
+   "loi": "Quy mô của một mạng từng hoạt động lớn đến đâu? Liên minh Sáng tạo"
+  },
+  {
+   "id": "c016",
+   "start": 54.871,
+   "end": 58.403,
+   "loi": "và Giải trí cho biết mạng F-mu-vì và các tên miền liên quan đã thu hút hơn"
+  },
+  {
+   "id": "c017",
+   "start": 58.403,
+   "end": 61.792,
+   "loi": "sáu phẩy bảy tỷ lượt truy cập từ tháng một năm hai nghìn không trăm hai"
+  },
+  {
+   "id": "c018",
+   "start": 61.792,
+   "end": 64.788,
+   "loi": "mươi ba đến tháng sáu năm hai nghìn không trăm hai mươi bốn."
+  },
+  {
+   "id": "c019",
+   "start": 64.788,
+   "end": 68.727,
+   "loi": "Đây là lượt truy cập, tính trên cả mạng. Lượt vào trang là lượt vào trang."
+  },
+  {
+   "id": "c020",
+   "start": 68.727,
+   "end": 72.126,
+   "loi": "Thử lấy số này nhân với giá vé xem phim. Nghe dễ nhỉ?"
+  },
+  {
+   "id": "c021",
+   "start": 72.126,
+   "end": 75.094,
+   "loi": "Nhưng phép tính đó mặc định cứ vào trang là mất một vé."
+  },
+  {
+   "id": "c022",
+   "start": 75.094,
+   "end": 78.206,
+   "loi": "Có người mở cùng một trang nhiều lần. Có người vào rồi thoát."
+  },
+  {
+   "id": "c023",
+   "start": 78.206,
+   "end": 81.397,
+   "loi": "Cũng không biết có bao nhiêu người sẽ mua vé nếu đường dẫn biến mất."
+  },
+  {
+   "id": "c024",
+   "start": 81.397,
+   "end": 84.805,
+   "loi": "Vì vậy, số liệu của liên minh trả lời được câu hỏi quy mô truy cập."
+  },
+  {
+   "id": "c025",
+   "start": 84.805,
+   "end": 87.603,
+   "loi": "Muốn đo thiệt hại kinh tế phải có dữ liệu khác."
+  },
+  {
+   "id": "c026",
+   "start": 87.603,
+   "end": 91.954,
+   "loi": "Hình dung một trang chỉ đưa bạn đến chỗ bấm phát. Video có thể nằm ở chỗ khác."
+  },
+  {
+   "id": "c027",
+   "start": 91.954,
+   "end": 95.339,
+   "loi": "Có trang đổi địa chỉ nhưng phía sau vẫn trỏ về cùng một nơi."
+  },
+  {
+   "id": "c028",
+   "start": 95.339,
+   "end": 98.27,
+   "loi": "Người xem thấy giao diện mới và tưởng cả hệ thống đã đổi."
+  },
+  {
+   "id": "c029",
+   "start": 98.27,
+   "end": 103.513,
+   "loi": "Bên giữ bản quyền phải tìm xem ai vận hành, rồi xem cần xử lý từ đâu thì nguồn phát mới dừng."
+  },
+  {
+   "id": "c030",
+   "start": 103.513,
+   "end": 108.382,
+   "loi": "Chặn địa chỉ hiện trên màn hình và xử lý mạng đứng phía sau là hai việc có phạm vi khác nhau."
+  },
+  {
+   "id": "c031",
+   "start": 108.382,
+   "end": 113.441,
+   "loi": "Trong trường hợp F-mu-vì, phía liên minh thông báo Công an Hà Nội đã phối hợp với họ để đóng mạng."
+  },
+  {
+   "id": "c032",
+   "start": 113.441,
+   "end": 116.61,
+   "loi": "Ca đó do phía liên minh công bố, trước tin gia hạn lần này."
+  },
+  {
+   "id": "c033",
+   "start": 116.61,
+   "end": 120.395,
+   "loi": "Còn hồ sơ của Mỹ đặt câu hỏi rộng hơn chuyện một trang còn mở được hay không."
+  },
+  {
+   "id": "c034",
+   "start": 120.395,
+   "end": 123.692,
+   "loi": "Họ muốn biết cách thực thi có đủ sức ngăn tái phạm hay chưa."
+  },
+  {
+   "id": "c035",
+   "start": 123.692,
+   "end": 127.15,
+   "loi": "Vì sao lại hỏi cách thực thi? Vì đối tượng của cuộc điều tra"
+  },
+  {
+   "id": "c036",
+   "start": 127.15,
+   "end": 130.176,
+   "loi": "là chính sách và cách Việt Nam bảo hộ quyền sở hữu trí tuệ."
+  },
+  {
+   "id": "c037",
+   "start": 130.176,
+   "end": 134.991,
+   "loi": "Khi xử lý một website, cơ quan chức năng xem hành vi của những người liên quan đến trang đó."
+  },
+  {
+   "id": "c038",
+   "start": 134.991,
+   "end": 138.197,
+   "loi": "Sang hồ sơ thương mại, phía Mỹ xem cách cả hệ thống thực thi."
+  },
+  {
+   "id": "c039",
+   "start": 138.197,
+   "end": 141.801,
+   "loi": "Đổi cấp độ câu hỏi thì hệ quả cũng đổi. Quay lại lô hàng."
+  },
+  {
+   "id": "c040",
+   "start": 141.801,
+   "end": 145.191,
+   "loi": "Một website nằm trên mạng. Thuế nhập khẩu nằm ở cửa khẩu."
+  },
+  {
+   "id": "c041",
+   "start": 145.191,
+   "end": 149.197,
+   "loi": "Cầu nối ở đây là thẩm quyền xử lý của Đại diện Thương mại Mỹ theo luật của họ."
+  },
+  {
+   "id": "c042",
+   "start": 149.197,
+   "end": 152.768,
+   "loi": "Trong vụ này, cơ quan đó xem xét các chính sách và cách thực thi"
+  },
+  {
+   "id": "c043",
+   "start": 152.768,
+   "end": 157.131,
+   "loi": "của Việt Nam về sở hữu trí tuệ, rồi phải xác định có cơ sở để hành động hay không."
+  },
+  {
+   "id": "c044",
+   "start": 157.131,
+   "end": 160.445,
+   "loi": "Thông báo gia hạn nói họ cần thêm thời gian do các vấn đề phức tạp."
+  },
+  {
+   "id": "c045",
+   "start": 160.445,
+   "end": 165.239,
+   "loi": "Hạn mới để đưa ra quyết định là chậm nhất ngày hai mươi tám tháng hai năm hai nghìn không trăm hai mươi bảy."
+  },
+  {
+   "id": "c046",
+   "start": 165.239,
+   "end": 168.788,
+   "loi": "Vì sao doanh nghiệp xuất hàng nên để ý? Điều luật liệt kê thuế nhập"
+  },
+  {
+   "id": "c047",
+   "start": 168.788,
+   "end": 171.982,
+   "loi": "khẩu và các hạn chế nhập khẩu trong số biện pháp được phép sử dụng."
+  },
+  {
+   "id": "c048",
+   "start": 171.982,
+   "end": 176.377,
+   "loi": "Phạm vi đến đâu? Luật cho phép biện pháp chạm tới cả hàng hóa của ngành ngoài vụ việc."
+  },
+  {
+   "id": "c049",
+   "start": 176.377,
+   "end": 181.278,
+   "loi": "Nếu Mỹ chọn áp thuế, phạm vi có thể vượt ra ngoài những sản phẩm liên quan đến bản quyền số."
+  },
+  {
+   "id": "c050",
+   "start": 181.278,
+   "end": 184.722,
+   "loi": "Cũng có đường khác. Luật còn cho phép Đại diện Thương mại ký thỏa"
+  },
+  {
+   "id": "c051",
+   "start": 184.722,
+   "end": 187.919,
+   "loi": "thuận ràng buộc với nước liên quan để khắc phục vấn đề bị xem xét."
+  },
+  {
+   "id": "c052",
+   "start": 187.919,
+   "end": 192.637,
+   "loi": "Sau này có thỏa thuận thì xem hai bên cam kết gì và kiểm tra tiến độ ra sao."
+  },
+  {
+   "id": "c053",
+   "start": 192.637,
+   "end": 195.172,
+   "loi": "Còn nếu có thuế mới, mở danh sách hàng hóa."
+  },
+  {
+   "id": "c054",
+   "start": 195.172,
+   "end": 198.545,
+   "loi": "Mỗi hướng có một văn bản để đọc. Lấy ví dụ giả định."
+  },
+  {
+   "id": "c055",
+   "start": 198.545,
+   "end": 201.434,
+   "loi": "Một hãng Mỹ đặt mua tai nghe lắp ráp tại Việt Nam."
+  },
+  {
+   "id": "c056",
+   "start": 201.434,
+   "end": 204.193,
+   "loi": "Cả hãng nhập lẫn nhà máy đều chẳng vận hành trang phim nào."
+  },
+  {
+   "id": "c057",
+   "start": 204.193,
+   "end": 209.162,
+   "loi": "Nếu Mỹ chọn áp thuế, hai bên phải xem mã hàng của chiếc tai nghe có nằm trong danh sách hay không."
+  },
+  {
+   "id": "c058",
+   "start": 209.162,
+   "end": 212.338,
+   "loi": "Nếu tai nghe nằm trong phạm vi thì chi phí nhập có thể đổi."
+  },
+  {
+   "id": "c059",
+   "start": 212.338,
+   "end": 216.356,
+   "loi": "Nếu mã hàng được miễn hoặc biện pháp đi theo hướng khác, tác động sẽ khác."
+  },
+  {
+   "id": "c060",
+   "start": 216.356,
+   "end": 221.35,
+   "loi": "Ai thấy chi phí trước? Trong ví dụ này, nhà nhập khẩu là bên đứng tên làm thủ tục ở Mỹ."
+  },
+  {
+   "id": "c061",
+   "start": 221.35,
+   "end": 225.927,
+   "loi": "Họ có thể hỏi nhà máy chia bớt phần chi phí, đổi giá đơn hàng sau hoặc tìm nguồn khác."
+  },
+  {
+   "id": "c062",
+   "start": 225.927,
+   "end": 229.144,
+   "loi": "Nhà máy cũng có thể giữ giá nếu khách khó thay nhà cung cấp."
+  },
+  {
+   "id": "c063",
+   "start": 229.144,
+   "end": 234.026,
+   "loi": "Còn người mua tai nghe chỉ thấy giá trên kệ nếu bên bán chuyển được một phần chi phí sang họ."
+  },
+  {
+   "id": "c064",
+   "start": 234.026,
+   "end": 237.493,
+   "loi": "Từ cửa khẩu tới giá bán có thêm thương lượng, chứ giá ngoài cửa hàng"
+  },
+  {
+   "id": "c065",
+   "start": 237.493,
+   "end": 240.796,
+   "loi": "không tự nhảy lên đúng bằng thuế suất. Cứ nhìn vào cảng."
+  },
+  {
+   "id": "c066",
+   "start": 240.796,
+   "end": 245.808,
+   "loi": "Riêng tháng chín vừa rồi, Mỹ nhập khoảng hai mươi tám phẩy bảy tỷ đô la Mỹ tiền hàng từ Việt Nam,"
+  },
+  {
+   "id": "c067",
+   "start": 245.808,
+   "end": 249.673,
+   "loi": "theo báo cáo của cơ quan thống kê Mỹ. Đó là quy mô nhập hàng tháng ấy."
+  },
+  {
+   "id": "c068",
+   "start": 249.673,
+   "end": 252.821,
+   "loi": "Nếu có quyết định áp thuế, cần xem danh sách đi kèm."
+  },
+  {
+   "id": "c069",
+   "start": 252.821,
+   "end": 256.538,
+   "loi": "Cứ thấy số nhập khẩu lớn rồi bảo toàn bộ hàng sẽ chịu thuế là vội."
+  },
+  {
+   "id": "c070",
+   "start": 256.538,
+   "end": 260.505,
+   "loi": "Phạm vi còn phải chờ. Cũng có hai góc nhìn về cùng một chuyến hàng."
+  },
+  {
+   "id": "c071",
+   "start": 260.505,
+   "end": 263.365,
+   "loi": "Trên bảng thương mại, đó là giá trị hàng qua biên giới."
+  },
+  {
+   "id": "c072",
+   "start": 263.365,
+   "end": 267.272,
+   "loi": "Trên bàn đàm phán, đó là thời hạn, giá và chuyện bên nào nhận phần chi phí."
+  },
+  {
+   "id": "c073",
+   "start": 267.272,
+   "end": 270.482,
+   "loi": "Cùng lô hàng, hai cách nhìn. Muốn hiểu một hợp đồng cụ thể,"
+  },
+  {
+   "id": "c074",
+   "start": 270.482,
+   "end": 275.286,
+   "loi": "phải xem hàng gì, giao theo điều kiện nào và quyết định sắp tới có chạm vào mặt hàng đó hay không."
+  },
+  {
+   "id": "c075",
+   "start": 275.286,
+   "end": 280.683,
+   "loi": "Tới đây có thể bạn sẽ hỏi: chẳng phải hàng Việt đã có thuế bổ sung mười hai phẩy năm phần trăm rồi sao?"
+  },
+  {
+   "id": "c076",
+   "start": 280.683,
+   "end": 285.243,
+   "loi": "Có một quyết định áp mức đó cho hàng có xuất xứ Việt Nam, kèm ngoại lệ trong phụ lục."
+  },
+  {
+   "id": "c077",
+   "start": 285.243,
+   "end": 289.576,
+   "loi": "Mở đúng hồ sơ. Vụ đó xem xét việc ngăn nhập hàng làm bằng lao động cưỡng bức."
+  },
+  {
+   "id": "c078",
+   "start": 289.576,
+   "end": 292.289,
+   "loi": "Vụ bản quyền vừa gia hạn là một cuộc điều tra riêng."
+  },
+  {
+   "id": "c079",
+   "start": 292.289,
+   "end": 296.079,
+   "loi": "Điểm dễ nhầm là cả hai cùng xuất hiện dưới tên Điều ba trăm lẻ một."
+  },
+  {
+   "id": "c080",
+   "start": 296.079,
+   "end": 299.419,
+   "loi": "Cùng tên luật. Nhưng một bên đã công bố mức thuế và ngoại lệ,"
+  },
+  {
+   "id": "c081",
+   "start": 299.419,
+   "end": 302.83,
+   "loi": "còn hồ sơ này vừa dời hạn ra quyết định. Nói mức thuế của hồ sơ"
+  },
+  {
+   "id": "c082",
+   "start": 302.83,
+   "end": 305.686,
+   "loi": "này là kết quả của hồ sơ kia thì người nghe sẽ hiểu sai"
+  },
+  {
+   "id": "c083",
+   "start": 305.686,
+   "end": 308.638,
+   "loi": "vì sao khoản đó xuất hiện và phạm vi áp dụng ra sao."
+  },
+  {
+   "id": "c084",
+   "start": 308.638,
+   "end": 311.69,
+   "loi": "Ví dụ, bạn quản lý một đơn hàng nội thất đi Mỹ."
+  },
+  {
+   "id": "c085",
+   "start": 311.69,
+   "end": 315.075,
+   "loi": "Bên mua gửi một đường dẫn nói rằng Mỹ vừa gia hạn điều tra."
+  },
+  {
+   "id": "c086",
+   "start": 315.075,
+   "end": 317.646,
+   "loi": "Việc đầu tiên là xem văn bản đang nói đến vụ nào."
+  },
+  {
+   "id": "c087",
+   "start": 317.646,
+   "end": 321.923,
+   "loi": "Bên kế toán cần văn bản có thuế suất, mã hàng và ngày áp dụng để tính giá."
+  },
+  {
+   "id": "c088",
+   "start": 321.923,
+   "end": 325.09,
+   "loi": "Bên phụ trách hợp đồng thì cần biết mốc dự kiến có tin tiếp,"
+  },
+  {
+   "id": "c089",
+   "start": 325.09,
+   "end": 327.761,
+   "loi": "để hai bên thống nhất lúc nào mở lại phần báo giá."
+  },
+  {
+   "id": "c090",
+   "start": 327.761,
+   "end": 330.481,
+   "loi": "Họ đang đọc hai loại thông tin phục vụ hai công việc."
+  },
+  {
+   "id": "c091",
+   "start": 330.481,
+   "end": 333.911,
+   "loi": "Cũng có một câu dễ trượt nữa: hạn mới đến, thuế tự chạy."
+  },
+  {
+   "id": "c092",
+   "start": 333.911,
+   "end": 337.079,
+   "loi": "Hạn trong thông báo là hạn đưa ra quyết định về cuộc điều tra."
+  },
+  {
+   "id": "c093",
+   "start": 337.079,
+   "end": 342.3,
+   "loi": "Nếu có biện pháp mới, mới xem biện pháp là gì, đối tượng nào nằm trong đó và ngày nào có hiệu lực."
+  },
+  {
+   "id": "c094",
+   "start": 342.3,
+   "end": 346.395,
+   "loi": "Mới có ngày phải để ý. Còn danh sách mã hàng thì thông báo này chưa đưa ra."
+  },
+  {
+   "id": "c095",
+   "start": 346.395,
+   "end": 349.864,
+   "loi": "Hình dung hai email đến cùng lúc. Một email báo dời lịch họp."
+  },
+  {
+   "id": "c096",
+   "start": 349.864,
+   "end": 353.648,
+   "loi": "Email kia gửi phụ lục hợp đồng đã ký, có giá mới và ngày bắt đầu."
+  },
+  {
+   "id": "c097",
+   "start": 353.648,
+   "end": 357.074,
+   "loi": "Cả hai đều nói về cùng khách hàng, nhưng chỉ email thứ hai đủ"
+  },
+  {
+   "id": "c098",
+   "start": 357.074,
+   "end": 361.294,
+   "loi": "thông tin để người làm giá cập nhật con số. Với hai văn bản của Mỹ cũng vậy."
+  },
+  {
+   "id": "c099",
+   "start": 361.294,
+   "end": 366.397,
+   "loi": "Đọc đúng loại giấy trước, rồi mới hỏi nó thay đổi chi phí hay thay đổi thời điểm phải theo dõi."
+  },
+  {
+   "id": "c100",
+   "start": 366.397,
+   "end": 370.797,
+   "loi": "Từ giờ, có hai tín hiệu đáng theo dõi. Tín hiệu đầu là chính văn bản kết luận."
+  },
+  {
+   "id": "c101",
+   "start": 370.797,
+   "end": 373.899,
+   "loi": "Mỹ xác định vấn đề nào cần hành động? Tìm phần quyết định."
+  },
+  {
+   "id": "c102",
+   "start": 373.899,
+   "end": 377.265,
+   "loi": "Nếu cơ quan này chọn hành động, hãy đọc đoạn về biện pháp trước."
+  },
+  {
+   "id": "c103",
+   "start": 377.265,
+   "end": 380.328,
+   "loi": "Đọc thấy chữ thuế mới, doanh nghiệp vẫn cần hỏi tiếp."
+  },
+  {
+   "id": "c104",
+   "start": 380.328,
+   "end": 384.103,
+   "loi": "Hàng nào nằm trong danh sách? Có ngoại lệ gì? Bao giờ áp dụng?"
+  },
+  {
+   "id": "c105",
+   "start": 384.103,
+   "end": 388.824,
+   "loi": "Còn nếu văn bản chỉ nói đang tham vấn hay đang đề xuất, phải giữ đúng chữ đó khi kể lại."
+  },
+  {
+   "id": "c106",
+   "start": 388.824,
+   "end": 392.607,
+   "loi": "Còn phía Việt Nam? Tín hiệu thứ hai nằm ở việc thực thi trên mạng."
+  },
+  {
+   "id": "c107",
+   "start": 392.607,
+   "end": 397.317,
+   "loi": "Nhìn một vụ đóng web, hãy để ý vụ đó xử lý địa chỉ bên ngoài hay cả hệ thống vận hành."
+  },
+  {
+   "id": "c108",
+   "start": 397.317,
+   "end": 401.367,
+   "loi": "Câu hỏi này có thể theo dõi bằng thông báo của cơ quan xử lý và bên giữ quyền."
+  },
+  {
+   "id": "c109",
+   "start": 401.367,
+   "end": 404.577,
+   "loi": "Với người làm phim, có một đường dẫn biến mất là chuyện thấy ngay."
+  },
+  {
+   "id": "c110",
+   "start": 404.577,
+   "end": 409.269,
+   "loi": "Việc mạng đứng sau có ngừng hoạt động lâu dài mới cho biết cách xử lý đã đi sâu đến đâu."
+  },
+  {
+   "id": "c111",
+   "start": 409.269,
+   "end": 412.984,
+   "loi": "Ví dụ một hãng phim đã cấp quyền chiếu cho một nền tảng ở Việt Nam."
+  },
+  {
+   "id": "c112",
+   "start": 412.984,
+   "end": 416.453,
+   "loi": "Khi có trang khác phát cùng phim, hãng cần biết có đầu mối để gửi"
+  },
+  {
+   "id": "c113",
+   "start": 416.453,
+   "end": 420.168,
+   "loi": "bằng chứng và việc xử lý có theo được nếu trang đổi địa chỉ hay không."
+  },
+  {
+   "id": "c114",
+   "start": 420.168,
+   "end": 425.336,
+   "loi": "Người xem chỉ thấy nút phát biến mất. Người giữ quyền còn phải theo dõi chuyện gì xảy ra sau đó."
+  },
+  {
+   "id": "c115",
+   "start": 425.336,
+   "end": 430.256,
+   "loi": "Với hãng phim, chuyện đó đáng theo dõi ngay cả khi vụ điều tra ở Mỹ chưa có quyết định mới."
+  },
+  {
+   "id": "c116",
+   "start": 430.256,
+   "end": 433.281,
+   "loi": "Và khi nhìn hai tín hiệu cùng lúc, hãy giữ đúng thứ tự."
+  },
+  {
+   "id": "c117",
+   "start": 433.281,
+   "end": 436.724,
+   "loi": "Một vụ đóng trang là một sự kiện thực thi. Một quyết định thuế,"
+  },
+  {
+   "id": "c118",
+   "start": 436.724,
+   "end": 440.795,
+   "loi": "nếu xuất hiện, là một sự kiện thương mại. Chúng đi cùng chủ đề bản quyền"
+  },
+  {
+   "id": "c119",
+   "start": 440.795,
+   "end": 443.883,
+   "loi": "nhưng có hồ sơ, cơ quan thực hiện và hệ quả khác nhau."
+  },
+  {
+   "id": "c120",
+   "start": 443.883,
+   "end": 447.948,
+   "loi": "Mở văn bản đúng loại là cách nhanh nhất để biết tin mới làm thay đổi điều gì."
+  },
+  {
+   "id": "c121",
+   "start": 447.948,
+   "end": 451.329,
+   "loi": "Vậy web phim lậu dính gì đến thuế hàng Việt? Việc thực thi bản"
+  },
+  {
+   "id": "c122",
+   "start": 451.329,
+   "end": 454.032,
+   "loi": "quyền trực tuyến nằm trong cuộc điều tra thương mại của Mỹ."
+  },
+  {
+   "id": "c123",
+   "start": 454.032,
+   "end": 458.734,
+   "loi": "Nếu Mỹ chọn biện pháp với hàng hóa, luật cho phép phạm vi đi ra ngoài ngành bị xem xét."
+  },
+  {
+   "id": "c124",
+   "start": 458.734,
+   "end": 464.23,
+   "loi": "Bởi vậy nhà xuất khẩu có lý do theo dõi. Tin mới hôm nay là phía Mỹ gia hạn cuộc điều tra thêm ba tháng."
+  },
+  {
+   "id": "c125",
+   "start": 464.23,
+   "end": 469.087,
+   "loi": "Lần tới có tin mới, xem trước đó là kết luận điều tra, đề xuất hay quyết định đã chốt."
+  },
+  {
+   "id": "c126",
+   "start": 469.087,
+   "end": 473.35,
+   "loi": "Bạn muốn nghe kỹ đoạn nào? Bình luận số một nếu muốn xem cách xử lý web lậu."
+  },
+  {
+   "id": "c127",
+   "start": 473.35,
+   "end": 476.706,
+   "loi": "Số hai nếu muốn xem cách đọc danh sách hàng chịu thuế."
+  }
+ ]
+}

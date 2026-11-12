@@ -1,0 +1,832 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.499,
+   "loi": "Anh em ơi, một lá thư vừa làm Nvidia mất khoảng một trăm chín mươi"
+  },
+  {
+   "id": "c002",
+   "start": 3.499,
+   "end": 6.965,
+   "loi": "tỷ đô la vốn hóa chỉ trong một phiên. Thư gì mà ghê vậy?"
+  },
+  {
+   "id": "c003",
+   "start": 6.965,
+   "end": 11.128,
+   "loi": "Chủ nhật tám tháng mười một, người đứng đầu Nvidia viết cho nhân viên."
+  },
+  {
+   "id": "c004",
+   "start": 11.128,
+   "end": 14.474,
+   "loi": "Câu đầu tiên là lời xin lỗi, vì ông đã không chung thủy với vợ."
+  },
+  {
+   "id": "c005",
+   "start": 14.474,
+   "end": 17.448,
+   "loi": "Hôm sau, cổ phiếu giảm bốn phẩy ba phần trăm."
+  },
+  {
+   "id": "c006",
+   "start": 17.448,
+   "end": 20.853,
+   "loi": "Nhưng thứ làm giá cổ phiếu tụt không nằm hẳn trong lá thư."
+  },
+  {
+   "id": "c007",
+   "start": 20.853,
+   "end": 24.944,
+   "loi": "Nó nằm ở một người phụ nữ mà lá thư không nhắc tên, nhưng báo chí thì đã nhắc."
+  },
+  {
+   "id": "c008",
+   "start": 24.944,
+   "end": 29.312,
+   "loi": "Theo New York Times, quan chức Mỹ kết luận bà là tài sản tình báo của Trung Quốc,"
+  },
+  {
+   "id": "c009",
+   "start": 29.312,
+   "end": 32.906,
+   "loi": "tức người tình báo nước này sử dụng, chuyển thông tin về Bắc Kinh."
+  },
+  {
+   "id": "c010",
+   "start": 32.906,
+   "end": 37.193,
+   "loi": "Trung Quốc bác bỏ. Bộ Ngoại giao nước này gọi cáo buộc là hoàn toàn vô căn cứ."
+  },
+  {
+   "id": "c011",
+   "start": 37.193,
+   "end": 41.353,
+   "loi": "Vậy đây là chuyện đời tư của một ông chủ công ty, hay là chuyện an ninh quốc gia?"
+  },
+  {
+   "id": "c012",
+   "start": 41.353,
+   "end": 45.925,
+   "loi": "Mình tách từng chuyện ra cho đỡ rối. Cái gì đã được xác nhận bằng văn bản chính thức."
+  },
+  {
+   "id": "c013",
+   "start": 45.925,
+   "end": 50.707,
+   "loi": "Cái gì mới chỉ là cáo buộc. Và những mốc nào trong tuần tới sẽ quyết định phần còn lại."
+  },
+  {
+   "id": "c014",
+   "start": 50.707,
+   "end": 54.156,
+   "loi": "Trước hết, trong cả mớ tin lẫn lộn này, cái gì là chắc chắn?"
+  },
+  {
+   "id": "c015",
+   "start": 54.156,
+   "end": 58.252,
+   "loi": "Có ba thứ. Cả ba kiểm được ngay trên trang tin của chính Nvidia."
+  },
+  {
+   "id": "c016",
+   "start": 58.252,
+   "end": 62.452,
+   "loi": "Đầu tiên là lá thư. Ông Huang viết rằng ông không chung thủy với vợ."
+  },
+  {
+   "id": "c017",
+   "start": 62.452,
+   "end": 66.484,
+   "loi": "Ông xin lỗi vợ con, nhân viên, hội đồng quản trị, đối tác và cổ đông."
+  },
+  {
+   "id": "c018",
+   "start": 66.484,
+   "end": 70.18,
+   "loi": "Ông cũng nói hội đồng đã mở điều tra độc lập, và ông sẽ hợp tác đầy đủ."
+  },
+  {
+   "id": "c019",
+   "start": 70.18,
+   "end": 73.255,
+   "loi": "Cuối thư, ông xin mọi người để gia đình ông được yên."
+  },
+  {
+   "id": "c020",
+   "start": 73.255,
+   "end": 76.017,
+   "loi": "Kế tiếp là thông cáo của hội đồng, đăng cùng ngày."
+  },
+  {
+   "id": "c021",
+   "start": 76.017,
+   "end": 79.82,
+   "loi": "Hội đồng mở điều tra sau các báo cáo nói ông Huang bị tình báo nước ngoài nhắm tới."
+  },
+  {
+   "id": "c022",
+   "start": 79.82,
+   "end": 83.379,
+   "loi": "Có một câu đáng nghe kỹ. Hội đồng chưa có lý do để tin an"
+  },
+  {
+   "id": "c023",
+   "start": 83.379,
+   "end": 86.019,
+   "loi": "ninh quốc gia hay bí mật của Nvidia bị lộ."
+  },
+  {
+   "id": "c024",
+   "start": 86.019,
+   "end": 89.244,
+   "loi": "Đó là lời của một bên đang điều tra chuyện của chính công ty đó."
+  },
+  {
+   "id": "c025",
+   "start": 89.244,
+   "end": 92.051,
+   "loi": "Chưa phải kết luận. Cuối cùng là người điều tra."
+  },
+  {
+   "id": "c026",
+   "start": 92.051,
+   "end": 96.075,
+   "loi": "Ngày mười tháng mười một, các thành viên độc lập của hội đồng thuê ông Joon Kim,"
+  },
+  {
+   "id": "c027",
+   "start": 96.075,
+   "end": 100.273,
+   "loi": "cựu quyền trưởng công tố liên bang ở Nam New York, và hãng luật Wachtell của ông."
+  },
+  {
+   "id": "c028",
+   "start": 100.273,
+   "end": 104.076,
+   "loi": "Vì sao phải điều tra, khi chính hội đồng nói chưa thấy gì bị lộ?"
+  },
+  {
+   "id": "c029",
+   "start": 104.076,
+   "end": 107.723,
+   "loi": "Mình lấy ví dụ cho dễ hiểu, không phải chuyện của Nvidia."
+  },
+  {
+   "id": "c030",
+   "start": 107.723,
+   "end": 112.348,
+   "loi": "Bạn là trưởng phòng kế toán, và có tin đồn một người rất thân với bạn làm cho đối thủ."
+  },
+  {
+   "id": "c031",
+   "start": 112.348,
+   "end": 115.75,
+   "loi": "Chưa ai chứng minh bạn lộ con số nào. Nhưng sếp vẫn phải hỏi,"
+  },
+  {
+   "id": "c032",
+   "start": 115.75,
+   "end": 119.597,
+   "loi": "vì câu hỏi chưa có lời đáp thì khách hàng và cổ đông chưa thể yên tâm."
+  },
+  {
+   "id": "c033",
+   "start": 119.597,
+   "end": 122.709,
+   "loi": "Sáng thứ Hai, ông Huang vẫn đến trụ sở ở Santa Clara,"
+  },
+  {
+   "id": "c034",
+   "start": 122.709,
+   "end": 125.494,
+   "loi": "họp buổi sáng thường lệ với các giám đốc cấp cao."
+  },
+  {
+   "id": "c035",
+   "start": 125.494,
+   "end": 128.387,
+   "loi": "Theo CNBC, ông mở đầu bằng lời xin lỗi nhân viên,"
+  },
+  {
+   "id": "c036",
+   "start": 128.387,
+   "end": 131.452,
+   "loi": "rồi chuyển sang công việc và không nhận câu hỏi nào."
+  },
+  {
+   "id": "c037",
+   "start": 131.452,
+   "end": 134.426,
+   "loi": "Một nhân viên nói với CNBC là họ bị sốc."
+  },
+  {
+   "id": "c038",
+   "start": 134.426,
+   "end": 137.045,
+   "loi": "Người phụ nữ trong chuyện này tên Alice Huang."
+  },
+  {
+   "id": "c039",
+   "start": 137.045,
+   "end": 140.458,
+   "loi": "Cùng họ, nhưng không có quan hệ họ hàng với ông Jensen Huang."
+  },
+  {
+   "id": "c040",
+   "start": 140.458,
+   "end": 145.9,
+   "loi": "Theo Bloomberg, bà từng là nhà báo truyền hình, sau thành người cho các hãng lớn của Trung Quốc thuê chip."
+  },
+  {
+   "id": "c041",
+   "start": 145.9,
+   "end": 149.422,
+   "loi": "Hồ sơ ở Singapore ghi bà là giám đốc công ty Megaspeed từ tháng ba"
+  },
+  {
+   "id": "c042",
+   "start": 149.422,
+   "end": 152.554,
+   "loi": "đến tháng mười một năm hai nghìn không trăm hai mươi ba."
+  },
+  {
+   "id": "c043",
+   "start": 152.554,
+   "end": 156.541,
+   "loi": "Megaspeed là gì? Một công ty điện toán đặt ở Singapore."
+  },
+  {
+   "id": "c044",
+   "start": 156.541,
+   "end": 159.096,
+   "loi": "Theo báo cáo, khách thuê của họ có cả Alibaba,"
+  },
+  {
+   "id": "c045",
+   "start": 159.096,
+   "end": 162.19,
+   "loi": "dùng năng lực tính toán đặt ngoài lãnh thổ Trung Quốc."
+  },
+  {
+   "id": "c046",
+   "start": 162.19,
+   "end": 164.784,
+   "loi": "Hình dung một quán net, cũng chỉ là ví dụ."
+  },
+  {
+   "id": "c047",
+   "start": 164.784,
+   "end": 167.606,
+   "loi": "Quán không bán máy mang về nhà, chỉ bán giờ chơi."
+  },
+  {
+   "id": "c048",
+   "start": 167.606,
+   "end": 171.62,
+   "loi": "Người ở xa vẫn dùng được cấu hình mạnh mà không phải mua máy. Nghe đơn giản vậy."
+  },
+  {
+   "id": "c049",
+   "start": 171.62,
+   "end": 174.868,
+   "loi": "Với chip trí tuệ nhân tạo, cách thuê này nằm đúng chỗ nhạy cảm,"
+  },
+  {
+   "id": "c050",
+   "start": 174.868,
+   "end": 178.131,
+   "loi": "vì Mỹ hạn chế bán chip mạnh sang Trung Quốc. Năm ngoái,"
+  },
+  {
+   "id": "c051",
+   "start": 178.131,
+   "end": 181.617,
+   "loi": "theo Bloomberg, chính phủ Mỹ điều tra xem Megaspeed có chuyển chip"
+  },
+  {
+   "id": "c052",
+   "start": 181.617,
+   "end": 185.166,
+   "loi": "Nvidia sang Trung Quốc trái phép không. Nvidia nói Megaspeed"
+  },
+  {
+   "id": "c053",
+   "start": 185.166,
+   "end": 189.063,
+   "loi": "là dịch vụ đám mây được phép theo quy định kiểm soát xuất khẩu."
+  },
+  {
+   "id": "c054",
+   "start": 189.063,
+   "end": 191.887,
+   "loi": "Megaspeed phủ nhận sai phạm. Singapore,"
+  },
+  {
+   "id": "c055",
+   "start": 191.887,
+   "end": 196.475,
+   "loi": "nơi công ty đặt trụ sở, xác nhận có một cuộc điều tra riêng về Megaspeed."
+  },
+  {
+   "id": "c056",
+   "start": 196.475,
+   "end": 201.953,
+   "loi": "Cuối tháng mười, Nvidia nhắc lại rằng cáo buộc chuyển chip đã được điều tra kỹ và bác bỏ từ năm ngoái."
+  },
+  {
+   "id": "c057",
+   "start": 201.953,
+   "end": 205.597,
+   "loi": "Một con số hay được trích. Báo cáo dẫn hồ sơ ở Malaysia"
+  },
+  {
+   "id": "c058",
+   "start": 205.597,
+   "end": 209.123,
+   "loi": "cho thấy một công ty liên quan Megaspeed mua gần năm tỷ đô"
+  },
+  {
+   "id": "c059",
+   "start": 209.123,
+   "end": 212.102,
+   "loi": "la thiết bị có công nghệ Nvidia, theo số sơ bộ."
+  },
+  {
+   "id": "c060",
+   "start": 212.102,
+   "end": 216.574,
+   "loi": "Chưa ai kiểm chứng độc lập. Và đó là số mua, không phải số đã sang Trung Quốc."
+  },
+  {
+   "id": "c061",
+   "start": 216.574,
+   "end": 219.583,
+   "loi": "Rồi đến phần nặng nhất. Ngày hai mươi chín tháng mười,"
+  },
+  {
+   "id": "c062",
+   "start": 219.583,
+   "end": 224.101,
+   "loi": "New York Times đưa tin: quan chức Mỹ kết luận bà Alice Huang là tài sản tình báo của Trung Quốc."
+  },
+  {
+   "id": "c063",
+   "start": 224.101,
+   "end": 227.561,
+   "loi": "Theo Financial Times, bà và ông Huang có quan hệ tình cảm."
+  },
+  {
+   "id": "c064",
+   "start": 227.561,
+   "end": 230.532,
+   "loi": "Căn cứ của kết luận tình báo đó chưa được công bố."
+  },
+  {
+   "id": "c065",
+   "start": 230.532,
+   "end": 233.272,
+   "loi": "Cáo buộc gián điệp, cho tới giờ, chưa được chứng minh."
+  },
+  {
+   "id": "c066",
+   "start": 233.272,
+   "end": 236.248,
+   "loi": "Còn một chi tiết về thời gian. Tháng mười năm ngoái,"
+  },
+  {
+   "id": "c067",
+   "start": 236.248,
+   "end": 241.439,
+   "loi": "New York Times đưa tin hai người từng uống rượu cùng nhau ở một sự kiện ngành năm hai nghìn không trăm hai mươi bốn."
+  },
+  {
+   "id": "c068",
+   "start": 241.439,
+   "end": 245.721,
+   "loi": "Khi đó, Nvidia nói khách hàng có thể mời ông Huang đến cập nhật tình hình thị trường."
+  },
+  {
+   "id": "c069",
+   "start": 245.721,
+   "end": 249.322,
+   "loi": "Theo Fortune, cuối tháng mười năm nay ông Huang nói công khai rằng"
+  },
+  {
+   "id": "c070",
+   "start": 249.322,
+   "end": 253.07,
+   "loi": "các lần tiếp xúc ấy liên quan tới Megaspeed và hoàn toàn bình thường."
+  },
+  {
+   "id": "c071",
+   "start": 253.07,
+   "end": 257.54,
+   "loi": "Mình tính ra, chỉ mười ngày sau bài báo của New York Times, ông gửi thư nhận lỗi."
+  },
+  {
+   "id": "c072",
+   "start": 257.54,
+   "end": 261.022,
+   "loi": "Những lời trấn an kiểu đó giờ bị đưa vào một đơn kiện của cổ đông."
+  },
+  {
+   "id": "c073",
+   "start": 261.022,
+   "end": 265.21,
+   "loi": "Thị trường phản ứng ra sao? Phiên thứ Hai, như đã nói, cổ phiếu giảm mạnh."
+  },
+  {
+   "id": "c074",
+   "start": 265.21,
+   "end": 267.854,
+   "loi": "Phiên thứ Ba, giảm thêm gần năm rưỡi phần trăm."
+  },
+  {
+   "id": "c075",
+   "start": 267.854,
+   "end": 272.347,
+   "loi": "Có lúc vốn hóa tụt xuống dưới bốn nghìn tỷ đô la, rồi đóng cửa vẫn trên mốc đó."
+  },
+  {
+   "id": "c076",
+   "start": 272.347,
+   "end": 277.416,
+   "loi": "Cộng hai phiên, mình tính ra cổ phiếu giảm chín phẩy năm phần trăm so với trước ngày có lá thư."
+  },
+  {
+   "id": "c077",
+   "start": 277.416,
+   "end": 281.938,
+   "loi": "Theo Decrypt, hai phiên đó có thể đã cuốn đi hơn bốn trăm bảy mươi tỷ đô la vốn hóa,"
+  },
+  {
+   "id": "c078",
+   "start": 281.938,
+   "end": 284.813,
+   "loi": "ước tính sơ bộ khi phiên thứ Ba chưa đóng. No cap,"
+  },
+  {
+   "id": "c079",
+   "start": 284.813,
+   "end": 289.325,
+   "loi": "con số ấy nghe như ngân sách của cả một quốc gia, và nó đến từ một lá thư dài vài đoạn."
+  },
+  {
+   "id": "c080",
+   "start": 289.325,
+   "end": 294.043,
+   "loi": "Giá của một lá thư. Vì sao một nhích nhỏ của giá đã thành con số khổng lồ?"
+  },
+  {
+   "id": "c081",
+   "start": 294.043,
+   "end": 297.546,
+   "loi": "Vốn hóa là giá một cổ phiếu nhân với số cổ phiếu đang lưu hành."
+  },
+  {
+   "id": "c082",
+   "start": 297.546,
+   "end": 301.897,
+   "loi": "Công ty càng lớn, mỗi nhích nhỏ của giá càng kéo theo hàng trăm tỷ đô la."
+  },
+  {
+   "id": "c083",
+   "start": 301.897,
+   "end": 304.764,
+   "loi": "Có người không ngồi nhìn biểu đồ. Họ đi kiện."
+  },
+  {
+   "id": "c084",
+   "start": 304.764,
+   "end": 310.017,
+   "loi": "Cuối phiên thứ Hai, cổ đông Mark Kistenmacher nộp đơn kiện tập thể tại tòa liên bang ở San Jose."
+  },
+  {
+   "id": "c085",
+   "start": 310.017,
+   "end": 315.101,
+   "loi": "Đơn kiện cho rằng Nvidia đã đưa ra thông tin gây hiểu lầm về quan hệ của họ với Megaspeed."
+  },
+  {
+   "id": "c086",
+   "start": 315.101,
+   "end": 318.67,
+   "loi": "Hãng luật Rosen đứng đơn, thay mặt người mua cổ phiếu Nvidia từ ngày"
+  },
+  {
+   "id": "c087",
+   "start": 318.67,
+   "end": 322.921,
+   "loi": "chín tháng mười năm hai nghìn không trăm hai mươi lăm tới ngày tám tháng mười một."
+  },
+  {
+   "id": "c088",
+   "start": 322.921,
+   "end": 325.858,
+   "loi": "Đây mới là đơn khởi kiện. Chưa có phán quyết nào."
+  },
+  {
+   "id": "c089",
+   "start": 325.858,
+   "end": 330.555,
+   "loi": "Cùng phiên thứ Hai ấy, AMD tăng mười ba phần trăm, Broadcom tăng hơn mười phần trăm."
+  },
+  {
+   "id": "c090",
+   "start": 330.555,
+   "end": 333.486,
+   "loi": "CNBC không nói đó là hệ quả của vụ này."
+  },
+  {
+   "id": "c091",
+   "start": 333.486,
+   "end": 337.827,
+   "loi": "Nhưng nó cho thấy cú rơi của Nvidia không kéo cả ngành chip đi xuống cùng."
+  },
+  {
+   "id": "c092",
+   "start": 337.827,
+   "end": 342.164,
+   "loi": "Mình nói thẳng trước. Chưa có nguồn nào nói vụ này đụng trực tiếp tới Việt Nam."
+  },
+  {
+   "id": "c093",
+   "start": 342.164,
+   "end": 344.787,
+   "loi": "Nhưng Nvidia không xa lạ với Hà Nội."
+  },
+  {
+   "id": "c094",
+   "start": 344.787,
+   "end": 347.582,
+   "loi": "Đầu tháng mười hai năm hai nghìn không trăm hai mươi bốn,"
+  },
+  {
+   "id": "c095",
+   "start": 347.582,
+   "end": 351.156,
+   "loi": "Nvidia ký thỏa thuận lập trung tâm nghiên cứu trí tuệ nhân tạo ở Việt Nam."
+  },
+  {
+   "id": "c096",
+   "start": 351.156,
+   "end": 353.962,
+   "loi": "Thủ tướng Phạm Minh Chính và ông Jensen Huang chứng kiến."
+  },
+  {
+   "id": "c097",
+   "start": 353.962,
+   "end": 357.242,
+   "loi": "Sau lễ ký, hai người nâng ly bia hơi ở một quán ở Hà Nội."
+  },
+  {
+   "id": "c098",
+   "start": 357.242,
+   "end": 361.298,
+   "loi": "Thỏa thuận ấy mở rộng một trung tâm dữ liệu trí tuệ nhân tạo của Viettel,"
+  },
+  {
+   "id": "c099",
+   "start": 361.298,
+   "end": 364.764,
+   "loi": "vốn đã dùng công nghệ Nvidia. Trước đó, tháng tư cùng năm,"
+  },
+  {
+   "id": "c100",
+   "start": 364.764,
+   "end": 370.178,
+   "loi": "FPT công bố sẽ cùng Nvidia xây một nhà máy trí tuệ nhân tạo trị giá hai trăm triệu đô la."
+  },
+  {
+   "id": "c101",
+   "start": 370.178,
+   "end": 374.047,
+   "loi": "Đó là lý do một cú sốc ở Santa Clara có dư chấn ở đây."
+  },
+  {
+   "id": "c102",
+   "start": 374.047,
+   "end": 377.598,
+   "loi": "Dư chấn thôi. Tin này khiến chuyện ông Huang ủng hộ bán thêm chip"
+  },
+  {
+   "id": "c103",
+   "start": 377.598,
+   "end": 380.398,
+   "loi": "trí tuệ nhân tạo cho Trung Quốc bị soi lại. Với mình,"
+  },
+  {
+   "id": "c104",
+   "start": 380.398,
+   "end": 385.507,
+   "loi": "doanh nghiệp Việt dùng hạ tầng Nvidia rồi sẽ phải trả lời khách hàng về rủi ro của nhà cung cấp."
+  },
+  {
+   "id": "c105",
+   "start": 385.507,
+   "end": 390.417,
+   "loi": "Còn bạn, người dùng bình thường, hiện chưa thấy nguồn nào nói giá chip hay dịch vụ bị ảnh hưởng."
+  },
+  {
+   "id": "c106",
+   "start": 390.417,
+   "end": 394.374,
+   "loi": "Đó là điều cần theo dõi nếu Mỹ có động thái mới sau cuộc điều tra."
+  },
+  {
+   "id": "c107",
+   "start": 394.374,
+   "end": 398.491,
+   "loi": "Muốn hình dung độ lớn, thử nhìn số trong nước. Bộ Khoa học và Công nghệ ước sơ bộ:"
+  },
+  {
+   "id": "c108",
+   "start": 398.491,
+   "end": 402.242,
+   "loi": "công nghiệp công nghệ số mười tháng đầu năm thu hơn hai trăm năm mươi tỷ đô la."
+  },
+  {
+   "id": "c109",
+   "start": 402.242,
+   "end": 407.633,
+   "loi": "Mình tính ra, chỉ riêng phiên thứ Hai, Nvidia mất vốn hóa bằng khoảng ba phần tư con số đó."
+  },
+  {
+   "id": "c110",
+   "start": 407.633,
+   "end": 412.265,
+   "loi": "Hai thứ khác bản chất, một bên là doanh thu, một bên là giá trị cổ phiếu bốc hơi."
+  },
+  {
+   "id": "c111",
+   "start": 412.265,
+   "end": 414.932,
+   "loi": "Đây chỉ để so cỡ. Nhưng nó cho thấy quy mô:"
+  },
+  {
+   "id": "c112",
+   "start": 414.932,
+   "end": 419.506,
+   "loi": "một phiên chao đảo ở đầu chuỗi chip tương đương phần lớn doanh thu cả một ngành trong nước."
+  },
+  {
+   "id": "c113",
+   "start": 419.506,
+   "end": 423.411,
+   "loi": "Trước mắt, mốc cần ngóng nhất là hạn chót ngày mười một tháng mười một."
+  },
+  {
+   "id": "c114",
+   "start": 423.411,
+   "end": 426.693,
+   "loi": "Chủ tịch Ủy ban Đối ngoại Hạ viện Brian Mast nói sẵn sàng ra trát,"
+  },
+  {
+   "id": "c115",
+   "start": 426.693,
+   "end": 429.461,
+   "loi": "nếu đến hạn ông Huang vẫn chưa trả lời đề nghị họp kín."
+  },
+  {
+   "id": "c116",
+   "start": 429.461,
+   "end": 432.728,
+   "loi": "Theo báo chí tường thuật, chưa có trát nào được ban hành."
+  },
+  {
+   "id": "c117",
+   "start": 432.728,
+   "end": 437.44,
+   "loi": "Rồi đến hai ngày liền sau đó. Nvidia dự kiến công bố kết quả quý vào ngày mười bảy,"
+  },
+  {
+   "id": "c118",
+   "start": 437.44,
+   "end": 439.976,
+   "loi": "hôm sau là buổi họp kín mà các nghị sĩ đề nghị."
+  },
+  {
+   "id": "c119",
+   "start": 439.976,
+   "end": 444.276,
+   "loi": "Ông Huang vẫn là Giám đốc điều hành, và chưa có quyết định nào về chuyện ông ở hay đi."
+  },
+  {
+   "id": "c120",
+   "start": 444.276,
+   "end": 448.739,
+   "loi": "Còn chuyện FBI? Tổng thống Trump nói ông biết FBI đang xem xét chuyện đó,"
+  },
+  {
+   "id": "c121",
+   "start": 448.739,
+   "end": 452.091,
+   "loi": "ở một khía cạnh khác. Ông nói thêm là ông nghĩ ông Huang sẽ ổn."
+  },
+  {
+   "id": "c122",
+   "start": 452.091,
+   "end": 455.833,
+   "loi": "Câu đó chưa cho biết FBI có điều tra chính vụ này hay không."
+  },
+  {
+   "id": "c123",
+   "start": 455.833,
+   "end": 458.486,
+   "loi": "Theo ghi chú của một nhà phân tích ở Wall Street,"
+  },
+  {
+   "id": "c124",
+   "start": 458.486,
+   "end": 462.409,
+   "loi": "giới đầu tư đang ước chừng mười lăm phần trăm khả năng ông Huang bị cách chức."
+  },
+  {
+   "id": "c125",
+   "start": 462.409,
+   "end": 465.559,
+   "loi": "Và tám mươi lăm phần trăm khả năng ông ở lại sau điều tra."
+  },
+  {
+   "id": "c126",
+   "start": 465.559,
+   "end": 468.638,
+   "loi": "Đó là chuyện của phố Wall, chưa phải kết luận của ai."
+  },
+  {
+   "id": "c127",
+   "start": 468.638,
+   "end": 472.474,
+   "loi": "Còn nhiều điều chưa ai biết. Bằng chứng nằm sau kết luận tình báo là gì?"
+  },
+  {
+   "id": "c128",
+   "start": 472.474,
+   "end": 477.602,
+   "loi": "Cuộc điều tra của hội đồng kéo dài bao lâu, và các cơ quan Mỹ có điều tra chính vụ này hay không?"
+  },
+  {
+   "id": "c129",
+   "start": 477.602,
+   "end": 480.786,
+   "loi": "Chừng nào những câu đó chưa có lời đáp, mọi lời chắc nịch,"
+  },
+  {
+   "id": "c130",
+   "start": 480.786,
+   "end": 483.572,
+   "loi": "từ phía nào, đều là nói trước khi có bằng chứng."
+  },
+  {
+   "id": "c131",
+   "start": 483.572,
+   "end": 487.251,
+   "loi": "Tóm lại, quay về câu hỏi ban đầu: chuyện đời tư hay chuyện lớn hơn?"
+  },
+  {
+   "id": "c132",
+   "start": 487.251,
+   "end": 491.364,
+   "loi": "Phần đời tư thì ông Huang đã tự nhận trong thư. Phần lớn hơn còn treo."
+  },
+  {
+   "id": "c133",
+   "start": 491.364,
+   "end": 494.502,
+   "loi": "Kết luận tình báo là cáo buộc, chuyện chuyển chip cũng thế,"
+  },
+  {
+   "id": "c134",
+   "start": 494.502,
+   "end": 497.188,
+   "loi": "và hội đồng nói chưa có lý do để tin bí mật bị lộ."
+  },
+  {
+   "id": "c135",
+   "start": 497.188,
+   "end": 502.081,
+   "loi": "Điều chắc chắn chỉ là chuyện này đã đi cùng một phiên mất khoảng một trăm chín mươi tỷ đô la vốn hóa."
+  },
+  {
+   "id": "c136",
+   "start": 502.081,
+   "end": 507.134,
+   "loi": "Anh em đoán sao: ngày mười tám tháng mười một, ông Huang có ngồi vào buổi họp kín ở Hạ viện không?"
+  },
+  {
+   "id": "c137",
+   "start": 507.134,
+   "end": 509.665,
+   "loi": "Gõ một vào bình luận nếu bạn nghĩ ông ấy sẽ đến,"
+  },
+  {
+   "id": "c138",
+   "start": 509.665,
+   "end": 513.051,
+   "loi": "gõ hai nếu bạn nghĩ ông ấy né. Comment cho mình biết nhé."
+  }
+ ]
+}

@@ -1,0 +1,208 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "Đề user giao; điểm 6/8 (sốc 2, số lớn 2, góc VN 1×2); @MotCongNghe đã đăng 2 video cùng sự kiện, vẫn làm; bản nháp user lệch 430 tỷ, 7,5 tỷ, Taipei, FBI: xem chu-de.md",
+      "bat_dau": "2026-11-11T16:27:09.631880+07:00",
+      "ket_thuc": "2026-11-11T16:37:57.956400+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "39 mục nguồn gốc/báo (Nvidia, CNBC, Fortune, Decrypt, Law Commentary, Bloomberg, Chính phủ, CafeF) + 3 phép tự tính; 39 ảnh chụp; NYT, FT, CNN, Axios chặn tự động nên chỉ dẫn qua CNBC/Bloomberg/Fortune",
+      "ket_thuc": "2026-11-11T16:37:57.958363+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "Bản 3 (12/11): user tự đưa kịch bản mới ngắn hơn (~1.390 từ, 6 beat); Claude chỉ đổi số thành chữ, gắn mã nguồn, sửa 'Sau đó' → 'Trước đó' cho FPT (nguồn n30: tháng 4/2024, trước thỏa thuận 12/2024); 0 lỗi nguồn, 0 lỗi phong cách; bản cũ ở kich-ban-v2.md",
+      "bat_dau": "2026-11-11T17:31:47.440998+07:00",
+      "ket_thuc": "2026-11-12T01:05:00.001196+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "Bản 2 (template mới). vòng 1: 12 mục (nhận 8, bỏ 4), điểm 3,5/3/4/4,5; vòng 2: 12 mục (nhận 11, bỏ 1), điểm 3,8/3,5/4/4,5. CHƯA ĐẠT: hai tiêu chí < 4 (tự nhiên khi đọc to 3,8; đúng tình huống kể 3,5). Phần điểm trừ còn lại do agy chê chính các chữ template user chốt (Anh em ơi, No cap, Tóm lại, comment cho mình biết) và \"tài sản tình báo\" là chữ nguồn; để người duyệt quyết ở duyệt 1.",
+      "bat_dau": "2026-11-11T17:32:12.976259+07:00",
+      "ket_thuc": "2026-11-11T17:37:22.827450+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "Bản 3: 0 lỗi kiểm. Chưa nguồn: câu 'lớn hơn ngân sách của nhiều quốc gia' (user, hook); hạn 11/11 đã qua so với ngày dựng 12/11",
+      "bat_dau": "2026-11-11T17:37:22.829669+07:00",
+      "ket_thuc": "2026-11-12T01:05:00.003673+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "Chuẩn bị nghe thử và trang duyệt",
+      "bat_dau": "2026-11-11T17:37:22.832044+07:00",
+      "ban_duyet": {
+        "kich-ban.md": "f0d9ac260ff39584730a903f6bc1a0c7bbf79adf0ef6fbc36eb0d4435ef434d7",
+        "nguon.json": "393740f1d64575ff54d491093c7d2cc8af715f355ffb131face63dd528fd1f30",
+        "nghe-thu.mp3": "d31e9b9249f0fc953a7673d82457e3c03220c37e5c69dcf821d011e513f94598",
+        "nguon/n1.png": "d707271fb54c2bf14a773c89f02d24d8201d9d213fe2cb38c0afe0d9200ae207",
+        "nguon/n2.png": "3ab7bf7afdddf12968668c26e57d4ed68a594f6d3ab4b3bbb710022b18afbee3",
+        "nguon/n3.png": "a1fadb98e6cfa830a4ebe5a6eb0152270e8ba299077ad766e196737e6e1e8038",
+        "nguon/n4.png": "fa530f050362c96cf8382b956bab0429e2a31ded8518fa15c582f1d066a3afb9",
+        "nguon/n5.png": "96a25f83c7cb6ccd0979e44c04276c3949c37d7b09e87907cf98aadc54eb12c4",
+        "nguon/n6.png": "9b924b6e5448440117e85270f56157a97130af8d82175b4842510a9e078c2c6b",
+        "nguon/n7.png": "ae324aee7844fab26a1ac98ec0895d951cab7b82a63de63f9556550f242db414",
+        "nguon/n8.png": "9d0b1d05035be66f994a608d0d8e02d2e8f9b25651a65025c2377971267d5ac1",
+        "nguon/n9.png": "b01308ea2337f89448150bf3f53bda56ae1f3cbff833587b5520253609d2e1fd",
+        "nguon/n10.png": "89b23da9f0983ed0fc5e556e86fab7f048f7c9908e1366f19479d95f3c619b61",
+        "nguon/n11.png": "9164a824c464a523bc43145ca5cb323945643876f01f3e9f20f1b4e056722660",
+        "nguon/n12.png": "f6ad5cf3528ec6bfca3a96c1aee6286402d750d1988368074c3a11615898ddf1",
+        "nguon/n13.png": "54f1271735619e0c3b6f92b5f53f970c9fdb7e2d30d1659eff4bc7b6190189bf",
+        "nguon/n14.png": "0a09f0163c2de5da1710b609dba69afd1201916a82da682705cd00e6b49e3ff6",
+        "nguon/n15.png": "e0049e97480d33be8194020dad05aea3d82904208ec9220977c7b26ce251c462",
+        "nguon/n16.png": "f351ffe08d0102f6211fd14a3c31fc4729b6b57279e38201e49d65f161be72af",
+        "nguon/n17.png": "f351ffe08d0102f6211fd14a3c31fc4729b6b57279e38201e49d65f161be72af",
+        "nguon/n18.png": "0721cd7a4a0b5a48f6a604ef1aa700eceb3e745893c005bf4b8b64755b0f5809",
+        "nguon/n19.png": "3e6c3100deb236d7d8c253d2e42244d1f72661af33091e51b6df6cf2f77abe36",
+        "nguon/n20.png": "10dac0912d8f1d22b986675681800de6d8d63127b20dfddb66c43c900a2391cd",
+        "nguon/n21.png": "4776cdb1c872c1f333a97e38dd36abde48cecb61ed372326ce56099262964557",
+        "nguon/n22.png": "59f3a8466fe06dd1555b69779f9bb15d15565c0785c0c791c0b024bed0f37731",
+        "nguon/n23.png": "62180806777f167cfa0255d5178c5479838488231278cbf1389e26be6bb41311",
+        "nguon/n24.png": "c66cdb34203b4249783fb5cd390465312fdf78834403d119a67dfcde5d56c87f",
+        "nguon/n25.png": "6652f5884db328ad464bab0c157f0fc9672ffc9acdffe75682d4b06e82206b87",
+        "nguon/n26.png": "e7c9ba487bb4abe0f3c6201f2754f5cf033773c1e5aaf113ac3fc6e2067e24e5",
+        "nguon/n27.png": "c66cdb34203b4249783fb5cd390465312fdf78834403d119a67dfcde5d56c87f",
+        "nguon/n28.png": "2a662fb36569b6244c3bdf9b5f17946cd2c02f762597284fed3e090917856e39",
+        "nguon/n29.png": "406713019adf4484adbf1cc0bbdc93191370c4a9521a1ddf6942ab62eb2eb9b6",
+        "nguon/n30.png": "f0f60c6f08d8b2e7ae19e03d92f9807700822be1cabcd71d4c7e58281b0995bd",
+        "nguon/n31.png": "bb9034e3668335021cc8c8a083f885a4a767166caa94820c2192737bfc80f5a9",
+        "nguon/n32.png": "8ecba9f267c3aec44abf53e768c5af3aff51f05837abdfc56c043ac19cf7a6f7",
+        "nguon/n33.png": "b6b86d26a6ede9bb75b8e3a136d6f9b32d6c637f0a5ec1742020e5a2a6e021b3",
+        "nguon/n34.png": "e7c9ba487bb4abe0f3c6201f2754f5cf033773c1e5aaf113ac3fc6e2067e24e5",
+        "nguon/n35.png": "36c588f184462cdd29350b423ee5bc4d9b46fd8293461c1c0af5bc2cda64667c",
+        "nguon/n36.png": "6f5d6a106b849553623909b3d87a0a71f961aebb8c4d534650bbf923b842b3e9",
+        "nguon/n37.png": "0a09f0163c2de5da1710b609dba69afd1201916a82da682705cd00e6b49e3ff6",
+        "nguon/n38.png": "c8469404d6ef8ef6f2ee2456909b041606a6026be0ec19210252576d4ce1f4c0",
+        "nguon/n39.png": "8ef3938b08095bc142ea972eb43c9bfff2ce6576ae27d0b189ed8a609b748c58",
+        "nguon/n40.png": "e68d636af34fc32b1a8b8b14f5c42e509254181ccdaef7a944359f33150ed4d5",
+        "nguon/n41.png": "406713019adf4484adbf1cc0bbdc93191370c4a9521a1ddf6942ab62eb2eb9b6",
+        "nguon/n42.png": "65f77e2024200ba8ad950b3ccb3cce899a5209d579eccbb404801f31d5d97f6c",
+        "nguon/n43.png": "d1d343b950e692e1846564e0f983608767e8b1dbe0df91f35f59ce0ab7625398",
+        "nguon/n44.png": "6d4f9984122bd8ece7ee8e581a24bc6e584a49e9602380b8d0e840cec53c6634",
+        "nguon/n45.png": "b60eadd84b6a80a2a90a46b35f814c22115ecf454fb9d4bd1e44029d4eb9bd42",
+        "nguon/n46.png": "94a56aba7f7bdd6f57834543eb3db984080fb6c0e18d131663fff57bc6622d02",
+        "nguon/n47.png": "faeb25e637e6e61b851f6ea206a89ffb51f594f8fd6b876c2363ade3eef2940d",
+        "nguon/n48.png": "19e3b4d8eb35026c64f8da0a036f876039aa97db73333654037b98693c4f5829"
+      },
+      "ket_thuc": "2026-11-12T01:05:00.326102+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "",
+      "bat_dau": "2026-11-12T01:05:04.110367+07:00",
+      "ket_thuc": "2026-11-12T01:08:33.423032+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "Bản 4 (12/11 15:2x): mo-dau ở c013, ket-thuc gộp c093+c094 (5,6 s), chu-dong c063, 4 minh-hoa khô → b-roll/chu-dong; đời thật ≥45%",
+      "bat_dau": "2026-11-12T15:13:01.522894+07:00",
+      "ket_thuc": "2026-11-12T15:14:57.835966+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "0 lỗi 0 cảnh báo; đổi 27 clip stock (Pexels) sang clip mới cụ thể hơn, 0 clip lặp",
+      "bat_dau": "2026-11-12T17:20:05.690068+07:00",
+      "ket_thuc": "2026-11-12T17:20:13.436897+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "0 lỗi; cảnh báo giữ: sfx 14/phút",
+      "ket_thuc": "2026-11-12T17:20:13.438619+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "Bản 5 (12/11): tech-dark + phụ đề động + 27 clip stock mới; 346,8 s, 93 cảnh; check_av sạch; bản 4 ở final-v4.mp4",
+      "bat_dau": "2026-11-12T17:20:13.439758+07:00",
+      "ket_thuc": "2026-11-12T17:32:54.362320+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "Giữ 3 phương án tiêu đề/thumbnail bản 2; cập nhật mốc chương theo giọng mới (7 chương), bỏ ý Malaysia 4,8 tỷ, so sánh doanh thu số và nguồn CafeF vì kịch bản mới bỏ",
+      "ket_thuc": "2026-11-12T01:28:52.949155+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "Gửi lại sau khi dựng theo quy tắc mới",
+      "bat_dau": "2026-11-12T15:34:57.437199+07:00",
+      "ban_duyet": {
+        "duyet-1": "2026-11-12T01:05:00.326102+07:00",
+        "final.mp4": "cbb839a2a5f3defb4c3b73f14b87b61e27224c54c54aba675a62cdb78bf1cb6c",
+        "phu-de.srt": "85faac4fb9cd0bd5400ec63a8698d470e6e7d32492735b9a0b425a2d34b801fc",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "Một lá thư làm Nvidia mất 190 tỷ USD: chuyện gì thật?",
+              "chu_thumb": [
+                "1 LÁ THƯ",
+                "BAY 190 TỶ ĐÔ",
+                "CHUYỆN GÌ VẬY?!"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "CEO Nvidia bị dọa ra trát: gián điệp hay tin đồn?",
+              "chu_thumb": [
+                "CEO NVIDIA",
+                "DÍNH GIÁN ĐIỆP?",
+                "MỸ VÀO CUỘC!"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "Nvidia mất 190 tỷ USD sau một lá thư: có ảnh hưởng Việt Nam?",
+              "chu_thumb": [
+                "190 TỶ ĐÔ",
+                "BỐC HƠI",
+                "VIỆT NAM DÍNH GÌ?"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Một lá thư của CEO Nvidia, một phiên mất khoảng 190 tỷ USD vốn hóa, và những cáo buộc chưa được chứng minh. Video tách rõ điều đã xác nhận bằng văn bản chính thức, điều mới chỉ là cáo buộc, và hai mốc cần ngóng (17/11, 18/11), kèm góc nhìn cho người Việt.\n\n⏱ Mốc chương\n00:00 Một lá thư và 190 tỷ USD\n00:45 Điều gì đã được xác nhận\n01:41 Điều gì mới chỉ là cáo buộc\n03:05 Thị trường và vụ kiện\n03:58 Người Việt đứng ở đâu\n04:46 Hai mốc cần ngóng\n05:20 Tóm lại\n\n📌 Cần biết\n- Kết luận tình báo theo New York Times và quan hệ tình cảm theo Financial Times là cáo buộc báo chí; Trung Quốc bác bỏ, Megaspeed phủ nhận, cáo buộc gián điệp chưa được chứng minh.\n- Bà Alice Huang không có quan hệ họ hàng với ông Jensen Huang.\n- Hơn 470 tỷ USD là ước tính sơ bộ của Decrypt khi phiên 10/11 chưa đóng. Mức giảm khoảng 9,5% sau hai phiên và \"mười ngày\" là phép tự tính của kênh.\n- 15% và 85% là ước chừng của một nhà phân tích, không phải kết luận của ai. Đơn kiện cổ đông mới là đơn khởi kiện, chưa có phán quyết.\n- Chưa có nguồn nào nói vụ này đụng trực tiếp tới Việt Nam.\n- New York Times, Financial Times chặn truy cập tự động nên các điều này được dẫn qua CNBC, Bloomberg, Fortune. Dữ liệu tới 11/11/2026.\n\n📎 Nguồn (truy cập 11/11/2026)\n- Nvidia: https://nvidianews.nvidia.com/news/a-message-to-our-company\n- Nvidia: https://nvidianews.nvidia.com/news/statement-from-nvidia-board-of-directors\n- Nvidia: https://nvidianews.nvidia.com/news/statement-from-the-independent-members-of-the-nvidia-board\n- CNBC: https://www.cnbc.com/2026/11/10/nvidia-nvda-jensen-huang-affair-chinese-spy.html\n- CNBC (dẫn Financial Times): https://www.cnbc.com/2026/11/10/nvidia-jensen-huang-affair-office.html\n- Law Commentary: https://www.lawcommentary.com/articles/nvidia-jensen-huang-sued-chinese-spy-affair\n- Decrypt: https://decrypt.co/382974/nvidia-erases-2026-gains-republicans-threaten-ceo-subpoena\n- Fortune: https://fortune.com/2026/11/09/nvidia-board-probe-jensen-huang-affair-suspected-china-spy-statements/\n- Bloomberg: https://uk.finance.yahoo.com/news/alice-huang-suspected-china-spy-101526066.html\n- Yahoo: https://www.yahoo.com/news/us/articles/alice-huang-allegedly-used-nvidia-192019783.html\n- Cổng Thông tin Chính phủ: https://en.baochinhphu.vn/significant-step-forward-to-turn-viet-nam-into-regional-tech-hub-the-diplomat-111241210091139064.htm\n- Các phép tính do kênh tự tính từ số liệu trên.\n\n🖼 Ghi công ảnh\n- Ảnh: Coolcaesar / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: Will Buckner / Wikimedia Commons (CC BY 2.0)\n- Ảnh: Anderseidesvik / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: Noclip / Wikimedia Commons (Public domain)\n- Ảnh: NKSTTSSHNVN / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: 极客湾Geekerwan / Wikimedia Commons (CC BY 3.0)\n- Ảnh: Arild Vågen / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: Carlos Delgado / Wikimedia Commons (CC BY-SA 3.0)\n- Ảnh: VQTCS / Wikimedia Commons (CC BY 4.0)",
+          "tags": [
+            "Nvidia",
+            "Jensen Huang",
+            "CEO Nvidia",
+            "Megaspeed",
+            "Alice Huang",
+            "cổ phiếu Nvidia",
+            "vốn hóa Nvidia",
+            "kiểm soát xuất khẩu chip",
+            "chip AI Trung Quốc",
+            "Nvidia Việt Nam",
+            "tin công nghệ",
+            "Nhịp Công Nghệ"
+          ]
+        },
+        "thumbnails": [
+          "39ef611767b61f5c852d56df7b720571cd3e7d70ce19c1be14e529364889ffd8",
+          "7f631a76a15e07a4c763d0fba89d32794456d9f216f20ab63a4911d87e634c3f",
+          "6d2263e1fd270dcfdf99e11b6c98fb8d5599d0be27f5da3da316e895d8d3e0e2"
+        ]
+      },
+      "chon": 1,
+      "ket_thuc": "2026-11-12T17:47:38.282445+07:00"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/d1jh3GyOdrU",
+      "ket_thuc": "2026-11-12T17:59:22.553725+07:00"
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  },
+  "chon": 1,
+  "upload_dang_cho_id": null,
+  "lich_dang": "12/11/2026 18:15",
+  "phu_de_ok": true,
+  "playlist_ok": "PLf9v4rPuuCys",
+  "video_id_cu": {
+    "id": "i2BLQcBEOrM",
+    "ghi_chu": "Bản render 01:28 12/11 (quy tắc cũ); đã bỏ giờ hẹn 15:30, để riêng tư. User quyết xoá hay giữ."
+  },
+  "video_id": "d1jh3GyOdrU"
+}
