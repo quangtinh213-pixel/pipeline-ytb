@@ -97,9 +97,10 @@ Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước
 ## 5. kiem
 
 1. (chạy sau mọi chỗ sửa giọng văn) `uv run python -m tttc.kiem ../videos/<slug>`; sửa tới khi `0 lỗi`.
-2. Dispatch một subagent độc lập (không chia sẻ ngữ cảnh) với `kich-ban.md` + `nguon.json` + ảnh chụp: nhiệm vụ là
+2. Kiểm tra tiêu đề chuẩn Pipeline 2.0: tiêu đề phải qua bộ linter `tttc.tieu_de` (chứa từ kích thích cảm xúc, thực thể lớn, góc Việt Nam/túi tiền, ≤ 100 ký tự). Chạy: `uv run python -c "from tttc.tieu_de import kiem; from pathlib import Path; lines = (Path('../videos/<slug>/kich-ban.md').read_text(encoding='utf-8').splitlines()); t = lines[0].replace('#', '').strip() if lines else ''; errs = kiem(t); print('Lỗi tiêu đề:', errs) if errs else print('Tiêu đề chuẩn 10/10')"`.
+3. Dispatch một subagent độc lập (không chia sẻ ngữ cảnh) với `kich-ban.md` + `nguon.json` + ảnh chụp: nhiệm vụ là
    tìm câu nói quá nguồn (nguồn nói X, kịch bản nói hơn X), số lấy sai mục, thiếu cảnh báo sơ bộ. Sửa những gì nó tìm ra.
-3. `set_step(dir, "kiem", "xong")`.
+4. `set_step(dir, "kiem", "xong")`.
 
 ## 6. nghe thử và duyet-1
 

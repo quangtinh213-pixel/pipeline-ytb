@@ -11,7 +11,9 @@ from PIL import Image, ImageDraw, ImageFont
 HERE = Path(__file__).resolve().parent
 TH = json.loads((HERE / "theme.json").read_text(encoding="utf-8"))  # màu thương hiệu một nguồn
 BG, BG2, ACC, WHITE, MUTED = TH["nen"], TH["nen_sang"], TH["nhan"][0], TH["muc"], TH["muted"]
-FONT = "/System/Library/Fonts/SFNS.ttf"  # SF Pro, có dấu tiếng Việt
+# SF Pro trên Mac, Segoe UI Black trên Windows; cả hai có dấu tiếng Việt
+FONT = next((f for f in ("/System/Library/Fonts/SFNS.ttf", "C:/Windows/Fonts/seguibl.ttf") if Path(f).exists()),
+           "/System/Library/Fonts/SFNS.ttf")
 NHAN_VAT = HERE.parent / "pipeline" / "nhan-vat"
 TEN, DINH_VI, PHU = "Nhịp Công Nghệ", "Tin nóng công nghệ – kinh tế, góc nhìn Việt Nam", "Mọi con số đều dẫn nguồn gốc"
 

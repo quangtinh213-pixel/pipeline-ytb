@@ -1,11 +1,13 @@
 """Cổng render.sh: chỉ render khi `hyperframes check` thoát 0 và có dòng "Check passed", không có ✗."""
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
 import pytest
 
 SCRIPT = Path(__file__).resolve().parents[1] / "scripts" / "render.sh"
+BASH = shutil.which("bash") or r"C:\Program Files\Git\bin\bash.exe"
 FAKE_NPX = """#!/usr/bin/env bash
 if [ "$2" = "check" ]; then printf '%b' "$FAKE_CHECK"; exit "$FAKE_RC"; fi
 echo "render $*" >> "$FAKE_LOG"; exit 0
@@ -24,9 +26,9 @@ def run_render(tmp_path):
     comp.mkdir()
 
     def run(check_out: str, rc: int, extra_env: dict | None = None):
-        env = {**os.environ, "PATH": f"{bin_dir}:{os.environ['PATH']}", "FAKE_CHECK": check_out, "FAKE_RC": str(rc),
+        env = {**os.environ, "PATH": f"{bin_dir}{os.pathsep}{os.environ['PATH']}", "FAKE_CHECK": check_out, "FAKE_RC": str(rc),
                "FAKE_LOG": str(log), "HF_RENDER_ARGS": "", **(extra_env or {})}
-        r = subprocess.run(["bash", str(SCRIPT), str(comp), str(tmp_path / "out" / "v.mp4")],
+        r = subprocess.run([BASH, str(SCRIPT), str(comp), str(tmp_path / "out" / "v.mp4")],
                            env=env, capture_output=True, text=True)
         rendered = log.exists() and "render" in log.read_text(encoding="utf-8")
         return r.returncode, rendered

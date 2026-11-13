@@ -27,7 +27,16 @@ def _split(script_md: str) -> tuple[list[str], list[str]]:
     return toks, [t for t in toks if not tts.TAG.fullmatch(t)]
 
 
-def kiem(script_md: str) -> list[str]:
+def kiem_hanh_chinh(text: str) -> list[str]:
+    """Cảnh báo văn phong hành chính/công văn khô khan trong lời đọc."""
+    pat = re.compile(r"\b(?:thông tư số|nghị định số|quyết định số|công văn số|văn bản số|cơ quan chủ trì|nhiệm vụ nghiên cứu|báo cáo đề tài)\b", re.I)
+    matches = pat.findall(text)
+    if matches:
+        return [f"Cảnh báo văn phong hành chính khô khan: phát hiện cụm «{', '.join(set(matches))}» trong lời đọc. Khuyến nghị dịch sang ngôn ngữ nói (số văn bản đưa lên màn hình)."]
+    return []
+
+
+def kiem(script_md: str, check_cta: bool = False, check_dai_chung: bool = False) -> list[str]:
     toks, words = _split(script_md)
     if not words:  # kịch bản chưa có phần "Lời đọc": việc của bước TTS, không phải của kiểm phong cách
         return []
@@ -37,6 +46,10 @@ def kiem(script_md: str) -> list[str]:
             return [f"Lỗi: loại «{loai}» không có trong bộ template ({', '.join(LOAI)})"]
         lo, hi = LOAI[loai]
         out = [] if lo <= len(words) <= hi else [f"Cảnh báo: lời đọc {len(words)} từ, loại {loai} khung {lo}–{hi} từ"]
+        if check_cta and not any(k in " ".join(words).lower() for k in ["đăng ký", "theo dõi", "subscribe", "bấm chuông", "video liên kết", "link bên dưới"]):
+            out.append("Cảnh báo: Kịch bản chưa có lời kêu gọi Đăng Ký kênh (CTA) hoặc link chuyển tiếp Shorts")
+        if check_dai_chung:
+            out += kiem_hanh_chinh(" ".join(words))
         return out + mui_may(script_md) + tu_cam(script_md) + nhip(script_md)  # hook, kết do template quy định
     out, seen, head = [], 0, []
     for t in toks:
@@ -51,6 +64,10 @@ def kiem(script_md: str) -> list[str]:
         out.append(f"Cảnh báo: {HEAD} từ đầu chưa có câu hỏi hứa trả lời")
     if "?" not in " ".join(words[-TAIL:]):
         out.append(f"Cảnh báo: {TAIL} từ cuối chưa có câu hỏi mời người xem bình luận")
+    if check_cta and not any(k in " ".join(words).lower() for k in ["đăng ký", "theo dõi", "subscribe", "bấm chuông"]):
+        out.append("Cảnh báo: Kịch bản chưa có lời kêu gọi Đăng Ký kênh (CTA) - nguy cơ mất chuyển đổi subscriber")
+    if check_dai_chung:
+        out += kiem_hanh_chinh(" ".join(words))
     if not MIN_TU <= len(words) <= MAX_TU:
         out.append(f"Cảnh báo: lời đọc {len(words)} từ, khung {MIN_TU}–{MAX_TU} từ (10–13 phút)")
     return out + mui_may(script_md) + tu_cam(script_md) + nhip(script_md)
@@ -163,7 +180,7 @@ def uoc_tinh_phut(script_md: str, wpm: float) -> float:
 
 def main(video_dir: str) -> int:
     script = (Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8")
-    msgs = kiem(script)
+    msgs = kiem(script, check_cta=True, check_dai_chung=True)
     wpm = json.loads(CONFIG.read_text(encoding="utf-8")).get("vieneu", {}).get("wpm_du_kien") if CONFIG.exists() else None
     if wpm:
         print(f"ước tính {uoc_tinh_phut(script, wpm):.1f} phút ở {wpm:.0f} từ/phút (config vieneu.wpm_du_kien)")

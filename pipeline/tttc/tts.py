@@ -128,7 +128,7 @@ def synthesize(video_dir, post=requests.post, key: str | None = None, cfg: dict 
             continue  # đã trả tiền cho đoạn này, không gọi lại
         res = _call(post, key, cfg, text, paras[i - 1] if i else "", paras[i + 1] if i + 1 < len(paras) else "")
         mp3.write_bytes(base64.b64decode(res["audio_base64"]))
-        js.write_text(json.dumps(res["alignment"], ensure_ascii=False), encoding="utf-8")
+        js.write_text(json.dumps(res["alignment"], ensure_ascii=False), encoding="utf-8", newline="\n")
 
     words, ranges, offset = [], [], 0.0
     for i in range(len(paras)):
@@ -143,7 +143,7 @@ def synthesize(video_dir, post=requests.post, key: str | None = None, cfg: dict 
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
                     "-c:a", "libmp3lame", "-b:a", "128k", str(d / "giong.mp3")], check=True)
     timing = {"duration": _duration(d / "giong.mp3"), "words": words, "paragraphs": ranges}
-    (d / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1), encoding="utf-8")
+    (d / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 
 
 if __name__ == "__main__":

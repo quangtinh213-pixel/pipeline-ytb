@@ -84,6 +84,7 @@ def _approve(d):
         tt.set_step(d, step, "xong")
     tt.prepare_review(d, "duyet-2")
     tt.approve_review(d, "duyet-2", 2)
+    tt.approve_short(d, 0)
 
 
 def test_publish_at_converts_vn_time():
@@ -146,6 +147,23 @@ def test_upload_short_uses_its_own_schedule(video, tmp_path):
     body = yt.log[0][1]["body"]
     assert body["snippet"]["title"].endswith("#shorts")
     assert body["status"]["publishAt"] == "2099-11-14T05:00:00Z"
+
+
+@pytest.mark.parametrize("change", ["file", "gio", "none"])
+def test_upload_short_needs_its_own_approval(video, tmp_path, change):
+    _approve(video)
+    if change == "none":
+        tt.set_field(video, "short_duyet", {})
+    elif change == "file":
+        (video / "shorts" / "1.mp4").write_bytes(b"dung lai")
+    else:
+        goi = json.loads((video / "dong-goi.json").read_text(encoding="utf-8"))
+        goi["shorts"][0]["gio"] = "13:00"
+        (video / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+    yt = FakeYT()
+    with pytest.raises(PermissionError, match="Short"):
+        dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    assert yt.log == []
 
 
 class FlakyThumbYT(FakeYT):

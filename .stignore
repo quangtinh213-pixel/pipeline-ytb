@@ -1,0 +1,16 @@
+/videos
+(?d).DS_Store
+(?d)._*
+(?d)Thumbs.db
+(?d)desktop.ini
+(?d)node_modules
+(?d).venv
+(?d)venv
+(?d)__pycache__
+(?d)*.pyc
+(?d).next
+(?d).cache
+(?d).pytest_cache
+
+// git tự đồng bộ bằng push/pull; chép .git qua Syncthing dễ hỏng repo
+.git

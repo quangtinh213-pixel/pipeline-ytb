@@ -36,7 +36,7 @@ URL = re.compile(r"https?://\S+")
 SENT_SPLIT = re.compile(r"(?<=[.!?])\s+(?!\[#)")
 WARN = ("sơ bộ", "chưa chính thức")
 # user 11/11/2026: lời đọc dùng số tròn cho tai nghe; câu có từ ước lượng thì số được lệch nguồn tối đa 5% ("hơn một nghìn" cho 1.050)
-TRON, TRON_LECH = re.compile(r"\b(?:khoảng|gần|hơn|chừng|xấp xỉ|ngót)\b", re.I), Decimal("0.05")
+TRON, TRON_LECH = re.compile(r"\b(?:khoảng|gần|hơn|chừng|xấp xỉ|ngót|quanh)\b", re.I), Decimal("0.05")
 WARN_TU_TINH = ("tự tính", "tự ướm", "tính ra", "mình tính", "mình chia", "mình nhân", "ước tính độc lập", "không phải dự báo")
 # "2.5 USD": dấu chấm thập phân kiểu Mỹ, NUM không bắt được; chỉ xét khi có đơn vị để không vướng "Gemini 2.5"
 EN_DECIMAL = re.compile(r"(?<![\d.,])\d+\.\d{1,2}(?=" + UNIT_AFTER.pattern + ")", re.I)

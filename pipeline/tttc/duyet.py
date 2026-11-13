@@ -47,7 +47,7 @@ def _script_html(md: str) -> str:
 def _page(video_dir: Path, name: str, title: str, meta: str, body: str) -> Path:
     out = video_dir / name
     out.write_text(Template(theme.cssify(TEMPLATE.read_text(encoding="utf-8"))).substitute(
-        title=escape(title), meta=escape(meta), body=body), encoding="utf-8")
+        title=escape(title), meta=escape(meta), body=body), encoding="utf-8", newline="\n")
     return out
 
 

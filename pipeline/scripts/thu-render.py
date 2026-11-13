@@ -57,19 +57,19 @@ def main(video_dir: str, so_tu: int = 380) -> int:
         if len(text.split()) >= so_tu:
             break
     timing = giong_tam.giong_tam(text.strip(), V)
-    (V / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False), encoding="utf-8")
+    (V / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False), encoding="utf-8", newline="\n")
     for sub in ("anh", "broll", "nguon"):
         shutil.copytree(DEMO / sub, V / sub, dirs_exist_ok=True)
     nguon = json.loads((DEMO / "nguon.json").read_text(encoding="utf-8"))
     nguon.append({"id": "t1", "gia_tri": "2024 2026 2028 2030", "trich_dan": "", "url": "https://example.com/t",
                   "ngay_truy_cap": "2026-11-09", "anh_chup": "", "trang_thai": "xac-minh"})
-    (V / "nguon.json").write_text(json.dumps(nguon, ensure_ascii=False, indent=1), encoding="utf-8")
+    (V / "nguon.json").write_text(json.dumps(nguon, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     scenes = []
     for i, s in enumerate(chia.chia(timing)):
         mau = "chuong" if i % 10 == 0 else VONG[i % len(VONG)]
         scenes.append(dict(noi_dung(i, mau, s["loi"]), id=s["id"], mau=mau, start=s["start"], end=s["end"]))
     canh_json = {"scenes": scenes}
-    (V / "canh.json").write_text(json.dumps(canh_json, ensure_ascii=False, indent=1), encoding="utf-8")
+    (V / "canh.json").write_text(json.dumps(canh_json, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     for m in canh.validate(canh_json, timing, canh.SVG_DIR, nguon, video_dir=V):
         print("-", m)
     chat_luong.main(str(V))

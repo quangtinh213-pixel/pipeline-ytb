@@ -231,3 +231,14 @@ def test_template_tom_lai_va_mình_khong_bi_chan():
     spoken = "Anh em ơi, hãng ra máy mới. No cap, pin đỡ hơn. Tóm lại là xịn nhưng không đỉnh. Anh em thấy sao, comment cho mình biết với?"
     bad = phong_cach.kiem(f"# T\nLoại: ra-mat\n\n" + _script(spoken))
     assert _w(bad, "Lỗi") == []
+
+
+def test_cta_check_warns_when_missing_and_passes_when_present():
+    spoken_no_cta = _long(head=OK_HEAD, tail="Bạn thấy thế nào?")
+    warns = phong_cach.kiem(spoken_no_cta, check_cta=True)
+    assert any("Đăng Ký" in w for w in warns)
+
+    spoken_with_cta = _long(head=OK_HEAD, tail="Nhớ đăng ký kênh và bạn thấy thế nào?")
+    ok = phong_cach.kiem(spoken_with_cta, check_cta=True)
+    assert not any("Đăng Ký" in w for w in ok)
+

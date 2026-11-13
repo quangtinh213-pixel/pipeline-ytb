@@ -6,18 +6,28 @@ Phong cách tổng quát: phân tích có chuyên môn (đào sâu ý nghĩa, h�
 
 Khóa loại (dùng ở dòng `Loại:` đầu `kich-ban.md`): `ra-mat`, `ro-ri`, `gia`, `bao-mat`, `ai`, `cap-nhat`, `shorts`.
 
+## Quy tắc Vàng về Call-To-Action (CTA) & Giữ Chân (Cập nhật 14/11/2026)
+
+Để giải quyết triệt để vấn đề chuyển đổi Subscriber (tăng từ 0.13% lên 1.5% - 2.0%):
+- **Hook 15s đầu:** Phải chứa ít nhất một con số sốc, một mâu thuẫn/nghịch lý hoặc một nguy cơ trực tiếp tới túi tiền người xem ở Việt Nam. Tuyệt đối không chào hỏi rườm rà.
+- **Mid-Roll CTA (Phút thứ 2 - 4):** Sau khi giải mã xong con số sốc nhất, chèn câu kêu gọi đăng ký kênh có lý do rõ ràng: *"Các hãng công nghệ không bao giờ nói thật những con số này. Nếu bạn muốn nhận cảnh báo sớm để không bị mất tiền oan, bấm Đăng Ký kênh Nhịp Công Nghệ ngay bên dưới nhé."*
+- **End-Screen CTA (15s cuối):** Kêu gọi hành động kép: *(1) Bấm Đăng Ký & Bật Chuông để không bỏ lỡ video ngày mai*, và *(2) Bấm vào video đề xuất bên trái màn hình để xem tiếp sự thật về [chủ đề liên quan].*
+- **Shorts CTA & Loop:** Kết thúc Short ở giây 45-50 bằng câu kêu gọi bấm vào video dài liên kết (Related Video): *"Bấm vào link bên dưới để xem toàn bộ bảng tính tiền và giải mã chi tiết."* Hoặc dùng câu kết nối liền mạch vào câu mở đầu để tạo vòng lặp vô tận (Seamless Loop).
+
 ## 1. Ra mắt sản phẩm mới (`ra-mat`, 2:30 – 4:00)
 
-**[HOOK – 6s]** Anh em ơi, [Tên hãng] vừa ra mắt [sản phẩm] và tự nhận là đỉnh của chóp. Thật sự thì lần này có đáng hype không?
-[B-ROLL: ảnh sản phẩm + text "Đỉnh của chóp?"]
+**[HOOK – 6s]** [Tên hãng] vừa ra mắt [sản phẩm] với giá [X triệu], nhưng có một điểm ngầm các reviewer không nói cho bạn biết. Mua lúc này có phải là mất tiền oan?
+[B-ROLL: ảnh sản phẩm + text "Mất tiền oan?"]
 
 **[PHÂN TÍCH CHÍNH – 30s]** No cap, điểm nâng cấp rõ nhất lần này là [tính năng]. Về mặt kỹ thuật thì [giải thích đời thường + số liệu]. So với đời trước thì cải thiện khoảng [X%], không phải nhảy vọt như họ hô.
 
 **[CHÂM BIẾM + CÔNG BẰNG – 20s]** Marketing thì cháy phố, còn thực tế thì Android đã làm từ năm ngoái. Công nhận là [điểm thật sự tốt] thì xịn hơn, nhưng không đến mức phải reo hò.
 
+**[MID-ROLL CTA – 7s]** Nếu bạn không muốn bị marketing dắt mũi và mất tiền oan khi mua đồ công nghệ, bấm Đăng Ký kênh Nhịp Công Nghệ ngay bên dưới nhé.
+
 **[TÁC ĐỘNG – 15s]** Nếu bạn đang dùng đời trước và chỉ cần [nhu cầu] thì có thể cân nhắc. Còn không thì chờ giảm giá, đừng mua lúc đang hype mạnh.
 
-**[KẾT + CTA – 8s]** Tóm lại là xịn nhưng không đỉnh. Anh em thấy sao, comment cho mình biết với.
+**[KẾT + END-SCREEN CTA – 12s]** Tóm lại là xịn nhưng không đỉnh. Anh em thấy mức giá này xứng đáng không? Nhớ bấm Đăng ký kênh và bấm vào video bên cạnh để xem tiếp phân tích so sánh chi tiết nhé!
 
 ## 2. Tin rò rỉ / tin đồn (`ro-ri`, 1:30 – 2:30)
 
@@ -83,15 +93,18 @@ Khóa loại (dùng ở dòng `Loại:` đầu `kich-ban.md`): `ra-mat`, `ro-ri`
 
 **[KẾT]** Nếu bạn hay dùng [tính năng liên quan] thì nên cập nhật. Còn không thì cũng chẳng mất gì.
 
-## 7. Shorts (`shorts`, dưới 60 giây)
+## 7. Shorts (`shorts`, 35 – 50 giây, khổ dọc 9:16)
 
-**[0–4s] HOOK + text lớn:** Anh em ơi, [sự kiện] vừa xảy ra!
+**[0–4s] MÓC CÂU NGHỊCH LÝ (Text to viền đen/vàng nổi bật):** [Sự kiện sốc] vừa xảy ra, và chiếc điện thoại/tài khoản của bạn sắp chịu trận!
+*(Ví dụ: "Bạn tưởng mua máy cũ là hời? Xem xong văn bản này có khi muốn đổi ý ngay!")*
 
-**[4–20s] Điểm quan trọng nhất:** No cap, [điểm chính]. [Số liệu hoặc so sánh ngắn]
+**[4–20s] Điểm chấn động nhất:** No cap, [con số thiệt hại hoặc thay đổi giá]. [Bằng chứng zoom vào văn bản/trang giá gốc].
 
-**[20–45s] 2 điểm phụ + châm biếm nhẹ:** Marketing thì cháy, còn thực tế thì [đánh giá].
+**[20–40s] Bóc trần thực tế + Châm biếm ngắn:** Marketing thì nói là [chiêu trò], nhưng tính toán ra thì người dùng Việt phải bù thêm [số tiền].
 
-**[45–58s] Kết + CTA:** Đáng hype không? Comment ngay!
+**[40–50s] ĐIỀU HƯỚNG SANG VIDEO DÀI (Related Video CTA):** 
+- *Cách 1 (Kéo sang video dài):* "Muốn biết toàn bộ 3 điểm lách luật và bảng tính chi tiết, bấm ngay vào video liên kết bên dưới tên kênh!"
+- *Cách 2 (Vòng lặp vô tận):* Câu cuối kết thúc bằng cụm từ khớp với câu mở đầu (để người xem lặp lại lần 2 mà không nhận ra).
 
 ## Mẫu câu châm biếm + trend dùng được nhiều lần
 

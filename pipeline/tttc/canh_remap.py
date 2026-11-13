@@ -47,7 +47,7 @@ def main(video_dir: str, old_timing_path: str) -> int:
     new = json.loads((d / "giong-timing.json").read_text(encoding="utf-8"))
     shutil.copy(d / "canh.json", d / "canh-truoc-remap.json")
     out, notes = remap(canh, old, new)
-    (d / "canh.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8")
+    (d / "canh.json").write_text(json.dumps(out, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     for n in notes:
         print("-", n)
     print(f"{len(out['scenes'])} cảnh, {len(notes)} cảnh báo; bản cũ ở canh-truoc-remap.json")

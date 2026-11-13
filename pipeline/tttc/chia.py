@@ -51,7 +51,7 @@ def main(video_dir: str) -> int:
     d = Path(video_dir)
     timing = json.loads((d / "giong-timing.json").read_text(encoding="utf-8"))
     scenes = chia(timing)
-    (d / "canh-khung.json").write_text(json.dumps({"scenes": scenes}, ensure_ascii=False, indent=1), encoding="utf-8")
+    (d / "canh-khung.json").write_text(json.dumps({"scenes": scenes}, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     print(f"{len(scenes)} cảnh, trung bình {timing['duration'] / max(len(scenes), 1):.1f} s; đã ghi canh-khung.json")
     return 0
 

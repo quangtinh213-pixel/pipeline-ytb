@@ -61,7 +61,7 @@ def download(item: dict, video_dir, get=requests.get) -> Path:
     if not any(c["tep"] == path.name for c in credits):
         credits.append({"tep": path.name, "tac_gia": item["tac_gia"], "link": item["trang"],
                         "ghi_cong": f"Video: {item['tac_gia']} trên Pexels"})
-        log.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
+        log.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return path
 
 
@@ -97,7 +97,7 @@ def quet_kho(kho: Path = KHO) -> list[dict]:
             moi.append({"tep": f.name, "do_dai": _duration(f), "mo_ta": "", "ghi_cong": "",
                         "tu_khoa": [t for t in re.split(r"[^a-z0-9]+", _ascii(f.stem)) if t]})
     if moi:
-        path.write_text(json.dumps(data + moi, ensure_ascii=False, indent=1), encoding="utf-8")
+        path.write_text(json.dumps(data + moi, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return moi
 
 
@@ -117,15 +117,20 @@ def _chuan_hoa(src: Path, out: Path, bat_dau: float = 0.0, do_dai: float | None 
 
 
 TIN_CAY = {"videos.pexels.com", "cdn.pixabay.com", "upload.wikimedia.org"}
+# vn: quay ở Việt Nam. trung-tinh: cận vật/màn hình/tay, không lộ nơi chốn hay người nước ngoài.
+# ngoai: lộ nước ngoài (phố, tiền, người) – chỉ dùng khi lời đọc nói đúng nước `nuoc`. chua-ro: chưa xác minh nơi quay.
+BOI_CANH = {"vn", "trung-tinh", "ngoai", "chua-ro"}
 
 
 def tai_ve(url: str, ten: str, kho, ghi_cong: str, nguon: str, mo_ta: str, tu_khoa: list[str],
-           get=requests.get) -> Path:
+           get=requests.get, boi_canh: str = "chua-ro", nuoc: str = "") -> Path:
     """Tải một clip (chỉ từ máy chủ tin cậy) vào kho: chuẩn hoá ≤ 20 s, thêm mục kho.json. Đã có thì bỏ qua."""
     if urlparse(url).hostname not in TIN_CAY:
         raise ValueError(f"Không tải từ máy chủ ngoài danh sách tin cậy: {urlparse(url).hostname}")
     if not ghi_cong.strip():
         raise ValueError("Clip phải có ghi công")
+    if boi_canh not in BOI_CANH:
+        raise ValueError(f"boi_canh phải là một trong {sorted(BOI_CANH)}")
     kho = Path(kho)
     path = kho / "kho.json"
     data = json.loads(path.read_text(encoding="utf-8")) if path.exists() else []
@@ -143,8 +148,8 @@ def tai_ve(url: str, ten: str, kho, ghi_cong: str, nguon: str, mo_ta: str, tu_kh
             raise RuntimeError(f"Tệp tải về không phải video: {url}")
         _chuan_hoa(raw, out, do_dai=20, crf=22)
     data.append({"tep": out.name, "do_dai": _duration(out), "mo_ta": mo_ta, "ghi_cong": ghi_cong.strip(),
-                 "tu_khoa": tu_khoa, "nguon": nguon})
-    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8")
+                 "tu_khoa": tu_khoa, "nguon": nguon, "boi_canh": boi_canh, **({"nuoc": nuoc} if nuoc else {})})
+    path.write_text(json.dumps(data, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return out
 
 
@@ -177,7 +182,7 @@ def nhap(src: Path, video_dir, ghi_cong: str, bat_dau: float = 0.0, do_dai: floa
     credits = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []
     if not any(c["tep"] == out.name for c in credits):
         credits.append({"tep": out.name, "ghi_cong": ghi_cong.strip(), "nguon_tep": src.name})
-        log.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8")
+        log.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return out
 
 

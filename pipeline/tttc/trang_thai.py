@@ -33,7 +33,7 @@ def load(video_dir) -> dict:
 def _save(video_dir, data: dict) -> None:
     p = Path(video_dir) / FILE
     tmp = p.with_suffix(".tmp")
-    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+    tmp.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8", newline="\n")
     os.replace(tmp, p)  # ghi nguyên tử: lỗi giữa chừng không làm hỏng sổ
 
 
@@ -187,6 +187,26 @@ def approve_review(video_dir, step: str, choice: int | None = None) -> None:
     _save(video_dir, state)
 
 
+def _short_snapshot(video_dir, index: int) -> dict:
+    d = Path(video_dir)
+    s = json.loads((d / "dong-goi.json").read_text(encoding="utf-8"))["shorts"][index]
+    return {**s, "sha256": _digest(d / s["file"])}
+
+
+def approve_short(video_dir, index: int) -> None:
+    """Ghi biên nhận khi người dùng nói "ok" với Short thứ index: tệp, tiêu đề và giờ đăng đã xem."""
+    state = load(video_dir)
+    state.setdefault("short_duyet", {})[str(index)] = _short_snapshot(video_dir, index)
+    _save(video_dir, state)
+
+
+def short_current(video_dir, index: int) -> bool:
+    try:
+        return load(video_dir).get("short_duyet", {}).get(str(index)) == _short_snapshot(video_dir, index)
+    except (OSError, ValueError, KeyError, IndexError):
+        return False
+
+
 if __name__ == "__main__" and len(sys.argv) == 3 and sys.argv[1] == "gio":
     g = gio(sys.argv[2])
     for k, v in g["buoc"].items():
@@ -196,3 +216,5 @@ elif __name__ == "__main__" and len(sys.argv) == 4 and sys.argv[1] == "gui-duyet
     prepare_review(sys.argv[2], sys.argv[3])
 elif __name__ == "__main__" and len(sys.argv) in (4, 5) and sys.argv[1] == "duyet":
     approve_review(sys.argv[2], sys.argv[3], int(sys.argv[4]) if len(sys.argv) == 5 else None)
+elif __name__ == "__main__" and len(sys.argv) == 4 and sys.argv[1] == "duyet-short":
+    approve_short(sys.argv[2], int(sys.argv[3]))

@@ -60,7 +60,7 @@ def ghi_chu_de(video_dir, top: list[dict], ho_da_dang: dict[str, bool] | None = 
         khối.append(f"## Đề {n}: {d['tieu_de']}\n- Điểm: {d['diem']} (sốc {d['soc']}, số lớn {d['so_lon']}, "
                     f"góc Việt Nam {d['goc_vn']}×2)\n- Tin gốc: {d['link']}\n- Họ đã đăng cùng sự kiện: {ho}\n")
     p = Path(video_dir) / "chu-de.md"
-    p.write_text("\n".join(khối), encoding="utf-8")
+    p.write_text("\n".join(khối), encoding="utf-8", newline="\n")
     return p
 
 

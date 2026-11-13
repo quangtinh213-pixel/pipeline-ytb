@@ -1,13 +1,11 @@
 """Đăng YouTube: riêng tư + hẹn giờ, chỉ khi đã qua cả 2 điểm duyệt."""
 import csv
-import fcntl
 import json
 import os
 import sys
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 from tttc import theo_doi
 from tttc import trang_thai as tt
@@ -22,8 +20,19 @@ RETRIES = 3  # tự thử lại khi lỗi mạng/5xx tạm thời, nhất là kh
 
 
 def publish_at(date_vn: str, time_vn: str) -> str:
-    local = datetime.strptime(f"{date_vn} {time_vn}", "%d/%m/%Y %H:%M").replace(tzinfo=ZoneInfo("Asia/Ho_Chi_Minh"))
+    local = datetime.strptime(f"{date_vn} {time_vn}", "%d/%m/%Y %H:%M").replace(tzinfo=tt.VN)  # VN không đổi giờ theo mùa; Windows không có sẵn dữ liệu múi giờ
     return local.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def kiem_tra_gio_vang(time_vn: str) -> list[str]:
+    """Cảnh báo nếu giờ hẹn đăng video dài rơi vào vùng chết (17:00–21:00) làm mất ưu thế trước đối thủ."""
+    try:
+        gio = int(time_vn.split(":")[0])
+        if 17 <= gio < 21:
+            return [f"Cảnh báo vùng chết: Giờ đăng {time_vn} rơi vào khung 17:00–21:00 đã bị đối thủ phủ sóng. Khung chuẩn vàng là 15:00–16:00 (mặc định 15:30)."]
+    except Exception:
+        pass
+    return []
 
 
 def _goi(video_dir: Path) -> dict:
@@ -84,8 +93,24 @@ def _insert(d: Path, yt, body: dict, path: Path, key: str) -> str:
 @contextmanager
 def _lock(path: Path):
     with path.open("a") as f:
-        fcntl.flock(f, fcntl.LOCK_EX)
-        yield
+        if os.name != "nt":
+            import fcntl
+            fcntl.flock(f, fcntl.LOCK_EX)
+            yield
+            return
+        import msvcrt  # Windows không có fcntl
+        f.seek(0)
+        while True:
+            try:
+                msvcrt.locking(f.fileno(), msvcrt.LK_LOCK, 1)  # tự chờ ~10 s rồi báo lỗi, nên lặp để chờ như flock
+                break
+            except OSError:
+                pass
+        try:
+            yield
+        finally:
+            f.seek(0)
+            msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
 
 
 def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
@@ -120,6 +145,8 @@ def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlis
     if state["steps"]["dang"]["status"] == "xong":
         return state["video_id"]
     _guard(d)
+    for w in kiem_tra_gio_vang(time_vn):
+        print(f"⚠️  {w}")
     vid = state.get("video_id")
     when = f"{date_vn} {time_vn}"
     if vid and state.get("lich_dang") != when:
@@ -166,7 +193,14 @@ def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
         _track(tracker, saved["tieu_de"], saved["gio"], done[key])
         return done[key]
     _guard(d)
-    body = _body(s["tieu_de"], goi["mo_ta"], goi.get("tags", []), publish_at(s["ngay"], s["gio"]))
+    if not tt.short_current(d, index):
+        raise PermissionError("Short chưa duyệt hoặc tệp/tiêu đề/giờ đã đổi sau khi duyệt: chạy lại "
+                              f"`python -m tttc.trang_thai duyet-short {d} {index}` sau khi người dùng xem lại")
+    desc = goi["mo_ta"]
+    long_vid = state.get("video_id")
+    if long_vid:
+        desc = f"👉 Xem video phân tích chi tiết đầy đủ tại: https://youtu.be/{long_vid}\n\n" + desc
+    body = _body(s["tieu_de"], desc, goi.get("tags", []), publish_at(s["ngay"], s["gio"]))
     yt = youtube or client()
     vid = _insert(d, yt, body, d / s["file"], f"short:{key}")
     done[key] = vid

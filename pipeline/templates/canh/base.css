@@ -40,6 +40,12 @@ html, body { width: 1920px; height: 1080px; overflow: hidden; background: var(--
                            padding: 0.14em 0.1em; margin: -0.14em -0.1em; }  /* nới vùng tô: nét "đ", dấu thanh tràn khỏi hộp chữ */
 #root .nen-toi .vach-sang { background: var(--nhan-grad); box-shadow: 0 0 18px color-mix(in srgb, var(--accent) 55%, transparent); }
 #root .nen-toi .vong-sang { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent) 55%, transparent)); }
+/* Thẻ đóng dấu bằng chứng & từ khóa quyền lực (chống khô khan, 14/11/2026) */
+.tb-xac-nhan { display: inline-block; background: {{theme:sac.do.0}}; color: {{theme:sac.do.3}}; font: 900 24px/1 var(--font-display);
+               text-transform: uppercase; letter-spacing: 0.08em; padding: 6px 14px; border-radius: 6px;
+               box-shadow: 0 4px 12px color-mix(in srgb, {{theme:sac.do.0}} 40%, transparent); transform: rotate(-2.5deg); }
+#root .chu-quyen-luc { font-weight: 900; letter-spacing: -0.02em; text-transform: uppercase;
+                       text-shadow: 0 0 20px color-mix(in srgb, var(--accent) 60%, transparent); }
 .nhan-pill { display: inline-block; background: var(--accent); color: var(--accent-ink);
              font: 900 60px/1 var(--font-display); text-transform: uppercase; padding: 18px 34px;
              border-radius: 18px; letter-spacing: -0.01em; white-space: nowrap; }

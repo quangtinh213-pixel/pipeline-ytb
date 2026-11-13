@@ -123,6 +123,7 @@ def test_vi_number_keeps_decimals():
     assert dung.vi_number(5.3) == "5,3" and dung.vi_number(2.5) == "2,5"
     assert dung.vi_number(522500) == "522.500" and dung.vi_number("5,3") == "5,3"
     assert dung.vi_number(1234567.25) == "1.234.567,25"
+    assert dung.vi_number(-0.5) == "-0,5" and dung.vi_number(-1234.5) == "-1.234,5" and dung.vi_number(-3) == "-3"
 
 
 def test_contact_sheet_creates_folder(tmp_path):
@@ -546,7 +547,7 @@ def test_sfx_pops_for_each_layout_prop_without_index_error():
 def test_dong_js_defines_camera_for_every_kind():
     js = (dung.TPL / "dong.js").read_text(encoding="utf-8")
     assert "function mayQuay(" in js
-    for kieu in ("day-vao", "keo-ra", "lia", "he-lo"):
+    for kieu in ("day-vao", "keo-ra", "lia", "he-lo", "punch-in", "lac"):
         assert f'"{kieu}"' in js
 
 

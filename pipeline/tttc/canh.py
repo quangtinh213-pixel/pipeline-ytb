@@ -15,7 +15,7 @@ TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
 CANH_MIN_LOI, CANH_MAX_LOI = 1.5, 10.0   # ngoài khoảng này là lỗi
 DAN_GOC = {"phai", "trai"}  # góc màn hình của nhân vật dẫn chuyện (bộ nhân vật: pipeline/nhan-vat/kit.json)
-MAY_QUAY = {"", "dung", "day-vao", "keo-ra", "lia", "he-lo"}  # camera áp lên "thế giới" của cảnh minh-hoa
+MAY_QUAY = {"", "dung", "day-vao", "keo-ra", "lia", "he-lo", "punch-in", "lac"}  # camera áp lên "thế giới" của cảnh minh-hoa
 DONG = {"", "bob", "xoay", "dap", "chop", "tilt", "tho"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
 
@@ -412,7 +412,7 @@ def main(video_dir: str) -> int:
     msgs = validate(json.loads((d / "canh.json").read_text(encoding="utf-8")), timing, SVG_DIR, nguon)
     for m in msgs:
         print("-", m)
-    (d / "phu-de.srt").write_text(to_srt(timing), encoding="utf-8")
+    (d / "phu-de.srt").write_text(to_srt(timing), encoding="utf-8", newline="\n")
     errs = [m for m in msgs if m.startswith("Lỗi")]
     print(f"{len(errs)} lỗi, {len(msgs) - len(errs)} cảnh báo; đã ghi phu-de.srt")
     return 1 if errs else 0

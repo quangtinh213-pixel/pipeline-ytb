@@ -57,8 +57,10 @@
     const tl = gsap.timeline({ paused: true });
     tl.fromTo("#tb-khung", { y: 90, opacity: 0, scale: 0.96 },
               { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 0);
-    if (document.querySelector("#tb-to"))
+    if (document.querySelector("#tb-to")) {
       tl.fromTo("#tb-to", { backgroundSize: "0% 46%" }, { backgroundSize: "100% 46%", duration: 0.5, ease: "power2.inOut" }, at(0, 0.9));
+      tl.to("#tb-giay", { scale: 1.04, duration: 3.5, ease: "sine.out" }, at(0, 0.9));
+    }
     tl.fromTo("#tb-khung", { x: 0 }, { x: -24, duration: 8, ease: "none" }, 0.55);
     window.__timelines["trich-bao"] = tl;
   </script>

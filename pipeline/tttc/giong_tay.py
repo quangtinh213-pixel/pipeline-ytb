@@ -138,7 +138,7 @@ def main(video_dir: str, audios: list[str], srt: str | None = None, phien_am=Non
     if khop < MIN_KHOP:
         print(f"Chỉ khớp {khop:.0%} (< {MIN_KHOP:.0%}): tệp tiếng có vẻ không phải kịch bản này, chưa ghi giong-timing.json")
         return 1
-    (d / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1), encoding="utf-8")
+    (d / "giong-timing.json").write_text(json.dumps(timing, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return 0
 
 

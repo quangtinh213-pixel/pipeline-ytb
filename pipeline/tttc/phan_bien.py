@@ -31,7 +31,7 @@ def goi(prompt: str, conversation_id: str | None = None, timeout_s: int = 600, l
     except subprocess.TimeoutExpired:
         raise AgyLoi(f"agy quá thời gian {timeout_s}s") from None
     if luu is not None and r.stdout:
-        Path(luu).write_text(r.stdout, encoding="utf-8")
+        Path(luu).write_text(r.stdout, encoding="utf-8", newline="\n")
     if r.returncode != 0:
         raise AgyLoi(f"agy thoát mã {r.returncode}: {r.stderr.strip()[:200]}")
     try:
@@ -88,7 +88,7 @@ def main(argv: list[str], run=subprocess.run) -> int:
         return 3
     (d / f"phan-bien-giong-{vong}.md").write_text(
         f"# Phản biện giọng văn, vòng {vong}\n\nconversation_id: {kq['conversation_id']}\n\n"
-        f"## Phản hồi của agy\n\n{kq['response']}\n\n## Bảng triage\n\n(chưa điền)\n", encoding="utf-8")
+        f"## Phản hồi của agy\n\n{kq['response']}\n\n## Bảng triage\n\n(chưa điền)\n", encoding="utf-8", newline="\n")
     print(f"conversation_id: {kq['conversation_id']}")
     print(kq["response"])
     return 0

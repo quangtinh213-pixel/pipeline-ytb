@@ -62,7 +62,7 @@ def tao(src, dst=DATA, tol: float = 0.12) -> Path:
         out[p.get("ADM0_A3") or p.get("ISO_A3")] = {"ten": p.get("NAME_VI") or p.get("NAME") or "", "vong": vong}
     dst = Path(dst)
     dst.parent.mkdir(parents=True, exist_ok=True)
-    dst.write_text(json.dumps({"nguon": NGUON, "nuoc": out}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
+    dst.write_text(json.dumps({"nguon": NGUON, "nuoc": out}, ensure_ascii=False, separators=(",", ":")), encoding="utf-8", newline="\n")
     return dst
 
 

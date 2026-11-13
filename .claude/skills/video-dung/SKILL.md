@@ -142,11 +142,14 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **`b-roll`** – clip riêng cho từng video (kho chung chỉ là phần nền):
   1. Liệt kê mọi cảnh `b-roll` của video và hình cần thấy (vd "cánh quạt điện gió", "chợ Bến Thành").
   2. Tìm trong `pipeline/broll-kho/kho.json` theo `tu_khoa`/`mo_ta`, độ dài ≥ cảnh + 1 s. Có clip hợp và chưa
-     dùng trong video này thì dùng.
+     dùng trong video này thì dùng. **B-roll thuần Việt Nam:** cảnh có người, phố, nhà, quán, chợ, xe, tiền, phong cảnh
+     chỉ nhận clip `boi_canh: "vn"`; clip `trung-tinh`/`chua-ro` chỉ cho cận vật, màn hình, bàn tay; clip `ngoai` chỉ
+     khi lời đọc nói đúng nước `nuoc`. Bảng nhãn và nguồn tìm clip Việt Nam: `pipeline/broll-kho/README.md`.
   3. Không có: mở trình duyệt có sẵn ở `https://www.pexels.com/`, dán `pipeline/scripts/pexels-tim.js` vào
-     `javascript_tool`, gọi `await pxl("<từ khoá tiếng Anh cụ thể>", 4)`. Chọn 1–2 ứng viên hợp nhất.
+     `javascript_tool`, gọi `await pxl("<từ khoá tiếng Anh cụ thể>", 4)`. Cảnh cần bối cảnh Việt Nam: thêm "Vietnam"/
+     "Hanoi"/"Saigon" vào từ khoá; hết thì tìm Pixabay rồi Wikimedia Commons. Chọn 1–2 ứng viên hợp nhất.
   4. `broll.tai_ve(link, "<chu-de>-<id>", broll.KHO, f"Video: {user} trên Pexels", nguon=page,
-     mo_ta="<mô tả tiếng Việt>", tu_khoa=[...Việt + Anh...])` – chỉ nhận videos.pexels.com / cdn.pixabay.com /
+     mo_ta="<mô tả tiếng Việt>", tu_khoa=[...Việt + Anh...], boi_canh="vn"|"trung-tinh"|"ngoai"|"chua-ro")` – chỉ nhận videos.pexels.com / cdn.pixabay.com /
      upload.wikimedia.org.
   5. `broll.soi(clip, V/frames/broll-<ten>.jpg)` rồi **xem ảnh**: có mặt người nhận ra được, logo hãng, chữ nước
      ngoài lớn, tiền nước khác khi nói về tiền Việt → xoá clip khỏi kho (tệp + mục kho.json), tìm clip khác.
@@ -215,5 +218,5 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}')`
   rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
 - Giờ đăng Short: sáng ngày hôm sau video dài (đề xuất 08:00 giờ Việt Nam).
-- Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
+- Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi gửi người dùng xem từng Short (tệp, tiêu đề, giờ đăng). Khi người dùng nói "ok" với Short i: `uv run python -m tttc.trang_thai duyet-short ../videos/<slug> <i>` (ghi sha256 tệp + tiêu đề + giờ; đổi bất cứ thứ gì sau đó là phải duyệt lại). Sau đó đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
 - `set_step(V, "shorts", "xong")` sau khi tất cả Short đã dựng.

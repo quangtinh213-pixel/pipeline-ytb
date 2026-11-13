@@ -13,7 +13,7 @@ function dongLap(tl, sel, kieu, t0, t1, lech) {
   else tl.to(sel, { rotationY: 360 * n, transformPerspective: 900, duration: T * n, ease: "none" }, s);
 }
 
-// Camera áp lên "thế giới" của cảnh. kieu: day-vao | keo-ra | lia | he-lo; "" hoặc "dung" là đứng yên.
+// Camera áp lên "thế giới" của cảnh. kieu: day-vao | keo-ra | lia | he-lo | punch-in | lac; "" hoặc "dung" là đứng yên.
 // Hữu hạn và đi theo timeline (render tạm dừng ra đúng từng khung); dur là thời lượng chuyển động tính từ t0.
 function mayQuay(tl, sel, kieu, t0, dur) {
   const o = { transformOrigin: "50% 55%" };
@@ -21,4 +21,11 @@ function mayQuay(tl, sel, kieu, t0, dur) {
   else if (kieu === "keo-ra") tl.fromTo(sel, Object.assign({ scale: 1.22 }, o), Object.assign({ scale: 1, duration: dur, ease: "sine.inOut" }, o), t0);
   else if (kieu === "lia") tl.fromTo(sel, { x: 70 }, { x: -70, duration: dur, ease: "sine.inOut" }, t0);
   else if (kieu === "he-lo") tl.fromTo(sel, Object.assign({ scale: 1.35 }, o), Object.assign({ scale: 1, duration: dur * 0.4, ease: "power3.out" }, o), t0);
+  else if (kieu === "punch-in") tl.fromTo(sel, Object.assign({ scale: 1 }, o), Object.assign({ scale: 1.22, duration: 0.35, ease: "back.out(1.8)" }, o), t0);
+  else if (kieu === "lac") {
+    tl.to(sel, { x: -8, y: 4, duration: 0.05, ease: "none" }, t0);
+    tl.to(sel, { x: 8, y: -4, duration: 0.05, ease: "none" }, t0 + 0.05);
+    tl.to(sel, { x: -4, y: 2, duration: 0.05, ease: "none" }, t0 + 0.1);
+    tl.to(sel, { x: 0, y: 0, duration: 0.08, ease: "power2.out" }, t0 + 0.15);
+  }
 }

@@ -154,3 +154,13 @@ def test_broll_counts_only_steps_it_shows():
     co = {"scenes": [dict(tron["scenes"][0], tu_khoa="x", chia={"so": 1})]}
     assert cl.do(tron, _timing(60, 200))["su_kien_phut"] == 1      # chỉ cảnh, không bước nào hiện
     assert cl.do(co, _timing(60, 200))["su_kien_phut"] == 3        # cảnh + từ khoá + khung chia
+
+
+def test_do_kho_warns_on_long_static_scenes():
+    sc = {"scenes": [{"id": "c1", "mau": "minh-hoa", "start": 0, "end": 5.0, "svg": "tien"}]}
+    so_do = {**_ok_base(), "do_kho": cl.do_kho(sc)}
+    assert any("cảnh đồ họa tĩnh dài > 4,5 s" in m for m in cl.kiem(so_do))
+    # có camera hoặc nhip thì không bị coi là tĩnh
+    sc_cam = {"scenes": [{"id": "c1", "mau": "minh-hoa", "start": 0, "end": 5.0, "svg": "tien", "may_quay": "punch-in"}]}
+    so_do_cam = {**_ok_base(), "do_kho": cl.do_kho(sc_cam)}
+    assert not any("cảnh đồ họa tĩnh dài > 4,5 s" in m for m in cl.kiem(so_do_cam))

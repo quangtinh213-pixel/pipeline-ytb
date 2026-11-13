@@ -4,7 +4,7 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - chuong:      so (vd "Phần 2"), chuong (tên chương)
 - minh-hoa:    svg (tên trong pipeline/svg), phu? [tối đa 2 đạo cụ], nhan, nguon_id?, dong? bob|xoay|dap|chop (mặc định bob),
                san_khau? (phông: nen-dat mặc định, hoặc phần sau "san-khau-" của svg/san-khau-*.svg), bo_cuc? [1–4 {svg, x, y, to}] (thay phu;
-               x,y 0–1 trên sàn, to 0,2–1,5), may_quay? dung|day-vao|keo-ra|lia|he-lo
+               x,y 0–1 trên sàn, to 0,2–1,5), may_quay? dung|day-vao|keo-ra|lia|he-lo|punch-in|lac
 - so-lon:      so (số hoặc chuỗi "5,3"), tu? (giá trị cũ: số đếm từ đó tới so, cũng phải khớp nguồn), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
@@ -100,9 +100,11 @@ def vi_number(x) -> str:
     """Số viết kiểu Việt, giữ đúng số chữ số thập phân: 5.3 → '5,3', 522500 → '522.500'."""
     if isinstance(x, str):
         return x.strip()
+    sign = "-" if float(x) < 0 else ""  # tách dấu trước: int("-0") làm mất dấu của -0,5
+    x = -x if sign else x
     whole, _, frac = repr(float(x)).partition(".") if not float(x).is_integer() else (str(int(x)), "", "")
     whole = f"{int(whole):,}".replace(",", ".")
-    return f"{whole},{frac}" if frac else whole
+    return sign + (f"{whole},{frac}" if frac else whole)
 
 
 def _num(x) -> float:
@@ -149,7 +151,8 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         return {"so": _num(c["so"]), "so_hien": vi_number(c["so"]), "tu": _num(c["tu"]) if c.get("tu") is not None else 0,
                 "tu_hien": vi_number(c["tu"]) if c.get("tu") is not None else "", "truoc": c.get("truoc", ""),
                 "sau": c.get("sau", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id")),
-                "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", ""), "dong": c.get("dong", "")}
+                "svg": f"assets/svg/{c.get('svg', 'tien')}.svg", "huong": c.get("huong", ""), "dong": c.get("dong", ""),
+                "may_quay": c.get("may_quay", "")}
     if m == "bieu-do":
         b = c["bieu_do"]
         return {"tieu_de": c.get("nhan", ""), "nhan_x": json.dumps(b["nhan_x"], ensure_ascii=False),
@@ -265,11 +268,20 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
         return [("impact-bass-1", 0.1, 0.25)]
     if m == "minh-hoa":
         ev = [("pop", 0.55, 0.3)]
+        mq = c.get("may_quay")
+        if mq in ("he-lo", "punch-in", "lia"):
+            ev.append(("whoosh-short", 0.4, 0.25))
+        elif mq == "lac":
+            ev.append(("impact-bass-1", 0.4, 0.3))
         n = len(c.get("bo_cuc") or c.get("phu", [])[:2])
         ev += [("pop", st[k + 1] if k + 1 < len(st) else st[-1] + 0.08 * (k + 2 - len(st)), 0.2) for k in range(n)]
         return ev
     if m == "so-lon":
-        return [("ping", st[0] + 1.3, 0.3)]
+        ev = []
+        if c.get("trong_diem") or c.get("may_quay") == "punch-in":
+            ev.append(("impact-bass-1", 0.05, 0.3))
+        ev.append(("ping", st[0] + 1.3, 0.3))
+        return ev
     if m == "bieu-do":
         return [("pop", st[-1] + 0.1, 0.3)] if c["bieu_do"].get("chu_thich") else []
     if m == "quy-trinh":
@@ -288,7 +300,7 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
     if m == "nhan-vat":
         return [("whoosh-short", 0.05, 0.25)]
     if m == "trich-bao":
-        return [("click-soft", st[0], 0.35)]
+        return [("whoosh-short", 0.05, 0.25), ("click-soft", st[0], 0.35)]
     if m == "chu-dong":
         return [("whoosh-short", 0.0, 0.18)]
     if m == "phan-tram":
@@ -447,7 +459,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     if o.exists():
         shutil.rmtree(o)
     (o / "compositions").mkdir(parents=True)
-    shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md", "*.png"))  # cả thư viện: mẫu dùng ảnh mặc định
+    shutil.copytree(SVG, o / "assets" / "svg", ignore=shutil.ignore_patterns("*.py", "*.md", "*.png", "__pycache__"))  # cả thư viện: mẫu dùng ảnh mặc định
     for k in {c["sac"] for c in scenes if c.get("sac")}:  # bản đổi màu nhấn vàng → màu phụ, không vẽ lại thư viện
         for f in list((o / "assets" / "svg").glob("*.svg")):
             if f.stem == "nen-dat" or f.stem.startswith("tui-") or "@" in f.stem:
@@ -455,7 +467,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             t = f.read_text(encoding="utf-8")
             for old, new in zip(VANG, SAC[k][:3]):
                 t = re.sub(old, new, t, flags=re.I)
-            (f.with_name(f"{f.stem}@{k}.svg")).write_text(t, encoding="utf-8")
+            (f.with_name(f"{f.stem}@{k}.svg")).write_text(t, encoding="utf-8", newline="\n")
     for sub in ("anh", "nguon", "broll"):
         if (d / sub).exists():
             shutil.copytree(d / sub, o / "assets" / sub)
@@ -496,7 +508,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         if h > w:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
             page = page.replace("</style>", "#root [id$=\"-br-ghi-cong\"], #root [id$=\"-nguon\"] { background: rgba(0,0,0,0.6) !important; "
                                 "color: #fff !important; padding: 6px 16px; border-radius: 10px; }</style>", 1)
-        (o / "compositions" / f"{sid}.html").write_text(page, encoding="utf-8")
+        (o / "compositions" / f"{sid}.html").write_text(page, encoding="utf-8", newline="\n")
         st = steps(c, timing.get("words", []))
         sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
         extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng
@@ -671,7 +683,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
   </body>
 </html>
 """
-    (o / "index.html").write_text(html, encoding="utf-8")
+    (o / "index.html").write_text(html, encoding="utf-8", newline="\n")
     return o
 
 

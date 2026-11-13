@@ -70,7 +70,7 @@ def save(name, parts):
     body = "\n  ".join(parts)
     vb = getattr(parts, "vb", "") or _viewbox(parts)  # phông giữ viewBox của nen-dat dù vật dựng lên cao hơn mép sàn
     svg = (f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="{vb}" width="400" height="400">\n  {body}\n</svg>\n')
-    (OUT / f"{name}.svg").write_text(svg, encoding="utf-8")
+    (OUT / f"{name}.svg").write_text(svg, encoding="utf-8", newline="\n")
 
 
 def toa_nha_quoc_hoi():

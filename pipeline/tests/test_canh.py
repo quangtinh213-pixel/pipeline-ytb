@@ -427,8 +427,9 @@ def _svgs(tmp_path):
 
 
 def test_minh_hoa_stage_camera_and_layout_valid(tmp_path):
-    ok = canh.validate(_mh(san_khau="may-chu", may_quay="day-vao", bo_cuc=[BC1]), T4, _svgs(tmp_path))
-    assert [m for m in ok if m.startswith("Lỗi")] == []
+    d = _svgs(tmp_path)
+    for mq in ("day-vao", "punch-in", "lac"):
+        assert [m for m in canh.validate(_mh(san_khau="may-chu", may_quay=mq, bo_cuc=[BC1]), T4, d) if m.startswith("Lỗi")] == []
     assert canh.san_khau_hop_le(tmp_path) == {"nen-dat", "may-chu"}
 
 

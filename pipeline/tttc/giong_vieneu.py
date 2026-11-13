@@ -8,6 +8,7 @@ Chạy: uv run python -m tttc.giong_vieneu ../videos/<slug>
 """
 import hashlib
 import json
+import os
 import re
 import subprocess
 import sys
@@ -18,7 +19,7 @@ from tttc.giong_tay import _chia_deu
 
 PIPE = Path(__file__).resolve().parent.parent
 CONFIG, WORKER = PIPE / "config.json", PIPE / "scripts" / "vieneu_worker.py"
-DEFAULT = {"python": "~/Documents/VieNeu-TTS/.venv/bin/python", "voice": "Hải Đăng", "pause_cau": 0.25,
+DEFAULT = {"python": "~/Documents/VieNeu-TTS/.venv/" + ("Scripts/python.exe" if os.name == "nt" else "bin/python"), "voice": "Hải Đăng", "pause_cau": 0.25,
            "pause_doan": 0.5, "toc_do": 1.0, "phat_am": {}}  # toc_do: hệ số tốc độ (0,9 = chậm 10%)
 CAT_LANG = "silenceremove=start_periods=1:start_silence=0.03:start_threshold=-50dB"  # cắt lặng đầu; đảo chiều để cắt lặng cuối
 
@@ -46,7 +47,7 @@ def _tao_wav(jobs: list[dict], work: Path, cfg: dict, run) -> None:
     if not jobs:
         return
     jf = work / "jobs.json"
-    jf.write_text(json.dumps(jobs, ensure_ascii=False), encoding="utf-8")
+    jf.write_text(json.dumps(jobs, ensure_ascii=False), encoding="utf-8", newline="\n")
     run([str(Path(cfg["python"]).expanduser()), str(WORKER), "--jobs", str(jf)], check=True)
 
 
@@ -102,7 +103,7 @@ def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
     for r, nxt in zip(ranges, ranges[1:] + [{"start": total}]):
         r["end"] = nxt["start"]
     (d / "giong-timing.json").write_text(json.dumps({"duration": total, "words": words, "paragraphs": ranges},
-                                                    ensure_ascii=False, indent=1), encoding="utf-8")
+                                                    ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
 
 
 def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subprocess.run) -> Path:

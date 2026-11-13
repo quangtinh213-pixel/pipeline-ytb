@@ -37,9 +37,10 @@ def make_video(tmp_path):
 
 def golden_compose_hash(composition_dir) -> str:
     root, h = Path(composition_dir), hashlib.sha256()
-    for p in sorted(x for x in root.rglob("*") if x.is_file()):
-        h.update(p.relative_to(root).as_posix().encode())
-        h.update(p.read_bytes())
+    # sắp theo chuỗi: Windows so Path không phân biệt hoa thường, thứ tự sẽ khác Mac
+    for rel in sorted(x.relative_to(root).as_posix() for x in root.rglob("*") if x.is_file()):
+        h.update(rel.encode())
+        h.update((root / rel).read_bytes())
     return h.hexdigest()
 
 

@@ -51,8 +51,12 @@ def do_kho(canh: dict, dao_dien: dict | None = None, cham: dict | None = None) -
     clip_lap = sum(c["mau"] == "b-roll" and bool(c.get("video")) and
                    any(x["mau"] == "b-roll" and x.get("video") == c["video"] for x in sc[max(0, i - 7):i])
                    for i, c in enumerate(sc))
+    canh_tinh_dai = sum(c.get("mau") in ("minh-hoa", "so-lon", "bieu-do", "so-sanh", "quy-trinh") and
+                        (c.get("end", 0) - c.get("start", 0)) > 4.5 and
+                        not c.get("nhip") and c.get("may_quay") in (None, "", "dung")
+                        for c in sc)
     out = {"so_phong": len(set(phong) - {None}), "so_canh_minh_hoa": len(mh), "phong_lien_max": best,
-           "vat_chinh_lap": lap, "clip_lap": clip_lap,
+           "vat_chinh_lap": lap, "clip_lap": clip_lap, "canh_tinh_dai": canh_tinh_dai,
            "ti_le_may_quay": sum(c.get("may_quay") not in (None, "", "dung") for c in mh) / len(mh) if mh else 0.0}
     if dao_dien is not None:
         mau = {c["id"]: c["mau"] for c in sc}
@@ -145,6 +149,8 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
             out.append(f"Cảnh báo: độ khô: chỉ {k['ti_le_may_quay']:.0%} cảnh minh họa có camera, chuẩn ≥ {m['may_quay_min']:.0%}")
         if k.get("clip_lap"):
             out.append(f"Cảnh báo: độ khô: {k['clip_lap']} cảnh dùng lại cùng tệp b-roll trong cửa sổ 8 cảnh")
+        if k.get("canh_tinh_dai"):
+            out.append(f"Cảnh báo: độ khô: {k['canh_tinh_dai']} cảnh đồ họa tĩnh dài > 4,5 s không có nhịp con hay camera")
         if k.get("trong_diem_thieu"):
             out.append(f"Cảnh báo: độ khô: {k['trong_diem_thieu']} cảnh trọng điểm thiếu ẩn dụ hoặc camera")
         if k.get("nhip_cam_xuc_du") is False:

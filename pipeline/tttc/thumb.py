@@ -15,7 +15,9 @@ def _pal() -> dict:
             "ink": theme.rgb(th["chu_tren_nhan"])}
 
 
-FONT = "/System/Library/Fonts/SFNS.ttf"  # SF Pro, có dấu tiếng Việt (giống brand/make_brand.py)
+# SF Pro trên Mac, Segoe UI Black trên Windows; cả hai có dấu tiếng Việt (giống brand/make_brand.py)
+FONT = next((f for f in ("/System/Library/Fonts/SFNS.ttf", "C:/Windows/Fonts/seguibl.ttf") if Path(f).exists()),
+           "/System/Library/Fonts/SFNS.ttf")
 W, H, MAX_W, MAX_H, GAP = 1280, 720, 1200, 640, 28  # GAP rộng cho dấu tiếng Việt
 
 
@@ -47,7 +49,8 @@ def make(lines: list[tuple[str, str]], out: Path, background: Path | None = None
     boxes = [d.textbbox((0, 0), t, font=f) for (t, _), f in zip(lines, fonts)]
     total = sum(b[3] - b[1] for b in boxes) + GAP * (len(lines) - 1)
     if total > MAX_H:  # nhiều dòng: thu nhỏ đều cho vừa chiều cao
-        k = MAX_H / total
+        gaps = GAP * (len(lines) - 1)  # khoảng cách dòng không co theo cỡ chữ, chỉ chia phần chữ
+        k = (MAX_H - gaps) / (total - gaps)
         fonts = [font(max(20, int(f.size * k))) for f in fonts]
         boxes = [d.textbbox((0, 0), t, font=f) for (t, _), f in zip(lines, fonts)]
         total = sum(b[3] - b[1] for b in boxes) + GAP * (len(lines) - 1)

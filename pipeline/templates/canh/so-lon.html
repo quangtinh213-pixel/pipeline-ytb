@@ -17,7 +17,7 @@
     #root .sl-nhan { margin-top: 34px; color: var(--ink); font: 800 64px/1.15 var(--font-display); max-width: 1500px; }
   </style>
   <div id="root" data-composition-id="so-lon" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"tu","type":"number","label":"Giá trị bắt đầu đếm","default":0},{"id":"tu_hien","type":"string","label":"Chuỗi giá trị bắt đầu (rỗng = đếm từ 0)","default":""},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"svg","type":"string","label":"Hình nền mờ","default":"assets/svg/tien.svg"},{"id":"huong","type":"string","label":"Mũi tên (len/xuong/rỗng)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":""}]'>
+       data-composition-variables='[{"id":"so","type":"number","label":"Số","default":0},{"id":"so_hien","type":"string","label":"Số hiện ở khung cuối","default":"0"},{"id":"tu","type":"number","label":"Giá trị bắt đầu đếm","default":0},{"id":"tu_hien","type":"string","label":"Chuỗi giá trị bắt đầu (rỗng = đếm từ 0)","default":""},{"id":"truoc","type":"string","label":"Chữ trước số","default":""},{"id":"sau","type":"string","label":"Chữ sau số","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"svg","type":"string","label":"Hình nền mờ","default":"assets/svg/tien.svg"},{"id":"huong","type":"string","label":"Mũi tên (len/xuong/rỗng)","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"dong","type":"string","label":"Chuyển động lặp (bob/xoay/dap/chop)","default":""},{"id":"may_quay","type":"string","label":"Camera (punch-in/lac/dung)","default":""}]'>
     <div id="sl-san" class="san">
       <div id="sl-icon" class="sl-icon" data-layout-ignore><img data-var-src="svg" src="assets/svg/tien.svg" alt=""></div>
       <div id="sl-wrap" class="sl-wrap">
@@ -55,8 +55,18 @@
     tl.fromTo("#sl-so", { opacity: 0, filter: "blur(10px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, 0);
     tl.fromTo(obj, { x: start }, { x: target, duration: 1.3, ease: "power3.out",
               onUpdate: () => { el.textContent = fmt(obj.x); } }, d0);
-    tl.fromTo("#sl-wrap", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out" }, d0 + 1.3);
-    tl.to("#sl-wrap", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.5)" }, d0 + 1.42);
+    if (v.may_quay === "punch-in") {
+      tl.fromTo("#sl-wrap", { scale: 1 }, { scale: 1.18, duration: 0.16, ease: "power3.out" }, d0 + 1.25);
+      tl.to("#sl-wrap", { scale: 1.05, duration: 0.45, ease: "back.out(2)" }, d0 + 1.41);
+    } else if (v.may_quay === "lac") {
+      tl.fromTo("#sl-wrap", { scale: 1 }, { scale: 1.08, duration: 0.12, ease: "power2.out" }, d0 + 1.3);
+      tl.to("#sl-wrap", { x: -10, y: 5, duration: 0.05, ease: "none" }, d0 + 1.32);
+      tl.to("#sl-wrap", { x: 10, y: -5, duration: 0.05, ease: "none" }, d0 + 1.37);
+      tl.to("#sl-wrap", { x: 0, y: 0, scale: 1, duration: 0.25, ease: "elastic.out(1, 0.5)" }, d0 + 1.42);
+    } else {
+      tl.fromTo("#sl-wrap", { scale: 1 }, { scale: 1.06, duration: 0.12, ease: "power2.out" }, d0 + 1.3);
+      tl.to("#sl-wrap", { scale: 1, duration: 0.5, ease: "elastic.out(1, 0.5)" }, d0 + 1.42);
+    }
     tl.fromTo("#sl-muiten", { y: 80, opacity: 0 }, { y: 0, opacity: 1, duration: 0.45, ease: "back.out(2)" }, d0 + 1.3);
     tl.fromTo("#sl-gach", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.inOut" }, d0 + 1.35);
     tl.fromTo("#sl-nhan", { opacity: 0, filter: "blur(8px)" }, { opacity: 1, filter: "blur(0px)", duration: 0.2 }, Math.max(at(1, 1.6), d0 + 1.3));

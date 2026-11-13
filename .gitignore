@@ -29,3 +29,6 @@ pipeline/broll-kho/*.mp4
 pipeline/broll-kho/*.mov
 pipeline/broll-kho/*.webm
 pipeline/svg/thu-vien.png
+pipeline/keychain-chuyen.json
+.stfolder/
+.stversions/

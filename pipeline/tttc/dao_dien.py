@@ -107,9 +107,9 @@ def main(video_dir: str) -> int:
         return 1
     if (d / "canh.json").exists():
         shutil.copy(d / "canh.json", d / "canh-truoc-dao-dien.json")
-    (d / "canh.json").write_text(json.dumps(sinh_canh(dd, khung, timing), ensure_ascii=False, indent=1), encoding="utf-8")
+    (d / "canh.json").write_text(json.dumps(sinh_canh(dd, khung, timing), ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     thieu = hinh_thieu(dd, SVG_DIR)
-    (d / "hinh-thieu.json").write_text(json.dumps(thieu, ensure_ascii=False), encoding="utf-8")
+    (d / "hinh-thieu.json").write_text(json.dumps(thieu, ensure_ascii=False), encoding="utf-8", newline="\n")
     td = sum(bool(s.get("trong_diem")) for s in dd["scenes"])
     print(f"{len(dd['scenes'])} cảnh, {td} cảnh trọng điểm ({td / len(dd['scenes']):.0%}), {len(thieu)} hình còn thiếu")
     return 0
