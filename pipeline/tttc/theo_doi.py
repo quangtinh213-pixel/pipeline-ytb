@@ -4,10 +4,25 @@ Quy tắc đọc: chenh_gio âm nghĩa là video của mình đăng sớm hơn; 
 """
 import csv
 import statistics
-from datetime import datetime
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 EXTRA = ["trung_de_ho", "chenh_gio", "radar_hang", "view_ho_24h"]
+VN = timezone(timedelta(hours=7))
+# Cửa sổ ghi số view: lỡ cửa sổ thì để trống, không ghi số của thời điểm khác vào cột.
+CUA_SO = {"view_24h": (timedelta(hours=24), timedelta(hours=48)), "view_7d": (timedelta(days=7), timedelta(days=8))}
+
+
+def dien_view(row: dict, views: str, now: datetime) -> bool:
+    """Điền view_24h/view_7d còn trống khi tuổi video (tính từ gio_dang, giờ VN) nằm trong cửa sổ của cột. Trả True nếu có điền."""
+    try:
+        tuoi = now - datetime.strptime(row.get("gio_dang", ""), "%d/%m/%Y %H:%M").replace(tzinfo=VN)
+    except ValueError:
+        return False
+    cot = [c for c, (a, b) in CUA_SO.items() if a <= tuoi < b and not row.get(c)]
+    for c in cot:
+        row[c] = views
+    return bool(cot)
 
 
 def migrate(path) -> None:

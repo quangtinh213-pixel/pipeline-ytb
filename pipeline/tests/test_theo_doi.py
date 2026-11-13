@@ -43,3 +43,21 @@ def test_ty_so_trung_vi_uses_last_ten_complete_rows():
 def test_ty_so_trung_vi_caps_at_ten_most_recent():
     rows = [{"view_24h": "1", "view_ho_24h": "100"}] * 5 + [{"view_24h": "50", "view_ho_24h": "100"}] * 10
     assert theo_doi.ty_so_trung_vi(rows) == 0.5
+
+
+@pytest.mark.parametrize("gio, cot", [
+    ("14/11/2026 08:00", None),            # mới 4 giờ: chưa ghi gì
+    ("13/11/2026 06:00", "view_24h"),      # 26 giờ
+    ("12/11/2026 06:00", None),            # 50 giờ: lỡ cửa sổ 24h, để trống
+    ("07/11/2026 06:00", "view_7d"),       # 7 ngày 2 giờ
+])
+def test_dien_view_only_inside_age_window(gio, cot):
+    row = {"gio_dang": gio, "view_24h": "", "view_7d": ""}
+    assert theo_doi.dien_view(row, "500", datetime(2026, 11, 14, 8 + 4, tzinfo=VN)) == (cot is not None)
+    assert {k: v for k, v in row.items() if v and k != "gio_dang"} == ({cot: "500"} if cot else {})
+
+
+def test_dien_view_keeps_existing_value():
+    row = {"gio_dang": "13/11/2026 06:00", "view_24h": "120", "view_7d": ""}
+    assert not theo_doi.dien_view(row, "999", datetime(2026, 11, 14, 8, tzinfo=VN))
+    assert row["view_24h"] == "120"

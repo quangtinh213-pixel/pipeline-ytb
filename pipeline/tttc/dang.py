@@ -87,7 +87,13 @@ def _insert(d: Path, yt, body: dict, path: Path, key: str) -> str:
         raise RuntimeError("Lần tải trước chưa xác nhận được ID. Đối chiếu YouTube Studio trước khi thử lại.")
     request = yt.videos().insert(part="snippet,status", body=body, media_body=_media(path, "video/mp4"))
     tt.set_field(d, "upload_dang_cho_id", key)
-    return request.execute(num_retries=RETRIES)["id"]
+    from googleapiclient.errors import HttpError
+    try:
+        return request.execute(num_retries=RETRIES)["id"]
+    except HttpError as e:
+        if e.resp.status in (400, 401, 403):  # YouTube từ chối từ đầu (vd quotaExceeded): chắc chắn chưa tạo video, gỡ cờ
+            tt.set_field(d, "upload_dang_cho_id", None)
+        raise
 
 
 @contextmanager

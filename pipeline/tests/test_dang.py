@@ -289,3 +289,20 @@ def test_track_migrates_old_csv_and_keeps_old_rows(tmp_path):
     rows = list(csv.DictReader(t.open(encoding="utf-8")))
     assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 12
     assert [r["tieu_de"] for r in rows] == ["Cũ", "Mới"] and rows[1]["chenh_gio"] == "" and rows[1]["link"].endswith("vid")
+
+
+def test_rejected_insert_clears_pending_flag_so_retry_works(video, tmp_path, monkeypatch):
+    from googleapiclient.errors import HttpError
+    from httplib2 import Response
+
+    _approve(video)
+    yt, tracker = FakeYT(), tmp_path / "t.csv"
+    with monkeypatch.context() as m:
+        def quota(*args, **kwargs):
+            raise HttpError(Response({"status": 403}), b'{"error": {"errors": [{"reason": "quotaExceeded"}]}}')
+
+        m.setattr(FakeReq, "execute", quota)
+        with pytest.raises(HttpError):
+            dang.upload_short(video, 0, youtube=yt, tracker=tracker)
+    assert tt.load(video).get("upload_dang_cho_id") is None
+    assert dang.upload_short(video, 0, youtube=yt, tracker=tracker) == "vid123"
