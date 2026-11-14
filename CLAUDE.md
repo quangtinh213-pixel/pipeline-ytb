@@ -30,7 +30,7 @@ PYTHONUTF8=1 uv run python scripts/dong-bo-view.py
 uv run python -m tttc.giam_sat ../videos/<slug> --ctr 3.2
 ```
 
-`dong-bo-view.py` nên chạy mỗi ngày: cột `view_24h`/`view_7d` chỉ được điền trong cửa sổ 24–48 giờ và 7–8 ngày, lỡ là để trống. `giu_chan_30s` thì không có cửa sổ (Analytics truy vấn theo khoảng ngày).
+`dong-bo-view.py` chạy tự động 21:30 mỗi ngày bằng Task Scheduler (lịch "Nhip Cong Nghe - dong bo view" → `pipeline/scripts/dong-bo-hang-ngay.cmd`, máy tắt thì chạy bù khi bật lại; log ở `pipeline/dong-bo-view.log`). Phải chạy mỗi ngày vì cột `view_24h`/`view_7d` chỉ được điền trong cửa sổ 24–48 giờ và 7–8 ngày, lỡ là để trống. `giu_chan_30s` thì không có cửa sổ (Analytics truy vấn theo khoảng ngày).
 
 ## Môi trường (Windows)
 
