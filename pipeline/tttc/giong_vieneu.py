@@ -39,6 +39,15 @@ def _cfg(cfg: dict | None) -> dict:
     return {**DEFAULT, **(cfg if cfg is not None else json.loads(CONFIG.read_text(encoding="utf-8")).get("vieneu", {}))}
 
 
+SHORTS = {"pause_cau": 0.10, "pause_doan": 0.10}  # Shorts cắt sát khoảng lặng (video dài 0,14/0,32 s)
+
+
+def cfg_shorts(cfg: dict | None = None) -> dict:
+    """Cấu hình VieNeu cho Short viết riêng: các khóa trong vieneu.shorts ghi đè cấp trên. Dùng: synthesize(d, cfg_shorts())."""
+    base = _cfg(cfg)
+    return {**{k: v for k, v in base.items() if k != "shorts"}, **SHORTS, **base.get("shorts", {})}
+
+
 def _phat_am(text: str, cfg: dict) -> str:
     for k, v in sorted(cfg["phat_am"].items(), key=lambda kv: len(kv[0]), reverse=True):  # từ ghép dài trước từ ngắn; chỉ đổi chữ gửi cho giọng đọc
         text = re.sub(rf"(?<!\w){re.escape(k)}(?!\w)", v, text)

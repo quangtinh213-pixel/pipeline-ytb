@@ -181,3 +181,18 @@ def test_double_chevron_lines_go_to_secondary_voice_and_marker_is_not_spoken(tmp
 
 def test_default_pauses_are_tight():
     assert giong_vieneu.DEFAULT["pause_cau"] <= 0.16 and giong_vieneu.DEFAULT["pause_doan"] <= 0.35
+
+
+def test_cfg_shorts_mac_dinh_nghi_0_10():
+    c = giong_vieneu.cfg_shorts({})
+    assert (c["pause_cau"], c["pause_doan"]) == (0.10, 0.10)
+    assert c["voice"] == giong_vieneu.DEFAULT["voice"]
+
+
+def test_cfg_shorts_ghi_de_tu_config_va_giu_khoa_khac():
+    c = giong_vieneu.cfg_shorts({"voice": "A", "pause_cau": 0.2, "shorts": {"pause_cau": 0.08, "toc_do": 1.05}})
+    assert (c["voice"], c["pause_cau"], c["pause_doan"], c["toc_do"]) == ("A", 0.08, 0.10, 1.05)
+
+
+def test_cfg_thuong_khong_bi_shorts_anh_huong():
+    assert giong_vieneu._cfg({"shorts": {"pause_cau": 0.08}})["pause_cau"] == giong_vieneu.DEFAULT["pause_cau"]
