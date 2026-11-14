@@ -23,6 +23,9 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 4. **Xác nhận với người dùng trước khi upload** (một câu): tiêu đề đã chọn, ngày giờ đăng (giờ Việt Nam),
    số Shorts và giờ từng Short. Đợi "ok".
 5. `uv run python -m tttc.dang ../videos/<slug> <dd/mm/yyyy> <HH:MM>` → in video id.
+   Lệnh đo `final.mp4` và **từ chối** nếu video dài dưới 7:00 (`dang.DAI_TOI_THIEU`): báo người dùng, đề xuất cắt thành Shorts.
+   Chỉ khi chính người dùng nói vẫn đăng dạng video dài và nêu lý do, mới chạy lại với `--cho-phep-ngan "<lý do của người dùng>"`
+   (lý do ghi vào `trang-thai.json:cho_phep_ngan`). Không tự đặt lý do.
 6. Shorts đăng **sau** video dài: buổi tối dựng Shorts (`video-dung` mục 7, thêm vào `dong-goi.json:shorts`), sáng hôm sau đăng từng Short: `uv run python -m tttc.dang short ../videos/<slug> <i>` (giờ lấy từ `dong-goi.json:shorts[i]`). Lệnh từ chối nếu Short chưa có biên nhận `duyet-short` hoặc tệp/tiêu đề/giờ đã đổi sau khi duyệt: quay lại cho người dùng xem, không tự chạy `duyet-short`.
 7. Đăng bình luận mở đầu (để ghim) điều hướng người xem nếu cần bằng:
    `uv run python -m tttc.dang comment <video_id> "<nội dung bình luận>"`

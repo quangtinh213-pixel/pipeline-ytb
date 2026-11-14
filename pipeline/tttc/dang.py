@@ -4,6 +4,7 @@ import errno
 import json
 import os
 import re
+import subprocess
 import sys
 import time
 import unicodedata
@@ -109,6 +110,42 @@ def _guard(video_dir: Path) -> None:
         raise PermissionError("Thiếu biên nhận duyệt hoặc tệp đã thay đổi, cần duyệt lại trước khi upload")
 
 
+# Cổng định dạng (docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md mục 1.2): video dài 2:21 và 5:47 đăng như video dài
+# thì trông như kênh tin tự động tóm tin và gần như không được thử; tin chỉ đủ vài phút thì làm Shorts.
+DAI_TOI_THIEU = 420.0  # giây (7:00)
+
+
+def thoi_luong(path: Path) -> float | None:
+    """Thời lượng thật của tệp video (ffprobe); None nếu không có tệp hoặc không đọc được."""
+    if not Path(path).is_file():
+        return None
+    r = subprocess.run(["ffprobe", "-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", str(path)],
+                       capture_output=True, text=True)
+    try:
+        return float(r.stdout.strip().splitlines()[0])
+    except (IndexError, ValueError):
+        return None
+
+
+def mmss(giay: float) -> str:
+    return f"{int(giay) // 60}:{int(giay) % 60:02d}"
+
+
+def kiem_thoi_luong(d: Path, cho_phep_ngan: str | None = None) -> None:
+    """Từ chối đăng dạng video dài khi final.mp4 < 7:00, trừ khi có lý do (ghi vào trang-thai.json:cho_phep_ngan)."""
+    giay = thoi_luong(d / "final.mp4")
+    if giay is None:
+        raise ValueError("Không đo được thời lượng final.mp4 (ffprobe), kiểm tệp trước khi đăng")
+    if giay >= DAI_TOI_THIEU:
+        return
+    if cho_phep_ngan is None:
+        raise ValueError(f"Video dài {mmss(giay)} < {mmss(DAI_TOI_THIEU)}: không đăng dạng video dài, cắt thành Shorts. "
+                         "Muốn đăng vẫn đăng thì chạy lại với --cho-phep-ngan \"<lý do>\"")
+    if len(cho_phep_ngan.strip()) < 5:
+        raise ValueError("--cho-phep-ngan cần lý do cụ thể (ít nhất 5 ký tự)")
+    tt.set_field(d, "cho_phep_ngan", {"ly_do": cho_phep_ngan.strip(), "giay": giay})
+
+
 MAX_THUMB_BYTES = 2 * 1024 * 1024
 THUMB_MIMES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
 
@@ -185,17 +222,20 @@ def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
 
 
 def upload(video_dir, date_vn: str, time_vn: str, youtube=None, tracker: Path = TRACKER,
-           playlist_id: str | None = None) -> str:
+           playlist_id: str | None = None, cho_phep_ngan: str | None = None) -> str:
     d = Path(video_dir)
     with _lock(d / ".dang.lock"):
-        return _upload(d, date_vn, time_vn, youtube, Path(tracker), playlist_id)
+        return _upload(d, date_vn, time_vn, youtube, Path(tracker), playlist_id, cho_phep_ngan)
 
 
-def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlist_id: str | None) -> str:
+def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlist_id: str | None,
+            cho_phep_ngan: str | None = None) -> str:
     state = tt.load(d)
     if state["steps"]["dang"]["status"] == "xong":
         return state["video_id"]
     _guard(d)
+    if not state.get("video_id"):  # video đã tạo trên YouTube (chạy lại sau lỗi) thì không chặn nữa
+        kiem_thoi_luong(d, cho_phep_ngan)
     for w in kiem_tra_gio_vang(time_vn):
         print(f"⚠️  {w}")
     vid = state.get("video_id")
@@ -332,5 +372,7 @@ if __name__ == "__main__":
         print(upload_short(sys.argv[2], int(sys.argv[3])))
     elif sys.argv[1] == "comment":
         print(binh_luan_ghim(client(), sys.argv[2], sys.argv[3]))
-    else:
-        print(upload(sys.argv[1], sys.argv[2], sys.argv[3]))
+    else:  # python -m tttc.dang <thư mục> <dd/mm/yyyy> <HH:MM> [--cho-phep-ngan "<lý do>"]
+        a = sys.argv[1:]
+        ngan = a[a.index("--cho-phep-ngan") + 1] if "--cho-phep-ngan" in a and a.index("--cho-phep-ngan") + 1 < len(a) else None
+        print(upload(a[0], a[1], a[2], cho_phep_ngan=ngan))

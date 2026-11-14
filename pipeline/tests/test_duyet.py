@@ -203,3 +203,14 @@ def test_review_2_flags_thumbnail_not_on_locked_template(tmp_path):
     assert "Phương án 1: Lỗi: thumbnail" not in html
     assert "Phương án 2: Lỗi: thumbnail không theo khuôn đã khóa" in html
     assert "Phương án 3: Lỗi: thumbnail không theo khuôn đã khóa" in html
+
+
+def test_review_2_bao_loi_video_dai_duoi_7_phut(tmp_path, monkeypatch):
+    from tttc import dang
+    d = _video2(tmp_path)
+    (d / "final.mp4").write_bytes(b"x")
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: 141.0)
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "Lỗi: Video dài 2:21" in html and "Shorts" in html
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: 600.0)
+    assert "Lỗi: Video dài" not in duyet.render_review_2(d).read_text(encoding="utf-8")

@@ -47,7 +47,9 @@ Không làm trong 14 ngày (giữ đúng "đóng băng" của bản đánh giá,
 
 `TU_CAM_XUC` đổi tên thành `TU_GIAT_GAN` và chuyển sang danh sách **cấm**. Sửa `tests/test_tieu_de.py` theo. Ghi luật mới vào skill `yt-package` để phương án sinh ra đúng từ đầu.
 
-### 1.2 Cổng định dạng thật ở chặng đăng
+### 1.2 Cổng định dạng thật ở chặng đăng – **đã làm 15/11**
+
+> Đã làm: `dang.kiem_thoi_luong` đo `final.mp4` bằng ffprobe trước khi tạo video; dưới 7:00 thì từ chối, không đo được cũng từ chối. Muốn vẫn đăng thì truyền `--cho-phep-ngan "<lý do>"` (≥ 5 ký tự), lý do và số giây ghi vào `trang-thai.json:cho_phep_ngan`. Lần chạy lại sau khi video đã có ID thì không chặn nữa. Trang duyệt 2 cũng báo lỗi sớm khi video dưới 7:00. Đo thử trên máy: chặn đúng Microsoft (2:20) và 7-Zip (2:15).
 
 **Hiện tại:** `phong_cach.kiem_thoi_luong_thuc` chỉ ước thời lượng từ số từ kịch bản và chỉ **cảnh báo**. Video Microsoft 2:21 và 7-Zip 2:15 vẫn đi qua như video dài.
 

@@ -66,6 +66,7 @@ class FakeYT:
 @pytest.fixture
 def video(tmp_path, monkeypatch):
     monkeypatch.setattr(dung, "check_av", lambda *_: [])
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: 600.0)  # tệp giả "x": mặc định coi là video 10 phút
     d = tmp_path / "videos" / "2099-11-13-goi-ai"
     (d / "thumbnails").mkdir(parents=True)
     (d / "shorts").mkdir()
@@ -401,3 +402,41 @@ def test_doi_bao_bi_khong_lam_short_mat_duyet(video, tmp_path):
 def test_tieu_de_co_dau_nho_lon_bi_tu_choi():
     with pytest.raises(ValueError):
         dang._check_text("Giá <10 triệu", "", [])
+
+
+def test_upload_tu_choi_video_dai_duoi_7_phut(video, tmp_path, monkeypatch):
+    _approve(video)
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: 135.0)
+    yt = FakeYT()
+    with pytest.raises(ValueError, match=r"2:15.*Shorts"):
+        dang.upload(video, "13/11/2099", "19:00", youtube=yt, tracker=tmp_path / "t.csv")
+    assert yt.log == [] and tt.load(video)["steps"]["dang"]["status"] != "xong"
+
+
+def test_upload_tu_choi_khi_khong_do_duoc_thoi_luong(video, tmp_path, monkeypatch):
+    _approve(video)
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: None)
+    with pytest.raises(ValueError, match="(?i)không đo được"):
+        dang.upload(video, "13/11/2099", "19:00", youtube=FakeYT(), tracker=tmp_path / "t.csv")
+
+
+def test_upload_ngan_duoc_qua_khi_co_ly_do_va_ghi_vao_trang_thai(video, tmp_path, monkeypatch):
+    _approve(video)
+    monkeypatch.setattr(dang, "thoi_luong", lambda _p: 347.0)
+    with pytest.raises(ValueError, match="lý do"):
+        dang.upload(video, "13/11/2099", "19:00", youtube=FakeYT(), tracker=tmp_path / "t.csv", cho_phep_ngan="  ")
+    vid = dang.upload(video, "13/11/2099", "19:00", youtube=FakeYT(), tracker=tmp_path / "t.csv",
+                      cho_phep_ngan="tin nóng cần ra trong ngày")
+    assert vid == "vid123"
+    ghi = tt.load(video)["cho_phep_ngan"]
+    assert ghi["ly_do"] == "tin nóng cần ra trong ngày" and ghi["giay"] == 347.0
+
+
+def test_thoi_luong_doc_bang_ffprobe(tmp_path):
+    import subprocess
+    mp4 = tmp_path / "v.mp4"
+    subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "lavfi", "-i", "color=c=blue:s=64x36:d=2",
+                    "-pix_fmt", "yuv420p", str(mp4)], check=True)
+    assert abs(dang.thoi_luong(mp4) - 2.0) < 0.1
+    (tmp_path / "hong.mp4").write_bytes(b"x")
+    assert dang.thoi_luong(tmp_path / "hong.mp4") is None and dang.thoi_luong(tmp_path / "khong-co.mp4") is None

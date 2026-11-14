@@ -95,6 +95,10 @@ def render_review_2(video_dir) -> Path:
     warns = check(_read(d / "kich-ban.md"), nguon)
     warns += [f"Nguồn [#{n['id']}] là số sơ bộ ({n['gia_tri']}): video phải nói rõ 'sơ bộ'"
               for n in nguon if n["trang_thai"] == "so-bo"]
+    giay = dang.thoi_luong(d / "final.mp4")
+    if giay is not None and giay < dang.DAI_TOI_THIEU:
+        warns.append(f"Lỗi: Video dài {dang.mmss(giay)} < {dang.mmss(dang.DAI_TOI_THIEU)} – cổng đăng sẽ từ chối dạng video dài; "
+                     "nên cắt thành Shorts, hoặc khi đăng ghi --cho-phep-ngan \"<lý do>\"")
     if (d / "canh.json").exists() and (d / "giong-timing.json").exists():
         dd, cham = d / "dao-dien.json", d / "dao-dien-cham.json"
         warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json")),
