@@ -178,6 +178,85 @@ def uoc_tinh_phut(script_md: str, wpm: float) -> float:
     return len(_split(script_md)[1]) / wpm
 
 
+# Luật 40 giây đầu (15/11/2026, docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md mục 1.3). Ba video có đường giữ chân
+# mất ~1/3 người xem trước giây 49, rơi mạnh đúng ở câu nói về việc đọc tài liệu ("chi tiết lạ", "một dòng nhỏ") và khi
+# mở nhiều câu hỏi cùng lúc; đối thủ kể thẳng: mốc giờ, sự kiện, số, một người Việt hoặc giá cụ thể, rồi một câu hỏi.
+# Chỉ cảnh báo (không chặn duyệt 1); không gộp vào kiem() để mốc nền giọng văn cũ vẫn so được.
+MO_DAU_GIAY, KHOP_GIAY = 40, 15
+MOC_THOI_GIAN = re.compile(
+    r"\b(?:ngày|tháng)\s+\w+|\bthứ (?:hai|ba|tư|năm|sáu|bảy)\b|\bchủ nhật\b|\b(?:sáng|trưa|chiều|tối|đêm|rạng sáng)\b"
+    r"|\bhôm (?:qua|nay|kia)\b|\btuần (?:này|trước|qua)\b|\bnăm (?:ngoái|nay)\b|\b\d{1,2}/\d{1,2}\b|\bgiờ (?:việt nam|hà nội)\b",
+    re.I)
+NEO_VIET_NAM = re.compile(
+    r"(?<!cộng )\bđồng\b|\bngười việt\b|\b(?:hà nội|tp hcm|thành phố hồ chí minh|sài gòn|đà nẵng|huế|cần thơ|hải phòng)\b"
+    r"|\bmột (?:nhân viên|lập trình viên|tài xế|người bán|chủ tiệm|sinh viên|kỹ sư|giáo viên|công nhân)\b", re.I)
+# Thực thể quá chung để coi là "đã nhắc chủ thể của tiêu đề"
+THUC_THE_CHUNG = {r"\bai\b", r"\bchip\b", r"\bbán dẫn\b", r"\bthông tư\b", r"\bnghị định\b", r"\bram\b", r"\bssd\b",
+                  r"\bcrypto\b"}
+
+
+def _wpm(wpm: float | None) -> float:
+    if wpm:
+        return float(wpm)
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8")) if CONFIG.exists() else {}
+    return float(cfg.get("vieneu", {}).get("wpm_du_kien") or 249)
+
+
+def _dau(script_md: str, giay: float, wpm: float | None) -> str:
+    """Lời đọc (giữ thẻ [#id]) trong `giay` giây đầu, ước theo số từ ở tốc độ wpm."""
+    n, seen, out = int(_wpm(wpm) * giay / 60), 0, []
+    for t in " ".join(tts.spoken_paragraphs(script_md, keep_tags=True)).split():
+        if seen >= n:
+            break
+        out.append(t)
+        seen += not tts.TAG.fullmatch(t)
+    return " ".join(out)
+
+
+def kiem_mo_dau(script_md: str, wpm: float | None = None) -> list[str]:
+    """Cảnh báo cho 40 giây đầu của video dài: lời nói về việc kể chuyện, > 1 câu hỏi, thiếu mốc thời gian/neo Việt Nam."""
+    if loai_cua(script_md) is not None:
+        return []  # template ngắn có hook riêng
+    dau = _dau(script_md, MO_DAU_GIAY, wpm)
+    if not dau.strip():
+        return []
+    low, cam, out = dau.lower(), json.loads(TU_CAM.read_text(encoding="utf-8")), []
+    meta = [p for p in cam.get("mo_dau", []) if p in low]
+    if meta:
+        out.append(f"Cảnh báo: {MO_DAU_GIAY} giây đầu nói về việc kể chuyện («{'», «'.join(meta)}») – kể thẳng sự kiện; "
+                   "người xem rơi mạnh đúng ở những câu này")
+    cau_hoi = [x.strip() for x in re.findall(r"[^.!?…]*\?", tts.TAG.sub("", dau))]
+    if len(cau_hoi) > 1:
+        out.append(f"Cảnh báo: {MO_DAU_GIAY} giây đầu có {len(cau_hoi)} câu hỏi ({' '.join(cau_hoi)}) – "
+                   "chỉ treo một câu hỏi, kể chuyện để dẫn tới nó")
+    if not MOC_THOI_GIAN.search(low):
+        out.append(f"Cảnh báo: {MO_DAU_GIAY} giây đầu thiếu mốc thời gian (ngày, thứ, sáng/tối, giờ Việt Nam)")
+    if not NEO_VIET_NAM.search(low):
+        out.append(f"Cảnh báo: {MO_DAU_GIAY} giây đầu thiếu neo cụ thể cho người Việt (một người Việt, một nơi, một giá bằng đồng)")
+    return out
+
+
+def kiem_khop_tieu_de(script_md: str, tieu_de: str, wpm: float | None = None) -> list[str]:
+    """Cảnh báo khi chủ thể hoặc con số của tiêu đề chưa xuất hiện trong 15 giây đầu (tiêu đề hứa một đằng, mở đầu nói một nẻo)."""
+    from tttc import tieu_de as td
+    dau = tts.TAG.sub("", _dau(script_md, KHOP_GIAY, wpm))
+    if not dau.strip() or not tieu_de.strip():
+        return []
+    gon = lambda x: " ".join(x.lower().replace("-", " ").split())
+    out, low = [], gon(dau)
+    cfg = json.loads(CONFIG.read_text(encoding="utf-8")) if CONFIG.exists() else {}
+    phat_am = {gon(k): gon(v) for k, v in cfg.get("vieneu", {}).get("phat_am", {}).items()}  # lời đọc hay viết theo phiên âm
+    rieng = [m.group(0) for pat in td.THUC_THE if pat not in THUC_THE_CHUNG and (m := re.search(pat, tieu_de, re.I))]
+    cach_viet = {f for e in rieng for f in (gon(e), phat_am.get(gon(e))) if f}
+    if rieng and not any(re.search(rf"\b{re.escape(f)}\b", low) for f in cach_viet):
+        out.append(f"Cảnh báo: tiêu đề nhắc «{', '.join(dict.fromkeys(rieng))}» nhưng {KHOP_GIAY} giây đầu chưa nói tới")
+    co = {v for _, v, _ in kiem_so._claims(dau)}
+    for raw, v, _ in kiem_so._claims(tieu_de):
+        if v not in co:
+            out.append(f"Cảnh báo: tiêu đề có số «{raw}» nhưng {KHOP_GIAY} giây đầu chưa nói tới")
+    return out
+
+
 def kiem_loai_bai_chinh(script_md: str) -> list[str]:
     """Cảnh báo nếu kịch bản video chính bị gắn thẻ 'Loại:' của template ngắn."""
     loai = loai_cua(script_md)
@@ -206,6 +285,7 @@ def main(video_dir: str) -> int:
     if wpm:
         print(f"ước tính {uoc_tinh_phut(script, wpm):.1f} phút ở {wpm:.0f} từ/phút (config vieneu.wpm_du_kien)")
         msgs += kiem_thoi_luong_thuc(script, wpm=wpm)
+    msgs += kiem_mo_dau(script, wpm=wpm)
     for m in msgs:
         print("-", m)
     loi = sum(m.startswith("Lỗi") for m in msgs)

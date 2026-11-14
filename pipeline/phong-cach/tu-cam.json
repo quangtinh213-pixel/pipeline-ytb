@@ -5,5 +5,8 @@
   "mo_bai": ["bạn đã bao giờ tự hỏi", "trong kỷ nguyên số ngày nay"],
   "ket_bai": ["hãy nhớ rằng", "hãy bắt đầu hành trình ngay hôm nay"],
   "dich_tho": ["hãy nhìn đúng", "như các bạn đã biết", "không thể phủ nhận", "trong thế giới ngày nay",
-               "hãy cùng nhau", "tóm lại bằng", "điều quan trọng cần lưu ý", "chúng ta sẽ cùng"]
+               "hãy cùng nhau", "tóm lại bằng", "điều quan trọng cần lưu ý", "chúng ta sẽ cùng"],
+  "mo_dau": ["mình đọc lại", "đọc lại văn bản", "chi tiết lạ", "một dòng nhỏ", "ít ai đọc", "ít ai để ý",
+             "mình tìm thấy", "mình phát hiện", "mình tách ra", "kênh đã kể", "video trước", "dưới mô tả",
+             "đường dẫn", "link bên dưới"]
 }

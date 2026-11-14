@@ -55,7 +55,17 @@ Không làm trong 14 ngày (giữ đúng "đóng băng" của bản đánh giá,
 
 **Đề xuất:** trong `dang._guard`, đo `final.mp4` (ffprobe). Video dài < 7:00 thì **từ chối upload** dạng video dài, in lời khuyên "cắt thành Shorts". Chỉ cho qua khi có cờ `--cho-phep-ngan` kèm lý do ghi vào `trang-thai.json`. Cổng này nằm sau điểm duyệt nên không thay quyết định của bạn, chỉ bắt bạn quyết định có chủ ý.
 
-### 1.3 Luật 40 giây đầu thành máy kiểm (`phong_cach`)
+### 1.3 Luật 40 giây đầu thành máy kiểm (`phong_cach`) – **đã làm 15/11**
+
+> Đã làm: `phong_cach.kiem_mo_dau` (cảnh báo ở duyệt 1 và lệnh `phong_cach`) và `phong_cach.kiem_khop_tieu_de` (cảnh báo từng phương án ở duyệt 2). Cụm "nói về việc kể chuyện" nằm ở `phong-cach/tu-cam.json:mo_dau`. Khớp tiêu đề nhận cả cách viết phiên âm trong `vieneu.phat_am` (thêm "7-Zip" → "Bảy Díp"). Luật được thêm vào thẻ phong cách mục 3.1. Chạy thử trên 8 kịch bản cũ:
+> - Bắt đúng các câu bản đánh giá đã khớp tay: "chi tiết lạ" (máy cũ), "một dòng nhỏ / ít ai đọc" (Grab), "mình tách ra" (lá thư), "mình đọc lại" (siết chip).
+> - Bắt các mở đầu 2–4 câu hỏi.
+> - Bắt tiêu đề "CEO Nvidia xin lỗi" mà 15 giây đầu chưa nhắc Nvidia.
+>
+> Giới hạn:
+> - Kịch bản có dòng `Loại:` (template ngắn, như Microsoft, 7-Zip) được bỏ qua.
+> - Chưa kiểm được chuyện mở đầu phản bác câu hỏi của tiêu đề (cần người đọc).
+> - 40 giây ước theo số từ ở tốc độ `wpm_du_kien`, chưa theo mốc giọng thật.
 
 Bản đánh giá mục 7.2 tìm ra ba lỗi lặp lại bằng cách khớp tay đường giữ chân với phụ đề. Biến chúng thành hàm `phong_cach.kiem_mo_dau(script_md, wpm)`, chạy trên phần lời ứng với 40 giây đầu:
 
