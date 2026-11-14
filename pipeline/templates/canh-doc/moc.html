@@ -1,0 +1,51 @@
+<template>
+  <style>
+    /* Mẫu dọc 1080×1920 cho Short: chữ hook + con số lớn. Khung 0 phải đủ chữ và số (feed Shorts hiện khung đầu trước khi phát),
+       nên chữ và số chỉ phóng nhẹ về 1, không đi từ trong suốt. Vùng an toàn lấy từ --at-* do compose đặt. */
+    #root { position: absolute; inset: 0; }
+    #root .mc-wrap { position: absolute; left: 70px; right: var(--at-phai); top: var(--at-tren);
+                     bottom: calc(var(--at-duoi) + var(--phu-de, 240px));
+                     display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    #root .mc-chu { color: var(--ink); font: 900 104px/1.1 var(--font-display); letter-spacing: -0.025em;
+                    transform-origin: left center; }
+    #root .mc-so { margin-top: 36px; color: var(--accent); font: 900 220px/1 var(--font-display); letter-spacing: -0.04em;
+                   white-space: nowrap; transform-origin: left center; }
+    #root .nen-vang .mc-so, #root .nen-kem .mc-so { color: var(--ink); }
+    #root .mc-gach { width: 62%; height: 16px; margin-top: 18px; background: var(--accent); border-radius: 8px;
+                     transform-origin: left center; }
+    #root .nen-vang .mc-gach { background: var(--ink); }
+    #root .mc-nhan { margin-top: 34px; color: var(--ink); font: 800 64px/1.18 var(--font-display); }
+    #root .mc-nguon { margin-top: 30px; color: var(--muted); font: 500 30px/1.25 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="moc" data-width="1080" data-height="1920"
+       data-composition-variables='[{"id":"chu","type":"string","label":"Chữ hook (≤ 8 từ)","default":"Chữ hook"},{"id":"so","type":"string","label":"Con số hiển thị","default":""},{"id":"nhan","type":"string","label":"Dòng dưới","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="mc-san" class="san">
+      <div id="mc-wrap" class="mc-wrap">
+        <div id="mc-chu" class="mc-chu" data-var-text="chu"></div>
+        <div id="mc-so" class="mc-so chu-grad" data-var-text="so"></div>
+        <div id="mc-gach" class="mc-gach vach-sang"></div>
+        <div id="mc-nhan" class="mc-nhan" data-var-text="nhan"></div>
+        <div id="mc-nguon" class="mc-nguon" data-var-text="nguon"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#mc-san").classList.add("nen-" + (v.nen || "toi"));
+    const so = document.querySelector("#mc-so"), coSo = String(v.so || "").trim() !== "";
+    if (!coSo) { so.style.display = "none"; document.querySelector("#mc-gach").style.display = "none"; }
+    // số dài co cỡ chữ cho vừa bề rộng khối (khung trừ vùng an toàn), đo bằng chuỗi cuối cùng
+    const rong = document.querySelector("#mc-wrap").clientWidth;
+    if (coSo && so.scrollWidth > rong) so.style.fontSize = Math.floor(220 * rong / so.scrollWidth) + "px";
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#mc-chu", { scale: 1.08 }, { scale: 1, duration: 0.35, ease: "power3.out" }, 0);
+    if (coSo) {
+      tl.fromTo("#mc-so", { scale: 1.08 }, { scale: 1, duration: 0.45, ease: "back.out(2)" }, 0);
+      tl.fromTo("#mc-gach", { scaleX: 0 }, { scaleX: 1, duration: 0.4, ease: "power3.inOut" }, 0.15);
+    }
+    tl.fromTo("#mc-nhan", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.25 }, at(0, 0.5));
+    tl.fromTo("#mc-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(0, 0.5) + 0.2);
+    window.__timelines["moc"] = tl;
+  </script>
+</template>

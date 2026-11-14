@@ -62,9 +62,16 @@ from tttc.tron_am import tron
 PIPE = Path(__file__).resolve().parent.parent
 TPL, SVG, CONFIG = PIPE / "templates" / "canh", PIPE / "svg", PIPE / "config.json"
 SFX = PIPE / "am-thanh" / "sfx"
+# Short dọc gốc (canh.json có "khuon": "doc"): mẫu cảnh vẽ thẳng cho 1080×1920, không thu nhỏ sân khấu ngang.
+TPL_DOC = PIPE / "templates" / "canh-doc"
+DOC_W, DOC_H = 1080, 1920
+# Vùng giao diện Shorts che (tên kênh, tiêu đề, nút bấm), px; mẫu dọc lấy qua biến CSS --at-*. Chỉnh theo máy thật ở đây.
+AN_TOAN = {"tren": 220, "duoi": 380, "phai": 140}
+DAI_PHU_DE = 240  # dải phụ đề từng từ nằm ngay trên vùng dưới; mẫu dọc chừa ra qua --phu-de
 PREFIX = {"minh-hoa": "mh-", "bieu-do": "bd-", "so-lon": "sl-", "nhan-vat": "nv-", "trang-nguon": "tn-",
           "chuong": "ch-", "trich-bao": "tb-", "b-roll": "br-", "quy-trinh": "qt-", "so-sanh": "ss-", "thoi-gian": "tg-", "ban-do": "bn-", "xep-hang": "xh-",
-          "chu-dong": "cd-", "phan-tram": "pt-", "mo-dau": "md-", "ket-thuc": "kt-"}
+          "chu-dong": "cd-", "phan-tram": "pt-", "mo-dau": "md-", "ket-thuc": "kt-",
+          "moc": "mc-", "bang-chung": "bc-", "anh": "ad-", "doi-chieu": "dc-", "ket": "kc-"}
 # Mốc mặc định (giây tính từ đầu cảnh) của các bước trong mỗi mẫu, theo thứ tự canh.json:nhip.
 DEFAULT_STEPS = {
     "minh-hoa": [0.72, 0.5, 0.58],     # nhãn, đạo cụ 1, đạo cụ 2
@@ -78,6 +85,7 @@ DEFAULT_STEPS = {
     "phan-tram": [0.35, 0.6],          # vòng bắt đầu chạy, dòng ý nghĩa
     "mo-dau": [],
     "ket-thuc": [],
+    "moc": [0.5],                      # dòng dưới
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 # Màu phụ theo ý nghĩa (canh.json: sac): (nhấn, bóng, bóng tối, màu chữ trên nhấn). Mặc định không ghi sac = vàng thương hiệu.
@@ -231,6 +239,8 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
                 "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
     if m == "mo-dau":
         return {"cau": c.get("cau", "")}
+    if m == "moc":
+        return {"chu": c["chu"], "so": c.get("so", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
     if m == "ket-thuc":
         return {k: c[k] for k in ("cau", "nut", "nut_xong", "khung") if c.get(k)} | ({"moi": c["moi"]} if c.get("moi") else {})
     raise ValueError(f"mẫu không có: {m}")
@@ -371,7 +381,8 @@ def moc_boi(c: dict, words: list[dict]) -> list[float]:
     return out
 
 
-def nhan_boi(c: dict, idx: int, a0: float, words: list[dict]) -> tuple[list[str], list[str], list[tuple[str, float, float]]]:
+def nhan_boi(c: dict, idx: int, a0: float, words: list[dict], w: int = 1920,
+             h: int = 1080) -> tuple[list[str], list[str], list[tuple[str, float, float]]]:
     """Thẻ HTML, lệnh GSAP và tiếng pop cho các nhãn bồi dần (boi) và thanh tóm tắt (tom_tat) của một cảnh bắt đầu ở a0."""
     dur = round(c["end"] - c["start"], 3)
     tags, js, sfx = [], [], []
@@ -386,7 +397,7 @@ def nhan_boi(c: dict, idx: int, a0: float, words: list[dict]) -> tuple[list[str]
         mau = f"background:{nen};color:{chu};" if b.get("chu") else ""
         tags.append(f'<div id="{bid}" class="clip boi{"" if b.get("chu") else " boi-tem"}" data-start="{round(a0 + t, 3)}" '
                     f'data-duration="{round(max(dur - t, 0.3), 3)}" data-track-index="2" '
-                    f'style="left:{b["x"] * 1920:.0f}px;top:{b["y"] * 1080:.0f}px;{mau}">{noi}</div>')
+                    f'style="left:{b["x"] * w:.0f}px;top:{b["y"] * h:.0f}px;{mau}">{noi}</div>')
         js.append(f'tl.fromTo("#{bid}", {{ xPercent: -50, yPercent: -50, scale: 0, opacity: 0 }}, '
                   f'{{ xPercent: -50, yPercent: -50, scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }}, {a0 + t:.3f});')
         sfx.append(("pop", a0 + t, 0.2))
@@ -444,8 +455,8 @@ def _tho_js(sid: str, dur: float) -> str:
             f'duration: {round(dur / (2 * n), 3)}, ease: "sine.inOut", yoyo: true, repeat: {2 * n - 1} }}, 0); }}\n    ')
 
 
-def _scene_file(mau: str, sid: str, video: str = "", dur: float = 0.0) -> str:
-    s = theme.cssify((TPL / f"{mau}.html").read_text(encoding="utf-8")).replace("__VIDEO__", f"assets/broll/{video}")
+def _scene_file(mau: str, sid: str, video: str = "", dur: float = 0.0, tpl: Path = TPL) -> str:
+    s = theme.cssify((tpl / f"{mau}.html").read_text(encoding="utf-8")).replace("__VIDEO__", f"assets/broll/{video}")
     s = s.replace("/*__DONG__*/", (TPL / "dong.js").read_text(encoding="utf-8"))
     s = s.replace(f'data-composition-id="{mau}"', f'data-composition-id="{sid}"')
     s = s.replace(f'__timelines["{mau}"]', f'__timelines["{sid}"]')
@@ -521,13 +532,21 @@ def phu_de(timing: dict, scenes: list[dict], t0: float, total: float, doc: bool)
 
 def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int] | None = None,
             out: str = "composition", short_hook: str | None = None,
-            short_cta: str = "▶ Xem bản đầy đủ ở video liên kết") -> Path:
+            short_cta: str = "▶ Xem bản đầy đủ ở video liên kết", goc=None) -> Path:
+    """Ghép trang HyperFrames. canh.json có "khuon": "doc" → Short dọc gốc 1080×1920 (bỏ qua w, h); goc là thư mục video
+    cha, nơi đọc nguon.json, anh/, broll/, nguon/ (mặc định chính video_dir)."""
     d = Path(video_dir)
-    scenes = _read_json(d / "canh.json", {"scenes": []})["scenes"]
+    cj = _read_json(d / "canh.json", {"scenes": []})
+    scenes, doc = cj["scenes"], cj.get("khuon") == "doc"
+    if doc and scene_range is not None:
+        raise ValueError("Short dọc gốc có canh.json riêng, không cắt từ video dài (bỏ scene_range)")
+    if doc:
+        w, h = DOC_W, DOC_H
+    g = Path(goc) if goc is not None else d
     timing = _read_json(d / "giong-timing.json", {"duration": 0, "words": []})
-    by_id = {n["id"]: n for n in _read_json(d / "nguon.json", [])}
-    credits = {c["tep"]: c["ghi_cong"] for c in _read_json(d / "anh" / "ghi-cong.json", [])}
-    broll_credits = {c["tep"]: c["ghi_cong"] for c in _read_json(d / "broll" / "ghi-cong.json", [])}
+    by_id = {n["id"]: n for n in _read_json(g / "nguon.json", [])}
+    credits = {c["tep"]: c["ghi_cong"] for c in _read_json(g / "anh" / "ghi-cong.json", [])}
+    broll_credits = {c["tep"]: c["ghi_cong"] for c in _read_json(g / "broll" / "ghi-cong.json", [])}
     i, j = scene_range or (0, len(scenes))
     nens = grounds(scenes)[i:j]
     scenes = scenes[i:j]
@@ -548,8 +567,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                 t = re.sub(old, new, t, flags=re.I)
             (f.with_name(f"{f.stem}@{k}.svg")).write_text(t, encoding="utf-8", newline="\n")
     for sub in ("anh", "nguon", "broll"):
-        if (d / sub).exists():
-            shutil.copytree(d / sub, o / "assets" / sub)
+        if (g / sub).exists():
+            shutil.copytree(g / sub, o / "assets" / sub)
     kit = nhan_vat.doc_kit()  # có bộ nhân vật PNG thì dùng, không thì nhân vật SVG cũ
     if kit:
         (o / "assets" / "nv").mkdir()
@@ -584,13 +603,14 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     nhan_tags, nhan_js = [], []  # nhãn bồi dần + thanh tóm tắt, nằm trong sân khấu (Shorts thu nhỏ cùng hình)
     for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
-        page = _scene_file(c["mau"], sid, c.get("video", ""), c["end"] - c["start"])
-        if h > w:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
+        page = _scene_file(c["mau"], sid, c.get("video", ""), c["end"] - c["start"], TPL_DOC if doc else TPL)
+        if h > w and not doc:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
             page = page.replace("</style>", "#root [id$=\"-br-ghi-cong\"], #root [id$=\"-nguon\"] { background: rgba(0,0,0,0.6) !important; "
                                 "color: #fff !important; padding: 6px 16px; border-radius: 10px; }</style>", 1)
         (o / "compositions" / f"{sid}.html").write_text(page, encoding="utf-8", newline="\n")
         st = steps(c, timing.get("words", []))
-        sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
+        if not doc:  # shortcut: mẫu dọc chưa có tiếng riêng theo mẫu, chỉ tiếng lướt ở đường nối; thêm khi tỉ lệ ở lại đã vượt 40%
+            sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
         extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng
         lop, bien = nen_mau(nen)
         vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=lop, nhip=json.dumps(st), **extra),
@@ -600,18 +620,20 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             vals = re.sub(r"assets/svg/(?!nen-dat|tui-)([\w-]+)\.svg", rf"assets/svg/\1@{sac}.svg", vals)
             bien += f"--accent:{SAC[sac][0]};--accent-ink:{SAC[sac][3]};--tint:16%"
         style = f' style="{bien}"' if bien else ""
-        tags, js, ev = nhan_boi(c, idx, round(c["start"] - t0, 3), timing.get("words", []))
+        tags, js, ev = nhan_boi(c, idx, round(c["start"] - t0, 3), timing.get("words", []), *((w, h) if doc else ()))
         nhan_tags += tags
         nhan_js += js
         sfx += ev
         vals = vals.replace("'", "&#39;")
         hosts.append(f'<div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html"\n'
                      f'           data-start="{round(c["start"] - t0, 3)}" data-duration="{round(c["end"] - c["start"], 3)}"'
-                     f' data-track-index="1" data-track-kind="graphics" data-width="1920" data-height="1080"{style}\n'
+                     f' data-track-index="1" data-track-kind="graphics" data-width="{w if doc else 1920}" data-height="{h if doc else 1080}"{style}\n'
                      f"           data-variable-values='{vals}'></div>")
 
     trs, tr_js = [], []
-    for k, kind in transitions(scenes):
+    if doc:  # Short dọc gốc: cắt thẳng kèm tiếng lướt ngắn; mống mắt/chớp tối/ba lớp quét tính theo khung ngang
+        sfx += [("whoosh-short", round(c["start"] - t0 - 0.3, 3), 0.25) for c in scenes[1:]]
+    for k, kind in ([] if doc else transitions(scenes)):
         seam = round(scenes[k]["start"] - t0, 3)
         a = round(max(0.0, seam - 0.3), 3)
         if kind != "dip":
@@ -688,7 +710,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     audio = [f'<audio id="giong" src="assets/giong.mp3" data-start="0" data-media-start="{t0}" '
              f'data-duration="{total}" data-volume="1"></audio>']
 
-    vertical = h > w
+    vertical = h > w and not doc  # nhánh cũ: sân khấu ngang thu nhỏ trong khung dọc
     # Shorts: sân khấu ngang thu nhỏ 0,5625 đặt giữa khung dọc, phụ đề to bên dưới, hook banner phía trên.
     stage_open = ('<div id="san-khau" style="position:absolute;left:0;top:560px;width:1920px;height:1080px;'
                   'transform:scale(0.5625);transform-origin:0 0">') if vertical else ""
@@ -707,10 +729,13 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
     nhan1, nhan2, thanh = theme.TH["nhan"][1], theme.TH["nhan"][2], theme.TH["thanh"]
     vien_toi = float(_render_cfg().get("vien_toi", 0.28))  # viền tối điện ảnh quanh khung; 0 = tắt
-    cap_css = ("bottom: 400px; font-size: 76px; max-width: 960px;" if vertical
+    cap_css = (f"bottom: {AN_TOAN['duoi'] + 40}px; font-size: 68px; max-width: {DOC_W - 2 * AN_TOAN['phai']}px;" if doc
+               else "bottom: 400px; font-size: 76px; max-width: 960px;" if vertical
                else "bottom: 36px; font-size: 44px; max-width: 1500px;")
+    an_toan = (f' style="--at-tren:{AN_TOAN["tren"]}px;--at-duoi:{AN_TOAN["duoi"]}px;--at-phai:{AN_TOAN["phai"]}px;'
+               f'--phu-de:{DAI_PHU_DE}px"') if doc else ""
     hop_css = ("color: #fff; font-weight: 900; line-height: 1.25; letter-spacing: -0.01em; -webkit-text-stroke: 14px "
-               f"{nen}; paint-order: stroke fill; text-shadow: 0 8px 24px rgba(0,0,0,0.55);" if vertical else
+               f"{nen}; paint-order: stroke fill; text-shadow: 0 8px 24px rgba(0,0,0,0.55);" if h > w else
                f"background: rgba(NEN_RGB,0.82); padding: 6px 16px; border-radius: 10px; font-weight: 700; line-height: 1.5;"
                " box-decoration-break: clone; -webkit-box-decoration-break: clone;")
     base = re.sub(r"1920px|1080px", lambda m: f"{w}px" if m.group(0) == "1920px" else f"{h}px",
@@ -775,12 +800,12 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       #vien-toi {{ position: absolute; inset: 0; z-index: 7; pointer-events: none;
                   background: radial-gradient(ellipse 80% 75% at 50% 48%, transparent 58%, rgba(0,0,0,{vien_toi}) 100%); }}
       .cap .hop {{ display: inline-block; color: {muc}; {hop_css.replace("NEN_RGB", nen_rgb)} }}
-      .cap .w {{ display: inline-block; transform-origin: 50% 70%;{" margin: 0 0.05em;" if vertical else ""} }}
+      .cap .w {{ display: inline-block; transform-origin: 50% 70%;{" margin: 0 0.05em;" if h > w else ""} }}
       .cap .nb {{ font-weight: 900; }}{grain_css}{short_hook_css}{short_cta_css}
     </style>
   </head>
   <body>
-    <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="{w}" data-height="{h}">
+    <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="{w}" data-height="{h}"{an_toan}>
       {stage_open}
       {chr(10).join(hosts)}
       {chr(10).join(nhan_tags)}

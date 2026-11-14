@@ -804,3 +804,80 @@ def test_source_page_passes_highlight_color_and_zoom():
                     "vien": "do", "zoom": 3}, by_id, {})
     assert v["vien"] == dung.SAC["do"][0] and v["zoom"] == 3
     assert dung._vars({"id": "c", "mau": "trang-nguon", "anh": "p.png", "nguon_id": "p1"}, by_id, {})["zoom"] == 0
+
+
+# --- Short dọc gốc: canh.json có "khuon": "doc" (spec 2026-11-15-shorts-doc-goc mục 4.4–4.5) ---
+MOC_1 = {"id": "d1", "mau": "moc", "start": 0, "end": 3, "chu": "Máy cũ còn rẻ không", "so": "522.500 đ",
+         "nhan": "giá gói Plus", "nguon_id": "p1"}
+MOC_2 = {"id": "d2", "mau": "moc", "start": 3, "end": 6, "chu": "Tính ra mỗi năm"}
+TIMING_DOC = {"duration": 6.0, "words": [{"w": "Máy", "start": 0.1, "end": 0.4}, {"w": "cũ.", "start": 0.5, "end": 0.9}],
+              "paragraphs": []}
+
+
+def _ngan(video, scenes):
+    (video / "anh").mkdir(exist_ok=True)
+    (video / "anh" / "may.jpg").write_bytes(b"jpg")
+    (video / "nguon").mkdir(exist_ok=True)
+    (video / "nguon" / "gia.png").write_bytes(b"png")
+    d = video / "ngan" / "1"
+    d.mkdir(parents=True)
+    (d / "canh.json").write_text(json.dumps({"khuon": "doc", "scenes": scenes}, ensure_ascii=False), encoding="utf-8")
+    (d / "giong-timing.json").write_text(json.dumps(dict(TIMING_DOC, duration=scenes[-1]["end"])), encoding="utf-8")
+    (d / "giong.mp3").write_bytes(b"mp3")
+    return d
+
+
+@pytest.fixture
+def ngan(video):
+    return _ngan(video, [MOC_1, MOC_2])
+
+
+def test_compose_doc_khong_co_san_khau_thu_nho(ngan, video):
+    html = (dung.compose(ngan, goc=video) / "index.html").read_text(encoding="utf-8")
+    assert 'id="san-khau"' not in html and 'id="short-hook"' not in html and 'id="short-cta"' not in html
+    assert html.count('data-width="1080" data-height="1920"') == 3 and 'data-width="1920"' not in html  # root + 2 cảnh
+    assert 'id="tr-' not in html
+    assert "--at-tren:220px" in html and "--at-duoi:380px" in html and "--at-phai:140px" in html
+    assert "width: 1080px; height: 1920px" in html  # base.css theo khung dọc
+
+
+def test_compose_doc_doc_nguon_va_anh_tu_thu_muc_cha(ngan, video):
+    out = dung.compose(ngan, goc=video)
+    assert (out / "assets" / "anh" / "may.jpg").is_file() and (out / "assets" / "nguon" / "gia.png").is_file()
+    vals = _host_vals((out / "index.html").read_text(encoding="utf-8"))
+    assert vals["d1"]["nguon"] == dung._source_line(NGUON[0]) != ""
+    assert (vals["d1"]["chu"], vals["d1"]["so"], vals["d1"]["nhan"]) == ("Máy cũ còn rẻ không", "522.500 đ", "giá gói Plus")
+    assert vals["d2"]["so"] == ""
+
+
+def test_compose_doc_co_whoosh_o_duong_noi(ngan, video):
+    html = (dung.compose(ngan, goc=video) / "index.html").read_text(encoding="utf-8")
+    assert re.findall(r'src="assets/sfx/([\w-]+)\.mp3" data-start="([\d.]+)" data-volume="([\d.]+)"', html) == \
+        [("whoosh-short", "2.7", "0.25")]
+
+
+def test_compose_doc_co_phu_de_tung_tu(ngan, video):
+    html = (dung.compose(ngan, goc=video) / "index.html").read_text(encoding="utf-8")
+    assert 'id="cap-0"' in html and "bottom: 420px" in html
+
+
+def test_compose_doc_tu_choi_scene_range(ngan, video):
+    with pytest.raises(ValueError, match="scene_range"):
+        dung.compose(ngan, goc=video, scene_range=(0, 1))
+
+
+def test_compose_doc_scene_file_dung_mau_doc_va_tien_to(ngan, video):
+    page = (dung.compose(ngan, goc=video) / "compositions" / "d1.html").read_text(encoding="utf-8")
+    assert 'data-composition-id="d1"' in page and 'id="d1-mc-chu"' in page and '__timelines["d1"]' in page
+
+
+def test_mau_moc_khung_0_da_du_chu():
+    t = (dung.TPL_DOC / "moc.html").read_text(encoding="utf-8")
+    assert 'data-width="1080" data-height="1920"' in t
+    assert not re.search(r'fromTo\("#mc-(?:chu|so)"[^)]*?\{[^}]*opacity:\s*0', t)
+    assert all(v in t for v in ("var(--at-tren)", "var(--at-duoi)", "var(--at-phai)"))
+
+
+def test_compose_vertical_cu_van_thu_nho(video):
+    html = (dung.compose(video, w=1080, h=1920, scene_range=(0, 2), out="short-1") / "index.html").read_text(encoding="utf-8")
+    assert 'id="san-khau"' in html and 'id="short-cta"' in html

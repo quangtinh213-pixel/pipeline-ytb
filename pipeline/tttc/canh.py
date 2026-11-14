@@ -12,7 +12,7 @@ MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "tr
        "chu-dong", "phan-tram", "mo-dau", "ket-thuc"}
 # Mẫu cảnh dọc 1080×1920 của Short viết riêng (templates/canh-doc); chỉ hợp lệ khi canh.json có "khuon": "doc"
 MAU_DOC = {"moc", "bang-chung", "anh", "doi-chieu", "ket"}
-MOC_MAX_TU, SO_MAX_KY_TU, TOM_TAT_MAX_TU = 8, 12, 14  # chữ hook, chuỗi số và dòng tóm tắt phải vừa bề rộng 1080 px
+MOC_MAX_TU, SO_MAX_KY_TU = 8, 12  # chữ hook và chuỗi số phải vừa bề rộng 1080 px (tom_tat: _check_boi đã giới hạn)
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -159,8 +159,6 @@ def _check_doc(c: dict, goc: Path | None) -> list[str]:
             out.append(f"Lỗi: {cid} vung phải là [x, y, w, h] trong 0–1 và nằm trọn trong ảnh, đang là {v}")
         if not chuoi(c.get("tom_tat")):
             out.append(f"Lỗi: {cid} bang-chung thiếu tom_tat (một dòng tiếng Việt dưới bằng chứng)")
-        elif len(c["tom_tat"].split()) > TOM_TAT_MAX_TU:
-            out.append(f"Cảnh báo: {cid} tom_tat dài {len(c['tom_tat'].split())} từ (≤ {TOM_TAT_MAX_TU})")
         if not c.get("nguon_id"):
             out.append(f"Lỗi: {cid} bang-chung thiếu nguon_id")
     elif mau == "anh":
