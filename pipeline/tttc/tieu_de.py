@@ -1,22 +1,26 @@
-"""Bộ kiểm tra (Linter) và chấm điểm tiêu đề video YouTube theo chuẩn Pipeline 2.0.
+"""Kiểm tra (linter) và chấm điểm tiêu đề video YouTube.
 
-Tiêu chí bắt buộc:
-1. Từ cảm xúc/cảnh báo mạnh (Trigger words)
-2. Thực thể lớn/thương hiệu công nghệ (Anchor entities)
-3. Góc Việt Nam hoặc quyền lợi/túi tiền người xem (Relevance hook)
-4. Độ dài <= 100 ký tự, phần gây tò mò nằm trong 50 ký tự đầu.
+Luật 15/11/2026 (docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md mục 1.1), rút từ số của kênh và đối thủ:
+tiêu đề "SỐC…!" được 27 view, "Sự thật vụ…!" 0–2 view; tiêu đề thắng của đối thủ có dạng
+`[sự kiện cụ thể có số]: [một câu hỏi Việt Nam/túi tiền]?`, không chấm than.
+
+Lỗi (chặn hợp lệ): rỗng, > 100 ký tự, có < >, từ giật gân, dấu "!", hai móc chồng nhau, chữ in hoa cả từ tiếng Việt.
+Cảnh báo (trừ điểm): thiếu con số, thiếu góc Việt Nam/túi tiền, phần trước ":" thiếu thực thể, không theo dạng "…: …?".
 """
+
 import re
 from typing import NamedTuple
 
-# 1. Từ kích thích cảm xúc / giật gân / cảnh báo
-TU_CAM_XUC = [
-    r"\bsốc\b", r"\bcảnh báo\b", r"\bsự thật\b", r"\bnguy cơ\b", r"\bmất trắng\b",
-    r"\bbất ngờ\b", r"\bcấm\b", r"\bhủy bỏ\b", r"\bhủy\b", r"\btẩy chay\b",
-    r"\bđắt gấp\b", r"\bchiêu trò\b", r"\bcạn tiền\b", r"\bbốc hơi\b", r"\bsụp đổ\b",
-    r"\bbẫy\b", r"\bchấn động\b", r"\btừ chức\b", r"\bôm nợ\b", r"\bhết cửa\b",
-    r"\blật tẩy\b", r"\bvỡ mộng\b", r"\bthảm họa\b", r"\bkỷ lục\b", r"\bkhẩn cấp\b"
+# 1. Từ giật gân: bị cấm ở mọi vị trí (thị trường đang ngập kênh tin tự động dùng đúng các từ này)
+TU_GIAT_GAN = [
+    r"\bsốc\b", r"\bchấn động\b", r"\bkhẩn cấp\b", r"\bbất ngờ\b", r"\bsự thật\b", r"\blật tẩy\b",
+    r"\bthảm họa\b", r"\bgây bão\b", r"\brúng động\b", r"\bkhông thể tin\b",
 ]
+# Nhãn mở đầu kiểu bản tin tự động ("CẢNH BÁO: …", "NÓNG: …"); "Microsoft cảnh báo …" thì vẫn được
+NHAN_MO_DAU = re.compile(r"^\s*(?:cảnh báo|nóng|khẩn|tin nóng)\s*[:!\-–]", re.I)
+# Nhãn in hoa bất kỳ trước dấu ":" đầu tiên ("NGUY CƠ:", "BẤT NGỜ:") cũng là nhãn bản tin tự động
+NHAN_IN_HOA = re.compile(r"^\s*([^:]{2,20}?)\s*:(?=\s)")
+HAI_CHAM = re.compile(r":(?=\s|$)")  # chỉ dấu ":" tách vế; "15:30", "D:1" không tính
 
 # 2. Thực thể lớn, thương hiệu, nhân vật công nghệ
 THUC_THE = [
@@ -39,8 +43,73 @@ GOC_VIET_NAM = [
     r"\bôm nợ\b", r"\bmất tiền\b", r"\bhết cửa\b", r"\bchịu trận\b",
     r"\bhàng việt\b", r"\bcước\b", r"\bthuế\b", r"\blời hứa\b",
     r"\bmua máy\b", r"\bngười mua\b", r"\bdân buôn\b", r"\btiết kiệm\b",
-    r"\blãng phí\b", r"\blương\b", r"\bmất việc\b", r"\btúi ai\b"
+    r"\blãng phí\b", r"\blương\b", r"\bmất việc\b", r"\btúi ai\b",
+    r"\bgiá\b", r"\bphí\b", r"\btài xế\b", r"\bkhách\b"
 ]
+
+
+def _cum_in_hoa(t: str) -> list[str]:
+    """Các cụm từ viết hoa toàn bộ, gộp từ liền nhau ("NGUY CƠ", "CẢNH BÁO")."""
+    out, cum = [], []
+    for w in re.findall(r"[^\W\d_]+|\S", t):
+        if len(w) >= 2 and w.isupper():
+            cum.append(w)
+            continue
+        if cum:
+            out.append(" ".join(cum))
+        cum = []
+    return out + ([" ".join(cum)] if cum else [])
+
+
+def _co(pats: list[str], text: str) -> bool:
+    return any(re.search(pat, text) for pat in pats)
+
+
+def kiem(tieu_de: str) -> list[str]:
+    """Lỗi của tiêu đề (rỗng nếu hợp lệ). Thiếu số/góc Việt Nam/thực thể chỉ là cảnh báo, xem cham_diem."""
+    t = tieu_de.strip()
+    if not t:
+        return ["Lỗi: Tiêu đề không được để trống"]
+    loi = []
+    if len(t) > 100:
+        loi.append(f"Lỗi: Tiêu đề dài {len(t)} ký tự (tối đa 100 ký tự)")
+    if "<" in t or ">" in t:
+        loi.append("Lỗi: Tiêu đề có ký tự < hoặc > (YouTube từ chối lúc upload)")
+    lower = t.lower()
+    giat = [m.group(0) for pat in TU_GIAT_GAN for m in re.finditer(pat, lower)]
+    if NHAN_MO_DAU.search(lower):
+        giat.insert(0, NHAN_MO_DAU.search(lower).group(0).rstrip(":!-– ").strip())
+    elif (m := NHAN_IN_HOA.match(t)) and m.group(1).isupper() and not m.group(1).isascii():
+        giat.insert(0, m.group(1).strip().lower())
+    if giat:
+        loi.append(f"Lỗi: Từ giật gân ({', '.join(dict.fromkeys(giat))}) – kiểu kênh tin tự động, đã thua trên số của kênh; "
+                   "nói thẳng sự kiện và con số")
+    if "!" in t:
+        loi.append("Lỗi: Có dấu chấm than – bỏ đi, để con số và câu hỏi tạo tò mò")
+    if t.count("?") + t.count("!") > 1 or len(HAI_CHAM.findall(t)) > 1:
+        loi.append("Lỗi: Hai móc chồng nhau – chỉ giữ một câu hỏi, dạng «[sự kiện + số]: [một câu hỏi]?»")
+    hoa = [c for c in _cum_in_hoa(t) if not c.isascii()]
+    if hoa:
+        loi.append(f"Lỗi: Chữ in hoa cả từ ({' '.join(dict.fromkeys(hoa))}) – chỉ viết tắt như AI, GPU, USD được in hoa")
+    return loi
+
+
+def canh_bao(tieu_de: str) -> list[str]:
+    """Cảnh báo về nội dung tiêu đề theo công thức «[sự kiện + số]: [một câu hỏi Việt Nam/túi tiền]?»."""
+    t = tieu_de.strip()
+    if not t:
+        return []
+    lower, out = t.lower(), []
+    if not re.search(r"\d", t):
+        out.append("Cảnh báo: Thiếu con số (lấy từ nguon.json) – tiêu đề thắng của đối thủ luôn có số")
+    if not _co(GOC_VIET_NAM, lower):
+        out.append("Cảnh báo: Thiếu góc Việt Nam hoặc túi tiền người xem (Việt Nam, người dùng, giá tăng, túi ai…)")
+    truoc = HAI_CHAM.split(lower, maxsplit=1)[0] if HAI_CHAM.search(lower) else lower[:50]
+    if not _co(THUC_THE, truoc):
+        out.append("Cảnh báo: Phần đầu (trước dấu «:») thiếu thực thể cụ thể (Nvidia, Grab, iPhone, Microsoft…)")
+    if not HAI_CHAM.search(t) or not t.endswith("?"):
+        out.append("Gợi ý: Dạng tiêu đề thắng là «[sự kiện + số]: [một câu hỏi]?»")
+    return out
 
 
 class KetQuaKiemTra(NamedTuple):
@@ -50,74 +119,14 @@ class KetQuaKiemTra(NamedTuple):
     canh_bao: list[str]
 
 
-def kiem(tieu_de: str) -> list[str]:
-    """Kiểm tra tính hợp lệ của tiêu đề. Trả về danh sách lỗi (rỗng nếu đạt chuẩn)."""
-    t = tieu_de.strip()
-    loi = []
-    
-    # Giới hạn độ dài tuyệt đối của YouTube
-    if not t:
-        return ["Lỗi: Tiêu đề không được để trống"]
-    if len(t) > 100:
-        loi.append(f"Lỗi: Tiêu đề dài {len(t)} ký tự (tối đa 100 ký tự)")
-    if "<" in t or ">" in t:
-        loi.append("Lỗi: Tiêu đề có ký tự < hoặc > (YouTube từ chối lúc upload)")
-
-    lower = t.lower()
-    
-    # 1. Kiểm tra từ cảm xúc
-    co_cam_xuc = any(re.search(pat, lower) for pat in TU_CAM_XUC)
-    if not co_cam_xuc:
-        loi.append("Lỗi: Thiếu từ kích thích cảm xúc/cảnh báo (SỐC, CẢNH BÁO, BẤT NGỜ, NGUY CƠ, MẤT TRẮNG, CẤM...)")
-        
-    # 2. Kiểm tra thực thể lớn
-    co_thuc_the = any(re.search(pat, lower) for pat in THUC_THE)
-    if not co_thuc_the:
-        loi.append("Lỗi: Thiếu tên thực thể/thương hiệu công nghệ lớn (Nvidia, Apple, Grab, VinFast, iPhone, AI...)")
-        
-    # 3. Kiểm tra góc Việt Nam / túi tiền
-    co_goc_vn = any(re.search(pat, lower) for pat in GOC_VIET_NAM)
-    if not co_goc_vn:
-        loi.append("Lỗi: Thiếu góc liên quan Việt Nam hoặc túi tiền người xem (Việt Nam, túi tiền, người dùng, giá tăng, ôm nợ...)")
-        
-    return loi
-
-
 def cham_diem(tieu_de: str) -> KetQuaKiemTra:
-    """Chấm điểm tiêu đề trên thang điểm 10 và đưa ra khuyến nghị tối ưu."""
+    """Điểm 0–10: trừ 3 mỗi lỗi, 1 mỗi cảnh báo/gợi ý."""
     t = tieu_de.strip()
-    loi = kiem(t)
-    canh_bao = []
-    diem = 10
-    
     if not t:
         return KetQuaKiemTra(hop_le=False, diem=0, loi=["Tiêu đề trống"], canh_bao=[])
-        
-    lower = t.lower()
-    
-    # Trừ điểm lỗi cơ bản
-    for l in loi:
-        diem -= 2.5
-        
-    # Cảnh báo vùng an toàn 50 ký tự đầu tiên
-    dau_50 = lower[:50]
-    co_yeu_to_dau = (any(re.search(pat, dau_50) for pat in TU_CAM_XUC) or 
-                     any(re.search(pat, dau_50) for pat in THUC_THE))
-    if not co_yeu_to_dau:
-        canh_bao.append("Cảnh báo: 50 ký tự đầu chưa chứa từ gây sốc hoặc tên thương hiệu (dễ bị ẩn trên mobile)")
-        diem -= 1.0
-        
-    # Khuyến khích có dấu câu kịch tính (! hoặc ?)
-    if "?" not in t and "!" not in t:
-        canh_bao.append("Cảnh báo: Nên có dấu '?' hoặc '!' để tăng tỷ lệ click (CTR)")
-        diem -= 0.5
-        
-    # Khuyến khích có con số cụ thể
-    if not re.search(r"\d+", t):
-        canh_bao.append("Gợi ý: Thêm con số cụ thể (tỷ đô, %, triệu đồng) giúp tiêu đề đáng tin cậy hơn")
-        
-    diem = max(0, min(10, int(round(diem))))
-    return KetQuaKiemTra(hop_le=(len(loi) == 0), diem=diem, loi=loi, canh_bao=canh_bao)
+    loi, cb = kiem(t), canh_bao(t)
+    diem = max(0, min(10, 10 - 3 * len(loi) - len(cb)))
+    return KetQuaKiemTra(hop_le=not loi, diem=diem, loi=loi, canh_bao=cb)
 
 
 _KHAO_CUONG = {

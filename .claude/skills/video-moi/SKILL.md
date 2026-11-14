@@ -103,7 +103,10 @@ Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước
 ## 5. kiem
 
 1. (chạy sau mọi chỗ sửa giọng văn) `uv run python -m tttc.kiem ../videos/<slug>`; sửa tới khi `0 lỗi`.
-2. Kiểm tra tiêu đề chuẩn Pipeline 2.0: tiêu đề phải qua bộ linter `tttc.tieu_de` (chứa từ kích thích cảm xúc, thực thể lớn, góc Việt Nam/túi tiền, ≤ 100 ký tự). Chạy: `uv run python -c "from tttc.tieu_de import kiem; from pathlib import Path; lines = (Path('../videos/<slug>/kich-ban.md').read_text(encoding='utf-8').splitlines()); t = lines[0].replace('#', '').strip() if lines else ''; errs = kiem(t); print('Lỗi tiêu đề:', errs) if errs else print('Tiêu đề chuẩn 10/10')"`.
+2. Kiểm tiêu đề bằng `tttc.tieu_de` (luật 15/11/2026, `docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md` mục 1.1). Dạng: `[sự kiện cụ thể có số]: [một câu hỏi Việt Nam/túi tiền]?`, ví dụ "Grab giảm phí gần 3.000 tỷ: tiền về túi ai?".
+   **Lỗi:** từ giật gân (SỐC, BẤT NGỜ, CHẤN ĐỘNG, SỰ THẬT…), nhãn in hoa mở đầu ("CẢNH BÁO:", "NGUY CƠ:"), dấu "!", hai câu hỏi hoặc hai dấu ":", chữ tiếng Việt in hoa cả từ.
+   **Cảnh báo:** thiếu số, thiếu góc Việt Nam/túi tiền, phần trước ":" thiếu thực thể.
+   Chạy: `uv run python -c "from tttc.tieu_de import cham_diem; from pathlib import Path; lines = Path('../videos/<slug>/kich-ban.md').read_text(encoding='utf-8').splitlines(); t = lines[0].replace('#', '').strip() if lines else ''; kq = cham_diem(t); print(kq.diem, '/10', *kq.loi, *kq.canh_bao, sep='\n')"`.
 3. Dispatch một subagent độc lập (không chia sẻ ngữ cảnh) với `kich-ban.md` + `nguon.json` + ảnh chụp: nhiệm vụ là
    tìm câu nói quá nguồn (nguồn nói X, kịch bản nói hơn X), số lấy sai mục, thiếu cảnh báo sơ bộ. Sửa những gì nó tìm ra.
 4. `set_step(dir, "kiem", "xong")`.

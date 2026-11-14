@@ -198,6 +198,8 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 
 ## 5. dong-goi
 1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail theo ba tầng `nhan`/`so`/`hoi` của bước 2.
+   Tiêu đề theo luật `tttc.tieu_de` (xem skill `video-moi` bước kiểm tiêu đề): dạng `[sự kiện + số]: [một câu hỏi]?`, không giật gân,
+   không "!", không nhãn in hoa mở đầu. Phương án nào `tieu_de.kiem` còn lỗi thì viết lại trước khi dựng thumbnail, không đưa lên duyệt 2.
 2. Thumbnail – **một khuôn đã khóa: `ho-so`** (người dùng chốt 15/11/2026; `docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md` mục 5).
    Cả 3 phương án dùng `tttc.thumb.ho_so(anh, nhan, so, hoi, V/thumbnails/N.png, ghi_cong, tam=(x, y))`; chúng chỉ khác
    **chữ và ảnh**, không khác khuôn. Không dùng `thumb.make`, `thumb.khung`, CoDesign hay nền TobyFlow cho video dài nữa.
