@@ -483,7 +483,7 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
         if not pairs:
             return []
     elif c["mau"] in MAU_DOC:  # mẫu dọc ghi số dạng chuỗi hiển thị ("15,89 triệu"): tách số và quy mô như lời đọc
-        chuoi = [c.get("so")] if c["mau"] in ("moc", "ket") else             [(c.get(ve) or {}).get("so") for ve in ("tren", "duoi") if isinstance(c.get(ve), dict)] if c["mau"] == "doi-chieu" else             [c.get("tom_tat")] if c["mau"] == "bang-chung" else []
+        chuoi = [c.get("so")] if c["mau"] in ("moc", "ket") else             [(c.get(ve) or {}).get("so") for ve in ("tren", "duoi") if isinstance(c.get(ve), dict)] if c["mau"] == "doi-chieu" else []
         pairs = [(raw, sc) for t in chuoi if isinstance(t, str) for raw, _, sc in tokens(t)]
         if not pairs:
             return []
