@@ -10,6 +10,9 @@ from tttc.kiem import NUM, _scale, tokens, vi_value
 
 MAU = {"minh-hoa", "bieu-do", "so-lon", "nhan-vat", "trang-nguon", "chuong", "trich-bao", "b-roll", "quy-trinh", "so-sanh", "thoi-gian", "ban-do", "xep-hang",
        "chu-dong", "phan-tram", "mo-dau", "ket-thuc"}
+# Mẫu cảnh dọc 1080×1920 của Short viết riêng (templates/canh-doc); chỉ hợp lệ khi canh.json có "khuon": "doc"
+MAU_DOC = {"moc", "bang-chung", "anh", "doi-chieu", "ket"}
+MOC_MAX_TU, SO_MAX_KY_TU, TOM_TAT_MAX_TU = 8, 12, 14  # chữ hook, chuỗi số và dòng tóm tắt phải vừa bề rộng 1080 px
 SVG_DIR = Path(__file__).resolve().parent.parent / "svg"
 TOL = 0.5      # lệch cho phép giữa hình và tiếng (giây)
 EPS = 0.01     # sai số làm tròn giữa hai cảnh liền nhau
@@ -42,8 +45,11 @@ DOC_KIT = object()  # mặc định: đọc nhan-vat/kit.json; truyền None đ�
 
 
 def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | tuple = (),
-             video_dir: Path | None = None, kit=DOC_KIT) -> list[str]:
-    """Trả danh sách 'Lỗi: ...' (phải sửa) và 'Cảnh báo: ...' (nên xem)."""
+             video_dir: Path | None = None, kit=DOC_KIT, goc: Path | None = None) -> list[str]:
+    """Trả danh sách 'Lỗi: ...' (phải sửa) và 'Cảnh báo: ...' (nên xem).
+    goc: thư mục chứa anh/, broll/, nguon/ (thư mục video cha của một Short); không truyền thì dùng video_dir."""
+    goc = Path(goc) if goc is not None else (Path(video_dir) if video_dir is not None else None)
+    doc = scenes.get("khuon") == "doc"
     kit = nhan_vat.doc_kit() if kit is DOC_KIT else kit
     by_id = {n["id"]: n for n in nguon}
     msgs, ids = [], set(by_id)
@@ -65,8 +71,13 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         if cid in seen:
             msgs.append(f"Lỗi: trùng id cảnh {cid}")
         seen.add(cid)
-        if c["mau"] not in MAU:
-            msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}")
+        if not doc and c["mau"] in MAU_DOC:
+            msgs.append(f"Lỗi: {cid} mẫu dọc {c['mau']} chỉ dùng cho Short (canh.json cần \"khuon\": \"doc\")")
+        elif c["mau"] not in (MAU_DOC if doc else MAU):
+            msgs.append(f"Lỗi: {cid} dùng mẫu không có: {c['mau']}"
+                        + (f" (Short dọc gốc chỉ dùng {', '.join(sorted(MAU_DOC))})" if doc else ""))
+        elif doc:
+            msgs += _check_doc(c, goc)
         if c.get("dan") is not None:
             msgs += _check_dan(c, timing.get("words", []), kit)
         msgs += [f"Lỗi: {cid} {k} có vẻ là tiếng Anh: «{t}»; mọi chữ trên màn hình phải là tiếng Việt"
@@ -120,6 +131,55 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
             msgs.append(f"Lỗi: {cid} cần video broll/{c.get('video')} chưa tải")
     return msgs
+
+
+def _trong_01(v, n: int) -> bool:
+    return isinstance(v, (list, tuple)) and len(v) == n and all(isinstance(x, (int, float)) and 0 <= x <= 1 for x in v)
+
+
+def _check_doc(c: dict, goc: Path | None) -> list[str]:
+    """Trường bắt buộc và giới hạn chữ của một cảnh dùng mẫu dọc; tệp ảnh/video phải có trong thư mục cha (goc)."""
+    cid, mau, out = c["id"], c["mau"], []
+    chuoi = lambda v: isinstance(v, str) and bool(v.strip())
+    thieu_tep = lambda rel: goc is not None and not (goc / rel).is_file()
+    if mau in ("moc", "ket"):
+        if not chuoi(c.get("chu")):
+            out.append(f"Lỗi: {cid} {mau} thiếu chu")
+        elif mau == "moc" and len(c["chu"].split()) > MOC_MAX_TU:
+            out.append(f"Cảnh báo: {cid} chu dài {len(c['chu'].split())} từ (≤ {MOC_MAX_TU} từ để đọc được trong một giây)")
+        if chuoi(c.get("so")) and len(c["so"].strip()) > SO_MAX_KY_TU:
+            out.append(f"Cảnh báo: {cid} so «{c['so']}» dài hơn {SO_MAX_KY_TU} ký tự, dễ tràn khung 1080 px")
+    elif mau == "bang-chung":
+        if not chuoi(c.get("anh")):
+            out.append(f"Lỗi: {cid} bang-chung thiếu anh")
+        elif thieu_tep(c["anh"]):
+            out.append(f"Lỗi: {cid} cần ảnh {c['anh']} chưa có trong {goc}")
+        v = c.get("vung")
+        if not _trong_01(v, 4) or v[2] <= 0 or v[3] <= 0 or v[0] + v[2] > 1 + EPS or v[1] + v[3] > 1 + EPS:
+            out.append(f"Lỗi: {cid} vung phải là [x, y, w, h] trong 0–1 và nằm trọn trong ảnh, đang là {v}")
+        if not chuoi(c.get("tom_tat")):
+            out.append(f"Lỗi: {cid} bang-chung thiếu tom_tat (một dòng tiếng Việt dưới bằng chứng)")
+        elif len(c["tom_tat"].split()) > TOM_TAT_MAX_TU:
+            out.append(f"Cảnh báo: {cid} tom_tat dài {len(c['tom_tat'].split())} từ (≤ {TOM_TAT_MAX_TU})")
+        if not c.get("nguon_id"):
+            out.append(f"Lỗi: {cid} bang-chung thiếu nguon_id")
+    elif mau == "anh":
+        if chuoi(c.get("anh")) == chuoi(c.get("video")):
+            out.append(f"Lỗi: {cid} mẫu anh cần đúng một trong anh / video")
+        elif chuoi(c.get("anh")) and thieu_tep(c["anh"]):
+            out.append(f"Lỗi: {cid} cần ảnh {c['anh']} chưa có trong {goc}")
+        elif chuoi(c.get("video")) and thieu_tep(Path("broll") / c["video"]):
+            out.append(f"Lỗi: {cid} cần video broll/{c['video']} chưa tải")
+        if c.get("diem_giu") is not None and not _trong_01(c["diem_giu"], 2):
+            out.append(f"Lỗi: {cid} diem_giu phải là [x, y] trong 0–1, đang là {c['diem_giu']}")
+    elif mau == "doi-chieu":
+        for ve in ("tren", "duoi"):
+            x = c.get(ve)
+            if not (isinstance(x, dict) and chuoi(x.get("nhan")) and chuoi(x.get("so"))):
+                out.append(f"Lỗi: {cid} doi-chieu thiếu vế {ve} (cần nhan và so)")
+        if c.get("noi_bat") not in (None, "", "tren", "duoi"):
+            out.append(f"Lỗi: {cid} noi_bat phải là tren hoặc duoi, đang là {c['noi_bat']}")
+    return out
 
 
 NHAN_MAX_TU = 5  # nhãn dạng viên (pill) ≤ 5 từ; dòng dưới của so-lon là câu ngắn nên không tính
@@ -420,6 +480,11 @@ def _check_values(c: dict, srcs: list[dict], has_ref: bool) -> list[str]:
         pairs = [(raw, sc) for raw, _, sc in tokens(c.get("tu_khoa") or "")]
         if ch.get("so") is not None:
             pairs.append((ch["so"], _unit_scale(ch.get("truoc", "") + " " + ch.get("sau", ""))))
+        if not pairs:
+            return []
+    elif c["mau"] in MAU_DOC:  # mẫu dọc ghi số dạng chuỗi hiển thị ("15,89 triệu"): tách số và quy mô như lời đọc
+        chuoi = [c.get("so")] if c["mau"] in ("moc", "ket") else             [(c.get(ve) or {}).get("so") for ve in ("tren", "duoi") if isinstance(c.get(ve), dict)] if c["mau"] == "doi-chieu" else             [c.get("tom_tat")] if c["mau"] == "bang-chung" else []
+        pairs = [(raw, sc) for t in chuoi if isinstance(t, str) for raw, _, sc in tokens(t)]
         if not pairs:
             return []
     else:

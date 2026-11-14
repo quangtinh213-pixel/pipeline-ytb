@@ -612,3 +612,97 @@ def test_boi_tom_tat_tong_and_cards_are_validated(tmp_path):
     assert any("2–3 thẻ" in e for e in the([{"nguon_id": "g1", "tom_tat": "A"}]))
     assert any("khớp nguồn" in e for e in the([{"nguon_id": "g1", "tom_tat": "Sập 18 giờ"}, {"nguon_id": "g2", "tom_tat": "B"}]))
     assert any("nguon_id" in e for e in the([{"nguon_id": "zz", "tom_tat": "A"}, {"nguon_id": "g2", "tom_tat": "B"}]))
+
+
+# --- mẫu cảnh dọc của Short (spec 2026-11-15-shorts-doc-goc mục 4.4, 4.6) ---
+NGUON_GIA = [{"id": "g1", "gia_tri": "15,89 triệu đồng"}]
+
+
+def _doc(*canh_them, khuon="doc"):
+    sc = [dict({"id": f"d{i}", "start": i * 3.0, "end": i * 3.0 + 3.0}, **c) for i, c in enumerate(canh_them)]
+    d = {"scenes": sc}
+    if khuon:
+        d["khuon"] = khuon
+    return d, {"duration": len(sc) * 3.0, "words": []}
+
+
+def _goc(tmp_path):
+    (tmp_path / "nguon").mkdir()
+    (tmp_path / "anh").mkdir()
+    (tmp_path / "nguon" / "gia.png").write_bytes(b"x")
+    (tmp_path / "anh" / "may.jpg").write_bytes(b"x")
+    return tmp_path
+
+
+MOC = {"mau": "moc", "chu": "Máy cũ còn rẻ không", "so": "15,89 triệu", "nguon_id": "g1"}
+BANG_CHUNG = {"mau": "bang-chung", "anh": "nguon/gia.png", "vung": [0.1, 0.2, 0.5, 0.1],
+              "tom_tat": "Giá niêm yết 15,89 triệu", "nguon_id": "g1"}
+ANH = {"mau": "anh", "anh": "anh/may.jpg", "diem_giu": [0.3, 0.6], "nhan": "Máy cũ"}
+DOI_CHIEU = {"mau": "doi-chieu", "tren": {"nhan": "Máy cũ", "so": "15,89 triệu"},
+             "duoi": {"nhan": "Máy mới", "so": "15,89 triệu"}, "noi_bat": "duoi", "nguon_id": "g1"}
+KET = {"mau": "ket", "chu": "Vậy máy cũ còn rẻ không"}
+
+
+def test_khuon_doc_chap_nhan_nam_mau_doc(tmp_path):
+    d, t = _doc(MOC, BANG_CHUNG, ANH, DOI_CHIEU, KET)
+    assert _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=_goc(tmp_path))) == []
+
+
+def test_khuon_doc_tu_choi_mau_ngang(tmp_path):
+    d, t = _doc(MOC, {"mau": "so-lon", "so": 15.89, "sau": " triệu", "nguon_id": "g1"})
+    assert any("mẫu không có" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_mau_doc_ngoai_khuon_doc_la_loi(tmp_path):
+    d, t = _doc(MOC, khuon=None)
+    assert any("chỉ dùng cho Short" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_moc_chu_qua_8_tu_canh_bao(tmp_path):
+    d, t = _doc(dict(MOC, chu="Máy cũ bây giờ liệu có còn rẻ như trước không"))
+    assert any(m.startswith("Cảnh báo") and "8 từ" in m for m in canh.validate(d, t, tmp_path, NGUON_GIA))
+
+
+def test_moc_so_dai_hon_12_ky_tu_canh_bao(tmp_path):
+    d, t = _doc(dict(MOC, so="15,89 triệu đồng"))
+    assert any(m.startswith("Cảnh báo") and "12" in m for m in canh.validate(d, t, tmp_path, NGUON_GIA))
+
+
+def test_moc_thieu_chu_la_loi(tmp_path):
+    d, t = _doc({"mau": "moc", "so": "15,89 triệu", "nguon_id": "g1"})
+    assert any("chu" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_bang_chung_thieu_anh_trong_thu_muc_cha_la_loi(tmp_path):
+    d, t = _doc(MOC, dict(BANG_CHUNG, anh="nguon/x.png"))
+    assert any("nguon/x.png" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=_goc(tmp_path))))
+
+
+def test_bang_chung_vung_ngoai_0_1_la_loi(tmp_path):
+    d, t = _doc(MOC, dict(BANG_CHUNG, vung=[0.2, 0.2, 1.3, 0.1]))
+    assert any("vung" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=_goc(tmp_path))))
+    d, t = _doc(MOC, dict(BANG_CHUNG, vung=[0.8, 0.2, 0.5, 0.1]))  # x + w vượt mép phải
+    assert any("vung" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=tmp_path)))
+
+
+def test_anh_phai_co_dung_mot_trong_anh_video(tmp_path):
+    for c in ({"mau": "anh"}, {"mau": "anh", "anh": "anh/may.jpg", "video": "a.mp4"}):
+        d, t = _doc(MOC, c)
+        assert any("đúng một" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_doi_chieu_thieu_ve_la_loi(tmp_path):
+    d, t = _doc(MOC, {"mau": "doi-chieu", "tren": {"nhan": "Máy cũ", "so": "15,89 triệu"}, "nguon_id": "g1"})
+    assert any("duoi" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_so_tren_hinh_doc_phai_khop_nguon(tmp_path):
+    d, t = _doc(dict(MOC, so="16,5 triệu"))
+    assert any("không khớp nguồn" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+    d, t = _doc({"mau": "moc", "chu": "Máy cũ", "so": "15,89 triệu"})
+    assert any("thiếu nguon_id" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA)))
+
+
+def test_so_trong_tom_tat_bang_chung_phai_khop_nguon(tmp_path):
+    d, t = _doc(MOC, dict(BANG_CHUNG, tom_tat="Giá niêm yết 17 triệu"))
+    assert any("không khớp nguồn" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=_goc(tmp_path))))
