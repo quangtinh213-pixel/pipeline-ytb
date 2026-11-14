@@ -23,7 +23,9 @@ Không làm trong 14 ngày (giữ đúng "đóng băng" của bản đánh giá,
 
 ## 1. Ưu tiên 0 – sửa luật đang ngược số liệu (trước duyệt 2 của `nvidia-siet-chip`)
 
-### 1.1 `tieu_de`: đảo chiều luật chấm tiêu đề
+### 1.1 `tieu_de`: đảo chiều luật chấm tiêu đề – **đã làm 15/11**
+
+> Đã làm: lỗi = từ giật gân, nhãn in hoa mở đầu ("CẢNH BÁO:", "NGUY CƠ:"), "!", hai móc, chữ tiếng Việt in hoa cả từ; cảnh báo = thiếu số, thiếu góc Việt Nam/túi tiền (thêm "giá", "phí", "tài xế", "khách"), phần trước ":" thiếu thực thể. Dấu ":" chỉ tính khi theo sau là khoảng trắng ("D:1", "15:30" không tính). Chấm lại 24 phương án cũ: 9 phương án giật gân đều bị lỗi, không bắt nhầm tiêu đề sạch nào. Chưa làm: cảnh báo góc tầng thứ hai (chờ trường `goc` ở mục 3.1). Lưu ý: tiêu đề sạch không đủ để thắng (Grab đạt 10/10 nhưng 80 view/24 giờ); luật này chỉ gỡ cái đang kéo ngược.
 
 **Hiện tại** (`tttc/tieu_de.py`):
 - `kiem()` báo **lỗi** nếu tiêu đề *không có* từ trong `TU_CAM_XUC` ("sốc", "cảnh báo", "bất ngờ", "sự thật"…).
@@ -195,6 +197,7 @@ Chỉ đọc tiêu đề, giờ đăng, số công khai; không lấy lời, hì
 | Ngày | Việc | Module |
 |---|---|---|
 | 15–16/11 | 1.1 tiêu đề, 1.2 cổng thời lượng, 5 khóa khuôn (chờ bạn chốt khuôn) | `tieu_de`, `dang`, `duyet`, `thumb`, skill `yt-package`, `video-dung` |
+| 16–18/11 | **8.2 Shorts dọc gốc** (trước lứa Shorts kế tiếp) | `dung.compose` nhánh Shorts, skill `video-dung` mục 7 |
 | 17–18/11 | 1.3 kiểm 40 giây đầu, 1.4 giám sát + viết lại quy tắc quyết định | `phong_cach`, `giam_sat`, `docs/` |
 | 18–21/11 | 2.1 cột sổ, 2.2 khám nghiệm (đường giữ chân 3 video mới có từ ~17–18/11) | `theo_doi`, `dong-bo-view.py`, `kham` mới |
 | 22–24/11 | 3.1 radar định dạng, 3.2 chuỗi | `radar`, `dang`, `chuoi.json` |
@@ -216,3 +219,50 @@ Chỉ đọc tiêu đề, giờ đăng, số công khai; không lấy lời, hì
 2. Đồng ý **đổi định vị sang "tầng thứ hai" + chuỗi** cho 10 video dài kế tiếp.
 3. Video `2026-11-15-lo-hong-7zip-ai` (2:15): bản đánh giá khuyên chỉ đăng Shorts; `dong-goi.json` đã có 2 Shorts. Bạn quyết ở điểm duyệt.
 4. Thứ tự làm: đề xuất bắt đầu từ mục 1.1 + 1.2 vì rẻ nhất và đang gây hại trực tiếp.
+5. Shorts 7-Zip đã duyệt (hẹn 16/11 và 17/11) vẫn dựng theo kiểu cũ (mục 8.2): đăng như đã duyệt để có thêm một điểm số so sánh, hay dừng lại chờ dựng dọc gốc.
+
+---
+
+## 8. Bổ sung tối 15/11: số liệu YouTube Studio
+
+Nguồn: bản phân tích bạn dán từ YouTube Studio (số Studio, mình chưa tự truy vấn được). Bốn điểm, đối chiếu với số đã có và với mã:
+
+### 8.1 Giữ chân đầu video dài: khớp, giữ hướng mục 1.3
+
+- `E17SceQLG9I`: 97% → **72% ở giây 30** → 60% ở phút 1. Khớp đường giữ chân ở bản đánh giá mục 2.2 (67% ở 49 giây).
+- Đồng ý với lời khuyên "đưa mâu thuẫn chính lên 10 giây đầu" và "báo trước câu trả lời nằm ở đâu". Hai chỗ cần chỉnh cho khớp số của kênh:
+  - **Chỉ một vòng mở.** Câu trả lời được hứa chính là câu hỏi duy nhất của 40 giây đầu. Video Grab và Jensen mở 4 câu hỏi thì rơi mạnh nhất.
+  - Câu mở mẫu "Tại sao một tập đoàn ngàn tỷ USD lại phải xin lỗi…" thiếu neo cụ thể. Theo luật 1.3, câu mở cần mốc thời gian, con số có nguồn, người Việt hoặc giá cụ thể.
+- Mục tiêu giữ nguyên: còn ≥ 75% ở giây 30.
+
+### 8.2 Shorts: chỉ 9,6–18,9% người xem ở lại. Đây là phát hiện mới và quan trọng nhất
+
+**Đổi kết luận cũ.** Bản đánh giá mục 2.4 và 5.3 coi Shorts là "kênh khám phá duy nhất đang chạy đều" vì có 940 và 888 view. Số Studio cho thấy view đó đến từ việc YouTube đẩy Shorts lên feed, còn **81–90% người lướt qua ngay**. Short iPhone 15 Plus gần 1.000 view chỉ giữ được 9,64%. Tăng số lượng Shorts lúc này chỉ nhân thêm số lần bị lướt qua.
+
+**Nguyên nhân tìm thấy trong mã** (`dung.compose`, nhánh Shorts; khung giây 0,5 và giây 3 của Short Microsoft và 7-Zip):
+1. **Khung ngang thu nhỏ đặt giữa khung dọc.** Sân khấu 16:9 thu còn 0,5625 nên chỉ chiếm khoảng 1/3 chiều cao màn hình, phần còn lại là nền tối trống. Trên feed Shorts, hình như vậy trông như video quay ngang đăng nhầm.
+2. **Cắt từ giữa video dài.** Skill `video-dung` mục 7 chọn đoạn "trọn ý" trùng ranh giới cảnh, nên Short 7-Zip mở bằng câu "Thứ nhất," và một cảnh gần trống. Short Microsoft không có dòng hook ở khung đầu.
+3. Dòng `short_hook` chỉ là một băng chữ nhỏ ở trên, không phải câu nói đầu tiên.
+
+**Đề xuất (mức ưu tiên 0 cho Shorts, làm trước lứa Shorts kế tiếp):**
+- **Dựng dọc gốc:** cảnh đồ họa và số lớn bố trí lại cho khung 1080×1920 phủ kín. Ảnh và b-roll cắt dọc theo điểm giữ, không thu nhỏ cả sân khấu ngang.
+- **Giây đầu:** chữ lớn nêu vấn đề sát sườn kèm số (vd "Cấm nhập máy cũ: iPhone 15 Plus 15,89 triệu?") nằm ngay khung 0, và câu nói đầu tiên là câu hook. Không mở bằng câu nối ("Thứ nhất", "Còn", "Vậy").
+- **Kịch bản Short viết riêng** theo template Shorts (`docs/template-kich-ban.md`, hook 5–6 giây), dùng lại giọng và cảnh của video dài, không chỉ cắt một đoạn có sẵn.
+- **Cắt khoảng lặng:** nghỉ giữa câu trong Shorts ≤ 0,1 giây (video dài đang 0,14/0,32 giây).
+- **Đo:** thêm cột `o_lai_short` (tỉ lệ "ở lại xem") vào sổ. Chưa rõ Analytics API có trả số này không; trước mắt nhập tay từ Studio như CTR lúc đầu. Mục tiêu: trung vị ≥ 40% sau 10 Shorts dựng dọc gốc. Ngưỡng này là giả định, chỉnh sau khi có số.
+
+Việc này là sửa khâu dựng, nhưng không trái với "đóng băng tính năng" ở mục 0: đây là điểm nghẽn đã đo được, không phải nâng cấp theo nghiên cứu một chiều.
+
+### 8.3 Chuyển đổi đăng ký: 7 sub trên khoảng 2.000 người xem riêng biệt (~0,35%)
+
+- Đồng ý không kêu gọi chung chung. Lời mời đăng ký gắn với **tập kế tiếp của chuỗi** (mục 3.2): "Tập sau: … – bấm đăng ký để xem khi ra".
+- Chỉ hứa tập sau khi `chuoi.json` đã có tập đó trong kế hoạch, không hứa nội dung chưa chắc làm.
+- Đặt ở phần kết, sau câu trả lời tiêu đề và trước câu mời đoán số. Không đặt trong 60 giây đầu (luật 1.3).
+- Thêm vào `docs/phong-cach-kich-ban.md` mục kết và cho `phong_cach.kiem` kiểm: video thuộc chuỗi thì 80 từ cuối phải có câu nhắc tập sau.
+- "Chuyên mục cố định" là cùng ý với "lăng kính riêng nhất quán" (bản đánh giá mục 7.1). Chốt tên chuyên mục khi chốt định vị (mục 7, việc 2).
+
+### 8.4 Cầu nối Shorts → video dài: đồng ý, nhưng làm sau 8.2
+
+- Đã có trong mục 3.2–3.3: chuỗi, Short cùng chuỗi trỏ về video dài. "Video liên quan" vẫn do bạn gắn trong Studio (`bao_cao` sẽ in danh sách việc cần gắn).
+- Với 81–90% người lướt qua, cầu nối chưa có gì để chở. Thứ tự: sửa 8.2, rồi mới đo cầu nối.
+- "Cắt 2–3 góc gây tranh cãi làm mồi": làm theo 8.2 (Short viết riêng, mở bằng hook), không cắt nguyên đoạn từ video dài.
