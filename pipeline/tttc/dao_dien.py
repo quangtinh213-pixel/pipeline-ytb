@@ -6,6 +6,7 @@ Chạy: uv run python -m tttc.dao_dien ../videos/<slug>   (ghi canh.json, hinh-t
 """
 import copy
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -58,12 +59,27 @@ def hinh_thieu(dd: dict, svg_dir: Path = SVG_DIR) -> list[str]:
     return sorted(n for n in names if not (Path(svg_dir) / f"{n}.svg").exists())
 
 
+_SO_CHU = re.compile(r"\d|(?:nghìn|triệu|tỷ|trăm|phần trăm|lần|giờ|năm|USD|đồng)\b", re.I)
+
+
+def _la_diem_nhan(word: str) -> bool:
+    clean = word.strip(".,!?:;\"'()…“”‘’")
+    return bool(clean and (_SO_CHU.search(clean) or (clean[0].isupper() and len(clean) >= 2)))
+
+
 def _nhip_tu_dong(words: list[dict], start: float, end: float, n: int) -> list:
-    """n cụm 3 từ của lời đọc trong cảnh, bắt đầu ở các vị trí cách đều; ngắn quá thì không điền (mốc mặc định)."""
+    """n cụm 1–3 từ của lời đọc trong cảnh, ưu tiên cụm chứa số/tên riêng trong mỗi khoảng chia đều."""
     ws = [w for w in words if start - 0.01 <= w["start"] < end]
     if len(ws) < 3 + n:
         return [None] * n
-    return [" ".join(w["w"] for w in ws[min(round((k + 1) * len(ws) / (n + 1)), len(ws) - 3):][:3]) for k in range(n)]
+    out = []
+    for k in range(n):
+        lo = min(round(k * len(ws) / n), len(ws) - 1)
+        hi = max(lo + 1, min(round((k + 1) * len(ws) / n), len(ws)))
+        hit = next((idx for idx in range(lo, hi) if _la_diem_nhan(ws[idx]["w"])), None)
+        pos = min(max(hit if hit is not None else round((k + 1) * len(ws) / (n + 1)), 0), len(ws) - 3)
+        out.append(" ".join(w["w"] for w in ws[pos:pos + 3]))
+    return out
 
 
 def sinh_canh(dd: dict, khung: dict, timing: dict) -> dict:

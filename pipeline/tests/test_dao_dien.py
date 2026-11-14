@@ -109,3 +109,12 @@ def test_validate_malformed_file_is_error_not_crash(svg_dir):
 def test_main_missing_input_names_the_file_and_returns_1(tmp_path, capsys):
     assert dao_dien.main(str(tmp_path)) == 1
     assert "dao-dien.json" in capsys.readouterr().out
+
+
+def test_nhip_tu_dong_prefers_numbers_and_entities():
+    text = "hôm nay công ty Microsoft đã bị sập 18 giờ liên tiếp rồi đó"
+    words = [{"w": w, "start": i * 0.4, "end": i * 0.4 + 0.3} for i, w in enumerate(text.split())]
+    res = dao_dien._nhip_tu_dong(words, 0.0, 6.0, 2)
+    assert len(res) == 2
+    assert "Microsoft" in res[0]
+    assert "18" in res[1]

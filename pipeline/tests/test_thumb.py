@@ -127,3 +127,26 @@ def test_khung_takes_accent_and_background_from_theme(tmp_path, monkeypatch):
     img = Image.open(big).convert("RGB")
     assert img.getpixel((8, 360)) == (0, 170, 255) and img.getpixel((300, 700)) == (10, 11, 12)
 
+
+def test_make_and_khung_support_sac_do_accent(tmp_path):
+    red = theme.rgb(theme.TH["sac"]["do"][0])
+    big_make, _ = thumb.make([("CẢNH BÁO", "yellow")], tmp_path / "m.png", sac="do")
+    colors_make = {c for _, c in Image.open(big_make).convert("RGB").getcolors(1_000_000)}
+    assert red in colors_make
+
+    a = tmp_path / "a.png"
+    Image.new("RGB", (400, 400), (40, 40, 40)).save(a)
+    big_khung, _ = thumb.khung(None, a, ["SẬP", "18 GIỜ"], tmp_path / "k.png", sac="do")
+    img = Image.open(big_khung).convert("RGB")
+    assert img.getpixel((8, 360)) == red
+
+
+def test_khung_places_ghi_cong_at_bottom_left_away_from_bottom_right(tmp_path, monkeypatch):
+    monkeypatch.setattr(thumb, "NHAN_VAT", tmp_path / "khong-co.png")
+    a = tmp_path / "a.png"
+    Image.new("RGB", (400, 400), (40, 40, 40)).save(a)
+    big, _ = thumb.khung(None, a, ["MỘT"], tmp_path / "g.png", ghi_cong="Nguồn: Microsoft")
+    g = Image.open(big).convert("L")
+    assert g.crop((55, 670, 480, 715)).getextrema()[1] > 200  # chữ trắng nằm góc dưới trái
+    assert g.crop((700, 630, 1280, 720)).getextrema()[1] < 60  # góc dưới phải trống cho badge thời lượng
+

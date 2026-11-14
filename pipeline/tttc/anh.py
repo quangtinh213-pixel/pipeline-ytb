@@ -63,8 +63,9 @@ def download(item: dict, video_dir, get=requests.get) -> Path:
     path.write_bytes(r.content)
     log = d / "ghi-cong.json"
     credits = json.loads(log.read_text(encoding="utf-8")) if log.exists() else []
-    credits.append({"tep": path.name, "file": item["file"], "tac_gia": item["tac_gia"],
-                    "giay_phep": item["giay_phep"], "link": item["link"],
-                    "ghi_cong": f"{item['tac_gia']}, Wikimedia Commons, {item['giay_phep']}"})
+    entry = {"tep": path.name, "file": item["file"], "tac_gia": item["tac_gia"],
+             "giay_phep": item["giay_phep"], "link": item["link"],
+             "ghi_cong": f"{item['tac_gia']}, Wikimedia Commons, {item['giay_phep']}"}
+    credits = [c for c in credits if c.get("tep") != path.name] + [entry]
     log.write_text(json.dumps(credits, ensure_ascii=False, indent=1), encoding="utf-8", newline="\n")
     return path

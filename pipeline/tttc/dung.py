@@ -415,8 +415,9 @@ def phu_de(timing: dict, scenes: list[dict], t0: float, total: float, doc: bool)
     nhan = tu_nhan(words, scenes)
     muted, nhan0 = theme.TH["muted"], theme.TH["nhan"][0]
     idx = {id(w): k for k, w in enumerate(words)}
+    sub_words = [w for w in words if w["start"] >= t0 - 0.01 and w["end"] <= t0 + total + 0.01]
     tags, js = [], []
-    for k, g in enumerate(nhom_tu(timing, 22 if doc else 42)):
+    for k, g in enumerate(nhom_tu({"words": sub_words}, 22 if doc else 42)):
         a, b = g[0]["start"], g[-1]["end"]
         if a < t0 - 0.01 or b > t0 + total + 0.01:
             continue
@@ -442,7 +443,8 @@ def phu_de(timing: dict, scenes: list[dict], t0: float, total: float, doc: bool)
 
 
 def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int] | None = None,
-            out: str = "composition") -> Path:
+            out: str = "composition", short_hook: str | None = None,
+            short_cta: str = "▶ Xem bản đầy đủ ở video liên kết") -> Path:
     d = Path(video_dir)
     scenes = _read_json(d / "canh.json", {"scenes": []})["scenes"]
     timing = _read_json(d / "giong-timing.json", {"duration": 0, "words": []})
@@ -603,10 +605,21 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
              f'data-duration="{total}" data-volume="1"></audio>']
 
     vertical = h > w
-    # Shorts: sân khấu ngang thu nhỏ 0,5625 đặt giữa khung dọc, phụ đề to bên dưới.
+    # Shorts: sân khấu ngang thu nhỏ 0,5625 đặt giữa khung dọc, phụ đề to bên dưới, hook banner phía trên.
     stage_open = ('<div id="san-khau" style="position:absolute;left:0;top:560px;width:1920px;height:1080px;'
                   'transform:scale(0.5625);transform-origin:0 0">') if vertical else ""
     stage_close = "</div>" if vertical else ""
+    hook_text = (
+        (short_hook.strip() if short_hook else "")
+        or next(
+            (v for c in scenes for k in ("short_hook", "chuong", "tu_khoa", "nhan")
+             if (v := str(c.get(k) or "").strip())),
+            "",
+        )
+    ) if vertical else ""
+    short_hook_html = f'<div id="short-hook">{escape(hook_text)}</div>' if hook_text else ""
+    cta_text = short_cta.strip() if vertical and short_cta else ""
+    short_cta_html = f'<div id="short-cta">{escape(cta_text)}</div>' if cta_text else ""
     nhan0, nen, muc = theme.TH["nhan"][0], theme.TH["nen"], theme.TH["muc"]
     nhan1, nhan2, thanh = theme.TH["nhan"][1], theme.TH["nhan"][2], theme.TH["thanh"]
     vien_toi = float(_render_cfg().get("vien_toi", 0.28))  # viền tối điện ảnh quanh khung; 0 = tắt
@@ -616,11 +629,27 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                f"{nen}; paint-order: stroke fill; text-shadow: 0 8px 24px rgba(0,0,0,0.55);" if vertical else
                f"background: rgba(NEN_RGB,0.82); padding: 6px 16px; border-radius: 10px; font-weight: 700; line-height: 1.5;"
                " box-decoration-break: clone; -webkit-box-decoration-break: clone;")
-    base = theme.cssify((TPL / "base.css").read_text(encoding="utf-8")).replace("1920px", f"{w}px").replace("1080px", f"{h}px")
+    base = re.sub(r"1920px|1080px", lambda m: f"{w}px" if m.group(0) == "1920px" else f"{h}px",
+                  theme.cssify((TPL / "base.css").read_text(encoding="utf-8")))
     grain_css = (f"\n      #root::after {{ content: ''; position: absolute; inset: 0; background: url(assets/grain.png); "
                  f"opacity: {do_grain}; mix-blend-mode: overlay; pointer-events: none; z-index: 9; }}"
                  if do_grain > 0 else "")
     nen_rgb = ",".join(str(int(nen[i:i + 2], 16)) for i in (1, 3, 5))
+    short_hook_css = (
+        f"\n      #short-hook {{ position: absolute; top: 140px; left: 60px; right: 60px; text-align: center; z-index: 9; "
+        f"pointer-events: none; color: #fff; font: 900 68px/1.2 var(--font-display); text-transform: uppercase; "
+        f"letter-spacing: -0.02em; padding: 20px 28px; border-radius: 20px; "
+        f"background: rgba({nen_rgb},0.85); border: 4px solid {nhan0}; "
+        f"-webkit-text-stroke: 8px {nen}; paint-order: stroke fill; "
+        f"text-shadow: 0 6px 20px rgba(0,0,0,0.65); box-shadow: 0 12px 36px rgba(0,0,0,0.45); }}"
+        if short_hook_html else ""
+    )
+    short_cta_css = (
+        f"\n      #short-cta {{ position: absolute; bottom: 130px; left: 90px; right: 90px; text-align: center; z-index: 9; "
+        f"pointer-events: none; color: {nen}; background: {nhan0}; font: 800 34px/1.25 var(--font-display); "
+        f"padding: 14px 22px; border-radius: 999px; box-shadow: 0 10px 28px rgba(0,0,0,0.45); }}"
+        if short_cta_html else ""
+    )
     html = f"""<!doctype html>
 <html lang="vi">
   <head>
@@ -654,7 +683,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                   background: radial-gradient(ellipse 80% 75% at 50% 48%, transparent 58%, rgba(0,0,0,{vien_toi}) 100%); }}
       .cap .hop {{ display: inline-block; color: {muc}; {hop_css.replace("NEN_RGB", nen_rgb)} }}
       .cap .w {{ display: inline-block; transform-origin: 50% 70%;{" margin: 0 0.05em;" if vertical else ""} }}
-      .cap .nb {{ font-weight: 900; }}{grain_css}
+      .cap .nb {{ font-weight: 900; }}{grain_css}{short_hook_css}{short_cta_css}
     </style>
   </head>
   <body>
@@ -665,7 +694,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       {chr(10).join(trs)}
       {'<div id="vien-toi"></div>' if vien_toi > 0 else ""}
       {chr(10).join(dan_tags)}
-      {tien_do}
+      {tien_do}{f"{chr(10)}      {short_hook_html}" if short_hook_html else ""}{f"{chr(10)}      {short_cta_html}" if short_cta_html else ""}
       <div id="phu-de" class="clip" data-start="0" data-duration="{total}" data-track-index="5" data-track-kind="captions">
         {chr(10).join(caps)}
       </div>

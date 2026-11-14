@@ -81,6 +81,8 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
     if not n:
         return {"so_canh": 0}
     durs = [c["end"] - c["start"] for c in sc]
+    dau_30 = [c["end"] - c["start"] for c in sc if c.get("start", 0) < 30.0]
+    tb_giay_30s = sum(dau_30) / len(dau_30) if dau_30 else 0.0
     phut = max((sc[-1]["end"] - sc[0]["start"]) / 60, 1e-9)
     ti_le = {g: sum(c["mau"] in maus for c in sc) / n for g, maus in NHOM.items()}
     chay = best = 0
@@ -98,10 +100,18 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
     dau = sc[0]  # khung đầu phải có chữ hoặc số để giữ người xem (user duyệt 12/11/2026)
     mo_dau = dau["mau"] in {"so-lon", "so-sanh", "trich-bao", "bieu-do", "trang-nguon", "xep-hang", "phan-tram", "chu-dong"} or (
         dau["mau"] == "b-roll" and bool(dau.get("tu_khoa") or dau.get("chia")))
-    return {"so_canh": n, "tb_giay": sum(durs) / n, "duoi_1_5": sum(d < 1.5 for d in durs),
+    return {"so_canh": n, "tb_giay": sum(durs) / n, "tb_giay_30s": tb_giay_30s, "duoi_1_5": sum(d < 1.5 for d in durs),
             "tren_8": sum(d > 8 for d in durs), "ti_le": ti_le, "chay_dai_nhat": best,
             "su_kien_phut": (n + sum(map(len, steps)) + dan) / phut, "sfx_phut": sfx / phut,
             "toc_do": len(words) / phut, "mo_dau": mo_dau, "do_kho": do_kho(canh, dao_dien, cham)}
+
+
+def kiem_30s_dau(so_do: dict, max_tb: float = 3.5) -> list[str]:
+    """Cảnh báo nếu 30 giây đầu cắt cảnh chậm (trung bình > max_tb giây/cảnh)."""
+    tb = so_do.get("tb_giay_30s", 0)
+    if tb > max_tb:
+        return [f"Cảnh báo: 30 giây đầu cắt cảnh chậm (trung bình {tb:.1f} s/cảnh, chuẩn ≤ {max_tb:.1f} s để giữ chân người xem)"]
+    return []
 
 
 def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
@@ -159,6 +169,7 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
             out.append(f"Cảnh báo: độ khô: {k['cham_thap']} beat có tiêu chí giám khảo dưới {m['cham_min']}")
         if "cham_tb" in k and k["cham_tb"] < m["cham_tb_min"]:
             out.append(f"Cảnh báo: độ khô: điểm giám khảo trung bình {k['cham_tb']:.1f} < {m['cham_tb_min']}")
+    out += kiem_30s_dau(so_do)
     return out
 
 

@@ -164,3 +164,27 @@ def test_do_kho_warns_on_long_static_scenes():
     sc_cam = {"scenes": [{"id": "c1", "mau": "minh-hoa", "start": 0, "end": 5.0, "svg": "tien", "may_quay": "punch-in"}]}
     so_do_cam = {**_ok_base(), "do_kho": cl.do_kho(sc_cam)}
     assert not any("cảnh đồ họa tĩnh dài > 4,5 s" in m for m in cl.kiem(so_do_cam))
+
+
+def test_do_computes_tb_giay_30s_only_for_scenes_starting_before_30s():
+    sc = {"scenes": [
+        {"id": "c0", "mau": "so-lon", "start": 0.0, "end": 2.0},
+        {"id": "c1", "mau": "b-roll", "start": 2.0, "end": 6.0},
+        {"id": "c2", "mau": "b-roll", "start": 28.0, "end": 34.0},   # start < 30 → được tính (6.0 s)
+        {"id": "c3", "mau": "b-roll", "start": 30.0, "end": 42.0},   # start >= 30 → bỏ qua
+    ]}
+    m = cl.do(sc, _timing(42, 140))
+    assert m["tb_giay_30s"] == pytest.approx((2.0 + 4.0 + 6.0) / 3)
+    # không có cảnh nào start < 30 → trả về 0.0
+    later = {"scenes": [{"id": "c0", "mau": "so-lon", "start": 30.0, "end": 35.0}]}
+    assert cl.do(later, _timing(35, 100))["tb_giay_30s"] == 0.0
+
+
+def test_kiem_30s_dau_warns_only_above_threshold():
+    assert cl.kiem_30s_dau({"tb_giay_30s": 3.5}) == []
+    assert cl.kiem_30s_dau({}) == []
+    warns = cl.kiem_30s_dau({"tb_giay_30s": 4.2})
+    assert len(warns) == 1 and "4.2 s/cảnh" in warns[0] and "3.5 s" in warns[0]
+    assert len(cl.kiem_30s_dau({"tb_giay_30s": 3.2}, max_tb=3.0)) == 1
+    so_do = {**_ok_base(), "tb_giay_30s": 4.2}
+    assert any("30 giây đầu cắt cảnh chậm" in m for m in cl.kiem(so_do))

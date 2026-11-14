@@ -67,3 +67,12 @@ def test_download_appends_credit(tmp_path):
     assert [c["tac_gia"] for c in credits] == ["Ann", "Bob"]
     assert credits[0]["ghi_cong"] == "Ann, Wikimedia Commons, CC BY 4.0"
     assert credits[0]["tep"] == p1.name
+
+
+def test_download_deduplicates_ghi_cong_by_tep(tmp_path):
+    get = lambda *a, **k: Resp(content=b"\xff\xd8jpg")
+    anh.download(_item("CC BY 4.0", "Ann", "File:Ảnh một.jpg"), tmp_path, get=get)
+    anh.download(_item("CC BY 4.0", "Ann v2", "File:Ảnh một.jpg"), tmp_path, get=get)
+    credits = json.loads((tmp_path / "anh" / "ghi-cong.json").read_text(encoding="utf-8"))
+    assert len(credits) == 1
+    assert credits[0]["tac_gia"] == "Ann v2"

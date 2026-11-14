@@ -73,6 +73,8 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép {CANH_MIN_LOI:g}–{CANH_MAX_LOI:g} s)")
         elif dur < CANH_MIN_CB or dur > CANH_MAX_CB:
             msgs.append(f"Cảnh báo: {cid} dài {dur:.1f} s (nên {CANH_MIN_CB:g}–{CANH_MAX_CB:g} s)")
+        elif c["start"] < 30.0 and dur > 3.5:
+            msgs.append(f"Cảnh báo: {cid} trong 30s đầu dài {dur:.1f} s (nên ≤ 3,5 s để giữ chân người xem)")
         if c.get("svg") and not (Path(svg_dir) / f"{c['svg']}.svg").exists():
             msgs.append(f"Lỗi: {cid} cần hình {c['svg']}.svg chưa có trong thư viện")
         nid = (c.get("bieu_do") or {}).get("nguon_id") or c.get("nguon_id")

@@ -214,8 +214,8 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - Tóm tắt: độ dài video, số cảnh, 3 tiêu đề, cảnh báo còn lại. **Dừng.** Không tự chọn phương án.
 
 ## 7. shorts (sau khi đăng video dài, buổi tối)
-- Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh.
-- Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}')`
+- Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh; tránh cắt qua cảnh chuyển chương (`mau == "chuong"`).
+- Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}', short_hook='<câu hook tò mò 4-7 từ>')`
   rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
 - Giờ đăng Short: sáng ngày hôm sau video dài (đề xuất 08:00 giờ Việt Nam).
 - Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi gửi người dùng xem từng Short (tệp, tiêu đề, giờ đăng). Khi người dùng nói "ok" với Short i: `uv run python -m tttc.trang_thai duyet-short ../videos/<slug> <i>` (ghi sha256 tệp + tiêu đề + giờ; đổi bất cứ thứ gì sau đó là phải duyệt lại). Sau đó đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.

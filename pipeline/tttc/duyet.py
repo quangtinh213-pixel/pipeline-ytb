@@ -5,7 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
-from tttc import chat_luong, phong_cach, theme, trang_thai
+from tttc import chat_luong, dang, phong_cach, theme, tieu_de, trang_thai
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -71,7 +71,15 @@ def render_review_1(video_dir) -> Path:
     loi_giong = [m for m in phong_cach.kiem(script) if m.startswith("Lỗi")]
     if loi_giong:
         raise ValueError(f"giọng văn còn {len(loi_giong)} Lỗi: " + "; ".join(loi_giong))
-    body = (_warnings(check(script, nguon) + phong_cach.kiem(script))
+    cfg = json.loads(phong_cach.CONFIG.read_text(encoding="utf-8")) if phong_cach.CONFIG.exists() else {}
+    wpm = float(cfg.get("vieneu", {}).get("wpm_du_kien") or 145)
+    warns = (
+        check(script, nguon)
+        + phong_cach.kiem(script, check_cta=True, check_dai_chung=True)
+        + phong_cach.kiem_loai_bai_chinh(script)
+        + phong_cach.kiem_thoi_luong_thuc(script, wpm=wpm)
+    )
+    body = (_warnings(warns)
             + _phan_bien(d, buoc["note"])
             + "<h2>Chủ đề</h2><pre>" + escape(_read(d / "chu-de.md")) + "</pre>"
             + "<h2>Số → nguồn</h2>" + _sources_table(nguon)
@@ -92,18 +100,28 @@ def render_review_2(video_dir) -> Path:
         warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json")),
                                                json.loads(_read(dd)) if dd.exists() else None,
                                                json.loads(_read(cham)) if cham.exists() else None))
-    opts = "".join(
-        f'<div class="opt"><strong>Phương án {i}</strong><img src="{escape(o["file_thumb"])}" alt="">'
-        f'<p>{escape(o["tieu_de"])}</p><p class="meta">Chữ thumbnail: {escape(" / ".join(o.get("chu_thumb", [])))}</p></div>'
-        for i, o in enumerate(goi.get("phuong_an", []), 1))
+    opts_html = []
+    for i, o in enumerate(goi.get("phuong_an", []), 1):
+        kq = tieu_de.cham_diem(o["tieu_de"])
+        for msg in [*kq.loi, *kq.canh_bao, *tieu_de.kiem_khop_nguon(o["tieu_de"], nguon)]:
+            warns.append(f"Phương án {i}: {msg}")
+        dong_dai = [line for line in o.get("chu_thumb", []) if len(line.split()) > 4]
+        if dong_dai:
+            warns.append(f"Phương án {i}: Chữ thumbnail dài quá 4 từ ({', '.join(dong_dai)}) — nên rút gọn ≤ 3 từ/dòng")
+        opts_html.append(
+            f'<div class="opt"><strong>Phương án {i}</strong><img src="{escape(o["file_thumb"])}" alt="">'
+            f'<p>{escape(o["tieu_de"])}</p><p class="meta">Chữ thumbnail: {escape(" / ".join(o.get("chu_thumb", [])))} · '
+            f'Điểm tiêu đề: {kq.diem}/10</p></div>')
+    opts = "".join(opts_html)
     shorts = "".join(
         f'<div class="opt"><video controls src="{escape(s["file"])}"></video><p>{escape(s["tieu_de"])}</p>'
         f'<p class="meta">Đăng {escape(s["ngay"])} {escape(s["gio"])}</p></div>' for s in goi.get("shorts", []))
+    mo_ta_hien = dang.gan_hashtag(goi.get("mo_ta", ""), goi.get("tags", []))
     body = (_warnings(warns)
             + '<h2>Video</h2><video controls src="final.mp4"></video>'
             + f'<h2>Tiêu đề + thumbnail</h2><div class="opts">{opts}</div>'
             + f'<h2>Shorts</h2><div class="opts">{shorts}</div>'
-            + "<h2>Mô tả</h2><pre>" + escape(goi.get("mo_ta", "")) + "</pre>"
+            + "<h2>Mô tả</h2><pre>" + escape(mo_ta_hien) + "</pre>"
             + "<h2>Tags</h2><pre>" + escape(", ".join(goi.get("tags", []))) + "</pre>")
     return _page(d, "duyet-2.html", f"Duyệt 2 · {d.name}",
                  "Xem video, chọn phương án 1/2/3, rồi trả lời 'duyệt phương án N' hoặc ghi chỗ cần sửa.", body)

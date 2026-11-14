@@ -55,6 +55,9 @@ def test_regenerated_svgs_are_byte_identical_to_committed(tmp_path, monkeypatch)
         assert (tmp_path / f.name).read_bytes() == f.read_bytes(), f.name
 
 
-def test_compose_output_is_unchanged(tmp_path):
+def test_compose_output_is_unchanged(tmp_path, monkeypatch):
+    cfg = tmp_path / "test-config.json"
+    cfg.write_text('{"nhac_nen": ""}', encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
     out = dung.compose(make_video(tmp_path))
     assert golden_compose_hash(out) == GOLDEN.read_text(encoding="utf-8").strip()

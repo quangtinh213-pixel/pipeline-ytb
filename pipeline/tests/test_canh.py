@@ -547,3 +547,16 @@ def test_broll_keyword_and_split_numbers_must_match_source(tmp_path):
     assert any("2.500" in e for e in errs(tu_khoa="Bớt 2.500 đồng", nguon_id="g1"))
     assert errs(chia={"so": "3.000", "sau": " tỷ đồng", "nhan": "Gói hỗ trợ"}, nguon_id="g1") == []
     assert any("3.500" in e for e in errs(chia={"so": "3.500", "sau": " tỷ đồng", "nhan": "Gói"}, nguon_id="g1"))
+
+
+def test_validate_warns_slow_scene_in_first_30s(tmp_path):
+    msgs = canh.validate(
+        _sc((0, 4.2), (4.2, 7.2), (7.2, 31.0), (31.0, 35.5)),
+        {"duration": 35.5, "words": []},
+        tmp_path,
+        NGUON,
+        kit=None,
+    )
+    assert any("30s đầu" in m and "c0" in m for m in msgs)
+    assert not any("30s đầu" in m and "c1" in m for m in msgs)
+    assert not any("30s đầu" in m and "c3" in m for m in msgs)

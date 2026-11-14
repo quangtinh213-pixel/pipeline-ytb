@@ -23,7 +23,10 @@ TIMING = {"duration": 20.0, "words": [{"w": "Xin", "start": 0.1, "end": 0.4}, {"
 
 
 @pytest.fixture
-def video(tmp_path):
+def video(tmp_path, monkeypatch):
+    cfg = tmp_path / "test-config.json"
+    cfg.write_text(json.dumps({"nhac_nen": ""}), encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
     d = tmp_path / "v"
     d.mkdir()
     (d / "canh.json").write_text(json.dumps(SCENES, ensure_ascii=False), encoding="utf-8")
@@ -691,3 +694,62 @@ def test_tu_nhan_marks_spoken_numbers_and_scene_keywords():
 def test_shorts_captions_are_shorter_and_highlight_current_word(video):
     html = (dung.compose(video, w=1080, h=1920, out="s") / "index.html").read_text(encoding="utf-8")
     assert "-webkit-text-stroke" in html and 'tl.to("#cap-0-0", { color:' in html
+
+
+def test_compose_shorts_adds_hook_banner_with_html_escape_only_for_vertical(video):
+    # Ngang (16:9): không có #short-hook
+    landscape = (dung.compose(video, out="ngang") / "index.html").read_text(encoding="utf-8")
+    assert 'id="short-hook"' not in landscape and "#short-hook" not in landscape
+
+    # Dọc (9:16): lấy chuỗi đầu tiên có chuong/tu_khoa/nhan và escape HTML
+    sc = {"scenes": [
+        {"id": "c1", "mau": "b-roll", "start": 0, "end": 4, "video": "a.mp4", "nhan": ""},
+        {"id": "c2", "mau": "b-roll", "start": 4, "end": 8, "video": "a.mp4", "tu_khoa": "<script>Sốc</script> & AI", "nhan": "Nhãn phụ"},
+        {"id": "c3", "mau": "chuong", "start": 8, "end": 12, "so": "Phần 2", "chuong": "Sau"},
+    ]}
+    (video / "canh.json").write_text(json.dumps(sc, ensure_ascii=False), encoding="utf-8")
+    vertical = (dung.compose(video, w=1080, h=1920, out="doc") / "index.html").read_text(encoding="utf-8")
+    m = re.search(r'<div id="short-hook">(.*?)</div>', vertical)
+    assert m and m.group(1) == "&lt;script&gt;Sốc&lt;/script&gt; &amp; AI"
+    assert "#short-hook" in vertical and "top: 140px" in vertical and "left: 60px" in vertical and "right: 60px" in vertical
+
+    # Ưu tiên chuong trên cùng cảnh nếu có
+    sc_chuong = {"scenes": [{"id": "c1", "mau": "chuong", "start": 0, "end": 4, "so": "P1", "chuong": "Tiêu đề chương", "nhan": "Nhãn"}]}
+    (video / "canh.json").write_text(json.dumps(sc_chuong, ensure_ascii=False), encoding="utf-8")
+    vertical_ch = (dung.compose(video, w=1080, h=1920, out="doc-ch") / "index.html").read_text(encoding="utf-8")
+    assert '<div id="short-hook">Tiêu đề chương</div>' in vertical_ch
+
+    # Dọc nhưng không có chuong/tu_khoa/nhan nào khác rỗng: không thêm thẻ #short-hook
+    sc_empty = {"scenes": [{"id": "c1", "mau": "b-roll", "start": 0, "end": 4, "video": "a.mp4", "nhan": "  "}]}
+    (video / "canh.json").write_text(json.dumps(sc_empty, ensure_ascii=False), encoding="utf-8")
+    no_hook = (dung.compose(video, w=1080, h=1920, out="doc-rong") / "index.html").read_text(encoding="utf-8")
+    assert 'id="short-hook"' not in no_hook
+    assert 'id="short-cta"' in no_hook
+
+    # short_hook tham số hoặc trường trong cảnh ưu tiên hơn chuong/tu_khoa/nhan
+    sc_field = {"scenes": [{"id": "c1", "mau": "chuong", "start": 0, "end": 4, "so": "Phần 1", "chuong": "Mở đầu",
+                            "short_hook": "Tự tay làm sập 18 giờ?"}]}
+    (video / "canh.json").write_text(json.dumps(sc_field, ensure_ascii=False), encoding="utf-8")
+    from_field = (dung.compose(video, w=1080, h=1920, out="doc-field") / "index.html").read_text(encoding="utf-8")
+    assert '<div id="short-hook">Tự tay làm sập 18 giờ?</div>' in from_field
+    override = (dung.compose(video, w=1080, h=1920, out="doc-override", short_hook="Hook riêng", short_cta="") / "index.html").read_text(encoding="utf-8")
+    assert '<div id="short-hook">Hook riêng</div>' in override and 'id="short-cta"' not in override
+
+
+def test_compose_shorts_uses_vertical_css_dimensions(video):
+    html = (dung.compose(video, w=1080, h=1920, out="doc-dim") / "index.html").read_text(encoding="utf-8")
+    assert "width: 1080px; height: 1920px;" in html
+
+
+def test_phu_de_scene_range_keeps_boundary_words():
+    timing = {"words": [
+        {"w": "Trước", "start": 3.2, "end": 3.5},
+        {"w": "biên", "start": 3.6, "end": 3.9},
+        {"w": "vào", "start": 4.1, "end": 4.4},
+        {"w": "cảnh", "start": 4.5, "end": 4.8},
+        {"w": "sau", "start": 9.1, "end": 9.4},
+    ]}
+    tags, _ = dung.phu_de(timing, SCENES["scenes"], t0=4.0, total=5.0, doc=True)
+    joined = "".join(tags)
+    assert "vào" in joined and "cảnh" in joined
+    assert "Trước" not in joined and "sau" not in joined

@@ -148,3 +148,47 @@ def test_review_2_shows_do_kho_from_director_and_judge_files(tmp_path):
     (d / "dao-dien-cham.json").write_text(json.dumps({"beats": [{"y_nghia": 2, "da_dang": 2, "chieu_sau": 2, "nhip": 2}]}), encoding="utf-8")
     html = duyet.render_review_2(d).read_text(encoding="utf-8")
     assert "độ khô" in html and "điểm giám khảo trung bình 2.0" in html
+
+
+def test_review_1_checks_cta_and_administrative_style_when_spoken_present(tmp_path):
+    d = _video(tmp_path, "#### Beat 1\n**Lời đọc:**\nGói Plus 522.500 đồng theo thông tư số một. [#p1]\n")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert "Đăng Ký" in html and "hành chính" in html
+
+    d2 = _video(tmp_path, "#### Beat 1\n**Lời đọc:**\nGói Plus 522.500 đồng. Nhớ đăng ký kênh nhé! [#p1]\n")
+    html2 = duyet.render_review_1(d2).read_text(encoding="utf-8")
+    assert "Đăng Ký" not in html2
+
+
+def test_review_2_shows_title_score_source_match_and_long_thumb_warning(tmp_path):
+    d = _video(tmp_path)
+    goi = {
+        "phuong_an": [
+            {
+                "tieu_de": "SỐC: Ông chủ Microsoft 365 từ chức vì người dùng Việt Nam?",
+                "chu_thumb": ["DÒNG CHỮ QUÁ BỐN TỪ RỒI"],
+                "file_thumb": "thumbnails/1.png",
+            }
+        ],
+        "mo_ta": "Mô tả",
+        "tags": ["microsoft"],
+        "shorts": [],
+    }
+    (d / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "Điểm tiêu đề:" in html and "/10" in html
+    assert "Chữ thumbnail dài quá 4 từ" in html
+    assert "lệch nguồn" in html and "danh từ chung" in html
+    assert "#NhipCongNghe #Microsoft" in html
+
+
+def test_review_1_warns_when_main_script_uses_short_template_loai(tmp_path):
+    d = _video(tmp_path, "# Tiêu đề\nLoại: ra-mat\n\n#### Beat 1\n**Lời đọc:**\nGói Plus 522.500 đồng. Nhớ đăng ký kênh! [#p1]\n")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert "Loại: ra-mat" in html
+
+
+def test_review_1_includes_kiem_thoi_luong_thuc_warning(tmp_path):
+    d = _video(tmp_path, "#### Beat 1\n**Lời đọc:**\nGói Plus 522.500 đồng. Nhớ đăng ký kênh! [#p1]\n")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert "Cảnh báo thời lượng" in html

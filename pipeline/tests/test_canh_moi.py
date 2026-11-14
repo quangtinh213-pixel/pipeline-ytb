@@ -52,7 +52,10 @@ def test_kinetic_words_follow_voice():
     assert len(st) == 10 and st[0] == 0.0 and abs(st[-1] - 3.6) < 1e-6
 
 
-def test_compose_new_scenes_and_transitions(tmp_path):
+def test_compose_new_scenes_and_transitions(tmp_path, monkeypatch):
+    cfg = tmp_path / "test-config.json"
+    cfg.write_text('{"nhac_nen": ""}', encoding="utf-8")
+    monkeypatch.setattr(dung, "CONFIG", cfg)
     o = dung.compose(make(tmp_path))
     html = (o / "index.html").read_text(encoding="utf-8")
     assert (o / "assets" / "brand" / "logo.png").is_file()

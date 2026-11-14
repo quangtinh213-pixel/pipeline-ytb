@@ -58,3 +58,18 @@ def test_chia_long_silence_does_not_create_tiny_scene():
     sc = chia.chia({"duration": 28.0, "words": w})
     assert min(_durs(sc)) >= 2.5 - 1e-9 and sc[0]["start"] == 0 and sc[-1]["end"] == 28.0
     assert all(a["end"] == b["start"] for a, b in zip(sc, sc[1:]))
+
+
+def test_chia_main_fast_first_30s_and_snaps_beat_boundary(tmp_path):
+    t = _timing(120, ends=range(4, 120, 5))
+    t["paragraphs"] = [{"i": 0, "start": 0.0, "end": 4.4}, {"i": 1, "start": 4.4, "end": 48.0}]
+    (tmp_path / "giong-timing.json").write_text(json.dumps(t), encoding="utf-8")
+    (tmp_path / "kich-ban.md").write_text(
+        "#### Beat 1\n**Lời đọc:**\nĐoạn một.\n\n#### Beat 2\n**Lời đọc:**\nĐoạn hai.\n",
+        encoding="utf-8",
+    )
+    assert chia.main(str(tmp_path)) == 0
+    scenes = json.loads((tmp_path / "canh-khung.json").read_text(encoding="utf-8"))["scenes"]
+    dau = [s for s in scenes if s["start"] < 30.0]
+    assert all(s["end"] - s["start"] <= 3.2 + 1e-6 for s in dau)
+    assert any(abs(s["end"] - 4.4) < 0.05 for s in scenes)
