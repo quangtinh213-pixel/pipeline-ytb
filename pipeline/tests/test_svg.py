@@ -42,8 +42,6 @@ def test_library_has_at_least_55_shapes():
 
 def test_sheet_makes_one_tile_per_svg(tmp_path):
     import shutil
-    if shutil.which("qlmanage") is None:
-        pytest.skip("cần qlmanage của macOS")
     from PIL import Image
     d = tmp_path / "svg"
     d.mkdir()
