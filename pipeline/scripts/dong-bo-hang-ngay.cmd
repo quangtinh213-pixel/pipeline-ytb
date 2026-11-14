@@ -6,4 +6,7 @@ set PYTHONIOENCODING=utf-8
 cd /d "%~dp0.."
 echo ==== %date% %time% >> dong-bo-view.log
 "C:\Users\78\.local\bin\uv.exe" run python scripts\dong-bo-view.py >> dong-bo-view.log 2>&1
-echo exit=%errorlevel% >> dong-bo-view.log
+set KQ=%errorlevel%
+echo exit=%KQ% >> dong-bo-view.log
+rem lỗi (vd token hết hạn) thì hiện hộp thoại, không để mất cửa sổ 24–48 giờ trong im lặng
+if not "%KQ%"=="0" msg * "Nhip Cong Nghe: dong bo view LOI (exit %KQ%), xem pipeline\dong-bo-view.log"

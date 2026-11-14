@@ -57,6 +57,11 @@ def danh_gia_ctr(ctr_val: float | str | None) -> str:
     return "AN_TOAN"
 
 
+def dang_dung(state: dict) -> int:
+    """Phương án đang chạy trên YouTube: bản đã đổi bao bì, nếu chưa đổi thì bản chọn ở duyệt 2."""
+    return state.get("pa_dang_dung") or state.get("chon") or 1
+
+
 def lay_cac_phuong_an(video_dir: Path | str) -> list[dict]:
     """Đọc danh sách các phương án tiêu đề và thumbnail từ dong-goi.json."""
     d = Path(video_dir)
@@ -81,9 +86,10 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
     if not opts or not 1 <= phuong_an_so <= len(opts):
         raise ValueError(f"Phương án {phuong_an_so} không tồn tại trong dong-goi.json (có {len(opts)} phương án)")
 
-    old_chon = state.get("chon") or 1
+    old_chon = dang_dung(state)
     chon = opts[phuong_an_so - 1]
     new_title = chon["tieu_de"]
+    dang._check_text(new_title, "", [])  # YouTube từ chối tiêu đề sai luật: báo trước khi gọi API
     thumb_path = d / chon["file_thumb"]
 
     yt = youtube or dang.client()
@@ -107,7 +113,8 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
 
     # 3. Cập nhật trang-thai.json
     da_thu = list(dict.fromkeys([*(state.get("da_thu_pa") or []), old_chon, phuong_an_so]))
-    tt.set_fields(d, chon=phuong_an_so, da_thu_pa=da_thu)
+    # không ghi đè `chon`: đó là lựa chọn trong biên nhận duyệt 2, đổi nó làm Shorts mất duyệt
+    tt.set_fields(d, pa_dang_dung=phuong_an_so, da_thu_pa=da_thu)
 
     # 4. Cập nhật theo-doi.csv
     if tracker.exists():
@@ -199,7 +206,7 @@ def kiem_tra_video(
     info = lay_thong_tin_video(vid, youtube=youtube)
     muc = danh_gia_ctr(ctr_val)
     opts = lay_cac_phuong_an(d)
-    chon = state.get("chon") or 1
+    chon = dang_dung(state)
     out: dict[str, Any] = {"video": info, "trang_thai_ctr": muc, "chon_hien_tai": chon, "da_doi": None}
     if muc == "NGUY_CAP" and tu_dong_doi and len(opts) > 1:
         da_thu = set(state.get("da_thu_pa") or []) | {chon}

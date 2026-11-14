@@ -71,7 +71,8 @@ def _van_ban_chu_de(d: Path) -> str:
                 tt_p = d / "trang-thai.json"
                 chon = None
                 if tt_p.exists():
-                    chon = json.loads(tt_p.read_text(encoding="utf-8", errors="ignore")).get("chon")
+                    st = json.loads(tt_p.read_text(encoding="utf-8", errors="ignore"))
+                    chon = st.get("pa_dang_dung") or st.get("chon")
                 idx = chon - 1 if isinstance(chon, int) and 1 <= chon <= len(opts) else 0
                 parts.append(opts[idx].get("tieu_de", ""))
                 if goi.get("tags"):

@@ -60,7 +60,9 @@ def kiem(tieu_de: str) -> list[str]:
         return ["Lỗi: Tiêu đề không được để trống"]
     if len(t) > 100:
         loi.append(f"Lỗi: Tiêu đề dài {len(t)} ký tự (tối đa 100 ký tự)")
-        
+    if "<" in t or ">" in t:
+        loi.append("Lỗi: Tiêu đề có ký tự < hoặc > (YouTube từ chối lúc upload)")
+
     lower = t.lower()
     
     # 1. Kiểm tra từ cảm xúc

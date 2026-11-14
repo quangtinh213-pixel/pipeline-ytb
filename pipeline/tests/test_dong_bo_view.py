@@ -48,6 +48,17 @@ def test_cap_nhat_doi_thu_matches_topic_fills_delay_and_views():
     assert rows[1]["trung_de_ho"] == ""  # Shorts không đối chiếu với video dài
 
 
+def test_cap_nhat_doi_thu_bo_view_ho_khi_lo_cua_so_48_gio():
+    mod = _load()
+    rows = [{"tieu_de": "Sự thật vụ Microsoft nâng cấp mạng: Tự tay làm sập 18 giờ", "gio_dang": "14/11/2026 15:30",
+             "trung_de_ho": "", "chenh_gio": "", "view_ho_24h": ""}]
+    rss_items = [{"id": "0wDK-sZVtj0", "tieu_de": "Microsoft 365 sập toàn cầu hơn 13 tiếng",
+                  "dang_luc": datetime(2026, 11, 13, 22, 0, tzinfo=VN), "view": 9000}]
+    mod.cap_nhat_doi_thu(rows, rss_items, datetime(2026, 11, 16, 21, 30, tzinfo=VN))  # máy tắt hai ngày: video họ đã 71,5 giờ
+    assert rows[0]["trung_de_ho"] == "0wDK-sZVtj0"
+    assert rows[0]["view_ho_24h"] == ""  # đủ 24 giờ nhưng quá 48 giờ: không ghi số của ngày thứ hai
+
+
 def test_cap_nhat_doi_thu_ignores_videos_over_24h_apart():
     mod = _load()
     rows = [

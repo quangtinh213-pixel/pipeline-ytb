@@ -62,3 +62,8 @@ def test_kiem_khop_nguon_khong_bao_sai_khi_trich_dan_khop_anh_viet():
 
     nguon_vi = [{"gia_tri": "18 giờ", "trich_dan": "Hệ thống Microsoft 365 tê liệt hoàn toàn suốt 18 giờ."}]
     assert tieu_de.kiem_khop_nguon("CẢNH BÁO: Microsoft 365 sập hoàn toàn 18 giờ!", nguon_vi) == []
+
+
+def test_kiem_bat_dau_nho_lon():
+    from tttc.tieu_de import kiem
+    assert any("<" in l for l in kiem("SỐC: iPhone giá <10 triệu, người dùng Việt Nam mừng?"))

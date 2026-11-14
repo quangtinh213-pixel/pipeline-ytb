@@ -45,8 +45,8 @@ def _goi(video_dir: Path) -> dict:
 
 
 def _check_text(title: str, desc: str, tags: list[str]) -> None:
-    if not title or len(title) > 100:
-        raise ValueError(f"Tiêu đề phải 1–100 ký tự (đang {len(title)})")
+    if not title or len(title) > 100 or "<" in title or ">" in title:
+        raise ValueError(f"Tiêu đề phải 1–100 ký tự, không có < > (đang {len(title)} ký tự)")
     if len(desc.encode("utf-8")) > 5000 or "<" in desc or ">" in desc:
         raise ValueError("Mô tả quá 5000 byte hoặc có ký tự < > (YouTube từ chối)")
     if sum(len(t) + 2 for t in tags) > 500:

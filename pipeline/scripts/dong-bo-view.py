@@ -71,7 +71,8 @@ def cap_nhat_doi_thu(rows: list[dict], rss_items: list[dict], now: datetime) -> 
             r["chenh_gio"] = f"{theo_doi.chenh_gio(gio_minh, matched['dang_luc']):+.1f}"
             row_changed = True
         if not (r.get("view_ho_24h") or "").strip() and matched.get("view") is not None:
-            if (now - matched["dang_luc"]) >= timedelta(hours=24):
+            a, b = theo_doi.CUA_SO["view_24h"]  # cùng cửa sổ với view_24h của mình: lỡ thì để trống
+            if a <= now - matched["dang_luc"] < b:
                 r["view_ho_24h"] = str(matched["view"])
                 row_changed = True
         changed += int(row_changed)

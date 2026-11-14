@@ -384,3 +384,20 @@ def test_lock_does_not_spin_on_non_lock_oserror(tmp_path, monkeypatch):
         with dang._lock(tmp_path / ".dang.lock"):
             pass
     assert len(calls) == 1
+
+
+def test_doi_bao_bi_khong_lam_short_mat_duyet(video, tmp_path):
+    from unittest.mock import MagicMock
+    from tttc import giam_sat
+    _approve(video)
+    tracker = tmp_path / "t.csv"
+    dang.upload(video, "13/11/2099", "15:30", youtube=FakeYT(), tracker=tracker)
+    yt = MagicMock()
+    yt.videos.return_value.list.return_value.execute.return_value = {"items": [{"snippet": {"title": "cũ"}}]}
+    giam_sat.doi_bao_bi(video, 1, youtube=yt, tracker=tracker)  # CTR thấp: xoay sang phương án 1
+    assert dang.upload_short(video, 0, youtube=FakeYT(), tracker=tracker) == "vid123"
+
+
+def test_tieu_de_co_dau_nho_lon_bi_tu_choi():
+    with pytest.raises(ValueError):
+        dang._check_text("Giá <10 triệu", "", [])

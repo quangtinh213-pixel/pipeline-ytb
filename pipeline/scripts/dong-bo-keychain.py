@@ -28,6 +28,10 @@ def nhap() -> None:
         keyring.set_password(KR, n, v)
         assert keyring.get_password(KR, n) == v, n
     FILE.unlink()
+    # Syncthing giữ bản đã xoá trong .stversions (vẫn là token chữ thường): xoá luôn ở máy này
+    for cu in (FILE.parents[1] / ".stversions" / FILE.parent.name).glob(f"{FILE.stem}*"):
+        cu.unlink()
+    print("Ở máy đã xuất khoá: xoá tay .stversions/pipeline/keychain-chuyen* (Syncthing lưu bản cũ ở đó)")
     print(f"Đã nạp {', '.join(data)} vào {type(keyring.get_keyring()).__name__}; đã xoá {FILE.name}")
 
 

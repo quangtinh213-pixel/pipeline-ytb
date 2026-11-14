@@ -62,9 +62,9 @@ def test_doi_bao_bi_calls_youtube_and_updates_state(tmp_path):
     assert res["new_title"] == "Tiêu đề mới cứu nguy"
     assert res["thumb_updated"] is True
 
-    # Check that state was updated to chon = 2
+    # Phương án đang chạy ghi riêng, `chon` của biên nhận duyệt 2 giữ nguyên
     new_state = json.loads((tmp_path / "trang-thai.json").read_text(encoding="utf-8"))
-    assert new_state["chon"] == 2
+    assert new_state["pa_dang_dung"] == 2 and new_state["chon"] == 1
 
     # Check tracker file updated
     content = tracker.read_text(encoding="utf-8")
@@ -134,7 +134,7 @@ def test_kiem_tra_video_does_not_cycle_after_all_options_tried(tmp_path):
     assert res1["da_doi"]["phuong_an"] == 2
     res2 = giam_sat.kiem_tra_video(tmp_path, ctr_val="1.5%", tu_dong_doi=True, youtube=mock_yt, tracker=tracker)
     assert res2["da_doi"] is None
-    assert json.loads((tmp_path / "trang-thai.json").read_text(encoding="utf-8"))["chon"] == 2
+    assert json.loads((tmp_path / "trang-thai.json").read_text(encoding="utf-8"))["pa_dang_dung"] == 2
 
 
 def _an_giu_chan(rows):
