@@ -274,3 +274,54 @@ def test_main_warns_when_main_script_uses_short_template_loai(tmp_path, capsys, 
     out = capsys.readouterr().out
     assert "Loại: gia" in out and "2.000–2.600 từ" in out
 
+
+
+# --- kiem_short: kịch bản Short dọc gốc (spec 2026-11-15-shorts-doc-goc mục 4.2) ---
+CAU_DAU_TOT = "iPhone mười lăm Plus cũ còn mười lăm phẩy tám chín triệu [#1]."
+
+
+def _short(cau_dau: str, so_tu_than: int = 150) -> str:
+    return "Loại: shorts\n\n" + _script(cau_dau + " " + _filler(so_tu_than))
+
+
+def _loi(msgs, key=""):
+    return [m for m in msgs if m.startswith("Lỗi") and key in m]
+
+
+def _cb(msgs, key=""):
+    return [m for m in msgs if m.startswith("Cảnh báo") and key in m]
+
+
+def test_kiem_short_kich_ban_sach_khong_co_loi():
+    assert phong_cach.kiem_short(_short(CAU_DAU_TOT)) == []
+
+
+def test_kiem_short_cau_dau_mo_bang_tu_noi_la_loi():
+    assert _loi(phong_cach.kiem_short(_short("Thứ nhất, bản vá đã có từ tháng mười [#1].")), "từ nối")
+    assert _loi(phong_cach.kiem_short(_short("Còn bản vá thì đã có từ tháng mười [#1].")), "từ nối")
+    assert not _loi(phong_cach.kiem_short(_short("Vàng tăng ba triệu một lượng [#1].")), "từ nối")  # "Vàng" không phải "Và"
+
+
+def test_kiem_short_cau_dau_thieu_so_co_nguon_la_loi():
+    assert _loi(phong_cach.kiem_short(_short("Lệnh cấm nhập máy cũ làm nhiều người lo.")), "[#id]")
+
+
+def test_kiem_short_ngoai_30_55_giay_la_loi():
+    assert _loi(phong_cach.kiem_short(_short(CAU_DAU_TOT, so_tu_than=20)), "giây")
+    assert _loi(phong_cach.kiem_short(_short(CAU_DAU_TOT, so_tu_than=320)), "giây")
+
+
+def test_kiem_short_tu_giat_gan_va_cham_than_la_loi():
+    msgs = phong_cach.kiem_short(_short("Sốc, iPhone cũ còn mười lăm triệu [#1]!"))
+    assert _loi(msgs, "giật gân") and _loi(msgs, "chấm than")
+
+
+def test_kiem_short_canh_bao():
+    dai = "iPhone mười lăm cũ [#1] " + "rất " * 22 + "đắt."
+    assert _cb(phong_cach.kiem_short(_short(dai)), "22")
+    assert _cb(phong_cach.kiem_short(_short("Máy cũ mười lăm triệu [#1], đắt không? Có nên mua không?")), "câu hỏi")
+    assert _cb(phong_cach.kiem_short(_short(CAU_DAU_TOT + " Như video trước đã nói.")), "video trước")
+
+
+def test_kiem_short_chua_co_loi_doc_tra_mot_loi_ro():
+    assert phong_cach.kiem_short("# Tiêu đề\n\nLoại: shorts\n") == ["Lỗi: kịch bản Short chưa có phần lời đọc"]

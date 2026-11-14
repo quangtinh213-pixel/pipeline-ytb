@@ -199,6 +199,45 @@ def kiem_thoi_luong_thuc(script_md: str, wpm: float = 249, min_phut: float = 7.5
     return []
 
 
+# Short dọc gốc (docs/superpowers/specs/2026-11-15-shorts-doc-goc-design.md mục 4.2): Shorts cũ chỉ giữ 9,6–18,9% người
+# lướt tới; bản cắt từ giữa video dài mở bằng "Thứ nhất,". Câu nói đầu tiên phải là câu hook có con số gắn nguồn.
+SHORT_GIAY, CAU_DAU_MAX_TU = (30, 55), 22
+TU_NOI_DAU = ("thứ nhất", "còn", "vậy", "và", "nhưng", "tiếp theo", "ngoài ra")
+NOI_VE_KE = re.compile(r"mình đọc lại|chi tiết lạ|một dòng nhỏ|ít ai đọc|video trước|dưới mô tả|đường dẫn", re.I)
+
+
+def kiem_short(script_md: str, wpm: float = 237) -> list[str]:
+    """Lỗi và cảnh báo của kịch bản Short viết riêng: thời lượng 30–55 giây, câu đầu là hook có số gắn [#id]."""
+    from tttc import tieu_de as td
+    from tttc.giong_vieneu import cau
+    cac_cau = [c for p in tts.spoken_paragraphs(script_md, keep_tags=True) for c in cau(p)]
+    if not cac_cau:
+        return ["Lỗi: kịch bản Short chưa có phần lời đọc"]
+    out, dau = [], cac_cau[0]
+    giay = uoc_tinh_phut(script_md, wpm) * 60
+    if not SHORT_GIAY[0] <= giay <= SHORT_GIAY[1]:
+        out.append(f"Lỗi: Short ước {giay:.0f} giây ở {wpm:.0f} từ/phút (cho phép {SHORT_GIAY[0]}–{SHORT_GIAY[1]} giây)")
+    dau_sach = tts.TAG.sub("", dau).strip()
+    noi = next((t for t in TU_NOI_DAU if re.match(rf"{t}(?!\w)", dau_sach.lower())), None)
+    if noi:
+        out.append(f"Lỗi: câu đầu mở bằng từ nối «{noi}» – câu nói đầu tiên của Short phải là câu hook tự đứng được")
+    if not tts.TAG.search(dau):
+        out.append("Lỗi: câu đầu chưa có con số gắn nguồn [#id]")
+    if len(dau_sach.split()) > CAU_DAU_MAX_TU:
+        out.append(f"Cảnh báo: câu đầu dài {len(dau_sach.split())} từ (nên ≤ {CAU_DAU_MAX_TU})")
+    if " ".join(cac_cau[:2]).count("?") > 1:
+        out.append("Cảnh báo: hai câu đầu có hơn một câu hỏi – chỉ treo một câu hỏi")
+    text = tts.TAG.sub("", " ".join(cac_cau))
+    out += [f"Cảnh báo: lời nói về việc kể chuyện hoặc trỏ đi chỗ khác «{m}»"
+            for m in dict.fromkeys(x.group(0).lower() for x in NOI_VE_KE.finditer(text))]
+    giat = [m.group(0) for pat in td.TU_GIAT_GAN for m in re.finditer(pat, text.lower())]
+    if giat:
+        out.append(f"Lỗi: từ giật gân ({', '.join(dict.fromkeys(giat))}) – nói thẳng sự kiện và con số")
+    if "!" in text:
+        out.append("Lỗi: có dấu chấm than trong lời đọc")
+    return out
+
+
 def main(video_dir: str) -> int:
     script = (Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8")
     msgs = kiem(script, check_cta=True, check_dai_chung=True) + kiem_loai_bai_chinh(script)
