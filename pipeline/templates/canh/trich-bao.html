@@ -17,11 +17,22 @@
     #root .tb-tieu-de { font: 800 82px/1.2 var(--font-display); color: {{theme:kem.muc}}; letter-spacing: -0.015em; }
     #root .tb-dich { margin-top: 26px; font: 600 28px/1 var(--font-display); letter-spacing: 0.04em; color: {{theme:kem.muted}}; }
     #root .tb-dich:empty { display: none; }
+    /* biến thể nhiều nguồn (cac): 2–3 thẻ song song, mỗi thẻ huy hiệu chữ cái + tên báo + ngày + tóm tắt */
+    #root .tb-cac { position: absolute; left: 140px; right: 140px; top: 0; bottom: 70px; display: none;
+                    align-items: center; justify-content: center; gap: 48px; }
+    #root .tb-the { flex: 1; max-width: 520px; background: {{theme:kem.nen}}; border-radius: 22px; padding: 44px 40px 52px;
+                    box-shadow: 0 30px 70px rgba(0,0,0,0.42); border-top: 12px solid {{theme:nhan.0}}; }
+    #root .tb-the-dau { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+    #root .tb-huy { width: 84px; height: 84px; border-radius: 50%; background: {{theme:nen}}; color: {{theme:nhan.0}};
+                    display: flex; align-items: center; justify-content: center; font: 900 34px/1 var(--font-display); flex: none; }
+    #root .tb-the-bao { font: 900 30px/1.2 var(--font-display); color: {{theme:kem.muc}}; text-transform: uppercase; letter-spacing: 0.04em; }
+    #root .tb-the-ngay { font: 600 28px/1.2 var(--font-display); color: {{theme:kem.muted}}; margin-top: 6px; }
+    #root .tb-the-tt { font: 900 58px/1.12 var(--font-display); color: {{theme:kem.muc}}; letter-spacing: -0.02em; }
     #root .tb-to { background-image: linear-gradient({{theme:nhan.0}}, {{theme:nhan.0}}); background-repeat: no-repeat;
                    background-position: 0 88%; background-size: 0% 46%; padding: 0 4px; }
   </style>
   <div id="root" data-composition-id="trich-bao" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"bao","type":"string","label":"Tên báo / cơ quan","default":"Tên báo"},{"id":"ngay","type":"string","label":"Ngày","default":""},{"id":"tieu_de","type":"string","label":"Đoạn trích (nguyên văn hoặc bản dịch tiếng Việt)","default":"Đoạn trích"},{"id":"dich","type":"string","label":"Nhãn bản dịch","default":""},{"id":"to_vang","type":"string","label":"Cụm tô vàng","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.9]"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"}]'>
+       data-composition-variables='[{"id":"bao","type":"string","label":"Tên báo / cơ quan","default":"Tên báo"},{"id":"ngay","type":"string","label":"Ngày","default":""},{"id":"tieu_de","type":"string","label":"Đoạn trích (nguyên văn hoặc bản dịch tiếng Việt)","default":"Đoạn trích"},{"id":"dich","type":"string","label":"Nhãn bản dịch","default":""},{"id":"to_vang","type":"string","label":"Cụm tô vàng","default":""},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[0.9]"},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"cac","type":"string","label":"Các thẻ nguồn song song (JSON)","default":""}]'>
     <div id="tb-san" class="san">
       <div id="tb-khung" class="tb-khung">
         <div class="tb-nghieng">
@@ -35,6 +46,7 @@
           </div>
         </div>
       </div>
+      <div id="tb-cac" class="tb-cac"></div>
     </div>
   </div>
   <script>
@@ -55,6 +67,27 @@
     for (let k = teeth; k >= 0; k--) pts.push(`${(k / teeth) * 100}% ${k % 2 ? 100 : 97.5}%`);
     document.querySelector("#tb-giay").style.clipPath = `polygon(${pts.join(",")})`;
     const tl = gsap.timeline({ paused: true });
+    const cac = v.cac ? JSON.parse(v.cac) : [];
+    if (cac.length) {  // biến thể nhiều nguồn: thay tờ giấy đơn bằng các thẻ song song, mỗi thẻ bật theo một nhịp
+      document.querySelector("#tb-khung").style.display = "none";
+      const wrap = document.querySelector("#tb-cac");
+      wrap.style.display = "flex";
+      cac.forEach((x, k) => {
+        const the = document.createElement("div"); the.className = "tb-the"; the.id = "tb-the-" + k;
+        const dau = document.createElement("div"); dau.className = "tb-the-dau";
+        const huy = document.createElement("div"); huy.className = "tb-huy"; huy.textContent = x.chu;
+        const ten = document.createElement("div");
+        const bao = document.createElement("div"); bao.className = "tb-the-bao"; bao.textContent = x.bao;
+        const ngay = document.createElement("div"); ngay.className = "tb-the-ngay"; ngay.textContent = x.ngay;
+        ten.append(bao, ngay); dau.append(huy, ten);
+        const tt = document.createElement("div"); tt.className = "tb-the-tt"; tt.textContent = x.tom_tat;
+        the.append(dau, tt); wrap.appendChild(the);
+        tl.fromTo(the, { y: 70, opacity: 0, rotation: k % 2 ? 2 : -2 },
+                  { y: 0, opacity: 1, rotation: 0, duration: 0.5, ease: "back.out(1.6)" }, at(k, 0.4 + 0.8 * k));
+      });
+      tl.fromTo("#tb-cac", { scale: 1 }, { scale: 1.03, duration: 8, ease: "none" }, 0);
+      window.__timelines["trich-bao"] = tl;
+    } else {
     tl.fromTo("#tb-khung", { y: 90, opacity: 0, scale: 0.96 },
               { y: 0, opacity: 1, scale: 1, duration: 0.55, ease: "back.out(1.5)" }, 0);
     if (document.querySelector("#tb-to")) {
@@ -63,5 +96,6 @@
     }
     tl.fromTo("#tb-khung", { x: 0 }, { x: -24, duration: 8, ease: "none" }, 0.55);
     window.__timelines["trich-bao"] = tl;
+    }
   </script>
 </template>

@@ -80,13 +80,25 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   Đổi mẫu liên tục, không 3 cảnh liền cùng mẫu.
 - **Mọi chữ hiện trên màn hình là tiếng Việt** (nhãn, tiêu đề, trích, đơn vị, chữ trên hình); tên riêng và viết tắt (Nvidia, GPU) giữ nguyên. Trích nguồn tiếng Anh: `trich` giữ nguyên văn để kiểm chứng với `trich_dan`, rồi viết `trich_vi` (bản dịch sát nghĩa của kênh, không thêm ý) và `to_vang_vi` (cụm nằm trong `trich_vi`); màn hình chỉ hiện bản dịch kèm nhãn "Bản dịch của kênh". `tttc.canh` báo Lỗi nếu còn chữ có vẻ tiếng Anh.
 - Mỗi số hiện trên màn hình phải có `nguon_id` (hoặc `bieu_do.nguon_id`) trỏ vào `nguon.json`; giá trị lấy từ nguồn, không gõ tay khác đi.
-- Đầu mỗi beat của kịch bản là một cảnh `chuong`.
+- Đầu mỗi beat của kịch bản là một cảnh `chuong`, trừ beat móc câu: không thẻ chương hay `mo-dau` trước giây 45 (`tttc.canh` cảnh báo).
 - Nhãn `minh-hoa` ≤ 5 từ; nhãn là ý chính, không lặp nguyên lời đọc.
 - **Chuyển động lặp** `dong` (mọi cảnh `minh-hoa` mặc định `bob`): `xoay` cho đồng xu/vòng quay, `dap` cho vật đang hoạt động
   (máy chủ, chip), `chop` cho điểm nhấn vàng; `""` để đứng yên. Đạo cụ tự nhấp nhô lệch pha.
 - Cho sân khấu có chuyện xảy ra: `minh-hoa` thêm `phu` (1–2 đạo cụ: cay, dong-xu, container, nguoi, mui-ten-len/xuong…);
   `so-lon` thêm `huong` khi số tăng/giảm và `svg` hình nền hợp nghĩa; `bieu-do` thêm `chu_thich` ≤ 2 từ cho cột nổi bật.
 - Nền tự gán theo vai trò (user duyệt 12/11/2026): `chuong` vàng; bằng chứng (`trich-bao`, `trang-nguon`, `nhan-vat`) kem; số liệu, minh họa, b-roll tối.
+  **Tông theo chương** (14/11/2026): ghi `tong` ở cảnh đầu video và ở mỗi cảnh `chuong` để nền tối của các cảnh sau đổi theo vai trò:
+  `hook` navy tối (móc câu), `khai-niem` kem ấm (khái niệm, bảng, checklist), `ky-thuat` rêu tối (cơ chế kỹ thuật),
+  `viet-nam` ngọc nhạt (tác động Việt Nam, chuỗi cung ứng). Bằng chứng vẫn kem, chương vẫn vàng.
+- **Phụ đề cháy vào hình đã tắt cho video ngang** (đối thủ không dùng; đáy khung dành cho bằng chứng và nhãn). Phụ đề vẫn lên
+  YouTube qua `phu-de.srt`; Shorts vẫn có phụ đề to. Bật lại: `config.json:render.phu_de = true`.
+- **`boi` – bồi dần trên cùng một sân khấu** (mọi mẫu, ≤ 6 mỗi cảnh): `[{chu?, svg?, kieu?, x, y, tu?, mui_ten?}]`. Nhãn pill bật đúng
+  lúc lời đọc nói `tu` (≤ 5 từ; `kieu`: `nhan` màu kênh, `vang` điểm chốt, `do` sự cố/cảnh báo, `trang` tên thực thể – thường kèm
+  `mui_ten` trai|phai|len|xuong chỉ vào vật). Chỉ `svg` không `chu` = tem/thẻ hình bật lên. `x`, `y` 0–1 là tâm nhãn trên khung;
+  tránh dải đáy (y > 0,85) và góc Nhịp. Cảnh sân khấu giữ lâu sau giây 60 cần `boi` + `nhip` đủ ~1 sự kiện mỗi 2–3 s
+  (`chat_luong` đếm). Số trong `chu` cần `nguon_id` của cảnh.
+- **`tom_tat`** (mọi mẫu, ≤ 14 từ): thanh tóm tắt một dòng ở đáy. Dùng cho mọi cảnh bằng chứng: câu tiếng Việt nói con số/ý
+  của ảnh, hoặc bản dịch dòng được khoanh ở `trang-nguon`. Số cần `nguon_id`.
   Người xem nhận ra "đang xem bằng chứng" qua màu nền; chỉ ghi `nen` khi muốn phá nhịp có chủ đích. Chuyển cảnh tự gán.
 - **Giây đầu có chữ hoặc số** (`tttc.chat_luong` cảnh báo): cảnh đầu là `so-lon`/`so-sanh`/`trich-bao`/`trang-nguon`/`bieu-do`,
   hoặc `b-roll` có `tu_khoa`/`chia`. Đưa con số hay câu hỏi chính lên khung đầu, đừng mở bằng cảnh stock trống.
@@ -100,13 +112,15 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - **Nhịp con**: mỗi cảnh ghi `nhip` = các cụm từ giọng đọc nói trong cảnh, theo thứ tự bước của mẫu
   (`DEFAULT_STEPS` trong `tttc/dung.py`; `bieu-do` = một cụm cho mỗi cột + một cụm cho cột nổi bật).
   Mục tiêu: hình đổi khoảng 2 s một lần. `tttc.canh` báo lỗi nếu cụm không có trong lời đọc của cảnh.
-- **Tỉ lệ cảnh** (user chốt 10/11/2026, thay chuẩn kênh mẫu; `tttc.chat_luong` đo): **ưu tiên ảnh thật và b-roll**.
-  Với mỗi cảnh, hỏi trước: có ảnh hay clip đời thật nào cho thấy đúng thứ đang nói không? Có thì dùng `b-roll`
-  (clip, hoặc ảnh tĩnh: `broll.nhap` nhận .jpg/.png và tự phóng chậm, bắt buộc `do_dai`). Chỉ dùng đồ họa tự dựng
-  (`so-lon`, `phan-tram`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chu-dong`, `chuong`) khi bất đắc dĩ: con số cần đọc được,
-  so sánh, quy trình, hoặc không có hình thật nào hợp.
-  Ngưỡng: ảnh/video đời thật (`b-roll`, `nhan-vat`) ≥ 45%; đồ họa ≤ 40%; bằng chứng (`trich-bao`, `trang-nguon`) 8–35%.
+- **Tỉ lệ cảnh** (user chốt 14/11/2026 theo `docs/nghien-cuu/cach-doi-thu-dung-video-2026-11-14.md` mục 6, thay chuẩn
+  10/11; `tttc.chat_luong` đo): **đồ họa sa bàn là chính**, ảnh thật chỉ khi đúng sự kiện.
+  Đồ họa tự dựng (`so-lon`, `phan-tram`, `bieu-do`, `so-sanh`, `quy-trinh`, `thoi-gian`, `minh-hoa`, `chu-dong`, `chuong`…) ≥ 70%;
+  bằng chứng (`trich-bao`, `trang-nguon`) 8–35%; 1–3 ảnh/clip thật **đúng sự kiện** (ảnh báo, ảnh hãng, ghi nguồn + ngày);
+  b-roll kho chung Pexels/Pixabay ≤ 10%. Thiếu hình thật thì dùng đồ họa, **không lấp bằng stock** (clip tối, lệch ngữ cảnh).
   Không 3 cảnh liền cùng mẫu (trừ `b-roll`, miễn là clip khác nhau).
+- **Nhịp hai tốc độ**: 30 s đầu cắt nhanh (trung bình ≤ 3,5 s/cảnh). Sau giây 60 được giữ một sân khấu đồ họa
+  (`quy-trinh`, `ban-do`, `xep-hang`, `bieu-do`, `thoi-gian`, `minh-hoa` nhiều nhịp) tới 35 s, miễn bồi dần ≥ 20 sự kiện/phút
+  trên chính cảnh đó (mỗi bước/nhãn mới ~2–3 s); dưới mức đó `chat_luong` tính là cảnh chậm.
 - **Nguồn hình** (user chốt 11/11/2026: không cần kiểm giấy phép, chỉ ghi tên nguồn trên hình). Hình phải cho thấy
   **đúng thứ lời đọc đang nhắc**, không phải cảnh chung chung. Với mỗi cảnh, thử theo thứ tự:
   1. Lời đọc dẫn một nguồn (bài báo, nghị định, công văn, báo cáo, trang giá, biểu đồ gốc, gợi ý tìm kiếm Google,
@@ -119,7 +133,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   4. Tình huống không có hình thật → ảnh AI sinh, `ghi_cong="Minh họa"`; không dùng làm bằng chứng.
   5. Sau cùng mới tới kho b-roll chung và đồ họa tự dựng.
   Tệp user thả vào `V/tu-quay/` dùng trước mọi nguồn khác. Quay màn hình app: user tự che số tài khoản, số dư trước.
-- **Nhân vật dẫn chuyện "Nhịp"** (mọi mẫu): `dan: {the, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}`; `the` ∈ chao, ngac-nhien, nghi, xac-nhan, bo-ngo, tinh-toan; `huong` ∈ truoc, nghieng-trai, nghieng-phai (mặc định nghiêng về giữa màn hình theo `goc`). Bộ ảnh lấy từ `pipeline/nhan-vat/kit.json` (bắt buộc; `tttc.canh` báo Lỗi nếu cặp biểu cảm × hướng không có). Hiện ở góc dưới, bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô; chỉ góc `truoc` có chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các khoảnh khắc: `chao` khi mở chương, `ngac-nhien` trước số gây sốc, `nghi` khi đặt câu hỏi hay nguồn lạ, `xac-nhan` khi số khớp nguồn, `bo-ngo` khi nói chưa kiểm được, `tinh-toan` khi mình tự tính. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng. Tạo lại bộ nhân vật: `docs/nghien-cuu/nhan-vat-tobyflow.md`.
+- **Nhân vật dẫn chuyện "Nhịp"** (mọi mẫu): `dan: {the, goc?: phai|trai, huong?, tu?: "cụm lời đọc"}`; `the` ∈ chao, ngac-nhien, nghi, xac-nhan, bo-ngo, tinh-toan; `huong` ∈ truoc, nghieng-trai, nghieng-phai (mặc định nghiêng về giữa màn hình theo `goc`). Bộ ảnh lấy từ `pipeline/nhan-vat/kit.json` (bắt buộc; `tttc.canh` báo Lỗi nếu cặp biểu cảm × hướng không có). Hiện ở góc dưới, bật vào đúng lúc nói `tu` (không có `tu` thì 0,3 s sau đầu cảnh), nhấp nhô; chỉ góc `truoc` có chớp mắt. Dùng ≥ 1 lần mỗi chương và ở các khoảnh khắc: `chao` khi mở chương, `ngac-nhien` trước số gây sốc, `nghi` khi đặt câu hỏi hay nguồn lạ, `xac-nhan` khi số khớp nguồn, `bo-ngo` khi nói chưa kiểm được, `tinh-toan` khi mình tự tính. Không dùng trong Shorts (khung dọc). Chọn `goc` phía không có chữ/số quan trọng. Chỉ cho Nhịp ra khi có lời nói với người xem, câu hỏi `>>` của giọng phụ, hay đoạn tóm ý; không đứng chơi cạnh bằng chứng. Tạo lại bộ nhân vật: `docs/nghien-cuu/nhan-vat-tobyflow.md`.
 - **`quy-trinh`** (một chuỗi 3–6 bước nối bằng mũi tên: quy trình, chuỗi cung ứng, "tiền đi đâu"): `buoc` = danh sách
   `{nhan, svg?}` (không có `svg` thì hiện số thứ tự), `noi_bat` = chỉ số bước đang nói tới (bước còn lại mờ đi), `nhip` = một
   cụm lời đọc cho mỗi bước.
@@ -134,10 +148,14 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   `tu-tinh`); một hàng một cụm `nhip`.
 - **`chu-dong`** (câu chốt, câu hỏi xoáy, kết luận của chương; tối đa 1–2 lần mỗi chương): `cau` ≤ 16 từ, nên chép đúng lời đọc để từng chữ hiện đúng lúc giọng nói tới; `nhan_tu` = cụm trong `cau` được tô màu nhấn và gạch dạ quang; `nho` = dòng nhỏ phía trên (≤ 5 từ, vd "Câu hỏi", "Điểm mấu chốt"). Không dùng thay phụ đề cho câu thường.
 - **`phan-tram`** (tỉ lệ, "một phần tư", "7 trên 10 người"): `so` 0–100, `nhan` = ý nghĩa con số, `tieu_de?`, `nguon_id` bắt buộc (khớp nguồn như `so-lon`; tỉ lệ tự tính dùng nguồn `tu-tinh`). Vòng tròn chạy tới đúng tỉ lệ, số đếm cùng nhịp.
-- **`mo-dau`** (logo kênh, 2–3 s): đặt ngay **sau** đoạn móc câu (không ở giây 0), `cau?` = câu hỏi của video. Một lần mỗi video.
+- **`mo-dau`** (logo kênh, 2–3 s): đặt sau đoạn móc câu, **từ giây 45 trở đi** (không chen vào 30 s đầu), `cau?` = câu hỏi của video. Một lần mỗi video.
 - **`ket-thuc`** (màn hình kết thúc): luôn là cảnh cuối, dài ≥ 5 s (lý tưởng 8–10 s), lời đọc là lời chào/kêu gọi đăng ký. `cau?`, `moi?`, `nut?`, `nut_xong?`, `khung?`. Khi đăng, đặt 2 phần tử video gợi ý của YouTube Studio đúng vào hai khung bên phải.
 - **Chuyển cảnh tự gán**: vào chương ba lớp màu nhấn quét qua, rời chương ba lớp tối, vào `so-lon`/`phan-tram`/`mo-dau`/`ket-thuc` mống mắt khép–mở, còn lại chớp tối hoặc cắt thẳng. Viền tối điện ảnh quanh khung: `config.json:render.vien_toi` (mặc định 0,28; 0 = tắt).
 - **`trich-bao`**: `trich` chép nguyên văn từ `nguon.json:trich_dan` (≤ 25 từ), `to_vang` là cụm chứa ý/số chính.
+  Khi 2–3 nguồn cùng nói về một việc (đối chiếu, "ai nói gì"): dùng `cac: [{nguon_id, tom_tat}]` thay cho `trich` – các thẻ
+  song song, mỗi thẻ huy hiệu chữ cái + tên báo + ngày + tóm tắt ≤ 6 từ; `nhip` một cụm cho mỗi thẻ. Đừng lặp 5–6 tờ giấy kem đơn.
+- **`trang-nguon`**: `vien` (`nhan`|`vang`|`do`) đổi màu viền khoanh; `zoom` 2,5–3,5 khi muốn phóng sát đúng dòng/con số
+  (mặc định tự tính); kèm `tom_tat` là bản dịch/tóm tắt tiếng Việt in đậm ở đáy.
   Không chụp nguyên trang báo; mẫu tự sắp chữ lại kèm tên báo (`nguon.ten`) và ngày.
 - **`b-roll`** – clip riêng cho từng video (kho chung chỉ là phần nền):
   1. Liệt kê mọi cảnh `b-roll` của video và hình cần thấy (vd "cánh quạt điện gió", "chợ Bến Thành").

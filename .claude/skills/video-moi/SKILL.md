@@ -28,7 +28,10 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 - Chấm câu "nóng" bằng dữ liệu: gọi skill `yt-viral` cho ngách (tin công nghệ–kinh tế tiếng Việt) xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
 - **Chọn khung kịch bản** (cập nhật 14/11/2026):
   - **Video chính hằng ngày (Anchor / Evergreen):** bắt buộc làm định dạng **Video dài (`2.000–2.600 từ`, ~8–11 phút ở tốc độ VieNeu)**. Có thể mượn thứ tự các Beat (Hook, Phân tích, Châm biếm, Mid-roll CTA, Tác động, Kết) trong `docs/template-kich-ban.md`, nhưng **KHÔNG ghi dòng `Loại: <khóa>`** ở đầu `kich-ban.md` để giữ khung độ dài chuẩn 8–13 phút.
-  - **Chỉ ghi `Loại: <khóa>`** (`ra-mat`, `ro-ri`, `gia`, `bao-mat`, `ai`, `cap-nhat`, `shorts`) khi chủ đích làm **clip ngắn phụ trợ (1,5–3,5 phút)** hoặc **Shorts dọc (`shorts`)**.
+  - **Giọng phụ phản biện**: cứ 90–150 giây chèn một dòng lời đọc mở bằng `>>` (5–9 từ, câu hỏi/thắc mắc của người xem,
+    vd `>> Vậy tiền ai trả?`). Dòng này do giọng phụ (`config.json:vieneu.giong_phu`) đọc, tạo nhịp đối thoại; câu tiếp theo
+    của giọng chính trả lời ngay. Không dùng `>>` cho số liệu hay trích dẫn.
+  - **Chỉ ghi `Loại: <khóa>`** (`ra-mat`, `ro-ri`, `gia`, `bao-mat`, `ai`, `cap-nhat`, `shorts`) khi chủ đích làm **clip ngắn phụ trợ (1,5–3,5 phút)** hoặc **Shorts dọc (`shorts`)**. Tin sự kiện chính (nhất là đề đối thủ cũng làm) luôn là video dài: clip 2 phút thua thẳng video 10–18 phút của đối thủ.
 - Ghi `chu-de.md` bằng `radar.ghi_chu_de(V, top, ho_da_dang)`: 3 đề tốt nhất, mỗi đề có điểm từng câu, link tin gốc, cờ "họ đã đăng cùng sự kiện" (đối chiếu RSS). Họ đã đăng cùng đề thì **vẫn làm**, chỉ ghi cờ. Đề 1 là đề được làm tiếp; người dùng đổi ở điểm duyệt 1.
 
 ## 2. nguon
@@ -52,6 +55,7 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 ## 3. kich-ban
 
 - Gọi skill `yt-script` với đề, lời hứa, `nguon.json` và **thẻ phong cách `docs/phong-cach-kich-ban.md`**.
+  - **30 giây đầu** (nghiên cứu đối thủ 14/11/2026): số lớn/đồng hồ/bản đồ mở móc → một ảnh thật hoặc bằng chứng phóng rõ + tóm tắt một dòng → tình huống người Việt → một câu hỏi móc dẫn sang thân bài. Không chào kênh, không nhắc tên kênh hay "phần 1" trước giây 45.
   - **Video chính hằng ngày (không ghi `Loại:`):** dùng khung 6 đoạn của kênh (móc 15 giây → bối cảnh/số → chuyện thật sự đổi gì → hệ quả cho người Việt → hai việc cần ngóng → kết trả lời câu hỏi tiêu đề), có thể kết hợp cấu trúc Hook / Châm biếm / Mid-roll CTA / End-Screen CTA từ `docs/template-kich-ban.md`, nhưng phải đủ **2.000–2.600 từ lời đọc** (~8–11 phút ở tốc độ VieNeu thực tế).
   - **Clip ngắn phụ trợ hoặc Shorts (có ghi `Loại: <khóa>`):** dùng đúng khung và độ dài ngắn của loại đó trong `docs/template-kich-ban.md` (HOOK, PHÂN TÍCH, CHÂM BIẾM, TÁC ĐỘNG, KẾT), điền `[...]` bằng số và sự kiện có nguồn, thêm dòng `Loại: <khóa>` ngay dưới tiêu đề `kich-ban.md`. Khung từ theo `phong_cach.LOAI`; giọng, từ trend, "mình" theo mục 10.
 - Định dạng `kich-ban.md`:

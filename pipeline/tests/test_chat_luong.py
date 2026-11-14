@@ -50,15 +50,15 @@ def test_kiem_error_on_scene_under_1_5s():
 
 
 def test_kiem_warns_on_slow_pace():
-    m = cl.do(_canh(PROFILE, [6.0] * 20), _timing(120, 290))
+    m = cl.do(_canh(PROFILE, [13.0] * 20), _timing(260, 900))
     assert any(e.startswith("Cảnh báo") and "Độ dài trung bình" in e for e in cl.kiem(m))
 
 
 def test_kiem_passes_channel_like_profile():
     m = cl.do(_canh(PROFILE, [3.5] * 20), _timing(70, 234))
     loi = [e for e in cl.kiem(m) if "độ khô" not in e and "cảnh đầu" not in e]  # mẫu cũ một phông, mở bằng chương: báo đúng ý đo
-    # mẫu kênh cũ (70% đồ họa) nay bị báo hai tỉ lệ: user chốt ưu tiên ảnh thật và b-roll
-    assert len(loi) == 2 and "Đồ họa" in loi[0] and "đời thật" in loi[1]
+    # mẫu kênh cũ (70% đồ họa) đạt chuẩn 14/11/2026: đồ họa ≥ 70%
+    assert loi == []
     assert m["su_kien_phut"] >= 30 and m["sfx_phut"] >= 15 and 180 <= m["toc_do"] <= 230
 
 
@@ -134,10 +134,30 @@ def test_old_callers_without_director_files_still_work():
     assert "do_kho" in cl.do(_canh(["minh-hoa"], [3]), _timing(3, 8))
 
 
-def test_kiem_ti_le_uu_tien_doi_that():
-    maus = ["b-roll"] * 5 + ["trich-bao", "so-lon", "b-roll", "bieu-do", "minh-hoa"]  # 60% đời thật, b-roll liền nhau
-    m = cl.do(_canh(maus * 2, [3.5] * 20), _timing(70, 234))
-    assert not [e for e in cl.kiem(m) if "Đồ họa" in e or "đời thật" in e or "liền cùng" in e]
+def test_kiem_ti_le_uu_tien_do_hoa_va_han_che_stock():
+    maus = ["b-roll"] * 5 + ["trich-bao", "so-lon", "b-roll", "bieu-do", "minh-hoa"]  # 60% b-roll
+    sc = _canh(maus * 2, [3.5] * 20)
+    for i, c in enumerate(sc["scenes"]):
+        if c["mau"] == "b-roll":
+            c["video"] = f"v{i}.mp4"
+    assert any("Đồ họa" in e for e in cl.kiem(cl.do(sc, _timing(70, 234))))
+    assert not any("kho chung" in e or "sự kiện" in e for e in cl.kiem(cl.do(sc, _timing(70, 234))))  # chưa có ghi công: bỏ qua
+    gc = {f"v{i}.mp4": "Video: An trên Pexels" for i in range(20)} | {"v0.mp4": "Ảnh: VnExpress", "v1.mp4": "Minh họa"}
+    m = cl.do(sc, _timing(70, 234), ghi_cong=gc)
+    assert m["anh_su_kien"] == 1 and m["ti_le_stock"] == 10 / 20
+    assert any("kho chung" in e for e in cl.kiem(m))
+    m = cl.do(sc, _timing(70, 234), ghi_cong={"v1.mp4": "Minh họa"})
+    assert any("chưa có ảnh/clip thật" in e for e in cl.kiem(m))
+
+
+def test_long_stage_after_60s_allowed_only_when_layered_densely():
+    def sc(buoc, start=60.0):
+        dau = [{"id": f"c{i}", "mau": "so-lon", "start": i * 3.0, "end": i * 3.0 + 3.0} for i in range(int(start // 3))]
+        san = {"id": "s", "mau": "quy-trinh", "start": start, "end": start + 20, "buoc": [{"nhan": "b"}] * buoc}
+        return {"scenes": dau + [san]}
+    assert cl.do(sc(6), _timing(80, 300))["tren_8"] == 0     # 7 sự kiện / 20 s = 21/phút
+    assert cl.do(sc(3), _timing(80, 300))["tren_8"] == 1     # 4 sự kiện / 20 s = 12/phút: tĩnh
+    assert cl.do(sc(6, 0.0), _timing(20, 75))["tren_8"] == 1  # 60 s đầu không được giữ lâu
 
 
 def test_kiem_warns_when_first_scene_has_no_text_or_number():
@@ -188,3 +208,13 @@ def test_kiem_30s_dau_warns_only_above_threshold():
     assert len(cl.kiem_30s_dau({"tb_giay_30s": 3.2}, max_tb=3.0)) == 1
     so_do = {**_ok_base(), "tb_giay_30s": 4.2}
     assert any("30 giây đầu cắt cảnh chậm" in m for m in cl.kiem(so_do))
+
+
+def test_boi_labels_count_as_layering_events():
+    def san(boi):
+        dau = [{"id": f"c{i}", "mau": "so-lon", "start": i * 3.0, "end": i * 3.0 + 3.0} for i in range(20)]
+        return {"scenes": dau + [{"id": "s", "mau": "minh-hoa", "start": 60, "end": 80, "svg": "x",
+                                  "boi": [{"chu": "A", "x": 0.5, "y": 0.5}] * boi}]}
+    assert cl.do(san(0), _timing(80, 300))["tren_8"] == 1   # 4 sự kiện / 20 s: tĩnh
+    assert cl.do(san(4), _timing(80, 300))["tren_8"] == 0   # 8 sự kiện / 20 s = 24/phút
+    assert cl.do(san(4), _timing(80, 300))["sfx_phut"] > cl.do(san(0), _timing(80, 300))["sfx_phut"]

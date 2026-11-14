@@ -8,9 +8,11 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - so-lon:      so (số hoặc chuỗi "5,3"), tu? (giá trị cũ: số đếm từ đó tới so, cũng phải khớp nguồn), truoc?, sau?, nhan, nguon_id, svg? (hình nền mờ), huong? len|xuong, dong? (như minh-hoa, mặc định không)
 - bieu-do:     nhan (tiêu đề), bieu_do{kieu, nhan_x[], gia_tri[], don_vi, noi_bat?, chu_thich?, nguon_id (một id hoặc danh sách)}
 - nhan-vat:    anh (tệp trong anh/), nhan (tên), vai
-- trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id
+- trang-nguon: anh (tệp trong nguon/), khung "x,y,w,h" (% vùng trang), nguon_id, vien? nhan|vang|do (màu viền khoanh),
+               zoom? (1,5–4: độ phóng vào khung; mặc định tự tính để câu trích rộng ~60% màn hình); dịch/tóm tắt dùng tom_tat
 - trich-bao:   nguon_id, trich (nguyên văn một đoạn trong trich_dan, ≤ 25 từ), to_vang (cụm trong trich); trich nguồn tiếng Anh thì
-               bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi)
+               bắt buộc trich_vi (bản dịch của kênh, hiện lên màn hình kèm nhãn) và to_vang_vi (cụm trong trich_vi);
+               hoặc cac [2–3 {nguon_id, tom_tat (≤ 6 từ)}]: các thẻ nguồn song song (huy hiệu chữ cái + tên báo + ngày + tóm tắt)
 - quy-trinh:   tieu_de?, buoc [3–6 phần tử {nhan, svg?}], noi_bat? (chỉ số bước), nguon_id?, dong? (cho bước nổi bật, mặc định dap)
 - xep-hang:    tieu_de?, moc? [2–10 nhãn năm: chạy theo năm, khi đó so của mỗi hàng là danh sách một giá trị cho mỗi mốc], hang [2–8 {nhan, so}] theo đúng thứ tự hiển thị (tác giả tự xếp), don_vi, nguon_id (bắt buộc: mọi số phải khớp nguồn),
                noi_bat? (chỉ số hàng), dong? (cho thanh nổi bật, mặc định dap); thanh ngang dài theo số, số đếm tăng ở đầu thanh
@@ -24,13 +26,19 @@ Trường canh.json theo mẫu (ngoài id, mau, start, end; mọi cảnh có th�
 - chu-dong:    cau (câu chốt ≤ 16 từ, nên trùng lời đọc: từng chữ hiện đúng lúc giọng nói tới), nhan_tu? (cụm trong cau được tô
                màu nhấn và gạch dạ quang), nho? (dòng nhỏ phía trên, ≤ 5 từ)
 - phan-tram:   so (0–100), sau? (mặc định "%"), tieu_de?, nhan (ý nghĩa con số), nguon_id (bắt buộc); vòng tròn chạy tới đúng tỉ lệ
-- mo-dau:      cau? (câu hỏi của video) – logo kênh hiện ra với ba vòng "nhịp"; đặt ngay sau đoạn móc câu, không đặt ở giây 0
+- mo-dau:      cau? (câu hỏi của video) – logo kênh hiện ra với ba vòng "nhịp"; đặt sau đoạn móc câu, từ giây 45 trở đi
 - ket-thuc:    cau? ("Xem tiếp nhé"), moi?, nut?, nut_xong?, khung? – cảnh cuối ≥ 5 s, chừa hai khung 16:9 bên phải cho phần tử
                màn hình kết thúc của YouTube (đặt video gợi ý đúng vào hai khung trong YouTube Studio)
 Mọi mẫu: dan? {the, goc? phai|trai, huong? (hướng nhìn; mặc định nghiêng về giữa màn hình), tu?} – nhân vật dẫn chuyện; có
 pipeline/nhan-vat/kit.json (bắt buộc khi có dan) cho PNG biểu cảm × hướng (tttc/nhan_vat.py).
 Mọi mẫu: nhip? [cụm từ trong lời đọc của cảnh, theo thứ tự bước của mẫu – xem DEFAULT_STEPS]; null giữ mốc mặc định.
-Nền tự gán theo vai trò: chương vàng, bằng chứng (trích báo, trang nguồn, nhân vật) kem, còn lại tối. Chuyển cảnh tự gán (transitions()).
+Mọi mẫu: boi? [≤ 6 {chu? (≤ 5 từ), svg?, kieu? nhan|vang|do|trang, x, y (0–1, tâm nhãn trên khung), tu? (cụm lời đọc: bật đúng
+         lúc nói), mui_ten? trai|phai|len|xuong}] – bồi dần nhãn pill/tem lên cùng một sân khấu; số trong chu cần nguon_id của cảnh.
+Mọi mẫu: tom_tat? (≤ 14 từ) – thanh tóm tắt/dịch một dòng ở đáy khung (bằng chứng, trang nguồn); số cần nguon_id.
+Mọi mẫu: tong? hook|khai-niem|ky-thuat|viet-nam – đổi tông nền từ cảnh này trở đi (thường đặt ở cảnh chuong hoặc cảnh đầu).
+Nền tự gán theo vai trò: chương vàng, bằng chứng (trích báo, trang nguồn, nhân vật) kem, còn lại tối (hoặc tông của chương).
+Chuyển cảnh tự gán (transitions()). Phụ đề cháy vào hình: Shorts luôn có; video ngang chỉ khi config.json:render.phu_de = true
+(mặc định tắt: đáy khung dành cho tom_tat và nhãn, phụ đề đi bằng phu-de.srt khi đăng).
 Tự thêm: thanh tiến trình chương ở mép trên; Nhịp ló ra ở cảnh so-lon có trong_diem (dan_cua); dan.lau = số giây ló ra.
 """
 import json
@@ -166,7 +174,14 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         n = by_id.get(c.get("nguon_id"))
         url = n["url"].split("://", 1)[-1].removeprefix("www.").rstrip("/") if n else ""
         return {"anh": f"assets/nguon/{c['anh']}", "khung": c.get("khung", "0,0,0,0"), "url": url,
-                "nguon": src(c.get("nguon_id"))}
+                "nguon": src(c.get("nguon_id")), "vien": MAU_NHAN[c.get("vien") or "nhan"][0], "zoom": c.get("zoom") or 0}
+    if m == "trich-bao" and c.get("cac"):
+        def the(x):
+            n = by_id[x["nguon_id"]]
+            bao = n.get("ten") or urlparse(n["url"]).netloc.removeprefix("www.")
+            return {"bao": bao, "ngay": f"{date.fromisoformat(n['ngay_truy_cap']):%d/%m/%Y}", "tom_tat": x["tom_tat"],
+                    "chu": "".join(w[0] for w in re.findall(r"\w+", bao)[:2]).upper()}
+        return {"cac": json.dumps([the(x) for x in c["cac"]], ensure_ascii=False), "tieu_de": "", "bao": "", "ngay": ""}
     if m == "trich-bao":
         n = by_id[c["nguon_id"]]
         return {"bao": n.get("ten") or urlparse(n["url"]).netloc.removeprefix("www."),
@@ -252,6 +267,8 @@ def steps(c: dict, words: list[dict]) -> list[float]:
         base = [round(0.5 + 0.55 * i, 3) for i in range(nd)] + [round(0.5 + 0.55 * nd + 0.5 * j, 3) for j in range(len(c.get("noi") or []))]
     elif c["mau"] == "chu-dong":
         return moc_tu(c["cau"], words, c["start"], c["end"])
+    elif c["mau"] == "trich-bao" and c.get("cac"):
+        base = [round(0.4 + 0.8 * i, 3) for i in range(len(c["cac"]))]
     else:
         base = list(DEFAULT_STEPS[c["mau"]])
     for k, ph in enumerate(c.get("nhip") or []):
@@ -315,12 +332,71 @@ def sfx_events(c: dict, st: list[float]) -> list[tuple[str, float, float]]:
 
 
 BANG_CHUNG = {"trich-bao", "trang-nguon", "nhan-vat"}
+# Nhãn pill bồi dần (nghiên cứu đối thủ 14/11/2026, P1): (nền, chữ). nhan = màu thương hiệu; vang chốt ý; do sự cố; trang tên thực thể.
+MAU_NHAN = {"nhan": (theme.TH["nhan"][0], theme.TH["chu_tren_nhan"]), "vang": tuple(theme.TH["pill"]["vang"]),
+            "do": (SAC["do"][0], SAC["do"][3]), "trang": tuple(theme.TH["pill"]["trang"])}
+MUI_TEN = {"trai": "←", "phai": "→", "len": "↑", "xuong": "↓"}
+# Tông nền theo vai trò chương (P2): tên tông → (nền cho mẫu, biến CSS đè lên nền đó ở khung chủ).
+TONG = {"hook": ("toi", "navy"), "khai-niem": ("kem", ""), "ky-thuat": ("toi", "reu"), "viet-nam": ("kem", "ngoc")}
 
 
 def grounds(scenes: list[dict]) -> list[str]:
-    """Nền theo vai trò (user duyệt 12/11/2026): chương vàng, bằng chứng kem, số liệu và minh họa tối; canh.json ghi đè được."""
-    return [c.get("nen") or ("vang" if c["mau"] == "chuong" else "kem" if c["mau"] in BANG_CHUNG else "toi")
-            for c in scenes]
+    """Nền theo vai trò (user duyệt 12/11/2026): chương vàng, bằng chứng kem, số liệu và minh họa tối; canh.json ghi đè được.
+    Cảnh có tong đổi nền "tối" mặc định của nó và các cảnh sau thành tông đó (hook navy, khai-niem kem, ky-thuat rêu, viet-nam ngọc)."""
+    out, tong = [], None
+    for c in scenes:
+        tong = c.get("tong") or tong
+        mac_dinh = "vang" if c["mau"] == "chuong" else "kem" if c["mau"] in BANG_CHUNG else tong or "toi"
+        out.append(c.get("nen") or mac_dinh)
+    return out
+
+
+def nen_mau(nen: str) -> tuple[str, str]:
+    """Nền mẫu cảnh nhận (toi/kem/vang) và style biến CSS cho tông chương (rỗng nếu không có tông)."""
+    if nen not in TONG:
+        return nen, ""
+    lop, ten = TONG[nen]
+    if not ten:
+        return lop, ""
+    t = theme.TH["tong"][ten]
+    return lop, (f"--nen-0:{t[0]};--nen-1:{t[1]};--tren-muc:{t[0]};" if lop == "toi" else f"--kem-0:{t[0]};--kem-1:{t[1]};")
+
+
+def moc_boi(c: dict, words: list[dict]) -> list[float]:
+    """Giây (tính từ đầu cảnh) mỗi nhãn bồi dần bật lên: lúc lời đọc nói tu, không có thì rải đều từ 0,6 s."""
+    dur, out = c["end"] - c["start"], []
+    for k, b in enumerate(c.get("boi") or []):
+        t = phrase_time(words, b["tu"], c["start"], c["end"]) if b.get("tu") else None
+        out.append(round(t - c["start"], 3) if t is not None else round(min(0.6 + 1.6 * k, max(dur - 0.6, 0)), 3))
+    return out
+
+
+def nhan_boi(c: dict, idx: int, a0: float, words: list[dict]) -> tuple[list[str], list[str], list[tuple[str, float, float]]]:
+    """Thẻ HTML, lệnh GSAP và tiếng pop cho các nhãn bồi dần (boi) và thanh tóm tắt (tom_tat) của một cảnh bắt đầu ở a0."""
+    dur = round(c["end"] - c["start"], 3)
+    tags, js, sfx = [], [], []
+    for j, (b, t) in enumerate(zip(c.get("boi") or [], moc_boi(c, words))):
+        bid, (nen, chu) = f"boi-{idx}-{j}", MAU_NHAN[b.get("kieu") or "nhan"]
+        mui, huong = MUI_TEN.get(b.get("mui_ten") or "", ""), b.get("mui_ten")
+        noi = f'<img src="assets/svg/{b["svg"]}.svg" alt="">' if b.get("svg") else ""
+        if b.get("chu"):
+            truoc = mui + " " if huong in ("trai", "len") else ""
+            sau = " " + mui if huong in ("phai", "xuong") else ""
+            noi += f"<span>{escape(truoc + b['chu'] + sau)}</span>"
+        mau = f"background:{nen};color:{chu};" if b.get("chu") else ""
+        tags.append(f'<div id="{bid}" class="clip boi{"" if b.get("chu") else " boi-tem"}" data-start="{round(a0 + t, 3)}" '
+                    f'data-duration="{round(max(dur - t, 0.3), 3)}" data-track-index="2" '
+                    f'style="left:{b["x"] * 1920:.0f}px;top:{b["y"] * 1080:.0f}px;{mau}">{noi}</div>')
+        js.append(f'tl.fromTo("#{bid}", {{ xPercent: -50, yPercent: -50, scale: 0, opacity: 0 }}, '
+                  f'{{ xPercent: -50, yPercent: -50, scale: 1, opacity: 1, duration: 0.35, ease: "back.out(2.2)" }}, {a0 + t:.3f});')
+        sfx.append(("pop", a0 + t, 0.2))
+    if c.get("tom_tat"):
+        tid = f"tt-{idx}"
+        tags.append(f'<div id="{tid}" class="clip tom-tat" data-start="{round(a0 + 0.5, 3)}" '
+                    f'data-duration="{round(max(dur - 0.5, 0.3), 3)}" data-track-index="2">{escape(c["tom_tat"])}</div>')
+        js.append(f'tl.fromTo("#{tid}", {{ xPercent: -50, y: 30, opacity: 0 }}, '
+                  f'{{ xPercent: -50, y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }}, {a0 + 0.5:.3f});')
+    return tags, js, sfx
 
 
 PEEK_LAU = 1.8  # giây Nhịp ló ra ở cảnh số trọng điểm
@@ -352,8 +428,9 @@ def transitions(scenes: list[dict]) -> list[tuple[int, str]]:
     out = []
     for k in range(1, len(scenes)):
         a, b = scenes[k - 1]["mau"], scenes[k]["mau"]
+        cung_san = a == b == "minh-hoa" and scenes[k - 1].get("san_khau", "nen-dat") == scenes[k].get("san_khau", "nen-dat")
         kind = ("vang" if b == "chuong" else "muc" if a == "chuong" else "iris" if b in IRIS
-                else "dip" if k % 3 == 0 else "")
+                else "dip" if k % 3 == 0 and not cung_san else "")  # cùng sân khấu: giữ mạch, không chớp tối
         if kind:
             out.append((k, kind))
     return out
@@ -504,6 +581,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
 
     hosts = []
     sfx = []
+    nhan_tags, nhan_js = [], []  # nhãn bồi dần + thanh tóm tắt, nằm trong sân khấu (Shorts thu nhỏ cùng hình)
     for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
         page = _scene_file(c["mau"], sid, c.get("video", ""), c["end"] - c["start"])
@@ -514,13 +592,18 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         st = steps(c, timing.get("words", []))
         sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
         extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng
-        vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=nen, nhip=json.dumps(st), **extra),
+        lop, bien = nen_mau(nen)
+        vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=lop, nhip=json.dumps(st), **extra),
                           ensure_ascii=False)
         sac = c.get("sac")
-        style = ""
         if sac in SAC:
             vals = re.sub(r"assets/svg/(?!nen-dat|tui-)([\w-]+)\.svg", rf"assets/svg/\1@{sac}.svg", vals)
-            style = f' style="--accent:{SAC[sac][0]};--accent-ink:{SAC[sac][3]};--tint:16%"'
+            bien += f"--accent:{SAC[sac][0]};--accent-ink:{SAC[sac][3]};--tint:16%"
+        style = f' style="{bien}"' if bien else ""
+        tags, js, ev = nhan_boi(c, idx, round(c["start"] - t0, 3), timing.get("words", []))
+        nhan_tags += tags
+        nhan_js += js
+        sfx += ev
         vals = vals.replace("'", "&#39;")
         hosts.append(f'<div id="{sid}" data-composition-id="{sid}" data-composition-src="compositions/{sid}.html"\n'
                      f'           data-start="{round(c["start"] - t0, 3)}" data-duration="{round(c["end"] - c["start"], 3)}"'
@@ -553,7 +636,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
                          f'tl.to(["#tr-{k}-p0", "#tr-{k}-p1", "#tr-{k}-p2"], {{ xPercent: 101, duration: 0.32, ease: "power3.out", '
                          f'stagger: {{ each: 0.04, from: "end" }} }}, {seam:.3f});')
 
-    caps, cap_js = phu_de(timing, scenes, t0, total, h > w)
+    co_phu_de = h > w or bool(_render_cfg().get("phu_de", False))
+    caps, cap_js = phu_de(timing, scenes, t0, total, h > w) if co_phu_de else ([], [])
 
     dan_tags, dan_js = [], []
     if h <= w:  # shortcut: Shorts (khung dọc) chưa có nhân vật; thêm khi có nhu cầu
@@ -663,6 +747,15 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       .dan {{ position: absolute; bottom: 200px; width: 280px; height: 280px; z-index: 6; pointer-events: none; }}
       .dan img {{ position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }}
       .dan-phai {{ right: 70px; }} .dan-trai {{ left: 70px; }}
+      .boi {{ position: absolute; z-index: 5; pointer-events: none; display: flex; align-items: center; gap: 14px;
+              padding: 14px 28px; border-radius: 999px; font: 900 44px/1.05 var(--font-display); white-space: nowrap;
+              letter-spacing: -0.01em; box-shadow: 0 10px 28px rgba(0,0,0,0.4); border: 4px solid rgba(17,17,17,0.85); }}
+      .boi img {{ height: 60px; width: auto; }}
+      .boi-tem {{ padding: 0; border: 0; box-shadow: none; background: none; }}
+      .boi-tem img {{ height: 180px; filter: drop-shadow(0 12px 22px rgba(0,0,0,0.45)); }}
+      .tom-tat {{ position: absolute; left: 50%; bottom: 44px; max-width: 1560px; z-index: 5; pointer-events: none;
+                  background: rgba({nen_rgb},0.9); color: #fff; font: 800 40px/1.3 var(--font-display); padding: 14px 32px;
+                  border-left: 10px solid {nhan0}; border-radius: 10px; box-shadow: 0 12px 30px rgba(0,0,0,0.4); }}
       #tien-do {{ position: absolute; left: 0; right: 0; top: 0; height: 60px; z-index: 7; pointer-events: none; }}
       .td-doan {{ position: absolute; top: 0; height: 7px; background: rgba(255,255,255,0.22); border-right: 4px solid {nen}; }}
       .td-day {{ position: absolute; inset: 0; background: linear-gradient(90deg, {nhan0}, {theme.TH["sac"]["lam"][0]}); transform-origin: left center;
@@ -690,6 +783,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     <div id="root" data-composition-id="main" data-start="0" data-duration="{total}" data-width="{w}" data-height="{h}">
       {stage_open}
       {chr(10).join(hosts)}
+      {chr(10).join(nhan_tags)}
       {stage_close}
       {chr(10).join(trs)}
       {'<div id="vien-toi"></div>' if vien_toi > 0 else ""}
@@ -705,6 +799,7 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
       const tl = gsap.timeline({{ paused: true }});
       {chr(10).join(tr_js)}
       {chr(10).join(dan_js)}
+      {chr(10).join(nhan_js)}
       {chr(10).join(tien_do_js)}
       {chr(10).join(cap_js)}
       window.__timelines["main"] = tl;

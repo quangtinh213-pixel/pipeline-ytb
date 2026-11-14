@@ -27,7 +27,11 @@ def _nfc(s: str) -> str:
     return unicodedata.normalize("NFC", s)
 
 
-def spoken_paragraphs(script_md: str, keep_tags: bool = False) -> list[str]:
+GIONG_PHU = re.compile(r"^>>\s*")  # dòng lời đọc mở bằng ">>": giọng phụ đọc (câu hỏi xen của người xem)
+
+
+def spoken_voiced(script_md: str, keep_tags: bool = False) -> list[tuple[str, bool]]:
+    """[(đoạn lời đọc, có phải giọng phụ)]; dấu ">>" đã bỏ khỏi chữ."""
     paras, on = [], False
     for line in _nfc(script_md).splitlines():
         s = line.strip()
@@ -41,10 +45,16 @@ def spoken_paragraphs(script_md: str, keep_tags: bool = False) -> list[str]:
             on = False
             continue
         if on:
+            phu = bool(GIONG_PHU.match(s.strip()))
+            s = GIONG_PHU.sub("", s.strip())
             s = re.sub(r"\s+", " ", (s if keep_tags else TAG.sub("", s)).replace("*", "")).strip()
             if s:
-                paras.append(s)
+                paras.append((s, phu))
     return paras
+
+
+def spoken_paragraphs(script_md: str, keep_tags: bool = False) -> list[str]:
+    return [s for s, _ in spoken_voiced(script_md, keep_tags)]
 
 
 def words_from_alignment(alignment: dict, offset: float) -> list[dict]:

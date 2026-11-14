@@ -13,10 +13,11 @@
     "https://chinhphu.vn/"
   ],
   "gio_dang_mac_dinh": "15:30",
-  "nhac_nen": "am-thanh/nhac/ambient-tech.mp3",
+  "nhac_nen": "am-thanh/nhac/pulsar.mp3",
   "playlist_id": "PLf9v4rPuuCys",
   "vieneu": {
     "voice": "Quốc Tuấn",
+    "giong_phu": "Trúc Ly",
     "toc_do": 1.0,
     "phat_am": {
       "GPT-6": "GPT sáu",

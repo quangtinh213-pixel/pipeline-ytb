@@ -18,6 +18,10 @@ DAN_GOC = {"phai", "trai"}  # góc màn hình của nhân vật dẫn chuyện (
 MAY_QUAY = {"", "dung", "day-vao", "keo-ra", "lia", "he-lo", "punch-in", "lac"}  # camera áp lên "thế giới" của cảnh minh-hoa
 DONG = {"", "bob", "xoay", "dap", "chop", "tilt", "tho"}  # chuyển động lặp trong cảnh (templates/canh/dong.js)
 CANH_MIN_CB, CANH_MAX_CB = 2.5, 6.0      # ngoài khoảng này là cảnh báo (chuẩn kênh mẫu: 2,5–4 s/cảnh)
+# user chốt 14/11/2026 (nghiên cứu đối thủ mục 6, P0): sau 60 s được giữ một sân khấu đồ họa tới 35 s
+# (tttc.chat_luong đo độ dày bồi dần); b-roll giữ trần cũ vì clip kho ≤ 20 s và mỗi cảnh một clip
+SAN_KHAU_TU, SAN_KHAU_MAX = 60.0, 35.0
+MO_SOM = 45.0  # logo kênh / thẻ chương trước mốc này cắt ngang móc câu
 
 
 def _norm(s: str) -> str:
@@ -69,9 +73,11 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
                  for k, t in ngon_ngu.man_hinh(c) if ngon_ngu.la_tieng_anh(t)]
         if c.get("dong", "") not in DONG:
             msgs.append(f"Lỗi: {cid} dong không hợp lệ: {c['dong']} (chọn {', '.join(sorted(DONG - {''}))})")
-        if dur < CANH_MIN_LOI or dur > CANH_MAX_LOI:
-            msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép {CANH_MIN_LOI:g}–{CANH_MAX_LOI:g} s)")
-        elif dur < CANH_MIN_CB or dur > CANH_MAX_CB:
+        san_khau = c["start"] >= SAN_KHAU_TU and c["mau"] != "b-roll"
+        tran = SAN_KHAU_MAX if san_khau else CANH_MAX_LOI
+        if dur < CANH_MIN_LOI or dur > tran:
+            msgs.append(f"Lỗi: {cid} dài {dur:.1f} s (cho phép {CANH_MIN_LOI:g}–{tran:g} s)")
+        elif dur < CANH_MIN_CB or (dur > CANH_MAX_CB and not san_khau):
             msgs.append(f"Cảnh báo: {cid} dài {dur:.1f} s (nên {CANH_MIN_CB:g}–{CANH_MAX_CB:g} s)")
         elif c["start"] < 30.0 and dur > 3.5:
             msgs.append(f"Cảnh báo: {cid} trong 30s đầu dài {dur:.1f} s (nên ≤ 3,5 s để giữ chân người xem)")
@@ -101,9 +107,15 @@ def validate(scenes: dict, timing: dict, svg_dir: Path = SVG_DIR, nguon: list | 
             msgs += _check_xep_hang(c)
         if c["mau"] == "thoi-gian":
             msgs += _check_thoi_gian(c)
+        if c["mau"] in ("mo-dau", "chuong") and 0 < c["start"] < MO_SOM:
+            msgs.append(f"Cảnh báo: {cid} {c['mau']} ở giây {c['start']:.0f}: logo kênh và thẻ chương đặt từ giây "
+                        f"{MO_SOM:g} trở đi, 30 s đầu chỉ dùng số lớn, ảnh bằng chứng, sa bàn và câu hỏi móc")
         if c["mau"] in ("chu-dong", "phan-tram", "mo-dau", "ket-thuc"):
             msgs += _check_mau_moi(c, dur, sc)
-        if c["mau"] == "trich-bao":
+        msgs += _check_boi(c, timing.get("words", []), svg_dir, by_id)
+        if c["mau"] == "trich-bao" and c.get("cac") is not None:
+            msgs += _check_cac(c, by_id)
+        elif c["mau"] == "trich-bao":
             msgs += _check_quote(c, by_id.get(c.get("nguon_id")))
         if c["mau"] == "b-roll" and video_dir is not None and not (Path(video_dir) / "broll" / c.get("video", "")).is_file():
             msgs.append(f"Lỗi: {cid} cần video broll/{c.get('video')} chưa tải")
@@ -280,6 +292,76 @@ def _check_so_sanh(c: dict, svg_dir: Path) -> list[str]:
             out.append(f"Lỗi: {c['id']} {ben}.to={to} phải trong (0, 1]")
         if not s.get("svg") or not (Path(svg_dir) / f"{s['svg']}.svg").exists():
             out.append(f"Lỗi: {c['id']} {ben} cần hình {s.get('svg')}.svg chưa có trong thư viện")
+    return out
+
+
+BOI_MAX, TOM_TAT_MAX_TU, THE_MAX_TU = 6, 14, 6
+KIEU_NHAN, MUI_TEN, TONG = {"nhan", "vang", "do", "trang"}, {"trai", "phai", "len", "xuong"}, {"hook", "khai-niem", "ky-thuat", "viet-nam"}
+
+
+def _so_chu(cid: str, ten: str, text: str, srcs: list[dict]) -> list[str]:
+    """Số trong chữ tự do hiện trên màn hình (nhãn bồi dần, tóm tắt) phải khớp giá trị trong nguồn của cảnh."""
+    so = tokens(text, keep_small=False)
+    if not so:
+        return []
+    if not srcs:
+        return [f"Lỗi: {cid} {ten} hiện số nhưng cảnh thiếu nguon_id"]
+    allowed = {(v, sc) for s in srcs for _, v, sc in tokens(s["gia_tri"])}
+    return [f"Lỗi: {cid} {ten} hiện {raw}{' ' + sc if sc else ''} không khớp nguồn {[s['id'] for s in srcs]}"
+            for raw, v, sc in so if (v, sc) not in allowed]
+
+
+def _check_boi(c: dict, words: list[dict], svg_dir: Path, by_id: dict) -> list[str]:
+    """Nhãn bồi dần (boi), thanh tóm tắt (tom_tat), tông chương (tong), viền/phóng trang nguồn."""
+    cid, out = c["id"], []
+    nid = c.get("nguon_id")
+    srcs = [by_id[n] for n in (nid if isinstance(nid, list) else [nid] if nid else []) if n in by_id]
+    boi = c.get("boi") or []
+    if len(boi) > BOI_MAX:
+        out.append(f"Lỗi: {cid} có {len(boi)} nhãn bồi dần (tối đa {BOI_MAX})")
+    for k, b in enumerate(boi):
+        ten = f"boi[{k}]"
+        if not b.get("chu") and not b.get("svg"):
+            out.append(f"Lỗi: {cid} {ten} cần chu hoặc svg")
+        if b.get("chu") and len(b["chu"].split()) > NHAN_MAX_TU:
+            out.append(f"Lỗi: {cid} {ten} dài {len(b['chu'].split())} từ (≤ {NHAN_MAX_TU})")
+        if b.get("svg") and not (Path(svg_dir) / f"{b['svg']}.svg").exists():
+            out.append(f"Lỗi: {cid} {ten} cần hình {b['svg']}.svg chưa có trong thư viện")
+        if b.get("kieu", "nhan") not in KIEU_NHAN:
+            out.append(f"Lỗi: {cid} {ten} kieu {b['kieu']} (chọn {', '.join(sorted(KIEU_NHAN))})")
+        if b.get("mui_ten") and b["mui_ten"] not in MUI_TEN:
+            out.append(f"Lỗi: {cid} {ten} mui_ten {b['mui_ten']} (chọn {', '.join(sorted(MUI_TEN))})")
+        if not all(isinstance(b.get(a), (int, float)) and 0 <= b[a] <= 1 for a in ("x", "y")):
+            out.append(f"Lỗi: {cid} {ten} cần x, y trong 0–1")
+        if b.get("tu") and phrase_time(words, b["tu"], c["start"], c["end"]) is None:
+            out.append(f"Lỗi: {cid} {ten} bật theo '{b['tu']}' nhưng giọng đọc không nói cụm này trong cảnh")
+        out += _so_chu(cid, ten, b.get("chu") or "", srcs)
+    if c.get("tom_tat"):
+        if len(c["tom_tat"].split()) > TOM_TAT_MAX_TU:
+            out.append(f"Lỗi: {cid} tom_tat dài {len(c['tom_tat'].split())} từ (≤ {TOM_TAT_MAX_TU}, một dòng)")
+        out += _so_chu(cid, "tom_tat", c["tom_tat"], srcs)
+    if c.get("tong") and c["tong"] not in TONG:
+        out.append(f"Lỗi: {cid} tong {c['tong']} (chọn {', '.join(sorted(TONG))})")
+    if c.get("vien") and c["vien"] not in KIEU_NHAN - {"trang"}:
+        out.append(f"Lỗi: {cid} vien {c['vien']} (chọn nhan, vang, do)")
+    if c.get("zoom") is not None and not (isinstance(c["zoom"], (int, float)) and 1.5 <= c["zoom"] <= 4):
+        out.append(f"Lỗi: {cid} zoom {c['zoom']} (1,5–4)")
+    return out
+
+
+def _check_cac(c: dict, by_id: dict) -> list[str]:
+    """Trích báo nhiều nguồn: 2–3 thẻ, mỗi thẻ một nguồn có thật và tóm tắt ngắn; số trong tóm tắt khớp nguồn của thẻ."""
+    cid, cac, out = c["id"], c["cac"], []
+    if not isinstance(cac, list) or not 2 <= len(cac) <= 3:
+        return [f"Lỗi: {cid} cac cần 2–3 thẻ nguồn"]
+    for k, x in enumerate(cac):
+        src = by_id.get(x.get("nguon_id"))
+        if not src:
+            out.append(f"Lỗi: {cid} cac[{k}] thiếu nguon_id hợp lệ")
+        tt = x.get("tom_tat") or ""
+        if not tt or len(tt.split()) > THE_MAX_TU:
+            out.append(f"Lỗi: {cid} cac[{k}].tom_tat cần 1–{THE_MAX_TU} từ")
+        out += _so_chu(cid, f"cac[{k}].tom_tat", tt, [src] if src else [])
     return out
 
 

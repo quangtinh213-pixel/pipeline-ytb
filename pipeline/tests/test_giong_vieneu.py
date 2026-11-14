@@ -166,3 +166,18 @@ def test_tu_chua_phat_am_flags_unmapped_foreign_terms_only():
     cfg = {"phat_am": {"Microsoft": "Mai crô xóp"}}
     missing = giong_vieneu.tu_chua_phat_am(["Microsoft dùng API và Infosys trên Outlook."], cfg)
     assert "Microsoft" not in missing and "API" in missing and "Infosys" in missing and "Outlook" in missing
+
+
+def test_double_chevron_lines_go_to_secondary_voice_and_marker_is_not_spoken(tmp_path):
+    script = "#### Beat 1\n**Lời đọc:**\nMạng sập mười ba tiếng.\n>> Vậy người dùng mất gì?\nCâu trả lời nằm ở hợp đồng.\n"
+    calls = []
+    giong_vieneu.synthesize(_video(tmp_path, script), {**CFG, "giong_phu": "Trúc Ly"}, run=_fake_worker([1.0], calls=calls))
+    voices = {j["text"]: j["voice"] for j in calls[0]}
+    assert voices == {"Mạng sập mười ba tiếng.": "Hải Đăng", "Vậy người dùng mất gì?": "Trúc Ly",
+                      "Câu trả lời nằm ở hợp đồng.": "Hải Đăng"}
+    words = [w["w"] for w in json.loads((tmp_path / "giong-timing.json").read_text(encoding="utf-8"))["words"]]
+    assert ">>" not in words and "Vậy" in words
+
+
+def test_default_pauses_are_tight():
+    assert giong_vieneu.DEFAULT["pause_cau"] <= 0.16 and giong_vieneu.DEFAULT["pause_doan"] <= 0.35

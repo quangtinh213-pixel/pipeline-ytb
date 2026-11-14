@@ -83,7 +83,7 @@ def test_review_2_shows_quality_warnings(tmp_path):
     (d / "canh.json").write_text(json.dumps({"scenes": scenes}), encoding="utf-8")
     (d / "giong-timing.json").write_text(json.dumps({"duration": 18.0, "words": []}), encoding="utf-8")
     html = duyet.render_review_2(d).read_text(encoding="utf-8")
-    assert "Độ dài trung bình" in html
+    assert "Cảnh bằng chứng" in html
 
 
 def test_sources_table_shows_formula_for_tu_tinh(tmp_path):

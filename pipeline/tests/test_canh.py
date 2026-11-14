@@ -560,3 +560,55 @@ def test_validate_warns_slow_scene_in_first_30s(tmp_path):
     assert any("30s đầu" in m and "c0" in m for m in msgs)
     assert not any("30s đầu" in m and "c1" in m for m in msgs)
     assert not any("30s đầu" in m and "c3" in m for m in msgs)
+
+
+def test_logo_and_chapter_card_warned_before_45s(tmp_path):
+    def warns(mau, start):
+        sc = {"scenes": [{"id": "c0", "mau": "so-lon", "start": 0, "end": start, "so": "1"},
+                         {"id": "c1", "mau": mau, "start": start, "end": start + 3, "so": "Phần 1"}]}
+        t = {"duration": start + 3, "words": [], "paragraphs": []}
+        return [m for m in canh.validate(sc, t, tmp_path, kit=None) if "giây 45" in m]
+    assert warns("mo-dau", 6) and warns("chuong", 6)
+    assert not warns("mo-dau", 46) and not warns("chuong", 50)
+
+
+def test_long_graphic_stage_allowed_only_after_60s(tmp_path):
+    def msgs(mau, start, dur):
+        sc = {"scenes": [{"id": "c0", "mau": "so-lon", "start": 0, "end": start, "so": "1"},
+                         {"id": "c1", "mau": mau, "start": start, "end": start + dur, "video": "a.mp4"}]}
+        t = {"duration": start + dur, "words": [], "paragraphs": []}
+        return [m for m in canh.validate(sc, t, tmp_path, kit=None) if m.split(":")[1].strip().startswith("c1 dài")]
+    assert msgs("minh-hoa", 60, 30) == []
+    assert any(m.startswith("Lỗi") for m in msgs("minh-hoa", 60, 36))
+    assert any(m.startswith("Lỗi") for m in msgs("minh-hoa", 30, 12))
+    assert any(m.startswith("Lỗi") for m in msgs("b-roll", 60, 12))
+
+
+def test_boi_tom_tat_tong_and_cards_are_validated(tmp_path):
+    (tmp_path / "tien.svg").write_text("<svg/>", encoding="utf-8")
+    src = [{"id": "g1", "gia_tri": "Sập 13 giờ", "url": "https://x.vn", "ngay_truy_cap": "2026-11-14"},
+           {"id": "g2", "gia_tri": "18 giờ", "url": "https://y.vn", "ngay_truy_cap": "2026-11-14"}]
+    t = {"duration": 6, "words": [{"w": "sập", "start": 1.0, "end": 1.3}], "paragraphs": []}
+
+    def errs(**c):
+        sc = {"scenes": [dict({"id": "c0", "mau": "so-lon", "start": 0, "end": 6, "so": 13, "nguon_id": "g1"}, **c)]}
+        return [m for m in canh.validate(sc, t, tmp_path, src, kit=None) if m.startswith("Lỗi")]
+    ok = [{"chu": "Sập 13 giờ", "x": 0.5, "y": 0.3, "tu": "sập", "kieu": "do"}, {"svg": "tien", "x": 0.2, "y": 0.8}]
+    assert errs(boi=ok, tom_tat="Microsoft sập 13 giờ", tong="hook") == []
+    assert any("cần chu hoặc svg" in e for e in errs(boi=[{"x": 0.1, "y": 0.1}]))
+    assert any("x, y" in e for e in errs(boi=[{"chu": "A", "x": 1.4, "y": 0.1}]))
+    assert any("không nói cụm" in e for e in errs(boi=[{"chu": "A", "x": 0.1, "y": 0.1, "tu": "không có"}]))
+    assert any("khớp nguồn" in e for e in errs(boi=[{"chu": "Sập 99 giờ", "x": 0.1, "y": 0.1}]))
+    assert any("tối đa" in e for e in errs(boi=[{"chu": "A", "x": 0.1, "y": 0.1}] * 7))
+    assert any("kieu" in e for e in errs(boi=[{"chu": "A", "x": 0.1, "y": 0.1, "kieu": "tim"}]))
+    assert any("tom_tat dài" in e for e in errs(tom_tat=" ".join(["chữ"] * 15)))
+    assert any("tong" in e for e in errs(tong="sai"))
+    assert any("tiếng Anh" in e for e in errs(tom_tat="The network outage lasted all day long"))
+
+    def the(cac, **c):
+        sc = {"scenes": [dict({"id": "c0", "mau": "trich-bao", "start": 0, "end": 6, "cac": cac}, **c)]}
+        return [m for m in canh.validate(sc, t, tmp_path, src, kit=None) if m.startswith("Lỗi")]
+    assert the([{"nguon_id": "g1", "tom_tat": "Sập 13 giờ"}, {"nguon_id": "g2", "tom_tat": "Kéo dài 18 giờ"}]) == []
+    assert any("2–3 thẻ" in e for e in the([{"nguon_id": "g1", "tom_tat": "A"}]))
+    assert any("khớp nguồn" in e for e in the([{"nguon_id": "g1", "tom_tat": "Sập 18 giờ"}, {"nguon_id": "g2", "tom_tat": "B"}]))
+    assert any("nguon_id" in e for e in the([{"nguon_id": "zz", "tom_tat": "A"}, {"nguon_id": "g2", "tom_tat": "B"}]))

@@ -23,7 +23,8 @@ def _msgs_chat_luong(d: Path) -> list[str] | None:
     canh, timing = _json(d / "canh.json"), _json(d / "giong-timing.json")
     if canh is None or timing is None:
         return None
-    return chat_luong.kiem(chat_luong.do(canh, timing, _json(d / "dao-dien.json"), _json(d / "dao-dien-cham.json")))
+    return chat_luong.kiem(chat_luong.do(canh, timing, _json(d / "dao-dien.json"), _json(d / "dao-dien-cham.json"),
+                                            chat_luong.doc_ghi_cong(d)))
 
 
 def _c1(d: Path):

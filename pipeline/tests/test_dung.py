@@ -78,6 +78,9 @@ def test_compose_maps_variables(video):
 
 def test_compose_adds_captions_from_timing(video):
     html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
+    assert 'data-track-kind="captions"' in html and 'class="clip cap"' not in html  # ngang: mặc định tắt, đáy dành cho tom_tat
+    dung.CONFIG.write_text(json.dumps({"nhac_nen": "", "render": {"phu_de": True}}), encoding="utf-8")
+    html = (dung.compose(video) / "index.html").read_text(encoding="utf-8")
     assert 'data-track-kind="captions"' in html and ">Xin</span> <span" in html and ">chào.</span>" in html
 
 
@@ -753,3 +756,51 @@ def test_phu_de_scene_range_keeps_boundary_words():
     joined = "".join(tags)
     assert "vào" in joined and "cảnh" in joined
     assert "Trước" not in joined and "sau" not in joined
+
+
+def test_nhan_boi_pops_labels_at_spoken_phrase_and_adds_summary_bar():
+    words = [{"w": "giá", "start": 10.0, "end": 10.3}, {"w": "điện", "start": 10.3, "end": 10.6},
+             {"w": "tăng", "start": 12.0, "end": 12.4}]
+    c = {"id": "c1", "mau": "minh-hoa", "start": 9.0, "end": 15.0, "tom_tat": "Giá điện tăng từ tháng sau",
+         "boi": [{"chu": "Giá điện", "kieu": "vang", "x": 0.3, "y": 0.2, "tu": "giá điện", "mui_ten": "phai"},
+                 {"svg": "tien", "x": 0.7, "y": 0.6}]}
+    tags, js, sfx = dung.nhan_boi(c, 4, a0=9.0, words=words)
+    assert 'id="boi-4-0"' in tags[0] and 'data-start="10.0"' in tags[0] and "background:#FACC15" in tags[0]
+    assert "Giá điện →" in tags[0] and "left:576px;top:216px" in tags[0]
+    assert 'class="clip boi boi-tem"' in tags[1] and 'data-start="11.2"' in tags[1]  # không có tu: 0,6 s + 1,6 s mỗi nhãn
+    assert 'class="clip tom-tat"' in tags[2] and "Giá điện tăng" in tags[2]
+    assert [round(t, 2) for _, t, _ in sfx] == [10.0, 11.2] and len(js) == 3
+
+
+def test_grounds_follow_chapter_tone_and_map_to_template_grounds():
+    sc = [{"mau": "so-lon", "tong": "hook"}, {"mau": "chuong", "tong": "ky-thuat"}, {"mau": "minh-hoa"},
+          {"mau": "trich-bao"}, {"mau": "chuong", "tong": "viet-nam"}, {"mau": "bieu-do"}, {"mau": "minh-hoa", "nen": "toi"}]
+    assert dung.grounds(sc) == ["hook", "vang", "ky-thuat", "kem", "vang", "viet-nam", "toi"]
+    assert dung.nen_mau("hook")[0] == "toi" and "--nen-0:" in dung.nen_mau("hook")[1]
+    assert dung.nen_mau("viet-nam")[0] == "kem" and "--kem-0:" in dung.nen_mau("viet-nam")[1]
+    assert dung.nen_mau("khai-niem") == ("kem", "") and dung.nen_mau("toi") == ("toi", "")
+
+
+def test_trich_bao_multi_cards_vars_and_steps():
+    by_id = {"a": {"id": "a", "url": "https://vnexpress.net/x", "ngay_truy_cap": "2026-11-14", "ten": "VnExpress"},
+             "b": {"id": "b", "url": "https://www.reuters.com/y", "ngay_truy_cap": "2026-11-13"}}
+    c = {"id": "c1", "mau": "trich-bao", "start": 0, "end": 6,
+         "cac": [{"nguon_id": "a", "tom_tat": "Sập 13 tiếng"}, {"nguon_id": "b", "tom_tat": "Lỗi cấu hình mạng"}]}
+    cac = json.loads(dung._vars(c, by_id, {})["cac"])
+    assert cac[0] == {"bao": "VnExpress", "ngay": "14/11/2026", "tom_tat": "Sập 13 tiếng", "chu": "V"}
+    assert cac[1]["bao"] == "reuters.com" and cac[1]["chu"] == "RC"
+    assert dung.steps(c, []) == [0.4, 1.2]
+
+
+def test_same_stage_illustrations_are_not_cut_with_dip():
+    mh = lambda sk: {"mau": "minh-hoa", "san_khau": sk}
+    assert 3 not in dict(dung.transitions([mh("a"), mh("a"), mh("a"), mh("a")]))
+    assert dict(dung.transitions([mh("a"), mh("a"), mh("a"), mh("b")]))[3] == "dip"
+
+
+def test_source_page_passes_highlight_color_and_zoom():
+    by_id = {"p1": {"id": "p1", "url": "https://x.vn/a", "ngay_truy_cap": "2026-11-14"}}
+    v = dung._vars({"id": "c", "mau": "trang-nguon", "anh": "p.png", "khung": "1,2,3,4", "nguon_id": "p1",
+                    "vien": "do", "zoom": 3}, by_id, {})
+    assert v["vien"] == dung.SAC["do"][0] and v["zoom"] == 3
+    assert dung._vars({"id": "c", "mau": "trang-nguon", "anh": "p.png", "nguon_id": "p1"}, by_id, {})["zoom"] == 0

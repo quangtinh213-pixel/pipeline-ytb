@@ -61,5 +61,29 @@
     "khung": "#1A1A1A",
     "loi": "#FF6B6B"
   },
-  "font": "Inter"
+  "font": "Inter",
+  "tong": {
+    "navy": [
+      "#0A1530",
+      "#16264D"
+    ],
+    "reu": [
+      "#0D1B14",
+      "#1A3324"
+    ],
+    "ngoc": [
+      "#E6F5F2",
+      "#C8E8E1"
+    ]
+  },
+  "pill": {
+    "vang": [
+      "#FACC15",
+      "#111111"
+    ],
+    "trang": [
+      "#FFFFFF",
+      "#111111"
+    ]
+  }
 }

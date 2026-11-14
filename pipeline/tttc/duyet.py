@@ -99,7 +99,8 @@ def render_review_2(video_dir) -> Path:
         dd, cham = d / "dao-dien.json", d / "dao-dien-cham.json"
         warns += chat_luong.kiem(chat_luong.do(json.loads(_read(d / "canh.json")), json.loads(_read(d / "giong-timing.json")),
                                                json.loads(_read(dd)) if dd.exists() else None,
-                                               json.loads(_read(cham)) if cham.exists() else None))
+                                               json.loads(_read(cham)) if cham.exists() else None,
+                                               chat_luong.doc_ghi_cong(d)))
     opts_html = []
     for i, o in enumerate(goi.get("phuong_an", []), 1):
         kq = tieu_de.cham_diem(o["tieu_de"])

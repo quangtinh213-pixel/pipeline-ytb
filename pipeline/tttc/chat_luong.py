@@ -14,10 +14,12 @@ NHOM = {
     "bang-chung": {"trich-bao", "trang-nguon"},
     "doi-that": {"b-roll", "nhan-vat"},
 }
+# user chốt 14/11/2026 (docs/nghien-cuu/cach-doi-thu-dung-video-2026-11-14.md mục 6, P0): đối thủ 88–92% đồ họa,
+# 0% stock chung chung; thay chuẩn 10/11 (≥ 45% đời thật). Sau 60 s được giữ một sân khấu lâu nếu bồi dần đủ dày.
 MUC_TIEU = {
-    "tb_giay": (2.8, 4.5), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_max": 0.40,
+    "tb_giay": (2.8, 12.0), "duoi_1_5_max": 0, "tren_8_max": 0.03, "do_hoa_min": 0.70, "stock_max": 0.10,
     "bang_chung": (0.08, 0.35),  # user 11/11/2026: muốn nhiều ảnh chụp bài báo hơn, nới trần từ 18%
-    "doi_that_min": 0.45, "chay_max": 2,
+    "san_khau_tu": 60.0, "san_khau_su_kien_phut": 20, "chay_max": 2,
     "su_kien_phut_min": 30, "sfx_phut_min": 15, "toc_do": (180, 265)  # từ/phút; tiếng Việt tính theo âm tiết: kênh mẫu đo 196–222,
 }
 # Chỉ số "độ khô" (spec 2026-11-09-chat-luong-hinh-anh-design.md mục 7): cảnh báo, hiệu chỉnh sau chạy khô.
@@ -25,6 +27,13 @@ MUC_TIEU["do_kho"] = {"phong_min": 5, "phong_lien_max": 2, "lap_max": 0, "may_qu
                       "cham_tb_min": 4.0}
 NHIP_CAM_XUC_DU = {"mo", "dinh", "dao-chieu", "chot"}
 EMPTY = "Lỗi: canh.json không có cảnh nào"
+STOCK = ("pexels", "pixabay")  # kho clip chung; ảnh báo/hãng/user và "Minh họa" không tính
+
+
+def doc_ghi_cong(video_dir: Path) -> dict | None:
+    """broll/ghi-cong.json → {tệp: dòng ghi công}; chưa có thì None (bỏ qua đo stock)."""
+    f = Path(video_dir) / "broll" / "ghi-cong.json"
+    return {x["tep"]: x["ghi_cong"] for x in json.loads(f.read_text(encoding="utf-8"))} if f.exists() else None
 
 
 def _buoc(c: dict, words: list[dict]) -> list[float]:
@@ -74,7 +83,8 @@ def do_kho(canh: dict, dao_dien: dict | None = None, cham: dict | None = None) -
     return out
 
 
-def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None = None) -> dict:
+def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None = None,
+       ghi_cong: dict | None = None) -> dict:
     sc = canh["scenes"]
     words = timing.get("words", [])
     n = len(sc)
@@ -96,14 +106,31 @@ def do(canh: dict, timing: dict, dao_dien: dict | None = None, cham: dict | None
     steps = [[t for t, co in zip(st, (c.get("nhan"), c.get("tu_khoa"), c.get("chia"))) if co] if c["mau"] == "b-roll" else st
              for c, st in zip(sc, steps)]
     sfx += sum(kind != "dip" for _, kind in dung.transitions(sc))
-    dan = sum(1 for c in sc if dung.dan_cua(c))
+    boi = [len(c.get("boi") or []) for c in sc]  # nhãn bồi dần: mỗi nhãn một sự kiện hình và một tiếng pop
+    sfx += sum(boi)
+    steps = [st + [0.0] * b for st, b in zip(steps, boi)]
+    dan = [1 if dung.dan_cua(c) else 0 for c in sc]
+    m = MUC_TIEU
+    # cảnh > 8 s chỉ bị tính là chậm nếu trong 60 s đầu hoặc bồi chưa đủ dày (sự kiện/phút của riêng cảnh)
+    tren_8 = sum(d > 8 and (c["start"] < m["san_khau_tu"] or (1 + len(st) + dn) / d * 60 < m["san_khau_su_kien_phut"])
+                 for c, d, st, dn in zip(sc, durs, steps, dan))
     dau = sc[0]  # khung đầu phải có chữ hoặc số để giữ người xem (user duyệt 12/11/2026)
     mo_dau = dau["mau"] in {"so-lon", "so-sanh", "trich-bao", "bieu-do", "trang-nguon", "xep-hang", "phan-tram", "chu-dong"} or (
         dau["mau"] == "b-roll" and bool(dau.get("tu_khoa") or dau.get("chia")))
     return {"so_canh": n, "tb_giay": sum(durs) / n, "tb_giay_30s": tb_giay_30s, "duoi_1_5": sum(d < 1.5 for d in durs),
-            "tren_8": sum(d > 8 for d in durs), "ti_le": ti_le, "chay_dai_nhat": best,
-            "su_kien_phut": (n + sum(map(len, steps)) + dan) / phut, "sfx_phut": sfx / phut,
-            "toc_do": len(words) / phut, "mo_dau": mo_dau, "do_kho": do_kho(canh, dao_dien, cham)}
+            "tren_8": tren_8, "ti_le": ti_le, "chay_dai_nhat": best,
+            "su_kien_phut": (n + sum(map(len, steps)) + sum(dan)) / phut, "sfx_phut": sfx / phut,
+            "toc_do": len(words) / phut, "mo_dau": mo_dau, "do_kho": do_kho(canh, dao_dien, cham),
+            **_stock(sc, ghi_cong)}
+
+
+def _stock(sc: list[dict], ghi_cong: dict | None) -> dict:
+    if ghi_cong is None:
+        return {}
+    gc = [ghi_cong.get(c.get("video", ""), "").lower() for c in sc if c["mau"] == "b-roll"]
+    stock = sum(any(k in g for k in STOCK) for g in gc)
+    return {"ti_le_stock": stock / len(sc), "anh_su_kien": sum(bool(g) and not any(k in g for k in STOCK)
+                                                               and "minh họa" not in g for g in gc)}
 
 
 def kiem_30s_dau(so_do: dict, max_tb: float = 3.5) -> list[str]:
@@ -124,16 +151,19 @@ def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
     if not lo <= so_do["tb_giay"] <= hi:
         out.append(f"Cảnh báo: Độ dài trung bình {so_do['tb_giay']:.1f} s, chuẩn {lo}–{hi} s")
     if so_do["tren_8"] / n > muc["tren_8_max"]:
-        out.append(f"Cảnh báo: {so_do['tren_8']} cảnh dài hơn 8 s (quá {muc['tren_8_max']:.0%} số cảnh)")
+        out.append(f"Cảnh báo: {so_do['tren_8']} cảnh dài hơn 8 s ở 60 s đầu hoặc bồi dần dưới "
+                   f"{muc['san_khau_su_kien_phut']} sự kiện/phút (quá {muc['tren_8_max']:.0%} số cảnh)")
     t = so_do["ti_le"]
-    # user chốt 10/11/2026: ưu tiên ảnh thật và b-roll, đồ họa chỉ khi bất đắc dĩ (số liệu, quy trình)
-    if t["do-hoa"] > muc["do_hoa_max"]:
-        out.append(f"Cảnh báo: Đồ họa tự dựng {t['do-hoa']:.0%}, chuẩn ≤ {muc['do_hoa_max']:.0%}")
+    if t["do-hoa"] < muc["do_hoa_min"]:
+        out.append(f"Cảnh báo: Đồ họa tự dựng {t['do-hoa']:.0%}, chuẩn ≥ {muc['do_hoa_min']:.0%}")
     lo, hi = muc["bang_chung"]
     if not lo <= t["bang-chung"] <= hi:
         out.append(f"Cảnh báo: Cảnh bằng chứng {t['bang-chung']:.0%}, chuẩn {lo:.0%}–{hi:.0%}")
-    if t["doi-that"] < muc["doi_that_min"]:
-        out.append(f"Cảnh báo: Ảnh/video đời thật {t['doi-that']:.0%}, chuẩn ≥ {muc['doi_that_min']:.0%}")
+    if so_do.get("ti_le_stock", 0) > muc["stock_max"]:
+        out.append(f"Cảnh báo: B-roll kho chung (Pexels/Pixabay) {so_do['ti_le_stock']:.0%}, chuẩn ≤ {muc['stock_max']:.0%}; "
+                   "thiếu hình thật thì đổi sang đồ họa, đừng lấp stock")
+    if so_do.get("anh_su_kien") == 0:
+        out.append("Cảnh báo: chưa có ảnh/clip thật đúng sự kiện (nên 1–3, ghi nguồn và ngày)")
     if so_do["chay_dai_nhat"] > muc["chay_max"]:
         out.append(f"Cảnh báo: {so_do['chay_dai_nhat']} cảnh liền cùng một mẫu (tối đa {muc['chay_max']})")
     if so_do["su_kien_phut"] < muc["su_kien_phut_min"]:
@@ -180,7 +210,7 @@ def main(video_dir: str) -> int:
     dd = d / "dao-dien.json"
     cham = d / "dao-dien-cham.json"
     so_do = do(canh, timing, json.loads(dd.read_text(encoding="utf-8")) if dd.exists() else None,
-               json.loads(cham.read_text(encoding="utf-8")) if cham.exists() else None)
+               json.loads(cham.read_text(encoding="utf-8")) if cham.exists() else None, doc_ghi_cong(d))
     msgs = kiem(so_do)
     for k, v in so_do.items():
         print(f"  {k}: {v if not isinstance(v, float) else round(v, 2)}")

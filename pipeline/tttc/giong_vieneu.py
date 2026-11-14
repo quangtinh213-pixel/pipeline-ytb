@@ -19,8 +19,11 @@ from tttc.giong_tay import _chia_deu
 
 PIPE = Path(__file__).resolve().parent.parent
 CONFIG, WORKER = PIPE / "config.json", PIPE / "scripts" / "vieneu_worker.py"
-DEFAULT = {"python": "~/Documents/VieNeu-TTS/.venv/" + ("Scripts/python.exe" if os.name == "nt" else "bin/python"), "voice": "Hải Đăng", "pause_cau": 0.25,
-           "pause_doan": 0.5, "toc_do": 1.0, "phat_am": {}}  # toc_do: hệ số tốc độ (0,9 = chậm 10%)
+# Quãng nghỉ rút từ 0,25/0,5 s xuống 0,14/0,32 s (nghiên cứu đối thủ 14/11/2026, P1): lời liền mạch, không hụt hơi giữa câu.
+# giong_phu đọc các dòng ">>" (câu hỏi xen của người xem, mỗi 90–150 s) cho nhịp đối thoại.
+DEFAULT = {"python": "~/Documents/VieNeu-TTS/.venv/" + ("Scripts/python.exe" if os.name == "nt" else "bin/python"), "voice": "Hải Đăng",
+           "giong_phu": "Trúc Ly", "pause_cau": 0.14, "pause_doan": 0.32, "toc_do": 1.0,
+           "phat_am": {}}  # toc_do: hệ số tốc độ (0,9 = chậm 10%)
 CAT_LANG = "silenceremove=start_periods=1:start_silence=0.03:start_threshold=-50dB"  # cắt lặng đầu; đảo chiều để cắt lặng cuối
 
 
@@ -116,22 +119,23 @@ def _cat_nghi(src: Path, out: Path, nghi: float, toc_do: float = 1.0) -> None:
 
 def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
     d, cfg = Path(video_dir), _cfg(cfg)
-    voice = cfg["voice"]
-    raw_paras = tts.spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8"))
+    voiced = tts.spoken_voiced((d / "kich-ban.md").read_text(encoding="utf-8"))
+    raw_paras = [p for p, _ in voiced]
     thieu_pa = tu_chua_phat_am(raw_paras, cfg)
     if thieu_pa:
         print(f"Cảnh báo phát âm: chưa có trong phat_am: {', '.join(thieu_pa[:10])}")
     paras = [cau(p) for p in raw_paras]
+    giong = [cfg["giong_phu"] if phu else cfg["voice"] for _, phu in voiced]
     raw = d / "giong-vieneu"
     raw.mkdir(exist_ok=True)
-    units = [(pi, k == len(p) - 1, s) for pi, p in enumerate(paras) for k, s in enumerate(p)]
-    for _, _, s in units:
+    units = [(pi, k == len(p) - 1, s, giong[pi]) for pi, p in enumerate(paras) for k, s in enumerate(p)]
+    for _, _, s, _ in units:
         if re.search(r"\d", s):
             print(f"Cảnh báo: câu có chữ số, nên viết thành chữ để giọng đọc đúng: {s[:70]!r}")
-    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, voice)}.wav"), "voice": voice}
-              for _, _, s in {u[2]: u for u in units}.values()], raw, cfg, run)
+    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, v)}.wav"), "voice": v}
+              for _, _, s, v in {(u[2], u[3]): u for u in units}.values()], raw, cfg, run)
     words, ranges, offset, files = [], [], 0.0, []
-    for k, (pi, cuoi_doan, s) in enumerate(units):
+    for k, (pi, cuoi_doan, s, voice) in enumerate(units):
         nghi = cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"]
         out, goc = raw / f"u{k:04}.wav", raw / f"{_ten(s, voice)}.wav"
         _cat_nghi(goc, out, nghi, cfg["toc_do"])
@@ -165,11 +169,11 @@ def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subproces
     """Đọc thử các câu đầu (cộng dồn đến ≥ so_tu từ) bằng giọng đã chọn → nghe-thu.mp3.
     Dùng đúng tên wav theo câu của synthesize nên câu giữ nguyên sẽ được tái dùng khi tạo giọng đầy đủ."""
     d, cfg = Path(video_dir), _cfg(cfg)
-    voice, units, n = cfg["voice"], [], 0
-    for p in tts.spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8")):
+    units, n = [], 0
+    for p, phu in tts.spoken_voiced((d / "kich-ban.md").read_text(encoding="utf-8")):
         ss = cau(p)
         for k, s in enumerate(ss):
-            units.append((s, k == len(ss) - 1))
+            units.append((s, k == len(ss) - 1, cfg["giong_phu"] if phu else cfg["voice"]))
             n += len(s.split())
             if n >= so_tu:
                 break
@@ -177,10 +181,10 @@ def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subproces
             break
     raw = d / "giong-vieneu"
     raw.mkdir(exist_ok=True)
-    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, voice)}.wav"), "voice": voice}
-              for s in dict.fromkeys(s for s, _ in units)], raw, cfg, run)
+    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, v)}.wav"), "voice": v}
+              for s, v in dict.fromkeys((s, v) for s, _, v in units)], raw, cfg, run)
     files = []
-    for k, (s, cuoi_doan) in enumerate(units):
+    for k, (s, cuoi_doan, voice) in enumerate(units):
         out = raw / f"nt{k:03}.wav"
         _cat_nghi(raw / f"{_ten(s, voice)}.wav", out, cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"], cfg["toc_do"])
         files.append(out)

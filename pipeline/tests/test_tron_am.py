@@ -48,3 +48,11 @@ def test_tron_trims_long_music_and_loops_short(tmp_path):
                            vao=0.2, ra=0.2)
         assert abs(_dur(out) - 6) <= 0.06, secs
     assert _level(tmp_path / "o2.mp3", 440, 4.5, 5.5) > -60  # nhạc ngắn được lặp, cuối bài vẫn còn nhạc
+
+
+def test_tron_output_hits_youtube_loudness_whatever_music_level(tmp_path):
+    voice = _tone(tmp_path / "v.mp3", 1000, 8, 0.05, gap=(3, 4))  # giọng nhỏ (~−26 LUFS) phải được kéo lên
+    for amp in (0.005, 0.8):  # nhạc gốc rất nhỏ hoặc rất to
+        out = tron_am.tron(voice, _tone(tmp_path / f"m{amp}.mp3", 440, 8, amp), tmp_path / f"o{amp}.mp3", vao=0.2, ra=0.2)
+        assert abs(tron_am.lufs(out) - (-14)) <= 1, amp
+        assert _level(out, 440, 3.2, 3.8) > -45, amp  # chỗ lặng vẫn còn nhạc, không chết tiếng

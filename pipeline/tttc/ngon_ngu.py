@@ -27,6 +27,13 @@ def man_hinh(c: dict) -> list[tuple[str, str]]:
 
     if c.get("mau") == "trich-bao":
         add("trich_vi", c.get("trich_vi"))
+    add("tom_tat", c.get("tom_tat"))
+    for i, b in enumerate(c.get("boi") or []):
+        if isinstance(b, dict):
+            add(f"boi[{i}].chu", b.get("chu"))
+    for i, x in enumerate(c.get("cac") or []):
+        if isinstance(x, dict):
+            add(f"cac[{i}].tom_tat", x.get("tom_tat"))
     for k in O_CHU:
         add(k, c.get(k))
     if isinstance(c.get("chia"), dict):

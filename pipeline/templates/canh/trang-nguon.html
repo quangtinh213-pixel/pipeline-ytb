@@ -19,7 +19,7 @@
     #root .tn-khung { position: absolute; border: 5px solid {{theme:nhan.0}}; border-radius: 8px; }
   </style>
   <div id="root" data-composition-id="trang-nguon" data-width="1920" data-height="1080"
-       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp trang","default":"assets/svg/tai-lieu.svg"},{"id":"khung","type":"string","label":"Vùng tô x,y,w,h (% vùng trang)","default":"10,10,40,15"},{"id":"url","type":"string","label":"Địa chỉ trang","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp trang","default":"assets/svg/tai-lieu.svg"},{"id":"khung","type":"string","label":"Vùng tô x,y,w,h (% vùng trang)","default":"10,10,40,15"},{"id":"url","type":"string","label":"Địa chỉ trang","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"},{"id":"vien","type":"string","label":"Màu viền khoanh","default":""},{"id":"zoom","type":"number","label":"Độ phóng (0 = tự tính)","default":0}]'>
     <div id="tn-san" class="san">
       <div id="tn-cam" class="tn-cam">
         <div id="tn-trinh-duyet" class="tn-trinh-duyet" data-layout-allow-overflow>
@@ -48,7 +48,9 @@
     // máy quay: trình duyệt hiện ra, rồi zoom vào chỗ có số
     const bx = 200 + 1520 * (x + w / 2) / 100, by = 180 + 820 * (y + h / 2) / 100;
     // độ phóng: câu trích rộng ~60% khung và cao ≤ 40% khung, để đọc được trên điện thoại
-    const S = Math.max(1.3, Math.min(4, 1152 / (1520 * w / 100), 432 / (820 * h / 100)));
+    // canh.json:zoom (1,5–4) đặt tay khi muốn phóng sát hơn vào đúng dòng/con số (đối thủ dùng 2,5–3,5×)
+    const S = Number(v.zoom) > 0 ? Number(v.zoom) : Math.max(1.3, Math.min(4, 1152 / (1520 * w / 100), 432 / (820 * h / 100)));
+    if (v.vien) { k.style.borderColor = v.vien; k.style.boxShadow = `0 0 0 ${(6 / S).toFixed(2)}px rgba(0,0,0,0.35)`; }
     k.style.borderWidth = (14 / S).toFixed(2) + "px";  // viền dày ~14px sau khi phóng
     const tl = gsap.timeline({ paused: true }), z = at(0, 0.8);
     tl.fromTo("#tn-trinh-duyet", { y: 80, opacity: 0, scale: 0.94 },
