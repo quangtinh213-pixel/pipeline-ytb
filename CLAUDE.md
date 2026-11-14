@@ -30,13 +30,14 @@ PYTHONUTF8=1 uv run python scripts/dong-bo-view.py
 uv run python -m tttc.giam_sat ../videos/<slug> --ctr 3.2
 ```
 
-`dong-bo-view.py` nên chạy mỗi ngày: cột `view_24h`/`view_7d` chỉ được điền trong cửa sổ 24–48 giờ và 7–8 ngày, lỡ là để trống.
+`dong-bo-view.py` nên chạy mỗi ngày: cột `view_24h`/`view_7d` chỉ được điền trong cửa sổ 24–48 giờ và 7–8 ngày, lỡ là để trống. `giu_chan_30s` thì không có cửa sổ (Analytics truy vấn theo khoảng ngày).
 
 ## Môi trường (Windows)
 
 - Lệnh `tttc.*` đọc tiếng Việt qua subprocess phải có `PYTHONUTF8=1` và `PYTHONIOENCODING=utf-8`.
 - VieNeu chạy trong venv riêng `C:\Users\78\Documents\VieNeu-TTS\.venv`; lỗi DLL onnxruntime thì kiểm VC++ runtime trước. Không dùng `precision="int8"` (CPU không có VNNI).
-- Token YouTube lưu trong keyring (`tui-tien-cong-nghe`), quyền `youtube.upload` + `youtube.force-ssl`; chưa có quyền Analytics nên CTR/giữ chân điền tay từ Studio.
+- Token lưu trong keyring (`tui-tien-cong-nghe`): `youtube-token` (upload + force-ssl, `tttc.dang login`) và `analytics-token` (chỉ đọc Analytics, `tttc.dang login-analytics`). `dong-bo-view.py` dùng token Analytics để tự điền `giu_chan_30s` (7 ngày đầu, điền khi video đủ 9 ngày).
+- Analytics API **không có CTR thumbnail** (400 "query is not supported"), nên cột `ctr` vẫn điền tay từ YouTube Studio.
 - Git trên máy này chưa đặt `user.name`/`user.email`; các commit cũ ghi tác giả "Quang Tình".
 
 ## Quy ước

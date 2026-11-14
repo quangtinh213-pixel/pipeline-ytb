@@ -135,3 +135,26 @@ def test_kiem_tra_video_does_not_cycle_after_all_options_tried(tmp_path):
     res2 = giam_sat.kiem_tra_video(tmp_path, ctr_val="1.5%", tu_dong_doi=True, youtube=mock_yt, tracker=tracker)
     assert res2["da_doi"] is None
     assert json.loads((tmp_path / "trang-thai.json").read_text(encoding="utf-8"))["chon"] == 2
+
+
+def _an_giu_chan(rows):
+    an = MagicMock()
+    an.reports.return_value.query.return_value.execute.return_value = {"rows": rows}
+    return an
+
+
+def test_giu_chan_tai_noi_suy_giua_hai_diem_va_bo_qua_video_ngan():
+    # video 100 s: điểm 0.25 = giây 25, 0.35 = giây 35 → giây 30 nằm giữa
+    an = _an_giu_chan([[0.25, 0.8], [0.35, 0.6], [1.0, 0.1]])
+    assert abs(giam_sat.giu_chan_tai(an, "v1", 30, 100, "2026-11-09", "2026-11-15") - 0.7) < 1e-9
+    q = an.reports.return_value.query.call_args.kwargs
+    assert q["dimensions"] == "elapsedVideoTimeRatio" and q["filters"] == "video==v1" and q["endDate"] == "2026-11-15"
+    assert giam_sat.giu_chan_tai(an, "v1", 30, 25, "a", "b") is None  # video ngắn hơn 30 s
+    assert giam_sat.giu_chan_tai(_an_giu_chan([]), "v1", 30, 100, "a", "b") is None
+    assert giam_sat.giu_chan_tai(None, "v1", 30, 100, "a", "b") is None
+
+
+def test_lay_chi_so_analytics_khong_xin_ctr_vi_api_tu_choi():
+    an = _an_giu_chan([])
+    giam_sat.lay_chi_so_analytics("v1", "2026-11-14", analytics=an)
+    assert "ClickRate" not in an.reports.return_value.query.call_args.kwargs["metrics"]

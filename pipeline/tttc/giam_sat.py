@@ -140,7 +140,8 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
 
 
 def lay_chi_so_analytics(video_id: str, start_date: str, end_date: str | None = None, analytics=None) -> dict[str, Any] | None:
-    """Đọc CTR/giữ chân từ YouTube Analytics API nếu token có quyền; trả None nếu thiếu quyền hoặc lỗi."""
+    """Đọc view/thời lượng xem trung bình từ YouTube Analytics API nếu token có quyền; trả None nếu thiếu quyền hoặc lỗi.
+    API không có CTR thumbnail (thử 14/11/2026: 400 "query is not supported"); CTR vẫn lấy từ YouTube Studio."""
     if analytics is None:
         return None
     end_d = end_date or datetime.now(VN).strftime("%Y-%m-%d")
@@ -149,7 +150,7 @@ def lay_chi_so_analytics(video_id: str, start_date: str, end_date: str | None = 
             ids="channel==MINE",
             startDate=start_date,
             endDate=end_d,
-            metrics="views,averageViewDuration,averageViewPercentage,videoThumbnailImpressionsClickRate",
+            metrics="views,averageViewDuration,averageViewPercentage",
             filters=f"video=={video_id}",
         ).execute()
         rows = resp.get("rows") or []
@@ -159,6 +160,27 @@ def lay_chi_so_analytics(video_id: str, start_date: str, end_date: str | None = 
         return dict(zip(headers, rows[0]))
     except Exception:
         return None
+
+
+def giu_chan_tai(analytics, video_id: str, giay: float, thoi_luong: float, start_date: str, end_date: str) -> float | None:
+    """Tỉ lệ người xem còn ở giây `giay` (audienceWatchRatio, nội suy giữa 100 điểm của báo cáo giữ chân).
+    None nếu video ngắn hơn `giay`, chưa có dữ liệu hoặc lỗi API."""
+    if analytics is None or thoi_luong <= giay:
+        return None
+    try:
+        rows = analytics.reports().query(
+            ids="channel==MINE", startDate=start_date, endDate=end_date,
+            metrics="audienceWatchRatio", dimensions="elapsedVideoTimeRatio", filters=f"video=={video_id}",
+        ).execute().get("rows") or []
+    except Exception:
+        return None
+    if not rows:
+        return None
+    pts = [(0.0, 1.0)] + sorted((float(r) * thoi_luong, float(w)) for r, w in rows)  # mỗi điểm là cuối khoảng; giây 0 coi như đủ người
+    for (t0, w0), (t1, w1) in zip(pts, pts[1:]):
+        if t0 <= giay <= t1:
+            return w0 if t1 == t0 else w0 + (w1 - w0) * (giay - t0) / (t1 - t0)
+    return None
 
 
 def kiem_tra_video(

@@ -19,6 +19,7 @@ TRACKER = ROOT / "theo-doi.csv"
 CONFIG = ROOT / "pipeline" / "config.json"
 FIELDS = ["ngay", "tieu_de", "gio_dang", "link", "view_24h", "view_7d", "ctr", "giu_chan_30s"] + theo_doi.EXTRA
 SCOPES = ["https://www.googleapis.com/auth/youtube.upload", "https://www.googleapis.com/auth/youtube.force-ssl"]
+ANALYTICS_SCOPES = ["https://www.googleapis.com/auth/yt-analytics.readonly", "https://www.googleapis.com/auth/youtube.readonly"]
 KR = "tui-tien-cong-nghe"
 RETRIES = 3  # tự thử lại khi lỗi mạng/5xx tạm thời, nhất là khi tải video lớn
 
@@ -271,35 +272,55 @@ def binh_luan_ghim(youtube, video_id: str, text: str) -> str:
     return res["id"]
 
 
-def login(client_secret_json: str) -> None:
-    """Một lần: mở trình duyệt đăng nhập tài khoản kênh, lưu token vào Keychain."""
+def login(client_secret_json: str | None = None, ten: str = "youtube-token", scopes: list[str] = SCOPES) -> None:
+    """Một lần: mở trình duyệt đăng nhập tài khoản kênh, lưu token vào Keychain.
+    Không đưa client_secret.json thì dùng bản đã lưu trong Keychain từ lần đăng nhập trước."""
     import keyring
     from google_auth_oauthlib.flow import InstalledAppFlow
-    secret = Path(client_secret_json).read_text(encoding="utf-8")
-    flow = InstalledAppFlow.from_client_config(json.loads(secret), SCOPES)
+    secret = Path(client_secret_json).read_text(encoding="utf-8") if client_secret_json else keyring.get_password(KR, "youtube-client")
+    if not secret:
+        raise RuntimeError("Chưa có client_secret: chạy `uv run python -m tttc.dang login <client_secret.json>`")
+    flow = InstalledAppFlow.from_client_config(json.loads(secret), scopes)
     creds = flow.run_local_server(port=0)
     keyring.set_password(KR, "youtube-client", secret)
-    keyring.set_password(KR, "youtube-token", creds.to_json())
+    keyring.set_password(KR, ten, creds.to_json())
 
 
-def client():
+def _creds(ten: str):
+    """Đọc token `ten` từ Keychain với đúng các quyền đã cấp lúc đăng nhập (không xin thêm quyền khi làm mới); None nếu chưa có."""
     import keyring
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
-    from googleapiclient.discovery import build
-    tok = keyring.get_password(KR, "youtube-token")
+    tok = keyring.get_password(KR, ten)
     if not tok:
-        raise RuntimeError("Chưa đăng nhập YouTube: chạy `uv run python -m tttc.dang login <client_secret.json>`")
-    creds = Credentials.from_authorized_user_info(json.loads(tok), SCOPES)
+        return None
+    creds = Credentials.from_authorized_user_info(json.loads(tok))
     if not creds.valid:
         creds.refresh(Request())
-        keyring.set_password(KR, "youtube-token", creds.to_json())
+        keyring.set_password(KR, ten, creds.to_json())
+    return creds
+
+
+def client():
+    from googleapiclient.discovery import build
+    creds = _creds("youtube-token")
+    if creds is None:
+        raise RuntimeError("Chưa đăng nhập YouTube: chạy `uv run python -m tttc.dang login <client_secret.json>`")
     return build("youtube", "v3", credentials=creds)
+
+
+def analytics_client():
+    """Client YouTube Analytics (token riêng `analytics-token`, chỉ đọc); None nếu chưa đăng nhập `login-analytics`."""
+    from googleapiclient.discovery import build
+    creds = _creds("analytics-token")
+    return None if creds is None else build("youtubeAnalytics", "v2", credentials=creds)
 
 
 if __name__ == "__main__":
     if sys.argv[1] == "login":
-        login(sys.argv[2])
+        login(sys.argv[2] if len(sys.argv) > 2 else None)
+    elif sys.argv[1] == "login-analytics":
+        login(None, "analytics-token", ANALYTICS_SCOPES)
     elif sys.argv[1] == "short":
         print(upload_short(sys.argv[2], int(sys.argv[3])))
     elif sys.argv[1] == "comment":

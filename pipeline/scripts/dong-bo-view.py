@@ -7,14 +7,15 @@ import re
 import unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
-from tttc import radar, theo_doi
-from tttc.dang import client, _lock
+from tttc import giam_sat, radar, theo_doi
+from tttc.dang import analytics_client, client, _lock
 from tttc.theo_doi import VN, dien_view
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = ROOT / "pipeline" / "config.json"
 TRACKER = ROOT / "theo-doi.csv"
 LO = 50  # videos.list nhận tối đa 50 id mỗi lần
+CHO_DU_LIEU = 9  # 7 ngày đo + khoảng 2 ngày Analytics trễ
 _STOP_WORDS = {
     "của", "cho", "với", "những", "người", "dùng", "này", "khi", "sao", "làm",
     "việt", "nam", "video", "shorts", "cách", "trên", "dưới", "hơn", "nhất",
@@ -77,6 +78,39 @@ def cap_nhat_doi_thu(rows: list[dict], rss_items: list[dict], now: datetime) -> 
     return changed
 
 
+def _giay(iso: str) -> float:
+    """Thời lượng ISO 8601 của Data API (PT1H2M3S) ra giây."""
+    m = re.fullmatch(r"P(?:(\d+)D)?T?(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?", iso or "")
+    if not m:
+        return 0.0
+    d, h, mi, s = (int(x or 0) for x in m.groups())
+    return float(((d * 24 + h) * 60 + mi) * 60 + s)
+
+
+def cap_nhat_giu_chan(rows: list[dict], thoi_luong: dict[str, float], analytics, now: datetime) -> int:
+    """Điền giu_chan_30s còn trống bằng tỉ lệ người xem còn ở giây 30, tính trên 7 ngày đầu của video.
+    Analytics trễ khoảng 2–3 ngày nên chỉ điền khi video đủ CHO_DU_LIEU ngày; số không đổi theo ngày chạy."""
+    if analytics is None:
+        return 0
+    changed = 0
+    for r in rows:
+        v = _vid(r)
+        if not v or (r.get("giu_chan_30s") or "").strip() or v not in thoi_luong:
+            continue
+        try:
+            ngay = datetime.strptime(r.get("gio_dang", ""), "%d/%m/%Y %H:%M").date()
+        except ValueError:
+            continue
+        # shortcut: ngày của Analytics theo giờ Thái Bình Dương, ở đây lấy ngày VN; lệch tối đa vài giờ đầu, đổi khi cần số chính xác tới giờ
+        if (now.date() - ngay).days < CHO_DU_LIEU:
+            continue
+        w = giam_sat.giu_chan_tai(analytics, v, 30, thoi_luong[v], ngay.isoformat(), (ngay + timedelta(days=6)).isoformat())
+        if w is not None:
+            r["giu_chan_30s"] = f"{w * 100:.0f}%"
+            changed += 1
+    return changed
+
+
 def dong_bo():
     if not TRACKER.exists():
         print("Không tìm thấy theo-doi.csv")
@@ -94,13 +128,23 @@ def dong_bo():
             return
 
         yt = client()
-        stats = {}
+        stats, thoi_luong = {}, {}
         for i in range(0, len(vids), LO):
-            resp = yt.videos().list(part="statistics", id=",".join(vids[i:i + LO])).execute()
+            resp = yt.videos().list(part="statistics,contentDetails", id=",".join(vids[i:i + LO])).execute()
             stats |= {it["id"]: it["statistics"].get("viewCount", "0") for it in resp.get("items", [])}
+            thoi_luong |= {it["id"]: _giay(it.get("contentDetails", {}).get("duration", "")) for it in resp.get("items", [])}
 
         now = datetime.now(VN)
         updated = sum(dien_view(r, stats[v], now) for r in rows if (v := _vid(r)) in stats)
+
+        try:
+            an = analytics_client()
+        except Exception as e:  # token hết hạn/bị thu hồi: vẫn ghi phần view, chỉ bỏ phần giữ chân
+            print(f"Cảnh báo Analytics: {e}")
+            an = None
+        if an is None:
+            print("Bỏ qua giữ chân 30s: chưa có token Analytics (chạy `uv run python -m tttc.dang login-analytics`)")
+        giu_chan_updated = cap_nhat_giu_chan(rows, thoi_luong, an, now)
 
         opp_updated = 0
         if CONFIG.exists():
@@ -117,7 +161,8 @@ def dong_bo():
             w.writeheader()
             w.writerows(rows)
         tmp.replace(TRACKER)
-        print(f"Đã điền số view cho {updated}/{len(rows)} video và đối chiếu đối thủ cho {opp_updated} dòng vào theo-doi.csv")
+        print(f"Đã điền số view cho {updated}/{len(rows)} video, giữ chân 30s cho {giu_chan_updated} video "
+              f"và đối chiếu đối thủ cho {opp_updated} dòng vào theo-doi.csv")
 
 
 if __name__ == "__main__":
