@@ -1,8 +1,12 @@
 """Đăng YouTube: riêng tư + hẹn giờ, chỉ khi đã qua cả 2 điểm duyệt."""
 import csv
+import errno
 import json
 import os
+import re
 import sys
+import time
+import unicodedata
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -66,10 +70,37 @@ def _chosen(video_dir: Path) -> dict:
     return opts[chon - 1]
 
 
+def _to_hashtag(tag: str) -> str:
+    clean = unicodedata.normalize("NFKD", tag.replace("đ", "d").replace("Đ", "D"))
+    ascii_str = "".join(ch for ch in clean if not unicodedata.combining(ch))
+    words = re.findall(r"[A-Za-z0-9]+", ascii_str)
+    return "#" + "".join(w[:1].upper() + w[1:] for w in words) if words else ""
+
+
+def gan_hashtag(desc: str, tags: list[str], is_short: bool = False) -> str:
+    """Nối 3 hashtag chuẩn (hoặc #shorts + 2–3 hashtag cho Shorts) vào cuối mô tả nếu chưa có."""
+    if re.search(r"(?:^|\s)#[A-Za-zÀ-ỹ]\w*", desc):
+        return desc
+    hs: list[str] = ["#shorts"] if is_short else []
+    hs.append("#NhipCongNghe")
+    seen = {h.lower() for h in hs}
+    gioi_han = 4 if is_short else 3
+    for t in tags:
+        h = _to_hashtag(t)
+        if h and h.lower() not in seen:
+            hs.append(h)
+            seen.add(h.lower())
+        if len(hs) >= gioi_han:
+            break
+    moi = f"{desc.rstrip()}\n\n{' '.join(hs)}"
+    return moi if len(moi.encode("utf-8")) <= 5000 else desc
+
+
 def build_body(video_dir, when: str) -> dict:
     d = Path(video_dir)
     goi = _goi(d)
-    return _body(_chosen(d)["tieu_de"], goi["mo_ta"], goi.get("tags", []), when)
+    tags = goi.get("tags", [])
+    return _body(_chosen(d)["tieu_de"], gan_hashtag(goi["mo_ta"], tags, is_short=False), tags, when)
 
 
 def _guard(video_dir: Path) -> None:
@@ -77,9 +108,20 @@ def _guard(video_dir: Path) -> None:
         raise PermissionError("Thiếu biên nhận duyệt hoặc tệp đã thay đổi, cần duyệt lại trước khi upload")
 
 
+MAX_THUMB_BYTES = 2 * 1024 * 1024
+THUMB_MIMES = {".png": "image/png", ".jpg": "image/jpeg", ".jpeg": "image/jpeg", ".webp": "image/webp"}
+
+
 def _media(path: Path, mime: str):
     from googleapiclient.http import MediaFileUpload
     return MediaFileUpload(str(path), mimetype=mime, resumable=mime.startswith("video"))
+
+
+def _thumb_media(path: Path):
+    size = path.stat().st_size
+    if size > MAX_THUMB_BYTES:
+        raise ValueError(f"Thumbnail vượt quá 2MB ({size} bytes): {path}")
+    return _media(path, THUMB_MIMES.get(path.suffix.lower(), "image/png"))
 
 
 def _insert(d: Path, yt, body: dict, path: Path, key: str) -> str:
@@ -110,8 +152,10 @@ def _lock(path: Path):
             try:
                 msvcrt.locking(f.fileno(), msvcrt.LK_LOCK, 1)  # tự chờ ~10 s rồi báo lỗi, nên lặp để chờ như flock
                 break
-            except OSError:
-                pass
+            except OSError as e:
+                if e.errno not in (errno.EACCES, errno.EDEADLK) and getattr(e, "winerror", None) not in (33, 36):
+                    raise
+                time.sleep(0.05)
         try:
             yield
         finally:
@@ -165,7 +209,7 @@ def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlis
     if not vid:  # lưu id ngay sau khi tạo: bước sau hỏng thì chạy lại không tạo video thứ hai
         vid = _insert(d, yt, body, d / "final.mp4", "video")
         tt.set_fields(d, video_id=vid, lich_dang=when, upload_dang_cho_id=None)
-    yt.thumbnails().set(videoId=vid, media_body=_media(d / _chosen(d)["file_thumb"], "image/png")).execute(num_retries=RETRIES)
+    yt.thumbnails().set(videoId=vid, media_body=_thumb_media(d / _chosen(d)["file_thumb"])).execute(num_retries=RETRIES)
     if not state.get("phu_de_ok"):  # chạy lại sau lỗi bước playlist không thêm bản phụ đề thứ hai
         yt.captions().insert(part="snippet", body={"snippet": {"videoId": vid, "language": "vi", "name": "Tiếng Việt"}},
                              media_body=_media(d / "phu-de.srt", "application/octet-stream")).execute(num_retries=RETRIES)
@@ -206,7 +250,9 @@ def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
     long_vid = state.get("video_id")
     if long_vid:
         desc = f"👉 Xem video phân tích chi tiết đầy đủ tại: https://youtu.be/{long_vid}\n\n" + desc
-    body = _body(s["tieu_de"], desc, goi.get("tags", []), publish_at(s["ngay"], s["gio"]))
+    tags = goi.get("tags", [])
+    desc = gan_hashtag(desc, tags, is_short=True)
+    body = _body(s["tieu_de"], desc, tags, publish_at(s["ngay"], s["gio"]))
     yt = youtube or client()
     vid = _insert(d, yt, body, d / s["file"], f"short:{key}")
     done[key] = vid
@@ -214,6 +260,15 @@ def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
     tt.set_fields(d, short_ids=done, short_lich=schedules, upload_dang_cho_id=None)
     _track(tracker, s["tieu_de"], when, vid)
     return vid
+
+
+def binh_luan_ghim(youtube, video_id: str, text: str) -> str:
+    """Đăng bình luận mở đầu (để ghim trên YouTube Studio) điều hướng người xem."""
+    res = youtube.commentThreads().insert(
+        part="snippet",
+        body={"snippet": {"videoId": video_id, "topLevelComment": {"snippet": {"textOriginal": text}}}},
+    ).execute(num_retries=RETRIES)
+    return res["id"]
 
 
 def login(client_secret_json: str) -> None:
@@ -247,5 +302,7 @@ if __name__ == "__main__":
         login(sys.argv[2])
     elif sys.argv[1] == "short":
         print(upload_short(sys.argv[2], int(sys.argv[3])))
+    elif sys.argv[1] == "comment":
+        print(binh_luan_ghim(client(), sys.argv[2], sys.argv[3]))
     else:
         print(upload(sys.argv[1], sys.argv[2], sys.argv[3]))

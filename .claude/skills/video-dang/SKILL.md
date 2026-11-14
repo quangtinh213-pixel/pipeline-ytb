@@ -24,8 +24,13 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
    số Shorts và giờ từng Short. Đợi "ok".
 5. `uv run python -m tttc.dang ../videos/<slug> <dd/mm/yyyy> <HH:MM>` → in video id.
 6. Shorts đăng **sau** video dài: buổi tối dựng Shorts (`video-dung` mục 7, thêm vào `dong-goi.json:shorts`), sáng hôm sau đăng từng Short: `uv run python -m tttc.dang short ../videos/<slug> <i>` (giờ lấy từ `dong-goi.json:shorts[i]`). Lệnh từ chối nếu Short chưa có biên nhận `duyet-short` hoặc tệp/tiêu đề/giờ đã đổi sau khi duyệt: quay lại cho người dùng xem, không tự chạy `duyet-short`.
-7. Báo link YouTube Studio: `https://studio.youtube.com/video/<id>/edit` cho mỗi video; nhắc người dùng mở
-   kiểm thumbnail, phụ đề, giờ hẹn, nhãn "nội dung thay đổi/tổng hợp".
+7. Đăng bình luận mở đầu (để ghim) điều hướng người xem nếu cần bằng:
+   `uv run python -m tttc.dang comment <video_id> "<nội dung bình luận>"`
+   (Video dài: câu hỏi tranh luận cuối kịch bản; Shorts: link về video dài đầy đủ).
+8. Báo link YouTube Studio: `https://studio.youtube.com/video/<id>/edit` cho mỗi video; nhắc người dùng mở kiểm:
+   - Thumbnail, phụ đề, giờ hẹn, nhãn "nội dung thay đổi/tổng hợp".
+   - **Với Video dài**: bật **Test & Compare (Thử nghiệm & So sánh)** nạp cả 3 mẫu `thumbnails/1.png`, `2.png`, `3.png` để đo CTR thực tế, và ghim bình luận mở đầu.
+   - **Với mỗi Short**: bắt buộc gắn trường **Related Video (Video liên quan)** trỏ về video dài tương ứng, và ghim bình luận chứa link video dài.
 
 ## Lỗi thường gặp
 - `quotaExceeded`: hạn mức API trong ngày đã hết; thử lại sau 0 giờ giờ Thái Bình Dương (14:00–15:00 giờ VN).

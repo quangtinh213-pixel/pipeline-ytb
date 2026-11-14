@@ -59,6 +59,9 @@ class FakeYT:
     def playlistItems(self):
         return self._res("playlistItems", {})
 
+    def commentThreads(self):
+        return self._res("commentThreads", {"id": "cmt123"})
+
 
 @pytest.fixture
 def video(tmp_path, monkeypatch):
@@ -306,3 +309,78 @@ def test_rejected_insert_clears_pending_flag_so_retry_works(video, tmp_path, mon
             dang.upload_short(video, 0, youtube=yt, tracker=tracker)
     assert tt.load(video).get("upload_dang_cho_id") is None
     assert dang.upload_short(video, 0, youtube=yt, tracker=tracker) == "vid123"
+
+
+def test_gan_hashtag_formats_long_short_and_avoids_duplicates(video, tmp_path):
+    long_desc = dang.gan_hashtag("Mô tả video.", ["điện thoại cũ", "giá iphone", "apple"], is_short=False)
+    tail_long = long_desc.splitlines()[-1].split()
+    assert tail_long == ["#NhipCongNghe", "#DienThoaiCu", "#GiaIphone"]
+
+    short_desc = dang.gan_hashtag("Mô tả short.", ["điện thoại cũ", "giá iphone", "apple"], is_short=True)
+    tail_short = short_desc.splitlines()[-1].split()
+    assert tail_short == ["#shorts", "#NhipCongNghe", "#DienThoaiCu", "#GiaIphone"]
+
+    already = "Mô tả đã có #AI sẵn."
+    assert dang.gan_hashtag(already, ["apple", "google"], is_short=False) == already
+    already_short = "Mô tả #shorts sẵn."
+    assert dang.gan_hashtag(already_short, ["apple"], is_short=True) == already_short
+
+    body = dang.build_body(video, "2099-11-13T12:00:00Z")
+    assert "#NhipCongNghe #ChatgptPlusGia #GoiAi" in body["snippet"]["description"]
+
+    _approve(video)
+    yt = FakeYT()
+    dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    assert "#shorts #NhipCongNghe #ChatgptPlusGia #GoiAi" in yt.log[0][1]["body"]["snippet"]["description"]
+
+
+def test_binh_luan_ghim_calls_comment_threads_insert():
+    yt = FakeYT()
+    RETRIES_SEEN.clear()
+    cid = dang.binh_luan_ghim(yt, "vid123", "Bạn đoán giá bao nhiêu?")
+    assert cid == "cmt123"
+    assert yt.log == [
+        (
+            "commentThreads.insert",
+            {
+                "part": "snippet",
+                "body": {
+                    "snippet": {
+                        "videoId": "vid123",
+                        "topLevelComment": {"snippet": {"textOriginal": "Bạn đoán giá bao nhiêu?"}},
+                    }
+                },
+            },
+        )
+    ]
+    assert RETRIES_SEEN == [dang.RETRIES]
+
+
+def test_thumb_media_validates_size_and_mime(tmp_path):
+    jpg = tmp_path / "thumb.jpg"
+    jpg.write_bytes(b"jpgdata")
+    assert dang._thumb_media(jpg).mimetype() == "image/jpeg"
+
+    big = tmp_path / "big.png"
+    big.write_bytes(b"x" * (dang.MAX_THUMB_BYTES + 1))
+    with pytest.raises(ValueError, match="2MB"):
+        dang._thumb_media(big)
+
+
+def test_lock_does_not_spin_on_non_lock_oserror(tmp_path, monkeypatch):
+    import errno
+    import sys
+    import types
+
+    calls = []
+    fake_msvcrt = types.SimpleNamespace(
+        LK_LOCK=1,
+        LK_UNLCK=0,
+        locking=lambda fd, mode, size: calls.append(mode) or (_ for _ in ()).throw(OSError(errno.EBADF, "bad fd")),
+    )
+    monkeypatch.setattr(dang.os, "name", "nt")
+    monkeypatch.setitem(sys.modules, "msvcrt", fake_msvcrt)
+    with pytest.raises(OSError):
+        with dang._lock(tmp_path / ".dang.lock"):
+            pass
+    assert len(calls) == 1
