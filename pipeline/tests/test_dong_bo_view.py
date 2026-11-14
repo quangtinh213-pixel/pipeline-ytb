@@ -96,3 +96,26 @@ def test_cap_nhat_giu_chan_cho_du_ngay_va_khong_ghi_de():
     q = an.reports.return_value.query.call_args.kwargs
     assert (q["startDate"], q["endDate"]) == ("2026-11-01", "2026-11-07")
     assert mod.cap_nhat_giu_chan(rows, tl, None, now) == 0
+
+
+def test_cap_nhat_ctr_can_du_7_ngay_va_khong_ghi_de(monkeypatch, capsys):
+    from datetime import date
+    from unittest.mock import MagicMock
+    mod = _load()
+    monkeypatch.setattr(mod.reach, "job_id", lambda rp: "j1")
+    # 15:30 giờ VN 09/11 = 00:30 PST 09/11 → 7 ngày 09–15/11
+    du = {date(2026, 11, 9) + timedelta(days=k): f"u{k}" for k in range(7)}
+    monkeypatch.setattr(mod.reach, "bao_cao_theo_ngay", lambda rp, job: du)
+    csv_ = "video_id,video_thumbnail_impressions,video_thumbnail_impressions_ctr\nmoi,1000,0.05\nstudio,1000,0.06\n"
+    tai = MagicMock(return_value=csv_)
+    rows = [
+        {"link": "https://youtu.be/moi", "gio_dang": "09/11/2026 15:30", "ctr": ""},
+        {"link": "https://youtu.be/studio", "gio_dang": "09/11/2026 15:30", "ctr": "6.3%"},
+        {"link": "https://youtu.be/sau", "gio_dang": "12/11/2026 15:30", "ctr": ""},  # chưa đủ 7 ngày báo cáo
+    ]
+    now = datetime(2026, 11, 20, 9, 0, tzinfo=VN)
+    assert mod.cap_nhat_ctr(rows, MagicMock(), now, tai=tai) == 1
+    assert [r["ctr"] for r in rows] == ["5.0%", "6.3%", ""]
+    assert tai.call_count == 7  # mỗi ngày tải một lần dù nhiều video
+    assert "sổ 6.3% – báo cáo 6.0%" in capsys.readouterr().out
+    assert mod.cap_nhat_ctr(rows, None, now) == 0

@@ -7,8 +7,8 @@ import re
 import unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
-from tttc import giam_sat, radar, theo_doi
-from tttc.dang import analytics_client, client, _lock
+from tttc import giam_sat, radar, reach, theo_doi
+from tttc.dang import analytics_client, client, reporting_client, _lock
 from tttc.theo_doi import VN, dien_view
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -111,6 +111,41 @@ def cap_nhat_giu_chan(rows: list[dict], thoi_luong: dict[str, float], analytics,
     return changed
 
 
+def cap_nhat_ctr(rows: list[dict], reporting, now: datetime, tai=reach.tai) -> int:
+    """Điền ctr còn trống bằng CTR thumbnail gộp 7 ngày đầu (Reporting API). Chỉ điền khi đủ báo cáo cả 7 ngày.
+    Dòng đã có CTR điền tay thì không ghi đè, chỉ in số tính được để đối chiếu đơn vị."""
+    if reporting is None:
+        return 0
+    job = reach.job_id(reporting)
+    ngay_url = reach.bao_cao_theo_ngay(reporting, job)
+    if not ngay_url:
+        print(f"CTR: job {job} chưa có báo cáo (báo cáo đầu tiên có sau khoảng 48 giờ kể từ lúc tạo job)")
+        return 0
+    cache: dict = {}
+    changed = 0
+    for r in rows:
+        v = _vid(r)
+        try:
+            ngay = datetime.strptime(r.get("gio_dang", ""), "%d/%m/%Y %H:%M").replace(tzinfo=VN).astimezone(reach.PT).date()
+        except ValueError:
+            continue
+        cac_ngay = [ngay + timedelta(days=k) for k in range(7)]
+        if not v or not all(d in ngay_url for d in cac_ngay):
+            continue
+        for d in cac_ngay:
+            if d not in cache:
+                cache[d] = reach.doc_csv(tai(reporting, ngay_url[d]))
+        c = reach.ctr([cache[d] for d in cac_ngay], v)
+        if c is None:
+            continue
+        if (r.get("ctr") or "").strip():
+            print(f"CTR đối chiếu {v}: sổ {r['ctr']} – báo cáo {c * 100:.1f}%")
+            continue
+        r["ctr"] = f"{c * 100:.1f}%"
+        changed += 1
+    return changed
+
+
 def dong_bo():
     if not TRACKER.exists():
         print("Không tìm thấy theo-doi.csv")
@@ -146,6 +181,12 @@ def dong_bo():
             print("Bỏ qua giữ chân 30s: chưa có token Analytics (chạy `uv run python -m tttc.dang login-analytics`)")
         giu_chan_updated = cap_nhat_giu_chan(rows, thoi_luong, an, now)
 
+        ctr_updated = 0
+        try:
+            ctr_updated = cap_nhat_ctr(rows, reporting_client(), now)
+        except Exception as e:  # API chưa bật / mạng lỗi: vẫn ghi các cột khác
+            print(f"Cảnh báo CTR (Reporting API): {str(e)[:300]}")
+
         opp_updated = 0
         if CONFIG.exists():
             kenh_ho = json.loads(CONFIG.read_text(encoding="utf-8")).get("doi_thu", {}).get("kenh_id")
@@ -161,7 +202,7 @@ def dong_bo():
             w.writeheader()
             w.writerows(rows)
         tmp.replace(TRACKER)
-        print(f"Đã điền số view cho {updated}/{len(rows)} video, giữ chân 30s cho {giu_chan_updated} video "
+        print(f"Đã điền số view cho {updated}/{len(rows)} video, giữ chân 30s cho {giu_chan_updated} video, CTR cho {ctr_updated} video "
               f"và đối chiếu đối thủ cho {opp_updated} dòng vào theo-doi.csv")
 
 

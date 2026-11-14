@@ -37,7 +37,7 @@ uv run python -m tttc.giam_sat ../videos/<slug> --ctr 3.2
 - Lệnh `tttc.*` đọc tiếng Việt qua subprocess phải có `PYTHONUTF8=1` và `PYTHONIOENCODING=utf-8`.
 - VieNeu chạy trong venv riêng `C:\Users\78\Documents\VieNeu-TTS\.venv`; lỗi DLL onnxruntime thì kiểm VC++ runtime trước. Không dùng `precision="int8"` (CPU không có VNNI).
 - Token lưu trong keyring (`tui-tien-cong-nghe`): `youtube-token` (upload + force-ssl, `tttc.dang login`) và `analytics-token` (chỉ đọc Analytics, `tttc.dang login-analytics`). `dong-bo-view.py` dùng token Analytics để tự điền `giu_chan_30s` (7 ngày đầu, điền khi video đủ 9 ngày).
-- Analytics API **không có CTR thumbnail** (400 "query is not supported"), nên cột `ctr` vẫn điền tay từ YouTube Studio.
+- Analytics API **không có CTR thumbnail** (400 "query is not supported"); CTR lấy từ Reporting API (`tttc.reach`, báo cáo `channel_reach_basic_a1`, cùng `analytics-token`). `dong-bo-view.py` tự tạo job lần đầu, điền `ctr` gộp 7 ngày đầu khi đủ 7 báo cáo ngày (ngày PST); dòng đã có CTR tay thì chỉ in số để đối chiếu. Cần bật "YouTube Reporting API" trong dự án Google Cloud.
 - Git trên máy này chưa đặt `user.name`/`user.email`; các commit cũ ghi tác giả "Quang Tình".
 
 ## Quy ước

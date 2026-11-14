@@ -316,6 +316,13 @@ def analytics_client():
     return None if creds is None else build("youtubeAnalytics", "v2", credentials=creds)
 
 
+def reporting_client():
+    """Client YouTube Reporting (CTR thumbnail, `tttc.reach`), cùng token `analytics-token`; None nếu chưa đăng nhập."""
+    from googleapiclient.discovery import build
+    creds = _creds("analytics-token")
+    return None if creds is None else build("youtubereporting", "v1", credentials=creds)
+
+
 if __name__ == "__main__":
     if sys.argv[1] == "login":
         login(sys.argv[2] if len(sys.argv) > 2 else None)
