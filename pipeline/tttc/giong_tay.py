@@ -7,6 +7,7 @@ Chạy: uv run python -m tttc.giong_tay ../videos/<slug> giong1.mp3 [giong2.mp3 
 import difflib
 import json
 import re
+import shutil
 import subprocess
 import sys
 import tempfile
@@ -97,7 +98,8 @@ def tu_srt(srt_text: str) -> list[dict]:
 def _phien_am(audio, ngon_ngu: str = "vi", model: str = "small", run=subprocess.run) -> list[dict]:
     """Phiên âm bằng `hyperframes transcribe` (whisper đa ngôn ngữ; lần đầu tải mô hình ~466 MB cho `small`)."""
     with tempfile.TemporaryDirectory() as tmp:
-        run(["npx", "--no-install", "hyperframes", "transcribe", str(Path(audio).resolve()), "--model", model,
+        npx = shutil.which("npx") or "npx"
+        run([npx, "--no-install", "hyperframes", "transcribe", str(Path(audio).resolve()), "--model", model,
              "--language", ngon_ngu, "--dir", tmp], cwd=PIPE, check=True)
         found = next(Path(tmp).rglob("transcript.json"), None)
         if found is None:
@@ -120,7 +122,7 @@ def _ghep(audios: list[str], out: Path) -> None:
         cmd += ["-i", str(Path(audios[0]).resolve())]
     else:
         lst = out.with_name("giong-ghep.txt")
-        lst.write_text("".join(f"file '{Path(a).resolve()}'\n" for a in audios))
+        lst.write_text("".join(f"file '{Path(a).resolve()}'\n" for a in audios), encoding="utf-8", newline="\n")
         cmd += ["-f", "concat", "-safe", "0", "-i", str(lst)]
     subprocess.run(cmd + ["-c:a", "libmp3lame", "-b:a", "128k", str(out)], check=True)
 

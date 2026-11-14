@@ -109,3 +109,16 @@ def test_phien_am_reads_transcript_json_written_by_the_cli(tmp_path):
         (out / "transcript.json").write_text(json.dumps([{"id": "w0", "text": "xin", "start": 0.0, "end": 0.3}]), encoding="utf-8")
         return subprocess.CompletedProcess(cmd, 0)
     assert giong_tay._phien_am(tmp_path / "a.mp3", run=fake_run) == [{"text": "xin", "start": 0.0, "end": 0.3}]
+
+
+def test_ghep_writes_utf8_concat_list_for_vietnamese_paths(tmp_path, monkeypatch):
+    d = tmp_path / "giọng đọc tiếng Việt"
+    d.mkdir()
+    a, b = d / "đoạn_1.mp3", d / "đoạn_2.mp3"
+    a.write_bytes(b"a")
+    b.write_bytes(b"b")
+    monkeypatch.setattr(giong_tay.subprocess, "run", lambda *args, **kw: subprocess.CompletedProcess(args[0], 0))
+    out = d / "giong.mp3"
+    giong_tay._ghep([str(a), str(b)], out)
+    txt = (d / "giong-ghep.txt").read_bytes().decode("utf-8")
+    assert "đoạn_1.mp3" in txt and "đoạn_2.mp3" in txt

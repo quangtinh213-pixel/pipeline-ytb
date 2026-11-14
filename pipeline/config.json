@@ -13,7 +13,7 @@
     "https://chinhphu.vn/"
   ],
   "gio_dang_mac_dinh": "15:30",
-  "nhac_nen": "",
+  "nhac_nen": "am-thanh/nhac/ambient-tech.mp3",
   "playlist_id": "PLf9v4rPuuCys",
   "vieneu": {
     "voice": "Quốc Tuấn",
@@ -43,7 +43,14 @@
       "Puri": "Pu ri",
       "tám K": "tám ca",
       "Cisco": "Xít cô",
-      "Microsoft": "Mai crô xóp"
+      "Microsoft": "Mai crô xóp",
+      "Copilot": "Cô pai lốt",
+      "Kentik": "Ken tích",
+      "Outlook": "Ao lúc",
+      "Teams": "Tim",
+      "hacker": "hách cơ",
+      "TP HCM": "Thành phố Hồ Chí Minh",
+      "B": "bê"
     },
     "wpm_du_kien": 249
   },

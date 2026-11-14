@@ -138,7 +138,7 @@ def synthesize(video_dir, post=requests.post, key: str | None = None, cfg: dict 
         ranges.append({"i": i, "start": offset, "end": offset + dur})
         offset += dur
     lst = out / "list.txt"
-    lst.write_text("".join(f"file '{n}.mp3'\n" for n in names))
+    lst.write_text("".join(f"file '{n}.mp3'\n" for n in names), encoding="utf-8", newline="\n")
     # mã hoá lại khi nối: '-c copy' giữ phần đệm của từng mp3, lệch ~40 ms mỗi chỗ nối
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst),
                     "-c:a", "libmp3lame", "-b:a", "128k", str(d / "giong.mp3")], check=True)

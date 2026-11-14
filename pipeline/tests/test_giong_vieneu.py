@@ -138,3 +138,31 @@ def test_nghe_thu_wavs_are_reused_by_full_synthesis(tmp_path):
     calls = []
     giong_vieneu.synthesize(d, cfg=CFG, run=_fake_worker([0.3], calls=calls))
     assert [j["text"] for c in calls for j in c] == ["Giá chưa gồm thuế."]
+
+
+def test_pronunciation_replaces_longer_keys_before_shorter_ones():
+    # đặt khóa ngắn trước khóa dài để kiểm chắc chắn thứ tự sắp xếp theo độ dài khóa giảm dần
+    cfg = {"phat_am": {
+        "Kress": "Crét",
+        "Colette Kress": "Cô lét Crét",
+        "B": "bê",
+        "Microsoft": "Mai crô xóp",
+        "Microsoft 365": "Mai crô xóp ba sáu lăm",
+    }}
+    got = giong_vieneu._phat_am("Colette Kress dùng Microsoft 365 cùng Kress và gói B ở Ban.", cfg)
+    assert got == "Cô lét Crét dùng Mai crô xóp ba sáu lăm cùng Crét và gói bê ở Ban."
+
+
+def test_chia_theo_nhip_adds_gap_after_comma():
+    ws = ["Nếu", "chậm,", "ta", "thua."]
+    res = giong_vieneu._chia_theo_nhip(ws, 0.0, 2.0, pause_phay=0.12)
+    assert len(res) == 4 and res[0][0] == 0.0 and res[-1][1] <= 2.0
+    gap_after_comma = res[2][0] - res[1][1]
+    gap_normal = res[1][0] - res[0][1]
+    assert gap_after_comma > gap_normal + 0.05
+
+
+def test_tu_chua_phat_am_flags_unmapped_foreign_terms_only():
+    cfg = {"phat_am": {"Microsoft": "Mai crô xóp"}}
+    missing = giong_vieneu.tu_chua_phat_am(["Microsoft dùng API và Infosys trên Outlook."], cfg)
+    assert "Microsoft" not in missing and "API" in missing and "Infosys" in missing and "Outlook" in missing

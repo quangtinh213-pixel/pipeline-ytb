@@ -37,9 +37,60 @@ def _cfg(cfg: dict | None) -> dict:
 
 
 def _phat_am(text: str, cfg: dict) -> str:
-    for k, v in cfg["phat_am"].items():  # chỉ đổi chữ gửi cho giọng đọc; mốc từ vẫn theo chữ kịch bản
+    for k, v in sorted(cfg["phat_am"].items(), key=lambda kv: len(kv[0]), reverse=True):  # từ ghép dài trước từ ngắn; chỉ đổi chữ gửi cho giọng đọc
         text = re.sub(rf"(?<!\w){re.escape(k)}(?!\w)", v, text)
     return text
+
+
+_NGOAI_LAI_F = re.compile(r"[fjwz]", re.I)
+_NGOAI_LAI_CAP = re.compile(r"^[A-Z]{2,}$|^[A-Za-z]*[a-z][A-Z][A-Za-z]*$")
+_NGOAI_LAI_DUOI = re.compile(r"[bdflrsvz]$", re.I)
+_NGOAI_LAI_KEP = re.compile(r"([a-z])\1", re.I)
+_DAU_VIET = re.compile(r"[ăâđêôơưàáảãạằắẳẵặầấẩẫậèéẻẽẹềếểễệìíỉĩịòóỏõọồốổỗộờớởỡợùúủũụừứửữựỳýỷỹỵ]", re.I)
+
+
+def tu_chua_phat_am(paragraphs: list[str], cfg: dict) -> list[str]:
+    """Liệt kê từ ngoại lai / viết tắt tiếng Anh chưa có trong phat_am để tác giả bổ sung trước khi đọc."""
+    thieu: list[str] = []
+    seen: set[str] = set()
+    for p in paragraphs:
+        da_map = _phat_am(p, cfg)
+        for raw in da_map.split():
+            tok = raw.strip(".,!?:;\"'()[]{}“”‘’…")
+            if len(tok) < 2 or _DAU_VIET.search(tok) or tok.isdigit():
+                continue
+            la_ngoai = bool(
+                _NGOAI_LAI_F.search(tok)
+                or _NGOAI_LAI_CAP.match(tok)
+                or ("-" in tok and any(ch.isalpha() for ch in tok))
+                or (re.fullmatch(r"[A-Za-z]+", tok) and (_NGOAI_LAI_DUOI.search(tok) or _NGOAI_LAI_KEP.search(tok)))
+            )
+            if la_ngoai and tok.lower() not in seen:
+                seen.add(tok.lower())
+                thieu.append(tok)
+    return thieu
+
+
+def _chia_theo_nhip(words: list[str], t0: float, t1: float, pause_phay: float = 0.12) -> list[tuple[float, float]]:
+    """Rải mốc từng từ vào [t0, t1]; dành thêm khe nghỉ ngắn sau dấu phẩy/chấm phẩy nội câu."""
+    if not words:
+        return []
+    last = len(words) - 1
+    ngat = [i for i, w in enumerate(words[:-1]) if w[-1:] in (",", ";", ":")]
+    if not ngat:
+        return _chia_deu(words, t0, t1)
+    dur = max(t1 - t0, 0.0)
+    tong_nghi = min(len(ngat) * pause_phay, dur * 0.18)
+    moi_nghi = tong_nghi / len(ngat)
+    # Tổng trọng số thời gian nói cộng thời gian nghỉ nhẹ sau dấu phẩy
+    tong_ky_tu = sum(len(w) + 1 for w in words)
+    speech_dur = max(dur - tong_nghi, 0.0)
+    out, t = [], t0
+    for i, w in enumerate(words):
+        rong = speech_dur * (len(w) + 1) / tong_ky_tu
+        out.append((t, t + rong * 0.92))
+        t += rong + (moi_nghi if i != last and i in ngat else 0.0)
+    return out
 
 
 def _tao_wav(jobs: list[dict], work: Path, cfg: dict, run) -> None:
@@ -66,7 +117,11 @@ def _cat_nghi(src: Path, out: Path, nghi: float, toc_do: float = 1.0) -> None:
 def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
     d, cfg = Path(video_dir), _cfg(cfg)
     voice = cfg["voice"]
-    paras = [cau(p) for p in tts.spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8"))]
+    raw_paras = tts.spoken_paragraphs((d / "kich-ban.md").read_text(encoding="utf-8"))
+    thieu_pa = tu_chua_phat_am(raw_paras, cfg)
+    if thieu_pa:
+        print(f"Cảnh báo phát âm: chưa có trong phat_am: {', '.join(thieu_pa[:10])}")
+    paras = [cau(p) for p in raw_paras]
     raw = d / "giong-vieneu"
     raw.mkdir(exist_ok=True)
     units = [(pi, k == len(p) - 1, s) for pi, p in enumerate(paras) for k, s in enumerate(p)]
@@ -92,11 +147,11 @@ def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
             ranges.append({"i": pi, "start": 0.0 if pi == 0 else round(offset, 3)})
         ws = s.split()
         words += [{"w": w, "start": round(a, 3), "end": round(b, 3)}
-                  for w, (a, b) in zip(ws, _chia_deu(ws, offset, offset + dur - nghi))]
+                  for w, (a, b) in zip(ws, _chia_theo_nhip(ws, offset, offset + dur - nghi))]
         offset += dur
         files.append(out)
     lst = raw / "list.txt"
-    lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files))
+    lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files), encoding="utf-8", newline="\n")
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c:a", "libmp3lame",
                     "-b:a", "128k", str(d / "giong.mp3")], check=True)
     total = _duration(d / "giong.mp3")
@@ -130,7 +185,7 @@ def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subproces
         _cat_nghi(raw / f"{_ten(s, voice)}.wav", out, cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"], cfg["toc_do"])
         files.append(out)
     lst = raw / "nt-list.txt"
-    lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files))
+    lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files), encoding="utf-8", newline="\n")
     mp3 = d / "nghe-thu.mp3"
     subprocess.run(["ffmpeg", "-v", "error", "-y", "-f", "concat", "-safe", "0", "-i", str(lst), "-c:a", "libmp3lame",
                     "-b:a", "128k", str(mp3)], check=True)
