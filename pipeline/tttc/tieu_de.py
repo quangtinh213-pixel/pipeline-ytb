@@ -26,7 +26,10 @@ THUC_THE = [
     r"\bdeepseek\b", r"\btsmc\b", r"\bintel\b", r"\bbyd\b", r"\bbinance\b",
     r"\bcrypto\b", r"\bai\b", r"\bmacbook\b", r"\bchatgpt\b", r"\bgemini\b",
     r"\bbán dẫn\b", r"\bchip\b", r"\btesla\b", r"\btiktok\b", r"\byoutube\b",
-    r"\bqualcomm\b", r"\bamd\b", r"\bsamsung\b", r"\bhollywood\b", r"\bnetflix\b", r"\bfmovies\b"
+    r"\bqualcomm\b", r"\bamd\b", r"\bsamsung\b", r"\bhollywood\b", r"\bnetflix\b", r"\bfmovies\b",
+    r"\boutlook\b", r"\bmicrosoft 365\b", r"\bcopilot\b", r"\bclaude\b", r"\banthropic\b",
+    r"\b7-zip\b", r"\b7zip\b", r"\bthông tư\b", r"\bnghị định\b", r"\bvietcombank\b",
+    r"\bmomo\b", r"\bzalo\b", r"\bshopee\b", r"\bram\b", r"\bssd\b", r"\bwindows\b"
 ]
 
 # 3. Góc Việt Nam / túi tiền / đời sống người xem
@@ -113,3 +116,32 @@ def cham_diem(tieu_de: str) -> KetQuaKiemTra:
         
     diem = max(0, min(10, int(round(diem))))
     return KetQuaKiemTra(hop_le=(len(loi) == 0), diem=diem, loi=loi, canh_bao=canh_bao)
+
+
+_KHAO_CUONG = {
+    "cấm bán": ("ban sale", "prohibit sale", "cấm kinh doanh"),
+    "mất trắng": ("wipe out", "lose everything", "trắng tay"),
+    "từ chức": ("resign", "step down", "stepping down", "rời ghế"),
+    "phá sản": ("bankrupt", "bankruptcy"),
+    "khai tử": ("discontinue", "kill off", "shut down"),
+    "sập hoàn toàn": ("complete outage", "total shutdown", "tê liệt hoàn toàn"),
+}
+_DANH_TU_CHUNG = re.compile(r"\b(?:ông chủ|gã khổng lồ|hãng công nghệ lớn|tập đoàn lớn)\b", re.I)
+
+
+def kiem_khop_nguon(tieu_de: str, nguon: list[dict]) -> list[str]:
+    """Kiểm tra tiêu đề không giật tít quá sự thật trong nguon.json và ưu tiên tên riêng có lượng tìm kiếm."""
+    t = tieu_de.strip()
+    if not t:
+        return []
+    lower = t.lower()
+    out: list[str] = []
+    hay = " ".join(f"{n.get('gia_tri', '')} {n.get('trich_dan', '')}" for n in nguon).lower().strip()
+    if hay:
+        for cum, dong_nghia in _KHAO_CUONG.items():
+            if re.search(rf"\b{re.escape(cum)}\b", lower):
+                if cum not in hay and not any(s in hay for s in dong_nghia):
+                    out.append(f"Cảnh báo lệch nguồn: Tiêu đề dùng cụm «{cum}» chưa thấy trong trích dẫn nguồn gốc")
+    if _DANH_TU_CHUNG.search(lower):
+        out.append("Gợi ý tìm kiếm: Tiêu đề dùng danh từ chung (vd 'ông chủ', 'gã khổng lồ') — nên nêu tên riêng cụ thể (vd Jensen Huang, Microsoft 365) để đón tìm kiếm")
+    return out

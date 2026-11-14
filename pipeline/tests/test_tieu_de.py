@@ -40,3 +40,25 @@ def test_tieu_de_iphone_cu_chuan():
     assert loi == []
     kq = tieu_de.cham_diem(t)
     assert kq.hop_le is True
+
+
+def test_tieu_de_nhan_dien_thuc_the_moi():
+    for entity in ("Microsoft 365", "Outlook", "Copilot"):
+        t = f"CẢNH BÁO: {entity} sập 18 giờ, người dùng Việt Nam làm việc thế nào?"
+        assert tieu_de.kiem(t) == [], f"Entity {entity} phải được nhận diện"
+
+
+def test_kiem_khop_nguon_canh_bao_cum_cuc_doan_va_danh_tu_chung():
+    nguon = [{"gia_tri": "18 giờ", "trich_dan": "Service disruption lasted around 18 hours globally."}]
+    warns = tieu_de.kiem_khop_nguon("SỐC: Ông chủ Microsoft bất ngờ từ chức khiến hệ thống sập hoàn toàn!", nguon)
+    assert any("lệch nguồn" in w and "từ chức" in w for w in warns)
+    assert any("lệch nguồn" in w and "sập hoàn toàn" in w for w in warns)
+    assert any("Gợi ý tìm kiếm" in w and "danh từ chung" in w for w in warns)
+
+
+def test_kiem_khop_nguon_khong_bao_sai_khi_trich_dan_khop_anh_viet():
+    nguon_en = [{"gia_tri": "CEO", "trich_dan": "The CEO announced he will step down next quarter."}]
+    assert tieu_de.kiem_khop_nguon("SỐC: CEO Nvidia bất ngờ từ chức!", nguon_en) == []
+
+    nguon_vi = [{"gia_tri": "18 giờ", "trich_dan": "Hệ thống Microsoft 365 tê liệt hoàn toàn suốt 18 giờ."}]
+    assert tieu_de.kiem_khop_nguon("CẢNH BÁO: Microsoft 365 sập hoàn toàn 18 giờ!", nguon_vi) == []

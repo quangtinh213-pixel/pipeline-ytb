@@ -242,3 +242,35 @@ def test_cta_check_warns_when_missing_and_passes_when_present():
     ok = phong_cach.kiem(spoken_with_cta, check_cta=True)
     assert not any("Đăng Ký" in w for w in ok)
 
+
+def test_kiem_thoi_luong_thuc_warns_short_longform_and_skips_templates(tmp_path, capsys, monkeypatch):
+    import json
+    short_longform = _long(head=OK_HEAD, tail="Bạn đoán sao?", n=1500)  # 1500 / 249 ≈ 6.0 phút < 7.5
+    warns = phong_cach.kiem_thoi_luong_thuc(short_longform, wpm=249, min_phut=7.5)
+    assert len(warns) == 1 and "Cảnh báo thời lượng" in warns[0] and "6.0 phút" in warns[0]
+
+    enough_longform = _long(head=OK_HEAD, tail="Bạn đoán sao?", n=2000)  # 2000 / 249 ≈ 8.0 phút >= 7.5
+    assert phong_cach.kiem_thoi_luong_thuc(enough_longform, wpm=249, min_phut=7.5) == []
+
+    assert phong_cach.kiem_thoi_luong_thuc(_mau("bao-mat", 450), wpm=249, min_phut=7.5) == []
+    assert phong_cach.kiem_thoi_luong_thuc(_mau("shorts", 150), wpm=249, min_phut=7.5) == []
+    assert phong_cach.kiem_thoi_luong_thuc("Chỉ có ghi chú, không có lời đọc.") == []
+
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"vieneu": {"wpm_du_kien": 249}}), encoding="utf-8")
+    monkeypatch.setattr(phong_cach, "CONFIG", cfg)
+    (tmp_path / "kich-ban.md").write_text(short_longform, encoding="utf-8")
+    phong_cach.main(str(tmp_path))
+    assert "Cảnh báo thời lượng" in capsys.readouterr().out
+
+
+def test_main_warns_when_main_script_uses_short_template_loai(tmp_path, capsys, monkeypatch):
+    import json
+    cfg = tmp_path / "config.json"
+    cfg.write_text(json.dumps({"vieneu": {"wpm_du_kien": 249}}), encoding="utf-8")
+    monkeypatch.setattr(phong_cach, "CONFIG", cfg)
+    (tmp_path / "kich-ban.md").write_text(_mau("gia", 300), encoding="utf-8")
+    phong_cach.main(str(tmp_path))
+    out = capsys.readouterr().out
+    assert "Loại: gia" in out and "2.000–2.600 từ" in out
+

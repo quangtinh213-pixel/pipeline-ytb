@@ -5,6 +5,7 @@ Chạy: uv run python -m tttc.phan_bien vong 1 ../videos/<slug>
 Không dùng --dangerously-skip-permissions và --json-schema (agy không ép được định dạng trả lời).
 """
 import json
+import shutil
 import subprocess
 import sys
 from pathlib import Path
@@ -24,8 +25,9 @@ def goi(prompt: str, conversation_id: str | None = None, timeout_s: int = 600, l
     cmd = ["agy", "-p", prompt, "--output-format", "json", "--print-timeout", f"{timeout_s}s"]
     if conversation_id:
         cmd += ["--conversation", conversation_id]
+    run_cmd = [shutil.which("agy") or "agy", *cmd[1:]] if run is subprocess.run else cmd
     try:
-        r = run(cmd, capture_output=True, text=True, timeout=timeout_s + 30)
+        r = run(run_cmd, capture_output=True, text=True, timeout=timeout_s + 30)
     except FileNotFoundError:
         raise AgyLoi("không tìm thấy lệnh agy") from None
     except subprocess.TimeoutExpired:
@@ -57,7 +59,10 @@ def dung_prompt(vong: int, loi_doc: str, tu_cam_text: str, phan_tich: str, triag
          "Cuối cùng chấm 1–5 bốn tiêu chí: tự nhiên khi đọc to; đúng tình huống kể; nhịp; chi tiết cụ thể.\n"
          "Ràng buộc của kênh (đừng gợi ý ngược lại): (1) lời đọc đã viết số, tên riêng và thuật ngữ thành chữ để giọng đọc máy "
          "đọc đúng, nên đừng gợi ý đổi sang chữ số hay viết tắt; (2) câu cuối mời người xem bình luận một con số là bắt buộc "
-         "theo thẻ phong cách, chỉ góp ý cách nói, đừng bảo bỏ; (3) phần phiên âm tên riêng là có chủ ý.\n\n"
+         "theo thẻ phong cách, chỉ góp ý cách nói, đừng bảo bỏ; (3) phần phiên âm tên riêng là có chủ ý; "
+         "(4) kênh cho phép xưng 'mình', gọi người xem là 'bạn' hoặc 'anh em', dùng câu chuyển 'Tóm lại' ở phần kết và có "
+         "1–2 lời kêu gọi Đăng ký kênh (Mid-roll/End-screen CTA) theo quy chuẩn chuyển đổi của kênh — đừng bắt lỗi sáo rỗng "
+         "hay khuyên bỏ các cụm này.\n\n"
          f"## Danh sách từ cấm\n{tu_cam_text}\n\n## Phân tích mẫu giọng\n{phan_tich}\n\n## Lời đọc\n{loi_doc}\n")
     if vong >= 2:
         p += (f"\n## Bảng triage vòng 1 (nhận/bỏ kèm lý do)\n{triage_md}\n\n"

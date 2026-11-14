@@ -178,12 +178,34 @@ def uoc_tinh_phut(script_md: str, wpm: float) -> float:
     return len(_split(script_md)[1]) / wpm
 
 
+def kiem_loai_bai_chinh(script_md: str) -> list[str]:
+    """Cảnh báo nếu kịch bản video chính bị gắn thẻ 'Loại:' của template ngắn."""
+    loai = loai_cua(script_md)
+    if loai is None or loai == "shorts":
+        return []
+    return [f"Cảnh báo: Kịch bản video chính đang gắn 'Loại: {loai}' (chỉ dành cho clip phụ/template ngắn); "
+            f"bài hằng ngày cần bỏ dòng Loại: và viết đủ {MIN_TU:,}–{MAX_TU:,} từ (~8–13 phút).".replace(",", ".")]
+
+
+def kiem_thoi_luong_thuc(script_md: str, wpm: float = 249, min_phut: float = 7.5) -> list[str]:
+    """Cảnh báo nếu video dài (không phải clip ngắn/Shorts theo template) có thời lượng thực tế dưới ngưỡng tối thiểu."""
+    _, words = _split(script_md)
+    if not words or loai_cua(script_md) is not None:
+        return []
+    phut = len(words) / wpm
+    if phut < min_phut:
+        return [f"Cảnh báo thời lượng: Video dài ước tính chỉ {phut:.1f} phút ở tốc độ {wpm:.0f} từ/phút "
+                f"(dưới ngưỡng {min_phut:.1f} phút; cần mở rộng phân tích tới ~2.000–2.600 từ)."]
+    return []
+
+
 def main(video_dir: str) -> int:
     script = (Path(video_dir) / "kich-ban.md").read_text(encoding="utf-8")
-    msgs = kiem(script, check_cta=True, check_dai_chung=True)
+    msgs = kiem(script, check_cta=True, check_dai_chung=True) + kiem_loai_bai_chinh(script)
     wpm = json.loads(CONFIG.read_text(encoding="utf-8")).get("vieneu", {}).get("wpm_du_kien") if CONFIG.exists() else None
     if wpm:
         print(f"ước tính {uoc_tinh_phut(script, wpm):.1f} phút ở {wpm:.0f} từ/phút (config vieneu.wpm_du_kien)")
+        msgs += kiem_thoi_luong_thuc(script, wpm=wpm)
     for m in msgs:
         print("-", m)
     loi = sum(m.startswith("Lỗi") for m in msgs)

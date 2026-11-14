@@ -61,6 +61,7 @@ def test_prompt_round_1_and_2():
     p1 = phan_bien.dung_prompt(1, "LỜI ĐỌC", "TU-CAM", "PHÂN TÍCH")
     assert all(x in p1 for x in ("LỜI ĐỌC", "TU-CAM", "PHÂN TÍCH", "không dùng tool", "tối đa 12"))
     assert "đừng gợi ý đổi sang chữ số" in p1 and "mời người xem bình luận" in p1  # ràng buộc của kênh, rút từ lần chạy thật
+    assert all(x in p1 for x in ("(4)", "xưng 'mình'", "'bạn' hoặc 'anh em'", "'Tóm lại'", "Đăng ký kênh"))
     p2 = phan_bien.dung_prompt(2, "LỜI ĐỌC", "TU-CAM", "PHÂN TÍCH", triage_md="BẢNG TRIAGE")
     assert "BẢNG TRIAGE" in p2 and "chưa xử lý" in p2 and "BẢNG TRIAGE" not in p1
 

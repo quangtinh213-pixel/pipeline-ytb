@@ -96,9 +96,9 @@ Người xem nghe, không đọc. Mỗi chương viết xong, kể lại bằng 
 - **Dè dặt một lần, đúng chỗ.** Câu dè dặt tự thêm ("chưa có số thì chưa kết luận", "không đại diện cho cả nền tảng") gom lại một câu mỗi chương. Riêng chữ "sơ bộ" đi kèm số sơ bộ và "tính ra" đi kèm số tự tính vẫn bắt buộc ở từng câu (máy chặn); viết gọn như một tính từ ("gần bốn tỷ, số sơ bộ"), không thành câu riêng.
 - **Chương kết bằng điều mới, không tóm tắt.** Không đóng chương bằng "Vậy vì sao…? Vì…" nhắc lại ba ý vừa nói; đóng bằng hệ quả hoặc câu dẫn sang chương sau.
 
-## 10. Bộ template theo loại tin (user chốt ưu tiên 11/11/2026)
+## 10. Bộ template theo loại tin (user chốt ưu tiên 11/11/2026; cập nhật định mức 14/11/2026)
 
-Nguồn: `docs/template-kich-ban.md` (6 loại tin + Shorts + kho câu châm biếm). Chọn loại ở bước `chu-de`, ghi dòng `Loại: <khóa>` ngay dưới tiêu đề `kich-ban.md`; `tttc.phong_cach` đọc dòng này để đặt khung độ dài theo loại. Không có dòng `Loại:` thì coi là video dài 8–14 phút theo mục 3.
+Nguồn: `docs/template-kich-ban.md` (6 loại tin + Shorts + kho câu châm biếm). **Quy tắc phân định (14/11/2026):** Video chính hằng ngày (Anchor / Evergreen cạnh tranh video dài) **không ghi dòng `Loại:`** để giữ khung chuẩn **2.000–2.600 từ (~8–11 phút ở tốc độ VieNeu 240–249 từ/phút)**, chỉ mượn cấu trúc chia Beat + Quy tắc Vàng CTA từ `docs/template-kich-ban.md`. Chỉ ghi dòng `Loại: <khóa>` ngay dưới tiêu đề `kich-ban.md` khi chủ đích làm clip ngắn phụ trợ hoặc `shorts`. Không có dòng `Loại:` thì coi là video dài 8–14 phút theo mục 3.
 
 **Cách dùng:** template là khung xương (các đoạn HOOK, PHÂN TÍCH, CHÂM BIẾM, TÁC ĐỘNG, KẾT, thứ tự và thời lượng gần đúng). Chỗ `[...]` điền bằng số và sự kiện có nguồn; thời lượng ghi trong template là gợi ý cho từng đoạn, tổng theo bảng dưới.
 
