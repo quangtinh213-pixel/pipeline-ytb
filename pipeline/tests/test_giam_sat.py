@@ -70,3 +70,68 @@ def test_doi_bao_bi_calls_youtube_and_updates_state(tmp_path):
     content = tracker.read_text(encoding="utf-8")
     assert "Tiêu đề mới cứu nguy" in content
     assert "Tiêu đề cũ" not in content
+
+
+def test_kiem_tra_video_auto_pivots_when_ctr_critical(tmp_path):
+    pkg = {
+        "phuong_an": [
+            {"tieu_de": "Tiêu đề 1", "file_thumb": "thumb1.png"},
+            {"tieu_de": "Tiêu đề 2", "file_thumb": "thumb2.png"},
+        ]
+    }
+    (tmp_path / "dong-goi.json").write_text(json.dumps(pkg), encoding="utf-8")
+    (tmp_path / "thumb2.png").write_bytes(b"img")
+    (tmp_path / "trang-thai.json").write_text(json.dumps({"video_id": "v1", "chon": 1, "steps": {}}), encoding="utf-8")
+    tracker = tmp_path / "theo-doi.csv"
+    tracker.write_text("ngay,tieu_de,gio_dang,link\n14/11/2026,Tiêu đề 1,15:30,https://youtu.be/v1\n", encoding="utf-8")
+
+    mock_yt = MagicMock()
+    mock_yt.videos.return_value.list.return_value.execute.return_value = {
+        "items": [{"snippet": {"title": "Tiêu đề 1", "description": "d"}, "statistics": {"viewCount": "42", "likeCount": "2", "commentCount": "0"}, "status": {"privacyStatus": "public"}}]
+    }
+    mock_yt.videos.return_value.update.return_value.execute.return_value = {}
+    mock_yt.thumbnails.return_value.set.return_value.execute.return_value = {}
+
+    res = giam_sat.kiem_tra_video(tmp_path, ctr_val="2.5%", tu_dong_doi=True, youtube=mock_yt, tracker=tracker)
+    assert res["trang_thai_ctr"] == "NGUY_CAP"
+    assert res["da_doi"]["phuong_an"] == 2
+    assert res["da_doi"]["new_title"] == "Tiêu đề 2"
+
+
+def test_lay_chi_so_analytics_parses_headers_and_handles_missing():
+    assert giam_sat.lay_chi_so_analytics("v1", "2026-11-14") is None
+    an = MagicMock()
+    an.reports.return_value.query.return_value.execute.return_value = {
+        "columnHeaders": [{"name": "views"}, {"name": "videoThumbnailImpressionsClickRate"}],
+        "rows": [[150, 5.4]],
+    }
+    got = giam_sat.lay_chi_so_analytics("v1", "2026-11-14", "2026-11-14", analytics=an)
+    assert got == {"views": 150, "videoThumbnailImpressionsClickRate": 5.4}
+
+
+def test_kiem_tra_video_does_not_cycle_after_all_options_tried(tmp_path):
+    pkg = {
+        "phuong_an": [
+            {"tieu_de": "Tiêu đề 1", "file_thumb": "thumb1.png"},
+            {"tieu_de": "Tiêu đề 2", "file_thumb": "thumb2.png"},
+        ]
+    }
+    (tmp_path / "dong-goi.json").write_text(json.dumps(pkg), encoding="utf-8")
+    (tmp_path / "thumb1.png").write_bytes(b"img1")
+    (tmp_path / "thumb2.png").write_bytes(b"img2")
+    (tmp_path / "trang-thai.json").write_text(json.dumps({"video_id": "v1", "chon": 1, "steps": {}}), encoding="utf-8")
+    tracker = tmp_path / "theo-doi.csv"
+    tracker.write_text("ngay,tieu_de,gio_dang,link\n14/11/2026,Tiêu đề 1,15:30,https://youtu.be/v1\n", encoding="utf-8")
+
+    mock_yt = MagicMock()
+    mock_yt.videos.return_value.list.return_value.execute.return_value = {
+        "items": [{"snippet": {"title": "Tiêu đề 1", "description": "d"}, "statistics": {"viewCount": "42", "likeCount": "2", "commentCount": "0"}, "status": {"privacyStatus": "public"}}]
+    }
+    mock_yt.videos.return_value.update.return_value.execute.return_value = {}
+    mock_yt.thumbnails.return_value.set.return_value.execute.return_value = {}
+
+    res1 = giam_sat.kiem_tra_video(tmp_path, ctr_val="2.5%", tu_dong_doi=True, youtube=mock_yt, tracker=tracker)
+    assert res1["da_doi"]["phuong_an"] == 2
+    res2 = giam_sat.kiem_tra_video(tmp_path, ctr_val="1.5%", tu_dong_doi=True, youtube=mock_yt, tracker=tracker)
+    assert res2["da_doi"] is None
+    assert json.loads((tmp_path / "trang-thai.json").read_text(encoding="utf-8"))["chon"] == 2

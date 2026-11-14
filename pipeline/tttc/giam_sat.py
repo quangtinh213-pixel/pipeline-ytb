@@ -81,6 +81,7 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
     if not opts or not 1 <= phuong_an_so <= len(opts):
         raise ValueError(f"Phương án {phuong_an_so} không tồn tại trong dong-goi.json (có {len(opts)} phương án)")
 
+    old_chon = state.get("chon") or 1
     chon = opts[phuong_an_so - 1]
     new_title = chon["tieu_de"]
     thumb_path = d / chon["file_thumb"]
@@ -100,12 +101,13 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
     # 2. Cập nhật Thumbnail trên YouTube nếu file ảnh tồn tại
     thumb_updated = False
     if thumb_path.exists():
-        media = dang._media(thumb_path, "image/png")
+        media = dang._thumb_media(thumb_path)
         yt.thumbnails().set(videoId=vid, media_body=media).execute(num_retries=dang.RETRIES)
         thumb_updated = True
 
     # 3. Cập nhật trang-thai.json
-    tt.set_field(d, "chon", phuong_an_so)
+    da_thu = list(dict.fromkeys([*(state.get("da_thu_pa") or []), old_chon, phuong_an_so]))
+    tt.set_fields(d, chon=phuong_an_so, da_thu_pa=da_thu)
 
     # 4. Cập nhật theo-doi.csv
     if tracker.exists():
@@ -135,3 +137,78 @@ def doi_bao_bi(video_dir: Path | str, phuong_an_so: int, youtube=None, tracker: 
         "thumb_updated": thumb_updated,
         "phuong_an": phuong_an_so
     }
+
+
+def lay_chi_so_analytics(video_id: str, start_date: str, end_date: str | None = None, analytics=None) -> dict[str, Any] | None:
+    """Đọc CTR/giữ chân từ YouTube Analytics API nếu token có quyền; trả None nếu thiếu quyền hoặc lỗi."""
+    if analytics is None:
+        return None
+    end_d = end_date or datetime.now(VN).strftime("%Y-%m-%d")
+    try:
+        resp = analytics.reports().query(
+            ids="channel==MINE",
+            startDate=start_date,
+            endDate=end_d,
+            metrics="views,averageViewDuration,averageViewPercentage,videoThumbnailImpressionsClickRate",
+            filters=f"video=={video_id}",
+        ).execute()
+        rows = resp.get("rows") or []
+        headers = [h.get("name") for h in resp.get("columnHeaders") or []]
+        if not rows or not headers:
+            return None
+        return dict(zip(headers, rows[0]))
+    except Exception:
+        return None
+
+
+def kiem_tra_video(
+    video_dir: Path | str,
+    ctr_val: float | str | None = None,
+    tu_dong_doi: bool = False,
+    youtube=None,
+    tracker: Path = dang.TRACKER,
+) -> dict[str, Any]:
+    """Kiểm tra trạng thái CTR/lượt xem của video đã đăng và xoay sang phương án dự phòng nếu nguy cấp."""
+    d = Path(video_dir)
+    state = tt.load(d)
+    vid = state.get("video_id")
+    if not vid:
+        raise ValueError(f"Thư mục {d} chưa có video_id đã upload")
+    info = lay_thong_tin_video(vid, youtube=youtube)
+    muc = danh_gia_ctr(ctr_val)
+    opts = lay_cac_phuong_an(d)
+    chon = state.get("chon") or 1
+    out: dict[str, Any] = {"video": info, "trang_thai_ctr": muc, "chon_hien_tai": chon, "da_doi": None}
+    if muc == "NGUY_CAP" and tu_dong_doi and len(opts) > 1:
+        da_thu = set(state.get("da_thu_pa") or []) | {chon}
+        ke_tiep = next(
+            (p for step in range(1, len(opts) + 1) if (p := ((chon - 1 + step) % len(opts)) + 1) not in da_thu),
+            None,
+        )
+        if ke_tiep is not None:
+            out["da_doi"] = doi_bao_bi(d, ke_tiep, youtube=youtube, tracker=tracker)
+    return out
+
+
+def main(argv: list[str] | None = None) -> int:
+    import argparse
+    import sys
+
+    p = argparse.ArgumentParser(prog="python -m tttc.giam_sat")
+    p.add_argument("video_dir", help="Thư mục video (vd ../videos/<slug>)")
+    p.add_argument("--ctr", default=None, help="Giá trị CTR từ YouTube Studio (vd 3.2 hoặc 3.2%%)")
+    p.add_argument("--auto-pivot", action="store_true", help="Tự đổi sang phương án kế tiếp nếu CTR < 4%%")
+    args = p.parse_args(argv)
+    kq = kiem_tra_video(args.video_dir, ctr_val=args.ctr, tu_dong_doi=args.auto_pivot)
+    v = kq["video"]
+    print(f"{v['id']} · {v['views']} view · {v['likes']} thích · CTR={kq['trang_thai_ctr']} · đang dùng PA {kq['chon_hien_tai']}")
+    if kq["da_doi"]:
+        print(f"ĐÃ XOAY BAO BÌ → PA {kq['da_doi']['phuong_an']}: {kq['da_doi']['new_title']}")
+    elif kq["trang_thai_ctr"] == "NGUY_CAP":
+        print("⚠️ BÁO ĐỘNG ĐỎ CTR < 4%: chạy lại với --auto-pivot để xoay sang phương án dự phòng.")
+    return 0
+
+
+if __name__ == "__main__":
+    import sys
+    sys.exit(main())
