@@ -42,5 +42,18 @@
     "anthropic",
     "igor pavlov"
   ],
-  "shorts": []
+  "shorts": [
+    {
+      "file": "shorts/1.mp4",
+      "tieu_de": "7-Zip dính lỗ hổng 8,5/10: 3 bước kiểm tra máy bạn #shorts",
+      "ngay": "16/11/2026",
+      "gio": "12:00"
+    },
+    {
+      "file": "shorts/2.mp4",
+      "tieu_de": "Sinh viên Việt dùng AI tìm ra lỗ hổng 8,5/10 trong 7-Zip #shorts",
+      "ngay": "17/11/2026",
+      "gio": "12:00"
+    }
+  ]
 }
