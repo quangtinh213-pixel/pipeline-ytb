@@ -1,0 +1,152 @@
+[
+  {
+    "id": "m5",
+    "ten": "Microsoft (@Microsoft trên X)",
+    "gia_tri": "Microsoft xin lỗi sâu sắc vì sự gián đoạn gây ra cho khách hàng và đối tác",
+    "trich_dan": "We are deeply sorry for the disruption this incident has caused our customers and partners.",
+    "url": "https://x.com/Microsoft/status/2121282013600907325",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "m1",
+    "ten": "Microsoft (@Microsoft trên X)",
+    "gia_tri": "Microsoft nói sự cố là lỗi kỹ thuật, không liên quan tới tấn công mạng hay AI hoặc tác nhân AI",
+    "trich_dan": "This was a technical issue not related to cyber or AI / agents.",
+    "url": "https://x.com/Microsoft/status/2121282013600907325",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "m2",
+    "ten": "Microsoft (@Microsoft trên X)",
+    "gia_tri": "Microsoft nói sự cố bắt nguồn từ một lỗi trong lần nâng cấp dung lượng mạng trước đó, lộ ra sau một thay đổi mạng gần đây",
+    "trich_dan": "The incident was introduced by an issue during an earlier network capacity upgrade that surfaced following a recent network change.",
+    "url": "https://x.com/Microsoft/status/2121282013600907325",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "m3",
+    "ten": "Microsoft (@Microsoft trên X)",
+    "gia_tri": "Microsoft hứa công bố báo cáo đầy đủ sau sự cố khi xem xét xong",
+    "trich_dan": "We will provide a full post-incident report once our review is complete.",
+    "url": "https://x.com/Microsoft/status/2121282013600907325",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "m4",
+    "ten": "Microsoft 365 Status (@MSFT365Status trên X)",
+    "gia_tri": "Microsoft báo lỗi hộp thư Exchange Online lần đầu, lúc 0 giờ 54 phút ngày 13/11 giờ Hà Nội, khu vực nêu là châu Mỹ",
+    "trich_dan": "We're investigating reports of users experiencing issues accessing Exchange Online mailboxes through multiple connection methods in the Americas.",
+    "url": "https://x.com/MSFT365Status/status/2120938282204688468",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "k1",
+    "ten": "Kentik · Doug Madory (Bluesky)",
+    "gia_tri": "Sự cố Exchange Online bắt đầu lúc khoảng 17 giờ 35 phút theo giờ UTC ngày 12/11, tức 0 giờ 35 phút sáng 13/11 giờ Hà Nội",
+    "trich_dan": "nearly 4 hours after the outage began at ~17:35 UTC",
+    "url": "https://bsky.app/profile/eldomador.bsky.social/post/3n25gkqmopk2t",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "k2",
+    "ten": "Kentik · Doug Madory (Bluesky)",
+    "gia_tri": "Lưu lượng Exchange Online thấp hơn mức dự kiến khoảng 85% trong khoảng 18 giờ",
+    "trich_dan": "After ~18 hours running about 85% below expected levels",
+    "url": "https://bsky.app/profile/eldomador.bsky.social/post/3n26xhaz4ck2t",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "k3",
+    "ten": "Kentik · Doug Madory (Bluesky)",
+    "gia_tri": "Lưu lượng Exchange Online bắt đầu hồi phục lúc 11 giờ 20 phút theo giờ UTC ngày 13/11, tức 18 giờ 20 phút giờ Hà Nội",
+    "trich_dan": "traffic began recovering at 6:20 AM ET (11:20 UTC)",
+    "url": "https://bsky.app/profile/eldomador.bsky.social/post/3n275meovqc2t",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v1",
+    "ten": "VnExpress",
+    "gia_tri": "Nhật Nam, một nhân viên kinh doanh ở TP HCM, kể phải gửi báo giá cho khách trước 10 giờ nhưng Outlook quay vòng, không vào được",
+    "trich_dan": "Tôi cần gửi báo giá cho khách trước 10h, nhưng Outlook cứ quay vòng rồi báo không thể truy cập trên nền web",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v2",
+    "ten": "VnExpress",
+    "gia_tri": "Một công ty cung cấp giải pháp chuyển đổi số và dịch vụ công nghệ thông tin, do yêu cầu bảo mật, chỉ được xử lý dữ liệu nội bộ bằng Copilot, không chuyển sang công cụ AI khác được; Copilot ngừng thì ảnh hưởng nhân sự quen dùng",
+    "trich_dan": "dữ liệu nội bộ của công ty chỉ được phép xử lý bằng Copilot",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v2.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v4",
+    "ten": "VnExpress",
+    "gia_tri": "Chuyên gia khuyên lưu thông tin liên hệ của khách hàng và đối tác ở nơi truy cập được khi tài khoản công việc gặp lỗi",
+    "trich_dan": "lưu thông tin liên hệ của khách hàng và đối tác ở nơi có thể truy cập được khi tài khoản công việc gặp lỗi",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v4.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v5",
+    "ten": "VnExpress",
+    "gia_tri": "Một kỹ sư công nghệ ở TP HCM khuyên chuẩn bị kênh liên lạc thay thế khi Teams hoặc Outlook gián đoạn",
+    "trich_dan": "chuẩn bị kênh liên lạc thay thế khi Teams hoặc Outlook gián đoạn",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v5.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v7",
+    "ten": "VnExpress",
+    "gia_tri": "Cùng kỹ sư công nghệ ở TP HCM khuyên cá nhân và doanh nghiệp không nên phụ thuộc hoàn toàn vào một nhà cung cấp, nên sao lưu dữ liệu độc lập",
+    "trich_dan": "nên sao lưu dữ liệu độc lập",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v7.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "d1",
+    "ten": "VnExpress (dẫn Downdetector)",
+    "gia_tri": "Downdetector ghi nhận ở Việt Nam hơn 200 báo lỗi Outlook và 130 báo lỗi Microsoft 365",
+    "trich_dan": "hơn 200 trường hợp cho biết gặp sự cố với Outlook hay 130 trường hợp với Microsoft 365",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "chua-xac-minh"
+  },
+  {
+    "id": "v8",
+    "ten": "VnExpress",
+    "gia_tri": "Nhiều người dùng trong nước cho biết không dùng được Outlook, Teams, OneDrive, SharePoint, công việc và học tập bị gián đoạn sáng 13/11",
+    "trich_dan": "không thể sử dụng được các dịch vụ như Outlook, Teams, OneDrive, SharePoint",
+    "url": "https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v8.png",
+    "trang_thai": "xac-minh"
+  }
+]

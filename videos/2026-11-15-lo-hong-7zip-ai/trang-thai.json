@@ -1,0 +1,150 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "đề 1 lỗ hổng 7-Zip do sinh viên Việt tìm bằng AI Claude Opus 5, loại bao-mat",
+      "bat_dau": "2026-11-14T14:21:02.373929+07:00",
+      "ket_thuc": "2026-11-14T14:21:11.465605+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "9 mục nguồn: v1-v9 từ VnExpress, t1 tự tính; 5 ảnh chụp trang gốc",
+      "bat_dau": "2026-11-14T14:21:11.467639+07:00",
+      "ket_thuc": "2026-11-14T14:22:13.110553+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "V1 loại bao-mat, 593 từ lời đọc; kiem 0 lỗi; phong_cach 0 Lỗi 0 cảnh báo",
+      "bat_dau": "2026-11-14T14:22:13.112139+07:00",
+      "ket_thuc": "2026-11-14T14:23:57.303289+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "vòng 1: 12 mục (nhận 11, nhận một phần 1), điểm 3/2/2.5/4.5; vòng 2: 11 mục (nhận 10, nhận một phần 1), điểm 2.5/2.5/2/4; đã xử lý triệt để ngắt nghỉ câu và câu phán xét",
+      "bat_dau": "2026-11-14T14:23:57.305329+07:00",
+      "ket_thuc": "2026-11-14T14:28:19.157215+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "0 lỗi kiem; 0 lỗi phong_cach; subagent kiểm toán 6 điểm kỹ thuật đã sửa toàn bộ; tiêu đề chuẩn 10/10",
+      "bat_dau": "2026-11-14T14:28:19.159482+07:00",
+      "ket_thuc": "2026-11-14T14:32:41.246035+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "",
+      "ban_duyet": {
+        "kich-ban.md": "3c32b6e25226f5897648af31c7c878d10a010ce25b9712ad020d18c84cbf349f",
+        "nguon.json": "ad47ea8089c0090c714bc7bc0cacccaa9772028528aa0f687fd5f2f49b7f19c7",
+        "nghe-thu.mp3": "a8b79981812804192c2e299ca9e8ca886670bf21bc16c5dc511b0c81b431436a",
+        "nguon/v1.png": "5a51f8aee3c1964c6d3a7032e817e47a76af24143ebd76b6fa2d34e5a8b0a7f0",
+        "nguon/v3.png": "ffa2f1a88cf21fed3ed68884cb374fcbc592513f72fc0b5120379a1b3317e311",
+        "nguon/v6.png": "121315a0879f3bbd991e3ef96eb3d22e80cb1b43aacbf102bb6824aa13cce6f7"
+      },
+      "ket_thuc": "2026-11-14T14:55:23.067963+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "VieNeu Quốc Tuấn; 135.4s, 581 từ; giong.mp3 và giong-timing.json hoàn tất",
+      "bat_dau": "2026-11-14T14:55:34.840942+07:00",
+      "ket_thuc": "2026-11-14T14:57:40.194023+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "bỏ qua: canh.json sinh từ canh-ke-hoach.py viết tay (video ngắn, loại bao-mat)",
+      "ket_thuc": "2026-11-14T14:58:42.236304+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "34 cảnh: 18 b-roll, 4 trang nguồn, 5 số lớn, 2 quy trình; kiểm canh 0 lỗi; đã ghi phu-de.srt",
+      "bat_dau": "2026-11-14T14:58:42.238146+07:00",
+      "ket_thuc": "2026-11-14T15:00:54.092024+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "dùng svg có sẵn và clip kho, không vẽ thêm",
+      "ket_thuc": "2026-11-14T15:00:54.093622+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 2:15, check_av rỗng",
+      "bat_dau": "2026-11-14T15:00:54.105484+07:00",
+      "ket_thuc": "2026-11-14T15:10:48.296321+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "",
+      "ket_thuc": "2026-11-14T15:13:32.968999+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "",
+      "ban_duyet": {
+        "duyet-1": "2026-11-14T14:55:23.067963+07:00",
+        "final.mp4": "2a77ec2106f2cf700104876f1ab83bfe781fada67bbd8559cf8d0e8c30397170",
+        "phu-de.srt": "46ea25a4a3463936d6c97f999ca35a8238a6faf0966a86f27176237120c44576",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "CẢNH BÁO: Sinh viên Việt dùng AI phát hiện lỗ hổng 7-Zip, người dùng có nguy cơ gì?",
+              "chu_thumb": [
+                "LỖ HỔNG 7-ZIP",
+                "NGUY CƠ 8.5/10!"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "BẤT NGỜ: 7-Zip dính nguy cơ hacker tấn công, sinh viên Việt dùng AI giải cứu người dùng?",
+              "chu_thumb": [
+                "SINH VIÊN VIỆT",
+                "DÙNG AI BẮT LỖI!"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "SỐC: Lỗ hổng 8,5 điểm trên 7-Zip do sinh viên Việt dùng AI phát hiện, người dùng coi chừng!",
+              "chu_thumb": [
+                "MÁY BẠN CÓ DÍNH?",
+                "VÁ LỖI NGAY!"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Phần mềm giải nén 7-Zip vừa dính lỗ hổng bảo mật nghiêm trọng CVE-2026-125742 với điểm nguy hiểm CVSS lên tới 8,5/10. Người phát hiện ra nguy cơ này là Nguyễn Trần Thanh Lâm, sinh viên Việt Nam tại Đại học Công nghệ Nanyang (NTU Singapore) cùng sự hỗ trợ của AI Claude Opus 5. Lỗi tràn giới hạn vùng nhớ CWE-787 có thể cho phép tin tặc mở kết nối điều khiển máy tính từ xa khi người dùng giải nén tệp CAB chia nhỏ độc hại. Video hướng dẫn 3 bước kiểm tra phiên bản và nâng cấp lên 7-Zip 26.06 để bảo vệ máy tính ngay lập tức.\n\n⏱ Mốc chương\n00:00 Mở đầu: Lỗ hổng 8,5/10 trên 7-Zip\n00:12 Cơ chế lỗi tràn vùng nhớ CWE 787\n00:49 Sinh viên Việt dùng AI phát hiện lỗ hổng\n01:11 Cảnh báo người dùng máy tính văn phòng\n01:24 3 bước kiểm tra và cập nhật bản vá 26.06\n01:47 27 năm tuổi và bài học an toàn bảo mật\n\n📎 Nguồn\n- VnExpress (8,5): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n- VnExpress (7,8): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n- VnExpress (26,06): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n- VnExpress (năm ba): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n- VnExpress (787): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n- VnExpress (1999): https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html (truy cập 14/11/2026)\n\n🧮 Số kênh tự tính\n- 27 năm = 2026 − 1999 (năm phát hành 7-Zip)\n\n🖼 Ghi công ảnh và video\n- Video: Anna Shvets trên Pexels\n- Video: ArtHouse Studio trên Pexels\n- Video: Coverr trên Pexels\n- Video: Dima Krivoy trên Pexels\n- Video: Hugo Butery trên Pexels\n- Video: Ivan S trên Pexels\n- Video: Kampus Production trên Pexels\n- Video: MrColo trên Pexels\n- Video: Nicola Narracci trên Pexels\n- Video: Tima Miroshnichenko trên Pexels\n- Video: Timo Volz trên Pexels\n- Video: max laurell trên Pexels\n- Video: sourabh singh rajput trên Pexels\n\n🎙 Giọng đọc trong video là giọng tổng hợp.",
+          "tags": [
+            "7-zip",
+            "lỗ hổng bảo mật",
+            "cve-2026-125742",
+            "cwe 787",
+            "sinh viên việt nam",
+            "ai claude",
+            "claude opus 5",
+            "người dùng việt",
+            "công nghệ",
+            "an toàn thông tin",
+            "bảo mật máy tính",
+            "cập nhật 7-zip",
+            "anthropic",
+            "igor pavlov"
+          ]
+        },
+        "thumbnails": [
+          "ab06b37e77ce6d29acc33aa1cb8361dc9752e3ba39b501be941272fd4e444b93",
+          "f0d451ff79b3c842b0646889bca1b28ef036211b0580a78ee8fc3f2cdc76b80a",
+          "2cc64e9985ae04733200acf2ad3531669a38b4e41ca88502a69ec2c25ea83809"
+        ]
+      },
+      "chon": 1,
+      "ket_thuc": "2026-11-14T15:37:29.214442+07:00"
+    },
+    "dang": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  },
+  "chon": 1
+}

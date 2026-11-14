@@ -1,0 +1,238 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 4.167,
+   "loi": "Dịch vụ thư Outlook của Microsoft gần như tê liệt suốt gần mười tám giờ."
+  },
+  {
+   "id": "c002",
+   "start": 4.167,
+   "end": 8.284,
+   "loi": "Giờ Microsoft lên tiếng: không phải hacker, cũng chẳng phải AI."
+  },
+  {
+   "id": "c003",
+   "start": 8.284,
+   "end": 11.995,
+   "loi": "Theo họ, lỗi bắt nguồn từ một lần nâng cấp dung lượng mạng trước đó."
+  },
+  {
+   "id": "c004",
+   "start": 11.995,
+   "end": 15.796,
+   "loi": "Sáng thứ Sáu, nhiều người ở Việt Nam đã không vào được Outlook và Teams."
+  },
+  {
+   "id": "c005",
+   "start": 15.796,
+   "end": 19.215,
+   "loi": "Bạn có phải một trong số đó không? Đầu đuôi thế nào?"
+  },
+  {
+   "id": "c006",
+   "start": 19.215,
+   "end": 22.66,
+   "loi": "Mọi thứ bắt đầu từ nửa đêm, rạng sáng thứ Sáu giờ Hà Nội."
+  },
+  {
+   "id": "c007",
+   "start": 22.66,
+   "end": 26.102,
+   "loi": "Kentik, công ty theo dõi lưu lượng internet, thấy lưu lượng vào"
+  },
+  {
+   "id": "c008",
+   "start": 26.102,
+   "end": 30.056,
+   "loi": "dịch vụ thư của Microsoft thấp hơn dự kiến khoảng tám mươi lăm phần trăm."
+  },
+  {
+   "id": "c009",
+   "start": 30.056,
+   "end": 35.103,
+   "loi": "Tình trạng đó kéo dài gần mười tám giờ. Mãi tới chiều tối, lưu lượng mới bắt đầu hồi phục."
+  },
+  {
+   "id": "c010",
+   "start": 35.103,
+   "end": 39.374,
+   "loi": "Còn ở Việt Nam thì sao? Nhật Nam, một nhân viên kinh doanh ở TP HCM,"
+  },
+  {
+   "id": "c011",
+   "start": 39.374,
+   "end": 44.088,
+   "loi": "kể là phải gửi báo giá cho khách trước mười giờ sáng, nhưng Outlook cứ quay vòng."
+  },
+  {
+   "id": "c012",
+   "start": 44.088,
+   "end": 47.389,
+   "loi": "Một công ty dịch vụ công nghệ thông tin thì kẹt kiểu khác."
+  },
+  {
+   "id": "c013",
+   "start": 47.389,
+   "end": 51.124,
+   "loi": "Do yêu cầu bảo mật, dữ liệu nội bộ của họ chỉ được xử lý bằng Copilot,"
+  },
+  {
+   "id": "c014",
+   "start": 51.124,
+   "end": 54.641,
+   "loi": "nên Copilot ngừng là họ không chuyển sang công cụ AI khác được."
+  },
+  {
+   "id": "c015",
+   "start": 54.641,
+   "end": 58.078,
+   "loi": "Microsoft nói gì? Họ xin lỗi khách hàng và đối tác."
+  },
+  {
+   "id": "c016",
+   "start": 58.078,
+   "end": 62.398,
+   "loi": "Họ nói đây là lỗi kỹ thuật, không liên quan tới tấn công mạng hay AI."
+  },
+  {
+   "id": "c017",
+   "start": 62.398,
+   "end": 65.511,
+   "loi": "Lỗi bắt nguồn từ một lần nâng cấp dung lượng mạng trước đó,"
+  },
+  {
+   "id": "c018",
+   "start": 65.511,
+   "end": 68.947,
+   "loi": "rồi lộ ra sau một thay đổi mạng gần đây. Báo cáo đầy đủ"
+  },
+  {
+   "id": "c019",
+   "start": 68.947,
+   "end": 71.451,
+   "loi": "thì họ hứa sẽ có, sau khi xem xét xong."
+  },
+  {
+   "id": "c020",
+   "start": 71.451,
+   "end": 75.96,
+   "loi": "Tới lúc mình làm video này, báo cáo đó chưa ra, nên mình chỉ nói đúng chừng này."
+  },
+  {
+   "id": "c021",
+   "start": 75.96,
+   "end": 79.382,
+   "loi": "Chừng đó thôi. Vậy bạn làm gì để lần sau đỡ bị động?"
+  },
+  {
+   "id": "c022",
+   "start": 79.382,
+   "end": 82.875,
+   "loi": "Có ba việc nhỏ. Trước hết, chuẩn bị sẵn một kênh liên lạc"
+  },
+  {
+   "id": "c023",
+   "start": 82.875,
+   "end": 86.758,
+   "loi": "thay thế khi Teams hoặc Outlook gián đoạn, chẳng hạn một nhóm Zalo công việc."
+  },
+  {
+   "id": "c024",
+   "start": 86.758,
+   "end": 90.231,
+   "loi": "Tiếp theo, lưu thông tin liên hệ của khách hàng và đối tác ở nơi truy"
+  },
+  {
+   "id": "c025",
+   "start": 90.231,
+   "end": 93.953,
+   "loi": "cập được khi tài khoản công việc gặp lỗi. Như lưu vào danh bạ điện thoại,"
+  },
+  {
+   "id": "c026",
+   "start": 93.953,
+   "end": 96.906,
+   "loi": "chứ đừng chỉ nằm trong hộp thư công ty. Cuối cùng,"
+  },
+  {
+   "id": "c027",
+   "start": 96.906,
+   "end": 99.543,
+   "loi": "sao lưu dữ liệu quan trọng độc lập với nhà cung cấp."
+  },
+  {
+   "id": "c028",
+   "start": 99.543,
+   "end": 102.217,
+   "loi": "Mình gợi ý thêm một câu hỏi cho bộ phận kỹ thuật:"
+  },
+  {
+   "id": "c029",
+   "start": 102.217,
+   "end": 106.048,
+   "loi": "nếu công cụ AI duy nhất của công ty ngừng chạy thì phương án B là gì?"
+  },
+  {
+   "id": "c030",
+   "start": 106.048,
+   "end": 110.384,
+   "loi": "Nếu bạn muốn nhận cảnh báo sớm để đỡ bị động mỗi khi dịch vụ công nghệ gặp sự cố,"
+  },
+  {
+   "id": "c031",
+   "start": 110.384,
+   "end": 113.174,
+   "loi": "bấm Đăng ký kênh Nhịp Công Nghệ ngay bên dưới nhé."
+  },
+  {
+   "id": "c032",
+   "start": 113.174,
+   "end": 116.442,
+   "loi": "Lâu nay người ta hay bảo cất dữ liệu lên mây cho nhẹ đầu."
+  },
+  {
+   "id": "c033",
+   "start": 116.442,
+   "end": 119.963,
+   "loi": "Hôm thứ Sáu, hóa ra mây cũng có ngày nghỉ, mà nghỉ hơi dài."
+  },
+  {
+   "id": "c034",
+   "start": 119.963,
+   "end": 123.178,
+   "loi": "Tóm lại: theo Microsoft, đây không phải tấn công mạng,"
+  },
+  {
+   "id": "c035",
+   "start": 123.178,
+   "end": 126.213,
+   "loi": "còn báo cáo đầy đủ thì họ hứa sẽ có sau. Anh em ơi,"
+  },
+  {
+   "id": "c036",
+   "start": 126.213,
+   "end": 129.846,
+   "loi": "công ty bạn đã có phương án B chưa, hay vẫn một hộp thư cho cả nhà?"
+  },
+  {
+   "id": "c037",
+   "start": 129.846,
+   "end": 134.413,
+   "loi": "Cho mình biết ở bình luận. Bấm Đăng ký và bật chuông để không bỏ lỡ video ngày mai,"
+  },
+  {
+   "id": "c038",
+   "start": 134.413,
+   "end": 137.814,
+   "loi": "rồi bấm vào video đề xuất bên trái màn hình để xem tiếp những chuyện"
+  },
+  {
+   "id": "c039",
+   "start": 137.814,
+   "end": 140.745,
+   "loi": "công nghệ ảnh hưởng thẳng tới công việc của bạn."
+  }
+ ]
+}

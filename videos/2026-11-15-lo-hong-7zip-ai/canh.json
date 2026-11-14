@@ -1,0 +1,363 @@
+{
+  "scenes": [
+    {
+      "id": "c001",
+      "mau": "so-lon",
+      "so": 8.5,
+      "truoc": "Điểm ",
+      "sau": "/10",
+      "nhan": "Điểm nguy hiểm CVSS",
+      "nguon_id": "v1",
+      "dan": {
+        "the": "ngac-nhien",
+        "goc": "phai"
+      },
+      "start": 0.0,
+      "end": 3.447
+    },
+    {
+      "id": "c002",
+      "mau": "trang-nguon",
+      "nguon_id": "v1",
+      "anh": "v1.png",
+      "khung": "15.7,38.0,46.3,24.0",
+      "nhan": "VnExpress · Đánh giá CVSS v4.0",
+      "start": 3.447,
+      "end": 6.518
+    },
+    {
+      "id": "c003",
+      "mau": "b-roll",
+      "video": "singapore-dem-30570498-002.mp4",
+      "nhan": "",
+      "tu_khoa": "Sinh viên Việt & AI",
+      "start": 6.518,
+      "end": 11.455
+    },
+    {
+      "id": "c004",
+      "mau": "mo-dau",
+      "cau": "Lỗ hổng 7-Zip: máy bạn có dính?",
+      "start": 11.455,
+      "end": 14.233
+    },
+    {
+      "id": "c005",
+      "mau": "b-roll",
+      "video": "go-laptop-van-phong-4928295-004.mp4",
+      "nhan": "",
+      "tu_khoa": "Hầu như máy nào cũng cài",
+      "start": 14.233,
+      "end": 18.933
+    },
+    {
+      "id": "c006",
+      "mau": "so-lon",
+      "so": 787,
+      "nhan": "Mã lỗi CWE-787 ghi vượt vùng nhớ",
+      "nguon_id": "v6",
+      "start": 18.933,
+      "end": 23.711
+    },
+    {
+      "id": "c007",
+      "mau": "b-roll",
+      "video": "man-hinh-code-29458457-006.mp4",
+      "nhan": "",
+      "tu_khoa": "Giải nén tệp CAB Microsoft",
+      "start": 23.711,
+      "end": 27.334
+    },
+    {
+      "id": "c008",
+      "mau": "b-roll",
+      "video": "vi-mach-phat-sang-36382300-007.mp4",
+      "nhan": "",
+      "tu_khoa": "Bộ nhớ thu nhỏ",
+      "start": 27.334,
+      "end": 31.065
+    },
+    {
+      "id": "c009",
+      "mau": "chu-dong",
+      "cau": "cấp phát vùng nhớ mới nhưng giữ nguyên vị trí ghi cũ",
+      "nhan_tu": "vị trí ghi cũ",
+      "nho": "Bản chất lỗi",
+      "start": 31.065,
+      "end": 34.43
+    },
+    {
+      "id": "c010",
+      "mau": "b-roll",
+      "video": "bo-mach-chip-6754824-009.mp4",
+      "nhan": "",
+      "tu_khoa": "Ghi tràn ra ngoài vùng nhớ",
+      "start": 34.43,
+      "end": 37.263
+    },
+    {
+      "id": "c011",
+      "mau": "b-roll",
+      "video": "o-khoa-10241357-010.mp4",
+      "nhan": "",
+      "tu_khoa": "Khai thác tệp độc hại",
+      "start": 37.263,
+      "end": 41.442
+    },
+    {
+      "id": "c012",
+      "mau": "b-roll",
+      "video": "trung-tam-du-lieu-1085656-011.mp4",
+      "nhan": "",
+      "tu_khoa": "Kết nối về máy chủ tin tặc",
+      "start": 41.442,
+      "end": 44.957
+    },
+    {
+      "id": "c013",
+      "mau": "b-roll",
+      "video": "laptop-go-phim-7252685-012.mp4",
+      "nhan": "",
+      "tu_khoa": "Điều khiển từ xa",
+      "dan": {
+        "the": "nghi",
+        "goc": "trai"
+      },
+      "start": 44.957,
+      "end": 47.95
+    },
+    {
+      "id": "c014",
+      "mau": "chuong",
+      "so": "Phần 1",
+      "chuong": "Sinh viên Việt & AI",
+      "dan": {
+        "the": "chao"
+      },
+      "start": 47.95,
+      "end": 51.939
+    },
+    {
+      "id": "c015",
+      "mau": "trang-nguon",
+      "nguon_id": "v1",
+      "anh": "v4.png",
+      "khung": "15.7,39.7,46.3,20.5",
+      "nhan": "VnExpress · Sinh viên NTU Singapore",
+      "start": 51.939,
+      "end": 55.654
+    },
+    {
+      "id": "c016",
+      "mau": "trang-nguon",
+      "nguon_id": "v6",
+      "anh": "v6.png",
+      "khung": "15.7,51.8,46.3,10.0",
+      "nhan": "VnExpress · Hỗ trợ từ Claude Opus 5",
+      "start": 55.654,
+      "end": 60.551
+    },
+    {
+      "id": "c017",
+      "mau": "b-roll",
+      "video": "man-hinh-code-29458457-016.mp4",
+      "nhan": "",
+      "tu_khoa": "VulnCheck ghi nhận",
+      "start": 60.551,
+      "end": 63.971
+    },
+    {
+      "id": "c018",
+      "mau": "b-roll",
+      "video": "thiet-bi-dien-tu-7140931-017.mp4",
+      "nhan": "",
+      "tu_khoa": "Cấp mã CVE toàn cầu",
+      "start": 63.971,
+      "end": 68.058
+    },
+    {
+      "id": "c019",
+      "mau": "so-lon",
+      "so": 7.8,
+      "truoc": "gần ",
+      "sau": "/10",
+      "nhan": "CVSS theo chuẩn cũ",
+      "nguon_id": "v2",
+      "dan": {
+        "the": "xac-nhan",
+        "goc": "phai"
+      },
+      "start": 68.058,
+      "end": 71.603
+    },
+    {
+      "id": "c020",
+      "mau": "b-roll",
+      "video": "cuon-man-hinh-6258096-019.mp4",
+      "nhan": "",
+      "tu_khoa": "Ít ai để ý cảnh báo",
+      "start": 71.603,
+      "end": 76.044
+    },
+    {
+      "id": "c021",
+      "mau": "b-roll",
+      "video": "dien-thoai-tay-853794-020.mp4",
+      "nhan": "",
+      "tu_khoa": "Bảo vệ máy tính & dữ liệu",
+      "start": 76.044,
+      "end": 80.609
+    },
+    {
+      "id": "c022",
+      "mau": "b-roll",
+      "video": "dung-dien-thoai-12692095-021.mp4",
+      "nhan": "",
+      "tu_khoa": "Đăng ký Nhịp Công Nghệ",
+      "start": 80.609,
+      "end": 84.263
+    },
+    {
+      "id": "c023",
+      "mau": "chuong",
+      "so": "Phần 2",
+      "chuong": "3 việc kiểm tra ngay",
+      "dan": {
+        "the": "chao"
+      },
+      "start": 84.263,
+      "end": 87.754
+    },
+    {
+      "id": "c024",
+      "mau": "quy-trinh",
+      "tieu_de": "3 việc cần làm",
+      "buoc": [
+        {
+          "nhan": "Mở Giới thiệu",
+          "svg": "hop-thu"
+        },
+        {
+          "nhan": "Cập nhật v26.06",
+          "svg": "may-chu"
+        },
+        {
+          "nhan": "Tránh tệp lạ",
+          "svg": "tai-lieu"
+        }
+      ],
+      "noi_bat": 0,
+      "start": 87.754,
+      "end": 90.625
+    },
+    {
+      "id": "c025",
+      "mau": "b-roll",
+      "video": "man-hinh-may-tinh-8346903-024.mp4",
+      "nhan": "",
+      "tu_khoa": "Kiểm tra phiên bản",
+      "start": 90.625,
+      "end": 93.703
+    },
+    {
+      "id": "c026",
+      "mau": "so-lon",
+      "so": 26.06,
+      "truoc": "Bản vá v",
+      "nhan": "Bản vá chính thức vá lỗi",
+      "nguon_id": "v3",
+      "start": 93.703,
+      "end": 97.262
+    },
+    {
+      "id": "c027",
+      "mau": "trang-nguon",
+      "nguon_id": "v3",
+      "anh": "v3.png",
+      "khung": "15.7,43.2,46.3,13.5",
+      "nhan": "VnExpress · Bản vá từ 7-Zip 26.06",
+      "start": 97.262,
+      "end": 100.379
+    },
+    {
+      "id": "c028",
+      "mau": "quy-trinh",
+      "tieu_de": "3 việc cần làm",
+      "buoc": [
+        {
+          "nhan": "Mở Giới thiệu",
+          "svg": "hop-thu"
+        },
+        {
+          "nhan": "Cập nhật v26.06",
+          "svg": "may-chu"
+        },
+        {
+          "nhan": "Tránh tệp lạ",
+          "svg": "tai-lieu"
+        }
+      ],
+      "noi_bat": 2,
+      "start": 100.379,
+      "end": 103.926
+    },
+    {
+      "id": "c029",
+      "mau": "b-roll",
+      "video": "day-cap-bo-mach-7140937-028.mp4",
+      "nhan": "",
+      "tu_khoa": "Cảnh giác tệp lạ",
+      "start": 103.926,
+      "end": 107.186
+    },
+    {
+      "id": "c030",
+      "mau": "so-lon",
+      "so": 27,
+      "truoc": "~",
+      "sau": " năm",
+      "nhan": "Tính ra 27 năm (từ 1999)",
+      "nguon_id": "t1",
+      "dan": {
+        "the": "tinh-toan",
+        "goc": "phai"
+      },
+      "start": 107.186,
+      "end": 112.379
+    },
+    {
+      "id": "c031",
+      "mau": "b-roll",
+      "video": "laptop-ban-dem-7272375-030.mp4",
+      "nhan": "",
+      "tu_khoa": "Lâu đời mà vẫn sót lỗi",
+      "start": 112.379,
+      "end": 117.427
+    },
+    {
+      "id": "c032",
+      "mau": "b-roll",
+      "video": "singapore-dem-30570498-031.mp4",
+      "nhan": "",
+      "tu_khoa": "Soi ra trước khi bị tấn công",
+      "start": 117.427,
+      "end": 122.897
+    },
+    {
+      "id": "c033",
+      "mau": "b-roll",
+      "video": "dung-dien-thoai-12692095-032.mp4",
+      "nhan": "",
+      "tu_khoa": "Đăng ký kênh & xem tiếp",
+      "start": 122.897,
+      "end": 126.468
+    },
+    {
+      "id": "c034",
+      "mau": "ket-thuc",
+      "cau": "Xem tiếp các cảnh báo nhé!",
+      "start": 126.468,
+      "end": 135.401
+    }
+  ]
+}

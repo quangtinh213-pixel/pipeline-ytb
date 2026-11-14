@@ -1,0 +1,308 @@
+1
+00:00:00,000 --> 00:00:02,017
+Phần mềm giải nén Bảy Díp vừa dính lỗ hổng
+
+2
+00:00:02,036 --> 00:00:03,912
+bảo mật nghiêm trọng với điểm nguy hiểm
+
+3
+00:00:03,930 --> 00:00:05,423
+lên tới tám phẩy năm trên mười.
+
+4
+00:00:05,696 --> 00:00:07,598
+Đáng chú ý nhất, người phát hiện ra lỗ
+
+5
+00:00:07,610 --> 00:00:09,705
+hổng này lại là một sinh viên Việt Nam nhờ
+
+6
+00:00:09,720 --> 00:00:11,320
+sự trợ giúp từ trí tuệ nhân tạo.
+
+7
+00:00:11,590 --> 00:00:12,259
+Rất bất ngờ.
+
+8
+00:00:12,780 --> 00:00:14,760
+Tính ra thì phần mềm siêu nhẹ mà hầu như
+
+9
+00:00:14,776 --> 00:00:16,805
+máy tính văn phòng nào ở nước ta cũng cài
+
+10
+00:00:16,821 --> 00:00:18,801
+đặt hóa ra lại chứa một lỗ hổng đáng lo.
+
+11
+00:00:19,066 --> 00:00:21,087
+Lỗ hổng thuộc nhóm ghi dữ liệu vượt giới
+
+12
+00:00:21,107 --> 00:00:23,082
+hạn vùng nhớ, mang mã hiệu bảy trăm tám
+
+13
+00:00:23,098 --> 00:00:23,576
+mươi bảy.
+
+14
+00:00:23,846 --> 00:00:25,949
+Lỗi xuất hiện khi Bảy Díp giải nén các tệp
+
+15
+00:00:25,965 --> 00:00:27,867
+nén Cáp do Mai-crô-xóp phát triển được
+
+16
+00:00:27,886 --> 00:00:29,099
+chia làm nhiều phần nhỏ.
+
+17
+00:00:29,368 --> 00:00:31,055
+Khi kích thước bộ nhớ bị thu nhỏ,
+
+18
+00:00:31,075 --> 00:00:33,117
+phần mềm cấp phát vùng nhớ mới nhưng vẫn
+
+19
+00:00:33,133 --> 00:00:34,422
+giữ nguyên vị trí ghi cũ,
+
+20
+00:00:34,438 --> 00:00:36,425
+khiến dữ liệu bị ghi tràn ra ngoài vùng
+
+21
+00:00:36,445 --> 00:00:37,128
+nhớ được cấp.
+
+22
+00:00:37,398 --> 00:00:39,324
+Kẻ tấn công chỉ cần lừa bạn giải nén tệp
+
+23
+00:00:39,339 --> 00:00:41,306
+Cáp độc hại để kích hoạt chuỗi khai thác.
+
+24
+00:00:41,578 --> 00:00:43,613
+Từ đó, máy tính nạn nhân sẽ tự động kết
+
+25
+00:00:43,630 --> 00:00:45,712
+nối về máy chủ tin tặc và nhận lệnh điều
+
+26
+00:00:45,732 --> 00:00:47,814
+khiển từ xa với quyền tài khoản của bạn.
+
+27
+00:00:48,085 --> 00:00:49,013
+Cực kỳ tinh vi.
+
+28
+00:00:49,531 --> 00:00:51,409
+Người tìm ra nguy cơ này là Nguyễn Trần
+
+29
+00:00:51,428 --> 00:00:53,309
+Thanh Lâm, sinh viên ngành Khoa học máy
+
+30
+00:00:53,324 --> 00:00:54,585
+tính tại Đại học Công nghệ
+
+31
+00:00:54,604 --> 00:00:55,506
+Nanyang Xinh-ga-po.
+
+32
+00:00:55,802 --> 00:00:57,614
+Lâm dùng thêm mô hình trí tuệ nhân tạo
+
+33
+00:00:57,628 --> 00:00:59,491
+Cơ-loát Ô-pút năm của An-thờ-rô-pích để
+
+34
+00:00:59,502 --> 00:01:00,413
+phân tích mã nguồn.
+
+35
+00:01:00,689 --> 00:01:02,701
+Tổ chức an ninh mạng Vơn-chéc của Mỹ đã
+
+36
+00:01:02,714 --> 00:01:04,718
+ghi nhận báo cáo của Lâm trước khi phát
+
+37
+00:01:04,738 --> 00:01:06,135
+hành mã định danh toàn cầu.
+
+38
+00:01:06,405 --> 00:01:08,438
+Thậm chí theo thang điểm chuẩn cũ thì mức
+
+39
+00:01:08,453 --> 00:01:10,381
+độ đe dọa cũng ở mức gần tám trên mười.
+
+40
+00:01:10,654 --> 00:01:11,344
+Rất đáng nể.
+
+41
+00:01:11,862 --> 00:01:13,770
+Người dùng phổ thông thì hầu như ít ai để
+
+42
+00:01:13,781 --> 00:01:15,503
+ý những cảnh báo vá lỗi thầm lặng như
+
+43
+00:01:15,517 --> 00:01:15,910
+thế này.
+
+44
+00:01:16,178 --> 00:01:18,169
+Nếu bạn muốn nhận thông tin công nghệ sớm
+
+45
+00:01:18,185 --> 00:01:20,172
+để bảo vệ an toàn cho dữ liệu và máy tính
+
+46
+00:01:20,191 --> 00:01:22,130
+cá nhân, bấm Đăng Ký kênh Nhịp Công Nghệ
+
+47
+00:01:22,149 --> 00:01:23,038
+ngay bên dưới nhé.
+
+48
+00:01:23,307 --> 00:01:24,002
+Đừng chủ quan.
+
+49
+00:01:24,525 --> 00:01:26,358
+Để an toàn thì bạn kiểm tra ngay ba bước
+
+50
+00:01:26,376 --> 00:01:27,618
+sau trên máy tính của mình.
+
+51
+00:01:27,890 --> 00:01:29,505
+Thứ nhất, mở phần mềm Bảy Díp,
+
+52
+00:01:29,526 --> 00:01:31,665
+bấm vào thẻ Trợ giúp rồi chọn Giới thiệu
+
+53
+00:01:31,691 --> 00:01:33,565
+để xem số hiệu phiên bản đang chạy.
+
+54
+00:01:33,841 --> 00:01:35,902
+Thứ hai, tải ngay bản cập nhật Bảy Díp hai
+
+55
+00:01:35,917 --> 00:01:37,926
+mươi sáu phẩy không sáu vừa được nhà phát
+
+56
+00:01:37,946 --> 00:01:39,769
+triển công bố chính thức để vá kín lỗ
+
+57
+00:01:39,781 --> 00:01:40,244
+hổng này.
+
+58
+00:01:40,514 --> 00:01:42,592
+Thứ ba, tuyệt đối không giải nén các tệp
+
+59
+00:01:42,608 --> 00:01:44,784
+đính kèm đuôi Cáp lạ được gửi qua tin nhắn
+
+60
+00:01:44,804 --> 00:01:46,010
+hoặc diễn đàn trôi nổi.
+
+61
+00:01:46,280 --> 00:01:46,925
+Hãy làm ngay.
+
+62
+00:01:47,448 --> 00:01:49,412
+Bảy Díp ra đời từ năm một nghìn chín trăm
+
+63
+00:01:49,431 --> 00:01:51,387
+chín mươi chín, tính ra đã tồn tại khoảng
+
+64
+00:01:51,413 --> 00:01:52,244
+hai mươi bảy năm.
+
+65
+00:01:52,513 --> 00:01:54,768
+Một phần mềm mã nguồn mở lâu đời và cực kỳ
+
+66
+00:01:54,781 --> 00:01:56,768
+phổ biến mà vẫn sót lỗi tràn giới hạn
+
+67
+00:01:56,785 --> 00:01:57,291
+vùng nhớ.
+
+68
+00:01:57,562 --> 00:01:59,508
+May mắn là bạn sinh viên người Việt đã
+
+69
+00:01:59,520 --> 00:02:01,616
+dùng trí tuệ nhân tạo soi ra trước khi có
+
+70
+00:02:01,628 --> 00:02:02,762
+mã khai thác tràn lan.
+
+71
+00:02:03,032 --> 00:02:05,136
+Bạn nhớ bấm Đăng ký kênh và bấm vào video
+
+72
+00:02:05,161 --> 00:02:07,121
+bên cạnh để theo dõi tiếp các cảnh báo
+
+73
+00:02:07,137 --> 00:02:08,333
+công nghệ sát sườn nhé.
+
+74
+00:02:08,603 --> 00:02:10,424
+Máy tính của bạn đang chạy phiên bản Bảy
+
+75
+00:02:10,439 --> 00:02:10,958
+Díp số mấy?
+
+76
+00:02:11,226 --> 00:02:13,045
+Bình luận số phiên bản bên dưới để cùng
+
+77
+00:02:13,063 --> 00:02:14,883
+kiểm tra xem có dính lỗi này không nhé.
+

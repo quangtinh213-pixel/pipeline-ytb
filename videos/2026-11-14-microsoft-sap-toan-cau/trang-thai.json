@@ -1,0 +1,162 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "đề 1 Microsoft sập toàn cầu, loại bao-mat; bỏ đề Nvidia (đã 3 video)",
+      "bat_dau": "2026-11-14T04:08:37.257901+07:00",
+      "ket_thuc": "2026-11-14T04:08:58.750741+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "15 mục; m1-m3 Microsoft chính thức, k1-k3 Kentik, v1-v6 VnExpress; d1 Downdetector chua-xac-minh (Cloudflare chặn), không dùng. Bài X/Bluesky không chụp được ảnh tự động",
+      "bat_dau": "2026-11-14T04:08:58.752930+07:00",
+      "ket_thuc": "2026-11-14T04:14:51.132308+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "V1 loại bao-mat, 540 từ lời đọc; kiem 0 lỗi; phong_cach 0 Lỗi",
+      "bat_dau": "2026-11-14T04:14:51.134005+07:00",
+      "ket_thuc": "2026-11-14T04:17:42.663680+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "vòng 1: 12 mục (nhận 5, nhận một phần 1, sửa theo lý do khác 2, bỏ 4), điểm 3/2/3/3; vòng 2: 12 mục (nhận 6, bỏ 6), điểm 3,5/3/3,5/4, CHƯA đạt ngưỡng 4: các mục bị bỏ là do template người dùng (kêu gọi đăng ký, Anh em ơi, Tóm lại, dịch cabin)",
+      "bat_dau": "2026-11-14T04:17:42.665662+07:00",
+      "ket_thuc": "2026-11-14T04:23:36.388758+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "kiem 0 lỗi; subagent độc lập 18 mục, đã sửa: bỏ nói quá (nhận lỗi, tê liệt, xin lỗi thiếu nguồn, báo cáo=nguyên nhân gốc), thêm nguồn m5 và v8, bỏ v3 và v6, bỏ dịch cabin; còn: ảnh v2/v5/v7 chụp cả đoạn lân cận (có Downdetector, tên người khác); X và Bluesky không có ảnh",
+      "bat_dau": "2026-11-14T04:23:18.221761+07:00",
+      "ket_thuc": "2026-11-14T04:28:11.850909+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "đã gửi duyệt 14/11/2026 kèm nghe-thu.mp3 (58 giây)",
+      "bat_dau": "2026-11-14T04:29:53.385612+07:00",
+      "ban_duyet": {
+        "kich-ban.md": "fff224ed9e46aa1f96ea1e99b220b7ad37ac8492846b3935463d39cb78a52466",
+        "nguon.json": "b30b3aa45dbdfb963f1f561beb0d077cea669d74d212db8122e7b29239a562f5",
+        "nghe-thu.mp3": "25bd62e12af5220a6a919d2fb0506a46c4b35fcac69b1019e5f33335b583621f",
+        "nguon/v1.png": "e00a5ec58960692beb278dac852e3e3df815dddc525ae7d3ba6179227cb6649c",
+        "nguon/v2.png": "627129346af07e200a07c02f446e0394fdcc81cbcd7efd6fb37d012810d17338",
+        "nguon/v4.png": "01605894715bd2c3a9e5c0ae7e4d33299054b866fcd8365c5a3efa745e8c2cc1",
+        "nguon/v5.png": "04319595c0e86a0417263fe3b0db6a5f492fe45726c83aad208541db9089dc46",
+        "nguon/v7.png": "04319595c0e86a0417263fe3b0db6a5f492fe45726c83aad208541db9089dc46",
+        "nguon/v8.png": "6988ff8b2d7c52c2f1f9836e65aa25f6430129bee221e02e7e41a5686dd3c79b"
+      },
+      "ket_thuc": "2026-11-14T04:46:53.385511+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "VieNeu Quốc Tuấn; phat_am thêm Copilot, Kentik, Outlook, Teams, hacker, TP HCM, B",
+      "bat_dau": "2026-11-14T04:47:42.663051+07:00",
+      "ket_thuc": "2026-11-14T04:49:30.198420+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "bỏ qua: canh.json sinh từ canh-ke-hoach.py viết tay (video ngắn, loại bao-mat)",
+      "ket_thuc": "2026-11-14T04:49:30.202118+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "38 cảnh: 19 b-roll, 3 chương, 3 trang nguồn VnExpress, 3 trích Microsoft; kiểm canh 0 lỗi",
+      "bat_dau": "2026-11-14T04:49:30.212765+07:00",
+      "ket_thuc": "2026-11-14T04:54:02.859191+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "dùng svg và clip kho có sẵn, không vẽ thêm",
+      "bat_dau": "2026-11-14T04:54:02.861588+07:00",
+      "ket_thuc": "2026-11-14T04:54:09.355492+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "final.mp4 2:21, 1920x1080, 38 cảnh, check_av rỗng; 3 trích VnExpress dựng lại bằng chữ (không chụp trang)",
+      "bat_dau": "2026-11-14T04:54:09.357653+07:00",
+      "ket_thuc": "2026-11-14T05:09:45.063624+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "3 phương án; thumbnail 1,3 thumb.make, 2 thumb.khung; không dùng CoDesign/TobyFlow; mô tả có chương, nguồn, ghi công; shorts để sau",
+      "bat_dau": "2026-11-14T05:09:45.066878+07:00",
+      "ket_thuc": "2026-11-14T05:10:25.845768+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "",
+      "bat_dau": "2026-11-14T05:10:25.847367+07:00",
+      "ban_duyet": {
+        "duyet-1": "2026-11-14T04:46:53.385511+07:00",
+        "final.mp4": "045f6df079677d66bdb1157ad221c231650f725f1cadf2e419b3106c9f7b310b",
+        "phu-de.srt": "1804fabc4ab4d332c659b6cd69b67411b22852a16d405116458ebf51b8001534",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "SỐC: Outlook gần như tê liệt 18 giờ, Microsoft nhận lỗi, người dùng Việt Nam làm gì?",
+              "chu_thumb": [
+                "SẬP TOÀN CẦU",
+                "TÊ LIỆT 18H"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "CẢNH BÁO: Microsoft gián đoạn 18 giờ, công việc người dùng Việt Nam có phương án B?",
+              "chu_thumb": [
+                "DÂN VĂN PHÒNG",
+                "ĐỨNG HÌNH 18H!"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "Sự thật vụ Microsoft nâng cấp mạng: Tự tay làm sập 18 giờ, người dùng Việt Nam chịu trận!",
+              "chu_thumb": [
+                "TỰ TAY LÀM SẬP?",
+                "KHÔNG PHẢI HACKER!"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Dịch vụ thư Outlook của Microsoft gần như tê liệt khoảng 18 giờ, từ rạng sáng 13/11/2026 giờ Hà Nội. Microsoft nói đây là lỗi kỹ thuật, không liên quan tới tấn công mạng hay AI, bắt nguồn từ một lần nâng cấp dung lượng mạng trước đó. Video đọc thẳng bài đăng của Microsoft và số đo lưu lượng của Kentik, kể người dùng ở Việt Nam bị ảnh hưởng ra sao, và ba việc nhỏ để lần sau đỡ bị động.\n\nBáo cáo đầy đủ sau sự cố của Microsoft chưa có tại thời điểm làm video (14/11/2026), nên nguyên nhân gốc rễ chưa được kết luận.\n\n⏱ Mốc chương\n00:00 Mở đầu: Outlook gần như tê liệt\n00:19 Chuyện gì đã xảy ra?\n00:54 Microsoft nói gì?\n01:15 Làm gì ngay?\n01:53 Châm biếm và kết\n\n📎 Nguồn\n- Microsoft (@Microsoft trên X): https://x.com/Microsoft/status/2121282013600907325 (14/11/2026)\n- Microsoft 365 Status (@MSFT365Status trên X): https://x.com/MSFT365Status/status/2120938282204688468 (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n25gkqmopk2t (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n26xhaz4ck2t (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n275meovqc2t (14/11/2026)\n- VnExpress: https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html (14/11/2026)\n\n🖼 Ghi công ảnh và video\n- Video: ALL IZ Well trên Pexels\n- Video: Anna Shvets trên Pexels\n- Video: ArtHouse Studio trên Pexels\n- Video: Coverr trên Pexels\n- Video: Dima Krivoy trên Pexels\n- Video: Ivan S trên Pexels\n- Video: Jakub Zerdzicki trên Pexels\n- Video: Kampus Production trên Pexels\n- Video: Kindel Media trên Pexels\n- Video: Mikhail Nilov trên Pexels\n- Video: MrColo trên Pexels\n- Video: Pavel Danilyuk trên Pexels\n- Video: Samson Katt trên Pexels\n- Video: Tima Miroshnichenko trên Pexels\n- Video: Toàn BDS trên Pexels\n- Video: Werner Pfennig trên Pexels\n- Video: emirkhan bal trên Pexels\n- Video: max laurell trên Pexels",
+          "tags": [
+            "microsoft",
+            "outlook",
+            "microsoft 365",
+            "teams",
+            "copilot",
+            "sự cố microsoft",
+            "kentik",
+            "việt nam",
+            "người dùng việt",
+            "công nghệ",
+            "dự phòng dữ liệu",
+            "email công ty"
+          ]
+        },
+        "thumbnails": [
+          "6067edaa02540ea12336bf583c37f4092eb2761b26dab73ba78872321d8e2e0b",
+          "65a9ab4c41b1ca98d729a4620b2abf2fa07b34cd54a60a680ef55bdf91f58eb5",
+          "b33861315d76582c920874c1fc63c8df8f20eb58d04452d72f503c7442bc73e7"
+        ]
+      },
+      "chon": 3,
+      "ket_thuc": "2026-11-14T13:47:03.412814+07:00"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/gg4P35JfyXk",
+      "ket_thuc": "2026-11-14T14:10:49.482125+07:00"
+    },
+    "shorts": {
+      "status": "xong",
+      "note": "3 Short: cảnh 0–9, 9–20, 20–29; hẹn 15–17/11 08:00",
+      "ket_thuc": "2026-11-14T16:33:42.681411+07:00"
+    }
+  },
+  "chon": 3,
+  "upload_dang_cho_id": null,
+  "video_id": "gg4P35JfyXk",
+  "lich_dang": "14/11/2026 15:30",
+  "phu_de_ok": true,
+  "playlist_ok": "PLf9v4rPuuCys"
+}

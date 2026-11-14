@@ -1,0 +1,66 @@
+[
+  {
+    "id": "v1",
+    "ten": "VnExpress",
+    "gia_tri": "8,5",
+    "trich_dan": "Lỗ hổng Thanh Lâm phát hiện đạt 8,5/10 điểm theo CVSS v4.0",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v2",
+    "ten": "VnExpress",
+    "gia_tri": "7,8",
+    "trich_dan": "và 7,8/10 theo CVSS v3.1.",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v1.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v3",
+    "ten": "VnExpress",
+    "gia_tri": "26,06",
+    "trich_dan": "Hiện bản vá CVE-2026-125742 đã được phát hành cho phiên bản từ 7-Zip 26.06.",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v3.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v6",
+    "ten": "VnExpress",
+    "gia_tri": "787",
+    "trich_dan": "lỗ hổng được xếp vào nhóm ghi dữ liệu vượt giới hạn vùng nhớ (heap out-of-bounds write, CWE-787)",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "nguon/v6.png",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v7",
+    "ten": "VnExpress",
+    "gia_tri": "1999",
+    "trich_dan": "7-Zip là phần mềm mã nguồn mở do Igor Pavlov phát triển năm 1999",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "t1",
+    "ten": "Tự tính từ VnExpress",
+    "gia_tri": "27",
+    "cong_thuc": "2026 − 1999",
+    "dau_vao": [
+      "v7"
+    ],
+    "trich_dan": "tính ra đã tồn tại khoảng 27 năm",
+    "url": "https://vnexpress.net/sinh-vien-viet-dung-ai-phat-hien-lo-hong-7-zip-5144449.html",
+    "ngay_truy_cap": "2026-11-14",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh"
+  }
+]

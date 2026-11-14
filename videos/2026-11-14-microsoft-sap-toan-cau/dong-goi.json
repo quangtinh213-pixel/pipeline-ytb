@@ -1,0 +1,63 @@
+{
+  "phuong_an": [
+    {
+      "tieu_de": "SỐC: Outlook gần như tê liệt 18 giờ, Microsoft nhận lỗi, người dùng Việt Nam làm gì?",
+      "chu_thumb": [
+        "SẬP TOÀN CẦU",
+        "TÊ LIỆT 18H"
+      ],
+      "file_thumb": "thumbnails/1.png"
+    },
+    {
+      "tieu_de": "CẢNH BÁO: Microsoft gián đoạn 18 giờ, công việc người dùng Việt Nam có phương án B?",
+      "chu_thumb": [
+        "DÂN VĂN PHÒNG",
+        "ĐỨNG HÌNH 18H!"
+      ],
+      "file_thumb": "thumbnails/2.png"
+    },
+    {
+      "tieu_de": "Sự thật vụ Microsoft nâng cấp mạng: Tự tay làm sập 18 giờ, người dùng Việt Nam chịu trận!",
+      "chu_thumb": [
+        "TỰ TAY LÀM SẬP?",
+        "KHÔNG PHẢI HACKER!"
+      ],
+      "file_thumb": "thumbnails/3.png"
+    }
+  ],
+  "mo_ta": "Dịch vụ thư Outlook của Microsoft gần như tê liệt khoảng 18 giờ, từ rạng sáng 13/11/2026 giờ Hà Nội. Microsoft nói đây là lỗi kỹ thuật, không liên quan tới tấn công mạng hay AI, bắt nguồn từ một lần nâng cấp dung lượng mạng trước đó. Video đọc thẳng bài đăng của Microsoft và số đo lưu lượng của Kentik, kể người dùng ở Việt Nam bị ảnh hưởng ra sao, và ba việc nhỏ để lần sau đỡ bị động.\n\nBáo cáo đầy đủ sau sự cố của Microsoft chưa có tại thời điểm làm video (14/11/2026), nên nguyên nhân gốc rễ chưa được kết luận.\n\n⏱ Mốc chương\n00:00 Mở đầu: Outlook gần như tê liệt\n00:19 Chuyện gì đã xảy ra?\n00:54 Microsoft nói gì?\n01:15 Làm gì ngay?\n01:53 Châm biếm và kết\n\n📎 Nguồn\n- Microsoft (@Microsoft trên X): https://x.com/Microsoft/status/2121282013600907325 (14/11/2026)\n- Microsoft 365 Status (@MSFT365Status trên X): https://x.com/MSFT365Status/status/2120938282204688468 (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n25gkqmopk2t (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n26xhaz4ck2t (14/11/2026)\n- Kentik · Doug Madory (Bluesky): https://bsky.app/profile/eldomador.bsky.social/post/3n275meovqc2t (14/11/2026)\n- VnExpress: https://vnexpress.net/doanh-nghiep-va-nguoi-dung-dinh-tre-giao-dich-vi-microsoft-gap-su-co-5144222.html (14/11/2026)\n\n🖼 Ghi công ảnh và video\n- Video: ALL IZ Well trên Pexels\n- Video: Anna Shvets trên Pexels\n- Video: ArtHouse Studio trên Pexels\n- Video: Coverr trên Pexels\n- Video: Dima Krivoy trên Pexels\n- Video: Ivan S trên Pexels\n- Video: Jakub Zerdzicki trên Pexels\n- Video: Kampus Production trên Pexels\n- Video: Kindel Media trên Pexels\n- Video: Mikhail Nilov trên Pexels\n- Video: MrColo trên Pexels\n- Video: Pavel Danilyuk trên Pexels\n- Video: Samson Katt trên Pexels\n- Video: Tima Miroshnichenko trên Pexels\n- Video: Toàn BDS trên Pexels\n- Video: Werner Pfennig trên Pexels\n- Video: emirkhan bal trên Pexels\n- Video: max laurell trên Pexels",
+  "tags": [
+    "microsoft",
+    "outlook",
+    "microsoft 365",
+    "teams",
+    "copilot",
+    "sự cố microsoft",
+    "kentik",
+    "việt nam",
+    "người dùng việt",
+    "công nghệ",
+    "dự phòng dữ liệu",
+    "email công ty"
+  ],
+  "shorts": [
+    {
+      "file": "shorts/1.mp4",
+      "tieu_de": "SỐC: Microsoft Outlook tê liệt gần 18 giờ, người dùng Việt Nam chịu trận! #shorts",
+      "ngay": "15/11/2026",
+      "gio": "08:00"
+    },
+    {
+      "file": "shorts/2.mp4",
+      "tieu_de": "SỰ THẬT vụ Microsoft sập 18 giờ: Người dùng Việt kẹt cứng Copilot AI, hãng nói gì? #shorts",
+      "ngay": "16/11/2026",
+      "gio": "08:00"
+    },
+    {
+      "file": "shorts/3.mp4",
+      "tieu_de": "CẢNH BÁO: 3 việc người dùng Việt Nam cần làm ngay sau sự cố Microsoft! #shorts",
+      "ngay": "17/11/2026",
+      "gio": "08:00"
+    }
+  ]
+}

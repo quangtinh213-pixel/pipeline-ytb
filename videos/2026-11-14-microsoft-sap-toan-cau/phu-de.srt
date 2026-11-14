@@ -1,0 +1,308 @@
+1
+00:00:00,000 --> 00:00:02,314
+Dịch vụ thư Outlook của Microsoft gần như
+
+2
+00:00:02,332 --> 00:00:04,031
+tê liệt suốt gần mười tám giờ.
+
+3
+00:00:04,303 --> 00:00:05,779
+Giờ Microsoft lên tiếng:
+
+4
+00:00:05,813 --> 00:00:08,149
+không phải hacker, cũng chẳng phải AI.
+
+5
+00:00:08,418 --> 00:00:10,481
+Theo họ, lỗi bắt nguồn từ một lần nâng cấp
+
+6
+00:00:10,496 --> 00:00:11,737
+dung lượng mạng trước đó.
+
+7
+00:00:12,253 --> 00:00:14,122
+Sáng thứ Sáu, nhiều người ở Việt Nam đã
+
+8
+00:00:14,133 --> 00:00:15,658
+không vào được Outlook và Teams.
+
+9
+00:00:15,934 --> 00:00:17,636
+Bạn có phải một trong số đó không?
+
+10
+00:00:18,163 --> 00:00:19,079
+Đầu đuôi thế nào?
+
+11
+00:00:19,350 --> 00:00:20,871
+Mọi thứ bắt đầu từ nửa đêm,
+
+12
+00:00:20,893 --> 00:00:22,524
+rạng sáng thứ Sáu giờ Hà Nội.
+
+13
+00:00:22,796 --> 00:00:24,584
+Kentik, công ty theo dõi lưu lượng
+
+14
+00:00:24,609 --> 00:00:26,716
+internet, thấy lưu lượng vào dịch vụ thư
+
+15
+00:00:26,733 --> 00:00:28,892
+của Microsoft thấp hơn dự kiến khoảng tám
+
+16
+00:00:28,908 --> 00:00:29,919
+mươi lăm phần trăm.
+
+17
+00:00:30,194 --> 00:00:32,103
+Tình trạng đó kéo dài gần mười tám giờ.
+
+18
+00:00:32,373 --> 00:00:33,282
+Mãi tới chiều tối,
+
+19
+00:00:33,301 --> 00:00:34,842
+lưu lượng mới bắt đầu hồi phục.
+
+20
+00:00:35,365 --> 00:00:36,595
+Còn ở Việt Nam thì sao?
+
+21
+00:00:36,865 --> 00:00:39,092
+Nhật Nam, một nhân viên kinh doanh ở TP
+
+22
+00:00:39,105 --> 00:00:41,206
+HCM, kể là phải gửi báo giá cho khách
+
+23
+00:00:41,233 --> 00:00:42,382
+trước mười giờ sáng,
+
+24
+00:00:42,409 --> 00:00:43,950
+nhưng Outlook cứ quay vòng.
+
+25
+00:00:44,227 --> 00:00:46,277
+Một công ty dịch vụ công nghệ thông tin
+
+26
+00:00:46,294 --> 00:00:47,251
+thì kẹt kiểu khác.
+
+27
+00:00:47,526 --> 00:00:48,524
+Do yêu cầu bảo mật,
+
+28
+00:00:48,544 --> 00:00:50,664
+dữ liệu nội bộ của họ chỉ được xử lý bằng
+
+29
+00:00:50,684 --> 00:00:52,646
+Copilot, nên Copilot ngừng là họ không
+
+30
+00:00:52,671 --> 00:00:54,379
+chuyển sang công cụ AI khác được.
+
+31
+00:00:54,903 --> 00:00:56,086
+Microsoft nói gì?
+
+32
+00:00:56,357 --> 00:00:57,943
+Họ xin lỗi khách hàng và đối tác.
+
+33
+00:00:58,212 --> 00:00:59,808
+Họ nói đây là lỗi kỹ thuật,
+
+34
+00:00:59,840 --> 00:01:02,264
+không liên quan tới tấn công mạng hay AI.
+
+35
+00:01:02,533 --> 00:01:04,454
+Lỗi bắt nguồn từ một lần nâng cấp dung
+
+36
+00:01:04,474 --> 00:01:05,503
+lượng mạng trước đó,
+
+37
+00:01:05,519 --> 00:01:07,540
+rồi lộ ra sau một thay đổi mạng gần đây.
+
+38
+00:01:08,060 --> 00:01:10,009
+Báo cáo đầy đủ thì họ hứa sẽ có,
+
+39
+00:01:10,028 --> 00:01:11,312
+sau khi xem xét xong.
+
+40
+00:01:11,591 --> 00:01:13,041
+Tới lúc mình làm video này,
+
+41
+00:01:13,062 --> 00:01:14,096
+báo cáo đó chưa ra,
+
+42
+00:01:14,112 --> 00:01:15,825
+nên mình chỉ nói đúng chừng này.
+
+43
+00:01:16,096 --> 00:01:16,838
+Chừng đó thôi.
+
+44
+00:01:17,363 --> 00:01:19,245
+Vậy bạn làm gì để lần sau đỡ bị động?
+
+45
+00:01:19,519 --> 00:01:20,401
+Có ba việc nhỏ.
+
+46
+00:01:20,924 --> 00:01:22,867
+Trước hết, chuẩn bị sẵn một kênh liên lạc
+
+47
+00:01:22,882 --> 00:01:24,865
+thay thế khi Teams hoặc Outlook gián đoạn,
+
+48
+00:01:24,887 --> 00:01:26,497
+chẳng hạn một nhóm Zalo công việc.
+
+49
+00:01:27,019 --> 00:01:28,976
+Tiếp theo, lưu thông tin liên hệ của khách
+
+50
+00:01:28,998 --> 00:01:30,824
+hàng và đối tác ở nơi truy cập được khi
+
+51
+00:01:30,838 --> 00:01:32,154
+tài khoản công việc gặp lỗi.
+
+52
+00:01:32,423 --> 00:01:33,940
+Như lưu vào danh bạ điện thoại,
+
+53
+00:01:33,967 --> 00:01:35,881
+chứ đừng chỉ nằm trong hộp thư công ty.
+
+54
+00:01:36,397 --> 00:01:38,371
+Cuối cùng, sao lưu dữ liệu quan trọng độc
+
+55
+00:01:38,386 --> 00:01:39,409
+lập với nhà cung cấp.
+
+56
+00:01:39,678 --> 00:01:41,861
+Mình gợi ý thêm một câu hỏi cho bộ phận kỹ
+
+57
+00:01:41,874 --> 00:01:44,058
+thuật: nếu công cụ AI duy nhất của công ty
+
+58
+00:01:44,070 --> 00:01:45,790
+ngừng chạy thì phương án B là gì?
+
+59
+00:01:46,306 --> 00:01:48,288
+Nếu bạn muốn nhận cảnh báo sớm để đỡ bị
+
+60
+00:01:48,300 --> 00:01:50,376
+động mỗi khi dịch vụ công nghệ gặp sự cố,
+
+61
+00:01:50,392 --> 00:01:52,419
+bấm Đăng ký kênh Nhịp Công Nghệ ngay bên
+
+62
+00:01:52,435 --> 00:01:52,914
+dưới nhé.
+
+63
+00:01:53,434 --> 00:01:55,463
+Lâu nay người ta hay bảo cất dữ liệu lên
+
+64
+00:01:55,479 --> 00:01:56,307
+mây cho nhẹ đầu.
+
+65
+00:01:56,577 --> 00:01:58,806
+Hôm thứ Sáu, hóa ra mây cũng có ngày nghỉ,
+
+66
+00:01:58,832 --> 00:01:59,702
+mà nghỉ hơi dài.
+
+67
+00:02:00,223 --> 00:02:01,525
+Tóm lại: theo Microsoft,
+
+68
+00:02:01,572 --> 00:02:03,165
+đây không phải tấn công mạng,
+
+69
+00:02:03,191 --> 00:02:05,382
+còn báo cáo đầy đủ thì họ hứa sẽ có sau.
+
+70
+00:02:05,653 --> 00:02:07,761
+Anh em ơi, công ty bạn đã có phương án B
+
+71
+00:02:07,769 --> 00:02:09,710
+chưa, hay vẫn một hộp thư cho cả nhà?
+
+72
+00:02:09,981 --> 00:02:11,091
+Cho mình biết ở bình luận.
+
+73
+00:02:11,611 --> 00:02:13,622
+Bấm Đăng ký và bật chuông để không bỏ lỡ
+
+74
+00:02:13,634 --> 00:02:15,686
+video ngày mai, rồi bấm vào video đề xuất
+
+75
+00:02:15,706 --> 00:02:17,800
+bên trái màn hình để xem tiếp những chuyện
+
+76
+00:02:17,827 --> 00:02:19,781
+công nghệ ảnh hưởng thẳng tới công việc
+
+77
+00:02:19,801 --> 00:02:20,225
+của bạn.
+

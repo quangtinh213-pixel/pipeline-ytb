@@ -1,0 +1,214 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 3.447,
+   "loi": "Phần mềm giải nén Bảy Díp vừa dính lỗ hổng bảo mật nghiêm trọng với điểm"
+  },
+  {
+   "id": "c002",
+   "start": 3.447,
+   "end": 6.518,
+   "loi": "nguy hiểm lên tới tám phẩy năm trên mười. Đáng chú ý nhất,"
+  },
+  {
+   "id": "c003",
+   "start": 6.518,
+   "end": 11.455,
+   "loi": "người phát hiện ra lỗ hổng này lại là một sinh viên Việt Nam nhờ sự trợ giúp từ trí tuệ nhân tạo."
+  },
+  {
+   "id": "c004",
+   "start": 11.455,
+   "end": 14.233,
+   "loi": "Rất bất ngờ. Tính ra thì phần mềm siêu nhẹ"
+  },
+  {
+   "id": "c005",
+   "start": 14.233,
+   "end": 18.933,
+   "loi": "mà hầu như máy tính văn phòng nào ở nước ta cũng cài đặt hóa ra lại chứa một lỗ hổng đáng lo."
+  },
+  {
+   "id": "c006",
+   "start": 18.933,
+   "end": 23.711,
+   "loi": "Lỗ hổng thuộc nhóm ghi dữ liệu vượt giới hạn vùng nhớ, mang mã hiệu bảy trăm tám mươi bảy."
+  },
+  {
+   "id": "c007",
+   "start": 23.711,
+   "end": 27.334,
+   "loi": "Lỗi xuất hiện khi Bảy Díp giải nén các tệp nén Cáp do Mai-crô-xóp phát"
+  },
+  {
+   "id": "c008",
+   "start": 27.334,
+   "end": 31.065,
+   "loi": "triển được chia làm nhiều phần nhỏ. Khi kích thước bộ nhớ bị thu nhỏ,"
+  },
+  {
+   "id": "c009",
+   "start": 31.065,
+   "end": 34.43,
+   "loi": "phần mềm cấp phát vùng nhớ mới nhưng vẫn giữ nguyên vị trí ghi cũ,"
+  },
+  {
+   "id": "c010",
+   "start": 34.43,
+   "end": 37.263,
+   "loi": "khiến dữ liệu bị ghi tràn ra ngoài vùng nhớ được cấp."
+  },
+  {
+   "id": "c011",
+   "start": 37.263,
+   "end": 41.442,
+   "loi": "Kẻ tấn công chỉ cần lừa bạn giải nén tệp Cáp độc hại để kích hoạt chuỗi khai thác."
+  },
+  {
+   "id": "c012",
+   "start": 41.442,
+   "end": 44.957,
+   "loi": "Từ đó, máy tính nạn nhân sẽ tự động kết nối về máy chủ tin tặc và"
+  },
+  {
+   "id": "c013",
+   "start": 44.957,
+   "end": 47.95,
+   "loi": "nhận lệnh điều khiển từ xa với quyền tài khoản của bạn."
+  },
+  {
+   "id": "c014",
+   "start": 47.95,
+   "end": 51.939,
+   "loi": "Cực kỳ tinh vi. Người tìm ra nguy cơ này là Nguyễn Trần Thanh Lâm,"
+  },
+  {
+   "id": "c015",
+   "start": 51.939,
+   "end": 55.654,
+   "loi": "sinh viên ngành Khoa học máy tính tại Đại học Công nghệ Nanyang Xinh-ga-po."
+  },
+  {
+   "id": "c016",
+   "start": 55.654,
+   "end": 60.551,
+   "loi": "Lâm dùng thêm mô hình trí tuệ nhân tạo Cơ-loát Ô-pút năm của An-thờ-rô-pích để phân tích mã nguồn."
+  },
+  {
+   "id": "c017",
+   "start": 60.551,
+   "end": 63.971,
+   "loi": "Tổ chức an ninh mạng Vơn-chéc của Mỹ đã ghi nhận báo cáo của Lâm"
+  },
+  {
+   "id": "c018",
+   "start": 63.971,
+   "end": 68.058,
+   "loi": "trước khi phát hành mã định danh toàn cầu. Thậm chí theo thang điểm chuẩn cũ"
+  },
+  {
+   "id": "c019",
+   "start": 68.058,
+   "end": 71.603,
+   "loi": "thì mức độ đe dọa cũng ở mức gần tám trên mười. Rất đáng nể."
+  },
+  {
+   "id": "c020",
+   "start": 71.603,
+   "end": 76.044,
+   "loi": "Người dùng phổ thông thì hầu như ít ai để ý những cảnh báo vá lỗi thầm lặng như thế này."
+  },
+  {
+   "id": "c021",
+   "start": 76.044,
+   "end": 80.609,
+   "loi": "Nếu bạn muốn nhận thông tin công nghệ sớm để bảo vệ an toàn cho dữ liệu và máy tính cá nhân,"
+  },
+  {
+   "id": "c022",
+   "start": 80.609,
+   "end": 84.263,
+   "loi": "bấm Đăng Ký kênh Nhịp Công Nghệ ngay bên dưới nhé. Đừng chủ quan."
+  },
+  {
+   "id": "c023",
+   "start": 84.263,
+   "end": 87.754,
+   "loi": "Để an toàn thì bạn kiểm tra ngay ba bước sau trên máy tính của mình."
+  },
+  {
+   "id": "c024",
+   "start": 87.754,
+   "end": 90.625,
+   "loi": "Thứ nhất, mở phần mềm Bảy Díp, bấm vào thẻ Trợ giúp"
+  },
+  {
+   "id": "c025",
+   "start": 90.625,
+   "end": 93.703,
+   "loi": "rồi chọn Giới thiệu để xem số hiệu phiên bản đang chạy."
+  },
+  {
+   "id": "c026",
+   "start": 93.703,
+   "end": 97.262,
+   "loi": "Thứ hai, tải ngay bản cập nhật Bảy Díp hai mươi sáu phẩy không sáu vừa"
+  },
+  {
+   "id": "c027",
+   "start": 97.262,
+   "end": 100.379,
+   "loi": "được nhà phát triển công bố chính thức để vá kín lỗ hổng này."
+  },
+  {
+   "id": "c028",
+   "start": 100.379,
+   "end": 103.926,
+   "loi": "Thứ ba, tuyệt đối không giải nén các tệp đính kèm đuôi Cáp lạ được"
+  },
+  {
+   "id": "c029",
+   "start": 103.926,
+   "end": 107.186,
+   "loi": "gửi qua tin nhắn hoặc diễn đàn trôi nổi. Hãy làm ngay."
+  },
+  {
+   "id": "c030",
+   "start": 107.186,
+   "end": 112.379,
+   "loi": "Bảy Díp ra đời từ năm một nghìn chín trăm chín mươi chín, tính ra đã tồn tại khoảng hai mươi bảy năm."
+  },
+  {
+   "id": "c031",
+   "start": 112.379,
+   "end": 117.427,
+   "loi": "Một phần mềm mã nguồn mở lâu đời và cực kỳ phổ biến mà vẫn sót lỗi tràn giới hạn vùng nhớ."
+  },
+  {
+   "id": "c032",
+   "start": 117.427,
+   "end": 122.897,
+   "loi": "May mắn là bạn sinh viên người Việt đã dùng trí tuệ nhân tạo soi ra trước khi có mã khai thác tràn lan."
+  },
+  {
+   "id": "c033",
+   "start": 122.897,
+   "end": 126.468,
+   "loi": "Bạn nhớ bấm Đăng ký kênh và bấm vào video bên cạnh để theo dõi tiếp"
+  },
+  {
+   "id": "c034",
+   "start": 126.468,
+   "end": 131.092,
+   "loi": "các cảnh báo công nghệ sát sườn nhé. Máy tính của bạn đang chạy phiên bản Bảy Díp số mấy?"
+  },
+  {
+   "id": "c035",
+   "start": 131.092,
+   "end": 135.401,
+   "loi": "Bình luận số phiên bản bên dưới để cùng kiểm tra xem có dính lỗi này không nhé."
+  }
+ ]
+}

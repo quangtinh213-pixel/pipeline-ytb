@@ -1,0 +1,420 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "mau": "so-lon",
+   "so": 18,
+   "truoc": "gần ",
+   "sau": " giờ",
+   "nhan": "Outlook gần như tê liệt, theo Kentik",
+   "nguon_id": "k2",
+   "svg": "hop-thu",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "phai"
+   },
+   "start": 0.0,
+   "end": 4.167
+  },
+  {
+   "id": "c002",
+   "mau": "b-roll",
+   "video": "o-khoa-10241357-001.mp4",
+   "nhan": "",
+   "tu_khoa": "Không phải hacker, AI",
+   "start": 4.167,
+   "end": 8.284
+  },
+  {
+   "id": "c003",
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656-002.mp4",
+   "nhan": "",
+   "tu_khoa": "Nâng cấp mạng",
+   "start": 8.284,
+   "end": 11.995
+  },
+  {
+   "id": "c004",
+   "mau": "trich-bao",
+   "nguon_id": "v8",
+   "trich": "không thể sử dụng được các dịch vụ như Outlook, Teams, OneDrive, SharePoint",
+   "to_vang": "Outlook, Teams, OneDrive, SharePoint",
+   "start": 11.995,
+   "end": 15.796
+  },
+  {
+   "id": "c005",
+   "mau": "mo-dau",
+   "cau": "Outlook tê liệt: bạn làm gì?",
+   "start": 15.796,
+   "end": 19.215
+  },
+  {
+   "id": "c006",
+   "mau": "chuong",
+   "so": "Phần 1",
+   "chuong": "Chuyện gì đã xảy ra?",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 19.215,
+   "end": 22.66
+  },
+  {
+   "id": "c007",
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622-006.mp4",
+   "nhan": "",
+   "tu_khoa": "Kentik đo lưu lượng",
+   "start": 22.66,
+   "end": 26.102
+  },
+  {
+   "id": "c008",
+   "mau": "phan-tram",
+   "so": 85,
+   "tieu_de": "Lưu lượng dịch vụ thư",
+   "nhan": "thấp hơn mức dự kiến, theo Kentik",
+   "nguon_id": "k2",
+   "start": 26.102,
+   "end": 30.056
+  },
+  {
+   "id": "c009",
+   "mau": "b-roll",
+   "video": "dong-ho-kim-9160922-008.mp4",
+   "nhan": "",
+   "tu_khoa": "Gần 18 giờ",
+   "nguon_id": "k2",
+   "start": 30.056,
+   "end": 35.103
+  },
+  {
+   "id": "c010",
+   "mau": "b-roll",
+   "video": "thanh-pho-viet-nam-31111825-009.mp4",
+   "nhan": "",
+   "tu_khoa": "Ở Việt Nam",
+   "start": 35.103,
+   "end": 39.374
+  },
+  {
+   "id": "c011",
+   "mau": "trich-bao",
+   "nguon_id": "v1",
+   "trich": "Tôi cần gửi báo giá cho khách trước 10h, nhưng Outlook cứ quay vòng rồi báo không thể truy cập trên nền web",
+   "to_vang": "Outlook cứ quay vòng",
+   "start": 39.374,
+   "end": 44.088
+  },
+  {
+   "id": "c012",
+   "mau": "b-roll",
+   "video": "man-hinh-may-tinh-8346903-011.mp4",
+   "nhan": "",
+   "tu_khoa": "Kẹt kiểu khác",
+   "start": 44.088,
+   "end": 47.389
+  },
+  {
+   "id": "c013",
+   "mau": "trich-bao",
+   "nguon_id": "v2",
+   "trich": "dữ liệu nội bộ của công ty chỉ được phép xử lý bằng Copilot",
+   "to_vang": "chỉ được phép xử lý bằng Copilot",
+   "start": 47.389,
+   "end": 51.124
+  },
+  {
+   "id": "c014",
+   "mau": "b-roll",
+   "video": "laptop-dem-van-phong-30712136-013.mp4",
+   "nhan": "",
+   "tu_khoa": "Chỉ một công cụ AI",
+   "start": 51.124,
+   "end": 54.641
+  },
+  {
+   "id": "c015",
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Microsoft nói gì?",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 54.641,
+   "end": 58.078
+  },
+  {
+   "id": "c016",
+   "mau": "trich-bao",
+   "nguon_id": "m1",
+   "trich": "This was a technical issue not related to cyber or AI / agents.",
+   "to_vang": "not related to cyber or AI / agents",
+   "trich_vi": "Đây là một sự cố kỹ thuật, không liên quan tới tấn công mạng hay AI hoặc tác nhân AI.",
+   "to_vang_vi": "không liên quan tới tấn công mạng hay AI",
+   "start": 58.078,
+   "end": 62.398
+  },
+  {
+   "id": "c017",
+   "mau": "trich-bao",
+   "nguon_id": "m2",
+   "trich": "The incident was introduced by an issue during an earlier network capacity upgrade that surfaced following a recent network change.",
+   "to_vang": "earlier network capacity upgrade",
+   "trich_vi": "Sự cố bắt nguồn từ một lỗi trong lần nâng cấp dung lượng mạng trước đó, lộ ra sau một thay đổi mạng gần đây.",
+   "to_vang_vi": "nâng cấp dung lượng mạng trước đó",
+   "start": 62.398,
+   "end": 65.511
+  },
+  {
+   "id": "c018",
+   "mau": "b-roll",
+   "video": "day-cap-bo-mach-7140937-017.mp4",
+   "nhan": "",
+   "tu_khoa": "Thay đổi mạng gần đây",
+   "start": 65.511,
+   "end": 68.947
+  },
+  {
+   "id": "c019",
+   "mau": "trich-bao",
+   "nguon_id": "m3",
+   "trich": "We will provide a full post-incident report once our review is complete.",
+   "to_vang": "full post-incident report",
+   "trich_vi": "Chúng tôi sẽ công bố báo cáo đầy đủ sau sự cố khi xem xét xong.",
+   "to_vang_vi": "báo cáo đầy đủ sau sự cố",
+   "start": 68.947,
+   "end": 71.451
+  },
+  {
+   "id": "c020",
+   "mau": "b-roll",
+   "video": "giay-to-7054942-019.mp4",
+   "nhan": "",
+   "tu_khoa": "Báo cáo chưa ra",
+   "dan": {
+    "the": "bo-ngo",
+    "huong": "truoc"
+   },
+   "start": 71.451,
+   "end": 75.96
+  },
+  {
+   "id": "c021",
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Làm gì ngay?",
+   "dan": {
+    "the": "chao"
+   },
+   "start": 75.96,
+   "end": 79.382
+  },
+  {
+   "id": "c022",
+   "mau": "quy-trinh",
+   "tieu_de": "Ba việc nhỏ",
+   "buoc": [
+    {
+     "nhan": "Kênh liên lạc dự phòng",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Danh bạ ngoài hộp thư",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Sao lưu độc lập",
+     "svg": "may-chu"
+    }
+   ],
+   "noi_bat": 0,
+   "nguon_id": "v5",
+   "start": 79.382,
+   "end": 82.875
+  },
+  {
+   "id": "c023",
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-022.mp4",
+   "nhan": "",
+   "tu_khoa": "Nhóm Zalo dự phòng",
+   "start": 82.875,
+   "end": 86.758
+  },
+  {
+   "id": "c024",
+   "mau": "quy-trinh",
+   "tieu_de": "Ba việc nhỏ",
+   "buoc": [
+    {
+     "nhan": "Kênh liên lạc dự phòng",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Danh bạ ngoài hộp thư",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Sao lưu độc lập",
+     "svg": "may-chu"
+    }
+   ],
+   "noi_bat": 1,
+   "nguon_id": "v4",
+   "start": 86.758,
+   "end": 90.231
+  },
+  {
+   "id": "c025",
+   "mau": "b-roll",
+   "video": "viet-tay-so-tay-4017221-024.mp4",
+   "nhan": "",
+   "tu_khoa": "Danh bạ điện thoại",
+   "start": 90.231,
+   "end": 93.953
+  },
+  {
+   "id": "c026",
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-025.mp4",
+   "nhan": "",
+   "tu_khoa": "Đừng chỉ một hộp thư",
+   "start": 93.953,
+   "end": 96.906
+  },
+  {
+   "id": "c027",
+   "mau": "quy-trinh",
+   "tieu_de": "Ba việc nhỏ",
+   "buoc": [
+    {
+     "nhan": "Kênh liên lạc dự phòng",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Danh bạ ngoài hộp thư",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Sao lưu độc lập",
+     "svg": "may-chu"
+    }
+   ],
+   "noi_bat": 2,
+   "nguon_id": "v7",
+   "start": 96.906,
+   "end": 99.543
+  },
+  {
+   "id": "c028",
+   "mau": "b-roll",
+   "video": "phong-hop-trong-6951393-027.mp4",
+   "nhan": "",
+   "tu_khoa": "Hỏi bộ phận kỹ thuật",
+   "start": 99.543,
+   "end": 102.217
+  },
+  {
+   "id": "c029",
+   "mau": "chu-dong",
+   "cau": "nếu công cụ AI duy nhất ngừng chạy thì phương án B là gì?",
+   "nhan_tu": "phương án B",
+   "nho": "Gợi ý của kênh",
+   "start": 102.217,
+   "end": 106.048
+  },
+  {
+   "id": "c030",
+   "mau": "b-roll",
+   "video": "cuon-man-hinh-6258096-029.mp4",
+   "nhan": "",
+   "tu_khoa": "Nhận cảnh báo sớm",
+   "start": 106.048,
+   "end": 110.384
+  },
+  {
+   "id": "c031",
+   "mau": "b-roll",
+   "video": "dung-dien-thoai-12692095-030.mp4",
+   "nhan": "",
+   "tu_khoa": "Bấm Đăng ký",
+   "start": 110.384,
+   "end": 113.174
+  },
+  {
+   "id": "c032",
+   "mau": "minh-hoa",
+   "svg": "dam-may",
+   "phu": [
+    "hop-thu"
+   ],
+   "nhan": "Dữ liệu lên mây",
+   "san_khau": "may-chu",
+   "may_quay": "day-vao",
+   "start": 113.174,
+   "end": 116.442
+  },
+  {
+   "id": "c033",
+   "mau": "minh-hoa",
+   "svg": "dong-ho",
+   "phu": [
+    "dam-may"
+   ],
+   "nhan": "Mây nghỉ hơi dài",
+   "may_quay": "keo-ra",
+   "start": 116.442,
+   "end": 119.963
+  },
+  {
+   "id": "c034",
+   "mau": "b-roll",
+   "video": "thiet-bi-dien-tu-7140931-033.mp4",
+   "nhan": "",
+   "tu_khoa": "Không phải tấn công mạng",
+   "start": 119.963,
+   "end": 123.178
+  },
+  {
+   "id": "c035",
+   "mau": "b-roll",
+   "video": "giay-to-7732805-034.mp4",
+   "nhan": "",
+   "tu_khoa": "Chờ báo cáo đầy đủ",
+   "start": 123.178,
+   "end": 126.213
+  },
+  {
+   "id": "c036",
+   "mau": "b-roll",
+   "video": "laptop-go-phim-7252685-035.mp4",
+   "nhan": "",
+   "tu_khoa": "Có phương án B chưa?",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai"
+   },
+   "start": 126.213,
+   "end": 129.846
+  },
+  {
+   "id": "c037",
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-036.mp4",
+   "nhan": "",
+   "tu_khoa": "Bình luận cho mình",
+   "start": 129.846,
+   "end": 134.413
+  },
+  {
+   "id": "c038",
+   "mau": "ket-thuc",
+   "cau": "Xem tiếp nhé",
+   "start": 134.413,
+   "end": 140.745
+  }
+ ]
+}
