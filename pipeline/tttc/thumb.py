@@ -2,7 +2,7 @@
 import subprocess
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageOps
+from PIL import Image, ImageDraw, ImageFilter, ImageFont, ImageOps
 
 from tttc import theme
 
@@ -130,6 +130,73 @@ def khung(anh_chinh: Path | None, anh_phu: Path, dong: list[str], out: Path, ghi
             ghi_cong = ghi_cong[:-2].rstrip() + "…"
         d.text((61, H - 35), ghi_cong, font=f, fill=(0, 0, 0))
         d.text((60, H - 36), ghi_cong, font=f, fill=(255, 255, 255))
+    out.parent.mkdir(parents=True, exist_ok=True)
+    img.save(out)
+    small = out.with_name(out.stem + "-168px" + out.suffix)
+    img.resize((168, 94), Image.LANCZOS).save(small)
+    return out, small
+
+
+# Khuôn thumbnail đã khóa cho mọi video dài (người dùng chốt 15/11/2026, docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md mục 5).
+# Ba phương án chỉ khác chữ và ảnh, không khác khuôn. Cố ý khác khuôn kênh mẫu: nền giấy sáng, không viền cam/vàng,
+# không tia chia đôi, không hộp vàng chữ đen.
+KHUON = "ho-so"
+NHAN_VAT_HO_SO = Path(__file__).resolve().parent.parent / "nhan-vat" / "nghi-nghieng-phai.png"
+THE = (560, 470)  # ảnh dán (gồm viền trắng 20 px), xoay nhẹ
+GOC_THE = (668, 108)
+
+
+def ho_so(anh: Path, nhan: str, so: str, hoi: str, out: Path, ghi_cong: str = "",
+          tam: tuple[float, float] = (0.5, 0.4)) -> tuple[Path, Path]:
+    """Thumbnail khuôn «hồ sơ»: nền giấy kem kẻ dòng, bên trái ba tầng chữ mực (nhan = chủ thể/sự kiện ≤ 3 từ,
+    so = con số làm chính có gạch đỏ dưới, hoi = một câu hỏi), bên phải ảnh dán viền trắng xoay nhẹ có băng keo,
+    nhân vật Nhịp ở góc dưới trái ảnh. tam = điểm giữ khi cắt ảnh (0–1, ngang/dọc). Màu lấy từ theme (kem, sac.do)."""
+    if not so.strip() or not hoi.strip():
+        raise ValueError("Khuôn hồ sơ cần con số (so) và một câu hỏi (hoi)")
+    out, kem = Path(out), theme.TH["kem"]
+    nen, ke, muc = theme.rgb(kem["nen"]), theme.rgb(kem["nen_2"]), theme.rgb(kem["muc"])
+    do, keo = theme.rgb(theme.TH["sac"]["do"][0]), theme.rgb(kem["duong"])
+    img = Image.new("RGB", (W, H), nen)
+    d = ImageDraw.Draw(img)
+    for y in range(36, H, 36):
+        d.line([(0, y), (W, y)], fill=ke, width=1)
+
+    tw, th_ = THE
+    the = Image.new("RGBA", THE, (255, 255, 255, 255))
+    the.paste(ImageOps.fit(Image.open(anh).convert("RGB"), (tw - 40, th_ - 40), centering=tam), (20, 20))
+    the = the.rotate(-4, expand=True, resample=Image.BICUBIC)
+    bong = Image.new("RGBA", the.size, (0, 0, 0, 0))
+    bong.paste((0, 0, 0, 90), mask=the.split()[3])
+    bong = bong.filter(ImageFilter.GaussianBlur(14))
+    gx, gy = GOC_THE
+    img.paste(bong, (gx + 12, gy + 16), bong)
+    img.paste(the, (gx, gy), the)
+    d = ImageDraw.Draw(img)
+    cx = gx + the.size[0] // 2
+    d.polygon([(cx - 75, gy - 12), (cx + 75, gy), (cx + 70, gy + 40), (cx - 80, gy + 28)], fill=keo)
+
+    x, rong = 60, 590
+    tang = [(t, fit_font(t, rong, c), k) for t, c, k in ((nhan, 66, "nhan"), (so, 180, "so"), (hoi, 104, "hoi")) if t.strip()]
+    hop = [d.textbbox((0, 0), t, font=f) for t, f, _ in tang]
+    cach = {"so": 24, "hoi": 64}  # khoảng trên mỗi tầng; dưới con số chừa chỗ gạch đỏ
+    tong = sum(b[3] - b[1] for b in hop) + sum(cach.get(k, 0) for _, _, k in tang[1:])
+    y = (H - tong) // 2 - 10  # cả khối chữ căn giữa theo chiều dọc
+    for i, ((t, f, k), b) in enumerate(zip(tang, hop)):
+        y += cach.get(k, 0) if i else 0
+        if k == "so":
+            d.rectangle([x + b[0], y + b[3] - b[1] - 22, x + b[2], y + b[3] - b[1] + 6], fill=do)
+        d.text((x - b[0], y - b[1]), t, font=f, fill=muc)
+        y += b[3] - b[1]
+
+    if NHAN_VAT_HO_SO.exists():
+        c = Image.open(NHAN_VAT_HO_SO).convert("RGBA")
+        c = c.resize((150, int(150 * c.height / c.width)))
+        img.paste(c, (gx - 50, H - 25 - c.height), c)
+    if ghi_cong:
+        f = ImageFont.truetype(FONT, 18)
+        while d.textlength(ghi_cong, font=f) > 300 and len(ghi_cong) > 1:
+            ghi_cong = ghi_cong[:-2].rstrip() + "…"
+        d.text((gx + 130, H - 36), ghi_cong, font=f, fill=muc)  # tránh badge thời lượng ở góc dưới phải
     out.parent.mkdir(parents=True, exist_ok=True)
     img.save(out)
     small = out.with_name(out.stem + "-168px" + out.suffix)

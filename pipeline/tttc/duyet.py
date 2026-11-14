@@ -5,7 +5,7 @@ from html import escape
 from pathlib import Path
 from string import Template
 
-from tttc import chat_luong, dang, phong_cach, theme, tieu_de, trang_thai
+from tttc import chat_luong, dang, phong_cach, theme, thumb, tieu_de, trang_thai
 from tttc.kiem import check
 
 TEMPLATE = Path(__file__).resolve().parent.parent / "templates" / "duyet.html"
@@ -106,6 +106,9 @@ def render_review_2(video_dir) -> Path:
         kq = tieu_de.cham_diem(o["tieu_de"])
         for msg in [*kq.loi, *kq.canh_bao, *tieu_de.kiem_khop_nguon(o["tieu_de"], nguon)]:
             warns.append(f"Phương án {i}: {msg}")
+        if o.get("khuon") != thumb.KHUON:
+            warns.append(f"Phương án {i}: Lỗi: thumbnail không theo khuôn đã khóa «{thumb.KHUON}» "
+                         f"(đang ghi: {o.get('khuon') or 'không ghi'}); dựng lại bằng thumb.ho_so")
         dong_dai = [line for line in o.get("chu_thumb", []) if len(line.split()) > 4]
         if dong_dai:
             warns.append(f"Phương án {i}: Chữ thumbnail dài quá 4 từ ({', '.join(dong_dai)}) — nên rút gọn ≤ 3 từ/dòng")

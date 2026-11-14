@@ -197,24 +197,19 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 4. `dung.check_av('V/final.mp4', 'V/giong.mp3')` phải rỗng.
 
 ## 5. dong-goi
-1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail (≤ 3–4 chữ).
-2. Thumbnail:
-   - Phương án 1: `tttc.thumb.make([(dòng, "white"|"yellow"), ...], V/thumbnails/1.png)`.
-   - Phương án 2: CoDesign (IMG.LY). Trước `edit` đầu tiên nạp skill `codesign:handbook`, `codesign:api`, `codesign:judge`
-     (cùng một lượt) – bỏ bước hỏi ý, brief đã đủ: trang 1280×720, nền #111111, chữ trắng/vàng #FFC800 đậm, chữ
-     thumbnail của phương án 2, có thể thêm một hình/đạo cụ (không mặt người thật, không logo hãng). Chạy vòng `judge`
-     tới khi qua, `export` png → `V/thumbnails/2.png`; > 2 MB thì xuất lại nhỏ hơn (YouTube từ chối). Tạo bản nhỏ:
-     `Image.open(p).resize((168, 94), Image.LANCZOS).save(V/thumbnails/2-168px.png)`.
-     CoDesign hỏng/chưa đăng nhập: dùng `thumb.make` như phương án 1 và ghi lý do trong `dong-goi.md`.
-   - Phương án khung (khung riêng của kênh, thay cho một trong ba phương án): `tttc.thumb.khung(anh_chinh, anh_phu, dong, out, ghi_cong)`:
-     chữ lớn bên trái (≤ 2 dòng, mỗi dòng 2–4 chữ, dòng cuối tô màu nhấn), ô ảnh bo góc viền màu nhấn bên phải, thanh nhấn dọc mép trái,
-     nhân vật Nhịp đứng ở góc ô. `anh_phu` = ảnh trong ô, ưu tiên `thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`
-     của cảnh minh họa hay bản đồ đẹp nhất (bỏ dải phụ đề); `anh_chinh` = ảnh nền phủ kín (tuỳ chọn, được làm tối), thường để `None`;
-     `ghi_cong` = `anh/ghi-cong.json:ghi_cong` nếu ảnh có ghi công. Không ảnh người thật ngoài Wikimedia Commons, không logo hãng.
-     Khung này cố ý không chia đôi, không hộp chữ vàng, không vòng "VS" (khuôn của kênh mẫu); xem `docs/nghien-cuu/nhan-dien-ung-vien.md`.
-   - Phương án 3: TobyFlow `gen_image` (gọi `list_capabilities` trước, poll `get_job`) tạo **nền 16:9**. Prompt phải ghi:
-     không chữ, không mặt người thật, không logo hãng, tông tối gần đen với điểm nhấn vàng #FFC800, một vật thể chính.
-     Tải ảnh về `V/thumbnails/nen-3.png`, rồi `thumb.make(lines, V/thumbnails/3.png, background=V/thumbnails/nen-3.png)`.
+1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail theo ba tầng `nhan`/`so`/`hoi` của bước 2.
+2. Thumbnail – **một khuôn đã khóa: `ho-so`** (người dùng chốt 15/11/2026; `docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md` mục 5).
+   Cả 3 phương án dùng `tttc.thumb.ho_so(anh, nhan, so, hoi, V/thumbnails/N.png, ghi_cong, tam=(x, y))`; chúng chỉ khác
+   **chữ và ảnh**, không khác khuôn. Không dùng `thumb.make`, `thumb.khung`, CoDesign hay nền TobyFlow cho video dài nữa.
+   - `nhan`: chủ thể + động từ, ≤ 3 từ ("NVIDIA MẤT", "GRAB GIẢM PHÍ"); có thể để `""`.
+   - `so`: con số làm chính, lấy từ `nguon.json` và khớp số trong tiêu đề ("190 TỶ USD", "3.000 TỶ").
+   - `hoi`: **một** câu hỏi ≤ 3 từ ("VỀ TÚI AI?", "VÌ MỘT LÁ THƯ?"); dài hơn thì chữ nhỏ, không đọc được trên điện thoại.
+   - `anh`: ảnh thật của sự kiện (Wikimedia Commons, ảnh báo/hãng có ghi công) hoặc khung đẹp nhất của video
+     (`thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`). `tam` = điểm giữ khi cắt (mặt người thường `(0.5, 0.35)`).
+     **Không** dùng mặt người do AI tạo trông như ảnh thật, không logo hãng làm ảnh chính.
+   - `ghi_cong` = `anh/ghi-cong.json:ghi_cong` nếu ảnh có ghi công.
+   - Cách chia 3 phương án: đổi ảnh (người / bối cảnh Việt Nam / khung video) hoặc đổi cặp số–câu hỏi, giữ một biến mỗi lần để Test & Compare đọc được.
+   - Khuôn cố ý khác kênh mẫu (nền giấy kem, không viền cam/vàng, không tia chia đôi, không hộp vàng chữ đen). Muốn đổi khuôn: hỏi người dùng, sửa `thumb.KHUON`.
    - Mở bản `-168px` của từng thumbnail: đọc không ra chữ thì sửa.
 3. Gọi skill `yt-chapters` với mốc từ `giong-timing.json:paragraphs` (mốc thật, không ước tính).
 4. Gọi skill `yt-seo` cho mô tả + tags. Mô tả kết thúc bằng:
@@ -222,7 +217,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
    - "🖼 Ghi công ảnh" – mỗi dòng `anh/ghi-cong.json:ghi_cong`.
    - Không có ký tự `<` `>` (YouTube từ chối).
 5. Ghi `V/dong-goi.json` (đọc bởi `tttc.dang`):
-   `{"phuong_an":[{"tieu_de","chu_thumb":[...],"file_thumb":"thumbnails/N.png"}×3], "mo_ta", "tags":[...],
+   `{"phuong_an":[{"tieu_de","chu_thumb":[nhan, so, hoi],"file_thumb":"thumbnails/N.png","khuon":"ho-so"}×3], "mo_ta", "tags":[...],
      "shorts":[{"file":"shorts/k.mp4","tieu_de":"... #shorts","ngay":"dd/mm/yyyy","gio":"HH:MM"}]}`
    và `V/dong-goi.md` bản dễ đọc của cùng nội dung.
 

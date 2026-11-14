@@ -47,7 +47,7 @@ def test_review_1_written_to_video_dir(tmp_path):
     assert duyet.render_review_1(_video(tmp_path)) == tmp_path / "duyet-1.html"
 
 
-GOI = {"phuong_an": [{"tieu_de": f"Tiêu đề {i}", "chu_thumb": ["X"], "file_thumb": f"thumbnails/{i}.png"}
+GOI = {"phuong_an": [{"tieu_de": f"Tiêu đề {i}", "chu_thumb": ["X"], "file_thumb": f"thumbnails/{i}.png", "khuon": "ho-so"}
                      for i in (1, 2, 3)],
        "mo_ta": "Mô tả <b>video</b>", "tags": ["a"],
        "shorts": [{"file": "shorts/1.mp4", "tieu_de": "S1", "ngay": "14/11/2026", "gio": "12:00"}]}
@@ -192,3 +192,14 @@ def test_review_1_includes_kiem_thoi_luong_thuc_warning(tmp_path):
     d = _video(tmp_path, "#### Beat 1\n**Lời đọc:**\nGói Plus 522.500 đồng. Nhớ đăng ký kênh! [#p1]\n")
     html = duyet.render_review_1(d).read_text(encoding="utf-8")
     assert "Cảnh báo thời lượng" in html
+
+
+def test_review_2_flags_thumbnail_not_on_locked_template(tmp_path):
+    d = _video(tmp_path)
+    goi = {**GOI, "phuong_an": [{**GOI["phuong_an"][0]}, {**GOI["phuong_an"][1], "khuon": "khung"},
+                                {k: v for k, v in GOI["phuong_an"][2].items() if k != "khuon"}]}
+    (d / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "Phương án 1: Lỗi: thumbnail" not in html
+    assert "Phương án 2: Lỗi: thumbnail không theo khuôn đã khóa" in html
+    assert "Phương án 3: Lỗi: thumbnail không theo khuôn đã khóa" in html

@@ -150,3 +150,42 @@ def test_khung_places_ghi_cong_at_bottom_left_away_from_bottom_right(tmp_path, m
     assert g.crop((55, 670, 480, 715)).getextrema()[1] > 200  # chữ trắng nằm góc dưới trái
     assert g.crop((700, 630, 1280, 720)).getextrema()[1] < 60  # góc dưới phải trống cho badge thời lượng
 
+
+
+def _anh(tmp_path, mau=(200, 60, 60), size=(900, 700)):
+    a = tmp_path / "a.png"
+    Image.new("RGB", size, mau).save(a)
+    return a
+
+
+def test_ho_so_makes_1280x720_and_168px_and_needs_number_and_question(tmp_path):
+    import pytest
+    a = _anh(tmp_path)
+    big, small = thumb.ho_so(a, "NVIDIA MẤT", "190 TỶ USD", "VÌ MỘT LÁ THƯ?", tmp_path / "t.png", "Ảnh: X")
+    assert Image.open(big).size == (1280, 720) and Image.open(small).size == (168, 94)
+    with pytest.raises(ValueError):
+        thumb.ho_so(a, "NVIDIA", "", "VÌ SAO?", tmp_path / "t2.png")
+    with pytest.raises(ValueError):
+        thumb.ho_so(a, "NVIDIA", "190 TỶ", "  ", tmp_path / "t3.png")
+
+
+def test_ho_so_cream_paper_photo_card_right_and_red_underline_left(tmp_path):
+    a = _anh(tmp_path)
+    big, _ = thumb.ho_so(a, "GRAB GIẢM PHÍ", "3.000 TỶ", "VỀ TÚI AI?", tmp_path / "t.png")
+    img = Image.open(big).convert("RGB")
+    assert img.getpixel((3, 3)) == theme.rgb(theme.TH["kem"]["nen"])            # nền giấy kem theo theme
+    assert img.getpixel((960, 380)) == (200, 60, 60)                             # ảnh dán ở nửa phải
+    do = theme.rgb(theme.TH["sac"]["do"][0])
+    trai = img.crop((40, 150, 700, 420))
+    assert any(c == do for _, c in trai.getcolors(1_000_000))                    # gạch đỏ dưới con số
+    assert trai.convert("L").getextrema()[0] < 40                                # chữ mực tối ở nửa trái
+
+
+def test_ho_so_takes_colours_from_theme_and_credit_stays_left_of_badge(tmp_path, monkeypatch):
+    monkeypatch.setattr(theme, "TH", {**theme.TH, "kem": {**theme.TH["kem"], "nen": "#F0E0D0"}})
+    monkeypatch.setattr(thumb, "NHAN_VAT_HO_SO", tmp_path / "khong-co.png")
+    a = _anh(tmp_path)
+    big, _ = thumb.ho_so(a, "A", "1", "B?", tmp_path / "t.png", ghi_cong="Ảnh: " + "Nguyễn Văn A " * 30)
+    img = Image.open(big).convert("RGB")
+    assert img.getpixel((3, 3)) == (240, 224, 208)
+    assert img.convert("L").crop((1150, 680, 1280, 720)).getextrema()[0] > 150  # góc badge thời lượng để trống
