@@ -1,0 +1,693 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns:yt="http://www.youtube.com/xml/schemas/2015" xmlns:media="http://search.yahoo.com/mrss/" xmlns="http://www.w3.org/2005/Atom">
+ <link rel="self" href="http://www.youtube.com/feeds/videos.xml?channel_id=UC91zSg_iPgJZZL6KB91BewQ"/>
+ <id>yt:channel:91zSg_iPgJZZL6KB91BewQ</id>
+ <yt:channelId>91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+ <title>Mọt Công Nghệ</title>
+ <link rel="alternate" href="https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ"/>
+ <author>
+  <name>Mọt Công Nghệ</name>
+  <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+ </author>
+ <published>2026-10-21T13:45:21+00:00</published>
+ <entry>
+  <id>yt:video:LK7zzkojcRM</id>
+  <yt:videoId>LK7zzkojcRM</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>So sánh CPU vs GPU vs TPU vs NPU, chúng khác nhau thế nào?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=LK7zzkojcRM"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-11T04:00:10+00:00</published>
+  <updated>2026-11-12T11:28:30+00:00</updated>
+  <media:group>
+   <media:title>So sánh CPU vs GPU vs TPU vs NPU, chúng khác nhau thế nào?</media:title>
+   <media:content url="https://www.youtube.com/v/LK7zzkojcRM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i1.ytimg.com/vi/LK7zzkojcRM/hqdefault.jpg" width="480" height="360"/>
+   <media:description>CPU, GPU, TPU, NPU: bốn cái tên đọc na ná nhau như mật khẩu wifi, nhưng mỗi con chip làm một việc rất khác. Vì sao &quot;bộ não&quot; CPU lại chạy AI kém nhất, Google tự làm chip riêng để làm gì, và điện thoại của bạn có đang giấu một con chip AI không?
+
+Video lần lượt đi qua từng con chip bằng một quán phở: CPU là ông chủ quán lo mọi việc, GPU là đội phụ bếp hàng nghìn người cùng thái thịt, TPU là dây chuyền nhân cộng Google làm ra từ một phép tính nháp năm 2013, còn NPU là con chip AI tiết kiệm pin nằm ngay trong túi quần. Sau đó là đường đi của một câu hỏi gửi Gemini qua cả bốn con chip, cái bẫy của con số TOPS, và hai điều mang về từ câu chuyện này.
+
+⏱ Mốc chương
+00:00 Google tung thêm hai con TPU mới, và câu hỏi: bốn con chip khác nhau ở đâu?
+01:19 Phần 1 · CPU: ông chủ quán của cả cái máy
+02:56 Phần 2 · GPU: đội thái thịt vốn được thuê để vẽ game
+05:19 Phần 3 · TPU: con chip ra đời từ một phép tính nháp
+08:27 Phần 4 · NPU: con chip AI trong túi bạn
+11:04 Phần 5 · Một câu hỏi đi qua mấy con chip
+13:40 Phần 6 · Hai điều mang về từ bốn con chip
+
+Giá chip Nvidia là ước tính của Morgan Stanley, Nvidia không niêm yết. Mức nhanh hơn 15–30 lần là số Google đo năm 2015 trên việc chạy AI (suy luận), Nvidia không đồng ý với cách so này.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#CPU #GPU #TPU #NPU #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="132" average="5.00" min="1" max="5"/>
+    <media:statistics views="10997"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:EWJHbyekY9I</id>
+  <yt:videoId>EWJHbyekY9I</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Từ cậu bé dọn vệ sinh tới ông chủ Nvidia 4.000 tỷ đô: Jensen Huang đã làm thế nào?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=EWJHbyekY9I"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-10T09:31:02+00:00</published>
+  <updated>2026-11-12T09:13:39+00:00</updated>
+  <media:group>
+   <media:title>Từ cậu bé dọn vệ sinh tới ông chủ Nvidia 4.000 tỷ đô: Jensen Huang đã làm thế nào?</media:title>
+   <media:content url="https://www.youtube.com/v/EWJHbyekY9I?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/EWJHbyekY9I/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Từ cậu bé 9 tuổi bị giao cọ nhà vệ sinh cho cả trăm nam sinh ở Kentucky, Jensen Huang đã đi đường nào để thành ông chủ của Nvidia, công ty hơn 4.000 tỷ đô? Gặp thời, hay thời phải đi tìm ông?
+
+Video kể lại đời Jensen theo năm tháng: tuổi thơ bị gửi nhầm trường, những ca rửa bát ở Denny's, ba người bạn lập Nvidia trong một quán ăn bình dân, lần công ty chỉ còn đủ tiền đúc chip một lần, canh bạc CUDA bị chê suốt sáu năm, rồi AlexNet, chiếc DGX-1 tặng OpenAI và mốc 4.000 tỷ đô — kèm cái giá của một đời làm việc không ngày nghỉ. Cuối video là 7 bài học đúc kết từ chính câu chuyện này.
+
+⏱ Mốc chương
+00:00 Cổ phiếu Nvidia bốc hơi, và câu hỏi: gặp thời hay thời đi tìm?
+01:18 Phần 1 · Cậu bé bị gửi nhầm trường
+04:03 Phần 2 · Ba người bạn ở quán Denny's
+06:05 Phần 3 · Ba mươi ngày là phá sản
+09:05 Phần 4 · Canh bạc mười năm: CUDA
+11:13 Phần 5 · Hai card chơi game và một chiếc máy đem tặng
+12:32 Phần 6 · Bốn nghìn tỷ đô, và cái giá
+15:54 Phần 7 · Bảy bài học từ đời Jensen
+
+Một số chi tiết đời Jensen là lời chính ông kể lại qua nhiều lần phỏng vấn, các lần kể có chênh nhau; video ghi rõ &quot;theo lời Jensen&quot; ở những chỗ đó. Cuộc điều tra của Hội đồng quản trị Nvidia chưa có kết luận.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#JensenHuang #Nvidia #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="91" average="5.00" min="1" max="5"/>
+    <media:statistics views="10444"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:bjCNmVlVUJE</id>
+  <yt:videoId>bjCNmVlVUJE</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Ông chủ Nvidia nhận ngoại tình với người nghi là &quot;gián điệp Trung Quốc&quot;: bài học cay đắng từ các CEO</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=bjCNmVlVUJE"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-09T10:47:41+00:00</published>
+  <updated>2026-11-10T15:26:54+00:00</updated>
+  <media:group>
+   <media:title>Ông chủ Nvidia nhận ngoại tình với người nghi là &quot;gián điệp Trung Quốc&quot;: bài học cay đắng từ các CEO</media:title>
+   <media:content url="https://www.youtube.com/v/bjCNmVlVUJE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/bjCNmVlVUJE/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Ông chủ Nvidia Jensen Huang thừa nhận ngoại tình trong lá thư gửi nhân viên chiều Chủ nhật 8/11, đúng lúc báo Mỹ đưa tin người phụ nữ ấy bị nghi làm việc cho tình báo Trung Quốc và hội đồng quản trị Nvidia mở một cuộc điều tra độc lập. Chuyện này nặng tới đâu với Nvidia, và những CEO hàng đầu như ở Intel, McDonald's, Nestlé đã mất ghế ra sao trong các vụ tương tự?
+
+Video đọc kỹ lá thư 25 câu và thông báo 6 câu của hội đồng quản trị, xem Nvidia đang giữ những bí mật gì và bí mật chip thường bị lộ bằng cửa nào (vụ kỹ sư Google Linwei Ding, Samsung, TSMC), kể lại ba vụ Intel 2018, McDonald's 2019–2023, Nestlé 2025, so Jensen với ba người ấy, rồi rút ra bài học cho bất cứ ai đang giữ vị trí quan trọng.
+
+⏱ Mốc chương
+00:00 Lá thư chiều Chủ nhật và cuộc điều tra của Nvidia
+02:00 Lá thư nhận gì, và không nhắc tới gì?
+05:41 Bí mật Nvidia ở đâu, bí mật chip lộ bằng cửa nào?
+09:54 Intel, McDonald's, Nestlé: ghế đã mất thế nào?
+13:42 Jensen khác những người kia ở chỗ nào?
+15:16 Bài học cay đắng, và một lời chúc
+
+Thông tin bà Alice Huang bị nghi liên quan tới tình báo Trung Quốc là tin của báo Mỹ dẫn nguồn quan chức, chưa được xác nhận chính thức. Phía Trung Quốc gọi các tin này là suy đoán vô căn cứ; bà Alice Huang chưa lên tiếng. Hội đồng quản trị Nvidia chưa kết luận Jensen Huang vi phạm quy định nào. Mức giảm giá trị Nvidia trong phiên qua đêm 8/11 là ước tính của kênh (vốn hoá khoảng 4.510 tỷ đô × mức giảm sâu nhất 4,2 %).
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#Nvidia #JensenHuang #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="494" average="5.00" min="1" max="5"/>
+    <media:statistics views="72612"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:ZGx0BoRm7ew</id>
+  <yt:videoId>ZGx0BoRm7ew</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Ông chủ Nvidia bị nghi dính &quot;bẫy tình&quot; của gián điệp Trung Quốc | 2 tỷ đô chip AI đi đâu?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=ZGx0BoRm7ew"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-08T10:55:28+00:00</published>
+  <updated>2026-11-11T04:06:20+00:00</updated>
+  <media:group>
+   <media:title>Ông chủ Nvidia bị nghi dính &quot;bẫy tình&quot; của gián điệp Trung Quốc | 2 tỷ đô chip AI đi đâu?</media:title>
+   <media:content url="https://www.youtube.com/v/ZGx0BoRm7ew?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/ZGx0BoRm7ew/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Tình báo Mỹ tin rằng Bộ An ninh Quốc gia Trung Quốc đã tuyển bà Alice Huang, người từng điều hành Megaspeed ở Singapore, để thu thập thông tin về Jensen Huang, ông chủ Nvidia. Công ty ấy từng mua khoảng 2 tỷ đô hàng công nghệ AI của Nvidia — số hàng đó đã đi đâu, có lọt sang Trung Quốc không, và chip AI lậu có đi qua Việt Nam?
+
+Video đi lần lượt: báo Mỹ đưa tin những gì, Nvidia, Jensen, Trung Quốc và Singapore trả lời ra sao, Hạ viện Mỹ muốn hỏi Jensen điều gì; 2 tỷ đô là tiền mua gì và vì sao chưa ai chứng minh được số hàng ấy đã sang Trung Quốc; vì sao chip Nvidia rất khó lọt sang Trung Quốc, và hai vụ chip lậu đã bị Bộ Tư pháp Mỹ khởi tố (vụ khác, không liên quan Megaspeed); Nvidia biết chip của mình đang ở đâu bằng cách nào; chuyện này để lại bài học gì cho người bình thường; cuối cùng là Việt Nam và những ngày sắp tới.
+
+⏱ Mốc chương
+00:00 Tình báo Mỹ nghi gì, Nvidia và Việt Nam ở đâu trong chuyện này
+01:19 Bị nghi vướng gián điệp là nghi những gì?
+04:33 Hai tỷ đô chip AI là tiền mua gì?
+06:43 Chip AI lọt sang Trung Quốc bằng đường nào?
+09:45 Nvidia biết chip đang ở đâu bằng cách nào?
+11:27 Chuyện này để lại gì cho người bình thường?
+12:51 Việt Nam và những ngày sắp tới
+
+🖼 Ghi công ảnh
+- Jensen Huang: video chính thức của NVIDIA (GTC 2026) · Donald Trump: Nhà Trắng · Ron Wyden: U.S. Customs and Border Protection · John Moolenaar: Ủy ban Đặc biệt về Trung Quốc, Hạ viện Mỹ
+- Bà Alice Huang và Jensen ở quán bar Đài Bắc 06/2024: ảnh Net Thunder đăng LinkedIn, qua Financial News (Hàn Quốc); mắt bà Alice Huang đã được làm mờ
+- Greg Lui: ảnh do Văn phòng Công tố Mỹ ở Los Angeles công bố, qua Newsweek · Yih-Shyan Liaw: ảnh tư liệu của Liberty Times (Đài Loan); mắt đã được làm mờ
+- Lễ ký Nvidia – Chính phủ Việt Nam: VGP (Báo Chính phủ) · Jensen ở Hà Nội: VNA / Vietnam News · Phòng máy chủ: Carl Lender, CC BY 2.0 · Card H100: 极客湾Geekerwan, CC BY 3.0 · Biểu tượng bàn tay: Microsoft Fluent Emoji (MIT)
+- Ảnh chụp văn bản: BIS, Bộ Tư pháp Mỹ, Ủy ban Đặc biệt về Trung Quốc của Hạ viện — ghi dưới từng ảnh trong phim
+
+Tới ngày làm video (08/11/2026), chưa ai trong vụ Megaspeed bị buộc tội: chuyện bà Alice Huang do tình báo Trung Quốc tuyển là tin báo dẫn quan chức giấu tên; chuyện &quot;quan hệ tình cảm&quot; chỉ do Financial Times dẫn một bản ghi nhớ chưa công bố, Nvidia từ chối bình luận. Nvidia và Jensen nói các lần tiếp xúc là bình thường, Trung Quốc bác tin là vô căn cứ, Megaspeed nói đã thuê luật sư điều tra nội bộ và sẽ hợp tác với chính phủ Mỹ. Hai vụ Greg Lui và Super Micro là vụ khác, người bị cáo buộc chưa bị xét xử. Ba con số 2 tỷ, 4,6 tỷ và 4,8 tỷ đô đo những khoảng thời gian và công ty khác nhau, không cộng với nhau.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#Nvidia #JensenHuang #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="270" average="5.00" min="1" max="5"/>
+    <media:statistics views="62181"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:z3YiV4bweIg</id>
+  <yt:videoId>z3YiV4bweIg</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Hollywood tố web lậu người Việt hút 12,5 tỷ lượt truy cập: hàng Việt sắp bị Mỹ đánh thuế?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=z3YiV4bweIg"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-08T10:33:47+00:00</published>
+  <updated>2026-11-11T05:08:31+00:00</updated>
+  <media:group>
+   <media:title>Hollywood tố web lậu người Việt hút 12,5 tỷ lượt truy cập: hàng Việt sắp bị Mỹ đánh thuế?</media:title>
+   <media:content url="https://www.youtube.com/v/z3YiV4bweIg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/z3YiV4bweIg/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Hiệp hội Điện ảnh Mỹ, đại diện các hãng phim Hollywood, nói với chính phủ Mỹ rằng mấy trang phim lậu đặt ở Việt Nam đã hút hơn 12,5 tỷ lượt truy cập trong năm 2025. Mỹ đang điều tra Việt Nam về sở hữu trí tuệ, hạn kết luận là 29/11/2026, và trên bàn có cả phương án thuế — trong khi 10 tháng đầu năm hàng Việt bán sang Mỹ được 159,4 tỷ đô.
+
+Video đi lần lượt: con số 12,5 tỷ lượt là của ai (không phải số lần người Việt xem phim lậu) và bảy người vừa bị truy tố đứng sau HiAnime, Sflix, MyFlixerz; một trang phim lậu chạy thế nào — trang &quot;mặt tiền&quot; nhúng phim từ một &quot;bếp chung&quot; phía sau, vì sao đóng một bếp thì cả trăm trang tắt, vì sao chặn tên miền mãi không xuể; tiền quảng cáo hơn 308 tỷ đồng đã được lần ra tới nhà, tới xe thế nào; Mỹ chấm điểm Việt Nam ra sao và ngày 29/11 Mỹ được làm gì; cuối cùng mang về Việt Nam: ai đòi thuế, ai không, hàng Việt và người xem như mình được mất gì.
+
+⏱ Mốc chương
+00:00 Hollywood tố, Mỹ điều tra, hàng Việt trên bàn
+01:23 12,5 tỷ lượt là của ai?
+02:31 Một trang phim lậu chạy thế nào?
+05:34 Tiền ở đâu ra, lần dấu thế nào?
+07:06 Mỹ tính sổ thế nào?
+09:03 Mang về Việt Nam
+
+🖼 Ghi công ảnh
+- Ảnh chụp văn bản: USTR, Special 301 năm 2026 và Notorious Markets 2025 — ghi dưới từng ảnh trong phim
+- Biển Hollywood: Thomas Wolf, CC BY-SA 3.0 · Cảng Hải Phòng: Nathan.cima, CC BY-SA 4.0 · Nhà máy Samsung Bắc Ninh: VietnamFinance
+- Thumbnail: ảnh Trump — Reuters; nhà máy Samsung — Báo Pháp luật Việt Nam; biển Hollywood — Thomas Wolf, CC BY-SA 3.0
+- Tên các trang lậu chỉ để nhận diện theo tài liệu công khai; video không dẫn link hay hướng dẫn truy cập trang nào
+
+12,5 tỷ lượt là số Hiệp hội Điện ảnh Mỹ tự đếm, cộng gộp bốn trang, tính lượt vào từ khắp thế giới. Bảy người trong vụ HiAnime mới bị truy tố, chưa bị xét xử. Tới ngày làm video, Mỹ chưa đưa ra mức thuế nào cho cuộc điều tra sở hữu trí tuệ; ngày 29/11 là hạn kết luận và có thể được gia hạn. Tỷ lệ 50/35/15 là ước tính của Chứng khoán Tiên Phong.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#PhimLậu #ThuếMỹ #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="71" average="5.00" min="1" max="5"/>
+    <media:statistics views="8268"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:AgC1bcg6KXI</id>
+  <yt:videoId>AgC1bcg6KXI</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Nếu sàn crypto Việt Nam bị hack thì tiền của bạn ra sao?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=AgC1bcg6KXI"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-07T13:00:58+00:00</published>
+  <updated>2026-11-11T05:09:46+00:00</updated>
+  <media:group>
+   <media:title>Nếu sàn crypto Việt Nam bị hack thì tiền của bạn ra sao?</media:title>
+   <media:content url="https://www.youtube.com/v/AgC1bcg6KXI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/AgC1bcg6KXI/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Rạng sáng 30/10, sàn Binance bị lấy khoảng 6,3 tỷ đô, vụ trộm tiền số lớn nhất xưa nay. Một tuần sau, Binance báo đã tự bù 98% bằng tiền của mình. Trong khi đó ở Việt Nam, 5 doanh nghiệp đang xin mở những sàn tiền số đầu tiên được cấp phép, mỗi sàn vốn tối thiểu 10.000 tỷ đồng — chưa bằng 1/16 số Binance vừa mất. Vậy nếu sàn ở Việt Nam bị hack, tiền của bạn ra sao?
+
+Video đi lần lượt: một tuần sau vụ hack, tiền đã chạy đi đâu — tách rõ số đã phong toả, số đã trả lại và số Binance tự bù, có nguồn và giờ cho từng số (trả lời câu hỏi của một bạn xem dưới video trước); Binance lấy tiền đâu ra để đền, kẻ tấn công vào bằng cách nào, và vì sao &quot;tự đền&quot; là chuyện của một cái sàn rất to (Bybit, Coincheck, Mt. Gox); năm hồ sơ sàn tiền số ở Việt Nam đang đứng ở đâu; rồi Nghị quyết 05/2025 nói gì nếu sàn bị hack, chỗ nào luật chưa nói, Hàn Quốc và Nhật làm thế nào, và tiền của người Việt đang nằm trên sàn nước ngoài thì ai đứng ra.
+
+⏱ Mốc chương
+00:00 Binance mất 6,3 tỷ đô, sàn Việt sắp mở
+00:58 Một tuần, tiền chạy đi đâu?
+03:35 Tiền đền ở đâu ra?
+06:22 Sàn Việt sắp mở, túi sâu tới đâu?
+08:14 Bị hack thì luật nói gì?
+
+🖼 Ghi công ảnh
+- Changpeng Zhao: Web Summit, CC BY 2.0 · Ông Tô Trần Hòa: Doanh nghiệp và Hội nhập
+- Ảnh chụp màn hình: Binance, CZ (X), CNBC, Elliptic, mempool.space, LawFuel, LuatVietnam, Thời báo Tài chính Việt Nam, Bitcoin.com — ghi dưới từng ảnh trong phim
+- Bình luận của một bạn xem dưới video trước của kênh (đã che một phần tên)
+- Thumbnail: khung video chính thức của Binance (Binance Blockchain Week); Landmark 81 — Phi Long / Pexels; tiền giấy — HuangWending, CC0; két sắt — Tangerineduel, CC BY-SA 4.0
+- Logo Binance, Tether, USDC, Ripple, Arbitrum, Elliptic, Bybit, Coincheck, Homebrew chỉ để nhận diện, nhãn hiệu thuộc chủ sở hữu
+
+Các tỷ lệ đã bù (80%, 90%, 95%, 98%) và bản kê dự trữ là số Binance tự báo. Số phong toả 2,85 tỷ đô Binance và Elliptic đếm khớp nhau; tới ngày làm video chưa có khoản phong toả nào được trả về. 7.500 BTC rút khỏi quỹ SAFU quy ra khoảng 580 triệu đô là phép tính của kênh theo giá hôm ấy. Năm doanh nghiệp xin mở sàn được nêu đúng theo tin Bộ Tài chính và báo chí, không xếp hạng.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán tiền số hay dùng sàn nào.
+
+#Binance #SànTiềnSố #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="92" average="5.00" min="1" max="5"/>
+    <media:statistics views="10197"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:s7l1zBV10GM</id>
+  <yt:videoId>s7l1zBV10GM</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Bong bóng AI chính thức nổ? Chip Mỹ sập 12% một ngày, giá RAM, laptop có giảm theo?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=s7l1zBV10GM"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-06T13:05:10+00:00</published>
+  <updated>2026-11-11T04:07:07+00:00</updated>
+  <media:group>
+   <media:title>Bong bóng AI chính thức nổ? Chip Mỹ sập 12% một ngày, giá RAM, laptop có giảm theo?</media:title>
+   <media:content url="https://www.youtube.com/v/s7l1zBV10GM?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/s7l1zBV10GM/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Ngày 5/11, chỉ số 30 cổ phiếu chip lớn nhất nước Mỹ rơi hơn 12% trong một phiên, sáng 6/11 sàn Seoul phải ngắt giao dịch. Bong bóng AI chính thức nổ rồi sao, và thanh RAM, chiếc laptop ở Việt Nam có rẻ đi theo không? Video trả lời bằng số liệu của các hãng nghiên cứu và giá bán thật ở Việt Nam.
+
+Video đi lần lượt: cú rơi này to cỡ nào nếu đặt cạnh tháng 3/2020 và năm 2000, vì sao giới phân tích nói đây là bong bóng &quot;xì hơi&quot; chứ chưa phải &quot;nổ&quot;; vì sao chip sập đúng ngày 5/11 (lá phiếu về trung tâm dữ liệu, báo cáo Qualcomm, các quỹ bán ra); vì sao giá cổ phiếu Samsung, SK hynix rơi mà giá chip RAM vẫn tăng (hợp đồng dài hạn, phòng sạch phải tới 2028); laptop, điện thoại đang chịu ra sao; rồi mang về Việt Nam: Samsung, giá Galaxy, thanh RAM ở CellphoneS và các mốc mua sắm cuối năm.
+
+⏱ Mốc chương
+00:00 Chip Mỹ sập 12% một ngày, thanh RAM ở Việt Nam
+01:18 Bong bóng AI nổ thật chưa?
+03:21 Vì sao chip sập đúng ngày 5/11?
+05:25 Cổ phiếu rơi, giá RAM có giảm theo?
+07:39 Thế còn laptop, điện thoại?
+09:21 Mang về Việt Nam: Samsung và túi tiền người mua
+
+🖼 Ghi công ảnh
+- Ông Ed Yardeni: Yardeni Research · Bà Lisa Su: Fuzheado, CC BY 4.0 · Ông Cristiano Amon: Web Summit, CC BY 4.0 · Ông John Ternus: Apple (khung video sự kiện chính thức) · Ông Eben Upton: TechCrunch, CC BY 2.0
+- Nasdaq MarketSite, Times Square vắng người năm 2020, toà Korea Exchange, Yeouido, Raspberry Pi 5, phòng sạch: Wikimedia Commons (tác giả và giấy phép in trên hình)
+- Nhà máy Samsung Bắc Ninh: VietnamFinance · Nhà máy Samsung Thái Nguyên: TTXVN / Nhà Đầu Tư
+- Thumbnail: khung video chính thức NVIDIA (GTC 2026) và AMD (Advancing AI 2025); bong bóng — ảnh tạo bằng AI (Google Flow)
+- Logo Nvidia, Micron, Samsung, SK hynix, AMD, Qualcomm, Apple chỉ để nhận diện, nhãn hiệu thuộc chủ sở hữu
+
+Số Samsung, SK hynix sàn Seoul ngày 6/11 là mức thấp nhất trong phiên (&quot;có lúc&quot;), không phải giá đóng cửa. Nvidia mất gần 450 tỷ USD vốn hoá là số của CNBC. Các mốc giá RAM hạ (giữa 2027, 2028) là dự đoán của Jefferies, Omdia, Counterpoint, mỗi nơi một ý. Giá 7.490.000đ là giá CellphoneS ghi khi đang hết hàng, sáng 6/11.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#BongBóngAI #GiáRAM #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="1219" average="5.00" min="1" max="5"/>
+    <media:statistics views="269581"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:1Ue9s5WLZjI</id>
+  <yt:videoId>1Ue9s5WLZjI</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Bầu cử giữa kỳ Mỹ: Phe ông Trump mất cả hai viện, 159 tỷ đô hàng Việt bán sang Mỹ sẽ ra sao?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=1Ue9s5WLZjI"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-06T10:00:37+00:00</published>
+  <updated>2026-11-09T23:40:26+00:00</updated>
+  <media:group>
+   <media:title>Bầu cử giữa kỳ Mỹ: Phe ông Trump mất cả hai viện, 159 tỷ đô hàng Việt bán sang Mỹ sẽ ra sao?</media:title>
+   <media:content url="https://www.youtube.com/v/1Ue9s5WLZjI?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/1Ue9s5WLZjI/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Hôm 3/11 nước Mỹ bầu cử giữa kỳ, và phe của Tổng thống Trump mất quyền kiểm soát cả hai viện Quốc hội. Vậy hàng điện tử Việt Nam, món bán sang Mỹ nhiều nhất, có sao không? Video này trả lời bằng số liệu và văn bản gốc của chính phủ Mỹ.
+
+Video đi lần lượt: trận thua này to cỡ nào (số sơ bộ, đặt cạnh các kỳ trước); Quốc hội mới thật sự đổi được gì về thuế, chip, AI và vì sao cái chốt vẫn nằm ở Nhà Trắng; điện thoại, laptop, chip làm ở Việt Nam đi vào Mỹ đang chịu thuế bao nhiêu (đọc tận trang 226 của văn bản Mỹ) và chuyện đó chạm gì tới túi tiền người dùng; rồi hai việc cần ngóng: kết luận cuộc điều tra Mục 301 nhắm riêng vào Việt Nam (hạn theo luật là cuối tháng này, có thể gia hạn), và chuyện Mỹ có mở rộng thuế chip sang laptop, máy chủ hay không (mới là tin đang cân nhắc).
+
+⏱ Mốc chương
+00:00 Bầu cử giữa kỳ Mỹ: Samsung, Việt Nam và câu hỏi chính
+01:15 Phe ông Trump thua đến mức nào?
+03:40 Quốc hội mới đổi được gì: thuế, chip, AI
+07:11 Hàng điện tử Việt Nam chịu thuế bao nhiêu?
+09:43 Cuối tháng này có gì cần ngóng?
+11:41 Kết: điện thoại của bạn làm ở nước nào?
+
+🖼 Ghi công ảnh
+- Ông Donald Trump: The White House (khung từ video chính thức, 03/10/2026, tác phẩm của chính phủ Mỹ, public domain)
+- Ông Bill Clinton: Nhà Trắng (Bob McNeely), public domain · Ông Barack Obama: Pete Souza / Nhà Trắng, public domain
+- Ông Ted Osius: U.S. Department of State, public domain
+- Ông Cristiano Amon (Qualcomm): Web Summit, CC BY 4.0
+- Ông Tập Cận Bình: Presidencia de la República del Ecuador, public domain
+- Toà nhà Quốc hội Mỹ (Capitol): Martin Falbisoner, CC BY-SA 3.0 (https://commons.wikimedia.org/wiki/File:US_Capitol_east_side.JPG)
+- Nhà Trắng: Nishkid64, public domain
+- Cảng container quốc tế Hải Phòng: Nathan.cima, CC BY-SA 4.0
+- Nhà máy Samsung Thái Nguyên: TTXVN / Nhà Đầu Tư; VietnamFinance
+- Nhà máy Samsung Bắc Ninh: VietnamFinance
+- Biểu tượng bắt tay: Twemoji, CC BY 4.0
+- Thumbnail: khung video The White House (03/10/2026); điện thoại Galaxy S25 Ultra — Alvis Jean, CC BY-SA 4.0; cục sạc Samsung — Slcreza, CC BY-SA 4.0 (Wikimedia Commons); tàu container ở cảng Hải Phòng — Nathan.cima, CC BY-SA 4.0; nhà máy Samsung Bắc Ninh (VietnamFinance)
+- Logo Samsung, Apple, Nvidia, Microsoft, Amazon, Qualcomm chỉ để nhận diện, nhãn hiệu thuộc chủ sở hữu
+
+Kết quả bầu cử trong video là số sơ bộ tính tới sáng 5/11 giờ Mỹ, chưa được chứng nhận. &quot;Thiếu 13 phiếu&quot; Thượng viện để vượt phủ quyết (cần 67, có 54) và mốc 29/11 của cuộc điều tra Mục 301 (6 tháng sau ngày mở 29/5) là phép tính của kênh theo luật; Mỹ được phép gia hạn thêm 3 tháng. Lịch gặp của ông Trump và ông Tập tại APEC mới là dự kiến theo báo chí. Ước tính 37% của Bộ Công Thương là phần hàng còn chịu mức thuế 12,5% sau khi trừ hàng được miễn. Cuộc điều tra Mục 301 nhắm vào Việt Nam chưa nhắc tới điện thoại hay đồ điện tử và chưa có mức thuế mới nào được đưa ra.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#BầuCửGiữaKỳMỹ #HàngĐiệnTử #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="885" average="5.00" min="1" max="5"/>
+    <media:statistics views="204668"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:IOH1kiMq5kg</id>
+  <yt:videoId>IOH1kiMq5kg</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Elon Musk chi gần nửa tỷ đô cho bầu cử Mỹ rồi thua đau: Đế chế Tesla, SpaceX mất những gì?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=IOH1kiMq5kg"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-06T05:23:32+00:00</published>
+  <updated>2026-11-08T22:05:18+00:00</updated>
+  <media:group>
+   <media:title>Elon Musk chi gần nửa tỷ đô cho bầu cử Mỹ rồi thua đau: Đế chế Tesla, SpaceX mất những gì?</media:title>
+   <media:content url="https://www.youtube.com/v/IOH1kiMq5kg?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/IOH1kiMq5kg/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Elon Musk mất gần 34 tỷ đô chỉ sau một đêm bầu cử giữa kỳ Mỹ, và Quốc hội mới đã rục rịch đòi gọi các ông chủ Big Tech lên hỏi chuyện. Vì sao cả chợ lãi mà mỗi mình Musk lỗ, Quốc hội Mỹ soi được tới đâu, và Starlink, Tesla, Facebook, ChatGPT ở Việt Nam có dính gì không?
+
+Cập nhật phiên 05/11: Tesla rơi thêm 11 %, SpaceX rơi thêm 9 %, Forbes tính chiều hôm ấy Musk mất thêm khoảng 80 tỷ đô — sau hai phiên đã hụt hơn 100 tỷ.
+
+Video đi qua: 34 tỷ đô ấy mất thế nào (cổ phiếu Tesla, SpaceX, chứ không phải tiền mặt) và vì sao lại là bang Texas; Quốc hội Mỹ có quyền gì, ai nằm trong danh sách dự kiến bị soi, chưa làm được gì; rồi mang về Việt Nam: giá Starlink so với cáp quang và tháng lương, Tesla Motors Việt Nam, Facebook, Nvidia, ChatGPT, và thuế 12,5 % với hàng Việt.
+
+⏱ Mốc chương
+00:00 Musk mất gần 34 tỷ đô sau một đêm bầu cử
+01:48 34 tỷ đô bay đi đâu, vì sao lại là Texas?
+05:04 Quốc hội Mỹ soi Big Tech được tới đâu?
+08:47 Người Việt có dính gì: Starlink, Tesla, Facebook, ChatGPT, thuế
+12:21 Chốt
+
+Danh sách các CEO &quot;dự kiến bị soi&quot; là của Punchbowl News, tính đến 05/11/2026 chưa có trát nào được ban hành; lời hứa tạm dừng xây trung tâm dữ liệu ở Texas là lời hứa tranh cử; con số Texas 27 % là ước tính của Wells Fargo; số 80 tỷ của Forbes đo giữa phiên 05/11.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#ElonMusk #Starlink #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="89" average="5.00" min="1" max="5"/>
+    <media:statistics views="12424"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:WxFAPa7dJtE</id>
+  <yt:videoId>WxFAPa7dJtE</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Bầu cử Mỹ chặn các trung tâm dữ liệu AI: Việt Nam được hưởng lợi như thế nào?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=WxFAPa7dJtE"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-05T11:06:47+00:00</published>
+  <updated>2026-11-12T16:04:00+00:00</updated>
+  <media:group>
+   <media:title>Bầu cử Mỹ chặn các trung tâm dữ liệu AI: Việt Nam được hưởng lợi như thế nào?</media:title>
+   <media:content url="https://www.youtube.com/v/WxFAPa7dJtE?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/WxFAPa7dJtE/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Hôm 3/11 nước Mỹ đi bầu cử giữa kỳ, và trên cùng lá phiếu, dân mấy chục thị trấn, thành phố ở 10 bang được hỏi có cho xây trung tâm dữ liệu AI gần nhà hay không. Kết quả sơ bộ gần như một chiều: chỉ một nơi nghiêng về phía trung tâm dữ liệu. Vậy cơ hội nào mở ra cho Việt Nam? Video này gỡ từng câu bằng số liệu có nguồn.
+
+Video đi lần lượt: trung tâm dữ liệu AI to cỡ nào; vì sao dân Mỹ nói không (tiền điện, nước, tiếng ù, ít việc làm, miễn thuế); sàn chứng khoán phản ứng ngược đời ra sao; hàng xóm Malaysia, Singapore bắt đầu kén khách; rồi Việt Nam mình có gì: xây rẻ bằng nửa Singapore, Hoà Lạc chạy thật, Củ Chi đang xây, luật mới, việc làm, cáp quang biển, và việc lớn còn ở phía trước là điện.
+
+⏱ Mốc chương
+00:00 Bầu cử Mỹ 3/11: dân được hỏi về trung tâm dữ liệu
+01:37 Trung tâm dữ liệu AI to cỡ nào?
+02:23 Việt Nam mình mới có bao nhiêu?
+03:09 Vì sao dân Mỹ nói không: tiền điện
+04:16 Nước, tiếng ù và 50 việc làm
+04:49 Miễn thuế, và những lá phiếu chênh hẳn
+05:51 Sàn chứng khoán: ai rơi, ai lên?
+07:28 Google đổ 15 tỷ đô vào Malaysia
+07:52 Hàng xóm bắt đầu kén khách
+08:40 Cơ hội cho Việt Nam là gì?
+08:58 Xây rẻ bằng nửa Singapore
+09:27 Hoà Lạc, Củ Chi: đã có người làm thật
+10:09 Luật mới và hàng dài dự án
+10:55 Việc làm nằm ở đâu?
+11:31 Cáp quang biển
+11:55 Cái khó nhất: điện
+12:56 Tóm lại
+
+Kết quả bỏ phiếu là số sơ bộ sáng 4/11; 41 là số câu hỏi Ballotpedia đếm (một nơi có thể có vài câu). &quot;Ngang 800.000 hộ Mỹ&quot; là phép tính của kênh (1.000 MW chạy cả năm, chia cho điện trung bình một hộ theo EIA). Dự án G42 – FPT là đề xuất kèm thoả thuận khung. Tới lúc làm video, chưa hãng nào tuyên bố dời trung tâm dữ liệu ra nước ngoài vì bầu cử.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#TrungTâmDữLiệu #AI #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="543" average="5.00" min="1" max="5"/>
+    <media:statistics views="74343"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:38bX5RP4OD0</id>
+  <yt:videoId>38bX5RP4OD0</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Viettel xây nhà máy chip 1,3 tỷ đô, Nvidia lại không có nhà máy nào - Vì sao vậy?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=38bX5RP4OD0"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-05T04:00:11+00:00</published>
+  <updated>2026-11-08T20:42:31+00:00</updated>
+  <media:group>
+   <media:title>Viettel xây nhà máy chip 1,3 tỷ đô, Nvidia lại không có nhà máy nào - Vì sao vậy?</media:title>
+   <media:content url="https://www.youtube.com/v/38bX5RP4OD0?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i4.ytimg.com/vi/38bX5RP4OD0/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Mấy hôm trước Viettel cùng Ban Cơ yếu Chính phủ ra mắt VGC v1.0, con chip bảo mật đầu tiên do Việt Nam làm chủ thiết kế, làm trên tiến trình 28nm, trong khi TSMC đã sản xuất hàng loạt 2nm. Việt Nam đang đi sau thế giới bao xa trong chuyện tự làm chip? Video này gỡ từng câu bằng số liệu có nguồn.
+
+Video đi lần lượt: con chip VGC làm được gì, và &quot;làm&quot; ở đây là khâu nào (thiết kế, đúc wafer, đóng gói); 28nm với 2nm cách nhau bao nhiêu năm, và 28nm còn được dùng vào đâu; rồi Việt Nam đứng ở đâu trong chuỗi làm chip: nhà máy Hoà Lạc, tin Reuters và câu trả lời của Viettel, nhà máy ấy to hay bé so với thế giới, nhịp của Singapore và Ấn Độ, chuyện người. Cuối video là một chuyện về Nvidia làm mình nghĩ khác hẳn.
+
+⏱ Mốc chương
+00:00 Viettel ra mắt chip 28nm, thế giới đã ở 2nm
+01:01 Con chip VGC làm được gì?
+02:18 &quot;Làm&quot; ở đây là làm khâu nào?
+03:46 28nm với 2nm cách nhau bao xa?
+05:04 28nm vẫn chưa về hưu
+05:46 Việt Nam đang ở đâu trong chuỗi làm chip
+06:28 Nhà máy Hoà Lạc, tin Reuters và câu trả lời của Viettel
+07:31 Nhà máy 1,3 tỷ đô: to hay bé?
+08:17 Singapore, Ấn Độ làm thế nào?
+09:35 Thứ khó nhất: người
+10:25 Nvidia không có nhà máy đúc nào
+11:07 Tóm lại: hai cái thước
+
+&quot;Mười lăm năm&quot; là khoảng từ lúc TSMC sản xuất hàng loạt 28nm (10/2011) tới nay. Nơi đúc chip VGC chưa được công bố; ý &quot;nhiều khả năng ở nước ngoài&quot; dựa trên lời Chủ tịch Viettel rằng các dòng chip của Viettel từ trước tới nay đều đặt sản xuất ở nước ngoài vì trong nước chưa có nhà máy. Tin nhà máy Hoà Lạc khó kịp mốc 2027 là của Reuters dẫn nguồn tin; Viettel trả lời dự án vẫn đúng kế hoạch. &quot;Cỡ 38 sân bóng đá&quot; là 27 ha chia cho một sân chuẩn 105 × 68 m (0,714 ha). Con số khoảng 1,3 tỷ USD là ước tính của nhà chức trách theo Reuters, Viettel chưa công bố. Phép &quot;ướm nhịp&quot; Singapore và Ấn Độ vào Hoà Lạc là phép tính riêng của kênh, không phải dự báo.
+
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+
+#Viettel #ChipViệtNam #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="1264" average="5.00" min="1" max="5"/>
+    <media:statistics views="182723"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:nULKab954o4</id>
+  <yt:videoId>nULKab954o4</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Giá RAM tăng x3, Sam Altman chê RAM trong máy của bạn là lãng phí: Chuyện gì đang xảy ra?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=nULKab954o4"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-04T11:57:48+00:00</published>
+  <updated>2026-11-08T20:39:05+00:00</updated>
+  <media:group>
+   <media:title>Giá RAM tăng x3, Sam Altman chê RAM trong máy của bạn là lãng phí: Chuyện gì đang xảy ra?</media:title>
+   <media:content url="https://www.youtube.com/v/nULKab954o4?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i3.ytimg.com/vi/nULKab954o4/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Giá RAM ở Việt Nam đã tăng tầm gấp 3 trong hơn một năm, có thanh gấp 5, và đúng lúc ấy Sam Altman, sếp của OpenAI, lại bảo để RAM của cả thế giới nằm trong máy tính của từng người là &quot;khá là tệ&quot;. Ai đang thật sự ôm hết RAM, và bao giờ giá mới giảm? Video này gỡ từng câu bằng số liệu có nguồn.
+
+Video đi lần lượt: giá RAM gấp 3 là thật hay nói quá (giá cùng mẫu, cùng cửa hàng ở Việt Nam, quy ra tháng lương); Sam Altman thật ra đã nói gì trên podcast Cheeky Pint; ai đang ôm RAM của thế giới (wafer dồn sang HBM cho chip AI, thư ý định 900.000 wafer của OpenAI, hãng chip nhớ lãi kỷ lục); rồi câu nhiều bạn đang tìm: bao giờ RAM mới giảm.
+
+⏱ Mốc video:
+00:00 Sam Altman chê RAM trong máy bạn
+00:50 Giá RAM gấp 3: thật hay nói quá?
+02:36 Sam Altman thật ra đã nói gì?
+03:58 Vì sao người ta bực
+05:07 Ai đang ôm hết RAM: máy chủ AI và HBM
+06:11 Lò bánh mì và thư ý định của OpenAI
+07:35 Hãng chip lãi kỷ lục, ai trả tiền?
+09:09 Bao giờ RAM mới giảm?
+10:16 Người Việt sẽ thấy gì
+10:47 Tóm lại
+
+&quot;Gấp 3&quot; là thanh đứng giữa khi xếp 10 mẫu RAM, mỗi mẫu so giá trong cùng một cửa hàng (bản lưu Wayback 09–11/2025 với giá 04/11/2026); giá niêm có nơi đang hết hàng. Chữ &quot;lãng phí&quot; là cách báo chí tóm lời Altman, nguyên văn là &quot;quite terrible&quot; (khá là tệ); con số 5 % thời gian ông nói miệng, không dẫn nguồn. Con số ~40 % là phép chia của Tom's Hardware trên một thư ý định, chưa phải hợp đồng. Tin OpenAI hạ mục tiêu gọi vốn là của FT và WSJ dẫn nguồn giấu tên. Các mốc 2027, 2028, 2030 là dự báo của TrendForce và SK hynix.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+Video có sử dụng công cụ AI hỗ trợ.
+
+#GiáRAM #SamAltman #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="95" average="5.00" min="1" max="5"/>
+    <media:statistics views="13321"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:UY_IJjlWT_A</id>
+  <yt:videoId>UY_IJjlWT_A</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>DeepSeek cho không thứ Anthropic đang bán hàng tỷ đô: Trung Quốc đang mưu tính điều gì?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=UY_IJjlWT_A"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-03T11:50:04+00:00</published>
+  <updated>2026-11-11T07:01:50+00:00</updated>
+  <media:group>
+   <media:title>DeepSeek cho không thứ Anthropic đang bán hàng tỷ đô: Trung Quốc đang mưu tính điều gì?</media:title>
+   <media:content url="https://www.youtube.com/v/UY_IJjlWT_A?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/UY_IJjlWT_A/hqdefault.jpg" width="480" height="360"/>
+   <media:description>DeepSeek vừa đưa lên mạng cho không bộ phần mềm AI viết code, đúng loại sản phẩm mà Anthropic, công ty làm ra Claude, đang thu hàng tỷ đô. Cho không thật hay cho có điều kiện, và Trung Quốc đang tính nước đi gì? Video này gỡ từng câu bằng số liệu có nguồn.
+
+Video đi lần lượt: AI viết code kiểu Claude Code là gì và Anthropic thu bao nhiêu; DeepSeek cho không thật ở chỗ nào, còn tính tiền ở chỗ nào; ba toan tính mình xâu chuỗi được (bán máy in kiếm tiền mực, kéo khách khỏi hàng Mỹ, chip Huawei); rồi mấy cái gai và chuyện của dân code Việt.
+
+⏱ Mốc chương
+00:00 DeepSeek cho không, Anthropic thu tỷ đô
+00:56 Thứ Anthropic đang bán hàng tỷ đô
+02:51 Cho thật hay cho có điều kiện?
+05:23 Trung Quốc mưu tính gì: máy in và mực
+06:58 Con chip: Nvidia hay Huawei
+08:57 Mấy cái gai: lòng tin và quyền truy cập máy
+10:21 Người Việt và dân code Việt
+11:13 Tóm lại
+Doanh thu và biên lợi nhuận của DeepSeek là tin của trang The Information, DeepSeek chưa xác nhận; tin DeepSeek tự làm chip là tin đồn (Reuters dẫn nguồn giấu tên); các &quot;toan tính&quot; trong video là cách người kể xâu chuỗi, không phải lời DeepSeek. Quy đổi theo tỷ giá bán Vietcombank 03/11/2026 (25.970 đồng/USD).
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+#DeepSeek #ClaudeCode #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="712" average="5.00" min="1" max="5"/>
+    <media:statistics views="108146"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:uPlLyMc2Kls</id>
+  <yt:videoId>uPlLyMc2Kls</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Cú quay xe cực gắt của Apple, chê suốt 16 năm, giờ lại bán MacBook cảm ứng đắt hơn 11 triệu</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=uPlLyMc2Kls"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-11-02T11:00:37+00:00</published>
+  <updated>2026-11-08T20:12:02+00:00</updated>
+  <media:group>
+   <media:title>Cú quay xe cực gắt của Apple, chê suốt 16 năm, giờ lại bán MacBook cảm ứng đắt hơn 11 triệu</media:title>
+   <media:content url="https://www.youtube.com/v/uPlLyMc2Kls?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/uPlLyMc2Kls/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Ngày 28/10, Apple ra mắt chiếc MacBook có màn hình cảm ứng, thứ chính họ chê suốt 16 năm, kèm quả táo phát sáng sau lưng máy. Ở Việt Nam, bản rẻ nhất giá 79.999.000 đồng, đắt hơn bản thường cùng chip đúng 11 triệu. Vậy Apple có đang hết ý tưởng thật không?
+
+Đầu tiên, Steve Jobs từng chê màn hình cảm ứng dựng đứng thế nào, và vì sao giờ Apple đổi ý. Rồi màn hình cảm ứng hoạt động ra sao, Apple phải sửa những gì, và chuyện dấu vân tay. Tiếp theo, 11 triệu mua về những gì. Sau đó là chip M6 ở máy rẻ nhất, iPad mini tăng giá hai lần, iPhone Duo nứt màn. Cuối cùng là một đoạn công bằng cho Apple, và một câu hỏi: nếu Steve Jobs còn sống, ông có để chiếc máy này ra đời không?
+
+⏱ Mốc chương
+00:00 Apple làm thứ họ chê suốt 16 năm
+00:36 Phần 1: MacBook cảm ứng
+01:56 Chạm một cái, máy biết bằng cách nào?
+03:09 Dấu vân tay
+05:10 Phần 2: Logo phát sáng
+06:21 Phần 3: Apple hết ý tưởng rồi à?
+07:45 Phần 4: Công bằng cho Apple
+
+📚 Nguồn
+- Apple, thông cáo MacBook Pro: https://www.apple.com/newsroom/2026/10/apple-unveils-groundbreaking-macbook-pro-with-proled-xdr-display/
+- Apple, thông số bản PROLED XDR: https://www.apple.com/macbook-pro/proled-xdr-display/specs/
+- Apple Việt Nam, giá: https://www.apple.com/vn/shop/buy-mac/macbook-pro-proled-xdr
+- Apple, cách lau màn hình: https://support.apple.com/en-us/103258
+- Apple, lớp phủ trên iPhone: https://support.apple.com/en-us/108765
+- 9to5Mac, John Ternus: https://9to5mac.com/2026/10/28/ternus-addresses-apple-breaking-touchscreen-mac-taboo-who-knew/
+- MacRumors, lời các lãnh đạo Apple: https://www.macrumors.com/2026/10/28/apple-executives-touch-screen-explanation/
+- iClarified, lời Greg Joswiak: https://www.iclarified.com/103176/apple-explains-why-it-finally-added-touch-to-the-macbook-pro
+- TechRadar, lời Steve Jobs: https://www.techradar.com/pro/quote-of-the-day-by-apple-co-founder-steve-jobs-on-touchscreens-after-an-extended-period-of-time-your-arm-wants-to-fall-off-savaging-a-bitter-rivals-pc-pivot
+- CNBC, dùng thử: https://www.cnbc.com/2026/10/28/apple-touchscreen-macbook-pro-hands-on.html
+- MacRumors, dấu vân tay: https://www.macrumors.com/2026/01/16/macbook-pro-feature-apple-fans-dreaded/
+- MacRumors, macOS khi chạm: https://www.macrumors.com/2026/10/29/macos-adapts-controls-touch-macbook-pro/
+- Engadget, xúc xích bấm iPhone: https://www.engadget.com/2010-02-12-frozen-sausage-as-iphone-stylus.html
+- VnReview, giá khăn lau: https://vnreview.vn/threads/apple-ra-mat-igie-moi-gia-269-000-dong-o-viet-nam.90487/
+- Thu nhập bình quân quý 3/2026, Cục Thống kê: https://www.nso.gov.vn/tin-tuc-thong-ke/2026/10/thong-cao-bao-chi-ve-tinh-hinh-lao-dong-viec-lam-quy-iii-va-9-thang-nam-2026/
+- MacRumors, chip M6: https://www.macrumors.com/2026/10/27/14-inch-macbook-pro-with-m6-chip/
+- MacRumors, HomePod mini 2: https://macrumors.com/2026/10/13/apple-homepod-mini-2
+- MacRumors, iPad mini tăng giá: https://www.macrumors.com/2026/10/26/oled-ipad-mini-second-price-hike-2026/
+- MacRumors, màn iPhone Duo: https://www.macrumors.com/2026/10/26/iphone-duo-crack-apple-response/
+
+Chuyện dấu vân tay và chạm thử là nhận xét sớm, máy chưa giao tới người dùng nên chưa ai đo dài ngày. Hình vết nứt iPhone Duo trong video là minh hoạ, Apple không công bố số máy lỗi.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán sản phẩm nào.
+Video có sử dụng công cụ AI hỗ trợ.
+
+#MacBook #Apple #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="52" average="5.00" min="1" max="5"/>
+    <media:statistics views="9485"/>
+   </media:community>
+  </media:group>
+ </entry>
+ <entry>
+  <id>yt:video:mMtsMETnQds</id>
+  <yt:videoId>mMtsMETnQds</yt:videoId>
+  <yt:channelId>UC91zSg_iPgJZZL6KB91BewQ</yt:channelId>
+  <title>Sự thật cú sập 500 tỷ USD của Google - Không tệ như nhiều người nghĩ. Vì sao?</title>
+  <link rel="alternate" href="https://www.youtube.com/watch?v=mMtsMETnQds"/>
+  <author>
+   <name>Mọt Công Nghệ</name>
+   <uri>https://www.youtube.com/channel/UC91zSg_iPgJZZL6KB91BewQ</uri>
+  </author>
+  <published>2026-10-31T03:30:05+00:00</published>
+  <updated>2026-11-08T19:26:29+00:00</updated>
+  <media:group>
+   <media:title>Sự thật cú sập 500 tỷ USD của Google - Không tệ như nhiều người nghĩ. Vì sao?</media:title>
+   <media:content url="https://www.youtube.com/v/mMtsMETnQds?version=3" type="application/x-shockwave-flash" width="640" height="390"/>
+   <media:thumbnail url="https://i2.ytimg.com/vi/mMtsMETnQds/hqdefault.jpg" width="480" height="360"/>
+   <media:description>Ngày 29/10, công ty mẹ của Google mất khoảng 500 tỷ đô giá trị trên sàn Mỹ, gần bằng GDP cả năm của Việt Nam, và là ngày tệ nhất của cổ phiếu này từ khi lên sàn năm 2004. Mà doanh thu vẫn tăng 25%. Vậy &quot;mất&quot; là mất cái gì, và bản báo cáo ấy viết gì mà người ta bán tháo?
+
+Đầu tiên, 500 tỷ đô to cỡ nào với người Việt, và vì sao cái mất là giá chứ không phải tiền trong két. Tiếp theo, tiền ra nhiều hơn tiền vào: kiếm 42 tỷ, tiêu 51 tỷ, âm 2 quý liền. Rồi cỗ máy in tiền của Google chậm lại, và AI Mode dính gì tới chuyện đó. Cuối cùng, Google có toang không, và chuyện này dính gì tới cái ô tìm kiếm trên điện thoại của bạn.
+
+⏱ Mốc chương
+00:00 Google mất 500 tỷ đô trong một ngày
+00:51 Phần 1: Năm trăm tỷ đô to cỡ nào
+02:16 Phần 2: Tiền ra nhiều hơn tiền vào
+05:13 Phần 3: Cỗ máy in tiền chậm lại
+07:28 Phần 4: Google có toang không
+08:28 Phần 5: Mang về Việt Nam
+09:57 Tóm lại
+
+📚 Nguồn
+- Alphabet, kết quả quý 3/2026: https://www.sec.gov/Archives/edgar/data/0001652044/000165204426000080/googexhibit991q32026.htm
+- Alphabet, báo cáo 10-Q: https://www.sec.gov/Archives/edgar/data/1652044/000165204426000084/goog-20260930.htm
+- Biên bản họp với nhà đầu tư: https://stockanalysis.com/stocks/googl/transcripts/712854-q3-2026/
+- Sundar Pichai: https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/
+- CNBC: https://www.cnbc.com/2026/10/29/alphabet-google-microsoft-msft-shares-today-earnings.html
+- Anadolu: https://aa.com.tr/en/economy/alphabets-market-value-plunges-500b-as-ai-search-hits-ad-revenue/4106210
+- Implicator: https://www.implicator.ai/alphabets-stock-falls-12-3-wiping-record-500b-market-cap/
+- Microsoft, báo cáo 10-Q: https://www.sec.gov/Archives/edgar/data/789019/000119312526436133/msft-20260930.htm
+- Amazon, báo cáo 10-Q: https://www.sec.gov/Archives/edgar/data/1018724/000101872426000040/amzn-20260930.htm
+- AP qua BNN Bloomberg: https://bnnbloomberg.ca/markets/2026/10/30/us-futures-fall-as-amazon-intel-and-alphabet-weigh-on-wall-street
+- GDP Việt Nam 2025: https://vneconomy.vn/tang-truong-gdp-2025-dat-802-quy-mo-nen-kinh-te-vuot-moc-514-ty-usd.htm
+- Vốn hoá ba sàn: https://www.tinnhanhchungkhoan.vn/von-hoa-thi-truong-chung-khoan-dat-1057-trieu-ty-dong-tuong-duong-823-gdp-post393559.html
+- AI Mode tiếng Việt: https://vietnamnet.vn/che-do-tim-kiem-manh-nhat-cua-google-chinh-thuc-ho-tro-tieng-viet-2450351.html
+- Chartbeat: https://www.searchenginejournal.com/google-search-decline-publishers-chartbeat/590681/
+
+So với GDP chỉ để dễ hình dung: vốn hoá là giá trên sàn, GDP là của cải làm ra, hai loại số khác nhau. GDP 2025 là số ước tính. Vốn hoá ba sàn là số cuối tháng 6/2026. Cam kết hơn 1.000 tỷ đô là mức tối đa theo hợp đồng, do kênh cộng từ hai con số Google công bố.
+Video chỉ chia sẻ kiến thức và phân tích, không khuyên mua bán cổ phiếu hay sản phẩm nào.
+Video có sử dụng công cụ AI hỗ trợ.
+
+#Google #AI #MọtCôngNghệ</media:description>
+   <media:community>
+    <media:starRating count="101" average="5.00" min="1" max="5"/>
+    <media:statistics views="13158"/>
+   </media:community>
+  </media:group>
+ </entry>
+</feed>

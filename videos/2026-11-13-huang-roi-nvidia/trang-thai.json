@@ -1,0 +1,160 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "làm ngoài repo, nhập từ gói video-huang-tu-chuc",
+      "ket_thuc": "2026-11-13T16:56:39.361052+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "làm ngoài repo, nhập từ gói video-huang-tu-chuc",
+      "ket_thuc": "2026-11-13T16:56:39.362832+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "làm ngoài repo, nhập từ gói video-huang-tu-chuc",
+      "ket_thuc": "2026-11-13T16:56:39.363673+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "làm ngoài repo, nhập từ gói video-huang-tu-chuc",
+      "ket_thuc": "2026-11-13T16:56:39.364449+07:00"
+    },
+    "kiem": {
+      "status": "xong",
+      "note": "làm ngoài repo, nhập từ gói video-huang-tu-chuc",
+      "ket_thuc": "2026-11-13T16:56:39.365196+07:00"
+    },
+    "duyet-1": {
+      "status": "da-duyet",
+      "note": "",
+      "ban_duyet": {
+        "kich-ban.md": "262f6806048550cb7c6d9ab1156782706ccc899edae8ca7da5781982be307bbb",
+        "nguon.json": "f41d9657475d0cf542929b0fd7355daf758154a3818c38df8d57d82bba0708df",
+        "nghe-thu.mp3": "3e701c76b8c81907e6f19279c5a61f7803e5ae8d7f1dfbbc4060e90e82f84d1b",
+        "nguon/pr.png": "496f701f846730e958c85366eca594898311097ed9fb55f3dfd02857299ac251",
+        "nguon/sec8k.png": "c87c5b6c516a63d74d4148576a09de365adf962aed71dd4f4a9fa41f9eefb42b",
+        "nguon/cc.png": "1ef0bfca2c02f782b386d2f9681f082218a9e9b16b6979937f8a2bc4b4829a0c",
+        "nguon/yahoo.png": "b34e8ee3a432b5f97ec540a79d03d82360ad7091d323069486fd411101fe7828",
+        "nguon/yahoo-nvda-chart-final.json": "453dcf79cd1c6e3e1f4bf80ef35c15af1b36d072de9430f054876900979e90b2",
+        "nguon/v1.png": "cae7525b67653444864688631c843961f93654aa384588f590896cb75071ab9e",
+        "nguon/v2.png": "d6ea2b6c0642d3dd4d3f1e7c8b5b6264ae22e55f5338f0b2d8696cc666f3d8f5",
+        "nguon/f1.png": "f657ca3a2a9b3421a6c7f6e6c58b5519ad36d5b926fcf17550d48177ab1a6143"
+      },
+      "ket_thuc": "2026-11-13T16:56:39.702443+07:00"
+    },
+    "giong": {
+      "status": "xong",
+      "note": "",
+      "bat_dau": "2026-11-13T16:56:44.732766+07:00",
+      "ket_thuc": "2026-11-13T17:03:05.621604+07:00"
+    },
+    "dao-dien": {
+      "status": "xong",
+      "note": "2 vòng giám khảo; còn cảnh báo điểm 3,9 < 4,0",
+      "bat_dau": "2026-11-13T17:03:05.623031+07:00",
+      "ket_thuc": "2026-11-13T17:40:01.865713+07:00"
+    },
+    "canh": {
+      "status": "xong",
+      "note": "",
+      "ket_thuc": "2026-11-13T17:40:01.867633+07:00"
+    },
+    "hinh": {
+      "status": "xong",
+      "note": "không cần vẽ hình mới",
+      "ket_thuc": "2026-11-13T17:40:01.868497+07:00"
+    },
+    "render": {
+      "status": "xong",
+      "note": "",
+      "bat_dau": "2026-11-13T17:40:07.146302+07:00",
+      "ket_thuc": "2026-11-13T18:25:07.074571+07:00"
+    },
+    "dong-goi": {
+      "status": "xong",
+      "note": "thumbnail kiểu chia đôi theo yêu cầu; TobyFlow chưa có phiên",
+      "ket_thuc": "2026-11-13T18:25:07.077827+07:00"
+    },
+    "duyet-2": {
+      "status": "da-duyet",
+      "note": "",
+      "bat_dau": "2026-11-13T18:25:07.078904+07:00",
+      "ban_duyet": {
+        "duyet-1": "2026-11-13T16:56:39.702443+07:00",
+        "final.mp4": "70b939079d1b72049163a3a40e25756d589b75206df165abc210e775ee57fca0",
+        "phu-de.srt": "1fdef8d340d03a69bfd524f10a83ebd74222cfdfd7fa3611be38d42eed0f5271",
+        "dong-goi": {
+          "phuong_an": [
+            {
+              "tieu_de": "Jensen Huang rời Nvidia: ai cầm lái, khách hàng có bị gián đoạn?",
+              "chu_thumb": [
+                "JENSEN ĐI RỒI",
+                "AI CẦM LÁI?"
+              ],
+              "file_thumb": "thumbnails/1.png"
+            },
+            {
+              "tieu_de": "Jensen Huang rời ghế: khách hàng Nvidia ở Việt Nam ra sao?",
+              "chu_thumb": [
+                "VIETTEL, FPT",
+                "CÓ BỊ ẢNH HƯỞNG?"
+              ],
+              "file_thumb": "thumbnails/2.png"
+            },
+            {
+              "tieu_de": "Bà Kress cầm lái Nvidia: rạng sáng 18/11 cần nghe gì?",
+              "chu_thumb": [
+                "NVIDIA KHÔNG HUANG",
+                "NGHE GÌ 18/11?"
+              ],
+              "file_thumb": "thumbnails/3.png"
+            }
+          ],
+          "mo_ta": "Ngày 12/11/2026, Nvidia báo tin ông Jensen Huang thôi làm giám đốc điều hành và rời hội đồng quản trị, có hiệu lực ngay. Video này không kể lại chuyện riêng, chỉ đọc giấy tờ: hồ sơ 8-K nộp SEC và thông cáo của Nvidia ghi gì, bà Colette Kress (quyền CEO kiêm giám đốc tài chính) và ông Harvey Jones (chủ tịch hội đồng quản trị đầu tiên của Nvidia) ngồi ở đâu, lời hứa \"không gián đoạn\" nghĩa là gì với khách hàng, kể cả Viettel, FPT Cloud và thỏa thuận Chính phủ Việt Nam ký với Nvidia năm 2024.\n\nRạng sáng thứ Tư 18/11 giờ Việt Nam, Nvidia công bố kết quả quý III tài khóa 2027: video gợi ý hai câu đáng nghe nhất.\n\nHai video trước của kênh về chuyện này: xem trong danh sách phát Nvidia của kênh.\n\n👉 Bạn đoán hội đồng Nvidia sẽ mất mấy tháng để chọn CEO chính thức? Để lại một con số dưới bình luận.\n\n⏱ Chương\n0:00 Mở đầu: 33 năm và năm ngày\n0:50 Hai tờ giấy, hai ngày liền nhau\n2:23 Ai đang cầm lái Nvidia?\n4:16 \"Không gián đoạn\" nghĩa là gì, người Việt đứng ở đâu\n6:43 Hai việc cần ngóng: rạng sáng 18/11\n8:21 Kết: cái gì còn treo\n\n📎 Nguồn\n- Nvidia: thông cáo thay CEO (12/11/2026) — https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition (truy cập 2026-11-13)\n- SEC: hồ sơ 8-K của Nvidia (11/11/2026) — https://www.sec.gov/Archives/edgar/data/1045810/000104581026000082/nvda-20261111.htm (truy cập 2026-11-13)\n- Nvidia: thông cáo lịch họp quý III (28/10/2026) — https://nvidianews.nvidia.com/news/nvidia-sets-conference-call-for-third-quarter-financial-results-6928873 (truy cập 2026-11-13)\n- Yahoo Finance: lịch sử giá NVDA — https://finance.yahoo.com/quote/NVDA/history/ (truy cập 2026-11-13)\n- Yahoo Finance: dữ liệu giá chốt phiên 12/11 — https://query1.finance.yahoo.com/v8/finance/chart/NVDA?interval=1d&range=5d (truy cập 2026-11-13)\n- Báo Điện tử Chính phủ: Viettel vận hành siêu máy tính Nvidia (06/02/2026) — https://baochinhphu.vn/viettel-van-hanh-he-thong-sieu-may-tinh-cua-nvidia-dau-tien-tai-viet-nam-10226020615345696.htm (truy cập 2026-11-13)\n- Báo Điện tử Chính phủ: Chính phủ và Nvidia hợp tác (05/12/2024) — https://baochinhphu.vn/chinh-phu-viet-nam-va-nvidia-hop-tac-thanh-lap-trung-tam-nghien-cuu-va-phat-trien-trung-tam-du-lieu-ai-102241205191337156.htm (truy cập 2026-11-13)\n- FPT Cloud: bảng giá — https://fptcloud.com/en/pricing/ (truy cập 2026-11-13)\n- Số kênh tự tính (giờ Việt Nam, số năm, số ngày): công thức ghi trong kịch bản, đổi PT (UTC−8) sang UTC+7.\n\n🖼 Ghi công ảnh\n- Ảnh: Anderseidesvik / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: Coolcaesar / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: Will Buckner / Wikimedia Commons (CC BY 2.0)\n- Ảnh: Carlos Delgado / Wikimedia Commons (CC BY-SA 3.0)\n- Ảnh: Arild Vågen / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: LPS.1 / Wikimedia Commons (CC0)\n- Ảnh: SiliconANGLE theCUBE / Wikimedia Commons (CC BY 4.0)\n- Ảnh: 极客湾Geekerwan / Wikimedia Commons (CC BY 3.0)\n- Ảnh: NKSTTSSHNVN / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: VGP/LT – Báo Điện tử Chính phủ\n- Ảnh: Pokiiri / Wikimedia Commons (CC BY-SA 4.0)\n- Ảnh: VGP/Nhật Bắc – Báo Điện tử Chính phủ\n- Ảnh: VQTCS / Wikimedia Commons (CC BY 4.0)\n\nVideo phân tích dựa trên tài liệu công khai, không phải lời khuyên đầu tư.\n",
+          "tags": [
+            "Nvidia",
+            "Jensen Huang",
+            "Jensen Huang từ chức",
+            "Colette Kress",
+            "Harvey Jones",
+            "CEO Nvidia",
+            "Nvidia CEO mới",
+            "cổ phiếu Nvidia",
+            "NVDA",
+            "báo cáo quý Nvidia",
+            "Viettel siêu máy tính",
+            "DGX B200",
+            "FPT Cloud GPU",
+            "Nvidia Việt Nam",
+            "chip AI",
+            "tin công nghệ",
+            "Túi Tiền Người Việt"
+          ]
+        },
+        "thumbnails": [
+          "8644145f656365df6c27b51d1081e512e389dd6ec6d9de29b046379caeb712e8",
+          "d8b0e6dcf391fd219d6fe837db6c969dafa23034f380e4fd91aa27fd1fd16e6b",
+          "0fc670d7b352a972c030def182ce82456330304481976fb4141c82109f4a5a67"
+        ]
+      },
+      "chon": 1,
+      "ket_thuc": "2026-11-13T18:31:00.345648+07:00"
+    },
+    "dang": {
+      "status": "xong",
+      "note": "https://youtu.be/RX21zw1F8S0",
+      "ket_thuc": "2026-11-13T18:34:58.942953+07:00"
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  },
+  "chon": 1,
+  "upload_dang_cho_id": null,
+  "video_id": "RX21zw1F8S0",
+  "lich_dang": "13/11/2026 19:15",
+  "phu_de_ok": true,
+  "playlist_ok": "PLf9v4rPuuCys"
+}

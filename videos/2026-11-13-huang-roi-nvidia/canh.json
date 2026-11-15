@@ -1,0 +1,2320 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 2.595,
+   "mau": "so-lon",
+   "so": "33",
+   "truoc": "",
+   "sau": " năm",
+   "nhan": "Nền móng ông Huang gây dựng",
+   "nguon_id": "p9",
+   "svg": "cao-oc",
+   "dan": {
+    "the": "chao",
+    "goc": "phai",
+    "tu": "Ba mươi ba năm"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "năm. Trong thông",
+    "cáo của Nvidia,"
+   ]
+  },
+  {
+   "id": "c002",
+   "start": 2.595,
+   "end": 6.008,
+   "mau": "b-roll",
+   "video": "jensen-huang-c002.mp4",
+   "nhan": "Ông Jensen Huang",
+   "nhip": [
+    "thay ghế điều",
+    "hành nói ông",
+    "Huang đã mất"
+   ]
+  },
+  {
+   "id": "c003",
+   "start": 6.008,
+   "end": 8.756,
+   "mau": "b-roll",
+   "video": "nvidia-tru-so-c003.mp4",
+   "nhan": "Trụ sở Nvidia, Santa Clara",
+   "tu_khoa": "Nền móng 33 năm",
+   "nguon_id": "p9",
+   "nhip": [
+    "để gây dựng",
+    "nền móng cho",
+    "cho công ty."
+   ]
+  },
+  {
+   "id": "c004",
+   "start": 8.756,
+   "end": 12.572,
+   "mau": "trang-nguon",
+   "anh": "tn-p1.png",
+   "khung": "8.1,45.5,55.7,9.0",
+   "nguon_id": "p1",
+   "trong_diem": true,
+   "nhip": [
+    "lại trong mấy"
+   ]
+  },
+  {
+   "id": "c005",
+   "start": 12.572,
+   "end": 16.94,
+   "mau": "b-roll",
+   "video": "nvidia-bien-c005.mp4",
+   "nhan": "12/11: rời ghế và hội đồng",
+   "tu_khoa": "Rời cả hội đồng",
+   "nguon_id": "p1",
+   "nhip": [
+    "mười một, Nvidia",
+    "tin ông Huang",
+    "giám đốc điều"
+   ]
+  },
+  {
+   "id": "c006",
+   "start": 16.94,
+   "end": 20.446,
+   "mau": "so-lon",
+   "so": "5",
+   "truoc": "",
+   "sau": " ngày",
+   "nhan": "Từ thông cáo tới báo cáo quý (kênh tự tính)",
+   "nguon_id": "t3",
+   "svg": "lich",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "quản trị. Tính",
+    "chỉ năm ngày"
+   ]
+  },
+  {
+   "id": "c007",
+   "start": 20.446,
+   "end": 23.928,
+   "mau": "b-roll",
+   "video": "wall-street-c007.mp4",
+   "nhan": "Phố Wall chờ báo cáo quý",
+   "nhip": [
+    "ra báo cáo",
+    "kinh doanh quý",
+    "trước phố Wall."
+   ]
+  },
+  {
+   "id": "c008",
+   "start": 23.928,
+   "end": 28.177,
+   "mau": "b-roll",
+   "video": "phong-hop-trong-6951393-c008.mp4",
+   "nhan": "Không có ông đứng đó",
+   "tu_khoa": "Ai nắm quyền?",
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "ai nắm quyền"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "không có ông",
+    "đó. Vậy giờ",
+    "nắm quyền ở"
+   ]
+  },
+  {
+   "id": "c009",
+   "start": 28.177,
+   "end": 32.961,
+   "mau": "b-roll",
+   "video": "bo-xu-ly-trung-tam-35977437-c009.mp4",
+   "nhan": "Ai đặt chip, ai thuê máy",
+   "tu_khoa": "Có bị bỏ dở?",
+   "nhip": [
+    "thuê máy, kể",
+    "Việt Nam, có",
+    "bỏ dở giữa"
+   ]
+  },
+  {
+   "id": "c010",
+   "start": 32.961,
+   "end": 37.572,
+   "mau": "b-roll",
+   "video": "thanh-pho-viet-nam-31111825-c010.mp4",
+   "nhan": "Rạng sáng 18/11, giờ Việt Nam",
+   "nguon_id": "t4",
+   "nhip": [
+    "cáo, tính ra",
+    "sáng mười tám",
+    "một giờ Việt"
+   ]
+  },
+  {
+   "id": "c011",
+   "start": 37.572,
+   "end": 41.083,
+   "mau": "b-roll",
+   "video": "giay-to-7732805-c011.mp4",
+   "nhan": "Vì sao tới hôm nay?",
+   "nhip": [
+    "gì? Còn vì",
+    "sao mọi chuyện",
+    "đi tới hôm"
+   ]
+  },
+  {
+   "id": "c012",
+   "start": 41.083,
+   "end": 44.425,
+   "mau": "b-roll",
+   "video": "man-hinh-may-tinh-8346903-c012.mp4",
+   "nhan": "Đã kể ở hai video trước",
+   "nhip": [
+    "ở hai video",
+    "đường dẫn để",
+    "dưới phần mô"
+   ]
+  },
+  {
+   "id": "c013",
+   "start": 44.425,
+   "end": 47.508,
+   "mau": "b-roll",
+   "video": "giay-to-7104084-c013.mp4",
+   "nhan": "Giấy tờ ghi gì",
+   "nhip": [
+    "nói chuyện sau",
+    "khi ông đi:",
+    "tờ ghi gì,"
+   ]
+  },
+  {
+   "id": "c014",
+   "start": 47.508,
+   "end": 50.144,
+   "mau": "mo-dau",
+   "cau": "Ai cầm lái Nvidia?"
+  },
+  {
+   "id": "c015",
+   "start": 50.144,
+   "end": 52.666,
+   "mau": "chuong",
+   "so": "Phần 1",
+   "chuong": "Hai tờ giấy, hai ngày liền nhau",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c016",
+   "start": 52.666,
+   "end": 55.511,
+   "mau": "chu-dong",
+   "cau": "chuyện này chốt từ bao giờ?",
+   "nhan_tu": "chốt từ bao giờ",
+   "nho": "Câu hỏi đầu tiên",
+   "dan": {
+    "the": "nghi",
+    "goc": "trai"
+   }
+  },
+  {
+   "id": "c017",
+   "start": 55.511,
+   "end": 60.539,
+   "mau": "b-roll",
+   "video": "cam-ho-so-7841639-c017.mp4",
+   "nhan": "Hồ sơ 8-K gửi SEC",
+   "nhip": [
+    "sơ Nvidia nộp",
+    "ban Chứng khoán",
+    "gọi là mẫu"
+   ]
+  },
+  {
+   "id": "c018",
+   "start": 60.539,
+   "end": 65.231,
+   "mau": "trang-nguon",
+   "anh": "tn-sec-a.png",
+   "khung": "0.5,26.5,99,5.5",
+   "nguon_id": "s1",
+   "trong_diem": true,
+   "nhip": [
+    "đồng quản trị"
+   ]
+  },
+  {
+   "id": "c019",
+   "start": 65.231,
+   "end": 67.811,
+   "mau": "b-roll",
+   "video": "in-bao-38826405-c019.mp4",
+   "nhan": "12/11: thông cáo báo chí",
+   "nguon_id": "p1",
+   "nhip": [
+    "là thông cáo",
+    "báo chí, ra",
+    "ngày mười hai."
+   ]
+  },
+  {
+   "id": "c020",
+   "start": 67.811,
+   "end": 71.457,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "11/11: hội đồng gật đầu",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "12/11: thế giới mới biết",
+    "svg": "dien-thoai"
+   },
+   "nguon_id": "s1",
+   "trong_diem": true,
+   "nhip": [
+    "gật đầu từ",
+    "trước, hôm sau",
+    "thế giới mới"
+   ]
+  },
+  {
+   "id": "c021",
+   "start": 71.457,
+   "end": 74.94,
+   "mau": "b-roll",
+   "video": "nyse-c021.mp4",
+   "nhan": "Công ty lên sàn ở Mỹ",
+   "nhip": [
+    "gì? Nói nôm",
+    "na, công ty",
+    "lên sàn ở"
+   ]
+  },
+  {
+   "id": "c022",
+   "start": 74.94,
+   "end": 79.412,
+   "mau": "b-roll",
+   "video": "giay-to-7841618-c022.mp4",
+   "nhan": "Chuyện lớn phải khai",
+   "tu_khoa": "Khai với cổ đông",
+   "nhip": [
+    "phải khai với",
+    "và tờ khai",
+    "chính là mẫu"
+   ]
+  },
+  {
+   "id": "c023",
+   "start": 79.412,
+   "end": 83.261,
+   "mau": "trang-nguon",
+   "anh": "tn-sec-a.png",
+   "khung": "0.5,21,79,3.5",
+   "nguon_id": "s5",
+   "nhip": [
+    "lãnh đạo hoặc"
+   ]
+  },
+  {
+   "id": "c024",
+   "start": 83.261,
+   "end": 87.564,
+   "mau": "b-roll",
+   "video": "giay-to-7054942-c024.mp4",
+   "nhan": "Khô như biên bản họp",
+   "tu_khoa": "Không tính từ",
+   "nhip": [
+    "như biên bản",
+    "dân phố, gần",
+    "chẳng có tính"
+   ]
+  },
+  {
+   "id": "c025",
+   "start": 87.564,
+   "end": 90.6,
+   "mau": "chu-dong",
+   "cau": "Mà chính vì khô nên nó đáng đọc trước mọi lời bình.",
+   "nhan_tu": "đáng đọc",
+   "nho": "Điểm mấu chốt",
+   "trong_diem": true
+  },
+  {
+   "id": "c026",
+   "start": 90.6,
+   "end": 94.281,
+   "mau": "trang-nguon",
+   "anh": "tn-sec-b.png",
+   "khung": "50,57.5,39,4.5",
+   "nguon_id": "s4",
+   "nhip": [
+    "nhỏ. Người ký"
+   ]
+  },
+  {
+   "id": "c027",
+   "start": 94.281,
+   "end": 97.302,
+   "mau": "nhan-vat",
+   "anh": "colette-kress-1-.png",
+   "nhan": "Colette Kress",
+   "vai": "Người ký hồ sơ 8-K",
+   "nhip": [
+    "nhau: quyền giám"
+   ]
+  },
+  {
+   "id": "c028",
+   "start": 97.302,
+   "end": 99.87,
+   "mau": "trich-bao",
+   "nguon_id": "s4",
+   "trich": "Interim Chief Executive Officer, Executive Vice President and Chief Financial Officer",
+   "to_vang": "Interim Chief Executive Officer",
+   "trich_vi": "Quyền giám đốc điều hành, phó chủ tịch điều hành và giám đốc tài chính",
+   "to_vang_vi": "Quyền giám đốc điều hành",
+   "nhip": [
+    "và giám đốc"
+   ]
+  },
+  {
+   "id": "c029",
+   "start": 99.87,
+   "end": 104.102,
+   "mau": "b-roll",
+   "video": "con-dau-7344550-c029.mp4",
+   "nhan": "Một chữ ký, ba cái mũ",
+   "tu_khoa": "Ba cái mũ",
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "đội tới ba",
+    "mũ. Bà là",
+    "chính của phần"
+   ]
+  },
+  {
+   "id": "c030",
+   "start": 104.102,
+   "end": 106.901,
+   "mau": "b-roll",
+   "video": "dien-thoai-nen-trang-4884231-c030.mp4",
+   "nhan": "Không nêu lý do",
+   "tu_khoa": "Không nêu lý do",
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "trai"
+   },
+   "nhip": [
+    "giấy đều không",
+    "nói vì sao",
+    "ông thôi việc."
+   ]
+  },
+  {
+   "id": "c031",
+   "start": 106.901,
+   "end": 110.504,
+   "mau": "b-roll",
+   "video": "luot-anh-dien-thoai-6756650-c031.mp4",
+   "nhan": "Không kể lại chuyện cũ",
+   "nhip": [
+    "đó, không kể",
+    "chuyện đã nói",
+    "ở hai video"
+   ]
+  },
+  {
+   "id": "c032",
+   "start": 110.504,
+   "end": 114.279,
+   "mau": "b-roll",
+   "video": "bang-chung-khoan-37978559-c032.mp4",
+   "nhan": "Thị trường không chờ",
+   "nhip": [
+    "chờ ai đọc",
+    "giấy. Phiên mười",
+    "một tháng mười"
+   ]
+  },
+  {
+   "id": "c033",
+   "start": 114.279,
+   "end": 117.234,
+   "mau": "so-lon",
+   "so": "173,73",
+   "truoc": "",
+   "sau": " USD",
+   "nhan": "Đóng cửa phiên 11/11",
+   "nguon_id": "y1",
+   "svg": "bieu-do-nen",
+   "nhip": [
+    "cửa ở gần",
+    "bảy mươi bốn"
+   ]
+  },
+  {
+   "id": "c034",
+   "start": 117.234,
+   "end": 121.005,
+   "mau": "so-lon",
+   "so": "151,01",
+   "truoc": "",
+   "sau": " USD",
+   "nhan": "Mở cửa sáng 12/11",
+   "nguon_id": "y2",
+   "svg": "do-thi-roi",
+   "huong": "xuong",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "cửa đã chỉ",
+    "trăm năm mươi"
+   ]
+  },
+  {
+   "id": "c035",
+   "start": 121.005,
+   "end": 124.454,
+   "mau": "b-roll",
+   "video": "bang-chung-khoan-38168755-c035.mp4",
+   "nhan": "Đáy trong phiên",
+   "chia": {
+    "so": "148,80",
+    "sau": " USD",
+    "nhan": "Thấp nhất trong phiên 12/11"
+   },
+   "nguon_id": "y3",
+   "nhip": [
+    "lúc giá xuống",
+    "quanh một trăm",
+    "mươi chín đô."
+   ]
+  },
+  {
+   "id": "c036",
+   "start": 124.454,
+   "end": 127.77,
+   "mau": "so-lon",
+   "so": "166,19",
+   "truoc": "",
+   "sau": " USD",
+   "nhan": "Đóng cửa 12/11",
+   "nguon_id": "y4",
+   "svg": "bieu-do-nen",
+   "huong": "len",
+   "trong_diem": true,
+   "nhip": [
+    "đóng cửa quanh",
+    "trăm sáu mươi"
+   ]
+  },
+  {
+   "id": "c037",
+   "start": 127.77,
+   "end": 130.548,
+   "mau": "b-roll",
+   "video": "man-hinh-giao-dich-39020626-c037.mp4",
+   "nhan": "Cả ngày còn giảm",
+   "chia": {
+    "so": "4,34",
+    "sau": "%",
+    "nhan": "Giảm so với phiên 11/11"
+   },
+   "nguon_id": "y4",
+   "nhip": [
+    "hơn bốn phần",
+    "trăm so với",
+    "với phiên trước."
+   ]
+  },
+  {
+   "id": "c038",
+   "start": 130.548,
+   "end": 135.143,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-6611954-c038.mp4",
+   "nhan": "Ví dụ: mở app chứng khoán",
+   "nhip": [
+    "ví dụ thôi:",
+    "vừa ăn sáng",
+    "mở ứng dụng"
+   ]
+  },
+  {
+   "id": "c039",
+   "start": 135.143,
+   "end": 138.935,
+   "mau": "b-roll",
+   "video": "bieu-do-tai-chinh-toi-38736274-c039.mp4",
+   "nhan": "Tụt một mảng, rồi bò lên",
+   "nhip": [
+    "tụt một mảng,",
+    "chiều nó lại",
+    "lên được một"
+   ]
+  },
+  {
+   "id": "c040",
+   "start": 138.935,
+   "end": 143.442,
+   "mau": "trang-nguon",
+   "anh": "tn-sec-a.png",
+   "khung": "0.5,26.5,99,5.5",
+   "nguon_id": "s1",
+   "trong_diem": true,
+   "nhip": [
+    "gốc thì vẫn"
+   ]
+  },
+  {
+   "id": "c041",
+   "start": 143.442,
+   "end": 146.987,
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Ai đang cầm lái?",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c042",
+   "start": 146.987,
+   "end": 152.267,
+   "mau": "so-lon",
+   "so": "59",
+   "truoc": "",
+   "sau": " tuổi",
+   "nhan": "Bà Colette Kress, quyền giám đốc điều hành",
+   "nguon_id": "s2",
+   "svg": "nguoi",
+   "nhip": [
+    "khác nhau. Tầng",
+    "bà Colette Kress,"
+   ]
+  },
+  {
+   "id": "c043",
+   "start": 152.267,
+   "end": 155.803,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-3860709-c043.mp4",
+   "nhan": "Nghề tài chính",
+   "chia": {
+    "so": "25",
+    "truoc": "gần ",
+    "sau": " năm",
+    "nhan": "Làm tài chính trước Nvidia"
+   },
+   "nguon_id": "p5",
+   "nhip": [
+    "Nvidia, bà đã",
+    "làm tài chính",
+    "hai mươi lăm"
+   ]
+  },
+  {
+   "id": "c044",
+   "start": 155.803,
+   "end": 158.505,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-853935-c044.mp4",
+   "nhan": "Cisco, Microsoft",
+   "tu_khoa": "Cisco, Microsoft",
+   "nhip": [
+    "những hãng như",
+    "như Cisco hay",
+    "Cisco hay Microsoft."
+   ]
+  },
+  {
+   "id": "c045",
+   "start": 158.505,
+   "end": 162.987,
+   "mau": "b-roll",
+   "video": "nvidia-tru-so-c045.mp4",
+   "nhan": "Giám đốc tài chính Nvidia từ 9/2013",
+   "nguon_id": "p4",
+   "nhip": [
+    "đốc tài chính",
+    "tháng chín năm",
+    "không trăm mười"
+   ]
+  },
+  {
+   "id": "c046",
+   "start": 162.987,
+   "end": 166.318,
+   "mau": "so-lon",
+   "so": "13",
+   "truoc": "",
+   "sau": " năm",
+   "nhan": "Ở ghế giám đốc tài chính (kênh tự tính)",
+   "nguon_id": "t2",
+   "svg": "ket-sat",
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "phai"
+   },
+   "nhip": [
+    "năm. Giờ bà",
+    "quyền giám đốc"
+   ]
+  },
+  {
+   "id": "c047",
+   "start": 166.318,
+   "end": 169.926,
+   "mau": "trang-nguon",
+   "anh": "tn-p2.png",
+   "khung": "8.1,42.4,55.7,15.1",
+   "nguon_id": "p2",
+   "trong_diem": true,
+   "nhip": [
+    "chính cho tới"
+   ]
+  },
+  {
+   "id": "c048",
+   "start": 169.926,
+   "end": 175.32,
+   "mau": "minh-hoa",
+   "nhan": "Giữ sổ, quyết việc lớn",
+   "svg": "nguoi",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "vi-tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tai-lieu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    },
+    {
+     "svg": "cao-oc",
+     "x": 0.24,
+     "y": 0.3,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "dung: trong nhà,",
+    "chi tiêu bỗng",
+    "chuyện cả nhà"
+   ]
+  },
+  {
+   "id": "c049",
+   "start": 175.32,
+   "end": 180.11,
+   "mau": "b-roll",
+   "video": "may-tinh-tay-7055396-c049.mp4",
+   "nhan": "Dồn về một bàn",
+   "tu_khoa": "Dồn về một bàn",
+   "nhip": [
+    "ra vào, chẳng",
+    "mặt được, nhưng",
+    "cũng dồn về"
+   ]
+  },
+  {
+   "id": "c050",
+   "start": 180.11,
+   "end": 183.823,
+   "mau": "chu-dong",
+   "cau": "Hai cái ghế, một cái lưng.",
+   "nhan_tu": "một cái lưng",
+   "nho": "Nói gọn",
+   "trong_diem": true
+  },
+  {
+   "id": "c051",
+   "start": 183.823,
+   "end": 187.424,
+   "mau": "so-lon",
+   "so": "73",
+   "truoc": "",
+   "sau": " tuổi",
+   "nhan": "Ông Harvey Jones, chủ tịch hội đồng",
+   "nguon_id": "s3",
+   "svg": "nguoi-nhom",
+   "nhip": [
+    "mươi ba tuổi,",
+    "chủ tịch hội"
+   ]
+  },
+  {
+   "id": "c052",
+   "start": 187.424,
+   "end": 191.951,
+   "mau": "trang-nguon",
+   "anh": "tn-p6.png",
+   "khung": "10.1,46.8,26.4,5.2",
+   "nguon_id": "p6",
+   "trong_diem": true,
+   "nhip": [
+    "Nvidia có chức"
+   ]
+  },
+  {
+   "id": "c053",
+   "start": 191.951,
+   "end": 196.537,
+   "mau": "thoi-gian",
+   "tieu_de": "Ở Nvidia bao lâu",
+   "truc": {
+    "tu": 1993,
+    "den": 2026,
+    "don_vi": "năm"
+   },
+   "hang": [
+    {
+     "nhan": "Jones trong hội đồng",
+     "tu": 1993,
+     "den": 2026,
+     "noi_bat": true
+    },
+    {
+     "nhan": "Kress làm CFO Nvidia",
+     "tu": 2013,
+     "den": 2026
+    }
+   ],
+   "nguon_id": [
+    "s3",
+    "p4"
+   ],
+   "trong_diem": true
+  },
+  {
+   "id": "c054",
+   "start": 196.537,
+   "end": 201.294,
+   "mau": "b-roll",
+   "video": "synopsys-headquarters-mountain-view-c054.mp4",
+   "nhan": "Synopsys, nơi ông Jones từng điều hành",
+   "nhip": [
+    "từng làm giám",
+    "điều hành, rồi",
+    "điều hành của"
+   ]
+  },
+  {
+   "id": "c055",
+   "start": 201.294,
+   "end": 206.032,
+   "mau": "trang-nguon",
+   "anh": "tn-v5.png",
+   "khung": "43.5,45.5,17,3.5",
+   "nguon_id": "v5",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "gọi ông Huang"
+   ]
+  },
+  {
+   "id": "c056",
+   "start": 206.032,
+   "end": 209.882,
+   "mau": "trich-bao",
+   "nguon_id": "s1",
+   "trich": "as NVIDIA’s President, Chief Executive Officer and member of the Board",
+   "to_vang": "President, Chief Executive Officer",
+   "trich_vi": "là tổng giám đốc, giám đốc điều hành và thành viên hội đồng của NVIDIA",
+   "to_vang_vi": "tổng giám đốc, giám đốc điều hành",
+   "nhip": [
+    "President, đi kèm"
+   ]
+  },
+  {
+   "id": "c057",
+   "start": 209.882,
+   "end": 213.195,
+   "mau": "b-roll",
+   "video": "go-laptop-van-phong-4928295-c057.mp4",
+   "nhan": "Lo điều hành hằng ngày",
+   "tu_khoa": "Điều hành hằng ngày",
+   "nhip": [
+    "Mỹ, President là",
+    "người lo việc",
+    "hành hằng ngày."
+   ]
+  },
+  {
+   "id": "c058",
+   "start": 213.195,
+   "end": 218.06,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Điều hành hằng ngày",
+    "svg": "nguoi"
+   },
+   "phai": {
+    "nhan": "Hội đồng chọn giám đốc",
+    "svg": "nguoi-nhom"
+   },
+   "nhip": [
+    "quản trị là",
+    "trịch cái hội",
+    "chọn giám đốc"
+   ]
+  },
+  {
+   "id": "c059",
+   "start": 218.06,
+   "end": 223.087,
+   "mau": "minh-hoa",
+   "nhan": "Thiếu chủ tịch hội đồng",
+   "svg": "nguoi",
+   "san_khau": "thanh-pho",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "oto",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Nvidia có người",
+    "nhưng chưa ai",
+    "chức chủ tịch"
+   ]
+  },
+  {
+   "id": "c060",
+   "start": 223.087,
+   "end": 225.919,
+   "mau": "b-roll",
+   "video": "colette-kress-1-c060.mp4",
+   "nhan": "Bà Kress cầm vô lăng",
+   "nhip": [
+    "cầm lái? Bà",
+    "Bà Kress cầm",
+    "cầm vô lăng,"
+   ]
+  },
+  {
+   "id": "c061",
+   "start": 225.919,
+   "end": 228.593,
+   "mau": "b-roll",
+   "video": "cam-cap-ho-so-8052418-c061.mp4",
+   "nhan": "Ông Jones tìm tài xế mới",
+   "tu_khoa": "Tìm tài xế mới",
+   "nhip": [
+    "Jones là người",
+    "đi tìm tài",
+    "tài xế mới."
+   ]
+  },
+  {
+   "id": "c062",
+   "start": 228.593,
+   "end": 232.947,
+   "mau": "minh-hoa",
+   "nhan": "Người cũ, không lạ",
+   "svg": "oto",
+   "san_khau": "thanh-pho",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "trai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "xe từ lâu",
+    "đâu phải người",
+    "gọi vào lúc"
+   ]
+  },
+  {
+   "id": "c063",
+   "start": 232.947,
+   "end": 237.963,
+   "mau": "trang-nguon",
+   "anh": "tn-p3.png",
+   "khung": "8.1,42.4,55.7,15.1",
+   "nguon_id": "p3",
+   "nhip": [
+    "tìm, xét cả"
+   ]
+  },
+  {
+   "id": "c064",
+   "start": 237.963,
+   "end": 241.285,
+   "mau": "chu-dong",
+   "cau": "Chữ \"quyền\" nghĩa là tạm thôi,",
+   "nhan_tu": "tạm thôi",
+   "nho": "Lưu ý",
+   "trong_diem": true
+  },
+  {
+   "id": "c065",
+   "start": 241.285,
+   "end": 244.733,
+   "mau": "b-roll",
+   "video": "giao-thong-pho-toi-35782362-c065.mp4",
+   "nhan": "Vài tuần hay lâu hơn",
+   "tu_khoa": "Không có hạn",
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai"
+   },
+   "nhip": [
+    "mà cũng có",
+    "lâu hơn, giấy",
+    "tờ không hứa"
+   ]
+  },
+  {
+   "id": "c066",
+   "start": 244.733,
+   "end": 247.966,
+   "mau": "b-roll",
+   "video": "vi-mach-phat-sang-36382300-c066.mp4",
+   "nhan": "Cả ngành AI ngó vào",
+   "nhip": [
+    "cả ngành trí",
+    "nhân tạo ngày",
+    "nào cũng ngó"
+   ]
+  },
+  {
+   "id": "c067",
+   "start": 247.966,
+   "end": 252.27,
+   "mau": "b-roll",
+   "video": "laptop-dem-van-phong-30712136-c067.mp4",
+   "nhan": "Nhận hồ sơ, phỏng vấn, chờ",
+   "tu_khoa": "Phỏng vấn, rồi chờ",
+   "nhip": [
+    "giám đốc như",
+    "ty khác: nhận",
+    "sơ, phỏng vấn,"
+   ]
+  },
+  {
+   "id": "c068",
+   "start": 252.27,
+   "end": 256.187,
+   "mau": "minh-hoa",
+   "nhan": "Tin tuyển dụng đặc biệt",
+   "svg": "tai-lieu",
+   "san_khau": "thanh-pho",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "ai dám ghi",
+    "thỏa thuận\" vào",
+    "tin tuyển dụng"
+   ]
+  },
+  {
+   "id": "c069",
+   "start": 256.187,
+   "end": 259.935,
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Không gián đoạn nghĩa là gì?",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c070",
+   "start": 259.935,
+   "end": 263.36,
+   "mau": "b-roll",
+   "video": "nvidia-bien-c070.mp4",
+   "nhan": "Lời ông Jones trong thông cáo",
+   "nhip": [
+    "lời bằng lời",
+    "ông Jones. Ông",
+    "hội đồng kỳ"
+   ]
+  },
+  {
+   "id": "c071",
+   "start": 263.36,
+   "end": 266.769,
+   "mau": "trang-nguon",
+   "anh": "tn-p8.png",
+   "khung": "8.1,40.9,55.7,18.1",
+   "nguon_id": "p8",
+   "trong_diem": true,
+   "nhip": [
+    "giữ đúng cam"
+   ]
+  },
+  {
+   "id": "c072",
+   "start": 266.769,
+   "end": 269.702,
+   "mau": "trich-bao",
+   "nguon_id": "p8",
+   "trich": "operations, customer commitments and product roadmap to continue without interruption",
+   "to_vang": "continue without interruption",
+   "trich_vi": "hoạt động, cam kết với khách hàng và lộ trình sản phẩm tiếp tục không gián đoạn",
+   "to_vang_vi": "không gián đoạn",
+   "nhip": [
+    "đứt quãng. Câu"
+   ]
+  },
+  {
+   "id": "c073",
+   "start": 269.702,
+   "end": 272.791,
+   "mau": "minh-hoa",
+   "nhan": "Ba vế, ba nhóm người",
+   "svg": "nguoi-nhom",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "nha-may",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tai-lieu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    },
+    {
+     "svg": "chip",
+     "x": 0.24,
+     "y": 0.3,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "kênh đọc, mỗi",
+    "vế nhắm vào",
+    "một nhóm người."
+   ]
+  },
+  {
+   "id": "c074",
+   "start": 272.791,
+   "end": 276.766,
+   "mau": "b-roll",
+   "video": "nha-may-chip-32386617-c074.mp4",
+   "nhan": "Vế 1: vận hành",
+   "tu_khoa": "Nhân viên, nhà máy",
+   "nhip": [
+    "nói với nhân",
+    "và các nhà",
+    "làm ăn cùng"
+   ]
+  },
+  {
+   "id": "c075",
+   "start": 276.766,
+   "end": 280.255,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-1085656-c075.mp4",
+   "nhan": "Vế 2: cam kết",
+   "tu_khoa": "Ai đã ký hợp đồng",
+   "nhip": [
+    "nói với ai",
+    "ký hợp đồng",
+    "chip hay thuê"
+   ]
+  },
+  {
+   "id": "c076",
+   "start": 280.255,
+   "end": 282.889,
+   "mau": "b-roll",
+   "video": "man-hinh-code-29458457-c076.mp4",
+   "nhan": "Vế 3: lộ trình sản phẩm",
+   "tu_khoa": "Dân làm công nghệ",
+   "nhip": [
+    "sản phẩm là",
+    "nói với dân",
+    "làm công nghệ,"
+   ]
+  },
+  {
+   "id": "c077",
+   "start": 282.889,
+   "end": 285.913,
+   "mau": "b-roll",
+   "video": "bo-mach-chip-6754824-c077.mp4",
+   "nhan": "Lộ trình: các đời chip",
+   "nhip": [
+    "tính kế hoạch",
+    "dựa trên thế",
+    "chip sắp ra."
+   ]
+  },
+  {
+   "id": "c078",
+   "start": 285.913,
+   "end": 289.175,
+   "mau": "trich-bao",
+   "nguon_id": "p10",
+   "trich": "Our focus remains on serving our customers, partners, developers and shareholders.",
+   "to_vang": "customers, partners, developers and shareholders",
+   "trich_vi": "Trọng tâm của chúng tôi vẫn là phục vụ khách hàng, đối tác, nhà phát triển và cổ đông.",
+   "to_vang_vi": "khách hàng, đối tác, nhà phát triển và cổ đông",
+   "nhip": [
+    "lấy khách hàng,"
+   ]
+  },
+  {
+   "id": "c079",
+   "start": 289.175,
+   "end": 291.767,
+   "mau": "b-roll",
+   "video": "laptop-ban-dem-7272375-c079.mp4",
+   "nhan": "Khách hàng là trọng tâm",
+   "tu_khoa": "Khách hàng trước",
+   "nhip": [
+    "triển và cổ",
+    "cổ đông làm",
+    "làm trọng tâm."
+   ]
+  },
+  {
+   "id": "c080",
+   "start": 291.767,
+   "end": 297.222,
+   "mau": "chu-dong",
+   "cau": "Kỳ vọng là công ty tự hứa, chứ chưa ai kiểm chứng.",
+   "nhan_tu": "tự hứa",
+   "nho": "Để ý chữ này",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "kỳ vọng"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c081",
+   "start": 297.222,
+   "end": 300.928,
+   "mau": "b-roll",
+   "video": "pho-36082304-c081.mp4",
+   "nhan": "Quán phở đổi bếp trưởng",
+   "tu_khoa": "Vẫn công thức cũ",
+   "trong_diem": true,
+   "nhip": [
+    "bếp trưởng rồi",
+    "biển \"vẫn nấu",
+    "theo công thức"
+   ]
+  },
+  {
+   "id": "c082",
+   "start": 300.928,
+   "end": 303.649,
+   "mau": "b-roll",
+   "video": "pho-6645673-c082.mp4",
+   "nhan": "Phải ăn bát đầu mới biết",
+   "nhip": [
+    "thật, nhưng phải",
+    "ăn bát đầu",
+    "đầu mới biết."
+   ]
+  },
+  {
+   "id": "c083",
+   "start": 303.649,
+   "end": 306.57,
+   "mau": "b-roll",
+   "video": "ha-noi-c083.mp4",
+   "nhan": "Ở Việt Nam, ai dựa vào Nvidia?",
+   "tu_khoa": "Ai dựa vào Nvidia?",
+   "dan": {
+    "the": "nghi",
+    "goc": "trai"
+   },
+   "nhip": [
+    "Việt Nam, ai",
+    "ai đang dựa",
+    "dựa vào Nvidia?"
+   ]
+  },
+  {
+   "id": "c084",
+   "start": 306.57,
+   "end": 310.01,
+   "mau": "b-roll",
+   "video": "viettel-b200-vgp-c084.mp4",
+   "nhan": "Viettel, 06/02/2026",
+   "nguon_id": "v1",
+   "nhip": [
+    "tử Chính phủ,",
+    "ngày sáu tháng",
+    "hai năm nay,"
+   ]
+  },
+  {
+   "id": "c085",
+   "start": 310.01,
+   "end": 314.283,
+   "mau": "b-roll",
+   "video": "nvidia-dgx-b200-hgx-c085.mp4",
+   "nhan": "Hệ thống Nvidia DGX B200",
+   "nguon_id": "v1",
+   "nhip": [
+    "hệ thống siêu",
+    "tính Nvidia Đê",
+    "Ích Bê hai"
+   ]
+  },
+  {
+   "id": "c086",
+   "start": 314.283,
+   "end": 319.52,
+   "mau": "trang-nguon",
+   "anh": "tn-v1.png",
+   "khung": "10.8,52.6,53,8",
+   "nguon_id": "v1",
+   "trong_diem": true,
+   "nhip": [
+    "một nghìn năm"
+   ]
+  },
+  {
+   "id": "c087",
+   "start": 319.52,
+   "end": 323.103,
+   "mau": "b-roll",
+   "video": "trung-tam-du-lieu-5028622-c087.mp4",
+   "nhan": "Chia sẻ sức tính toán",
+   "tu_khoa": "Chia sẻ trong nước",
+   "nhip": [
+    "Viettel sẵn sàng",
+    "sẻ sức tính",
+    "ấy với đối"
+   ]
+  },
+  {
+   "id": "c088",
+   "start": 323.103,
+   "end": 327.953,
+   "mau": "b-roll",
+   "video": "thanh-pho-viet-nam-31111952-c088.mp4",
+   "nhan": "FPT Cloud cho thuê máy",
+   "tu_khoa": "Thuê máy theo giờ",
+   "nhip": [
+    "doanh nghiệp trong",
+    "Bên cho thuê",
+    "thì có FPT"
+   ]
+  },
+  {
+   "id": "c089",
+   "start": 327.953,
+   "end": 330.531,
+   "mau": "trang-nguon",
+   "anh": "tn-f1.png",
+   "khung": "8.7,19.6,48.1,8.8",
+   "nguon_id": "f1",
+   "nhip": [
+    "mười ba tháng"
+   ]
+  },
+  {
+   "id": "c090",
+   "start": 330.531,
+   "end": 333.82,
+   "mau": "so-lon",
+   "so": "2,0",
+   "truoc": "",
+   "sau": " USD/giờ",
+   "nhan": "Giá thuê từ (đọc 13/11)",
+   "nguon_id": "f1",
+   "svg": "may-chu",
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "chứng nhận Nvidia",
+    "hai đô la"
+   ]
+  },
+  {
+   "id": "c091",
+   "start": 333.82,
+   "end": 338.198,
+   "mau": "b-roll",
+   "video": "tai-nghe-laptop-8865637-c091.mp4",
+   "nhan": "Ví dụ: làm trợ lý ảo tiếng Việt",
+   "nhip": [
+    "vài người bạn",
+    "lý ảo tiếng",
+    "và thuê máy"
+   ]
+  },
+  {
+   "id": "c092",
+   "start": 338.198,
+   "end": 342.835,
+   "mau": "minh-hoa",
+   "nhan": "Mắt xích gần bạn nhất",
+   "svg": "may-chu",
+   "san_khau": "may-chu",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "laptop",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi-nhom",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "gần bạn nhất.",
+    "nay, con số",
+    "trang giá vẫn"
+   ]
+  },
+  {
+   "id": "c093",
+   "start": 342.835,
+   "end": 345.654,
+   "mau": "chu-dong",
+   "cau": "Còn một chi tiết nói được nhiều hơn mọi lời trấn an.",
+   "nhan_tu": "nhiều hơn",
+   "nho": "Chi tiết đáng giá"
+  },
+  {
+   "id": "c094",
+   "start": 345.654,
+   "end": 348.837,
+   "mau": "b-roll",
+   "video": "thu-tuong-huang-vgp-c094.mp4",
+   "nhan": "05/12/2024, Hà Nội",
+   "nguon_id": "v2",
+   "nhip": [
+    "mười hai năm",
+    "hai nghìn không",
+    "hai mươi bốn,"
+   ]
+  },
+  {
+   "id": "c095",
+   "start": 348.837,
+   "end": 352.332,
+   "mau": "b-roll",
+   "video": "jensen-ha-noi-c095.mp4",
+   "nhan": "Thỏa thuận Chính phủ – Nvidia",
+   "nhip": [
+    "ký thỏa thuận",
+    "Nvidia để lập",
+    "một trung tâm"
+   ]
+  },
+  {
+   "id": "c096",
+   "start": 352.332,
+   "end": 356.396,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Trung tâm nghiên cứu AI",
+    "svg": "bo-nao-ai"
+   },
+   "phai": {
+    "nhan": "Trung tâm dữ liệu AI",
+    "svg": "trung-tam-du-lieu"
+   },
+   "nhip": [
+    "trí tuệ nhân",
+    "một trung tâm",
+    "trí tuệ nhân"
+   ]
+  },
+  {
+   "id": "c097",
+   "start": 356.396,
+   "end": 360.815,
+   "mau": "trich-bao",
+   "nguon_id": "v2",
+   "trich": "đại diện Chính phủ Việt Nam và ông Jay Puri, Phó Chủ tịch Điều hành Phụ trách Hoạt động Toàn cầu NVIDIA",
+   "to_vang": "ông Jay Puri",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "bút ký phía"
+   ]
+  },
+  {
+   "id": "c098",
+   "start": 360.815,
+   "end": 363.346,
+   "mau": "b-roll",
+   "video": "ky-van-ban-5311423-c098.mp4",
+   "nhan": "Ông Jay Puri ký phía Nvidia",
+   "nguon_id": "v2",
+   "nhip": [
+    "tịch điều hành",
+    "lo hoạt động",
+    "động toàn cầu."
+   ]
+  },
+  {
+   "id": "c099",
+   "start": 363.346,
+   "end": 367.73,
+   "mau": "minh-hoa",
+   "nhan": "Ký với cả tập đoàn",
+   "svg": "tai-lieu",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "co-viet-nam",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "cao-oc",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "giữa Chính phủ",
+    "tập đoàn, chứ",
+    "phải với riêng"
+   ]
+  },
+  {
+   "id": "c100",
+   "start": 367.73,
+   "end": 370.988,
+   "mau": "trang-nguon",
+   "anh": "tn-v3.png",
+   "khung": "42.6,55.3,21,3.8",
+   "nguon_id": "v3",
+   "trong_diem": true,
+   "nhip": [
+    "thành \"ngôi nhà"
+   ]
+  },
+  {
+   "id": "c101",
+   "start": 370.988,
+   "end": 374.515,
+   "mau": "b-roll",
+   "video": "jensen-huang-c101.mp4",
+   "nhan": "Cam kết của chính ông Huang",
+   "nhip": [
+    "ghi rõ là",
+    "tâm và cam",
+    "của chính ông"
+   ]
+  },
+  {
+   "id": "c102",
+   "start": 374.515,
+   "end": 379.364,
+   "mau": "so-lon",
+   "so": "48",
+   "truoc": "",
+   "sau": " nghìn kỹ sư",
+   "nhan": "Trong hệ sinh thái Nvidia ở Việt Nam (ông Huang nêu)",
+   "nguon_id": "v4",
+   "svg": "nguoi-nhom",
+   "trong_diem": true,
+   "nhip": [
+    "Nam đã có",
+    "kỹ sư trong"
+   ]
+  },
+  {
+   "id": "c103",
+   "start": 379.364,
+   "end": 383.297,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Doanh nghiệp AI",
+    "svg": "cao-oc",
+    "so": 100,
+    "don_vi": "doanh nghiệp"
+   },
+   "phai": {
+    "nhan": "Trường đại học",
+    "svg": "toa-nha-quoc-hoi",
+    "so": 36,
+    "don_vi": "trường"
+   },
+   "nguon_id": "v4",
+   "nhip": [
+    "nghiệp trí tuệ",
+    "tạo và ba",
+    "sáu trường đại"
+   ]
+  },
+  {
+   "id": "c104",
+   "start": 383.297,
+   "end": 385.951,
+   "mau": "b-roll",
+   "video": "may-anh-1787376-c104.mp4",
+   "nhan": "Số năm 2024",
+   "tu_khoa": "Chưa phải số mới",
+   "nguon_id": "v4",
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "trai"
+   },
+   "nhip": [
+    "ông nói hôm",
+    "ấy, chưa phải",
+    "phải số mới."
+   ]
+  },
+  {
+   "id": "c105",
+   "start": 385.951,
+   "end": 389.252,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Hợp đồng: của công ty",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Quan hệ riêng: khó đo",
+    "svg": "nguoi"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "thế này: hợp",
+    "và chữ ký",
+    "là của công"
+   ]
+  },
+  {
+   "id": "c106",
+   "start": 389.252,
+   "end": 392.28,
+   "mau": "b-roll",
+   "video": "hang-cot-6534416-c106.mp4",
+   "nhan": "Không tự mất khi rời ghế",
+   "trong_diem": true,
+   "nhip": [
+    "tờ, chúng không",
+    "tự mất khi",
+    "người rời ghế."
+   ]
+  },
+  {
+   "id": "c107",
+   "start": 392.28,
+   "end": 396.126,
+   "mau": "b-roll",
+   "video": "doc-thu-tay-30998273-c107.mp4",
+   "nhan": "Quan hệ riêng có thể nguội",
+   "nhip": [
+    "đi là quan",
+    "riêng, thứ mà",
+    "bản nào đo"
+   ]
+  },
+  {
+   "id": "c108",
+   "start": 396.126,
+   "end": 399.63,
+   "mau": "b-roll",
+   "video": "cuon-man-hinh-6258096-c108.mp4",
+   "nhan": "Chưa thấy văn bản mới",
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai"
+   },
+   "nhip": [
+    "bản này, kênh",
+    "thấy Nvidia hay",
+    "phía Việt Nam"
+   ]
+  },
+  {
+   "id": "c109",
+   "start": 399.63,
+   "end": 403.297,
+   "mau": "b-roll",
+   "video": "dien-thoai-ban-853987-c109.mp4",
+   "nhan": "Sau 12/11: chưa có thông báo",
+   "nguon_id": "p1",
+   "tu_khoa": "Chưa có văn bản",
+   "nhip": [
+    "về các thỏa",
+    "ấy sau ngày",
+    "hai tháng mười"
+   ]
+  },
+  {
+   "id": "c110",
+   "start": 403.297,
+   "end": 407.143,
+   "mau": "chuong",
+   "so": "Phần 4",
+   "chuong": "Hai việc cần ngóng",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c111",
+   "start": 407.143,
+   "end": 410.697,
+   "mau": "trang-nguon",
+   "anh": "tn-p11.png",
+   "khung": "8.1,45.6,55.7,9.0",
+   "nguon_id": "p11",
+   "nhip": [
+    "quả quý ba"
+   ]
+  },
+  {
+   "id": "c112",
+   "start": 410.697,
+   "end": 414.376,
+   "mau": "b-roll",
+   "video": "nvidia-tru-so-c112.mp4",
+   "nhan": "17/11, khoảng 1 giờ 20 chiều",
+   "nguon_id": "p11",
+   "nhip": [
+    "một giờ hai",
+    "chiều thứ Ba,",
+    "bảy tháng mười"
+   ]
+  },
+  {
+   "id": "c113",
+   "start": 414.376,
+   "end": 417.781,
+   "mau": "b-roll",
+   "video": "micro-phong-hop-6951298-c113.mp4",
+   "nhan": "2 giờ chiều: họp với giới phân tích",
+   "nguon_id": "p11",
+   "nhip": [
+    "rồi họp với",
+    "giới phân tích",
+    "lúc hai giờ"
+   ]
+  },
+  {
+   "id": "c114",
+   "start": 417.781,
+   "end": 422.173,
+   "mau": "b-roll",
+   "video": "dong-ho-kim-9160922-c114.mp4",
+   "nhan": "Giờ Việt Nam (kênh tự tính)",
+   "tu_khoa": "4 giờ 20 sáng 18/11",
+   "nguon_id": "t4",
+   "trong_diem": true,
+   "nhip": [
+    "tính ra kết",
+    "mạng vào khoảng",
+    "hai mươi sáng"
+   ]
+  },
+  {
+   "id": "c115",
+   "start": 422.173,
+   "end": 427.091,
+   "mau": "b-roll",
+   "video": "cau-can-ha-noi-dem-45699-c115.mp4",
+   "nhan": "Khoảng 5 giờ sáng: họp",
+   "nguon_id": "t5",
+   "nhip": [
+    "Cuộc họp bắt",
+    "năm giờ sáng,",
+    "theo cách đổi"
+   ]
+  },
+  {
+   "id": "c116",
+   "start": 427.091,
+   "end": 430.66,
+   "mau": "b-roll",
+   "video": "pho-sai-gon-sang-125172-c116.mp4",
+   "nhan": "Dậy sớm đi bộ thì vừa kịp",
+   "nhip": [
+    "đi bộ thì",
+    "kịp nghe. Có",
+    "một chi tiết"
+   ]
+  },
+  {
+   "id": "c117",
+   "start": 430.66,
+   "end": 434.275,
+   "mau": "trang-nguon",
+   "anh": "tn-c1.png",
+   "khung": "8.1,45.5,55.7,9.0",
+   "nguon_id": "c1",
+   "nhip": [
+    "mười, hồi chưa"
+   ]
+  },
+  {
+   "id": "c118",
+   "start": 434.275,
+   "end": 438.197,
+   "mau": "b-roll",
+   "video": "may-in-855469-c118.mp4",
+   "nhan": "Bản nhận định đăng sẵn",
+   "nhip": [
+    "sẽ đăng sẵn",
+    "bản nhận định",
+    "về kết quả"
+   ]
+  },
+  {
+   "id": "c119",
+   "start": 438.197,
+   "end": 441.666,
+   "mau": "nhan-vat",
+   "anh": "colette-kress-1-.png",
+   "nhan": "Colette Kress",
+   "vai": "Trình bày trong vai giám đốc tài chính",
+   "nhip": [
+    "trong vai giám"
+   ]
+  },
+  {
+   "id": "c120",
+   "start": 441.666,
+   "end": 445.139,
+   "mau": "so-lon",
+   "so": "2",
+   "truoc": "",
+   "sau": " tuần",
+   "nhan": "Từ lịch hẹn 28/10 tới ghế quyền CEO 11/11 (kênh tự tính)",
+   "nguon_id": "t7",
+   "svg": "lich",
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "phai"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "sau, hội đồng",
+    "cho chính người"
+   ]
+  },
+  {
+   "id": "c121",
+   "start": 445.139,
+   "end": 449.874,
+   "mau": "minh-hoa",
+   "nhan": "Một bản, hai vai",
+   "svg": "tai-lieu",
+   "san_khau": "san-giao-dich",
+   "may_quay": "he-lo",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "quyền giám đốc",
+    "Bản ấy hẹn",
+    "vai giám đốc"
+   ]
+  },
+  {
+   "id": "c122",
+   "start": 449.874,
+   "end": 452.841,
+   "mau": "b-roll",
+   "video": "dien-thoai-tay-853794-c122.mp4",
+   "nhan": "Nghe như lời người đứng đầu",
+   "tu_khoa": "Lời người đứng đầu",
+   "nhip": [
+    "đọc cũng sẽ",
+    "nghe như lời",
+    "người đứng đầu."
+   ]
+  },
+  {
+   "id": "c123",
+   "start": 452.841,
+   "end": 455.552,
+   "mau": "b-roll",
+   "video": "o-khoa-10241357-c123.mp4",
+   "nhan": "Quý khóa sổ ngày 25/10",
+   "nguon_id": "c1",
+   "nhip": [
+    "khóa sổ từ",
+    "ngày hai mươi",
+    "lăm tháng mười."
+   ]
+  },
+  {
+   "id": "c124",
+   "start": 455.552,
+   "end": 459.031,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Doanh thu quý: chốt 25/10",
+    "svg": "o-khoa"
+   },
+   "phai": {
+    "nhan": "Tin thay người: 11–12/11",
+    "svg": "dien-thoai"
+   },
+   "nguon_id": "c1",
+   "trong_diem": true,
+   "nhip": [
+    "quý đã chốt",
+    "trước khi có",
+    "loạt tin tuần"
+   ]
+  },
+  {
+   "id": "c125",
+   "start": 459.031,
+   "end": 463.898,
+   "mau": "minh-hoa",
+   "nhan": "Chỉ nhà phân tích hỏi",
+   "svg": "nguoi-nhom",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "cua-hep",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "đáp, mà phần",
+    "dành cho nhà",
+    "và nhà đầu"
+   ]
+  },
+  {
+   "id": "c126",
+   "start": 463.898,
+   "end": 468.624,
+   "mau": "chu-dong",
+   "cau": "ban lãnh đạo có nhắc lại chuyện giữ cam kết với khách hàng hay không",
+   "nhan_tu": "giữ cam kết",
+   "nho": "Câu đáng nghe nhất",
+   "trong_diem": true
+  },
+  {
+   "id": "c127",
+   "start": 468.624,
+   "end": 471.349,
+   "mau": "b-roll",
+   "video": "tay-cam-dien-thoai-5220470-c127.mp4",
+   "nhan": "Bao lâu để có giám đốc mới?",
+   "tu_khoa": "Bao lâu?",
+   "nhip": [
+    "gì về thời",
+    "gian tìm giám",
+    "mới hay không."
+   ]
+  },
+  {
+   "id": "c128",
+   "start": 471.349,
+   "end": 476.265,
+   "mau": "chu-dong",
+   "cau": "thì chính sự im lặng cũng là một câu trả lời.",
+   "nhan_tu": "im lặng",
+   "nho": "Nếu né",
+   "trong_diem": true
+  },
+  {
+   "id": "c129",
+   "start": 476.265,
+   "end": 480.2,
+   "mau": "b-roll",
+   "video": "dung-dien-thoai-12692095-c129.mp4",
+   "nhan": "Có bản ghi để nghe lại",
+   "nhip": [
+    "cần dậy từ",
+    "mờ sáng, vì",
+    "ghi để nghe"
+   ]
+  },
+  {
+   "id": "c130",
+   "start": 480.2,
+   "end": 482.712,
+   "mau": "minh-hoa",
+   "nhan": "Việc 2: tìm người",
+   "svg": "kinh-lup",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi",
+     "x": 0.24,
+     "y": 0.3,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "hai thì không",
+    "có ngày: chuyện",
+    "chuyện tìm người."
+   ]
+  },
+  {
+   "id": "c131",
+   "start": 482.712,
+   "end": 485.728,
+   "mau": "trich-bao",
+   "nguon_id": "p3",
+   "trich": "will consider internal and external candidates",
+   "to_vang": "internal and external",
+   "trich_vi": "sẽ xét cả ứng viên trong và ngoài công ty",
+   "to_vang_vi": "trong và ngoài",
+   "nhip": [
+    "người trong lẫn"
+   ]
+  },
+  {
+   "id": "c132",
+   "start": 485.728,
+   "end": 489.473,
+   "mau": "b-roll",
+   "video": "bo-mach-chip-6755170-c132.mp4",
+   "nhan": "Theo kênh: đi đường cũ",
+   "nhip": [
+    "chọn người trong",
+    "nghĩa là họ",
+    "tiếp con đường"
+   ]
+  },
+  {
+   "id": "c133",
+   "start": 489.473,
+   "end": 492.72,
+   "mau": "b-roll",
+   "video": "cpu-can-canh-7140928-c133.mp4",
+   "nhan": "Theo kênh: đổi nhiều hơn",
+   "nhip": [
+    "về thì có",
+    "thể kéo theo",
+    "thay đổi lớn"
+   ]
+  },
+  {
+   "id": "c134",
+   "start": 492.72,
+   "end": 496.48,
+   "mau": "b-roll",
+   "video": "day-cap-bo-mach-7140937-c134.mp4",
+   "nhan": "Có thể chạm lộ trình",
+   "nhip": [
+    "lộ trình sản",
+    "mà ông Jones",
+    "sẽ không đứt"
+   ]
+  },
+  {
+   "id": "c135",
+   "start": 496.48,
+   "end": 501.746,
+   "mau": "b-roll",
+   "video": "laptop-go-phim-7252685-c135.mp4",
+   "nhan": "Tên trên mạng lúc này",
+   "tu_khoa": "Chỉ là đoán",
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai"
+   },
+   "nhip": [
+    "sách nào, nên",
+    "nào bạn đọc",
+    "lúc này cũng"
+   ]
+  },
+  {
+   "id": "c136",
+   "start": 501.746,
+   "end": 505.07,
+   "mau": "chuong",
+   "so": "Phần 5",
+   "chuong": "Ai cầm lái, cái gì còn treo",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c137",
+   "start": 505.07,
+   "end": 508.572,
+   "mau": "minh-hoa",
+   "nhan": "Lái xe, vẫn giữ két",
+   "svg": "ket-sat",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "rõ rồi: bà",
+    "Kress điều hành",
+    "mà vẫn giữ"
+   ]
+  },
+  {
+   "id": "c138",
+   "start": 508.572,
+   "end": 511.404,
+   "mau": "b-roll",
+   "video": "nvidia-bien-c138.mp4",
+   "nhan": "Hội đồng đi tìm người thay",
+   "nhip": [
+    "Jones dẫn hội",
+    "đồng đi tìm",
+    "tìm người thay."
+   ]
+  },
+  {
+   "id": "c139",
+   "start": 511.404,
+   "end": 514.689,
+   "mau": "b-roll",
+   "video": "thiet-bi-dien-tu-7140931-c139.mp4",
+   "nhan": "Có gián đoạn không?",
+   "tu_khoa": "Có gián đoạn?",
+   "nhip": [
+    "có bị gián",
+    "đoạn không? Công",
+    "nói là không,"
+   ]
+  },
+  {
+   "id": "c140",
+   "start": 514.689,
+   "end": 518.889,
+   "mau": "chu-dong",
+   "cau": "nhưng đó mới là lời hứa, chưa phải kết quả.",
+   "nhan_tu": "lời hứa",
+   "nho": "Nhớ giùm",
+   "trong_diem": true
+  },
+  {
+   "id": "c141",
+   "start": 518.889,
+   "end": 522.365,
+   "mau": "b-roll",
+   "video": "xe-may-sai-gon-32499-c141.mp4",
+   "nhan": "Chưa thấy giá hay lịch giao đổi",
+   "tu_khoa": "Chưa thấy thay đổi",
+   "nhip": [
+    "thấy văn bản",
+    "giá dịch vụ",
+    "giao hàng thay"
+   ]
+  },
+  {
+   "id": "c142",
+   "start": 522.365,
+   "end": 525.232,
+   "mau": "b-roll",
+   "video": "nvidia-dgx-b200-hgx-c142.mp4",
+   "nhan": "Doanh nghiệp thuê, mua máy",
+   "nhip": [
+    "đang thuê hay",
+    "mua máy chạy",
+    "chạy chip Nvidia"
+   ]
+  },
+  {
+   "id": "c143",
+   "start": 525.232,
+   "end": 528.474,
+   "mau": "b-roll",
+   "video": "skyline-landmark-81-140421-c143.mp4",
+   "nhan": "Rạng sáng 18/11, giờ Việt Nam",
+   "nguon_id": "t4",
+   "nhip": [
+    "tám tháng mười",
+    "một, tính ra",
+    "theo giờ Việt"
+   ]
+  },
+  {
+   "id": "c144",
+   "start": 528.474,
+   "end": 532.549,
+   "mau": "b-roll",
+   "video": "nyse-c144.mp4",
+   "nhan": "Nghe lời hứa trước giới phân tích",
+   "nhip": [
+    "ban lãnh đạo",
+    "lời hứa ấy",
+    "trước giới phân"
+   ]
+  },
+  {
+   "id": "c145",
+   "start": 532.549,
+   "end": 536.186,
+   "mau": "minh-hoa",
+   "nhan": "Nếu lịch bị lùi?",
+   "svg": "tai-lieu",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "mui-ten-xuong",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "nhìn nếu Nvidia,",
+    "hay một đối",
+    "tác ở Việt"
+   ]
+  },
+  {
+   "id": "c146",
+   "start": 536.186,
+   "end": 539.277,
+   "mau": "b-roll",
+   "video": "kho-hang-giao-hang-10472351-c146.mp4",
+   "nhan": "Nếu lịch giao bị lùi",
+   "tu_khoa": "Nếu bị lùi?",
+   "nhip": [
+    "nói hợp đồng",
+    "hoặc lịch giao",
+    "hàng bị lùi."
+   ]
+  },
+  {
+   "id": "c147",
+   "start": 539.277,
+   "end": 544.697,
+   "mau": "trang-nguon",
+   "anh": "tn-p9.png",
+   "khung": "8.1,40.9,55.7,18.1",
+   "nguon_id": "p9",
+   "trong_diem": true,
+   "nhip": [
+    "hôm hội đồng"
+   ]
+  },
+  {
+   "id": "c148",
+   "start": 544.697,
+   "end": 554.268,
+   "mau": "ket-thuc",
+   "cau": "Mấy tháng nữa Nvidia có CEO chính thức?",
+   "moi": "Để lại một con số dưới bình luận"
+  }
+ ]
+}

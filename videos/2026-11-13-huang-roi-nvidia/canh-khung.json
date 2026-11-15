@@ -1,0 +1,892 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 2.595,
+   "loi": "Ba mươi ba năm. Trong thông cáo của Nvidia,"
+  },
+  {
+   "id": "c002",
+   "start": 2.595,
+   "end": 6.008,
+   "loi": "người vừa lên thay ghế điều hành nói ông Jensen Huang đã mất"
+  },
+  {
+   "id": "c003",
+   "start": 6.008,
+   "end": 8.756,
+   "loi": "chừng ấy năm để gây dựng nền móng cho công ty."
+  },
+  {
+   "id": "c004",
+   "start": 8.756,
+   "end": 12.572,
+   "loi": "Vậy mà lúc ra đi, mọi thứ gói lại trong mấy chữ: có hiệu lực ngay."
+  },
+  {
+   "id": "c005",
+   "start": 12.572,
+   "end": 16.94,
+   "loi": "Ngày mười hai tháng mười một, Nvidia báo tin ông Huang thôi làm giám đốc điều hành,"
+  },
+  {
+   "id": "c006",
+   "start": 16.94,
+   "end": 20.446,
+   "loi": "rời luôn hội đồng quản trị. Tính ra, chỉ năm ngày sau,"
+  },
+  {
+   "id": "c007",
+   "start": 20.446,
+   "end": 23.928,
+   "loi": "Nvidia đã phải ra báo cáo kinh doanh quý trước phố Wall."
+  },
+  {
+   "id": "c008",
+   "start": 23.928,
+   "end": 28.177,
+   "loi": "Mà lần này thì không có ông đứng đó. Vậy giờ ai nắm quyền ở Nvidia?"
+  },
+  {
+   "id": "c009",
+   "start": 28.177,
+   "end": 32.961,
+   "loi": "Ai đã đặt chip, đã thuê máy, kể cả ở Việt Nam, có phải lo bị bỏ dở giữa chừng không?"
+  },
+  {
+   "id": "c010",
+   "start": 32.961,
+   "end": 37.572,
+   "loi": "Và khi Nvidia báo cáo, tính ra là rạng sáng mười tám tháng mười một giờ Việt Nam,"
+  },
+  {
+   "id": "c011",
+   "start": 37.572,
+   "end": 41.083,
+   "loi": "thì nên nghe câu gì? Còn vì sao mọi chuyện đi tới hôm nay"
+  },
+  {
+   "id": "c012",
+   "start": 41.083,
+   "end": 44.425,
+   "loi": "thì kênh đã kể ở hai video trước, đường dẫn để dưới phần mô tả."
+  },
+  {
+   "id": "c013",
+   "start": 44.425,
+   "end": 47.508,
+   "loi": "Video này chỉ nói chuyện sau khi ông đi: giấy tờ ghi gì,"
+  },
+  {
+   "id": "c014",
+   "start": 47.508,
+   "end": 50.144,
+   "loi": "ai ngồi vào chỗ trống, và chỗ nào có thể đứt."
+  },
+  {
+   "id": "c015",
+   "start": 50.144,
+   "end": 52.666,
+   "loi": "Có hai tờ giấy đáng đọc, ghi hai ngày liền nhau."
+  },
+  {
+   "id": "c016",
+   "start": 52.666,
+   "end": 55.511,
+   "loi": "Câu hỏi đầu tiên là: chuyện này chốt từ bao giờ?"
+  },
+  {
+   "id": "c017",
+   "start": 55.511,
+   "end": 60.539,
+   "loi": "Tờ thứ nhất là hồ sơ Nvidia nộp lên Ủy ban Chứng khoán Mỹ, gọi là mẫu tám K."
+  },
+  {
+   "id": "c018",
+   "start": 60.539,
+   "end": 65.231,
+   "loi": "Trong đó ghi rõ: ngày mười một tháng mười một, hội đồng quản trị đã nhận đơn thôi việc của ông Huang."
+  },
+  {
+   "id": "c019",
+   "start": 65.231,
+   "end": 67.811,
+   "loi": "Tờ thứ hai là thông cáo báo chí, ra ngày mười hai."
+  },
+  {
+   "id": "c020",
+   "start": 67.811,
+   "end": 71.457,
+   "loi": "Nghĩa là hội đồng gật đầu từ hôm trước, hôm sau cả thế giới mới biết."
+  },
+  {
+   "id": "c021",
+   "start": 71.457,
+   "end": 74.94,
+   "loi": "Mẫu tám K là gì? Nói nôm na, công ty lên sàn ở Mỹ"
+  },
+  {
+   "id": "c022",
+   "start": 74.94,
+   "end": 79.412,
+   "loi": "mà có chuyện lớn thì phải khai với cổ đông, và tờ khai ấy chính là mẫu tám K."
+  },
+  {
+   "id": "c023",
+   "start": 79.412,
+   "end": 83.261,
+   "loi": "Mục khai lần này có cái tên rất thẳng: lãnh đạo hoặc thành viên hội đồng rời đi."
+  },
+  {
+   "id": "c024",
+   "start": 83.261,
+   "end": 87.564,
+   "loi": "Giấy kiểu này viết khô như biên bản họp tổ dân phố, gần như chẳng có tính từ nào."
+  },
+  {
+   "id": "c025",
+   "start": 87.564,
+   "end": 90.6,
+   "loi": "Mà chính vì khô nên nó đáng đọc trước mọi lời bình."
+  },
+  {
+   "id": "c026",
+   "start": 90.6,
+   "end": 94.281,
+   "loi": "Cuối hồ sơ có một chi tiết nhỏ. Người ký là bà Colette Kress,"
+  },
+  {
+   "id": "c027",
+   "start": 94.281,
+   "end": 97.302,
+   "loi": "kèm ba chức danh xếp liền nhau: quyền giám đốc điều hành,"
+  },
+  {
+   "id": "c028",
+   "start": 97.302,
+   "end": 99.87,
+   "loi": "phó chủ tịch điều hành, và giám đốc tài chính."
+  },
+  {
+   "id": "c029",
+   "start": 99.87,
+   "end": 104.102,
+   "loi": "Một chữ ký mà đội tới ba cái mũ. Bà là nhân vật chính của phần sau."
+  },
+  {
+   "id": "c030",
+   "start": 104.102,
+   "end": 106.901,
+   "loi": "Cả hai tờ giấy đều không nói vì sao ông thôi việc."
+  },
+  {
+   "id": "c031",
+   "start": 106.901,
+   "end": 110.504,
+   "loi": "Kênh dừng đúng ở đó, không kể lại chuyện đã nói ở hai video trước."
+  },
+  {
+   "id": "c032",
+   "start": 110.504,
+   "end": 114.279,
+   "loi": "Thị trường thì chẳng chờ ai đọc giấy. Phiên mười một tháng mười một,"
+  },
+  {
+   "id": "c033",
+   "start": 114.279,
+   "end": 117.234,
+   "loi": "cổ phiếu Nvidia đóng cửa ở gần một trăm bảy mươi bốn đô."
+  },
+  {
+   "id": "c034",
+   "start": 117.234,
+   "end": 121.005,
+   "loi": "Sáng hôm sau, vừa mở cửa đã chỉ còn gần một trăm năm mươi mốt đô."
+  },
+  {
+   "id": "c035",
+   "start": 121.005,
+   "end": 124.454,
+   "loi": "Trong phiên, có lúc giá xuống quanh một trăm bốn mươi chín đô."
+  },
+  {
+   "id": "c036",
+   "start": 124.454,
+   "end": 127.77,
+   "loi": "Rồi giá ngóc lên lại, đóng cửa quanh một trăm sáu mươi sáu đô,"
+  },
+  {
+   "id": "c037",
+   "start": 127.77,
+   "end": 130.548,
+   "loi": "tức là giảm hơn bốn phần trăm so với phiên trước."
+  },
+  {
+   "id": "c038",
+   "start": 130.548,
+   "end": 135.143,
+   "loi": "Thử hình dung, chỉ là ví dụ thôi: sáng ra vừa ăn sáng vừa mở ứng dụng chứng khoán,"
+  },
+  {
+   "id": "c039",
+   "start": 135.143,
+   "end": 138.935,
+   "loi": "thấy mã đang cầm tụt một mảng, tới chiều nó lại bò lên được một đoạn."
+  },
+  {
+   "id": "c040",
+   "start": 138.935,
+   "end": 143.442,
+   "loi": "Cả ngày tim đập theo biểu đồ. Còn tờ giấy gốc thì vẫn bình thản như tờ thông báo cắt nước."
+  },
+  {
+   "id": "c041",
+   "start": 143.442,
+   "end": 146.987,
+   "loi": "Chắc bạn đang thắc mắc: không có ông Huang thì ai quyết ở Nvidia?"
+  },
+  {
+   "id": "c042",
+   "start": 146.987,
+   "end": 152.267,
+   "loi": "Có hai người, ngồi ở hai tầng khác nhau. Tầng điều hành là bà Colette Kress, năm mươi chín tuổi."
+  },
+  {
+   "id": "c043",
+   "start": 152.267,
+   "end": 155.803,
+   "loi": "Trước khi về Nvidia, bà đã làm tài chính gần hai mươi lăm"
+  },
+  {
+   "id": "c044",
+   "start": 155.803,
+   "end": 158.505,
+   "loi": "năm ở những hãng như Cisco hay Microsoft."
+  },
+  {
+   "id": "c045",
+   "start": 158.505,
+   "end": 162.987,
+   "loi": "Bà giữ ghế giám đốc tài chính Nvidia từ tháng chín năm hai nghìn không trăm mười ba,"
+  },
+  {
+   "id": "c046",
+   "start": 162.987,
+   "end": 166.318,
+   "loi": "tính ra khoảng mười ba năm. Giờ bà làm quyền giám đốc điều hành,"
+  },
+  {
+   "id": "c047",
+   "start": 166.318,
+   "end": 169.926,
+   "loi": "mà vẫn ôm luôn ghế giám đốc tài chính cho tới khi có người thay chính thức."
+  },
+  {
+   "id": "c048",
+   "start": 169.926,
+   "end": 175.32,
+   "loi": "Lấy ví dụ cho dễ hình dung: trong nhà, người giữ sổ chi tiêu bỗng phải quyết luôn chuyện cả nhà làm ăn gì."
+  },
+  {
+   "id": "c049",
+   "start": 175.32,
+   "end": 180.11,
+   "loi": "Người ấy thuộc từng đồng ra vào, chẳng ai qua mặt được, nhưng việc gì cũng dồn về một bàn."
+  },
+  {
+   "id": "c050",
+   "start": 180.11,
+   "end": 183.823,
+   "loi": "Hai cái ghế, một cái lưng. Tầng thứ hai là hội đồng quản trị."
+  },
+  {
+   "id": "c051",
+   "start": 183.823,
+   "end": 187.424,
+   "loi": "Ông Harvey Jones, bảy mươi ba tuổi, lên làm chủ tịch hội đồng."
+  },
+  {
+   "id": "c052",
+   "start": 187.424,
+   "end": 191.951,
+   "loi": "Thông cáo ghi rõ đây là lần đầu tiên Nvidia có chức chủ tịch hội đồng quản trị."
+  },
+  {
+   "id": "c053",
+   "start": 191.951,
+   "end": 196.537,
+   "loi": "Ông ngồi trong hội đồng từ năm một nghìn chín trăm chín mươi ba, tính ra đã ba mươi ba năm."
+  },
+  {
+   "id": "c054",
+   "start": 196.537,
+   "end": 201.294,
+   "loi": "Trước đây ông Jones từng làm giám đốc điều hành, rồi chủ tịch điều hành của Synopsys."
+  },
+  {
+   "id": "c055",
+   "start": 201.294,
+   "end": 206.032,
+   "loi": "Chỗ này người Việt hay nhầm. Báo Chính phủ từng gọi ông Huang là \"Chủ tịch Tập đoàn NVIDIA\"."
+  },
+  {
+   "id": "c056",
+   "start": 206.032,
+   "end": 209.882,
+   "loi": "Nhưng trong hồ sơ, chức của ông là President, đi kèm giám đốc điều hành."
+  },
+  {
+   "id": "c057",
+   "start": 209.882,
+   "end": 213.195,
+   "loi": "Ở công ty Mỹ, President là người lo việc điều hành hằng ngày."
+  },
+  {
+   "id": "c058",
+   "start": 213.195,
+   "end": 218.06,
+   "loi": "Còn chủ tịch hội đồng quản trị là người cầm trịch cái hội đồng có quyền chọn giám đốc điều hành."
+  },
+  {
+   "id": "c059",
+   "start": 218.06,
+   "end": 223.087,
+   "loi": "Nói gọn thì trước giờ Nvidia có người lái xe, nhưng chưa ai mang chức chủ tịch hội đồng."
+  },
+  {
+   "id": "c060",
+   "start": 223.087,
+   "end": 225.919,
+   "loi": "Vậy ai cầm lái? Bà Kress cầm vô lăng,"
+  },
+  {
+   "id": "c061",
+   "start": 225.919,
+   "end": 228.593,
+   "loi": "còn ông Jones là người đi tìm tài xế mới."
+  },
+  {
+   "id": "c062",
+   "start": 228.593,
+   "end": 232.947,
+   "loi": "Cả hai đều ngồi trong xe từ lâu rồi, chứ đâu phải người lạ bị gọi vào lúc nửa đêm."
+  },
+  {
+   "id": "c063",
+   "start": 232.947,
+   "end": 237.963,
+   "loi": "Thế còn tài xế chính thức? Hội đồng nói sẽ tìm, xét cả người trong lẫn người ngoài công ty."
+  },
+  {
+   "id": "c064",
+   "start": 237.963,
+   "end": 241.285,
+   "loi": "Thông cáo không hẹn ngày nào. Chữ \"quyền\" nghĩa là tạm thôi,"
+  },
+  {
+   "id": "c065",
+   "start": 241.285,
+   "end": 244.733,
+   "loi": "có thể vài tuần mà cũng có thể lâu hơn, giấy tờ không hứa gì."
+  },
+  {
+   "id": "c066",
+   "start": 244.733,
+   "end": 247.966,
+   "loi": "Một công ty mà cả ngành trí tuệ nhân tạo ngày nào cũng ngó vào,"
+  },
+  {
+   "id": "c067",
+   "start": 247.966,
+   "end": 252.27,
+   "loi": "giờ cũng phải đi tuyển giám đốc như bao công ty khác: nhận hồ sơ, phỏng vấn, rồi chờ."
+  },
+  {
+   "id": "c068",
+   "start": 252.27,
+   "end": 256.187,
+   "loi": "Có điều, chắc chẳng ai dám ghi \"lương thỏa thuận\" vào tin tuyển dụng này."
+  },
+  {
+   "id": "c069",
+   "start": 256.187,
+   "end": 259.935,
+   "loi": "Câu hỏi thứ hai: mất người đứng đầu thì khách hàng có bị ảnh hưởng không?"
+  },
+  {
+   "id": "c070",
+   "start": 259.935,
+   "end": 263.36,
+   "loi": "Thông cáo trả lời bằng lời ông Jones. Ông nói hội đồng kỳ"
+  },
+  {
+   "id": "c071",
+   "start": 263.36,
+   "end": 266.769,
+   "loi": "vọng công ty vẫn vận hành bình thường, giữ đúng cam kết với khách hàng,"
+  },
+  {
+   "id": "c072",
+   "start": 266.769,
+   "end": 269.702,
+   "loi": "và lộ trình sản phẩm không đứt quãng. Câu ấy có ba vế,"
+  },
+  {
+   "id": "c073",
+   "start": 269.702,
+   "end": 272.791,
+   "loi": "và theo cách kênh đọc, mỗi vế nhắm vào một nhóm người."
+  },
+  {
+   "id": "c074",
+   "start": 272.791,
+   "end": 276.766,
+   "loi": "Vế vận hành là nói với nhân viên và các nhà máy làm ăn cùng Nvidia."
+  },
+  {
+   "id": "c075",
+   "start": 276.766,
+   "end": 280.255,
+   "loi": "Vế cam kết là nói với ai đã ký hợp đồng mua chip hay thuê máy."
+  },
+  {
+   "id": "c076",
+   "start": 280.255,
+   "end": 282.889,
+   "loi": "Còn lộ trình sản phẩm là nói với dân làm công nghệ,"
+  },
+  {
+   "id": "c077",
+   "start": 282.889,
+   "end": 285.913,
+   "loi": "những người đang tính kế hoạch dựa trên thế hệ chip sắp ra."
+  },
+  {
+   "id": "c078",
+   "start": 285.913,
+   "end": 289.175,
+   "loi": "Bà Kress nói thêm: Nvidia vẫn lấy khách hàng, đối tác,"
+  },
+  {
+   "id": "c079",
+   "start": 289.175,
+   "end": 291.767,
+   "loi": "nhà phát triển và cổ đông làm trọng tâm."
+  },
+  {
+   "id": "c080",
+   "start": 291.767,
+   "end": 297.222,
+   "loi": "Nhưng để ý chữ ông Jones dùng: kỳ vọng. Kỳ vọng là công ty tự hứa, chứ chưa ai kiểm chứng."
+  },
+  {
+   "id": "c081",
+   "start": 297.222,
+   "end": 300.928,
+   "loi": "Giống quán phở đổi bếp trưởng rồi treo biển \"vẫn nấu theo công thức cũ\"."
+  },
+  {
+   "id": "c082",
+   "start": 300.928,
+   "end": 303.649,
+   "loi": "Có khi đúng thật, nhưng phải ăn bát đầu mới biết."
+  },
+  {
+   "id": "c083",
+   "start": 303.649,
+   "end": 306.57,
+   "loi": "Vậy ở Việt Nam, ai đang dựa vào Nvidia?"
+  },
+  {
+   "id": "c084",
+   "start": 306.57,
+   "end": 310.01,
+   "loi": "Theo Báo Điện tử Chính phủ, ngày sáu tháng hai năm nay,"
+  },
+  {
+   "id": "c085",
+   "start": 310.01,
+   "end": 314.283,
+   "loi": "Viettel đã cho chạy hệ thống siêu máy tính Nvidia Đê Gê Ích Bê hai trăm."
+  },
+  {
+   "id": "c086",
+   "start": 314.283,
+   "end": 319.52,
+   "loi": "Báo ghi hiệu năng một phẩy năm ExaFLOPs, tức là một nghìn năm trăm triệu tỷ phép tính mỗi giây."
+  },
+  {
+   "id": "c087",
+   "start": 319.52,
+   "end": 323.103,
+   "loi": "Bài báo cũng ghi Viettel sẵn sàng chia sẻ sức tính toán ấy với đối tác,"
+  },
+  {
+   "id": "c088",
+   "start": 323.103,
+   "end": 327.953,
+   "loi": "viện nghiên cứu và doanh nghiệp trong nước. Bên cho thuê thì có FPT Cloud."
+  },
+  {
+   "id": "c089",
+   "start": 327.953,
+   "end": 330.531,
+   "loi": "Trang giá của họ, đọc ngày mười ba tháng mười một,"
+  },
+  {
+   "id": "c090",
+   "start": 330.531,
+   "end": 333.82,
+   "loi": "vẫn ghi siêu máy tính chứng nhận Nvidia giá từ hai đô la một giờ."
+  },
+  {
+   "id": "c091",
+   "start": 333.82,
+   "end": 338.198,
+   "loi": "Giả sử bạn đang cùng vài người bạn làm trợ lý ảo tiếng Việt và thuê máy theo giờ,"
+  },
+  {
+   "id": "c092",
+   "start": 338.198,
+   "end": 342.835,
+   "loi": "thì đó là mắt xích gần bạn nhất. Tới hôm nay, con số trên trang giá vẫn y nguyên."
+  },
+  {
+   "id": "c093",
+   "start": 342.835,
+   "end": 345.654,
+   "loi": "Còn một chi tiết nói được nhiều hơn mọi lời trấn an."
+  },
+  {
+   "id": "c094",
+   "start": 345.654,
+   "end": 348.837,
+   "loi": "Ngày năm tháng mười hai năm hai nghìn không trăm hai mươi bốn,"
+  },
+  {
+   "id": "c095",
+   "start": 348.837,
+   "end": 352.332,
+   "loi": "Chính phủ Việt Nam ký thỏa thuận với Nvidia để lập một trung tâm nghiên"
+  },
+  {
+   "id": "c096",
+   "start": 352.332,
+   "end": 356.396,
+   "loi": "cứu và phát triển trí tuệ nhân tạo, cùng một trung tâm dữ liệu trí tuệ nhân tạo."
+  },
+  {
+   "id": "c097",
+   "start": 356.396,
+   "end": 360.815,
+   "loi": "Hôm đó ông Huang có mặt. Nhưng người cầm bút ký phía Nvidia lại là ông Jay Puri,"
+  },
+  {
+   "id": "c098",
+   "start": 360.815,
+   "end": 363.346,
+   "loi": "phó chủ tịch điều hành lo hoạt động toàn cầu."
+  },
+  {
+   "id": "c099",
+   "start": 363.346,
+   "end": 367.73,
+   "loi": "Nghĩa là thỏa thuận ký giữa Chính phủ với cả tập đoàn, chứ không phải với riêng một người."
+  },
+  {
+   "id": "c100",
+   "start": 367.73,
+   "end": 370.988,
+   "loi": "Còn lời hứa biến Việt Nam thành \"ngôi nhà thứ hai của NVIDIA\""
+  },
+  {
+   "id": "c101",
+   "start": 370.988,
+   "end": 374.515,
+   "loi": "thì Báo Chính phủ ghi rõ là quyết tâm và cam kết của chính ông Huang."
+  },
+  {
+   "id": "c102",
+   "start": 374.515,
+   "end": 379.364,
+   "loi": "Hôm ấy ông còn kể, ở Việt Nam đã có hơn bốn mươi tám nghìn kỹ sư trong hệ sinh thái Nvidia,"
+  },
+  {
+   "id": "c103",
+   "start": 379.364,
+   "end": 383.297,
+   "loi": "gần một trăm doanh nghiệp trí tuệ nhân tạo và ba mươi sáu trường đại học."
+  },
+  {
+   "id": "c104",
+   "start": 383.297,
+   "end": 385.951,
+   "loi": "Đó là số ông nói hôm ấy, chưa phải số mới."
+  },
+  {
+   "id": "c105",
+   "start": 385.951,
+   "end": 389.252,
+   "loi": "Nhận định của kênh thế này: hợp đồng và chữ ký là của công ty,"
+  },
+  {
+   "id": "c106",
+   "start": 389.252,
+   "end": 392.28,
+   "loi": "nên trên giấy tờ, chúng không tự mất khi một người rời ghế."
+  },
+  {
+   "id": "c107",
+   "start": 392.28,
+   "end": 396.126,
+   "loi": "Cái có thể nguội đi là quan hệ riêng, thứ mà chẳng văn bản nào đo được."
+  },
+  {
+   "id": "c108",
+   "start": 396.126,
+   "end": 399.63,
+   "loi": "Tới lúc viết kịch bản này, kênh chưa thấy Nvidia hay phía Việt Nam ra"
+  },
+  {
+   "id": "c109",
+   "start": 399.63,
+   "end": 403.297,
+   "loi": "văn bản nào nói về các thỏa thuận ấy sau ngày mười hai tháng mười một."
+  },
+  {
+   "id": "c110",
+   "start": 403.297,
+   "end": 407.143,
+   "loi": "Vậy mấy ngày tới cần ngóng gì? Việc thứ nhất có hẳn ngày giờ."
+  },
+  {
+   "id": "c111",
+   "start": 407.143,
+   "end": 410.697,
+   "loi": "Thông cáo ghi Nvidia sẽ công bố kết quả quý ba năm tài khóa hai không"
+  },
+  {
+   "id": "c112",
+   "start": 410.697,
+   "end": 414.376,
+   "loi": "hai bảy vào khoảng một giờ hai mươi chiều thứ Ba, mười bảy tháng mười một,"
+  },
+  {
+   "id": "c113",
+   "start": 414.376,
+   "end": 417.781,
+   "loi": "giờ Thái Bình Dương, rồi họp với giới phân tích lúc hai giờ chiều."
+  },
+  {
+   "id": "c114",
+   "start": 417.781,
+   "end": 422.173,
+   "loi": "Đổi sang giờ Việt Nam, tính ra kết quả lên mạng vào khoảng bốn giờ hai mươi sáng thứ Tư,"
+  },
+  {
+   "id": "c115",
+   "start": 422.173,
+   "end": 427.091,
+   "loi": "mười tám tháng mười một. Cuộc họp bắt đầu khoảng năm giờ sáng, cũng tính ra theo cách đổi giờ ấy."
+  },
+  {
+   "id": "c116",
+   "start": 427.091,
+   "end": 430.66,
+   "loi": "Ai quen dậy sớm đi bộ thì vừa kịp nghe. Có một chi tiết nằm"
+  },
+  {
+   "id": "c117",
+   "start": 430.66,
+   "end": 434.275,
+   "loi": "trong thông cáo từ hai mươi tám tháng mười, hồi chưa ai nghĩ tới chuyện thay người."
+  },
+  {
+   "id": "c118",
+   "start": 434.275,
+   "end": 438.197,
+   "loi": "Trước giờ họp, Nvidia sẽ đăng sẵn một bản nhận định về kết quả quý,"
+  },
+  {
+   "id": "c119",
+   "start": 438.197,
+   "end": 441.666,
+   "loi": "do bà Colette Kress trình bày trong vai giám đốc tài chính."
+  },
+  {
+   "id": "c120",
+   "start": 441.666,
+   "end": 445.139,
+   "loi": "Tính ra, chừng hai tuần sau, hội đồng giao luôn cho chính người đứng tên"
+  },
+  {
+   "id": "c121",
+   "start": 445.139,
+   "end": 449.874,
+   "loi": "bản nhận định ấy ghế quyền giám đốc điều hành. Bản ấy hẹn từ trước trong vai giám đốc tài chính,"
+  },
+  {
+   "id": "c122",
+   "start": 449.874,
+   "end": 452.841,
+   "loi": "nhưng giờ ai đọc cũng sẽ nghe như lời của người đứng đầu."
+  },
+  {
+   "id": "c123",
+   "start": 452.841,
+   "end": 455.552,
+   "loi": "Quý này đã khóa sổ từ ngày hai mươi lăm tháng mười."
+  },
+  {
+   "id": "c124",
+   "start": 455.552,
+   "end": 459.031,
+   "loi": "Nghĩa là doanh thu quý đã chốt xong trước khi có loạt tin tuần này."
+  },
+  {
+   "id": "c125",
+   "start": 459.031,
+   "end": 463.898,
+   "loi": "Cái mới nằm ở phần hỏi đáp, mà phần đó chỉ dành cho nhà phân tích và nhà đầu tư tổ chức."
+  },
+  {
+   "id": "c126",
+   "start": 463.898,
+   "end": 468.624,
+   "loi": "Câu đáng nghe nhất là: ban lãnh đạo có nhắc lại chuyện giữ cam kết với khách hàng hay không,"
+  },
+  {
+   "id": "c127",
+   "start": 468.624,
+   "end": 471.349,
+   "loi": "và có nói gì về thời gian tìm giám đốc mới hay không."
+  },
+  {
+   "id": "c128",
+   "start": 471.349,
+   "end": 476.265,
+   "loi": "Nếu cả buổi chỉ đọc số mà né hai câu ấy, thì chính sự im lặng cũng là một câu trả lời."
+  },
+  {
+   "id": "c129",
+   "start": 476.265,
+   "end": 480.2,
+   "loi": "Mà bạn cũng chẳng cần dậy từ tờ mờ sáng, vì có bản ghi để nghe lại."
+  },
+  {
+   "id": "c130",
+   "start": 480.2,
+   "end": 482.712,
+   "loi": "Việc thứ hai thì không có ngày: chuyện tìm người."
+  },
+  {
+   "id": "c131",
+   "start": 482.712,
+   "end": 485.728,
+   "loi": "Hội đồng nói sẽ xét cả người trong lẫn người ngoài công ty."
+  },
+  {
+   "id": "c132",
+   "start": 485.728,
+   "end": 489.473,
+   "loi": "Theo cách kênh đọc, chọn người trong nhà nghĩa là họ muốn đi tiếp con đường cũ."
+  },
+  {
+   "id": "c133",
+   "start": 489.473,
+   "end": 492.72,
+   "loi": "Còn mời người ngoài về thì có thể kéo theo thay đổi lớn hơn,"
+  },
+  {
+   "id": "c134",
+   "start": 492.72,
+   "end": 496.48,
+   "loi": "kể cả ở cái lộ trình sản phẩm mà ông Jones vừa nói sẽ không đứt quãng."
+  },
+  {
+   "id": "c135",
+   "start": 496.48,
+   "end": 501.746,
+   "loi": "Hiện chưa ai công bố danh sách nào, nên cái tên nào bạn đọc trên mạng lúc này cũng chỉ là đoán."
+  },
+  {
+   "id": "c136",
+   "start": 501.746,
+   "end": 505.07,
+   "loi": "Quay lại câu hỏi đầu video: ai đang cầm lái Nvidia?"
+  },
+  {
+   "id": "c137",
+   "start": 505.07,
+   "end": 508.572,
+   "loi": "Trên giấy tờ thì rõ rồi: bà Kress điều hành mà vẫn giữ két,"
+  },
+  {
+   "id": "c138",
+   "start": 508.572,
+   "end": 511.404,
+   "loi": "còn ông Jones dẫn hội đồng đi tìm người thay."
+  },
+  {
+   "id": "c139",
+   "start": 511.404,
+   "end": 514.689,
+   "loi": "Còn khách hàng có bị gián đoạn không? Công ty nói là không,"
+  },
+  {
+   "id": "c140",
+   "start": 514.689,
+   "end": 518.889,
+   "loi": "nhưng đó mới là lời hứa, chưa phải kết quả. Với người dùng bình thường ở Việt Nam,"
+  },
+  {
+   "id": "c141",
+   "start": 518.889,
+   "end": 522.365,
+   "loi": "tới hôm nay chưa thấy văn bản nào nói giá dịch vụ hay lịch giao hàng thay đổi."
+  },
+  {
+   "id": "c142",
+   "start": 522.365,
+   "end": 525.232,
+   "loi": "Còn doanh nghiệp đang thuê hay mua máy chạy chip Nvidia"
+  },
+  {
+   "id": "c143",
+   "start": 525.232,
+   "end": 528.474,
+   "loi": "thì rạng sáng mười tám tháng mười một, tính ra theo giờ Việt Nam,"
+  },
+  {
+   "id": "c144",
+   "start": 528.474,
+   "end": 532.549,
+   "loi": "là lúc nghe xem ban lãnh đạo nhắc lại lời hứa ấy ra sao trước giới phân tích."
+  },
+  {
+   "id": "c145",
+   "start": 532.549,
+   "end": 536.186,
+   "loi": "Kênh sẽ đổi cách nhìn nếu Nvidia, hay một đối tác ở Việt Nam,"
+  },
+  {
+   "id": "c146",
+   "start": 536.186,
+   "end": 539.277,
+   "loi": "ra văn bản nói hợp đồng hoặc lịch giao hàng bị lùi."
+  },
+  {
+   "id": "c147",
+   "start": 539.277,
+   "end": 544.697,
+   "loi": "Ba mươi ba năm gây dựng một công ty, vậy mà từ hôm hội đồng gật đầu tới hôm sau, cả thế giới đã biết."
+  },
+  {
+   "id": "c148",
+   "start": 544.697,
+   "end": 554.268,
+   "loi": "Giờ tới lượt bạn: hội đồng Nvidia sẽ mất bao nhiêu tháng để chọn ra giám đốc điều hành chính thức? Để lại một con số dưới phần bình luận, khi có tên người mới, kênh sẽ đọc lại."
+  }
+ ]
+}

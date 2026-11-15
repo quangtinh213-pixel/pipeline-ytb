@@ -1,0 +1,8 @@
+Phần mềm giải nén Bảy Díp vừa dính lỗ hổng bảo mật nghiêm trọng với điểm nguy hiểm lên tới tám phẩy năm trên mười.
+Đáng chú ý nhất, người phát hiện ra lỗ hổng này lại là một sinh viên Việt Nam nhờ sự trợ giúp từ trí tuệ nhân tạo.
+Tính ra thì phần mềm siêu nhẹ mà hầu như máy tính văn phòng nào ở nước ta cũng cài đặt hóa ra lại chứa một lỗ hổng đáng lo.
+Lỗ hổng thuộc nhóm ghi dữ liệu vượt giới hạn vùng nhớ, mang mã hiệu bảy trăm tám mươi bảy.
+Lỗi xuất hiện khi Bảy Díp giải nén các tệp nén Cáp do Mai-crô-xóp phát triển được chia làm nhiều phần nhỏ.
+Kẻ tấn công chỉ cần lừa bạn giải nén tệp Cáp độc hại để kích hoạt chuỗi khai thác.
+Từ đó, máy tính nạn nhân sẽ tự động kết nối về máy chủ tin tặc và nhận lệnh điều khiển từ xa với quyền tài khoản của bạn.
+Người tìm ra nguy cơ này là Nguyễn Trần Thanh Lâm, sinh viên ngành Khoa học máy tính tại Đại học Công nghệ Nanyang Xinh-ga-po.
