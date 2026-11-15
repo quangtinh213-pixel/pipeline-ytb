@@ -1,0 +1,52 @@
+<template>
+  <style>
+    /* Mẫu dọc cho Short: so sánh hai vế xếp trên–dưới; vế noi_bat đậm, vế kia mờ. */
+    #root { position: absolute; inset: 0; }
+    #root .dc-wrap { position: absolute; left: 70px; right: var(--at-phai); top: var(--at-tren);
+                     bottom: calc(var(--at-duoi) + var(--phu-de, 240px));
+                     display: flex; flex-direction: column; justify-content: center; gap: 34px; }
+    #root .dc-ve { border: 6px solid var(--line); border-radius: 26px; padding: 34px 40px; background: var(--bar); }
+    #root .dc-ve.dc-dam { border-color: var(--accent); }
+    #root .dc-ve.dc-mo { opacity: 0.5; }
+    #root .dc-nhan { color: var(--ink); font: 800 56px/1.15 var(--font-display); }
+    #root .dc-so { margin-top: 14px; color: var(--ink); font: 900 150px/1 var(--font-display); letter-spacing: -0.035em;
+                   white-space: nowrap; }
+    #root .dc-dam .dc-so { color: var(--accent); }
+    #root .nen-vang .dc-dam .dc-so, #root .nen-kem .dc-dam .dc-so { color: var(--ink); }
+    #root .dc-nguon { color: var(--muted); font: 500 30px/1.25 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="doi-chieu" data-width="1080" data-height="1920"
+       data-composition-variables='[{"id":"tren_nhan","type":"string","label":"Vế trên: nhãn","default":"Trước"},{"id":"tren_so","type":"string","label":"Vế trên: số","default":"0"},{"id":"duoi_nhan","type":"string","label":"Vế dưới: nhãn","default":"Sau"},{"id":"duoi_so","type":"string","label":"Vế dưới: số","default":"0"},{"id":"noi_bat","type":"string","label":"Vế nổi bật (tren/duoi/rỗng)","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="dc-san" class="san">
+      <div id="dc-wrap" class="dc-wrap">
+        <div id="dc-tren" class="dc-ve">
+          <div id="dc-tren-nhan" class="dc-nhan" data-var-text="tren_nhan"></div>
+          <div id="dc-tren-so" class="dc-so" data-var-text="tren_so"></div>
+        </div>
+        <div id="dc-duoi" class="dc-ve">
+          <div id="dc-duoi-nhan" class="dc-nhan" data-var-text="duoi_nhan"></div>
+          <div id="dc-duoi-so" class="dc-so" data-var-text="duoi_so"></div>
+        </div>
+        <div id="dc-nguon" class="dc-nguon" data-var-text="nguon"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#dc-san").classList.add("nen-" + (v.nen || "toi"));
+    const VE = { tren: ["#dc-tren", "#dc-tren-so"], duoi: ["#dc-duoi", "#dc-duoi-so"] };  // chuỗi cố định: bộ gói HyperFrames không nhận chuỗi mẫu
+    for (const ve of ["tren", "duoi"]) {
+      const o = document.querySelector(VE[ve][0]), so = document.querySelector(VE[ve][1]);
+      if (v.noi_bat) o.classList.add(v.noi_bat === ve ? "dc-dam" : "dc-mo");
+      const rong = o.clientWidth - 80;  // số dài co cỡ chữ cho vừa thẻ
+      if (so.scrollWidth > rong) so.style.fontSize = Math.floor(150 * rong / so.scrollWidth) + "px";
+    }
+    const mo = ve => (v.noi_bat && v.noi_bat !== ve ? 0.5 : 1);
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#dc-tren", { x: -60, opacity: 0 }, { x: 0, opacity: mo("tren"), duration: 0.35, ease: "expo.out" }, 0.05);
+    tl.fromTo("#dc-duoi", { x: -60, opacity: 0 }, { x: 0, opacity: mo("duoi"), duration: 0.35, ease: "expo.out" }, at(0, 0.6));
+    tl.fromTo("#dc-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(0, 0.6) + 0.3);
+    window.__timelines["doi-chieu"] = tl;
+  </script>
+</template>

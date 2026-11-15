@@ -816,9 +816,10 @@ TIMING_DOC = {"duration": 6.0, "words": [{"w": "Máy", "start": 0.1, "end": 0.4}
 
 def _ngan(video, scenes):
     (video / "anh").mkdir(exist_ok=True)
-    (video / "anh" / "may.jpg").write_bytes(b"jpg")
     (video / "nguon").mkdir(exist_ok=True)
-    (video / "nguon" / "gia.png").write_bytes(b"png")
+    for f, b in ((video / "anh" / "may.jpg", b"jpg"), (video / "nguon" / "gia.png", b"png")):
+        if not f.exists():
+            f.write_bytes(b)
     d = video / "ngan" / "1"
     d.mkdir(parents=True)
     (d / "canh.json").write_text(json.dumps({"khuon": "doc", "scenes": scenes}, ensure_ascii=False), encoding="utf-8")
@@ -881,3 +882,74 @@ def test_mau_moc_khung_0_da_du_chu():
 def test_compose_vertical_cu_van_thu_nho(video):
     html = (dung.compose(video, w=1080, h=1920, scene_range=(0, 2), out="short-1") / "index.html").read_text(encoding="utf-8")
     assert 'id="san-khau"' in html and 'id="short-cta"' in html
+
+
+# --- bốn mẫu dọc còn lại: bang-chung, anh, doi-chieu, ket ---
+DU_MAU = [
+    {"id": "bc", "mau": "bang-chung", "start": 0, "end": 3, "anh": "nguon/gia.png", "vung": [0.1, 0.2, 0.5, 0.1],
+     "tom_tat": "Giá niêm yết 15,89 triệu", "nguon_id": "p1"},
+    {"id": "an", "mau": "anh", "start": 3, "end": 6, "anh": "anh/may.jpg", "diem_giu": [0.3, 0.6], "nhan": "Máy cũ"},
+    {"id": "dc", "mau": "doi-chieu", "start": 6, "end": 9, "tren": {"nhan": "Máy cũ", "so": "15,89 triệu"},
+     "duoi": {"nhan": "Máy mới", "so": "22,99 triệu"}, "noi_bat": "duoi", "nguon_id": "p1"},
+    {"id": "kc", "mau": "ket", "start": 9, "end": 12, "chu": "Vậy máy cũ còn rẻ không"},
+]
+
+
+@pytest.fixture
+def ngan_du_mau(video):
+    (video / "anh").mkdir()
+    (video / "anh" / "ghi-cong.json").write_text(json.dumps([{"tep": "may.jpg", "ghi_cong": "VnExpress"}]), encoding="utf-8")
+    Image.new("RGB", (400, 800), "white").save(video / "anh" / "may.jpg")
+    (video / "nguon").mkdir()
+    Image.new("RGB", (1000, 2000), "white").save(video / "nguon" / "gia.png")
+    return _ngan(video, DU_MAU)
+
+
+@pytest.mark.parametrize("mau", ["moc", "bang-chung", "anh", "doi-chieu", "ket"])
+def test_mau_doc_dung_khung_va_vung_an_toan(mau):
+    t = (dung.TPL_DOC / f"{mau}.html").read_text(encoding="utf-8")
+    assert 'data-width="1080" data-height="1920"' in t
+    assert all(v in t for v in ("var(--at-tren)", "var(--at-duoi)", "var(--at-phai)"))
+    co = [int(n) for n in re.findall(r"font:\s*\d+\s+(\d+)px", t)]
+    assert co and min(co) >= 30                      # nguồn/ghi công 30 px, không chữ nào nhỏ hơn
+    assert f'__timelines["{mau}"]' in t and dung.PREFIX[mau] in t
+
+
+def test_compose_doc_truyen_bien_cho_bon_mau(ngan_du_mau, video):
+    out = dung.compose(ngan_du_mau, goc=video)
+    html = (out / "index.html").read_text(encoding="utf-8")
+    vals = _host_vals(html)
+    bc = vals["bc"]
+    assert (bc["anh"], bc["vx"], bc["vy"], bc["vw"], bc["vh"]) == ("assets/nguon/gia.png", 0.1, 0.2, 0.5, 0.1)
+    assert bc["tom_tat"] == "Giá niêm yết 15,89 triệu" and bc["ty_le"] == 2.0 and bc["nguon"] == dung._source_line(NGUON[0])
+    an = vals["an"]
+    assert (an["anh"], an["video"], an["gx"], an["gy"], an["nhan"]) == ("assets/anh/may.jpg", "", 30, 60, "Máy cũ")
+    assert an["ghi_cong"] == "Ảnh: VnExpress"
+    dc = vals["dc"]
+    assert (dc["tren_nhan"], dc["tren_so"], dc["duoi_nhan"], dc["duoi_so"], dc["noi_bat"]) == \
+        ("Máy cũ", "15,89 triệu", "Máy mới", "22,99 triệu", "duoi")
+    assert vals["kc"]["chu"] == "Vậy máy cũ còn rẻ không" and vals["kc"]["so"] == ""
+
+
+def test_compose_doc_bang_chung_khong_sinh_thanh_tom_tat_ngang(ngan_du_mau, video):
+    html = (dung.compose(ngan_du_mau, goc=video) / "index.html").read_text(encoding="utf-8")
+    assert 'class="clip tom-tat"' not in html   # dòng tóm tắt nằm trong mẫu bang-chung, không thêm thanh của khung ngang
+
+
+def test_compose_doc_mau_anh_chi_co_video_khi_canh_dung_video(ngan_du_mau, video):
+    out = dung.compose(ngan_du_mau, goc=video)
+    assert "<video" not in (out / "compositions" / "an.html").read_text(encoding="utf-8")
+    sc = [dict(DU_MAU[1], id="vd", start=0, end=3, anh=None, video="pho.mp4")]
+    (video / "broll").mkdir()
+    (video / "broll" / "pho.mp4").write_bytes(b"mp4")
+    (video / "broll" / "ghi-cong.json").write_text(json.dumps([{"tep": "pho.mp4", "ghi_cong": "Pexels"}]), encoding="utf-8")
+    (ngan_du_mau / "canh.json").write_text(json.dumps({"khuon": "doc", "scenes": sc}, ensure_ascii=False), encoding="utf-8")
+    out = dung.compose(ngan_du_mau, goc=video)
+    assert 'src="assets/broll/pho.mp4"' in (out / "compositions" / "vd.html").read_text(encoding="utf-8")
+    vals = _host_vals((out / "index.html").read_text(encoding="utf-8"))["vd"]
+    assert (vals["anh"], vals["video"], vals["ghi_cong"]) == ("", "pho.mp4", "Pexels")
+
+
+def test_mau_bang_chung_khong_chieu_nguyen_trang():
+    t = (dung.TPL_DOC / "bang-chung.html").read_text(encoding="utf-8")
+    assert "v.vw" in t and "v.vh" in t and "v.ty_le" in t     # phóng theo vùng, không đặt ảnh nguyên cỡ

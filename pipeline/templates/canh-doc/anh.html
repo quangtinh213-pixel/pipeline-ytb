@@ -1,0 +1,44 @@
+<template>
+  <style>
+    /* Mẫu dọc cho Short: ảnh báo chí hoặc b-roll phủ kín khung 1080×1920, cắt theo điểm giữ (gx, gy), không thu nhỏ.
+       Khối video nằm giữa hai dấu VIDEO; compose xóa khối đó khi cảnh dùng ảnh. */
+    #root { position: absolute; inset: 0; background: #000; overflow: hidden; }
+    #root .ad-cam { position: absolute; inset: 0; }
+    #root .ad-cam img, #root .ad-cam video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    #root .ad-toi { position: absolute; inset: 0;
+                    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 24%, rgba(0,0,0,0) 48%, rgba(0,0,0,0.78) 100%); }
+    #root .ad-ghi-cong { position: absolute; left: 70px; right: var(--at-phai); top: var(--at-tren); color: #fff;
+                         font: 500 30px/1.25 var(--font-display); }
+    #root .ad-ghi-cong span { background: rgba(0,0,0,0.6); padding: 6px 16px; border-radius: 10px; }
+    #root .ad-nhan { position: absolute; left: 70px; right: var(--at-phai);
+                     bottom: calc(var(--at-duoi) + var(--phu-de, 240px) + 30px); }
+    #root .ad-nhan span { display: inline-block; background: {{theme:nhan.0}}; color: {{theme:chu_tren_nhan}};
+                          font: 900 68px/1.12 var(--font-display); padding: 18px 30px; border-radius: 18px;
+                          letter-spacing: -0.01em; box-shadow: 0 18px 44px rgba(0,0,0,0.45); }
+  </style>
+  <div id="root" data-composition-id="anh" data-width="1080" data-height="1920"
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh","default":"assets/svg/tai-lieu.svg"},{"id":"video","type":"string","label":"Video b-roll (tên tệp)","default":""},{"id":"gx","type":"number","label":"Điểm giữ ngang (%)","default":50},{"id":"gy","type":"number","label":"Điểm giữ dọc (%)","default":50},{"id":"nhan","type":"string","label":"Nhãn","default":""},{"id":"ghi_cong","type":"string","label":"Ghi công","default":""},{"id":"nen","type":"string","label":"Nền","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="ad-cam" class="ad-cam">
+      <img id="ad-img" data-var-src="anh" src="assets/svg/tai-lieu.svg" alt="">
+      <!--VIDEO--><video id="ad-video" class="clip" data-start="0" data-media-start="0.5" muted playsinline src="__VIDEO__"></video><!--/VIDEO-->
+    </div>
+    <div class="ad-toi"></div>
+    <div id="ad-ghi-cong" class="ad-ghi-cong"><span data-var-text="ghi_cong"></span></div>
+    <div id="ad-nhan" class="ad-nhan"><span data-var-text="nhan"></span></div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    const giu = Number(v.gx ?? 50) + "% " + Number(v.gy ?? 50) + "%";
+    const img = document.querySelector("#ad-img"), vid = document.querySelector("#ad-video");
+    img.style.objectPosition = giu;
+    if (vid) { vid.style.objectPosition = giu; img.style.display = "none"; }
+    if (!String(v.nhan || "").trim()) document.querySelector("#ad-nhan").style.display = "none";
+    if (!String(v.ghi_cong || "").trim()) document.querySelector("#ad-ghi-cong").style.display = "none";
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#ad-cam", { scale: 1.0 }, { scale: 1.08, duration: 8, ease: "none" }, 0);  // máy quay đẩy chậm vào
+    tl.fromTo("#ad-nhan", { x: -60, opacity: 0 }, { x: 0, opacity: 1, duration: 0.4, ease: "expo.out" }, at(0, 0.4));
+    tl.fromTo("#ad-ghi-cong", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.5);
+    window.__timelines["anh"] = tl;
+  </script>
+</template>

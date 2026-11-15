@@ -1,0 +1,45 @@
+<template>
+  <style>
+    /* Mẫu dọc cho Short: bằng chứng cắt phóng vào đúng dòng/con số (vung), có viền, kèm một dòng tóm tắt tiếng Việt.
+       Không chiếu nguyên trang: ảnh là nền của khung, phóng theo vw và dời theo vx, vy. */
+    #root { position: absolute; inset: 0; }
+    #root .bc-wrap { position: absolute; left: 70px; right: var(--at-phai); top: var(--at-tren);
+                     bottom: calc(var(--at-duoi) + var(--phu-de, 240px));
+                     display: flex; flex-direction: column; justify-content: center; align-items: flex-start; }
+    #root .bc-khung { border: 10px solid var(--accent); border-radius: 18px; background-color: #fff; background-repeat: no-repeat;
+                      box-shadow: 0 30px 70px rgba(0,0,0,0.4); transform-origin: left center; box-sizing: content-box; }
+    #root .bc-tom-tat { margin-top: 40px; background: var(--ink); color: var(--tren-muc); font: 800 58px/1.2 var(--font-display);
+                        padding: 20px 30px; border-radius: 14px; border-left: 14px solid var(--accent); }
+    #root .bc-nguon { margin-top: 26px; color: var(--muted); font: 500 30px/1.25 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="bang-chung" data-width="1080" data-height="1920"
+       data-composition-variables='[{"id":"anh","type":"string","label":"Ảnh chụp nguồn","default":"assets/svg/tai-lieu.svg"},{"id":"vx","type":"number","label":"Vùng: x (0–1)","default":0},{"id":"vy","type":"number","label":"Vùng: y (0–1)","default":0},{"id":"vw","type":"number","label":"Vùng: rộng (0–1)","default":1},{"id":"vh","type":"number","label":"Vùng: cao (0–1)","default":1},{"id":"ty_le","type":"number","label":"Cao/rộng của ảnh","default":0.5625},{"id":"tom_tat","type":"string","label":"Một dòng tóm tắt","default":"Tóm tắt"},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"kem"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="bc-san" class="san">
+      <div id="bc-wrap" class="bc-wrap">
+        <div id="bc-khung" class="bc-khung" data-layout-allow-overflow></div>
+        <div id="bc-tom-tat" class="bc-tom-tat" data-var-text="tom_tat"></div>
+        <div id="bc-nguon" class="bc-nguon" data-var-text="nguon"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    const N = JSON.parse(v.nhip || "[]"), at = (k, d) => (N[k] ?? d);
+    document.querySelector("#bc-san").classList.add("nen-" + (v.nen || "kem"));
+    // khung rộng hết khối, cao theo tỉ lệ của vùng cắt; cao quá 620 px thì thu cả khung lại
+    const W0 = document.querySelector("#bc-wrap").clientWidth - 20, CAO_MAX = 620;
+    const vw = Number(v.vw) || 1, vh = Number(v.vh) || 1, tl_anh = Number(v.ty_le) || 0.5625;
+    let rong = W0, cao = W0 * (vh / vw) * tl_anh;
+    if (cao > CAO_MAX) { rong = rong * CAO_MAX / cao; cao = CAO_MAX; }
+    const anhRong = rong / vw, k = document.querySelector("#bc-khung");
+    Object.assign(k.style, { width: rong.toFixed(1) + "px", height: cao.toFixed(1) + "px",
+      backgroundImage: 'url("' + v.anh + '")', backgroundSize: anhRong.toFixed(1) + "px auto",
+      backgroundPosition: (-Number(v.vx) * anhRong).toFixed(1) + "px " + (-Number(v.vy) * anhRong * tl_anh).toFixed(1) + "px" });
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#bc-khung", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "expo.out" }, 0);
+    tl.fromTo("#bc-khung", { scale: 1 }, { scale: 1.03, duration: 6, ease: "none" }, 0.4);
+    tl.fromTo("#bc-tom-tat", { x: -40, opacity: 0 }, { x: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, at(0, 0.6));
+    tl.fromTo("#bc-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, at(0, 0.6) + 0.2);
+    window.__timelines["bang-chung"] = tl;
+  </script>
+</template>

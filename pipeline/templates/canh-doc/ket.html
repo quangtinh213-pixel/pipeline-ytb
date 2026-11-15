@@ -1,0 +1,41 @@
+<template>
+  <style>
+    /* Mẫu dọc cho Short: câu kết chữ lớn giữa khung (câu nối lại câu đầu để xem lặp), tùy chọn kèm con số. */
+    #root { position: absolute; inset: 0; }
+    #root .kc-wrap { position: absolute; left: 70px; right: var(--at-phai); top: var(--at-tren);
+                     bottom: calc(var(--at-duoi) + var(--phu-de, 240px));
+                     display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; }
+    #root .kc-gach { width: 160px; height: 14px; border-radius: 7px; background: var(--accent); margin-bottom: 44px; }
+    #root .nen-vang .kc-gach { background: var(--ink); }
+    #root .kc-chu { color: var(--ink); font: 900 100px/1.12 var(--font-display); letter-spacing: -0.025em; }
+    #root .kc-so { margin-top: 30px; color: var(--accent); font: 900 180px/1 var(--font-display); letter-spacing: -0.04em;
+                   white-space: nowrap; }
+    #root .nen-vang .kc-so, #root .nen-kem .kc-so { color: var(--ink); }
+    #root .kc-nguon { margin-top: 30px; color: var(--muted); font: 500 30px/1.25 var(--font-display); }
+  </style>
+  <div id="root" data-composition-id="ket" data-width="1080" data-height="1920"
+       data-composition-variables='[{"id":"chu","type":"string","label":"Câu kết","default":"Câu kết"},{"id":"so","type":"string","label":"Con số hiển thị","default":""},{"id":"nguon","type":"string","label":"Ghi nguồn","default":""},{"id":"nen","type":"string","label":"Nền (toi/kem/vang)","default":"toi"},{"id":"nhip","type":"string","label":"Mốc bước (JSON)","default":"[]"}]'>
+    <div id="kc-san" class="san">
+      <div id="kc-wrap" class="kc-wrap">
+        <div id="kc-gach" class="kc-gach vach-sang"></div>
+        <div id="kc-chu" class="kc-chu" data-var-text="chu"></div>
+        <div id="kc-so" class="kc-so chu-grad" data-var-text="so"></div>
+        <div id="kc-nguon" class="kc-nguon" data-var-text="nguon"></div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const v = window.__hyperframes.getVariables();
+    document.querySelector("#kc-san").classList.add("nen-" + (v.nen || "toi"));
+    const so = document.querySelector("#kc-so"), coSo = String(v.so || "").trim() !== "";
+    if (!coSo) so.style.display = "none";
+    const rong = document.querySelector("#kc-wrap").clientWidth;
+    if (coSo && so.scrollWidth > rong) so.style.fontSize = Math.floor(180 * rong / so.scrollWidth) + "px";
+    const tl = gsap.timeline({ paused: true });
+    tl.fromTo("#kc-gach", { scaleX: 0 }, { scaleX: 1, duration: 0.35, ease: "power3.inOut" }, 0);
+    tl.fromTo("#kc-chu", { y: 30, opacity: 0 }, { y: 0, opacity: 1, duration: 0.35, ease: "power3.out" }, 0.05);
+    if (coSo) tl.fromTo("#kc-so", { scale: 0.9, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(2)" }, 0.3);
+    tl.fromTo("#kc-nguon", { opacity: 0 }, { opacity: 1, duration: 0.3 }, 0.7);
+    window.__timelines["ket"] = tl;
+  </script>
+</template>

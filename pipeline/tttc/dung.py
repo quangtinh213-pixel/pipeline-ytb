@@ -86,6 +86,10 @@ DEFAULT_STEPS = {
     "mo-dau": [],
     "ket-thuc": [],
     "moc": [0.5],                      # dòng dưới
+    "bang-chung": [0.6],               # dòng tóm tắt
+    "anh": [0.4],                      # nhãn
+    "doi-chieu": [0.6],                # vế dưới
+    "ket": [],
 }
 GSAP = "https://cdn.jsdelivr.net/npm/gsap@3.15.0/dist/gsap.min.js"
 # Màu phụ theo ý nghĩa (canh.json: sac): (nhấn, bóng, bóng tối, màu chữ trên nhấn). Mặc định không ghi sac = vàng thương hiệu.
@@ -241,6 +245,22 @@ def _vars(c: dict, by_id: dict, credits: dict, broll_credits: dict | None = None
         return {"cau": c.get("cau", "")}
     if m == "moc":
         return {"chu": c["chu"], "so": c.get("so", ""), "nhan": c.get("nhan", ""), "nguon": src(c.get("nguon_id"))}
+    if m == "bang-chung":
+        x, y, rw, rh = c["vung"]
+        return {"anh": f"assets/{c['anh']}", "vx": x, "vy": y, "vw": rw, "vh": rh, "tom_tat": c["tom_tat"],
+                "nguon": src(c.get("nguon_id"))}
+    if m == "anh":
+        gx, gy = c.get("diem_giu") or (0.5, 0.5)
+        a, vd = c.get("anh") or "", c.get("video") or ""
+        ten = Path(a).name
+        return {"anh": f"assets/{a}" if a else "", "video": vd, "gx": round(gx * 100), "gy": round(gy * 100),
+                "nhan": c.get("nhan", ""),
+                "ghi_cong": broll_credits.get(vd, "") if vd else ("Ảnh: " + credits[ten] if ten in credits else "")}
+    if m == "doi-chieu":
+        return {"tren_nhan": c["tren"]["nhan"], "tren_so": c["tren"]["so"], "duoi_nhan": c["duoi"]["nhan"],
+                "duoi_so": c["duoi"]["so"], "noi_bat": c.get("noi_bat") or "", "nguon": src(c.get("nguon_id"))}
+    if m == "ket":
+        return {"chu": c["chu"], "so": c.get("so", ""), "nguon": src(c.get("nguon_id"))}
     if m == "ket-thuc":
         return {k: c[k] for k in ("cau", "nut", "nut_xong", "khung") if c.get(k)} | ({"moi": c["moi"]} if c.get("moi") else {})
     raise ValueError(f"mẫu không có: {m}")
@@ -455,6 +475,16 @@ def _tho_js(sid: str, dur: float) -> str:
             f'duration: {round(dur / (2 * n), 3)}, ease: "sine.inOut", yoyo: true, repeat: {2 * n - 1} }}, 0); }}\n    ')
 
 
+def _ty_le_anh(p: Path) -> float:
+    """Cao/rộng của ảnh; không đọc được (tệp hỏng, thiếu) thì coi như 16:9."""
+    try:
+        from PIL import Image
+        with Image.open(p) as im:
+            return round(im.height / im.width, 4)
+    except Exception:  # noqa: BLE001 - shortcut: mọi lỗi đọc ảnh đều về tỉ lệ mặc định, canh.validate đã báo thiếu tệp
+        return 0.5625
+
+
 def _scene_file(mau: str, sid: str, video: str = "", dur: float = 0.0, tpl: Path = TPL) -> str:
     s = theme.cssify((tpl / f"{mau}.html").read_text(encoding="utf-8")).replace("__VIDEO__", f"assets/broll/{video}")
     s = s.replace("/*__DONG__*/", (TPL / "dong.js").read_text(encoding="utf-8"))
@@ -604,6 +634,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
     for idx, (c, nen) in enumerate(zip(scenes, nens)):
         sid = c["id"]
         page = _scene_file(c["mau"], sid, c.get("video", ""), c["end"] - c["start"], TPL_DOC if doc else TPL)
+        if doc and not c.get("video"):  # mẫu anh dùng ảnh: bỏ khối video để không có thẻ video trỏ vào tệp rỗng
+            page = re.sub(r"<!--VIDEO-->.*?<!--/VIDEO-->", "", page, flags=re.S)
         if h > w and not doc:  # Shorts: nhãn ghi công/nguồn nằm trên clip sáng, thêm nền tối để đủ tương phản (kiểm của hyperframes)
             page = page.replace("</style>", "#root [id$=\"-br-ghi-cong\"], #root [id$=\"-nguon\"] { background: rgba(0,0,0,0.6) !important; "
                                 "color: #fff !important; padding: 6px 16px; border-radius: 10px; }</style>", 1)
@@ -612,6 +644,8 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
         if not doc:  # shortcut: mẫu dọc chưa có tiếng riêng theo mẫu, chỉ tiếng lướt ở đường nối; thêm khi tỉ lệ ở lại đã vượt 40%
             sfx += [(f, c["start"] - t0 + t, v) for f, t, v in sfx_events(c, st)]
         extra = {"vao": str(c.get("vao", idx % 4))} if c["mau"] == "minh-hoa" else {}  # kiểu vào cảnh xoay vòng
+        if doc and c["mau"] == "bang-chung":  # mẫu cần tỉ lệ cao/rộng của ảnh để dời đúng vùng cắt
+            extra["ty_le"] = _ty_le_anh(g / c["anh"])
         lop, bien = nen_mau(nen)
         vals = json.dumps(dict(_vars(c, by_id, credits, broll_credits), nen=lop, nhip=json.dumps(st), **extra),
                           ensure_ascii=False)
@@ -620,7 +654,9 @@ def compose(video_dir, w: int = 1920, h: int = 1080, scene_range: tuple[int, int
             vals = re.sub(r"assets/svg/(?!nen-dat|tui-)([\w-]+)\.svg", rf"assets/svg/\1@{sac}.svg", vals)
             bien += f"--accent:{SAC[sac][0]};--accent-ink:{SAC[sac][3]};--tint:16%"
         style = f' style="{bien}"' if bien else ""
-        tags, js, ev = nhan_boi(c, idx, round(c["start"] - t0, 3), timing.get("words", []), *((w, h) if doc else ()))
+        # dọc gốc: dòng tom_tat nằm trong mẫu bang-chung, không thêm thanh tóm tắt của khung ngang
+        tags, js, ev = nhan_boi({k: v for k, v in c.items() if k != "tom_tat"} if doc else c, idx,
+                                round(c["start"] - t0, 3), timing.get("words", []), *((w, h) if doc else ()))
         nhan_tags += tags
         nhan_js += js
         sfx += ev
