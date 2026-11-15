@@ -78,6 +78,7 @@ def render_review_1(video_dir) -> Path:
         + phong_cach.kiem(script, check_cta=True, check_dai_chung=True)
         + phong_cach.kiem_loai_bai_chinh(script)
         + phong_cach.kiem_thoi_luong_thuc(script, wpm=wpm)
+        + phong_cach.kiem_mo_dau(script, wpm=wpm)
     )
     body = (_warnings(warns)
             + _phan_bien(d, buoc["note"])
@@ -108,7 +109,8 @@ def render_review_2(video_dir) -> Path:
     opts_html = []
     for i, o in enumerate(goi.get("phuong_an", []), 1):
         kq = tieu_de.cham_diem(o["tieu_de"])
-        for msg in [*kq.loi, *kq.canh_bao, *tieu_de.kiem_khop_nguon(o["tieu_de"], nguon)]:
+        for msg in [*kq.loi, *kq.canh_bao, *tieu_de.kiem_khop_nguon(o["tieu_de"], nguon),
+                    *phong_cach.kiem_khop_tieu_de(_read(d / "kich-ban.md"), o["tieu_de"])]:
             warns.append(f"Phương án {i}: {msg}")
         if o.get("khuon") != thumb.KHUON:
             warns.append(f"Phương án {i}: Lỗi: thumbnail không theo khuôn đã khóa «{thumb.KHUON}» "

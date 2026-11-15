@@ -55,7 +55,17 @@ Không làm trong 14 ngày (giữ đúng "đóng băng" của bản đánh giá,
 
 **Đề xuất:** trong `dang._guard`, đo `final.mp4` (ffprobe). Video dài < 7:00 thì **từ chối upload** dạng video dài, in lời khuyên "cắt thành Shorts". Chỉ cho qua khi có cờ `--cho-phep-ngan` kèm lý do ghi vào `trang-thai.json`. Cổng này nằm sau điểm duyệt nên không thay quyết định của bạn, chỉ bắt bạn quyết định có chủ ý.
 
-### 1.3 Luật 40 giây đầu thành máy kiểm (`phong_cach`)
+### 1.3 Luật 40 giây đầu thành máy kiểm (`phong_cach`) – **đã làm 15/11**
+
+> Đã làm: `phong_cach.kiem_mo_dau` (cảnh báo ở duyệt 1 và lệnh `phong_cach`) và `phong_cach.kiem_khop_tieu_de` (cảnh báo từng phương án ở duyệt 2). Cụm "nói về việc kể chuyện" nằm ở `phong-cach/tu-cam.json:mo_dau`. Khớp tiêu đề nhận cả cách viết phiên âm trong `vieneu.phat_am` (thêm "7-Zip" → "Bảy Díp"). Luật được thêm vào thẻ phong cách mục 3.1. Chạy thử trên 8 kịch bản cũ:
+> - Bắt đúng các câu bản đánh giá đã khớp tay: "chi tiết lạ" (máy cũ), "một dòng nhỏ / ít ai đọc" (Grab), "mình tách ra" (lá thư), "mình đọc lại" (siết chip).
+> - Bắt các mở đầu 2–4 câu hỏi.
+> - Bắt tiêu đề "CEO Nvidia xin lỗi" mà 15 giây đầu chưa nhắc Nvidia.
+>
+> Giới hạn:
+> - Kịch bản có dòng `Loại:` (template ngắn, như Microsoft, 7-Zip) được bỏ qua.
+> - Chưa kiểm được chuyện mở đầu phản bác câu hỏi của tiêu đề (cần người đọc).
+> - 40 giây ước theo số từ ở tốc độ `wpm_du_kien`, chưa theo mốc giọng thật.
 
 Bản đánh giá mục 7.2 tìm ra ba lỗi lặp lại bằng cách khớp tay đường giữ chân với phụ đề. Biến chúng thành hàm `phong_cach.kiem_mo_dau(script_md, wpm)`, chạy trên phần lời ứng với 40 giây đầu:
 
@@ -66,7 +76,7 @@ Bản đánh giá mục 7.2 tìm ra ba lỗi lặp lại bằng cách khớp tay
 
 Thêm các luật này vào `docs/phong-cach-kich-ban.md` (bản đánh giá mục 7.4 đã soạn sẵn).
 
-### 1.4 `giam_sat`: ngưỡng đo được
+### 1.4 `giam_sat`: ngưỡng đo được – **đã làm 15/11**
 
 **Hiện tại:** "CTR < 4% sau 3 giờ" → báo động, gợi ý xoay bao bì. Nhưng CTR chỉ có từ Reporting API, trễ ~48 giờ, gộp theo ngày PST. Ngưỡng 3 giờ không bao giờ đo được bằng máy; chỉ dùng được khi bạn nhập tay từ Studio.
 
@@ -77,6 +87,13 @@ Thêm các luật này vào `docs/phong-cach-kich-ban.md` (bản đánh giá m�
 - ≥ 1.000 view trong 7 ngày → in "làm thêm 2 tập cùng chuỗi".
 
 Chạy cuối `dong-bo-view.py` mỗi tối, ghi vào log. Đồng thời viết lại `docs/quy-tac-quyet-dinh.md` (luật "0,5×/3× trung vị" vô nghĩa khi trung vị ~100 view).
+
+**Đã làm:**
+- `giam_sat.luat_so` áp bốn ngưỡng trên cho video dài đăng trong 30 ngày. `dong-bo-view.py` in các dòng `Luật:` vào log mỗi tối; xem lại bằng `python -m tttc.giam_sat luat`.
+- Sổ thêm hai cột `avd_pct` và `con_50pct` (làm trước một phần mục 2.1). Hai cột tự điền khi video đủ 9 ngày, sổ cũ được `migrate` thêm cột.
+- `docs/quy-tac-quyet-dinh.md` đã viết lại.
+- Lần chạy đầu trên sổ thật kích hoạt đúng một luật: video iPhone cũ 10/11, CTR 1,3%.
+- Giới hạn: chưa có luật cho Shorts, vì API không có tỉ lệ "ở lại xem / vuốt qua" (`o_lai_short` vẫn phải nhập tay, mục 8.2). Luật in lại mỗi tối cho tới khi video quá 30 ngày; báo cáo tuần (2.3) sẽ gom lại.
 
 ---
 

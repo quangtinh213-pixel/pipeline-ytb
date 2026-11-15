@@ -22,7 +22,13 @@ Công thức cập nhật 09/11/2026 theo định vị đối đầu (docs/super
 
 Video 8–14 phút, 2.000–2.600 từ lời đọc (~200–230 từ/phút; từ = âm tiết).
 
-1. **Mở (đến ~1 phút).** Một sự kiện đang nóng kèm một cặp số lệch nhau để gây tò mò. Số có nguồn `[#id]` ngay trong 90 từ đầu; hỏi 1–2 câu hứa sẽ trả lời. Không mở bằng "sáng nay mình mở trang giá".
+1. **Mở (đến ~1 phút).** Một sự kiện đang nóng kèm một cặp số lệch nhau để gây tò mò. Số có nguồn `[#id]` ngay trong 90 từ đầu; hứa trả lời **một** câu hỏi. Không mở bằng "sáng nay mình mở trang giá".
+   **Luật 40 giây đầu** (15/11/2026, rút từ chỗ người xem bỏ đi ở ba video có đường giữ chân; `phong_cach.kiem_mo_dau`, cảnh báo ở duyệt 1):
+   - Kể thẳng chuyện: mốc thời gian (ngày, thứ, sáng/tối, giờ Việt Nam) → sự kiện → số có nguồn → một người Việt, một nơi hoặc một giá bằng đồng → **một** câu hỏi. Đối thủ làm đủ chuỗi này trong 40 giây.
+   - Không nói về việc kể chuyện: "mình đọc lại văn bản gốc", "có một chi tiết lạ", "một dòng nhỏ ít ai đọc tới", "mình tách ra cho đỡ rối". Người xem rơi 7–11 điểm đúng ở những câu này. Danh sách: `phong-cach/tu-cam.json:mo_dau`.
+   - Không mở nhiều mạch cùng lúc: video Grab mở 4 mạch trong 25 giây và rơi mạnh nhất.
+   - Không trỏ người xem đi chỗ khác (video trước, dưới mô tả) trong 60 giây đầu.
+   - **Khớp tiêu đề:** chủ thể và con số của tiêu đề phải được nói trong 15 giây đầu, và câu hỏi của tiêu đề được khẳng định chứ không bị phản bác. Góc là "tin này phóng đại" thì tiêu đề phải nói thẳng điều đó. Máy kiểm chủ thể và số ở duyệt 2 (`phong_cach.kiem_khop_tieu_de`); chuyện khẳng định hay phản bác thì người duyệt xem.
 2. **Ba phần có chương.** Mỗi phần mở bằng một câu hỏi người xem đang nghĩ, đoạn cuối phần trả lời. Ví dụ đời thường mỗi 1–2 phút, nói tên nguồn ngay trong lời ("theo Reuters"), số tự suy ra gắn nhãn "mình tự tính". Hình trang nguồn, thẻ tên nguồn ở góc.
 3. **Kết.** Trả lời lại câu hỏi của tiêu đề (có thể bằng "hai cái thước"), rồi mời người xem đoán một con số ở bình luận (60 từ cuối có dấu `?`). Phán quyết và "mình sẽ đổi ý nếu..." chỉ thêm khi đề phù hợp.
 

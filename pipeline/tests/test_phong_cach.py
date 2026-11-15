@@ -276,6 +276,70 @@ def test_main_warns_when_main_script_uses_short_template_loai(tmp_path, capsys, 
 
 
 
+# Luật 40 giây đầu (15/11/2026, docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md mục 1.3): rút từ chỗ người xem bỏ đi
+# ở ba video có đường giữ chân (danh-gia-kenh-2026-11-15.md mục 7.2).
+MO_TOT = ("Trưa mười tháng mười một, cuốc Grab Bike dưới hai cây số bớt hai nghìn đồng. [#g1] "
+          "Grab nói sẽ chi gần ba nghìn tỷ đồng. [#b3] Tiền đó rơi vào túi ai? ")
+
+
+def test_mo_dau_tot_khong_canh_bao():
+    assert phong_cach.kiem_mo_dau(_long(head=MO_TOT), wpm=249) == []
+
+
+def test_mo_dau_noi_ve_viec_ke_chuyen_bi_canh_bao():
+    for cau in ("Mình đọc lại văn bản gốc thì thấy khác.", "Trong thông tư có một chi tiết lạ.",
+                "Có một dòng nhỏ ít ai đọc tới.", "Kênh đã kể ở video trước, đường dẫn dưới mô tả."):
+        out = phong_cach.kiem_mo_dau(_long(head=MO_TOT + cau + " "), wpm=249)
+        assert _w(out, "nói về việc kể chuyện"), cau
+
+
+def test_mo_dau_nhieu_hon_mot_cau_hoi_bi_canh_bao_va_neu_cau():
+    out = phong_cach.kiem_mo_dau(_long(head=MO_TOT + "Ai nắm quyền? Ai đã đặt chip? "), wpm=249)
+    w = _w(out, "câu hỏi")
+    assert w and "3 câu hỏi" in w[0] and "Ai nắm quyền?" in w[0]
+
+
+def test_cau_hoi_sau_40_giay_khong_tinh():
+    out = phong_cach.kiem_mo_dau(_long(head=MO_TOT + _filler(200) + " Ai nắm quyền? Ai đặt chip? "), wpm=249)
+    assert _w(out, "câu hỏi") == []
+
+
+def test_mo_dau_thieu_moc_thoi_gian_va_neo_viet_nam():
+    out = phong_cach.kiem_mo_dau(_long(head="Grab chi gần ba nghìn tỷ. [#b3] Tiền đó đi đâu? "), wpm=249)
+    assert _w(out, "mốc thời gian") and _w(out, "neo cụ thể")
+
+
+def test_mo_dau_bo_qua_template_ngan():
+    mau = "Loại: gia\n" + _script("Mình đọc lại văn bản gốc. Ai? Sao? " + _filler(300))
+    assert phong_cach.kiem_mo_dau(mau, wpm=249) == []
+
+
+def test_khop_tieu_de_15_giay_dau():
+    kb = _long(head="Năm ngoái, Mỹ bắt chip AI xuất sang Malaysia phải có giấy phép. [#b1] " + _filler(80)
+               + " Nvidia mất một trăm chín mươi tỷ đô. [#n1] ")
+    out = phong_cach.kiem_khop_tieu_de(kb, "Nvidia mất 190 tỷ USD vì một lá thư: Việt Nam mua chip khó hơn?", wpm=249)
+    assert _w(out, "Nvidia") and _w(out, "190 tỷ")
+    tot = _long(head="Nvidia vừa mất một trăm chín mươi tỷ đô chỉ vì một lá thư. [#n1] ")
+    assert phong_cach.kiem_khop_tieu_de(tot, "Nvidia mất 190 tỷ USD vì một lá thư: Việt Nam mua chip khó hơn?", wpm=249) == []
+
+
+@pytest.mark.parametrize("p", BASELINE, ids=lambda p: p.parent.name)
+def test_kich_ban_da_duyet_cu_bi_luat_mo_dau_moi_bat(p):
+    """Hai kịch bản mốc nền mở bằng lời nói về việc đọc tài liệu hoặc nhiều câu hỏi: luật mới phải bắt (kiem() cũ vẫn sạch)."""
+    if not p.exists():
+        pytest.skip("kịch bản đã duyệt không có trong máy này")
+    out = phong_cach.kiem_mo_dau(p.read_text(encoding="utf-8"), wpm=249)
+    assert _w(out, "nói về việc kể chuyện") or _w(out, "câu hỏi")
+
+
+def test_khop_tieu_de_nhan_ca_cach_viet_phien_am(monkeypatch, tmp_path):
+    cfg = tmp_path / "config.json"
+    cfg.write_text('{"vieneu": {"phat_am": {"7-Zip": "Bảy Díp", "Microsoft": "Mai crô xóp"}}}', encoding="utf-8")
+    monkeypatch.setattr(phong_cach, "CONFIG", cfg)
+    kb = _long(head="Phần mềm Bảy Díp vừa dính lỗ hổng, Mai-crô-xóp cũng lên tiếng. ")
+    assert _w(phong_cach.kiem_khop_tieu_de(kb, "7-Zip dính lỗ hổng: máy Việt Nam có sao?", wpm=249), "tiêu đề nhắc") == []
+    assert _w(phong_cach.kiem_khop_tieu_de(kb, "Microsoft sập: người dùng Việt Nam làm gì?", wpm=249), "tiêu đề nhắc") == []
+
 # --- kiem_short: kịch bản Short dọc gốc (spec 2026-11-15-shorts-doc-goc mục 4.2) ---
 CAU_DAU_TOT = "iPhone mười lăm Plus cũ còn mười lăm phẩy tám chín triệu [#1]."
 

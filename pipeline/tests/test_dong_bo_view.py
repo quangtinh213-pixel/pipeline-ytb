@@ -130,3 +130,31 @@ def test_cap_nhat_ctr_can_du_7_ngay_va_khong_ghi_de(monkeypatch, capsys):
     assert tai.call_count == 7  # mỗi ngày tải một lần dù nhiều video
     assert "sổ 6.3% – báo cáo 6.0%" in capsys.readouterr().out
     assert mod.cap_nhat_ctr(rows, None, now) == 0
+
+
+def test_cap_nhat_avd_dien_avd_va_con_50pct_khi_du_ngay():
+    from unittest.mock import MagicMock
+    mod = _load()
+    an = MagicMock()
+    q = an.reports.return_value.query
+
+    def tra(**kw):
+        m = MagicMock()
+        if kw["metrics"] == "audienceWatchRatio":
+            m.execute.return_value = {"rows": [[0.5, 0.3], [1.0, 0.1]]}
+        else:
+            m.execute.return_value = {"columnHeaders": [{"name": "views"}, {"name": "averageViewDuration"},
+                                                        {"name": "averageViewPercentage"}], "rows": [[50, 120, 31.6]]}
+        return m
+    q.side_effect = tra
+    rows = [
+        {"link": "https://youtu.be/cu", "gio_dang": "01/11/2026 15:30", "avd_pct": "", "con_50pct": ""},
+        {"link": "https://youtu.be/moi", "gio_dang": "09/11/2026 15:30", "avd_pct": "", "con_50pct": ""},
+        {"link": "https://youtu.be/co", "gio_dang": "01/11/2026 15:30", "avd_pct": "40%", "con_50pct": "20%"},
+    ]
+    now = datetime(2026, 11, 14, 9, 0, tzinfo=VN)
+    tl = {"cu": 100.0, "moi": 100.0, "co": 100.0}
+    assert mod.cap_nhat_avd(rows, tl, an, now) == 1
+    assert (rows[0]["avd_pct"], rows[0]["con_50pct"]) == ("32%", "30%")
+    assert rows[1]["avd_pct"] == "" and rows[2]["avd_pct"] == "40%"
+    assert mod.cap_nhat_avd(rows, tl, None, now) == 0

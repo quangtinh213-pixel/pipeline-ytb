@@ -214,3 +214,17 @@ def test_review_2_bao_loi_video_dai_duoi_7_phut(tmp_path, monkeypatch):
     assert "Lỗi: Video dài 2:21" in html and "Shorts" in html
     monkeypatch.setattr(dang, "thoi_luong", lambda _p: 600.0)
     assert "Lỗi: Video dài" not in duyet.render_review_2(d).read_text(encoding="utf-8")
+
+
+def test_review_1_hien_canh_bao_40_giay_dau(tmp_path):
+    d = _video(tmp_path, script="**Lời đọc:**\nGói Plus 522.500 đồng. [#p1] Mình đọc lại văn bản gốc thì thấy lạ. Ai mua? Ai bán?\n")
+    html = duyet.render_review_1(d).read_text(encoding="utf-8")
+    assert "nói về việc kể chuyện" in html and "câu hỏi" in html
+
+
+def test_review_2_canh_bao_tieu_de_lech_15_giay_dau(tmp_path):
+    d = _video(tmp_path, script="**Lời đọc:**\nGói Plus 522.500 đồng. [#p1] Google cũng bán gói AI.\n")
+    goi = {**GOI, "phuong_an": [{**GOI["phuong_an"][0], "tieu_de": "Nvidia mất 190 tỷ USD: Việt Nam mua chip khó hơn?"}]}
+    (d / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+    html = duyet.render_review_2(d).read_text(encoding="utf-8")
+    assert "tiêu đề nhắc «Nvidia»" in html and "tiêu đề có số «190 tỷ»" in html
