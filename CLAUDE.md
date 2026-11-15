@@ -10,6 +10,8 @@ Kênh tin công nghệ–kinh tế tiếng Việt. Mỗi ngày một video dài 
 | `/video-dung [thư mục]` | giọng VieNeu → chia cảnh → hình/b-roll → render HyperFrames → tiêu đề/thumbnail/mô tả; tối đó dựng Shorts | duyệt 2 (`duyet-2.html`) |
 | `/video-dang [thư mục]` | upload riêng tư + hẹn giờ (mặc định 15:30), Shorts sáng hôm sau | — |
 
+Mỗi chặng chạy trong một phiên riêng (`/clear` giữa các chặng); kiểm và render gộp bằng `tttc.gop` (`kiem-1`, `kiem-canh`, `render`); việc nhiều trang web/ảnh chụp giao subagent `sonnet`. Lý do: phiên chạy liền các chặng phình tới 558k ngữ cảnh.
+
 Không tự chọn phương án ở điểm duyệt, không tự chạy `duyet-short`. Trạng thái từng video nằm trong `tttc.trang_thai` (`load`, `set_step`, `next_step`).
 
 ## Cấu trúc

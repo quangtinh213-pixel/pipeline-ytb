@@ -9,6 +9,15 @@ Spec mục 4. Chạy Python trong `pipeline/` bằng `uv run`. V = `../videos/<s
 Mỗi bước: ghi `set_step(V, <bước>, "dang-chay")` trước khi làm, rồi `set_step(V, <bước>, "xong")` khi hoàn thành.
 Lỗi thì ghi `set_step(V, <bước>, "loi", "<lý do>")`, dừng và báo. Ghi giờ bắt đầu duyệt 2 trước khi chuẩn bị trang.
 
+**Tiết kiệm token** (luật chung ở skill `video-moi`, mục "Tiết kiệm token"):
+- Chặng này chạy trong **phiên mới** (không mang lịch sử chặng 1). Shorts (mục 7) chạy buổi tối trong **một phiên mới nữa**.
+  Phiên đang có lịch sử việc khác thì nhắc người dùng `/clear` trước.
+- Tìm b-roll trên Pexels/Pixabay (mục 2 `b-roll` bước 3–5) và chụp trang nguồn bằng trình duyệt: giao subagent
+  `model: "sonnet"` với danh sách cảnh + luật lọc clip; nó tải, soi, nhập kho rồi chỉ trả bảng `cảnh | tệp | ghi_cong`.
+- Kiểm cảnh gộp: `uv run python -m tttc.gop kiem-canh V` (canh + chat_luong, chỉ in Lỗi + 8 cảnh báo đầu, bỏ bảng số đo;
+  `--day-du` khi cần bảng). Render gộp: `uv run python -m tttc.gop render V` (chạy nền).
+- Mở `V/canh.json` theo cảnh cần sửa (Grep `"id": "c0NN"`), đừng đọc lại cả tệp sau mỗi lần sửa.
+
 ## 0. Điều kiện
 - `trang_thai.review_current(V, "duyet-1")` phải đạt. Nếu cần, chạy /video-moi và gửi duyệt lại.
 - Khi người dùng duyệt phương án N của bản đã gửi, chạy `uv run python -m tttc.trang_thai duyet V duyet-2 N`.
@@ -185,11 +194,14 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
   chạy `uv run python svg/ve.py`. Không vẽ chữ, không logo.
 - Cảnh `nhan-vat`: `tttc.anh.search("<tên người>")` → `pick()` → `download(item, V)`; ghi `anh` = tên tệp trả về.
   `pick` trả None thì đổi cảnh đó sang `minh-hoa`.
-- `uv run python -m tttc.canh V` tới khi `0 lỗi` (cảnh báo độ dài 2,5–6 s được phép khi có lý do).
-- `uv run python -m tttc.chat_luong V` tới khi **0 Lỗi**; đọc từng Cảnh báo (nhịp, tỉ lệ mẫu, sự kiện hình và hiệu ứng
+- `uv run python -m tttc.gop kiem-canh V` (chạy `tttc.canh` rồi `tttc.chat_luong`) tới khi cả hai `0 lỗi`
+  (cảnh báo độ dài 2,5–6 s được phép khi có lý do). Gom nhiều chỗ sửa rồi mới chạy lại.
+- Với `chat_luong`: tới khi **0 Lỗi**; đọc từng Cảnh báo (nhịp, tỉ lệ mẫu, sự kiện hình và hiệu ứng
   âm thanh mỗi phút, tốc độ đọc) và sửa hoặc ghi lý do giữ. Chỉ sang bước render khi đạt (render tốn cả chục phút).
 
 ## 4. render
+`uv run python -m tttc.gop render V` (chạy nền) làm liền bốn việc dưới đây và dừng ngay nếu `kiem-canh` còn Lỗi; khi
+xong in đường dẫn `soi-hinh.png` và kết quả `check_av`. Cần chạy lẻ từng việc thì dùng lệnh gốc:
 1. `uv run python -c "from tttc import dung; dung.compose('V')"`
 2. `scripts/render.sh V/composition V/final.mp4 delivery` (đo 09/11/2026 trên máy i9 16 luồng: delivery ≈ 2× thời lượng, khoảng 25 phút cho video 12 phút; chạy nền; xem docs/nghien-cuu/do-render-2026-11-09.md).
 3. `dung.contact_sheet('V/final.mp4', canh, 'V/frames/soi-hinh.png')` – **xem ảnh này**: chữ tràn, hình chồng,
@@ -227,6 +239,7 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - `uv run python -c "from tttc.duyet import render_review_2; print(render_review_2('V'))"`
 - `uv run python -m tttc.trang_thai gui-duyet V duyet-2` ngay sau khi tạo trang, trước khi gửi `duyet-2.html` và `frames/soi-hinh.png`.
 - Tóm tắt: độ dài video, số cảnh, 3 tiêu đề, cảnh báo còn lại. **Dừng.** Không tự chọn phương án.
+- Khi người dùng duyệt phương án xong, nhắc: đăng (`/video-dang`) và Shorts (mục 7) mỗi việc một phiên mới (`/clear` trước).
 
 ## 7. shorts dọc gốc (sau khi đăng video dài, buổi tối)
 Thiết kế: `docs/superpowers/specs/2026-11-15-shorts-doc-goc-design.md`. Mỗi Short là một video riêng: kịch bản riêng,

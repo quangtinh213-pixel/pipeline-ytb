@@ -6,6 +6,7 @@ description: Chặng 3 của pipeline video của kênh – upload video và Sho
 # /video-dang [thư mục video]
 
 Spec mục 5. Code: `pipeline/tttc/dang.py`. Chạy trong `pipeline/` bằng `uv run`.
+Chạy trong phiên mới (`/clear` nếu phiên đang mang lịch sử chặng dựng): chặng này chỉ cần `trang-thai.json` và `dong-goi.json`.
 
 ## Lần đầu (một lần cho kênh)
 Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập mật khẩu):

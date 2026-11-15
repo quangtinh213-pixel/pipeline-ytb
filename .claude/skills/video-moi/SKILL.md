@@ -9,6 +9,15 @@ Spec: `docs/superpowers/specs/2026-11-08-pipeline-video-tu-dong-design.md` mục
 Mọi lệnh Python chạy trong `pipeline/`: `cd pipeline && uv run python -m ...`.
 Sổ trạng thái: `tttc.trang_thai` (`load`, `set_step`, `set_field`, `next_step`).
 
+**Tiết kiệm token** (đo 15/11/2026: một phiên chạy gộp nhiều chặng phình tới 558k ngữ cảnh, đọc lại 127 triệu token):
+- Mỗi chặng chạy trong **một phiên riêng**. Các chặng nói chuyện với nhau qua tệp trong `V/` và `trang-thai.json`, phiên sau
+  không cần nhớ phiên trước. Phiên đang có lịch sử của chặng khác hoặc của việc khác thì nhắc người dùng `/clear` trước.
+- Việc nhiều trang web, nhiều ảnh chụp (quét tin, đọc nguồn gốc, chụp trang) giao cho subagent `model: "sonnet"`; nó ghi
+  thẳng vào tệp và chỉ trả bảng tóm tắt ngắn, để ảnh chụp và chữ trang web không nằm lại trong ngữ cảnh chính.
+- Các lệnh kiểm chạy gộp một lần: `uv run python -m tttc.gop kiem-1 V` (phong_cach + kiem + tiêu đề, chỉ in Lỗi và vài
+  cảnh báo đầu; `--day-du` khi cần xem hết). Sửa xong nhiều chỗ rồi mới chạy lại, đừng chạy sau từng chỗ sửa.
+- Đọc tài liệu dài (`phong-cach-kich-ban.md`, `template-kich-ban.md`) một lần mỗi phiên, không đọc lại.
+
 ## 0. Mở hoặc tiếp tục
 
 - Khi người dùng duyệt đúng bản đã gửi, chạy `uv run python -m tttc.trang_thai duyet V duyet-1`. Lệnh kiểm lại nguồn
@@ -23,7 +32,8 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 ## 1. chu-de
 
 - Có chủ đề từ người dùng: vẫn chấm theo bảng bên dưới, ghi 1 đề.
-- Không có: quét tin 24 giờ qua từ `pipeline/config.json:nguon_tin`, và đọc RSS đối thủ bằng `cd pipeline && uv run python -m tttc.radar rss` (chỉ lấy tiêu đề, giờ đăng, số view làm tín hiệu; không lấy lời, kịch bản, hình của họ).
+- Không có: giao một subagent `model: "sonnet"` (prompt: bảng chấm bên dưới + `config.json:nguon_tin`, trả về ≤ 8 đề
+  dạng bảng: đề, link gốc, 3 điểm, cờ đối thủ) để quét tin 24 giờ qua từ `pipeline/config.json:nguon_tin`, và đọc RSS đối thủ bằng `cd pipeline && uv run python -m tttc.radar rss` (chỉ lấy tiêu đề, giờ đăng, số view làm tín hiệu; không lấy lời, kịch bản, hình của họ).
 - Chấm mỗi đề (`tttc.radar.cham_diem`): cú sốc trong 48 giờ (0–2), số lớn nêu được từ nguồn gốc (0–2), góc Việt Nam (0–2, **nặng gấp đôi**). Đạt khi ≥ 4 điểm; cùng điểm thì đề có góc Việt Nam xếp trước, rồi đề mới hơn. Góc Việt Nam bằng 0 **không tự động loại**. Xếp bằng `radar.xep_hang`.
 - Chấm câu "nóng" bằng dữ liệu: gọi skill `yt-viral` cho ngách (tin công nghệ–kinh tế tiếng Việt) xem đề tương tự đang vượt kênh của nó bao nhiêu lần; ghi link video mẫu cạnh điểm.
 - **Chọn khung kịch bản** (cập nhật 14/11/2026):
@@ -36,6 +46,9 @@ Mỗi bước: ghi `set_step(..., "dang-chay")` trước khi bắt đầu và `s
 
 ## 2. nguon
 
+- Giao bước này cho một subagent `model: "sonnet"`: đưa nó đề, link gốc và toàn bộ luật của mục này; nó đọc nguồn, chụp
+  `nguon/<id>.png`, ghi `nguon.json`, rồi chỉ trả bảng `id | gia_tri | trang_thai | ghi chú`. Claude đọc `nguon.json`
+  (không đọc lại các trang) và kiểm bằng mắt vài ảnh chụp của số chính trước khi viết kịch bản.
 - Đọc **tài liệu gốc** (báo cáo, văn bản chính phủ, trang giá chính thức, hồ sơ công ty), không dừng ở tin thứ cấp.
 - Mỗi con số dùng trong video thành một mục trong `nguon.json`:
   `{"id","gia_tri","trich_dan","url","ngay_truy_cap","anh_chup","trang_thai"}`
@@ -87,7 +100,7 @@ trong nguon.json, đang ngồi quán cà phê kể lại cho một đứa bạn 
 8. Đọc to thành tiếng phải nghe tự nhiên, không vấp.
 ```
 - **Biên tập ba lượt** trên bản nháp (đừng viết lại từ đầu): lượt 1 "Đọc lại, gạch bỏ mọi câu sáo rỗng không thêm thông tin."; lượt 2 "Viết lại sao cho đọc to thành tiếng không vấp, nghe như nói trực tiếp, không như đọc văn bản."; lượt 3 (mục 9 thẻ phong cách) "Từng chương: kể lại bằng miệng cho một người bạn, rồi sửa chữ theo lời kể đó: đoạn nào quá ba con số thì giữ số chính, làm tròn, đẩy số còn lại lên [TRÊN MÀN HÌNH]; đổi chữ công văn thành chữ nói; gom câu dè dặt." Ba lượt không được bỏ thẻ `[#id]`, chữ "sơ bộ" hay "tính ra"; con số chỉ được làm tròn trong 5% kèm từ ước lượng.
-- `cd pipeline && uv run python -m tttc.phong_cach ../videos/<slug>` tới `0 Lỗi` (Lỗi là từ cấm, mở/kết bài sáo rỗng, dịch thô; chặn duyệt 1). Đọc từng cảnh báo (nhịp, đoạn dày số, số lẻ đọc thành tiếng) và sửa hoặc ghi lý do giữ. Rồi `set_step(dir, "kich-ban", "xong")`.
+- `cd pipeline && uv run python -m tttc.gop kiem-1 ../videos/<slug>` (gồm `tttc.phong_cach`) tới `0 Lỗi` ở mục phong_cach (Lỗi là từ cấm, mở/kết bài sáo rỗng, dịch thô; chặn duyệt 1). Đọc từng cảnh báo (nhịp, đoạn dày số, số lẻ đọc thành tiếng) và sửa hoặc ghi lý do giữ. Rồi `set_step(dir, "kich-ban", "xong")`.
 
 ## 4. phan-bien-giong (agy, đúng 2 vòng)
 
@@ -102,7 +115,8 @@ Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước
 
 ## 5. kiem
 
-1. (chạy sau mọi chỗ sửa giọng văn) `uv run python -m tttc.kiem ../videos/<slug>`; sửa tới khi `0 lỗi`.
+1. (chạy sau mọi chỗ sửa giọng văn) `uv run python -m tttc.gop kiem-1 ../videos/<slug>`; sửa tới khi mục `kiem` và
+   `tieu_de` hết Lỗi. Lệnh này đã gồm bước 2 bên dưới; câu lệnh `cham_diem` dài chỉ để chạy lẻ khi cần.
 2. Kiểm tiêu đề bằng `tttc.tieu_de` (luật 15/11/2026, `docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md` mục 1.1). Dạng: `[sự kiện cụ thể có số]: [một câu hỏi Việt Nam/túi tiền]?`, ví dụ "Grab giảm phí gần 3.000 tỷ: tiền về túi ai?".
    **Lỗi:** từ giật gân (SỐC, BẤT NGỜ, CHẤN ĐỘNG, SỰ THẬT…), nhãn in hoa mở đầu ("CẢNH BÁO:", "NGUY CƠ:"), dấu "!", hai câu hỏi hoặc hai dấu ":", chữ tiếng Việt in hoa cả từ.
    **Cảnh báo:** thiếu số, thiếu góc Việt Nam/túi tiền, phần trước ":" thiếu thực thể.
@@ -118,3 +132,4 @@ Chỉ phản biện giọng văn tự nhiên; số liệu và nguồn do bước
 - `uv run python -m tttc.trang_thai gui-duyet V duyet-1` ngay sau khi tạo trang, trước khi gửi. V là thư mục video.
 - Gửi `duyet-1.html` cho người dùng (SendUserFile, display render). Tóm tắt 3 dòng: đề, số nguồn, cảnh báo còn lại.
 - **Dừng.** Không tự duyệt thay người dùng.
+- Khi người dùng duyệt xong (bước 0), nhắc: chặng dựng chạy trong phiên mới – `/clear` rồi `/video-dung <thư mục>`.
