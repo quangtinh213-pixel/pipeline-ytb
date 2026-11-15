@@ -18,8 +18,11 @@ Hướng dẫn người dùng tự làm (Claude không bấm hộ, không nhập
 
 ## Mỗi video
 1. Chọn video: thư mục do người dùng nêu, hoặc thư mục duy nhất có `duyet-2=da-duyet` và `dang` chưa xong.
+   Có nhiều thư mục như vậy (2 video/ngày) thì liệt kê kèm `gio_dang` của từng thư mục và hỏi người dùng, không tự chọn.
 2. `tt.review_current(V, "duyet-2")` phải đúng. Khi hồ sơ cũ thiếu biên nhận hoặc tệp đã thay đổi, quay về bước duyệt tương ứng.
-3. Ngày/giờ: ngày theo tên thư mục, giờ `config.json:gio_dang_mac_dinh` (15:30, trước khung 17:00–20:00 của đối thủ).
+3. Ngày/giờ: ngày theo tên thư mục; giờ lấy `trang-thai.json:gio_dang` (lịch tự chạy `/video-moi` ghi sẵn một ô trong
+   `config.json:khung_dang`, 11:30 hoặc 15:30), không có thì `config.json:gio_dang_mac_dinh` (15:30). Cả hai giờ đều trước
+   khung 17:00–20:00 của đối thủ. Hai video cùng ngày không được trùng giờ.
 4. **Xác nhận với người dùng trước khi upload** (một câu): tiêu đề đã chọn, ngày giờ đăng (giờ Việt Nam),
    số Shorts và giờ từng Short. Đợi "ok".
 5. `uv run python -m tttc.dang ../videos/<slug> <dd/mm/yyyy> <HH:MM>` → in video id.
