@@ -142,6 +142,8 @@ def _check_doc(c: dict, goc: Path | None) -> list[str]:
     cid, mau, out = c["id"], c["mau"], []
     chuoi = lambda v: isinstance(v, str) and bool(v.strip())
     thieu_tep = lambda rel: goc is not None and not (goc / rel).is_file()
+    # compose chỉ chép anh/, nguon/, broll/ của thư mục video vào composition; ảnh ở chỗ khác render ra khung trống
+    ngoai_kho = lambda rel: Path(rel).parts[:1] not in (("anh",), ("nguon",), ("broll",))
     if mau in ("moc", "ket"):
         if not chuoi(c.get("chu")):
             out.append(f"Lỗi: {cid} {mau} thiếu chu")
@@ -152,6 +154,8 @@ def _check_doc(c: dict, goc: Path | None) -> list[str]:
     elif mau == "bang-chung":
         if not chuoi(c.get("anh")):
             out.append(f"Lỗi: {cid} bang-chung thiếu anh")
+        elif ngoai_kho(c["anh"]):
+            out.append(f"Lỗi: {cid} anh «{c['anh']}» phải nằm trong anh/, nguon/ hoặc broll/ của thư mục video")
         elif thieu_tep(c["anh"]):
             out.append(f"Lỗi: {cid} cần ảnh {c['anh']} chưa có trong {goc}")
         v = c.get("vung")
@@ -164,6 +168,8 @@ def _check_doc(c: dict, goc: Path | None) -> list[str]:
     elif mau == "anh":
         if chuoi(c.get("anh")) == chuoi(c.get("video")):
             out.append(f"Lỗi: {cid} mẫu anh cần đúng một trong anh / video")
+        elif chuoi(c.get("anh")) and ngoai_kho(c["anh"]):
+            out.append(f"Lỗi: {cid} anh «{c['anh']}» phải nằm trong anh/, nguon/ hoặc broll/ của thư mục video")
         elif chuoi(c.get("anh")) and thieu_tep(c["anh"]):
             out.append(f"Lỗi: {cid} cần ảnh {c['anh']} chưa có trong {goc}")
         elif chuoi(c.get("video")) and thieu_tep(Path("broll") / c["video"]):

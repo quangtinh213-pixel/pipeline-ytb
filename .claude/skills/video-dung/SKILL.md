@@ -244,9 +244,9 @@ giọng đọc mới, hình dựng bằng mẫu dọc 1080×1920 (`templates/can
 - **Cảnh** `V/ngan/k/canh.json` = `{"khuon": "doc", "scenes": [...]}`, cảnh đầu luôn là `moc` bắt đầu ở 0 có `chu` (≤ 8 từ)
   và `so`. Năm mẫu dọc:
   - `moc`: `chu`, `so` (chuỗi hiển thị, ≤ 12 ký tự), `nhan?`, `nguon_id` khi có số.
-  - `bang-chung`: `anh` (đường dẫn trong V, vd `nguon/x.png`), `vung` = `[x, y, w, h]` trong 0–1 cắt đúng dòng/con số,
+  - `bang-chung`: `anh` (đường dẫn trong `anh/`, `nguon/` hoặc `broll/` của V, vd `nguon/x.png`; chỗ khác không được chép khi dựng), `vung` = `[x, y, w, h]` trong 0–1 cắt đúng dòng/con số,
     `tom_tat` (một dòng tiếng Việt), `nguon_id`. Không chiếu nguyên trang.
-  - `anh`: đúng một trong `anh` / `video` (tên tệp trong `V/broll/`), `diem_giu` = `[x, y]` trong 0–1 (chỗ giữ khi cắt dọc), `nhan?`.
+  - `anh`: đúng một trong `anh` (đường dẫn như `bang-chung`, vd `anh/x.jpg`) / `video` (chỉ tên tệp trong `V/broll/`), `diem_giu` = `[x, y]` trong 0–1 (chỗ giữ khi cắt dọc), `nhan?`.
   - `doi-chieu`: `tren`, `duoi` = `{"nhan", "so"}`, `noi_bat` = `tren`/`duoi`, `nguon_id`.
   - `ket`: `chu`, `so?`.
   Cảnh ≤ 6 s, trung bình ≤ 3,5 s. Kiểm: `canh.validate(canh, timing, nguon=nguon của V, video_dir='V/ngan/k', goc='V')`.

@@ -706,3 +706,13 @@ def test_so_tren_hinh_doc_phai_khop_nguon(tmp_path):
 def test_so_trong_tom_tat_bang_chung_phai_khop_nguon(tmp_path):
     d, t = _doc(MOC, dict(BANG_CHUNG, tom_tat="Giá niêm yết 17 triệu"))
     assert any("không khớp nguồn" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=_goc(tmp_path))))
+
+
+def test_anh_doc_ngoai_anh_nguon_broll_la_loi(tmp_path):
+    # compose chỉ chép anh/, nguon/, broll/ vào composition: ảnh ở chỗ khác sẽ thành khung trống khi render
+    g = _goc(tmp_path)
+    (g / "thumbnails").mkdir()
+    (g / "thumbnails" / "a.png").write_bytes(b"x")
+    for c in (dict(BANG_CHUNG, anh="thumbnails/a.png"), {"mau": "anh", "anh": "thumbnails/a.png"}):
+        d, t = _doc(MOC, c)
+        assert any("anh/, nguon/" in e for e in _errors(canh.validate(d, t, tmp_path, NGUON_GIA, goc=g)))
