@@ -234,21 +234,21 @@ def _short_canh(*durs, dau=MOC0):
     return {"khuon": "doc", "scenes": sc}
 
 
-def _timing(n=80, buoc=0.45, tho=0.4):
+def _timing_short(n=80, buoc=0.45, tho=0.4):
     return {"duration": n * buoc, "words": [{"w": "x", "start": round(i * buoc, 3), "end": round(i * buoc + tho, 3)}
                                             for i in range(n)]}
 
 
 CANH_OK = _short_canh(*[3.0] * 13)       # 14 cảnh × 3 s = 42 s
-TIMING_OK = _timing()
+TIMING_OK = _timing_short()
 DO_OK = lambda p: (42.0, 1080, 1920)     # noqa: E731
 
 
-def _loi(msgs, key=""):
+def _loi_s(msgs, key=""):
     return [m for m in msgs if m.startswith("Lỗi") and key in m]
 
 
-def _cb(msgs, key=""):
+def _cb_s(msgs, key=""):
     return [m for m in msgs if m.startswith("Cảnh báo") and key in m]
 
 
@@ -258,40 +258,40 @@ def test_kiem_short_sach():
 
 def test_canh_dau_khong_phai_moc_la_loi():
     canh = _short_canh(*[3.0] * 13, dau=dict(MOC0, mau="ket"))
-    assert _loi(cl.kiem_short(canh, TIMING_OK), "moc")
+    assert _loi_s(cl.kiem_short(canh, TIMING_OK), "moc")
 
 
 def test_canh_dau_khong_bat_dau_o_0_la_loi():
-    assert _loi(cl.kiem_short(_short_canh(3.0, dau=dict(MOC0, start=0.4)), TIMING_OK), "giây 0")
+    assert _loi_s(cl.kiem_short(_short_canh(3.0, dau=dict(MOC0, start=0.4)), TIMING_OK), "giây 0")
 
 
 def test_canh_dau_thieu_so_hoac_chu_qua_8_tu_la_loi():
-    assert _loi(cl.kiem_short(_short_canh(3.0, dau={k: v for k, v in MOC0.items() if k != "so"}), TIMING_OK), "so")
+    assert _loi_s(cl.kiem_short(_short_canh(3.0, dau={k: v for k, v in MOC0.items() if k != "so"}), TIMING_OK), "so")
     dai = dict(MOC0, chu="Máy cũ bây giờ liệu có còn rẻ như trước không")
-    assert _loi(cl.kiem_short(_short_canh(3.0, dau=dai), TIMING_OK), "8 từ")
+    assert _loi_s(cl.kiem_short(_short_canh(3.0, dau=dai), TIMING_OK), "8 từ")
 
 
 def test_thoi_luong_ngoai_30_55_la_loi():
-    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (61.0, 1080, 1920)), "61")
-    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (24.5, 1080, 1920)), "24")
+    assert _loi_s(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (61.0, 1080, 1920)), "61")
+    assert _loi_s(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (24.5, 1080, 1920)), "24")
 
 
 def test_khung_khong_phai_1080x1920_la_loi():
-    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (40.0, 1920, 1080)), "1080×1920")
+    assert _loi_s(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (40.0, 1920, 1080)), "1080×1920")
 
 
 def test_canh_dai_hon_6_giay_canh_bao():
-    assert _cb(cl.kiem_short(_short_canh(3.0, 7.0), TIMING_OK), "d2")
+    assert _cb_s(cl.kiem_short(_short_canh(3.0, 7.0), TIMING_OK), "d2")
 
 
 def test_trung_binh_canh_hon_3_5_giay_canh_bao():
-    assert _cb(cl.kiem_short(_short_canh(*[4.5] * 8), TIMING_OK), "trung bình")
+    assert _cb_s(cl.kiem_short(_short_canh(*[4.5] * 8), TIMING_OK), "trung bình")
 
 
 def test_nghi_giua_hai_tu_qua_0_25_canh_bao():
-    t = _timing()
+    t = _timing_short()
     t["words"][10]["start"] = t["words"][9]["end"] + 0.6
-    assert _cb(cl.kiem_short(CANH_OK, t), "nghỉ")
+    assert _cb_s(cl.kiem_short(CANH_OK, t), "nghỉ")
 
 
 def test_timing_khong_co_words_khong_nem_loi():
