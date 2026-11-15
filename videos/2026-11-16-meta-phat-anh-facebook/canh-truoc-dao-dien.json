@@ -1,0 +1,3398 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 2.137,
+   "mau": "so-lon",
+   "so": "805",
+   "truoc": "",
+   "sau": " triệu euro",
+   "nhan": "Italy phạt Meta hôm thứ Bảy",
+   "nguon_id": "g1",
+   "svg": "bua-phan-quyet",
+   "huong": "len",
+   "tong": "hook",
+   "trong_diem": true,
+   "nhip": [
+    "Thứ Bảy vừa",
+    "tháng mười một,"
+   ]
+  },
+  {
+   "id": "c002",
+   "start": 2.137,
+   "end": 4.631,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Cơ quan Italy",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "phai": {
+    "nhan": "Meta",
+    "svg": "cao-oc"
+   },
+   "nhip": [
+    "vệ dữ liệu",
+    "Italy phạt Meta",
+    "Meta tám trăm"
+   ]
+  },
+  {
+   "id": "c003",
+   "start": 4.631,
+   "end": 7.075,
+   "mau": "trang-nguon",
+   "anh": "v1.png",
+   "khung": "16,66.5,46,7.5",
+   "nguon_id": "v1",
+   "vien": "vang",
+   "tom_tat": "VnExpress đưa tin, quy đổi khoảng 887 triệu USD",
+   "trong_diem": true,
+   "nhip": [
+    "năm triệu euro."
+   ]
+  },
+  {
+   "id": "c004",
+   "start": 7.075,
+   "end": 9.017,
+   "mau": "minh-hoa",
+   "nhan": "App đọc ảnh trong máy",
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Android đọc thư",
+    "viện ảnh trong",
+    "ảnh trong máy"
+   ]
+  },
+  {
+   "id": "c005",
+   "start": 9.017,
+   "end": 11.262,
+   "mau": "chu-dong",
+   "cau": "mà không hỏi riêng cho việc đó.",
+   "nhan_tu": "không hỏi riêng",
+   "nho": "Lý do bị phạt"
+  },
+  {
+   "id": "c006",
+   "start": 11.262,
+   "end": 13.515,
+   "mau": "so-lon",
+   "so": "79,0",
+   "truoc": "",
+   "sau": " triệu",
+   "nhan": "Người dùng Facebook ở Việt Nam",
+   "nguon_id": "d1",
+   "svg": "co-viet-nam",
+   "trong_diem": true,
+   "nhip": [
+    "Facebook có khoảng",
+    "triệu người dùng."
+   ]
+  },
+  {
+   "id": "c007",
+   "start": 13.515,
+   "end": 15.442,
+   "mau": "minh-hoa",
+   "nhan": "Giả sử ở Việt Nam",
+   "svg": "co-viet-nam",
+   "san_khau": "thanh-pho",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Vậy nếu đúng",
+    "này xảy ra",
+    "ra ở đây,"
+   ]
+  },
+  {
+   "id": "c008",
+   "start": 15.442,
+   "end": 17.691,
+   "mau": "chu-dong",
+   "cau": "luật mới của Việt Nam phạt được bao nhiêu?",
+   "nhan_tu": "phạt được bao nhiêu",
+   "nho": "Câu hỏi của video",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "phạt được bao nhiêu"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c009",
+   "start": 17.691,
+   "end": 19.749,
+   "mau": "minh-hoa",
+   "nhan": "Đổi euro ra tiền Việt",
+   "svg": "dong-xu",
+   "san_khau": "nen-dat",
+   "may_quay": "he-lo",
+   "bo_cuc": [
+    {
+     "svg": "tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "trai",
+    "tu": "Tính ra"
+   },
+   "nhip": [
+    "Trước hết, đổi",
+    "tiền Việt. Tính",
+    "Việt. Tính ra,"
+   ]
+  },
+  {
+   "id": "c010",
+   "start": 19.749,
+   "end": 22.85,
+   "mau": "so-lon",
+   "so": "23.480",
+   "truoc": "",
+   "sau": " tỷ đồng",
+   "nhan": "Tự tính, làm tròn, theo tỷ giá Vietcombank",
+   "nguon_id": [
+    "t1",
+    "tg1"
+   ],
+   "svg": "tien",
+   "huong": "len",
+   "trong_diem": true,
+   "nhip": [
+    "tỷ giá Vietcombank,",
+    "nghìn tỷ đồng."
+   ]
+  },
+  {
+   "id": "c011",
+   "start": 22.85,
+   "end": 25.135,
+   "mau": "trich-bao",
+   "nguon_id": "g3",
+   "trich": "around 20 million Android users in Italy",
+   "to_vang": "20 million Android users",
+   "trich_vi": "khoảng 20 triệu người dùng Android ở Italy",
+   "to_vang_vi": "20 triệu người dùng Android",
+   "nhip": [
+    "Italy, nhóm bị"
+   ]
+  },
+  {
+   "id": "c012",
+   "start": 25.135,
+   "end": 27.619,
+   "mau": "so-lon",
+   "so": "20",
+   "truoc": "",
+   "sau": " triệu",
+   "nhan": "Ước chừng, người dùng Android ở Italy bị ảnh hưởng",
+   "nguon_id": "g3",
+   "svg": "dien-thoai",
+   "nhip": [
+    "triệu người dùng",
+    "Việt Nam là"
+   ]
+  },
+  {
+   "id": "c013",
+   "start": 27.619,
+   "end": 30.069,
+   "mau": "minh-hoa",
+   "nhan": "Cả người dùng Facebook",
+   "boi": [
+    {
+     "chu": "Không riêng Android",
+     "kieu": "vang",
+     "x": 0.3,
+     "y": 0.22,
+     "tu": "không riêng Android"
+    }
+   ],
+   "svg": "nguoi-nhom",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "co-viet-nam",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "dien-thoai",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "dùng Facebook, không",
+    "Facebook, không riêng",
+    "không riêng Android,"
+   ]
+  },
+  {
+   "id": "c014",
+   "start": 30.069,
+   "end": 34.56,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Android ở Italy",
+    "svg": "dien-thoai",
+    "so": "20",
+    "don_vi": "triệu"
+   },
+   "phai": {
+    "nhan": "Facebook ở Việt Nam",
+    "svg": "co-viet-nam",
+    "so": "79,0",
+    "don_vi": "triệu"
+   },
+   "nguon_id": [
+    "g3",
+    "d1",
+    "t5"
+   ],
+   "ti_le": "gấp gần 4 lần",
+   "tom_tat": "Chỉ để hình dung quy mô, hai nhóm khác loại",
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "trai",
+    "tu": "Tính ra"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "dung quy mô.",
+    "Tính ra, gần",
+    "hưởng ở Italy."
+   ]
+  },
+  {
+   "id": "c015",
+   "start": 34.56,
+   "end": 37.9,
+   "mau": "minh-hoa",
+   "nhan": "Hai mức phạt chênh nhau",
+   "svg": "can-cung-cau",
+   "san_khau": "nen-dat",
+   "may_quay": "he-lo",
+   "bo_cuc": [
+    {
+     "svg": "dong-xu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tien",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Còn mức phạt",
+    "Nam thì chênh",
+    "mức nghe như"
+   ]
+  },
+  {
+   "id": "c016",
+   "start": 37.9,
+   "end": 41.348,
+   "mau": "chu-dong",
+   "cau": "Lý do nằm ngay ở cách luật đặt khung tiền.",
+   "nhan_tu": "cách luật đặt khung tiền",
+   "nho": "Lý do"
+  },
+  {
+   "id": "c017",
+   "start": 41.348,
+   "end": 44.118,
+   "mau": "minh-hoa",
+   "nhan": "Cái nút nhỏ xíu",
+   "boi": [
+    {
+     "chu": "Nút gợi ý ảnh",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "cái nút gợi ý ảnh",
+     "mui_ten": "xuong"
+    }
+   ],
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "nhip": [
+    "nút gợi ý",
+    "ảnh nhỏ xíu",
+    "đã gây ra"
+   ]
+  },
+  {
+   "id": "c018",
+   "start": 44.118,
+   "end": 48.787,
+   "mau": "chuong",
+   "so": "Phần 1",
+   "chuong": "Cái nút gợi ý ảnh bật sẵn",
+   "tong": "ky-thuat",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c019",
+   "start": 48.787,
+   "end": 52.147,
+   "mau": "trich-bao",
+   "nguon_id": "g2",
+   "trich": "available since 2023",
+   "to_vang": "since 2023",
+   "trich_vi": "có từ năm 2023",
+   "to_vang_vi": "năm 2023",
+   "nhip": [
+    "Nó có từ"
+   ]
+  },
+  {
+   "id": "c020",
+   "start": 52.147,
+   "end": 55.769,
+   "mau": "minh-hoa",
+   "nhan": "Ảnh máy thành gợi ý",
+   "boi": [
+    {
+     "chu": "Gợi ý bạn đăng",
+     "kieu": "nhan",
+     "x": 0.72,
+     "y": 0.24,
+     "tu": "gợi ý bạn đăng"
+    }
+   ],
+   "svg": "bong-bong",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "vài tấm ảnh,",
+    "đoạn video trong",
+    "gợi ý bạn"
+   ]
+  },
+  {
+   "id": "c021",
+   "start": 55.769,
+   "end": 58.599,
+   "mau": "chu-dong",
+   "cau": "Vấn đề nằm ở cách nó xin phép.",
+   "nhan_tu": "cách nó xin phép",
+   "nho": "Vấn đề",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "cách nó xin phép"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c022",
+   "start": 58.599,
+   "end": 62.367,
+   "mau": "minh-hoa",
+   "nhan": "Xin quyền đúng một lần",
+   "boi": [
+    {
+     "chu": "Một lần hỏi",
+     "kieu": "vang",
+     "x": 0.3,
+     "y": 0.22,
+     "tu": "đúng một lần"
+    }
+   ],
+   "svg": "o-khoa",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Theo cơ quan",
+    "vào thư viện",
+    "đúng một lần,"
+   ]
+  },
+  {
+   "id": "c023",
+   "start": 62.367,
+   "end": 66.944,
+   "mau": "trang-nguon",
+   "anh": "v1.png",
+   "khung": "16,88.5,46,9",
+   "nguon_id": "v1",
+   "vien": "vang",
+   "tom_tat": "Tính năng bật mặc định, chỉ kèm thông báo cấp quyền chung",
+   "trong_diem": true,
+   "nhip": [
+    "Trước lần hỏi"
+   ]
+  },
+  {
+   "id": "c024",
+   "start": 66.944,
+   "end": 72.438,
+   "mau": "quy-trinh",
+   "tieu_de": "Một lần bấm, nhiều việc",
+   "buoc": [
+    {
+     "nhan": "Thông báo cấp quyền chung",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Bấm đồng ý",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Mở luôn gợi ý ảnh",
+     "svg": "o-khoa"
+    }
+   ],
+   "nhip": [
+    "bật thêm tính năng",
+    "bấm đồng ý",
+    "gợi ý ảnh"
+   ]
+  },
+  {
+   "id": "c025",
+   "start": 72.438,
+   "end": 76.508,
+   "mau": "chu-dong",
+   "cau": "tính năng này được bật sẵn. Không ai hỏi lại.",
+   "nhan_tu": "bật sẵn",
+   "nho": "Điểm đáng nói",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "trai",
+    "tu": "bật sẵn"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c026",
+   "start": 76.508,
+   "end": 79.245,
+   "mau": "minh-hoa",
+   "nhan": "Đưa chìa nhà cho thợ",
+   "tom_tat": "Ví dụ do kênh dựng, không phải hành vi của Meta",
+   "svg": "chia-khoa",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Bạn đưa chìa",
+    "thợ vào sửa",
+    "cái vòi nước."
+   ]
+  },
+  {
+   "id": "c027",
+   "start": 79.245,
+   "end": 83.028,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Việc cần: sửa vòi nước",
+    "svg": "chia-khoa"
+   },
+   "phai": {
+    "nhan": "Cái mở được: tủ album",
+    "svg": "ket-sat"
+   },
+   "tom_tat": "Ví dụ do kênh dựng, không phải hành vi của Meta",
+   "trong_diem": true,
+   "nhip": [
+    "Mấy tháng sau",
+    "cũng mở được",
+    "album ảnh gia"
+   ]
+  },
+  {
+   "id": "c028",
+   "start": 83.028,
+   "end": 87.113,
+   "mau": "minh-hoa",
+   "nhan": "Tủ vẫn mở",
+   "boi": [
+    {
+     "chu": "Từ hôm đó",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.22,
+     "tu": "từ hôm ấy tới giờ"
+    }
+   ],
+   "tom_tat": "Ví dụ do kênh dựng, không phải hành vi của Meta",
+   "svg": "dong-ho",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "ket-sat",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "o-khoa",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Và tủ đó",
+    "giờ. Cơ quan",
+    "Italy nói gần"
+   ]
+  },
+  {
+   "id": "c029",
+   "start": 87.113,
+   "end": 91.704,
+   "mau": "quy-trinh",
+   "tieu_de": "Cấp quyền một lần",
+   "buoc": [
+    {
+     "nhan": "Cấp trọn quyền",
+     "svg": "o-khoa"
+    },
+    {
+     "nhan": "Đọc được cả kho ảnh",
+     "svg": "kinh-lup"
+    },
+    {
+     "nhan": "Quyền còn hiệu lực",
+     "svg": "dong-ho"
+    }
+   ],
+   "nhip": [
+    "cấp trọn quyền",
+    "đọc được cả kho ảnh",
+    "cứ thế đọc suốt"
+   ]
+  },
+  {
+   "id": "c030",
+   "start": 91.704,
+   "end": 95.669,
+   "mau": "minh-hoa",
+   "nhan": "Không ai kiểm được",
+   "boi": [
+    {
+     "chu": "Không kiểm được",
+     "kieu": "do",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "không kiểm được"
+    }
+   ],
+   "svg": "tai-lieu",
+   "san_khau": "nen-dat",
+   "may_quay": "punch-in",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "toa-nha-quoc-hoi",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai",
+    "tu": "không kiểm được"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Còn người dùng",
+    "kiểm được thông",
+    "nào thực sự"
+   ]
+  },
+  {
+   "id": "c031",
+   "start": 95.669,
+   "end": 98.359,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Chẳng phải hãng bảo mật",
+    "svg": "cao-oc"
+   },
+   "phai": {
+    "nhan": "Trung tâm người tiêu dùng",
+    "svg": "nguoi-nhom"
+   },
+   "nhip": [
+    "Người khui vụ",
+    "phải một hãng",
+    "bảo mật lớn."
+   ]
+  },
+  {
+   "id": "c032",
+   "start": 98.359,
+   "end": 101.172,
+   "mau": "ban-do",
+   "tieu_de": "Nơi khiếu nại bắt đầu",
+   "diem": [
+    {
+     "nhan": "Bolzano",
+     "vi_do": 46.4983,
+     "kinh_do": 11.3548,
+     "nuoc": "ITA",
+     "noi_bat": true
+    },
+    {
+     "nhan": "Rome",
+     "vi_do": 41.9028,
+     "kinh_do": 12.4964
+    }
+   ],
+   "nhip": [
+    "Bolzano",
+    null
+   ]
+  },
+  {
+   "id": "c033",
+   "start": 101.172,
+   "end": 106.546,
+   "mau": "minh-hoa",
+   "nhan": "Tỉnh nhỏ phía bắc",
+   "boi": [
+    {
+     "chu": "Sát biên giới phía bắc",
+     "kieu": "trang",
+     "x": 0.28,
+     "y": 0.2,
+     "tu": "biên giới phía bắc"
+    },
+    {
+     "chu": "Tiếng Đức và tiếng Italy",
+     "kieu": "nhan",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "tiếng Đức"
+    }
+   ],
+   "tom_tat": "Thông tin địa lý phổ thông, không lấy từ thông cáo",
+   "svg": "nguoi-nhom",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "biên giới phía",
+    "Italy, nơi người",
+    "Đức lẫn tiếng"
+   ]
+  },
+  {
+   "id": "c034",
+   "start": 106.546,
+   "end": 109.159,
+   "mau": "ban-do",
+   "tieu_de": "Khiếu nại gửi lên cơ quan",
+   "diem": [
+    {
+     "nhan": "Bolzano",
+     "vi_do": 46.4983,
+     "kinh_do": 11.3548,
+     "nuoc": "ITA"
+    },
+    {
+     "nhan": "Rome",
+     "vi_do": 41.9028,
+     "kinh_do": 12.4964,
+     "noi_bat": true
+    }
+   ],
+   "noi": [
+    {
+     "tu": 0,
+     "den": 1,
+     "nhan": "Khiếu nại"
+    }
+   ],
+   "nguon_id": "g7",
+   "nhip": [
+    null,
+    null,
+    "gửi khiếu nại"
+   ]
+  },
+  {
+   "id": "c035",
+   "start": 109.159,
+   "end": 112.698,
+   "mau": "minh-hoa",
+   "nhan": "Cơ quan tự phân tích",
+   "svg": "toa-nha-quoc-hoi",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "dien-thoai",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Sau đó cơ",
+    "tự làm phân",
+    "kỹ thuật trên"
+   ]
+  },
+  {
+   "id": "c036",
+   "start": 112.698,
+   "end": 116.538,
+   "mau": "chuong",
+   "so": "Phần 2",
+   "chuong": "Đã bấm cho phép, sao vẫn phạt?",
+   "tong": "khai-niem",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c037",
+   "start": 116.538,
+   "end": 121.691,
+   "mau": "quy-trinh",
+   "tieu_de": "Lời Meta, theo VnExpress",
+   "buoc": [
+    {
+     "nhan": "Người dùng cấp quyền",
+     "svg": "nguoi"
+    },
+    {
+     "nhan": "Quyền nằm trên máy",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Tính năng mới chạy",
+     "svg": "chip"
+    }
+   ],
+   "nhip": [
+    "người dùng phải cấp quyền",
+    "trên máy",
+    "tính năng mới chạy"
+   ],
+   "nguon_id": "v1"
+  },
+  {
+   "id": "c038",
+   "start": 121.691,
+   "end": 125.131,
+   "mau": "minh-hoa",
+   "nhan": "Đổi quyền trong cài đặt",
+   "boi": [
+    {
+     "chu": "Đổi bất cứ lúc nào",
+     "kieu": "nhan",
+     "x": 0.7,
+     "y": 0.24,
+     "tu": "bất cứ lúc nào"
+    }
+   ],
+   "tom_tat": "Lời Meta, theo VnExpress",
+   "svg": "o-khoa",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "khien",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Họ cũng nói",
+    "này bất cứ",
+    "trong phần cài"
+   ]
+  },
+  {
+   "id": "c039",
+   "start": 125.131,
+   "end": 129.188,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Cơ quan Italy: vi phạm",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "phai": {
+    "nhan": "Meta: bác, sẽ kháng cáo",
+    "svg": "cao-oc"
+   },
+   "nhip": [
+    "Meta bác kết",
+    "không tương xứng,",
+    "và sẽ kháng"
+   ]
+  },
+  {
+   "id": "c040",
+   "start": 129.188,
+   "end": 131.763,
+   "mau": "minh-hoa",
+   "nhan": "Đọc kỹ chữ đồng ý",
+   "boi": [
+    {
+     "chu": "Chặt hơn",
+     "kieu": "vang",
+     "x": 0.7,
+     "y": 0.22,
+     "tu": "chặt hơn"
+    }
+   ],
+   "svg": "kinh-lup",
+   "san_khau": "co-quan",
+   "may_quay": "punch-in",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Cơ quan Italy",
+    "\"đồng ý\" chặt",
+    "ý\" chặt hơn."
+   ]
+  },
+  {
+   "id": "c041",
+   "start": 131.763,
+   "end": 134.834,
+   "mau": "minh-hoa",
+   "nhan": "Một điều trong luật Italy",
+   "svg": "tai-lieu",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "toa-nha-quoc-hoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "bua-phan-quyet",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Họ dựa vào",
+    "bộ luật quyền",
+    "tư của Italy."
+   ]
+  },
+  {
+   "id": "c042",
+   "start": 134.834,
+   "end": 138.349,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Điều trong luật Italy",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Luật chung châu Âu",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "nhip": [
+    "Điều này chép",
+    "Âu về quyền",
+    "tư trên thiết"
+   ]
+  },
+  {
+   "id": "c043",
+   "start": 138.349,
+   "end": 140.992,
+   "mau": "minh-hoa",
+   "nhan": "Điện thoại là đời tư",
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "khien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "nguoi",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "phai",
+    "tu": "phần đời tư"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Nó coi chiếc",
+    "một phần đời",
+    "của con người."
+   ]
+  },
+  {
+   "id": "c044",
+   "start": 140.992,
+   "end": 145.083,
+   "mau": "quy-trinh",
+   "tieu_de": "Đụng vào thứ trong máy",
+   "buoc": [
+    {
+     "nhan": "Biết rõ",
+     "svg": "kinh-lup"
+    },
+    {
+     "nhan": "Tự nguyện",
+     "svg": "nguoi"
+    },
+    {
+     "nhan": "Đồng ý",
+     "svg": "tai-lieu"
+    }
+   ],
+   "nhip": [
+    "biết rõ",
+    "tự nguyện",
+    "đồng ý"
+   ]
+  },
+  {
+   "id": "c045",
+   "start": 145.083,
+   "end": 149.069,
+   "mau": "minh-hoa",
+   "nhan": "Khỏi chứng minh thiệt hại",
+   "boi": [
+    {
+     "chu": "Không cần chứng minh",
+     "kieu": "do",
+     "x": 0.28,
+     "y": 0.2,
+     "tu": "không cần chứng minh"
+    },
+    {
+     "chu": "Không cần ai thiệt hại",
+     "kieu": "do",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "ai bị thiệt hại"
+    }
+   ],
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "nhip": [
+    "Không cần chứng",
+    "đâu, cũng không",
+    "có ai bị"
+   ]
+  },
+  {
+   "id": "c046",
+   "start": 149.069,
+   "end": 153.73,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Cho phép chung chung",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Đồng ý việc cụ thể",
+    "svg": "chia-khoa"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Tức là, bấm",
+    "được tính là",
+    "đồng ý cho"
+   ]
+  },
+  {
+   "id": "c047",
+   "start": 153.73,
+   "end": 158.228,
+   "mau": "chu-dong",
+   "cau": "Phải hỏi riêng.",
+   "nhan_tu": "hỏi riêng",
+   "nho": "Kết luận"
+  },
+  {
+   "id": "c048",
+   "start": 158.228,
+   "end": 161.46,
+   "mau": "ban-do",
+   "tieu_de": "Trụ sở châu Âu của Meta",
+   "diem": [
+    {
+     "nhan": "Ireland",
+     "vi_do": 53.3498,
+     "kinh_do": -6.2603,
+     "nuoc": "IRL",
+     "noi_bat": true
+    },
+    {
+     "nhan": "Italy",
+     "vi_do": 41.9028,
+     "kinh_do": 12.4964,
+     "nuoc": "ITA"
+    }
+   ],
+   "nhip": [
+    "Ireland",
+    null
+   ]
+  },
+  {
+   "id": "c049",
+   "start": 161.46,
+   "end": 166.001,
+   "mau": "quy-trinh",
+   "tieu_de": "Luật chung của châu Âu",
+   "buoc": [
+    {
+     "nhan": "Luật dữ liệu chung",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Cơ quan Ireland",
+     "svg": "toa-nha-quoc-hoi"
+    },
+    {
+     "nhan": "Đầu mối chung",
+     "svg": "cua-hep"
+    }
+   ],
+   "nhip": [
+    "luật bảo vệ dữ liệu chung",
+    "cơ quan Ireland",
+    "đầu mối"
+   ]
+  },
+  {
+   "id": "c050",
+   "start": 166.001,
+   "end": 168.712,
+   "mau": "minh-hoa",
+   "nhan": "Meta cãi, Italy bác",
+   "boi": [
+    {
+     "chu": "Meta: để Ireland xử",
+     "kieu": "nhan",
+     "x": 0.28,
+     "y": 0.22,
+     "tu": "Meta cũng cãi"
+    },
+    {
+     "chu": "Italy: bác",
+     "kieu": "do",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "Italy bác"
+    }
+   ],
+   "svg": "cao-oc",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "toa-nha-quoc-hoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Meta cũng cãi",
+    "Nhưng cơ quan",
+    "quan Italy bác,"
+   ]
+  },
+  {
+   "id": "c051",
+   "start": 168.712,
+   "end": 172.735,
+   "mau": "minh-hoa",
+   "nhan": "Không có một cửa",
+   "svg": "cua-hep",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "quyền riêng tư",
+    "bị này không",
+    "chế một cửa"
+   ]
+  },
+  {
+   "id": "c052",
+   "start": 172.735,
+   "end": 175.596,
+   "mau": "ban-do",
+   "tieu_de": "Mỗi nước tự phạt được",
+   "diem": [
+    {
+     "nhan": "Ireland",
+     "vi_do": 53.3498,
+     "kinh_do": -6.2603,
+     "nuoc": "IRL"
+    },
+    {
+     "nhan": "Italy",
+     "vi_do": 41.9028,
+     "kinh_do": 12.4964,
+     "nuoc": "ITA",
+     "noi_bat": true
+    }
+   ],
+   "nhip": [
+    "mỗi nước tự phạt được",
+    "Italy phạt luôn"
+   ],
+   "trong_diem": true
+  },
+  {
+   "id": "c053",
+   "start": 175.596,
+   "end": 179.644,
+   "mau": "minh-hoa",
+   "nhan": "Sai đâu, phạt đó",
+   "svg": "oto",
+   "san_khau": "thanh-pho",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "nguoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tai-lieu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Nói kiểu đời",
+    "Hà Nội thì",
+    "Hà Nội phạt,"
+   ]
+  },
+  {
+   "id": "c054",
+   "start": 179.644,
+   "end": 182.291,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Phạt tại chỗ",
+    "svg": "oto"
+   },
+   "phai": {
+    "nhan": "Chờ hồ sơ về quê",
+    "svg": "tai-lieu"
+   },
+   "nhip": [
+    "gửi hồ sơ",
+    "về nơi bạn",
+    "ký hộ khẩu."
+   ]
+  },
+  {
+   "id": "c055",
+   "start": 182.291,
+   "end": 185.525,
+   "mau": "chu-dong",
+   "cau": "Với luật quyền riêng tư trên thiết bị, châu Âu đang làm theo kiểu đó.",
+   "nhan_tu": "làm theo kiểu đó",
+   "nho": "Cách châu Âu làm",
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "phai",
+    "tu": "châu Âu đang làm theo kiểu đó"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c056",
+   "start": 185.525,
+   "end": 189.028,
+   "mau": "minh-hoa",
+   "nhan": "Điều cần nói rõ",
+   "boi": [
+    {
+     "chu": "Không xét: huấn luyện AI",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "không xét"
+    }
+   ],
+   "svg": "bua-phan-quyet",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Còn một điều",
+    "hiểu lầm. Vụ",
+    "Vụ này không"
+   ]
+  },
+  {
+   "id": "c057",
+   "start": 189.028,
+   "end": 191.862,
+   "mau": "minh-hoa",
+   "nhan": "Ảnh huấn luyện AI?",
+   "boi": [
+    {
+     "chu": "Có dùng ảnh huấn luyện?",
+     "kieu": "nhan",
+     "x": 0.7,
+     "y": 0.24,
+     "tu": "huấn luyện"
+    }
+   ],
+   "tom_tat": "Câu hỏi người xem hay đặt, chưa phải kết luận của nguồn",
+   "svg": "tai-lieu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "hay không"
+   },
+   "nhip": [
+    "Meta có dùng",
+    "luyện trí tuệ",
+    "tạo hay không."
+   ]
+  },
+  {
+   "id": "c058",
+   "start": 191.862,
+   "end": 195.701,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Meta: phủ nhận",
+    "svg": "cao-oc"
+   },
+   "phai": {
+    "nhan": "Italy: không xét",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "nhip": [
+    "Meta phủ nhận",
+    "Italy cũng ghi",
+    "rõ là không"
+   ]
+  },
+  {
+   "id": "c059",
+   "start": 195.701,
+   "end": 200.601,
+   "mau": "minh-hoa",
+   "nhan": "Tính năng đám mây",
+   "boi": [
+    {
+     "chu": "Ra mắt năm nay",
+     "kieu": "vang",
+     "x": 0.28,
+     "y": 0.22,
+     "tu": "ra mắt năm nay"
+    }
+   ],
+   "svg": "dam-may",
+   "san_khau": "may-chu",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Riêng một tính",
+    "năm nay, cho",
+    "viện trên máy"
+   ]
+  },
+  {
+   "id": "c060",
+   "start": 200.601,
+   "end": 204.925,
+   "mau": "chuong",
+   "so": "Phần 3",
+   "chuong": "Con số lớn, lớn so với ai?",
+   "tong": "hook",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c061",
+   "start": 204.925,
+   "end": 208.031,
+   "mau": "trich-bao",
+   "nguon_id": "h1",
+   "trich": "il Garante privacy multa Facebook per 1 milione di euro",
+   "to_vang": "1 milione di euro",
+   "trich_vi": "Garante phạt Facebook 1 triệu euro, vụ Cambridge Analytica",
+   "to_vang_vi": "1 triệu euro",
+   "nhip": [
+    "Facebook một triệu"
+   ]
+  },
+  {
+   "id": "c062",
+   "start": 208.031,
+   "end": 213.269,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Phạt Facebook, 2019",
+    "svg": "dong-xu",
+    "so": "1",
+    "don_vi": "triệu euro"
+   },
+   "phai": {
+    "nhan": "Phạt Meta, lần này",
+    "svg": "tien",
+    "so": "805",
+    "don_vi": "triệu euro"
+   },
+   "nguon_id": [
+    "h1",
+    "g1",
+    "t4"
+   ],
+   "ti_le": "gấp 805 lần",
+   "trong_diem": true,
+   "nhip": [
+    "Tính ra, lần",
+    "năm lần. Thông",
+    "những gì để"
+   ]
+  },
+  {
+   "id": "c063",
+   "start": 213.269,
+   "end": 215.877,
+   "mau": "minh-hoa",
+   "nhan": "Yếu tố 1: số người",
+   "boi": [
+    {
+     "chu": "Số người dính lớn",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "Số người dính lớn"
+    }
+   ],
+   "svg": "nguoi-nhom",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "Số người dính",
+    "mươi triệu người",
+    "triệu người dùng"
+   ]
+  },
+  {
+   "id": "c064",
+   "start": 215.877,
+   "end": 218.418,
+   "mau": "minh-hoa",
+   "nhan": "Yếu tố 2: tiếp diễn",
+   "boi": [
+    {
+     "chu": "Theo Garante: vẫn tiếp diễn",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "vẫn đang tiếp diễn"
+    }
+   ],
+   "tom_tat": "Đây là kết luận của cơ quan Italy",
+   "svg": "dong-ho",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Vi phạm vẫn",
+    "với ai chưa",
+    "cập nhật app."
+   ]
+  },
+  {
+   "id": "c065",
+   "start": 218.418,
+   "end": 222.016,
+   "mau": "trich-bao",
+   "nguon_id": "g8",
+   "trich": "a previous 2019 decision against the company",
+   "to_vang": "previous 2019 decision",
+   "trich_vi": "một quyết định trước đó, năm 2019, nhắm vào chính công ty",
+   "to_vang_vi": "năm 2019",
+   "nhip": [
+    "Năm hai nghìn"
+   ]
+  },
+  {
+   "id": "c066",
+   "start": 222.016,
+   "end": 225.109,
+   "mau": "minh-hoa",
+   "nhan": "Yếu tố thứ tư",
+   "boi": [
+    {
+     "chu": "Đủ cả bốn",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "Đủ cả"
+    }
+   ],
+   "svg": "tai-lieu",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "kinh-lup",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Và công ty",
+    "trong lúc điều",
+    "tra. Đủ cả."
+   ]
+  },
+  {
+   "id": "c067",
+   "start": 225.109,
+   "end": 228.588,
+   "mau": "trich-bao",
+   "nguon_id": "g4",
+   "trich": "The amount is about 0.47% of the group's global revenue.",
+   "to_vang": "about 0.47%",
+   "trich_vi": "Mức phạt bằng khoảng 0,47% doanh thu toàn cầu của tập đoàn",
+   "to_vang_vi": "khoảng 0,47%",
+   "trong_diem": true,
+   "nhip": [
+    "Nghe thì khủng."
+   ]
+  },
+  {
+   "id": "c068",
+   "start": 228.588,
+   "end": 232.564,
+   "mau": "phan-tram",
+   "so": "0,47",
+   "sau": "%",
+   "tieu_de": "Phần doanh thu toàn cầu",
+   "nhan": "Mức phạt so với doanh thu toàn cầu",
+   "nguon_id": "g4",
+   "trong_diem": true,
+   "nhip": [
+    "trăm doanh thu",
+    "Lấy hai số"
+   ]
+  },
+  {
+   "id": "c069",
+   "start": 232.564,
+   "end": 235.8,
+   "mau": "so-lon",
+   "so": "171",
+   "truoc": "",
+   "sau": " tỷ euro",
+   "nhan": "Doanh thu Meta, tự tính ngược, làm tròn",
+   "nguon_id": [
+    "t3",
+    "g1",
+    "g4"
+   ],
+   "svg": "cao-oc",
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "trai",
+    "tu": "tính ra"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Meta vào khoảng",
+    "trăm bảy mươi"
+   ]
+  },
+  {
+   "id": "c070",
+   "start": 235.8,
+   "end": 238.842,
+   "mau": "chu-dong",
+   "cau": "Chưa tới nửa phần trăm.",
+   "nhan_tu": "nửa phần trăm",
+   "nho": "Tức là"
+  },
+  {
+   "id": "c071",
+   "start": 238.842,
+   "end": 243.233,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Một bữa trưa",
+    "svg": "hat-gao",
+    "to": 0.05
+   },
+   "phai": {
+    "nhan": "Thu nhập cả năm",
+    "svg": "tien"
+   },
+   "tom_tat": "Ví dụ để hình dung, không phải số liệu",
+   "trong_diem": true,
+   "nhip": [
+    "trưa so với",
+    "năm. Vậy phạt",
+    "Meta phải làm"
+   ]
+  },
+  {
+   "id": "c072",
+   "start": 243.233,
+   "end": 246.147,
+   "mau": "so-lon",
+   "so": "60",
+   "truoc": "",
+   "sau": " ngày",
+   "nhan": "Hạn Meta phải làm",
+   "nguon_id": "g5",
+   "svg": "dong-ho",
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "Phần phải làm"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Phần phải làm",
+    "Trong sáu mươi"
+   ]
+  },
+  {
+   "id": "c073",
+   "start": 246.147,
+   "end": 250.218,
+   "mau": "minh-hoa",
+   "nhan": "Tắt theo mặc định",
+   "boi": [
+    {
+     "chu": "Cả người đã cấp quyền",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "đã lỡ cấp quyền"
+    }
+   ],
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "khien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Meta phải tắt",
+    "định, kể cả",
+    "đã lỡ cấp"
+   ]
+  },
+  {
+   "id": "c074",
+   "start": 250.218,
+   "end": 255.276,
+   "mau": "quy-trinh",
+   "tieu_de": "Muốn bật lại tính năng",
+   "buoc": [
+    {
+     "nhan": "Tắt sạch",
+     "svg": "o-khoa"
+    },
+    {
+     "nhan": "Xin phép riêng",
+     "svg": "tai-lieu"
+    },
+    {
+     "nhan": "Nói rõ dùng làm gì",
+     "svg": "kinh-lup"
+    }
+   ],
+   "nhip": [
+    "Tắt sạch",
+    "xin phép riêng",
+    "nói rõ"
+   ]
+  },
+  {
+   "id": "c075",
+   "start": 255.276,
+   "end": 258.878,
+   "mau": "minh-hoa",
+   "nhan": "Quá hạn: không được bật",
+   "boi": [
+    {
+     "chu": "Quá hạn: không được bật",
+     "kieu": "do",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "Quá hạn"
+    }
+   ],
+   "svg": "dong-ho",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "o-khoa",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Quá hạn mà",
+    "tính năng cho",
+    "đồng ý rõ"
+   ]
+  },
+  {
+   "id": "c076",
+   "start": 258.878,
+   "end": 263.179,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Báo đã bắt đầu làm",
+    "svg": "lich",
+    "so": "30",
+    "don_vi": "ngày"
+   },
+   "phai": {
+    "nhan": "Báo kết quả",
+    "svg": "tai-lieu",
+    "so": "90",
+    "don_vi": "ngày"
+   },
+   "nguon_id": "g6",
+   "nhip": [
+    "Trong ba mươi",
+    "đầu làm, và",
+    "mươi ngày báo"
+   ]
+  },
+  {
+   "id": "c077",
+   "start": 263.179,
+   "end": 267.217,
+   "mau": "chu-dong",
+   "cau": "Thấy phân tích tận văn bản gốc có ích, bấm theo dõi kênh.",
+   "nhan_tu": "bấm theo dõi kênh",
+   "nho": "Nếu thấy có ích",
+   "dan": {
+    "the": "chao",
+    "goc": "phai",
+    "tu": "bấm theo dõi kênh"
+   }
+  },
+  {
+   "id": "c078",
+   "start": 267.217,
+   "end": 270.45,
+   "mau": "mo-dau",
+   "cau": "Mỗi ngày một tin công nghệ, soi tới tận con số"
+  },
+  {
+   "id": "c079",
+   "start": 270.45,
+   "end": 273.949,
+   "mau": "chuong",
+   "so": "Phần 4",
+   "chuong": "Ở Việt Nam, luật phạt bao nhiêu?",
+   "tong": "viet-nam",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c080",
+   "start": 273.949,
+   "end": 277.582,
+   "mau": "trang-nguon",
+   "anh": "l3.png",
+   "khung": "28,47,20,5",
+   "nguon_id": "l3",
+   "vien": "vang",
+   "tom_tat": "Luật Bảo vệ dữ liệu cá nhân có hiệu lực từ 01/01/2026",
+   "trong_diem": true,
+   "nhip": [
+    "nghìn không trăm"
+   ]
+  },
+  {
+   "id": "c081",
+   "start": 277.582,
+   "end": 281.424,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Nguyên tắc ở Việt Nam",
+    "svg": "co-viet-nam"
+   },
+   "phai": {
+    "nhan": "Những gì Italy vừa viết",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "tom_tat": "So sánh của kênh: nghe giống nhau, chưa phải kết luận",
+   "nhip": [
+    "Điều đáng chú",
+    "rất giống những",
+    "Italy vừa viết."
+   ]
+  },
+  {
+   "id": "c082",
+   "start": 281.424,
+   "end": 284.681,
+   "mau": "trang-nguon",
+   "anh": "l4.png",
+   "khung": "5.5,30.8,45,4.5",
+   "nguon_id": "l4",
+   "vien": "vang",
+   "tom_tat": "Điều 9: đồng ý phải theo từng mục đích",
+   "nhip": [
+    "Điều chín của"
+   ]
+  },
+  {
+   "id": "c083",
+   "start": 284.681,
+   "end": 287.746,
+   "mau": "minh-hoa",
+   "nhan": "Không ép đồng ý gộp",
+   "boi": [
+    {
+     "chu": "Không bắt đồng ý luôn",
+     "kieu": "do",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "Không được kèm"
+    }
+   ],
+   "nguon_id": "l4",
+   "svg": "tai-lieu",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "khien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Không được kèm",
+    "đồng ý luôn",
+    "những mục đích"
+   ]
+  },
+  {
+   "id": "c084",
+   "start": 287.746,
+   "end": 290.738,
+   "mau": "trang-nguon",
+   "anh": "l4.png",
+   "khung": "5.5,48,40,4.5",
+   "nguon_id": "l5",
+   "vien": "do",
+   "tom_tat": "Im lặng hoặc không phản hồi không được coi là đồng ý",
+   "nhip": [
+    "Và im lặng"
+   ]
+  },
+  {
+   "id": "c085",
+   "start": 290.738,
+   "end": 294.965,
+   "mau": "minh-hoa",
+   "nhan": "Đặt cạnh vụ Facebook",
+   "boi": [
+    {
+     "chu": "Xin quyền chung",
+     "kieu": "nhan",
+     "x": 0.28,
+     "y": 0.22,
+     "tu": "một lần xin quyền chung"
+    },
+    {
+     "chu": "Bật sẵn",
+     "kieu": "vang",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "bật sẵn"
+    }
+   ],
+   "svg": "o-khoa",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Đặt cạnh vụ",
+    "cho nhiều việc,",
+    "tính năng bật"
+   ]
+  },
+  {
+   "id": "c086",
+   "start": 294.965,
+   "end": 298.202,
+   "mau": "chu-dong",
+   "cau": "Trên giấy, nguyên tắc của Việt Nam cũng không chấp nhận kiểu đó.",
+   "nhan_tu": "không chấp nhận kiểu đó",
+   "nho": "Trên giấy",
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "trai",
+    "tu": "không chấp nhận kiểu đó"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c087",
+   "start": 298.202,
+   "end": 301.688,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Nguyên tắc",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Mức phạt",
+    "svg": "dong-xu"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Nhưng nguyên tắc",
+    "mức phạt là",
+    "khác. Khác xa."
+   ]
+  },
+  {
+   "id": "c088",
+   "start": 301.688,
+   "end": 305.22,
+   "mau": "trang-nguon",
+   "anh": "n1.png",
+   "khung": "11.5,32,56,9.5",
+   "nguon_id": "n4",
+   "vien": "vang",
+   "tom_tat": "Nghị định mới, ban hành 19/8/2026",
+   "nhip": [
+    "Mức phạt cụ"
+   ]
+  },
+  {
+   "id": "c089",
+   "start": 305.22,
+   "end": 309.826,
+   "mau": "trang-nguon",
+   "anh": "n1.png",
+   "khung": "11.5,44,56,15",
+   "nguon_id": "n5",
+   "vien": "vang",
+   "tom_tat": "Áp dụng cả tổ chức nước ngoài vi phạm trên lãnh thổ Việt Nam",
+   "nhip": [
+    "Nghị định này"
+   ]
+  },
+  {
+   "id": "c090",
+   "start": 309.826,
+   "end": 312.993,
+   "mau": "minh-hoa",
+   "nhan": "Khung thứ nhất",
+   "boi": [
+    {
+     "chu": "Chưa có đồng ý",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "mặc định đồng ý"
+    }
+   ],
+   "tom_tat": "Theo cách đọc của kênh về nghị định, không phải kết luận của cơ quan",
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Có hai khung",
+    "Đặt sẵn chế",
+    "định đồng ý,"
+   ]
+  },
+  {
+   "id": "c091",
+   "start": 312.993,
+   "end": 316.959,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Thấp nhất của khung",
+    "svg": "tien",
+    "so": "30.000.000",
+    "don_vi": "đồng"
+   },
+   "phai": {
+    "nhan": "Cao nhất của khung",
+    "svg": "tien",
+    "so": "50.000.000",
+    "don_vi": "đồng"
+   },
+   "nguon_id": "n1",
+   "trong_diem": true,
+   "nhip": [
+    "chỉ dẫn mập",
+    "phạt từ ba",
+    "năm mươi triệu"
+   ]
+  },
+  {
+   "id": "c092",
+   "start": 316.959,
+   "end": 320.302,
+   "mau": "minh-hoa",
+   "nhan": "Vụ Facebook gần khung này",
+   "boi": [
+    {
+     "chu": "Vụ Facebook",
+     "kieu": "trang",
+     "x": 0.3,
+     "y": 0.22
+    },
+    {
+     "chu": "Khung gần nhất",
+     "kieu": "vang",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "gần với khung này nhất"
+    }
+   ],
+   "tom_tat": "Cách đọc của kênh: nếu bị xem là bật sẵn",
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "can-cung-cau",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Kiểu bật sẵn",
+    "Facebook gần với",
+    "với khung này"
+   ]
+  },
+  {
+   "id": "c093",
+   "start": 320.302,
+   "end": 323.924,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Thấp nhất của khung",
+    "svg": "tien",
+    "so": "50.000.000",
+    "don_vi": "đồng"
+   },
+   "phai": {
+    "nhan": "Cao nhất của khung",
+    "svg": "tien",
+    "so": "70.000.000",
+    "don_vi": "đồng"
+   },
+   "nguon_id": "n2",
+   "trong_diem": true,
+   "nhip": [
+    "Nặng hơn là",
+    "đồng ý: năm",
+    "năm mươi đến"
+   ]
+  },
+  {
+   "id": "c094",
+   "start": 323.924,
+   "end": 327.813,
+   "mau": "trich-bao",
+   "nguon_id": "n3",
+   "trich": "fine levels applicable to administrative violations in the field of personal data protection committed by organizations",
+   "to_vang": "committed by organizations",
+   "trich_vi": "mức phạt áp dụng cho vi phạm hành chính về bảo vệ dữ liệu cá nhân do tổ chức thực hiện",
+   "to_vang_vi": "do tổ chức thực hiện",
+   "nhip": [
+    "Các mức này"
+   ]
+  },
+  {
+   "id": "c095",
+   "start": 327.813,
+   "end": 332.675,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Phạt ở Italy",
+    "svg": "tien",
+    "so": "23.480",
+    "don_vi": "tỷ đồng"
+   },
+   "phai": {
+    "nhan": "Cao nhất hai khung đó",
+    "svg": "dong-xu",
+    "so": "70",
+    "don_vi": "triệu đồng"
+   },
+   "nguon_id": [
+    "t1",
+    "tg1",
+    "n2"
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Hơn hai mươi",
+    "Italy. Bảy mươi",
+    "ở Việt Nam."
+   ]
+  },
+  {
+   "id": "c096",
+   "start": 332.675,
+   "end": 336.264,
+   "mau": "so-lon",
+   "so": "335.000",
+   "truoc": "khoảng ",
+   "sau": " lần",
+   "nhan": "Italy so với cận trên của hai khung đó",
+   "nguon_id": "t6",
+   "svg": "thuoc-do",
+   "huong": "len",
+   "dan": {
+    "the": "ngac-nhien",
+    "goc": "trai",
+    "tu": "Tính ra chênh"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Tính ra chênh",
+    "nghìn lần. Với"
+   ]
+  },
+  {
+   "id": "c097",
+   "start": 336.264,
+   "end": 339.437,
+   "mau": "minh-hoa",
+   "nhan": "Giống tiền gửi xe",
+   "boi": [
+    {
+     "chu": "Tiền gửi xe dài hạn",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "tiền gửi xe"
+    }
+   ],
+   "tom_tat": "Ví dụ châm biếm của kênh, không phải số liệu",
+   "svg": "oto",
+   "san_khau": "thanh-pho",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dong-xu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tien",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "triệu nghe giống",
+    "tiền gửi xe",
+    "là tiền phạt."
+   ]
+  },
+  {
+   "id": "c098",
+   "start": 339.437,
+   "end": 342.244,
+   "mau": "chu-dong",
+   "cau": "Vì sao chênh? Cách tính.",
+   "nhan_tu": "Cách tính",
+   "nho": "Câu hỏi"
+  },
+  {
+   "id": "c099",
+   "start": 342.244,
+   "end": 347.129,
+   "mau": "quy-trinh",
+   "tieu_de": "Italy tính theo quy mô",
+   "buoc": [
+    {
+     "nhan": "Bao nhiêu người dính",
+     "svg": "nguoi-nhom"
+    },
+    {
+     "nhan": "Kéo dài bao lâu",
+     "svg": "dong-ho"
+    },
+    {
+     "nhan": "Công ty lớn cỡ nào",
+     "svg": "cao-oc"
+    }
+   ],
+   "nhip": [
+    "bao nhiêu người dính",
+    "kéo dài bao lâu",
+    "công ty lớn cỡ nào"
+   ]
+  },
+  {
+   "id": "c100",
+   "start": 347.129,
+   "end": 351.398,
+   "mau": "minh-hoa",
+   "nhan": "Mỗi hành vi, một khung",
+   "boi": [
+    {
+     "chu": "Một hành vi, một khung",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "mỗi hành vi một khung tiền"
+    }
+   ],
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "dong-xu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Còn nghị định",
+    "vi, mỗi hành",
+    "một khung tiền"
+   ]
+  },
+  {
+   "id": "c101",
+   "start": 351.398,
+   "end": 354.203,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Công ty nhỏ",
+    "svg": "nha-may",
+    "to": 0.5
+   },
+   "phai": {
+    "nhan": "Tập đoàn toàn cầu",
+    "svg": "cao-oc"
+   },
+   "ti_le": "cùng một khung",
+   "nhip": [
+    "hay tập đoàn",
+    "toàn cầu cũng",
+    "chung một khung."
+   ]
+  },
+  {
+   "id": "c102",
+   "start": 354.203,
+   "end": 358.195,
+   "mau": "minh-hoa",
+   "nhan": "Còn mức trần cao hơn",
+   "boi": [
+    {
+     "chu": "Còn trần cao hơn",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "mức trần lớn hơn"
+    }
+   ],
+   "svg": "bac-thang",
+   "san_khau": "nen-dat",
+   "may_quay": "keo-ra",
+   "bo_cuc": [
+    {
+     "svg": "tien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Chẳng lẽ trần",
+    "Không hẳn. Luật",
+    "mức trần lớn"
+   ]
+  },
+  {
+   "id": "c103",
+   "start": 358.195,
+   "end": 361.85,
+   "mau": "trang-nguon",
+   "anh": "l1.png",
+   "khung": "5.9,92.5,50,5.5",
+   "nguon_id": "l1",
+   "vien": "vang",
+   "tom_tat": "Mức phạt tối đa với vi phạm khác là 03 tỷ đồng",
+   "nhip": [
+    "Với các vi"
+   ]
+  },
+  {
+   "id": "c104",
+   "start": 361.85,
+   "end": 364.721,
+   "mau": "so-lon",
+   "so": "3",
+   "truoc": "",
+   "sau": " tỷ đồng",
+   "nhan": "Mức phạt tối đa, vi phạm khác",
+   "nguon_id": "l1",
+   "svg": "tien",
+   "nhip": [
+    "là ba tỷ",
+    "tỷ đồng. Ngay"
+   ]
+  },
+  {
+   "id": "c105",
+   "start": 364.721,
+   "end": 367.526,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Trần chung ở Việt Nam",
+    "svg": "tien",
+    "so": "3",
+    "don_vi": "tỷ đồng"
+   },
+   "phai": {
+    "nhan": "Mức phạt ở Italy",
+    "svg": "tien",
+    "so": "23.480",
+    "don_vi": "tỷ đồng"
+   },
+   "nguon_id": [
+    "l1",
+    "t1",
+    "tg1",
+    "t2"
+   ],
+   "ti_le": "gấp gần 7.830 lần",
+   "trong_diem": true,
+   "nhip": [
+    "số của Italy",
+    "Italy vẫn gấp",
+    "tám nghìn lần."
+   ]
+  },
+  {
+   "id": "c106",
+   "start": 367.526,
+   "end": 371.859,
+   "mau": "minh-hoa",
+   "nhan": "Dữ liệu ra nước ngoài",
+   "boi": [
+    {
+     "chu": "Nếu gửi ra nước ngoài",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "ra nước ngoài"
+    }
+   ],
+   "tom_tat": "Chưa có nguồn nói ảnh Facebook đã rời Việt Nam",
+   "svg": "container",
+   "san_khau": "cang",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "may-chu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Cái trần thứ",
+    "Vi phạm quy",
+    "cá nhân ra"
+   ]
+  },
+  {
+   "id": "c107",
+   "start": 371.859,
+   "end": 375.381,
+   "mau": "phan-tram",
+   "so": "5",
+   "sau": "%",
+   "tieu_de": "Trần thứ hai",
+   "nhan": "doanh thu của năm trước liền kề",
+   "nguon_id": "l2",
+   "trong_diem": true,
+   "nhip": [
+    "năm phần trăm",
+    "năm trước. Nếu"
+   ]
+  },
+  {
+   "id": "c108",
+   "start": 375.381,
+   "end": 380.373,
+   "mau": "minh-hoa",
+   "nhan": "Điều kiện để phạt nặng",
+   "boi": [
+    {
+     "chu": "Nếu gửi ra nước ngoài",
+     "kieu": "vang",
+     "x": 0.28,
+     "y": 0.2,
+     "tu": "máy chủ ở nước ngoài"
+    },
+    {
+     "chu": "Mới có cửa phạt nặng",
+     "kieu": "vang",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "cửa phạt nặng"
+    }
+   ],
+   "svg": "may-chu",
+   "san_khau": "may-chu",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "nước ngoài mà",
+    "thì lúc đó",
+    "tầm châu Âu."
+   ]
+  },
+  {
+   "id": "c109",
+   "start": 380.373,
+   "end": 383.762,
+   "mau": "chu-dong",
+   "cau": "Nhưng khả năng đó vẫn vướng một dấu hỏi.",
+   "nhan_tu": "dấu hỏi",
+   "nho": "Dấu hỏi"
+  },
+  {
+   "id": "c110",
+   "start": 383.762,
+   "end": 388.554,
+   "mau": "trich-bao",
+   "nguon_id": "e1",
+   "trich": "Hiện vẫn chưa rõ liệu khái niệm doanh thu chỉ áp dụng cho doanh thu phát sinh trong lãnh thổ Việt Nam",
+   "to_vang": "chưa rõ",
+   "nhip": [
+    "EY lưu ý"
+   ]
+  },
+  {
+   "id": "c111",
+   "start": 388.554,
+   "end": 392.912,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Doanh thu ở Việt Nam",
+    "svg": "co-viet-nam",
+    "to": 0.5
+   },
+   "phai": {
+    "nhan": "Cả doanh thu nước ngoài",
+    "svg": "tui-xach"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "ở nước ngoài?",
+    "Hai cách hiểu",
+    "con số khác"
+   ]
+  },
+  {
+   "id": "c112",
+   "start": 392.912,
+   "end": 398.252,
+   "mau": "minh-hoa",
+   "nhan": "Chưa có kết luận",
+   "boi": [
+    {
+     "chu": "Chưa có kết luận",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "chưa có cơ quan"
+    }
+   ],
+   "svg": "toa-nha-quoc-hoi",
+   "san_khau": "co-quan",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "trai",
+    "tu": "chưa có cơ quan"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Và nói cho",
+    "Việt Nam nào",
+    "ảnh của Facebook."
+   ]
+  },
+  {
+   "id": "c113",
+   "start": 398.252,
+   "end": 402.175,
+   "mau": "minh-hoa",
+   "nhan": "Có bật sẵn không?",
+   "boi": [
+    {
+     "chu": "Chưa có nguồn nào",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "chưa có nguồn nào"
+    }
+   ],
+   "svg": "kinh-lup",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "co-viet-nam",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "dien-thoai",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Cũng chưa có",
+    "này đang bật",
+    "Việt Nam hay"
+   ]
+  },
+  {
+   "id": "c114",
+   "start": 402.175,
+   "end": 405.41,
+   "mau": "chu-dong",
+   "cau": "Mọi phép so sánh ở trên là phép nếu. Chỉ là nếu.",
+   "nhan_tu": "Chỉ là nếu",
+   "nho": "Lưu ý",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "Chỉ là"
+   },
+   "trong_diem": true
+  },
+  {
+   "id": "c115",
+   "start": 405.41,
+   "end": 408.529,
+   "mau": "chuong",
+   "so": "Phần 5",
+   "chuong": "Việc làm được ngay trong hai phút",
+   "tong": "viet-nam",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c116",
+   "start": 408.529,
+   "end": 412.306,
+   "mau": "minh-hoa",
+   "nhan": "Cài đặt, rồi ứng dụng",
+   "boi": [
+    {
+     "chu": "Cài đặt",
+     "kieu": "nhan",
+     "x": 0.3,
+     "y": 0.22,
+     "tu": "phần cài đặt"
+    },
+    {
+     "chu": "Ứng dụng",
+     "kieu": "nhan",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "chọn ứng dụng"
+    }
+   ],
+   "tom_tat": "Cài đặt → Ứng dụng → Facebook → Quyền → Ảnh và video",
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "nhip": [
+    "Nhanh thôi. Trên",
+    "Android, vào phần",
+    "chọn ứng dụng,"
+   ]
+  },
+  {
+   "id": "c117",
+   "start": 412.306,
+   "end": 416.541,
+   "mau": "quy-trinh",
+   "tieu_de": "Tìm quyền ảnh và video",
+   "buoc": [
+    {
+     "nhan": "Chọn Facebook",
+     "svg": "dien-thoai"
+    },
+    {
+     "nhan": "Vào mục quyền",
+     "svg": "o-khoa"
+    },
+    {
+     "nhan": "Xem ảnh và video",
+     "svg": "kinh-lup"
+    }
+   ],
+   "nhip": [
+    "chọn Facebook",
+    "mục quyền",
+    "ảnh và video"
+   ]
+  },
+  {
+   "id": "c118",
+   "start": 416.541,
+   "end": 421.273,
+   "mau": "minh-hoa",
+   "nhan": "Chuyển sang không cho phép",
+   "boi": [
+    {
+     "chu": "Không cho phép",
+     "kieu": "do",
+     "x": 0.3,
+     "y": 0.22,
+     "tu": "không cho phép"
+    },
+    {
+     "chu": "Cần đăng thì cấp lại",
+     "kieu": "nhan",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "cấp lại"
+    }
+   ],
+   "svg": "o-khoa",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Nếu bạn ít",
+    "không cho phép,",
+    "cần đăng thì"
+   ]
+  },
+  {
+   "id": "c119",
+   "start": 421.273,
+   "end": 425.717,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Quyền trong cài đặt máy",
+    "svg": "dien-thoai"
+   },
+   "phai": {
+    "nhan": "Mục gợi ý trong app",
+    "svg": "bong-bong"
+   },
+   "nhip": [
+    "Trong chính app",
+    "mục gợi ý",
+    "từ thư viện"
+   ]
+  },
+  {
+   "id": "c120",
+   "start": 425.717,
+   "end": 429.004,
+   "mau": "minh-hoa",
+   "nhan": "Tên mục có thể khác",
+   "boi": [
+    {
+     "chu": "Thấy thì tắt được",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.22,
+     "tu": "thì tắt được"
+    }
+   ],
+   "svg": "khien",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Tên mục có",
+    "bản, nhưng nếu",
+    "thấy thì tắt"
+   ]
+  },
+  {
+   "id": "c121",
+   "start": 429.004,
+   "end": 434.046,
+   "mau": "minh-hoa",
+   "nhan": "Ảnh nằm chung một chỗ",
+   "boi": [
+    {
+     "chu": "Ảnh giấy tờ",
+     "kieu": "nhan",
+     "x": 0.25,
+     "y": 0.2,
+     "tu": "ảnh giấy tờ"
+    },
+    {
+     "chu": "Ảnh căn cước",
+     "kieu": "nhan",
+     "x": 0.75,
+     "y": 0.2,
+     "tu": "ảnh căn cước"
+    },
+    {
+     "chu": "Ảnh con nhỏ",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.32,
+     "tu": "ảnh con nhỏ"
+    }
+   ],
+   "tom_tat": "Ví dụ hình dung của kênh, không nói Meta đã đọc ảnh nào",
+   "svg": "nguoi-nhom",
+   "san_khau": "nen-dat",
+   "may_quay": "day-vao",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "tai-lieu",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Hình dung nhóm",
+    "ảnh căn cước",
+    "làm thủ tục,"
+   ]
+  },
+  {
+   "id": "c122",
+   "start": 434.046,
+   "end": 437.598,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Ảnh giấy tờ, căn cước",
+    "svg": "tai-lieu"
+   },
+   "phai": {
+    "nhan": "Ảnh đi chơi",
+    "svg": "dien-thoai"
+   },
+   "ti_le": "chung một thư viện",
+   "nhip": [
+    "Tất cả nằm",
+    "ảnh đi chơi.",
+    "Nếu cấp quyền"
+   ]
+  },
+  {
+   "id": "c123",
+   "start": 437.598,
+   "end": 440.892,
+   "mau": "chu-dong",
+   "cau": "Quyền xem thư viện là quyền xem hết chỗ đó, không chừa tấm nào.",
+   "nhan_tu": "không chừa tấm nào",
+   "nho": "Điều cần nhớ",
+   "trong_diem": true
+  },
+  {
+   "id": "c124",
+   "start": 440.892,
+   "end": 445.466,
+   "mau": "minh-hoa",
+   "nhan": "Chỉ cấp một số ảnh",
+   "boi": [
+    {
+     "chu": "Tấm bạn đã quên",
+     "kieu": "nhan",
+     "x": 0.28,
+     "y": 0.22,
+     "tu": "tấm bạn đã quên"
+    },
+    {
+     "chu": "Chỉ một số ảnh",
+     "kieu": "vang",
+     "x": 0.72,
+     "y": 0.3,
+     "tu": "chỉ cho phép một số ảnh"
+    }
+   ],
+   "svg": "dien-thoai",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "khien",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Kể cả tấm",
+    "Bản Android mới",
+    "cho phép một"
+   ]
+  },
+  {
+   "id": "c125",
+   "start": 445.466,
+   "end": 449.216,
+   "mau": "chu-dong",
+   "cau": "Hai việc đáng ngóng trong mấy tháng tới.",
+   "nhan_tu": "hai việc đáng ngóng",
+   "nho": "Cần ngóng",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "hai việc đáng ngóng"
+   }
+  },
+  {
+   "id": "c126",
+   "start": 449.216,
+   "end": 453.275,
+   "mau": "minh-hoa",
+   "nhan": "Hạn của Italy",
+   "boi": [
+    {
+     "chu": "Hạn sáu mươi ngày",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "sáu mươi ngày"
+    }
+   ],
+   "nguon_id": "g5",
+   "svg": "dong-ho",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "toa-nha-quoc-hoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Cả hai đều",
+    "Việc thứ nhất",
+    "ngày của Italy."
+   ]
+  },
+  {
+   "id": "c127",
+   "start": 453.275,
+   "end": 457.901,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Chỉ người dùng Italy",
+    "svg": "toa-nha-quoc-hoi"
+   },
+   "phai": {
+    "nhan": "Tất cả mọi người",
+    "svg": "nguoi-nhom"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "Meta sẽ đổi",
+    "Italy, hay đổi",
+    "tất cả mọi"
+   ]
+  },
+  {
+   "id": "c128",
+   "start": 457.901,
+   "end": 461.574,
+   "mau": "minh-hoa",
+   "nhan": "Nếu đổi cho tất cả",
+   "boi": [
+    {
+     "chu": "Không cần ai phạt",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "không cần ai phạt"
+    }
+   ],
+   "svg": "co-viet-nam",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "khien",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Nếu đổi cho",
+    "Việt Nam cũng",
+    "không cần ai"
+   ]
+  },
+  {
+   "id": "c129",
+   "start": 461.574,
+   "end": 466.991,
+   "mau": "trich-bao",
+   "nguon_id": "g9",
+   "trich": "the new feature, launched in 2026, that allows cloud processing of gallery content",
+   "to_vang": "cloud processing of gallery content",
+   "trich_vi": "tính năng mới, ra mắt năm 2026, cho phép xử lý ảnh trong thư viện trên đám mây",
+   "to_vang_vi": "xử lý ảnh trong thư viện trên đám mây",
+   "nhip": [
+    "Việc thứ hai"
+   ]
+  },
+  {
+   "id": "c130",
+   "start": 466.991,
+   "end": 471.615,
+   "mau": "minh-hoa",
+   "nhan": "Ảnh lên máy chủ",
+   "boi": [
+    {
+     "chu": "Nếu ảnh rời khỏi máy",
+     "kieu": "vang",
+     "x": 0.3,
+     "y": 0.22,
+     "tu": "rời khỏi máy"
+    }
+   ],
+   "svg": "dam-may",
+   "san_khau": "may-chu",
+   "may_quay": "lia",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "mui-ten-len",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "trong_diem": true,
+   "nhip": [
+    "Ảnh đã rời",
+    "chuyện chuyển dữ",
+    "ngoài bắt đầu"
+   ]
+  },
+  {
+   "id": "c131",
+   "start": 471.615,
+   "end": 474.815,
+   "mau": "chuong",
+   "so": "Phần 6",
+   "chuong": "Vậy ở Việt Nam phạt được bao nhiêu?",
+   "tong": "viet-nam",
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c132",
+   "start": 474.815,
+   "end": 477.786,
+   "mau": "minh-hoa",
+   "nhan": "Nếu xử ở Việt Nam",
+   "boi": [
+    {
+     "chu": "Theo lỗi xin đồng ý",
+     "kieu": "trang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "lỗi xin đồng ý"
+    }
+   ],
+   "svg": "bua-phan-quyet",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "dien-thoai",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    },
+    {
+     "svg": "co-viet-nam",
+     "x": 0.8,
+     "y": 0.66,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Nếu chuyện gợi",
+    "Việt Nam theo",
+    "xin đồng ý,"
+   ]
+  },
+  {
+   "id": "c133",
+   "start": 477.786,
+   "end": 480.428,
+   "mau": "so-lon",
+   "so": "50",
+   "truoc": "",
+   "sau": " triệu đồng",
+   "nhan": "Cận trên của khung gần nhất",
+   "nguon_id": "n1",
+   "svg": "can-cung-cau",
+   "trong_diem": true,
+   "nhip": [
+    "là ba mươi",
+    "năm mươi triệu"
+   ]
+  },
+  {
+   "id": "c134",
+   "start": 480.428,
+   "end": 483.971,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Khung gần nhất",
+    "svg": "tien",
+    "so": "50.000.000",
+    "don_vi": "đồng"
+   },
+   "phai": {
+    "nhan": "Khi im lặng thành đồng ý",
+    "svg": "tien",
+    "so": "70.000.000",
+    "don_vi": "đồng"
+   },
+   "nguon_id": [
+    "n1",
+    "n2"
+   ],
+   "nhip": [
+    "Bị coi là",
+    "đồng ý thì",
+    "bảy mươi triệu."
+   ]
+  },
+  {
+   "id": "c135",
+   "start": 483.971,
+   "end": 488.451,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Trần chung",
+    "svg": "tien",
+    "so": "3",
+    "don_vi": "tỷ đồng"
+   },
+   "phai": {
+    "nhan": "Dữ liệu ra nước ngoài",
+    "svg": "dam-may",
+    "so": "5",
+    "don_vi": "%"
+   },
+   "nguon_id": [
+    "l1",
+    "l2"
+   ],
+   "nhip": [
+    "Trần chung là",
+    "là vi phạm",
+    "dữ liệu ra"
+   ]
+  },
+  {
+   "id": "c136",
+   "start": 488.451,
+   "end": 492.819,
+   "mau": "minh-hoa",
+   "nhan": "Chờ hướng dẫn doanh thu",
+   "boi": [
+    {
+     "chu": "Chờ cách hiểu chính thức",
+     "kieu": "vang",
+     "x": 0.5,
+     "y": 0.2,
+     "tu": "cách hiểu chính thức"
+    }
+   ],
+   "svg": "toa-nha-quoc-hoi",
+   "san_khau": "co-quan",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "tai-lieu",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "năm phần trăm",
+    "Còn doanh thu",
+    "chờ cách hiểu"
+   ]
+  },
+  {
+   "id": "c137",
+   "start": 492.819,
+   "end": 496.945,
+   "mau": "chu-dong",
+   "cau": "Vẫn là phép nếu. Nói gọn: nguyên tắc trong luật Việt Nam chặt ngang châu Âu",
+   "nhan_tu": "chặt ngang châu Âu",
+   "nho": "Theo bản đọc của kênh",
+   "trong_diem": true
+  },
+  {
+   "id": "c138",
+   "start": 496.945,
+   "end": 499.867,
+   "mau": "so-sanh",
+   "trai": {
+    "nhan": "Nguyên tắc",
+    "svg": "khien"
+   },
+   "phai": {
+    "nhan": "Tiền phạt hai khung đầu",
+    "svg": "dong-xu",
+    "to": 0.15
+   },
+   "ti_le": "chỉ với hai khung đầu",
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "Còn bạn đoán sao"
+   },
+   "trong_diem": true,
+   "nhip": [
+    "thì mới như",
+    "gãi ngứa. Còn",
+    "Còn bạn đoán"
+   ]
+  },
+  {
+   "id": "c139",
+   "start": 499.867,
+   "end": 503.945,
+   "mau": "chu-dong",
+   "cau": "Meta sẽ tắt mặc định tính năng gợi ý ảnh ở bao nhiêu nước?",
+   "nhan_tu": "bao nhiêu nước",
+   "nho": "Câu hỏi cho bạn",
+   "tom_tat": "Meta bác kết luận và sẽ kháng cáo",
+   "trong_diem": true
+  },
+  {
+   "id": "c140",
+   "start": 503.945,
+   "end": 506.567,
+   "mau": "minh-hoa",
+   "nhan": "Italy, châu Âu, thế giới",
+   "boi": [
+    {
+     "chu": "Chỉ Italy",
+     "kieu": "nhan",
+     "x": 0.25,
+     "y": 0.2,
+     "tu": "Chỉ Italy"
+    },
+    {
+     "chu": "Cả châu Âu",
+     "kieu": "nhan",
+     "x": 0.5,
+     "y": 0.32,
+     "tu": "cả châu Âu"
+    },
+    {
+     "chu": "Khắp thế giới",
+     "kieu": "vang",
+     "x": 0.75,
+     "y": 0.2,
+     "tu": "khắp thế giới"
+    }
+   ],
+   "svg": "dam-may",
+   "san_khau": "nen-dat",
+   "may_quay": "dung",
+   "bo_cuc": [
+    {
+     "svg": "toa-nha-quoc-hoi",
+     "x": 0.2,
+     "y": 0.62,
+     "to": 1.0
+    }
+   ],
+   "nhip": [
+    "Chỉ Italy, cả",
+    "Âu, hay khắp",
+    "khắp thế giới?"
+   ]
+  },
+  {
+   "id": "c141",
+   "start": 506.567,
+   "end": 509.685,
+   "mau": "ket-thuc",
+   "cau": "Bạn đoán Meta tắt ở bao nhiêu nước?",
+   "moi": "Thả con số bạn đoán xuống bình luận"
+  }
+ ]
+}

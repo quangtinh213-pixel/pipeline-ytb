@@ -1,0 +1,850 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 2.137,
+   "loi": "Thứ Bảy vừa rồi, mười bốn tháng mười một,"
+  },
+  {
+   "id": "c002",
+   "start": 2.137,
+   "end": 4.631,
+   "loi": "cơ quan bảo vệ dữ liệu của Italy phạt Meta tám trăm"
+  },
+  {
+   "id": "c003",
+   "start": 4.631,
+   "end": 7.075,
+   "loi": "linh năm triệu euro. Lý do: ứng dụng Facebook"
+  },
+  {
+   "id": "c004",
+   "start": 7.075,
+   "end": 9.017,
+   "loi": "trên Android đọc thư viện ảnh trong máy"
+  },
+  {
+   "id": "c005",
+   "start": 9.017,
+   "end": 11.262,
+   "loi": "mà không hỏi riêng cho việc đó. Ở Việt Nam,"
+  },
+  {
+   "id": "c006",
+   "start": 11.262,
+   "end": 13.515,
+   "loi": "Facebook có khoảng bảy mươi chín triệu người dùng."
+  },
+  {
+   "id": "c007",
+   "start": 13.515,
+   "end": 15.442,
+   "loi": "Vậy nếu đúng chuyện này xảy ra ở đây,"
+  },
+  {
+   "id": "c008",
+   "start": 15.442,
+   "end": 17.691,
+   "loi": "luật mới của Việt Nam phạt được bao nhiêu?"
+  },
+  {
+   "id": "c009",
+   "start": 17.691,
+   "end": 19.749,
+   "loi": "Trước hết, đổi ra tiền Việt. Tính ra,"
+  },
+  {
+   "id": "c010",
+   "start": 19.749,
+   "end": 22.85,
+   "loi": "theo tỷ giá Vietcombank, là hơn hai mươi ba nghìn tỷ đồng."
+  },
+  {
+   "id": "c011",
+   "start": 22.85,
+   "end": 25.135,
+   "loi": "Ở Italy, nhóm bị ảnh hưởng là khoảng hai mươi"
+  },
+  {
+   "id": "c012",
+   "start": 25.135,
+   "end": 27.619,
+   "loi": "triệu người dùng Android. Con số Việt Nam là toàn"
+  },
+  {
+   "id": "c013",
+   "start": 27.619,
+   "end": 30.069,
+   "loi": "bộ người dùng Facebook, không riêng Android,"
+  },
+  {
+   "id": "c014",
+   "start": 30.069,
+   "end": 34.56,
+   "loi": "nên chỉ để hình dung quy mô. Tính ra, gần gấp bốn nhóm bị ảnh hưởng ở Italy."
+  },
+  {
+   "id": "c015",
+   "start": 34.56,
+   "end": 37.9,
+   "loi": "Còn mức phạt ở Việt Nam thì chênh với Italy tới mức nghe như đùa."
+  },
+  {
+   "id": "c016",
+   "start": 37.9,
+   "end": 41.348,
+   "loi": "Lý do nằm ngay ở cách luật đặt khung tiền. Nhưng để thấy vì sao chênh,"
+  },
+  {
+   "id": "c017",
+   "start": 41.348,
+   "end": 44.118,
+   "loi": "phải đi từ cái nút gợi ý ảnh nhỏ xíu đã gây ra chuyện."
+  },
+  {
+   "id": "c018",
+   "start": 44.118,
+   "end": 48.787,
+   "loi": "Tính năng bị phạt có cái tên rất hiền: nhận gợi ý từ thư viện ảnh khi lướt Facebook."
+  },
+  {
+   "id": "c019",
+   "start": 48.787,
+   "end": 52.147,
+   "loi": "Nó có từ năm hai nghìn không trăm hai mươi ba. Bạn đang lướt bảng tin"
+  },
+  {
+   "id": "c020",
+   "start": 52.147,
+   "end": 55.769,
+   "loi": "thì app đưa lên vài tấm ảnh, vài đoạn video trong máy, gợi ý bạn đăng."
+  },
+  {
+   "id": "c021",
+   "start": 55.769,
+   "end": 58.599,
+   "loi": "Nghe thì tiện. Vấn đề nằm ở cách nó xin phép."
+  },
+  {
+   "id": "c022",
+   "start": 58.599,
+   "end": 62.367,
+   "loi": "Theo cơ quan Italy, Facebook xin quyền vào thư viện ảnh đúng một lần,"
+  },
+  {
+   "id": "c023",
+   "start": 62.367,
+   "end": 66.944,
+   "loi": "rồi dùng chung cho nhiều việc khác nhau. Trước lần hỏi đó chỉ có một dòng chung chung,"
+  },
+  {
+   "id": "c024",
+   "start": 66.944,
+   "end": 72.438,
+   "loi": "đại ý là để bật thêm tính năng. Người dùng bấm đồng ý mà không biết mình vừa cho phép luôn cả chuyện gợi ý ảnh."
+  },
+  {
+   "id": "c025",
+   "start": 72.438,
+   "end": 76.508,
+   "loi": "Và tính năng này được bật sẵn. Không ai hỏi lại. Ví dụ cho dễ hình dung."
+  },
+  {
+   "id": "c026",
+   "start": 76.508,
+   "end": 79.245,
+   "loi": "Bạn đưa chìa khóa nhà cho thợ vào sửa cái vòi nước."
+  },
+  {
+   "id": "c027",
+   "start": 79.245,
+   "end": 83.028,
+   "loi": "Mấy tháng sau mới biết chiếc chìa đó cũng mở được tủ đựng album ảnh gia đình."
+  },
+  {
+   "id": "c028",
+   "start": 83.028,
+   "end": 87.113,
+   "loi": "Và tủ đó vẫn mở từ hôm ấy tới giờ. Cơ quan Italy nói gần đúng như vậy:"
+  },
+  {
+   "id": "c029",
+   "start": 87.113,
+   "end": 91.704,
+   "loi": "một khi người dùng cấp trọn quyền, app đọc được cả kho ảnh trong máy, và cứ thế đọc suốt."
+  },
+  {
+   "id": "c030",
+   "start": 91.704,
+   "end": 95.669,
+   "loi": "Còn người dùng lẫn cơ quan quản lý đều không kiểm được thông tin nào thực sự được dùng."
+  },
+  {
+   "id": "c031",
+   "start": 95.669,
+   "end": 98.359,
+   "loi": "Người khui vụ này ra không phải một hãng bảo mật lớn."
+  },
+  {
+   "id": "c032",
+   "start": 98.359,
+   "end": 101.172,
+   "loi": "Đó là Trung tâm Bảo vệ Người tiêu dùng ở Bolzano,"
+  },
+  {
+   "id": "c033",
+   "start": 101.172,
+   "end": 106.546,
+   "loi": "một tỉnh nhỏ nằm sát biên giới phía bắc Italy, nơi người dân nói cả tiếng Đức lẫn tiếng Italy."
+  },
+  {
+   "id": "c034",
+   "start": 106.546,
+   "end": 109.159,
+   "loi": "Họ gửi khiếu nại tháng bảy năm hai nghìn không trăm hai mươi lăm."
+  },
+  {
+   "id": "c035",
+   "start": 109.159,
+   "end": 112.698,
+   "loi": "Sau đó cơ quan bảo vệ dữ liệu tự làm phân tích kỹ thuật trên app."
+  },
+  {
+   "id": "c036",
+   "start": 112.698,
+   "end": 116.538,
+   "loi": "Nhưng bấm cho phép rồi còn gì? Đúng. Đó cũng là lời Meta."
+  },
+  {
+   "id": "c037",
+   "start": 116.538,
+   "end": 121.691,
+   "loi": "Theo VnExpress, người phát ngôn Meta nói người dùng phải cấp quyền trên máy thì tính năng mới chạy."
+  },
+  {
+   "id": "c038",
+   "start": 121.691,
+   "end": 125.131,
+   "loi": "Họ cũng nói người dùng đổi được quyền này bất cứ lúc nào trong phần cài đặt."
+  },
+  {
+   "id": "c039",
+   "start": 125.131,
+   "end": 129.188,
+   "loi": "Meta bác kết luận, cho rằng mức phạt không tương xứng, và sẽ kháng cáo."
+  },
+  {
+   "id": "c040",
+   "start": 129.188,
+   "end": 131.763,
+   "loi": "Cơ quan Italy thì đọc chữ \"đồng ý\" chặt hơn."
+  },
+  {
+   "id": "c041",
+   "start": 131.763,
+   "end": 134.834,
+   "loi": "Họ dựa vào một điều trong bộ luật quyền riêng tư của Italy."
+  },
+  {
+   "id": "c042",
+   "start": 134.834,
+   "end": 138.349,
+   "loi": "Điều này chép từ luật chung của châu Âu về quyền riêng tư trên thiết bị."
+  },
+  {
+   "id": "c043",
+   "start": 138.349,
+   "end": 140.992,
+   "loi": "Nó coi chiếc điện thoại là một phần đời tư của con người."
+  },
+  {
+   "id": "c044",
+   "start": 140.992,
+   "end": 145.083,
+   "loi": "Muốn đụng vào thứ gì trong máy thì người dùng phải biết rõ và tự nguyện đồng ý."
+  },
+  {
+   "id": "c045",
+   "start": 145.083,
+   "end": 149.069,
+   "loi": "Không cần chứng minh dữ liệu đã bị gửi đi đâu, cũng không cần có ai bị thiệt hại."
+  },
+  {
+   "id": "c046",
+   "start": 149.069,
+   "end": 153.73,
+   "loi": "Tức là, bấm cho phép một ô chung chung không được tính là đồng ý cho một việc cụ thể."
+  },
+  {
+   "id": "c047",
+   "start": 153.73,
+   "end": 158.228,
+   "loi": "Phải hỏi riêng. Có một chi tiết pháp lý nữa giải thích vì sao bên Italy đứng ra phạt,"
+  },
+  {
+   "id": "c048",
+   "start": 158.228,
+   "end": 161.46,
+   "loi": "chứ không phải Ireland. Meta đặt trụ sở châu Âu ở Ireland,"
+  },
+  {
+   "id": "c049",
+   "start": 161.46,
+   "end": 166.001,
+   "loi": "nên với luật bảo vệ dữ liệu chung của châu Âu, cơ quan Ireland thường là đầu mối."
+  },
+  {
+   "id": "c050",
+   "start": 166.001,
+   "end": 168.712,
+   "loi": "Meta cũng cãi như vậy. Nhưng cơ quan Italy bác,"
+  },
+  {
+   "id": "c051",
+   "start": 168.712,
+   "end": 172.735,
+   "loi": "vì nhóm luật về quyền riêng tư trên thiết bị này không có cơ chế một cửa đó."
+  },
+  {
+   "id": "c052",
+   "start": 172.735,
+   "end": 175.596,
+   "loi": "Cho nên mỗi nước tự phạt được. Italy phạt luôn."
+  },
+  {
+   "id": "c053",
+   "start": 175.596,
+   "end": 179.644,
+   "loi": "Nói kiểu đời thường: bạn vi phạm giao thông ở Hà Nội thì công an Hà Nội phạt,"
+  },
+  {
+   "id": "c054",
+   "start": 179.644,
+   "end": 182.291,
+   "loi": "không phải chờ gửi hồ sơ về nơi bạn đăng ký hộ khẩu."
+  },
+  {
+   "id": "c055",
+   "start": 182.291,
+   "end": 185.525,
+   "loi": "Với luật quyền riêng tư trên thiết bị, châu Âu đang làm theo kiểu đó."
+  },
+  {
+   "id": "c056",
+   "start": 185.525,
+   "end": 189.028,
+   "loi": "Còn một điều nên nói rõ để khỏi hiểu lầm. Vụ này không xét chuyện"
+  },
+  {
+   "id": "c057",
+   "start": 189.028,
+   "end": 191.862,
+   "loi": "Meta có dùng ảnh để huấn luyện trí tuệ nhân tạo hay không."
+  },
+  {
+   "id": "c058",
+   "start": 191.862,
+   "end": 195.701,
+   "loi": "Meta phủ nhận chuyện đó, và cơ quan Italy cũng ghi rõ là không xét."
+  },
+  {
+   "id": "c059",
+   "start": 195.701,
+   "end": 200.601,
+   "loi": "Riêng một tính năng khác ra mắt năm nay, cho phép xử lý ảnh trong thư viện trên máy chủ đám mây,"
+  },
+  {
+   "id": "c060",
+   "start": 200.601,
+   "end": 204.925,
+   "loi": "họ nói sẽ kiểm tra riêng. Cũng cơ quan này, năm hai nghìn không trăm mười chín,"
+  },
+  {
+   "id": "c061",
+   "start": 204.925,
+   "end": 208.031,
+   "loi": "từng phạt Facebook một triệu euro trong vụ Cambridge Analytica."
+  },
+  {
+   "id": "c062",
+   "start": 208.031,
+   "end": 213.269,
+   "loi": "Tính ra, lần này gấp tám trăm linh năm lần. Thông cáo ghi rõ họ cân những gì để ra mức phạt."
+  },
+  {
+   "id": "c063",
+   "start": 213.269,
+   "end": 215.877,
+   "loi": "Số người dính lớn, khoảng hai mươi triệu người dùng Android."
+  },
+  {
+   "id": "c064",
+   "start": 215.877,
+   "end": 218.418,
+   "loi": "Vi phạm vẫn đang tiếp diễn với ai chưa cập nhật app."
+  },
+  {
+   "id": "c065",
+   "start": 218.418,
+   "end": 222.016,
+   "loi": "Năm hai nghìn không trăm mười chín, chính công ty này đã từng bị phạt một lần."
+  },
+  {
+   "id": "c066",
+   "start": 222.016,
+   "end": 225.109,
+   "loi": "Và công ty hợp tác kém trong lúc điều tra. Đủ cả."
+  },
+  {
+   "id": "c067",
+   "start": 225.109,
+   "end": 228.588,
+   "loi": "Nghe thì khủng. Nhưng thông cáo cũng nói khoản phạt chỉ bằng khoảng không"
+  },
+  {
+   "id": "c068",
+   "start": 228.588,
+   "end": 232.564,
+   "loi": "phẩy bốn bảy phần trăm doanh thu toàn cầu của tập đoàn. Lấy hai số đó chia ngược lại,"
+  },
+  {
+   "id": "c069",
+   "start": 232.564,
+   "end": 235.8,
+   "loi": "tính ra doanh thu của Meta vào khoảng một trăm bảy mươi tỷ euro."
+  },
+  {
+   "id": "c070",
+   "start": 235.8,
+   "end": 238.842,
+   "loi": "Tức là chưa tới nửa phần trăm. Với một người đi làm,"
+  },
+  {
+   "id": "c071",
+   "start": 238.842,
+   "end": 243.233,
+   "loi": "đó cỡ một bữa trưa so với thu nhập cả năm. Vậy phạt xong Meta phải làm gì?"
+  },
+  {
+   "id": "c072",
+   "start": 243.233,
+   "end": 246.147,
+   "loi": "Phần phải làm mới là chỗ đau. Trong sáu mươi ngày,"
+  },
+  {
+   "id": "c073",
+   "start": 246.147,
+   "end": 250.218,
+   "loi": "Meta phải tắt tính năng này theo mặc định, kể cả với người đã lỡ cấp quyền."
+  },
+  {
+   "id": "c074",
+   "start": 250.218,
+   "end": 255.276,
+   "loi": "Tắt sạch. Muốn bật lại thì phải xin phép riêng, nói rõ nó dùng để làm gì và tắt ở đâu."
+  },
+  {
+   "id": "c075",
+   "start": 255.276,
+   "end": 258.878,
+   "loi": "Quá hạn mà chưa sửa thì không được bật tính năng cho người chưa đồng ý rõ ràng."
+  },
+  {
+   "id": "c076",
+   "start": 258.878,
+   "end": 263.179,
+   "loi": "Trong ba mươi ngày phải báo cáo việc đã bắt đầu làm, và chín mươi ngày báo kết quả."
+  },
+  {
+   "id": "c077",
+   "start": 263.179,
+   "end": 267.217,
+   "loi": "Nếu bạn thấy kiểu phân tích tận văn bản gốc này có ích, bấm theo dõi kênh."
+  },
+  {
+   "id": "c078",
+   "start": 267.217,
+   "end": 270.45,
+   "loi": "Mỗi ngày có một tin công nghệ được soi tới tận con số."
+  },
+  {
+   "id": "c079",
+   "start": 270.45,
+   "end": 273.949,
+   "loi": "Giờ quay về Việt Nam. Từ đầu năm nay, mồng một tháng một năm hai"
+  },
+  {
+   "id": "c080",
+   "start": 273.949,
+   "end": 277.582,
+   "loi": "nghìn không trăm hai mươi sáu, Việt Nam có Luật Bảo vệ dữ liệu cá nhân."
+  },
+  {
+   "id": "c081",
+   "start": 277.582,
+   "end": 281.424,
+   "loi": "Điều đáng chú ý là phần nguyên tắc nghe rất giống những gì cơ quan Italy vừa viết."
+  },
+  {
+   "id": "c082",
+   "start": 281.424,
+   "end": 284.681,
+   "loi": "Điều chín của luật nói đồng ý phải là đồng ý cho từng mục đích."
+  },
+  {
+   "id": "c083",
+   "start": 284.681,
+   "end": 287.746,
+   "loi": "Không được kèm điều kiện bắt người ta đồng ý luôn những mục đích khác."
+  },
+  {
+   "id": "c084",
+   "start": 287.746,
+   "end": 290.738,
+   "loi": "Và im lặng hay không phản hồi thì không được coi là đồng ý."
+  },
+  {
+   "id": "c085",
+   "start": 290.738,
+   "end": 294.965,
+   "loi": "Đặt cạnh vụ Facebook: một lần xin quyền chung cho nhiều việc, cộng một tính năng bật sẵn."
+  },
+  {
+   "id": "c086",
+   "start": 294.965,
+   "end": 298.202,
+   "loi": "Trên giấy, nguyên tắc của Việt Nam cũng không chấp nhận kiểu đó."
+  },
+  {
+   "id": "c087",
+   "start": 298.202,
+   "end": 301.688,
+   "loi": "Nhưng nguyên tắc là một chuyện, mức phạt là chuyện khác. Khác xa."
+  },
+  {
+   "id": "c088",
+   "start": 301.688,
+   "end": 305.22,
+   "loi": "Mức phạt cụ thể nằm ở một nghị định mới, ban hành tháng tám năm nay."
+  },
+  {
+   "id": "c089",
+   "start": 305.22,
+   "end": 309.826,
+   "loi": "Nghị định này áp cho cả các công ty nước ngoài, khi vi phạm xảy ra trên lãnh thổ Việt Nam."
+  },
+  {
+   "id": "c090",
+   "start": 309.826,
+   "end": 312.993,
+   "loi": "Có hai khung đáng chú ý. Đặt sẵn chế độ mặc định đồng ý,"
+  },
+  {
+   "id": "c091",
+   "start": 312.993,
+   "end": 316.959,
+   "loi": "hay xin phép bằng chỉ dẫn mập mờ: phạt từ ba mươi đến năm mươi triệu đồng."
+  },
+  {
+   "id": "c092",
+   "start": 316.959,
+   "end": 320.302,
+   "loi": "Kiểu bật sẵn và xin quyền chung như vụ Facebook gần với khung này nhất."
+  },
+  {
+   "id": "c093",
+   "start": 320.302,
+   "end": 323.924,
+   "loi": "Nặng hơn là tự coi người ta im lặng là đồng ý: năm mươi đến bảy mươi triệu."
+  },
+  {
+   "id": "c094",
+   "start": 323.924,
+   "end": 327.813,
+   "loi": "Các mức này tính cho tổ chức. Đặt hai số cạnh nhau, tính ra theo tiền Việt."
+  },
+  {
+   "id": "c095",
+   "start": 327.813,
+   "end": 332.675,
+   "loi": "Hơn hai mươi ba nghìn tỷ đồng ở Italy. Bảy mươi triệu đồng, mức cao nhất của hai khung đó ở Việt Nam."
+  },
+  {
+   "id": "c096",
+   "start": 332.675,
+   "end": 336.264,
+   "loi": "Tính ra chênh hơn ba trăm ba mươi nghìn lần. Với một tập đoàn cỡ đó,"
+  },
+  {
+   "id": "c097",
+   "start": 336.264,
+   "end": 339.437,
+   "loi": "khoản bảy mươi triệu nghe giống tiền gửi xe hơn là tiền phạt."
+  },
+  {
+   "id": "c098",
+   "start": 339.437,
+   "end": 342.244,
+   "loi": "Gửi xe dài hạn. Vì sao chênh? Cách tính."
+  },
+  {
+   "id": "c099",
+   "start": 342.244,
+   "end": 347.129,
+   "loi": "Italy tính theo quy mô: bao nhiêu người dính, vi phạm kéo dài bao lâu, công ty lớn cỡ nào."
+  },
+  {
+   "id": "c100",
+   "start": 347.129,
+   "end": 351.398,
+   "loi": "Còn nghị định của Việt Nam tính theo từng hành vi, mỗi hành vi một khung tiền cố định,"
+  },
+  {
+   "id": "c101",
+   "start": 351.398,
+   "end": 354.203,
+   "loi": "công ty nhỏ hay tập đoàn toàn cầu cũng chung một khung."
+  },
+  {
+   "id": "c102",
+   "start": 354.203,
+   "end": 358.195,
+   "loi": "Chẳng lẽ trần chỉ có vậy? Không hẳn. Luật còn những mức trần lớn hơn,"
+  },
+  {
+   "id": "c103",
+   "start": 358.195,
+   "end": 361.85,
+   "loi": "hai mức đáng nói nhất ở đây. Với các vi phạm khác về dữ liệu cá nhân,"
+  },
+  {
+   "id": "c104",
+   "start": 361.85,
+   "end": 364.721,
+   "loi": "mức phạt tối đa là ba tỷ đồng. Ngay cả mức trần này,"
+  },
+  {
+   "id": "c105",
+   "start": 364.721,
+   "end": 367.526,
+   "loi": "tính ra con số của Italy vẫn gấp gần tám nghìn lần."
+  },
+  {
+   "id": "c106",
+   "start": 367.526,
+   "end": 371.859,
+   "loi": "Cái trần thứ hai mới đáng nói. Vi phạm quy định về chuyển dữ liệu cá nhân ra nước ngoài"
+  },
+  {
+   "id": "c107",
+   "start": 371.859,
+   "end": 375.381,
+   "loi": "thì phạt tối đa năm phần trăm doanh thu năm trước. Nếu ảnh của người Việt"
+  },
+  {
+   "id": "c108",
+   "start": 375.381,
+   "end": 380.373,
+   "loi": "bị gửi lên máy chủ ở nước ngoài mà sai quy định, thì lúc đó mới có cửa phạt nặng ngang tầm châu Âu."
+  },
+  {
+   "id": "c109",
+   "start": 380.373,
+   "end": 383.762,
+   "loi": "Nhưng khả năng đó vẫn vướng một dấu hỏi. Hồi tháng bảy năm ngoái,"
+  },
+  {
+   "id": "c110",
+   "start": 383.762,
+   "end": 388.554,
+   "loi": "công ty kiểm toán EY lưu ý một chỗ chưa rõ. Doanh thu ở đây là doanh thu phát sinh tại Việt Nam,"
+  },
+  {
+   "id": "c111",
+   "start": 388.554,
+   "end": 392.912,
+   "loi": "hay tính cả doanh thu ở nước ngoài? Hai cách hiểu cho ra hai con số khác hẳn nhau."
+  },
+  {
+   "id": "c112",
+   "start": 392.912,
+   "end": 398.252,
+   "loi": "Và nói cho đủ: tới hôm nay chưa có cơ quan Việt Nam nào kết luận gì về tính năng gợi ý ảnh của Facebook."
+  },
+  {
+   "id": "c113",
+   "start": 398.252,
+   "end": 402.175,
+   "loi": "Cũng chưa có nguồn nào cho biết tính năng này đang bật sẵn ở Việt Nam hay không."
+  },
+  {
+   "id": "c114",
+   "start": 402.175,
+   "end": 405.41,
+   "loi": "Mọi phép so sánh ở trên là phép \"nếu\". Chỉ là \"nếu\"."
+  },
+  {
+   "id": "c115",
+   "start": 405.41,
+   "end": 408.529,
+   "loi": "Trước khi chờ luật, có một việc bạn làm được ngay trong hai phút."
+  },
+  {
+   "id": "c116",
+   "start": 408.529,
+   "end": 412.306,
+   "loi": "Nhanh thôi. Trên điện thoại Android, vào phần cài đặt, chọn ứng dụng,"
+  },
+  {
+   "id": "c117",
+   "start": 412.306,
+   "end": 416.541,
+   "loi": "chọn Facebook, rồi vào mục quyền. Xem dòng ảnh và video đang để ở mức nào."
+  },
+  {
+   "id": "c118",
+   "start": 416.541,
+   "end": 421.273,
+   "loi": "Nếu bạn ít khi đăng ảnh từ máy, chuyển sang không cho phép, lúc nào cần đăng thì cấp lại."
+  },
+  {
+   "id": "c119",
+   "start": 421.273,
+   "end": 425.717,
+   "loi": "Trong chính app Facebook, phần cài đặt cũng có mục gợi ý chia sẻ từ thư viện ảnh."
+  },
+  {
+   "id": "c120",
+   "start": 425.717,
+   "end": 429.004,
+   "loi": "Tên mục có thể khác đôi chút tùy bản, nhưng nếu thấy thì tắt được."
+  },
+  {
+   "id": "c121",
+   "start": 429.004,
+   "end": 434.046,
+   "loi": "Hình dung nhóm Zalo gia đình của bạn: ảnh giấy tờ, ảnh căn cước chụp để làm thủ tục, ảnh con nhỏ."
+  },
+  {
+   "id": "c122",
+   "start": 434.046,
+   "end": 437.598,
+   "loi": "Tất cả nằm chung một thư viện với ảnh đi chơi. Nếu cấp quyền toàn bộ,"
+  },
+  {
+   "id": "c123",
+   "start": 437.598,
+   "end": 440.892,
+   "loi": "quyền xem thư viện là quyền xem hết chỗ đó, không chừa tấm nào."
+  },
+  {
+   "id": "c124",
+   "start": 440.892,
+   "end": 445.466,
+   "loi": "Kể cả tấm bạn đã quên. Bản Android mới có thêm lựa chọn chỉ cho phép một số ảnh,"
+  },
+  {
+   "id": "c125",
+   "start": 445.466,
+   "end": 449.216,
+   "loi": "nên chọn cách đó nếu thấy. Còn hai việc đáng ngóng trong mấy tháng tới."
+  },
+  {
+   "id": "c126",
+   "start": 449.216,
+   "end": 453.275,
+   "loi": "Cả hai đều có hạn. Việc thứ nhất là cái hạn sáu mươi ngày của Italy."
+  },
+  {
+   "id": "c127",
+   "start": 453.275,
+   "end": 457.901,
+   "loi": "Meta sẽ đổi cách xin quyền chỉ cho người dùng Italy, hay đổi cho tất cả mọi người."
+  },
+  {
+   "id": "c128",
+   "start": 457.901,
+   "end": 461.574,
+   "loi": "Nếu đổi cho tất cả, người dùng Việt Nam cũng hưởng mà không cần ai phạt."
+  },
+  {
+   "id": "c129",
+   "start": 461.574,
+   "end": 466.991,
+   "loi": "Việc thứ hai là tính năng xử lý ảnh trên đám mây ra mắt năm nay mà cơ quan Italy hứa kiểm tra riêng."
+  },
+  {
+   "id": "c130",
+   "start": 466.991,
+   "end": 471.615,
+   "loi": "Ảnh đã rời khỏi máy lên máy chủ thì câu chuyện chuyển dữ liệu ra nước ngoài bắt đầu có nghĩa,"
+  },
+  {
+   "id": "c131",
+   "start": 471.615,
+   "end": 474.815,
+   "loi": "kể cả với luật Việt Nam. Quay lại câu hỏi ở đầu video."
+  },
+  {
+   "id": "c132",
+   "start": 474.815,
+   "end": 477.786,
+   "loi": "Nếu chuyện gợi ý ảnh này bị xử ở Việt Nam theo lỗi xin đồng ý,"
+  },
+  {
+   "id": "c133",
+   "start": 477.786,
+   "end": 480.428,
+   "loi": "khung phạt gần nhất là ba mươi đến năm mươi triệu đồng."
+  },
+  {
+   "id": "c134",
+   "start": 480.428,
+   "end": 483.971,
+   "loi": "Bị coi là tự lấy im lặng làm đồng ý thì lên tối đa bảy mươi triệu."
+  },
+  {
+   "id": "c135",
+   "start": 483.971,
+   "end": 488.451,
+   "loi": "Trần chung là ba tỷ đồng. Chỉ khi bị xem là vi phạm chuyện chuyển dữ liệu ra nước ngoài"
+  },
+  {
+   "id": "c136",
+   "start": 488.451,
+   "end": 492.819,
+   "loi": "thì trần mới lên năm phần trăm doanh thu. Còn doanh thu nào thì phải chờ cách hiểu chính thức."
+  },
+  {
+   "id": "c137",
+   "start": 492.819,
+   "end": 496.945,
+   "loi": "Vẫn là phép \"nếu\". Nói gọn: nguyên tắc trong luật Việt Nam chặt ngang châu Âu,"
+  },
+  {
+   "id": "c138",
+   "start": 496.945,
+   "end": 499.867,
+   "loi": "còn tiền phạt thì mới như gãi ngứa. Còn bạn đoán sao?"
+  },
+  {
+   "id": "c139",
+   "start": 499.867,
+   "end": 503.945,
+   "loi": "Trong sáu mươi ngày tới, Meta sẽ tắt mặc định tính năng gợi ý ảnh ở bao nhiêu nước?"
+  },
+  {
+   "id": "c140",
+   "start": 503.945,
+   "end": 506.567,
+   "loi": "Chỉ Italy, cả châu Âu, hay khắp thế giới?"
+  },
+  {
+   "id": "c141",
+   "start": 506.567,
+   "end": 509.685,
+   "loi": "Thử thả con số bạn đoán xuống phần bình luận xem sao."
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+  "beats": [
+    {
+      "y_nghia": 3,
+      "da_dang": 4,
+      "chieu_sau": 3,
+      "nhip": 4,
+      "ghi_chu": "Khô: c002 (hai icon chép lại câu mở), c005, c007. Ẩn dụ vượt nguồn: không (c013, c014 đã có nhãn quy mô). Hook c001, bằng chứng c003, so sánh c014 tốt; bốn số lớn trong 44 giây hơi dày, c017 hạ nhịp trước chương."
+    },
+    {
+      "y_nghia": 4,
+      "da_dang": 4,
+      "chieu_sau": 4,
+      "nhip": 4,
+      "ghi_chu": "Ví dụ chìa khóa/tủ album c026–c028 nay có nhãn 'ví dụ do kênh dựng', c029 nói khả năng, c030 bỏ két sắt. Ẩn dụ vượt nguồn còn: c028 nhẹ (thiếu nhãn ví dụ). Khô: không đáng kể. Đoạn Bolzano c032–c035 hơi chùng nhịp."
+    },
+    {
+      "y_nghia": 3,
+      "da_dang": 4,
+      "chieu_sau": 3,
+      "nhip": 4,
+      "ghi_chu": "Ẩn dụ vượt nguồn còn: c057 nhẹ (kính lúp trên điện thoại cạnh nhãn AI; nguon.json không có trích về AI). Khô: c042, c051 (cửa hẹp trừu tượng), c016. Tốt: c043 khiên quanh điện thoại, c053 Hà Nội. Đỉnh c043, c046, c052, c055 cách đều."
+    },
+    {
+      "y_nghia": 4,
+      "da_dang": 4,
+      "chieu_sau": 4,
+      "nhip": 4,
+      "ghi_chu": "Lõi mạnh: c062, c068 (lát 0,47%), c069, c071 (đã có nhãn ví dụ), c072. Ẩn dụ vượt nguồn: không. Khô: c063, c064, c066 (nay chỉ còn tờ giấy và kính lúp), c074. CTA c077–c078 vẫn cắt mạch ngay sau c076."
+    },
+    {
+      "y_nghia": 3,
+      "da_dang": 3,
+      "chieu_sau": 3,
+      "nhip": 3,
+      "ghi_chu": "Ẩn dụ vượt nguồn còn: c090 nhẹ (nhãn 'Mặc định đồng ý' gắn khung 30–50 triệu, nguon.json không có chữ này). c092, c095, c096, c081, c106, c097 đã sửa. Khô: c098, c099, c091/c093 (hai cột cùng icon tiền). 36 cảnh, 12 đỉnh, chỉ một nhịp hạ (c109)."
+    },
+    {
+      "y_nghia": 3,
+      "da_dang": 3,
+      "chieu_sau": 3,
+      "nhip": 3,
+      "ghi_chu": "Ẩn dụ vượt nguồn: không (c121, c128, c130 đã có nhãn). Khô: c117 (lặp đường dẫn đã nằm trên thanh tóm tắt c116), c120 (chu-dong chép nguyên câu), c119. Hay: c118 ổ khóa, c121 nhóm Zalo. Nền đất 7/8 cảnh minh-hoa; nửa sau leo liền, không hạ."
+    },
+    {
+      "y_nghia": 3,
+      "da_dang": 3,
+      "chieu_sau": 3,
+      "nhip": 3,
+      "ghi_chu": "c133 đã đổi sang so-lon, nhưng c133–c134 vẫn là hai số lớn liền nhau tóm lại số cũ. Ẩn dụ vượt nguồn: không (c137, c138, c139 đã sửa chữ). Khô: c134. Ba đỉnh liền c133–c135 rồi hạ c136, kết chốt đúng."
+    }
+  ],
+  "canh_kho": [
+    {
+      "id": "c117",
+      "vi_sao": "quy-trinh ba bước 'Chọn Facebook / Vào mục quyền / Xem ảnh và video' chép lời, icon chung chung, và đường dẫn đã hiện trên thanh tóm tắt của c116."
+    },
+    {
+      "id": "c016",
+      "vi_sao": "Thẻ chữ báo trước 'lý do nằm ở cách luật đặt khung tiền', lặp đúng câu vừa đọc, không hình."
+    },
+    {
+      "id": "c125",
+      "vi_sao": "Thẻ chữ chuyển ý 'Hai việc đáng ngóng' đứng một mình, chép lời."
+    },
+    {
+      "id": "c098",
+      "vi_sao": "Đã bỏ 'Gửi xe dài hạn' nhưng vẫn là thẻ chữ 'Vì sao chênh? Cách tính.' chép lời, hình trống."
+    },
+    {
+      "id": "c109",
+      "vi_sao": "Thẻ chữ 'Nhưng khả năng đó vẫn vướng một dấu hỏi' chỉ chuyển ý, nhắc lại đúng lời đọc."
+    },
+    {
+      "id": "c120",
+      "vi_sao": "Nay là chu-dong in nguyên câu 'Tên mục có thể khác... thấy thì tắt được'; hình chép lời hoàn toàn."
+    },
+    {
+      "id": "c066",
+      "vi_sao": "Sau khi bỏ cửa hẹp chỉ còn tờ giấy, kính lúp và nhãn 'Đủ cả bốn'; hình không nói yếu tố thứ tư là gì, chép lời."
+    },
+    {
+      "id": "c063",
+      "vi_sao": "Nhóm người với nhãn 'Số người dính lớn' lặp lời đọc, không đưa lại con số 20 triệu (g3)."
+    },
+    {
+      "id": "c064",
+      "vi_sao": "Đồng hồ và điện thoại với nhãn 'Theo Garante: vẫn tiếp diễn' chép lời; vị trí nhãn giống c063 và c066."
+    },
+    {
+      "id": "c074",
+      "vi_sao": "quy-trinh 'Tắt sạch / Xin phép riêng / Nói rõ' dùng icon ổ khóa, tài liệu, kính lúp chung chung, in lại ba cụm của lời."
+    },
+    {
+      "id": "c099",
+      "vi_sao": "quy-trinh ba thước đo chép lời đọc; không con số g3 hay g4 nào gắn vào nên không thêm hiểu biết."
+    },
+    {
+      "id": "c042",
+      "vi_sao": "so-sanh 'Điều trong luật Italy' với 'Luật chung châu Âu' bằng hai icon tài liệu và tòa nhà; chỉ liệt kê tên hai bên."
+    },
+    {
+      "id": "c051",
+      "vi_sao": "Cửa hẹp và tờ giấy cho 'không có cơ chế một cửa' trừu tượng; nhãn 'Không có một cửa' chép lời."
+    },
+    {
+      "id": "c002",
+      "vi_sao": "Đổi sang so-sanh nhưng vẫn là hai icon (tòa nhà, cao ốc) và tên hai bên, chiếu lại câu mở."
+    },
+    {
+      "id": "c134",
+      "vi_sao": "so-lon 70 triệu liền sau so-lon 50 triệu (c133), nhắc lại số đã thấy ở c093 và c095, không thêm hình."
+    }
+  ],
+  "an_du_vuot_nguon": [
+    {
+      "id": "c057",
+      "hinh_y_ngu": "Điện thoại với kính lúp và nhãn 'Ảnh huấn luyện AI?' (c056 'Không xét: huấn luyện AI', c058 'Meta: phủ nhận / Italy: không xét'): kính lúp trên điện thoại vẫn gợi app soi ảnh, nhãn nêu một vấn đề AI mà nguồn không có.",
+      "nguon_thieu": "nguon.json không có trích dẫn nào về AI (Meta phủ nhận, Italy không xét); c058 không có nguon_id. Bộ não AI đã bỏ nên chỉ còn mức nhẹ."
+    },
+    {
+      "id": "c090",
+      "hinh_y_ngu": "Nhãn 'Mặc định đồng ý' gắn vào khung phạt 30–50 triệu: ngụ ý chính hành vi này nằm trong khung đó.",
+      "nguon_thieu": "n1 trong nguon.json chỉ có dòng khung tiền và ghi chú điểm a 'xử lý sau thu thập không có sự đồng ý'; không có chữ 'mặc định đồng ý' hay 'chỉ dẫn mập mờ'. n1.png còn hiện khung 20–40 triệu về xử lý không phù hợp mục đích đã xác định mà video không nhắc (c092 đã có chú thích 'cách đọc của kênh')."
+    },
+    {
+      "id": "c028",
+      "hinh_y_ngu": "Đồng hồ cạnh tủ két và nhãn 'Từ hôm đó': gợi quyền truy cập đã mở liên tục từ ngày cấp.",
+      "nguon_thieu": "Không trích dẫn nào về thời hạn hay độ liên tục của quyền truy cập; c026 và c027 có nhãn 'ví dụ do kênh dựng' còn c028 thì không, nên ẩn dụ chìa-tủ đứt nhãn ở đây."
+    }
+  ],
+  "de_xuat_sua": [
+    "c066: đổi thành trich-bao nếu thông cáo Garante có câu về hợp tác kém (thêm vào nguon.json), nếu không thì gộp 'Đủ cả bốn' vào c065 và bỏ c066.",
+    "c117: bỏ quy-trinh vì thanh tóm tắt c116 đã có đường dẫn; hoặc đổi thành một hình màn hình cài đặt với dòng 'Ảnh và video' được tô.",
+    "c002/c016/c098/c109/c125: gộp thẻ chuyển ý vào cảnh kế (dan hoặc phụ đề) thay vì cảnh chữ riêng; c002 thêm chữ 'phạt 805 triệu euro' giữa hai icon để có thông tin mới.",
+    "c120: trả về minh-hoa khiên + điện thoại với nhãn ngắn 'Tên mục có thể khác', hoặc thêm tom_tat; chu-dong cả câu đang in lại lời.",
+    "c063/c064/c074/c099: gom thành một so-sanh hoặc quy-trinh 'bốn yếu tố của Italy' hoặc thêm con số g3 vào c063 để mỗi cảnh có thông tin mới.",
+    "c042/c051: bỏ c051 (c048–c052 đã có bản đồ Ireland/Italy), c042 thay bằng trich-bao nếu có trích thông cáo về nguồn gốc điều luật.",
+    "c091/c093/c105: so-sanh hai cột cùng icon tiền; đổi sang một thanh khoảng 30–50 triệu (rồi 50–70) hoặc phan-tram để hình nói 'khung', không lặp hai cột.",
+    "c133/c134: gộp thành một so-sanh 50 và 70 triệu hoặc bỏ c134; tránh ba đỉnh liền c133–c135.",
+    "c057/c058: thêm vào nguon.json trích về 'Meta phủ nhận, Italy không xét huấn luyện AI' rồi gắn nguon_id; đổi kính lúp trên điện thoại ở c057 sang tai-lieu.",
+    "c090: kiểm toàn văn Nghị định hoặc bài VOV rồi thêm trích cho 'mặc định đồng ý / chỉ dẫn mập mờ' vào nguon.json; nếu không có thì đổi nhãn thành 'Xử lý khi chưa có đồng ý' và nhắc khung 20–40 triệu ở c092.",
+    "c028: thêm tom_tat 'Ví dụ do kênh dựng, không phải hành vi của Meta' như c026 và c027, hoặc bỏ nhãn 'Từ hôm đó'.",
+    "c077/c078: dời CTA và logo sang sau c072 (đỉnh 60 ngày) hoặc đầu chương Phần 4 để c076 liền mạch với chương sau."
+  ]
+}

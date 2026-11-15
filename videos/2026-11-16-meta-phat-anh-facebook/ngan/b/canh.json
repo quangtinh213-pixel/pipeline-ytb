@@ -1,0 +1,119 @@
+{
+ "khuon": "doc",
+ "scenes": [
+  {
+   "id": "b01",
+   "start": 0.0,
+   "end": 4.088,
+   "mau": "moc",
+   "chu": "Facebook bị phạt vì đọc ảnh trong máy",
+   "so": "805 TRIỆU",
+   "nhan": "euro, Italy phạt",
+   "nguon_id": "g1"
+  },
+  {
+   "id": "b02",
+   "start": 4.088,
+   "end": 5.807,
+   "mau": "moc",
+   "chu": "Quyền ảnh của bạn đang ở mức nào?",
+   "nhan": "kiểm ngay trên điện thoại"
+  },
+  {
+   "id": "b03",
+   "start": 5.807,
+   "end": 10.313,
+   "mau": "bang-chung",
+   "anh": "nguon/v1.png",
+   "vung": [
+    0.15,
+    0.43,
+    0.5,
+    0.14
+   ],
+   "tom_tat": "Theo VnExpress, Facebook trên Android truy cập ảnh trong máy",
+   "nguon_id": "v1"
+  },
+  {
+   "id": "b04",
+   "start": 10.313,
+   "end": 13.57,
+   "mau": "moc",
+   "chu": "Meta nói: đổi quyền bất cứ lúc nào",
+   "nhan": "theo VnExpress",
+   "nguon_id": "v1"
+  },
+  {
+   "id": "b05",
+   "start": 13.57,
+   "end": 17.684,
+   "mau": "moc",
+   "chu": "Cài đặt, Ứng dụng, Facebook, Quyền",
+   "nhan": "tên mục có thể khác theo bản"
+  },
+  {
+   "id": "b06",
+   "start": 17.684,
+   "end": 19.883,
+   "mau": "moc",
+   "chu": "Dòng ảnh và video để mức nào?",
+   "nhan": "xem trước khi đổi"
+  },
+  {
+   "id": "b07",
+   "start": 19.883,
+   "end": 23.749,
+   "mau": "doi-chieu",
+   "tren": {
+    "nhan": "Ít đăng ảnh từ máy",
+    "so": "KHÔNG CHO PHÉP"
+   },
+   "duoi": {
+    "nhan": "Lúc cần thì",
+    "so": "CẤP LẠI"
+   },
+   "noi_bat": "tren"
+  },
+  {
+   "id": "b08",
+   "start": 23.749,
+   "end": 27.555,
+   "mau": "moc",
+   "chu": "Trong app: gợi ý từ thư viện ảnh",
+   "nhan": "thấy mục này thì tắt"
+  },
+  {
+   "id": "b09",
+   "start": 27.555,
+   "end": 32.677,
+   "mau": "moc",
+   "chu": "Ảnh giấy tờ cũng nằm chung thư viện",
+   "nhan": "quyền xem là xem hết"
+  },
+  {
+   "id": "b10",
+   "start": 32.677,
+   "end": 35.511,
+   "mau": "doi-chieu",
+   "tren": {
+    "nhan": "Italy buộc Meta tắt trong",
+    "so": "60 NGÀY"
+   },
+   "duoi": {
+    "nhan": "Người Việt tự kiểm",
+    "so": "NGAY"
+   },
+   "noi_bat": "tren",
+   "nguon_id": "g5"
+  },
+  {
+   "id": "b11",
+   "start": 35.511,
+   "end": 40.714,
+   "mau": "ket",
+   "chu": "Facebook bị phạt vì đọc ảnh trong máy",
+   "so": "805 TRIỆU",
+   "nguon_id": "g1"
+  }
+ ]
+}

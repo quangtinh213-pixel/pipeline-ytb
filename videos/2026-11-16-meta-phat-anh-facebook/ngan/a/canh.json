@@ -1,0 +1,140 @@
+{
+ "khuon": "doc",
+ "scenes": [
+  {
+   "id": "a01",
+   "start": 0.0,
+   "end": 4.501,
+   "mau": "moc",
+   "chu": "Meta bị phạt vì đọc ảnh trong máy",
+   "so": "805 TRIỆU",
+   "nhan": "euro, Italy phạt Meta",
+   "nguon_id": "g1"
+  },
+  {
+   "id": "a02",
+   "start": 4.501,
+   "end": 7.007,
+   "mau": "moc",
+   "chu": "Nếu ở Việt Nam, phạt bao nhiêu?",
+   "nhan": "phép so sánh, không phải kết luận"
+  },
+  {
+   "id": "a03",
+   "start": 7.007,
+   "end": 11.978,
+   "mau": "bang-chung",
+   "anh": "nguon/v1.png",
+   "vung": [
+    0.15,
+    0.43,
+    0.5,
+    0.2
+   ],
+   "tom_tat": "Italy phạt Meta vì Facebook trên Android truy cập ảnh",
+   "nguon_id": "v1"
+  },
+  {
+   "id": "a04",
+   "start": 11.978,
+   "end": 15.194,
+   "mau": "moc",
+   "chu": "Tính ra tiền Việt",
+   "so": "23.480 TỶ",
+   "nhan": "đồng, kênh tự tính",
+   "nguon_id": "t1"
+  },
+  {
+   "id": "a05",
+   "start": 15.194,
+   "end": 18.261,
+   "mau": "bang-chung",
+   "anh": "nguon/n1.png",
+   "vung": [
+    0.11,
+    0.31,
+    0.57,
+    0.11
+   ],
+   "tom_tat": "Nghị định mới của Chính phủ về xử phạt dữ liệu cá nhân",
+   "nguon_id": "n4"
+  },
+  {
+   "id": "a06",
+   "start": 18.261,
+   "end": 21.431,
+   "mau": "moc",
+   "chu": "Khung phạt gần nhất",
+   "so": "30–50 TRIỆU",
+   "nhan": "đồng, nếu bị xem là bật sẵn",
+   "nguon_id": "n1"
+  },
+  {
+   "id": "a07",
+   "start": 21.431,
+   "end": 23.305,
+   "mau": "bang-chung",
+   "anh": "nguon/l1.png",
+   "vung": [
+    0.05,
+    0.905,
+    0.53,
+    0.085
+   ],
+   "tom_tat": "Trần phạt chung của luật: 3 tỷ đồng",
+   "nguon_id": "l1"
+  },
+  {
+   "id": "a08",
+   "start": 23.305,
+   "end": 26.943,
+   "mau": "doi-chieu",
+   "tren": {
+    "nhan": "Italy phạt",
+    "so": "23.480 TỶ"
+   },
+   "duoi": {
+    "nhan": "Việt Nam, trần chung",
+    "so": "3 TỶ"
+   },
+   "noi_bat": "tren",
+   "nguon_id": [
+    "t1",
+    "l1",
+    "t2"
+   ]
+  },
+  {
+   "id": "a09",
+   "start": 26.943,
+   "end": 31.466,
+   "mau": "moc",
+   "chu": "Chưa có kết luận nào ở Việt Nam",
+   "so": "PHÉP NẾU"
+  },
+  {
+   "id": "a10",
+   "start": 31.466,
+   "end": 34.658,
+   "mau": "doi-chieu",
+   "tren": {
+    "nhan": "Italy tính phạt theo",
+    "so": "QUY MÔ"
+   },
+   "duoi": {
+    "nhan": "Việt Nam tính theo",
+    "so": "HÀNH VI"
+   },
+   "noi_bat": "tren"
+  },
+  {
+   "id": "a11",
+   "start": 34.658,
+   "end": 38.708,
+   "mau": "ket",
+   "chu": "Meta bị phạt vì đọc ảnh trong máy",
+   "so": "805 TRIỆU",
+   "nguon_id": "g1"
+  }
+ ]
+}
