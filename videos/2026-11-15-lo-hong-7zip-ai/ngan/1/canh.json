@@ -1,0 +1,12 @@
+{"khuon": "doc", "scenes": [
+ {"id": "s1", "mau": "moc", "start": 0, "end": 5.0, "chu": "7-Zip vừa dính lỗ hổng", "so": "8,5 điểm", "nhan": "mức nguy hiểm, thang 10", "nguon_id": "v1"},
+ {"id": "s2", "mau": "anh", "start": 5.0, "end": 7.26, "video": "go-laptop-van-phong-4928295-004.mp4", "diem_giu": [0.5, 0.5], "nhan": "Lỗi khi giải nén tệp CAB"},
+ {"id": "s3", "mau": "anh", "start": 7.26, "end": 10.0, "video": "man-hinh-code-29458457-006.mp4", "diem_giu": [0.5, 0.5], "nhan": "Điều khiển máy từ xa"},
+ {"id": "s4", "mau": "bang-chung", "start": 10.0, "end": 13.04, "anh": "nguon/v1.png", "vung": [0.16, 0.6, 0.45, 0.07], "tom_tat": "Mức nguy hiểm 8,5 điểm", "nguon_id": "v1"},
+ {"id": "s5", "mau": "moc", "start": 13.04, "end": 17.81, "chu": "Bước 1: Trợ giúp, chọn Giới thiệu", "nhan": "xem số phiên bản đang chạy"},
+ {"id": "s6", "mau": "moc", "start": 17.81, "end": 22.0, "chu": "Bước 2: cập nhật bản mới", "nhan": "nếu phiên bản cũ hơn bản vá"},
+ {"id": "s7", "mau": "bang-chung", "start": 22.0, "end": 23.76, "anh": "nguon/v3.png", "vung": [0.16, 0.44, 0.45, 0.07], "tom_tat": "Bản vá đã phát hành", "nguon_id": "v3"},
+ {"id": "s8", "mau": "moc", "start": 23.76, "end": 27.19, "chu": "Bước 3: đừng mở tệp CAB lạ", "nhan": "từ tin nhắn hay diễn đàn"},
+ {"id": "s9", "mau": "anh", "start": 27.19, "end": 31.29, "video": "tay-cam-dien-thoai-5220470-033.mp4", "diem_giu": [0.5, 0.5], "nhan": "Sinh viên Việt dùng AI soi ra"},
+ {"id": "s10", "mau": "ket", "start": 31.29, "end": 34.97, "chu": "7-Zip trên máy bạn bản số mấy?"}
+]}

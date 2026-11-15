@@ -1,0 +1,73 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "đề 1 Meta bị Italy phạt 805 triệu euro (6 điểm), video dài không ghi Loại; RSS đối thủ 404, chưa rõ họ đã đăng; yt-viral không có trong phiên",
+      "bat_dau": "2026-11-15T14:08:39.726912+07:00",
+      "ket_thuc": "2026-11-15T14:15:28.561319+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "35 mục: Garante g1-g11, DPC d1, Meta m1-m3/f1-f2, Facebook Help h1-h2, Công báo l1-l4, Bộ Công an l5, DataReportal r1, StatCounter s1, VnExpress v1-v2, Vietcombank x1, tự tính t1-t6; thiếu ảnh chụp g*, m*, h*, x1 (trang chặn trình duyệt tự động)",
+      "bat_dau": "2026-11-15T14:15:28.564567+07:00",
+      "ket_thuc": "2026-11-15T14:31:36.198814+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "V1 video dài không ghi Loại, ~2.170 từ (8,7 phút); phong_cach 0 Lỗi, 1 cảnh báo nhịp 0,50 sát ngưỡng; kiem 0 lỗi; yt-script không có trong phiên, viết theo khung giao việc",
+      "bat_dau": "2026-11-15T14:27:26.629286+07:00",
+      "ket_thuc": "2026-11-15T14:27:26.631743+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "vòng 1 (agy): 12 mục (nhận 6, nhận một phần 6), điểm 3,5/3,5/3,5/4,8; vòng 2: agy lỗi, dùng subagent (agy hết hạn mức 429, thử lại vẫn lỗi): 12 mục (nhận 12), điểm 4/4/4/4,5; đạt",
+      "bat_dau": "2026-11-15T14:27:26.647695+07:00",
+      "ket_thuc": "2026-11-15T14:34:18.197511+07:00"
+    },
+    "kiem": {
+      "status": "dang-chay",
+      "note": "",
+      "bat_dau": "2026-11-15T14:34:18.199261+07:00"
+    },
+    "duyet-1": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "giong": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dao-dien": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "canh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "hinh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "render": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dong-goi": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "duyet-2": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dang": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  }
+}
