@@ -291,7 +291,7 @@ def test_track_migrates_old_csv_and_keeps_old_rows(tmp_path):
                  "09/11/2026,Cũ,09/11/2026 20:45,https://youtu.be/x,,,,\n", encoding="utf-8")
     dang._track(t, "Mới", "10/11/2026 15:30", "vid")
     rows = list(csv.DictReader(t.open(encoding="utf-8")))
-    assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 12
+    assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 14  # + o_lai_short, khuon_short (15/11)
     assert [r["tieu_de"] for r in rows] == ["Cũ", "Mới"] and rows[1]["chenh_gio"] == "" and rows[1]["link"].endswith("vid")
 
 
@@ -440,3 +440,47 @@ def test_thoi_luong_doc_bang_ffprobe(tmp_path):
     assert abs(dang.thoi_luong(mp4) - 2.0) < 0.1
     (tmp_path / "hong.mp4").write_bytes(b"x")
     assert dang.thoi_luong(tmp_path / "hong.mp4") is None and dang.thoi_luong(tmp_path / "khong-co.mp4") is None
+
+
+def _short_moi(video, **them):
+    goi = json.loads((video / "dong-goi.json").read_text(encoding="utf-8"))
+    goi["shorts"][0].update(them)
+    (video / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+
+
+def _dong_so(tracker):
+    import csv
+    return list(csv.DictReader(tracker.open(encoding="utf-8", newline="")))[-1]
+
+
+def test_upload_short_dung_mo_ta_rieng(video, tmp_path):
+    _short_moi(video, khuon="doc", mo_ta="Mô tả riêng của Short.")
+    _approve(video)
+    tt.set_field(video, "video_id", "dai999")
+    yt = FakeYT()
+    dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    desc = yt.log[0][1]["body"]["snippet"]["description"]
+    assert "Mô tả riêng của Short." in desc and "Mô tả video." not in desc and "youtu.be/dai999" in desc
+
+
+def test_upload_short_cu_khong_co_khuon_ghi_cu(video, tmp_path):
+    _approve(video)
+    yt = FakeYT()
+    dang.upload_short(video, 0, youtube=yt, tracker=tmp_path / "t.csv")
+    assert "Mô tả video." in yt.log[0][1]["body"]["snippet"]["description"]
+    assert _dong_so(tmp_path / "t.csv")["khuon_short"] == "cu"
+
+
+def test_upload_short_doc_ghi_khuon_doc(video, tmp_path):
+    _short_moi(video, khuon="doc")
+    _approve(video)
+    dang.upload_short(video, 0, youtube=FakeYT(), tracker=tmp_path / "t.csv")
+    assert _dong_so(tmp_path / "t.csv")["khuon_short"] == "doc"
+
+
+def test_doi_mo_ta_short_sau_khi_duyet_thi_phai_duyet_lai(video):
+    _short_moi(video, mo_ta="Bản đã duyệt.")
+    tt.approve_short(video, 0)
+    assert tt.short_current(video, 0)
+    _short_moi(video, mo_ta="Bản sửa sau khi duyệt.")
+    assert not tt.short_current(video, 0)

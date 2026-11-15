@@ -201,7 +201,7 @@ def _lock(path: Path):
             msvcrt.locking(f.fileno(), msvcrt.LK_UNLCK, 1)
 
 
-def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
+def _track(tracker: Path, title: str, when_vn: str, vid: str, them: dict | None = None) -> None:
     link = f"https://youtu.be/{vid}"
     with _lock(tracker.with_name(f".{tracker.name}.lock")):
         fields, rows = FIELDS, []
@@ -212,7 +212,7 @@ def _track(tracker: Path, title: str, when_vn: str, vid: str) -> None:
                 rows = list(reader)
         if any(r["link"] == link for r in rows):
             return
-        rows.append({"ngay": when_vn.split()[0], "tieu_de": title, "gio_dang": when_vn, "link": link})
+        rows.append({"ngay": when_vn.split()[0], "tieu_de": title, "gio_dang": when_vn, "link": link, **(them or {})})
         tmp = tracker.with_name(f".{tracker.name}.tmp")
         with tmp.open("w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, fieldnames=fields)
@@ -279,15 +279,16 @@ def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
         raise ValueError("Chỉ số Short không tồn tại")
     s = goi["shorts"][index]
     when = f"{s['ngay']} {s['gio']}"
+    them = {"khuon_short": s.get("khuon", "cu")}  # Short cũ không ghi khuon: dựng kiểu thu nhỏ sân khấu ngang
     if key in done:
         saved = schedules.get(key, {"tieu_de": s["tieu_de"], "gio": when})
-        _track(tracker, saved["tieu_de"], saved["gio"], done[key])
+        _track(tracker, saved["tieu_de"], saved["gio"], done[key], them)
         return done[key]
     _guard(d)
     if not tt.short_current(d, index):
         raise PermissionError("Short chưa duyệt hoặc tệp/tiêu đề/giờ đã đổi sau khi duyệt: chạy lại "
                               f"`python -m tttc.trang_thai duyet-short {d} {index}` sau khi người dùng xem lại")
-    desc = goi["mo_ta"]
+    desc = s.get("mo_ta") or goi["mo_ta"]  # Short viết riêng có mô tả riêng; không có thì dùng mô tả video dài
     long_vid = state.get("video_id")
     if long_vid:
         desc = f"👉 Xem video phân tích chi tiết đầy đủ tại: https://youtu.be/{long_vid}\n\n" + desc
@@ -299,7 +300,7 @@ def _upload_short(d: Path, index: int, youtube, tracker: Path) -> str:
     done[key] = vid
     schedules[key] = {"tieu_de": s["tieu_de"], "gio": when}
     tt.set_fields(d, short_ids=done, short_lich=schedules, upload_dang_cho_id=None)
-    _track(tracker, s["tieu_de"], when, vid)
+    _track(tracker, s["tieu_de"], when, vid, them)
     return vid
 
 

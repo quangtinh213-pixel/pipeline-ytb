@@ -61,3 +61,12 @@ def test_dien_view_keeps_existing_value():
     row = {"gio_dang": "13/11/2026 06:00", "view_24h": "120", "view_7d": ""}
     assert not theo_doi.dien_view(row, "999", datetime(2026, 11, 14, 8, tzinfo=VN))
     assert row["view_24h"] == "120"
+
+
+def test_migrate_them_hai_cot_short_giu_du_lieu_cu(tmp_path):
+    p = tmp_path / "theo-doi.csv"
+    p.write_text(OLD, encoding="utf-8")
+    theo_doi.migrate(p)
+    rows = list(csv.DictReader(p.open(encoding="utf-8")))
+    assert list(rows[0])[-2:] == ["o_lai_short", "khuon_short"]
+    assert rows[0]["tieu_de"] == "Tiêu đề" and rows[0]["o_lai_short"] == "" and rows[0]["khuon_short"] == ""
