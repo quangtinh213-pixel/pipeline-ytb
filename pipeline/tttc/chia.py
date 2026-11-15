@@ -11,6 +11,7 @@ from tttc import tts
 
 LIEN_TU = {"mà", "nhưng", "còn", "thì", "vì", "nên", "rồi"}
 CAU, PHAY = ".!?…", ",;:"
+BEAT_TOI_THIEU = 1.5  # cảnh ngắn nhất được phép khi phải ngắt đúng mốc beat (tttc.canh báo lỗi dưới 1,5 s)
 
 
 def moc_beat(script_md: str, timing: dict) -> list[float]:
@@ -87,14 +88,15 @@ def chia(
             if dur > cur_max and j > i:
                 break
             rem_min = toi_thieu_dau if (toi_thieu_dau and end_t < cua_so_dau) else toi_thieu
-            if dur >= cur_min and (j == len(words) - 1 or total - end_t >= rem_min):
+            sat_beat = next_beat is not None and abs(end_t - next_beat) <= 0.35
+            # beat tới sớm hơn mức tối thiểu: vẫn cho ngắt đúng mốc beat nếu cảnh ≥ BEAT_TOI_THIEU, đừng để cảnh vắt qua chương
+            du_dai = dur >= cur_min or (sat_beat and not prefer_beat and dur >= BEAT_TOI_THIEU)
+            if du_dai and (j == len(words) - 1 or total - end_t >= rem_min):
                 score = _diem(words, j, dur, cur_muc)
-                if prefer_beat and next_beat is not None:
-                    diff = abs(end_t - next_beat)
-                    if diff <= 0.35:
-                        score += 5.0 - diff
-                    elif end_t > next_beat + 0.35:
-                        score -= 4.0
+                if sat_beat:
+                    score += 5.0 - abs(end_t - next_beat)
+                elif next_beat is not None and end_t > next_beat + 0.35:
+                    score -= 4.0
                 cand.append((score, j))
         # chỉ có khe lặng dài làm mọi điểm ngắt vượt cur_max: chịu cảnh dài hơn còn hơn cảnh quá ngắn
         j = max(cand)[1] if cand else next((k for k in range(i, len(words)) if bien(k) - t0 >= cur_min), len(words) - 1)

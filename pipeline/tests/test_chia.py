@@ -60,6 +60,14 @@ def test_chia_long_silence_does_not_create_tiny_scene():
     assert all(a["end"] == b["start"] for a, b in zip(sc, sc[1:]))
 
 
+def test_chia_beat_closer_than_min_still_starts_new_scene():
+    # cảnh trước kết ở 40,0 (sau từ 99); beat ở 42,0 chỉ cách 2,0 s < tối thiểu 2,5: vẫn ngắt đúng beat, không vắt qua chương
+    t = _timing(200, ends=set(range(9, 200, 10)) | {104})
+    sc = chia.chia(t, moc_beat_ts=[42.0])
+    assert any(abs(s["end"] - 42.0) < 0.05 for s in sc), [(s["start"], s["end"]) for s in sc]
+    assert min(_durs(sc)) >= chia.BEAT_TOI_THIEU - 1e-9
+
+
 def test_chia_main_fast_first_30s_and_snaps_beat_boundary(tmp_path):
     t = _timing(120, ends=range(4, 120, 5))
     t["paragraphs"] = [{"i": 0, "start": 0.0, "end": 4.4}, {"i": 1, "start": 4.4, "end": 48.0}]

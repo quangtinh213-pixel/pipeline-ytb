@@ -1,0 +1,790 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "start": 0.0,
+   "end": 2.322,
+   "loi": "Thứ Bảy vừa rồi, theo giờ Texas, tàu Starship"
+  },
+  {
+   "id": "c002",
+   "start": 2.322,
+   "end": 4.659,
+   "loi": "của SpaceX về lại đúng khu phóng nó rời đi hơn hai"
+  },
+  {
+   "id": "c003",
+   "start": 4.659,
+   "end": 7.312,
+   "loi": "mươi hai tiếng trước. Tháp khép hai cánh tay thép,"
+  },
+  {
+   "id": "c004",
+   "start": 7.312,
+   "end": 9.207,
+   "loi": "bắt gọn con tàu, lần đầu tiên."
+  },
+  {
+   "id": "c005",
+   "start": 9.207,
+   "end": 11.686,
+   "loi": "Cùng tuần đó, trang Starlink tiếng Việt chào"
+  },
+  {
+   "id": "c006",
+   "start": 11.686,
+   "end": 14.13,
+   "loi": "gói Internet vệ tinh từ gần năm trăm sáu mươi sáu"
+  },
+  {
+   "id": "c007",
+   "start": 14.13,
+   "end": 16.627,
+   "loi": "nghìn đồng một tháng. Gói cáp quang phổ thông"
+  },
+  {
+   "id": "c008",
+   "start": 16.627,
+   "end": 18.983,
+   "loi": "của FPT là một trăm chín mươi lăm nghìn."
+  },
+  {
+   "id": "c009",
+   "start": 18.983,
+   "end": 21.451,
+   "loi": "Vậy Internet vệ tinh đã đủ rẻ để thay modem cáp"
+  },
+  {
+   "id": "c010",
+   "start": 21.451,
+   "end": 23.352,
+   "loi": "quang nhà bạn chưa? Để trả lời,"
+  },
+  {
+   "id": "c011",
+   "start": 23.352,
+   "end": 25.858,
+   "loi": "phải bắt đầu từ cái tháp ở Texas. Trước khi về,"
+  },
+  {
+   "id": "c012",
+   "start": 25.858,
+   "end": 28.319,
+   "loi": "con tàu đã thả hai mươi sáu vệ tinh Starlink thế hệ"
+  },
+  {
+   "id": "c013",
+   "start": 28.319,
+   "end": 32.135,
+   "loi": "mới lên quỹ đạo. Chính mạng vệ tinh Starlink đó đang bán dịch vụ cho người Việt."
+  },
+  {
+   "id": "c014",
+   "start": 32.135,
+   "end": 36.172,
+   "loi": "Một quả tên lửa Starship có hai phần. Phần dưới là tầng đẩy khổng lồ,"
+  },
+  {
+   "id": "c015",
+   "start": 36.172,
+   "end": 41.393,
+   "loi": "chỉ đẩy con tàu lên cao rồi quay đầu. Phần trên là con tàu, thứ thực sự vào quỹ đạo và chở hàng."
+  },
+  {
+   "id": "c016",
+   "start": 41.393,
+   "end": 44.617,
+   "loi": "Con tàu mới là phần khó. Nó phải bay vòng quanh Trái Đất,"
+  },
+  {
+   "id": "c017",
+   "start": 44.617,
+   "end": 48.506,
+   "loi": "lao xuyên qua bầu khí quyển nóng rực, rồi tự đáp đúng vào cái tháp ở Texas."
+  },
+  {
+   "id": "c018",
+   "start": 48.506,
+   "end": 53.022,
+   "loi": "Lần này nó làm được. Theo trang của SpaceX, con tàu ở trên quỹ đạo hơn hai mươi tiếng."
+  },
+  {
+   "id": "c019",
+   "start": 53.022,
+   "end": 57.626,
+   "loi": "Rồi nó tự đốt lại một động cơ để rời quỹ đạo, lao về và đáp đúng chỗ cũ."
+  },
+  {
+   "id": "c020",
+   "start": 57.626,
+   "end": 62.947,
+   "loi": "Nó giống một chuyến xe khách chở hàng từ Hà Nội vào Sài Gòn, giao hàng xong thì đốt bỏ luôn cả chiếc xe."
+  },
+  {
+   "id": "c021",
+   "start": 62.947,
+   "end": 66.416,
+   "loi": "Tên lửa dùng một lần chạy đúng theo kiểu đó. Bắt lại được cả hai phần"
+  },
+  {
+   "id": "c022",
+   "start": 66.416,
+   "end": 69.296,
+   "loi": "thì chiếc xe quay về bến, đổ nhiên liệu, chạy tiếp."
+  },
+  {
+   "id": "c023",
+   "start": 69.296,
+   "end": 72.844,
+   "loi": "Thế chuyến này hoàn hảo à? Chưa. Trang của SpaceX ghi khá thẳng:"
+  },
+  {
+   "id": "c024",
+   "start": 72.844,
+   "end": 75.8,
+   "loi": "tầng đẩy chỉ đốt lại được ba mươi hai trên ba mươi ba động cơ."
+  },
+  {
+   "id": "c025",
+   "start": 75.8,
+   "end": 79.556,
+   "loi": "Lúc quay đầu, động cơ tắt sớm vì thiếu nhiên liệu, nguyên nhân vẫn đang điều tra."
+  },
+  {
+   "id": "c026",
+   "start": 79.556,
+   "end": 82.272,
+   "loi": "Nó không về được tháp. Nó chuyển hướng ra ngoài khơi,"
+  },
+  {
+   "id": "c027",
+   "start": 82.272,
+   "end": 86.117,
+   "loi": "đốt hạ cánh khi đang lơ lửng trên vịnh, rồi hệ thống tự hủy được kích hoạt."
+  },
+  {
+   "id": "c028",
+   "start": 86.117,
+   "end": 89.707,
+   "loi": "Nghĩa là trong cùng một chuyến bay, con tàu về được, còn tầng đẩy thì không."
+  },
+  {
+   "id": "c029",
+   "start": 89.707,
+   "end": 94.724,
+   "loi": "Một nửa thành công. Kênh không tìm thấy con số chi phí mỗi lần phóng do SpaceX công bố,"
+  },
+  {
+   "id": "c030",
+   "start": 94.724,
+   "end": 97.613,
+   "loi": "nên không quy ra tiền được. Nhưng cơ chế thì rõ."
+  },
+  {
+   "id": "c031",
+   "start": 97.613,
+   "end": 101.454,
+   "loi": "Tàu càng bay lại được nhiều lần, mỗi lần đưa vệ tinh lên càng đỡ tốn."
+  },
+  {
+   "id": "c032",
+   "start": 101.454,
+   "end": 105.019,
+   "loi": "Mà vệ tinh lên càng rẻ, mạng Starlink càng có thêm hàng để bán."
+  },
+  {
+   "id": "c033",
+   "start": 105.019,
+   "end": 109.475,
+   "loi": "Chuyến này chở hai mươi sáu cái. Muốn tái sử dụng trọn vẹn thì cả hai tầng phải cùng về."
+  },
+  {
+   "id": "c034",
+   "start": 109.475,
+   "end": 113.078,
+   "loi": "Mà một trong những nơi đang dùng thử mạng vệ tinh đó lại là Việt Nam."
+  },
+  {
+   "id": "c035",
+   "start": 113.078,
+   "end": 116.574,
+   "loi": "Starlink vào Việt Nam theo Quyết định sáu trăm năm mươi chín của Thủ tướng,"
+  },
+  {
+   "id": "c036",
+   "start": 116.574,
+   "end": 119.167,
+   "loi": "ban hành tháng ba năm hai nghìn không trăm hai mươi lăm."
+  },
+  {
+   "id": "c037",
+   "start": 119.167,
+   "end": 122.882,
+   "loi": "Đây là thí điểm có kiểm soát, nghĩa là có trần, có hạn, có điều kiện."
+  },
+  {
+   "id": "c038",
+   "start": 122.882,
+   "end": 126.346,
+   "loi": "Trần là sáu trăm nghìn thuê bao, tính gộp cả thuê bao Starlink tự"
+  },
+  {
+   "id": "c039",
+   "start": 126.346,
+   "end": 129.627,
+   "loi": "bán lẫn thuê bao do nhà mạng trong nước bán lại. Hạn là năm năm,"
+  },
+  {
+   "id": "c040",
+   "start": 129.627,
+   "end": 133.324,
+   "loi": "và dù thế nào cũng phải kết thúc trước năm hai nghìn không trăm ba mươi mốt."
+  },
+  {
+   "id": "c041",
+   "start": 133.324,
+   "end": 138.249,
+   "loi": "Ngoài Internet cố định, quyết định còn cho thí điểm Internet trên biển và trên máy bay."
+  },
+  {
+   "id": "c042",
+   "start": 138.249,
+   "end": 143.626,
+   "loi": "Sáu trăm nghìn nghe thì nhiều. Ông Nguyễn Anh Cương, Phó Cục trưởng Cục Viễn thông, làm một phép so sánh."
+  },
+  {
+   "id": "c043",
+   "start": 143.626,
+   "end": 148.289,
+   "loi": "Con số đó chỉ khoảng hai phẩy năm phần trăm tổng số thuê bao Internet cố định ở Việt Nam."
+  },
+  {
+   "id": "c044",
+   "start": 148.289,
+   "end": 151.041,
+   "loi": "Nói cách khác, kể cả khi bán hết sạch suất thí điểm,"
+  },
+  {
+   "id": "c045",
+   "start": 151.041,
+   "end": 154.949,
+   "loi": "Starlink vẫn chỉ đứng ở một góc rất nhỏ của thị trường mạng cố định trong nước."
+  },
+  {
+   "id": "c046",
+   "start": 154.949,
+   "end": 159.858,
+   "loi": "Starlink cũng có bốn trạm mặt đất, đặt ở ba nơi là Phú Thọ, Đà Nẵng và Thành phố Hồ Chí Minh."
+  },
+  {
+   "id": "c047",
+   "start": 159.858,
+   "end": 162.84,
+   "loi": "Vì thế, Cục đánh giá hồi tháng ba: trong lúc thí điểm,"
+  },
+  {
+   "id": "c048",
+   "start": 162.84,
+   "end": 166.269,
+   "loi": "Starlink ít có khả năng cạnh tranh trực tiếp với nhà mạng trong nước."
+  },
+  {
+   "id": "c049",
+   "start": 166.269,
+   "end": 171.272,
+   "loi": "Kiểu như mở cho một quán phở nổi tiếng thế giới vào phố, nhưng chỉ cho bán tối đa vài chục bàn."
+  },
+  {
+   "id": "c050",
+   "start": 171.272,
+   "end": 175.148,
+   "loi": "Chỗ ngồi đã đếm sẵn từ trước. Có hạn. Vậy giá giờ là bao nhiêu?"
+  },
+  {
+   "id": "c051",
+   "start": 175.148,
+   "end": 179.062,
+   "loi": "Hồi tháng ba, chính Bộ Khoa học và Công nghệ đưa ra mức chi phí dự kiến."
+  },
+  {
+   "id": "c052",
+   "start": 179.062,
+   "end": 182.25,
+   "loi": "Tháng đầu, người dùng cá nhân bỏ ra khoảng bốn trăm ba mươi lăm đô,"
+  },
+  {
+   "id": "c053",
+   "start": 182.25,
+   "end": 184.837,
+   "loi": "trong đó khoảng ba trăm năm mươi đô là tiền bộ thiết bị."
+  },
+  {
+   "id": "c054",
+   "start": 184.837,
+   "end": 189.22,
+   "loi": "Từ tháng thứ hai, khoảng tám mươi lăm đô, tức khoảng hai triệu hai trăm nghìn đồng mỗi tháng."
+  },
+  {
+   "id": "c055",
+   "start": 189.22,
+   "end": 192.398,
+   "loi": "Còn hôm nay, trang Starlink tiếng Việt ghi hai gói cho hộ gia đình."
+  },
+  {
+   "id": "c056",
+   "start": 192.398,
+   "end": 196.752,
+   "loi": "Gói tốc độ tối đa trên bốn trăm megabit từ khoảng tám trăm năm mươi sáu nghìn đồng một tháng."
+  },
+  {
+   "id": "c057",
+   "start": 196.752,
+   "end": 200.303,
+   "loi": "Gói giới hạn một trăm megabit từ gần năm trăm sáu mươi sáu nghìn đồng."
+  },
+  {
+   "id": "c058",
+   "start": 200.303,
+   "end": 204.004,
+   "loi": "So mức cước dự kiến hồi tháng ba với gói đắt nhất đang chào thì tính ra,"
+  },
+  {
+   "id": "c059",
+   "start": 204.004,
+   "end": 208.107,
+   "loi": "giá đang chào chưa bằng một nửa. Nguồn tháng ba không ghi mức đó ứng với gói nào."
+  },
+  {
+   "id": "c060",
+   "start": 208.107,
+   "end": 213.401,
+   "loi": "Nhưng ngay dưới giá có hai điều kiện: chỉ áp dụng ở một số khu vực và phải đăng ký trước ngày một tháng mười hai."
+  },
+  {
+   "id": "c061",
+   "start": 213.401,
+   "end": 217.005,
+   "loi": "Trang không nói khu vực nào. Qua ngày đó giá thành bao nhiêu cũng chưa rõ."
+  },
+  {
+   "id": "c062",
+   "start": 217.005,
+   "end": 221.936,
+   "loi": "Hai điểm này kênh chưa kiểm được, nên con số kia mới chỉ là giá chào, chưa phải giá cố định."
+  },
+  {
+   "id": "c063",
+   "start": 221.936,
+   "end": 226.238,
+   "loi": "Còn một chi tiết nữa đáng để ý: gói một trăm megabit sẽ chậm đi vào giờ cao điểm."
+  },
+  {
+   "id": "c064",
+   "start": 226.238,
+   "end": 231.284,
+   "loi": "Giờ cao điểm là mấy giờ thì trang không ghi. Giá thấp hơn dự kiến, cơ quan quản lý nói gì?"
+  },
+  {
+   "id": "c065",
+   "start": 231.284,
+   "end": 234.189,
+   "loi": "Ngay từ buổi họp báo tháng ba, Cục Viễn thông đã nói trước."
+  },
+  {
+   "id": "c066",
+   "start": 234.189,
+   "end": 237.479,
+   "loi": "Nếu doanh nghiệp giảm giá có dấu hiệu cạnh tranh không lành mạnh,"
+  },
+  {
+   "id": "c067",
+   "start": 237.479,
+   "end": 241.327,
+   "loi": "cơ quan quản lý sẽ tăng cường giám sát. Đó là lời cảnh báo chung từ trước,"
+  },
+  {
+   "id": "c068",
+   "start": 241.327,
+   "end": 245.988,
+   "loi": "không nhắm vào một mức giá cụ thể nào. Kênh không thấy nguồn nào nói Starlink đang vi phạm gì."
+  },
+  {
+   "id": "c069",
+   "start": 245.988,
+   "end": 249.854,
+   "loi": "Nếu bạn muốn biết khi nào cái giá kia đổi, đăng ký kênh Nhịp Công Nghệ,"
+  },
+  {
+   "id": "c070",
+   "start": 249.854,
+   "end": 252.282,
+   "loi": "mốc một tháng mười hai kênh sẽ quay lại xem."
+  },
+  {
+   "id": "c071",
+   "start": 252.282,
+   "end": 255.478,
+   "loi": "Giờ đặt nó cạnh hóa đơn mạng nhà bạn. Trên trang của FPT,"
+  },
+  {
+   "id": "c072",
+   "start": 255.478,
+   "end": 260.727,
+   "loi": "gói cáp quang Internet GIGA tốc độ ba trăm megabit giá một trăm chín mươi lăm nghìn đồng một tháng."
+  },
+  {
+   "id": "c073",
+   "start": 260.727,
+   "end": 264.212,
+   "loi": "Gói SKY tốc độ một gigabit cũng một trăm chín mươi lăm nghìn đồng."
+  },
+  {
+   "id": "c074",
+   "start": 264.212,
+   "end": 268.437,
+   "loi": "Tính ra, gói một trăm megabit của Starlink vẫn đắt gần gấp ba cáp quang,"
+  },
+  {
+   "id": "c075",
+   "start": 268.437,
+   "end": 271.752,
+   "loi": "còn gói tối đa trên bốn trăm megabit thì đắt hơn bốn lần."
+  },
+  {
+   "id": "c076",
+   "start": 271.752,
+   "end": 276.58,
+   "loi": "Quy ra một năm cho dễ thấy. Cáp quang cả năm tính ra khoảng hai triệu ba trăm bốn mươi nghìn đồng."
+  },
+  {
+   "id": "c077",
+   "start": 276.58,
+   "end": 280.061,
+   "loi": "Còn gói Starlink rẻ hơn trong hai gói, nếu giá chào giữ suốt năm,"
+  },
+  {
+   "id": "c078",
+   "start": 280.061,
+   "end": 282.635,
+   "loi": "cả năm tính ra ngốn gần sáu triệu tám trăm nghìn."
+  },
+  {
+   "id": "c079",
+   "start": 282.635,
+   "end": 286.788,
+   "loi": "Chưa tính bộ thiết bị phải mua, mà hồi tháng ba Bộ ước khoảng ba trăm năm mươi đô."
+  },
+  {
+   "id": "c080",
+   "start": 286.788,
+   "end": 291.255,
+   "loi": "Tính ra, khoản chênh mỗi năm đủ để một nhà đóng thêm gần hai năm tiền cáp quang nữa."
+  },
+  {
+   "id": "c081",
+   "start": 291.255,
+   "end": 294.732,
+   "loi": "Đó là chưa nói tốc độ. Về tốc độ, Bộ Khoa học và Công"
+  },
+  {
+   "id": "c082",
+   "start": 294.732,
+   "end": 299.552,
+   "loi": "nghệ cho biết tốc độ Internet cố định trung bình ở Việt Nam đã lên gần ba trăm megabit."
+  },
+  {
+   "id": "c083",
+   "start": 299.552,
+   "end": 302.943,
+   "loi": "Tức là so với gói vệ tinh một trăm megabit, cáp quang ba trăm"
+  },
+  {
+   "id": "c084",
+   "start": 302.943,
+   "end": 306.015,
+   "loi": "megabit vừa rẻ hơn vừa nhanh hơn, ít nhất là trên giấy."
+  },
+  {
+   "id": "c085",
+   "start": 306.015,
+   "end": 311.307,
+   "loi": "Trên trang FPT, kênh cũng không thấy dòng nào báo chậm đi vào giờ cao điểm như trang Starlink."
+  },
+  {
+   "id": "c086",
+   "start": 311.307,
+   "end": 315.719,
+   "loi": "Nên nếu nhà bạn đã kéo được dây cáp quang tới cửa, câu trả lời gần như đã có."
+  },
+  {
+   "id": "c087",
+   "start": 315.719,
+   "end": 319.7,
+   "loi": "Starlink chưa phải để thay cái modem đó. Thế Starlink sinh ra cho ai?"
+  },
+  {
+   "id": "c088",
+   "start": 319.7,
+   "end": 322.203,
+   "loi": "Câu trả lời nằm ở những nơi dây cáp không tới được."
+  },
+  {
+   "id": "c089",
+   "start": 322.203,
+   "end": 325.423,
+   "loi": "Tại lễ bàn giao thiết bị hồi tháng chín, ông Nguyễn Thành Chung,"
+  },
+  {
+   "id": "c090",
+   "start": 325.423,
+   "end": 328.551,
+   "loi": "Cục trưởng Cục Viễn thông, nhắc lại một con số. Tỷ lệ thôn,"
+  },
+  {
+   "id": "c091",
+   "start": 328.551,
+   "end": 332.262,
+   "loi": "bản có băng rộng di động đã lên khoảng chín mươi chín phẩy năm sáu phần trăm."
+  },
+  {
+   "id": "c092",
+   "start": 332.262,
+   "end": 335.794,
+   "loi": "Gần trọn vẹn. Phần còn lại mới khó. Rà soát năm nay vẫn"
+  },
+  {
+   "id": "c093",
+   "start": 335.794,
+   "end": 340.779,
+   "loi": "còn hai trăm bảy mươi ba thôn phải xử lý tiếp. Trong số đó, tám mươi hai thôn còn chưa có điện lưới."
+  },
+  {
+   "id": "c094",
+   "start": 340.779,
+   "end": 344.232,
+   "loi": "Chưa có điện thì kéo cáp, dựng trạm đều tốn kém và chậm."
+  },
+  {
+   "id": "c095",
+   "start": 344.232,
+   "end": 347.818,
+   "loi": "Ngày mười một tháng chín, hai trăm năm mươi tư bộ thiết bị Starlink được bàn"
+  },
+  {
+   "id": "c096",
+   "start": 347.818,
+   "end": 352.529,
+   "loi": "giao cho các điểm ở mười ba tỉnh, thành phố. Đi kèm là gói tốc độ tối đa bốn trăm megabit,"
+  },
+  {
+   "id": "c097",
+   "start": 352.529,
+   "end": 356.922,
+   "loi": "miễn phí sáu tháng. Phía Starlink cam kết tổng cộng một nghìn bộ thiết bị như vậy."
+  },
+  {
+   "id": "c098",
+   "start": 356.922,
+   "end": 361.802,
+   "loi": "Tới ngày một tháng mười một, theo Bộ, Internet vệ tinh đã chạy ở một trăm chín mươi sáu điểm lõm sóng."
+  },
+  {
+   "id": "c099",
+   "start": 361.802,
+   "end": 365.721,
+   "loi": "Trong đó có một trăm năm mươi tư thôn, bản và bốn mươi hai cơ sở công lập."
+  },
+  {
+   "id": "c100",
+   "start": 365.721,
+   "end": 370.321,
+   "loi": "Ví dụ một điểm trường ở bản cao, có điện nhưng trạm phát sóng gần nhất ở bên kia núi."
+  },
+  {
+   "id": "c101",
+   "start": 370.321,
+   "end": 373.236,
+   "loi": "Đặt một bộ chảo thu lên mái là điểm trường có mạng. Ở đó,"
+  },
+  {
+   "id": "c102",
+   "start": 373.236,
+   "end": 375.971,
+   "loi": "gói rẻ hay gói đắt đều không phải câu hỏi đầu tiên."
+  },
+  {
+   "id": "c103",
+   "start": 375.971,
+   "end": 379.416,
+   "loi": "Có mạng hay không mới là câu hỏi đầu tiên. Còn một nhóm nữa:"
+  },
+  {
+   "id": "c104",
+   "start": 379.416,
+   "end": 382.796,
+   "loi": "Internet trên biển và trên máy bay cũng nằm trong phạm vi thí điểm."
+  },
+  {
+   "id": "c105",
+   "start": 382.796,
+   "end": 387.783,
+   "loi": "Tàu cá ngoài khơi cả tuần thì cáp quang không tới được. Lúc ấy vệ tinh là một trong số ít lựa chọn."
+  },
+  {
+   "id": "c106",
+   "start": 387.783,
+   "end": 390.581,
+   "loi": "Hai việc. Việc thứ nhất là ngày một tháng mười hai."
+  },
+  {
+   "id": "c107",
+   "start": 390.581,
+   "end": 394.201,
+   "loi": "Qua mốc đó, giá trên trang Starlink tiếng Việt sẽ cho biết một điều."
+  },
+  {
+   "id": "c108",
+   "start": 394.201,
+   "end": 398.053,
+   "loi": "Mức gần năm trăm sáu mươi sáu nghìn là giá lâu dài, hay chỉ là giá mở cửa."
+  },
+  {
+   "id": "c109",
+   "start": 398.053,
+   "end": 401.704,
+   "loi": "Nếu giá giữ nguyên, tính ra khoảng cách với cáp quang vẫn là gần gấp ba."
+  },
+  {
+   "id": "c110",
+   "start": 401.704,
+   "end": 405.949,
+   "loi": "Nếu qua mốc đó giá cao lên, người ở thành phố gần như hết lý do để cân nhắc."
+  },
+  {
+   "id": "c111",
+   "start": 405.949,
+   "end": 411.314,
+   "loi": "Việc thứ hai nằm ở Texas. SpaceX vẫn đang tìm nguyên nhân khiến tầng đẩy thiếu nhiên liệu ở chuyến này."
+  },
+  {
+   "id": "c112",
+   "start": 411.314,
+   "end": 414.544,
+   "loi": "Khi nào cả tầng đẩy lẫn con tàu cùng về tháp trong một chuyến,"
+  },
+  {
+   "id": "c113",
+   "start": 414.544,
+   "end": 417.78,
+   "loi": "lúc đó mới gọi là tái sử dụng trọn vẹn. Theo cơ chế vừa kể,"
+  },
+  {
+   "id": "c114",
+   "start": 417.78,
+   "end": 421.183,
+   "loi": "đó là điều kiện để chi phí đưa vệ tinh lên có cơ hội giảm thật."
+  },
+  {
+   "id": "c115",
+   "start": 421.183,
+   "end": 424.679,
+   "loi": "Giữa hai việc đó là một mốc dài hơi: thí điểm ở Việt Nam phải kết thúc"
+  },
+  {
+   "id": "c116",
+   "start": 424.679,
+   "end": 429.1,
+   "loi": "trước năm hai nghìn không trăm ba mươi mốt. Sau mốc đó Starlink được làm tiếp hay không,"
+  },
+  {
+   "id": "c117",
+   "start": 429.1,
+   "end": 432.126,
+   "loi": "và làm theo luật nào, hiện chưa có nguồn nào trả lời."
+  },
+  {
+   "id": "c118",
+   "start": 432.126,
+   "end": 437.467,
+   "loi": "Có một điều buồn cười nho nhỏ. Con tàu bay vòng quanh Trái Đất hơn hai mươi tiếng rồi về đúng chỗ cũ."
+  },
+  {
+   "id": "c119",
+   "start": 437.467,
+   "end": 441.731,
+   "loi": "Trong khi ở nhà, mạng hỏng thì cách quen thuộc vẫn là rút phích modem rồi cắm lại."
+  },
+  {
+   "id": "c120",
+   "start": 441.731,
+   "end": 445.192,
+   "loi": "Công nghệ đi xa thật. Nhưng hóa đơn thì vẫn tính bằng tiền đồng."
+  },
+  {
+   "id": "c121",
+   "start": 445.192,
+   "end": 448.99,
+   "loi": "Quay lại câu hỏi đầu video: Internet vệ tinh đã rẻ hơn cáp quang chưa?"
+  },
+  {
+   "id": "c122",
+   "start": 448.99,
+   "end": 452.599,
+   "loi": "Chưa. Với giá đang chào, tính ra gói Starlink một trăm megabit"
+  },
+  {
+   "id": "c123",
+   "start": 452.599,
+   "end": 456.937,
+   "loi": "vẫn đắt gần gấp ba một gói cáp quang phổ thông. Đó là chưa tính tiền thiết bị."
+  },
+  {
+   "id": "c124",
+   "start": 456.937,
+   "end": 461.649,
+   "loi": "Cách chấm của kênh dựa trên một tiêu chí đơn giản: nhà bạn có kéo được cáp quang tới không."
+  },
+  {
+   "id": "c125",
+   "start": 461.649,
+   "end": 465.022,
+   "loi": "Có thì chưa. Không có, hoặc bạn ở trên tàu, trên đảo,"
+  },
+  {
+   "id": "c126",
+   "start": 465.022,
+   "end": 468.453,
+   "loi": "ở bản chưa có trạm, thì đó mới là chỗ Starlink đáng tiền."
+  },
+  {
+   "id": "c127",
+   "start": 468.453,
+   "end": 471.012,
+   "loi": "Kênh sẽ đổi ý nếu sau ngày một tháng mười hai,"
+  },
+  {
+   "id": "c128",
+   "start": 471.012,
+   "end": 475.009,
+   "loi": "giá Starlink xuống ngang mức cáp quang mà tốc độ giờ cao điểm vẫn giữ được."
+  },
+  {
+   "id": "c129",
+   "start": 475.009,
+   "end": 479.299,
+   "loi": "Thử đoán xem: qua ngày một tháng mười hai, gói Starlink một trăm megabit ở Việt Nam"
+  },
+  {
+   "id": "c130",
+   "start": 479.299,
+   "end": 483.601,
+   "loi": "còn giá bao nhiêu một tháng? Để lại một con số dưới bình luận, xem ai đoán sát nhất."
+  },
+  {
+   "id": "c131",
+   "start": 483.601,
+   "end": 490.351,
+   "loi": "Đăng ký và bật chuông để không lỡ video ngày mai, rồi bấm vào video bên cạnh, để xem tiếp chuyện mạng nhà bạn đang chạy bằng gì."
+  }
+ ]
+}

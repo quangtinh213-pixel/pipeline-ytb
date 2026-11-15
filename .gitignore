@@ -8,6 +8,7 @@ videos/*/*.mp3
 videos/*/giong/
 videos/*/giong-vieneu/
 videos/*/composition/
+videos/*/composition-*/
 videos/*/short-[0-9]*/
 videos/**/*.mp4
 videos/**/*.mov

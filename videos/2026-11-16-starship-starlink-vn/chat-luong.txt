@@ -1,0 +1,19 @@
+﻿  so_canh: 131
+  tb_giay: 3.74
+  tb_giay_30s: 2.47
+  duoi_1_5: 0
+  tren_8: 0
+  ti_le: {'do-hoa': 0.8244274809160306, 'bang-chung': 0.12213740458015267, 'doi-that': 0.05343511450381679}
+  chay_dai_nhat: 2
+  su_kien_phut: 70.97
+  sfx_phut: 36.83
+  toc_do: 253.17
+  mo_dau: True
+  do_kho: {'so_phong': 6, 'so_canh_minh_hoa': 38, 'phong_lien_max': 2, 'vat_chinh_lap': 7, 'clip_lap': 0, 'canh_tinh_dai': 1, 'ti_le_may_quay': 0.7631578947368421, 'trong_diem_thieu': 0, 'nhip_cam_xuc_du': True, 'cham_thap': 2, 'cham_tb': 3.0357142857142856}
+  ti_le_stock: 0.03
+  anh_su_kien: 3
+- Cảnh báo: độ khô: 7 cảnh lặp hình chính trong cửa sổ 8 cảnh
+- Cảnh báo: độ khô: 1 cảnh đồ họa tĩnh dài > 4,5 s không có nhịp con hay camera
+- Cảnh báo: độ khô: 2 beat có tiêu chí giám khảo dưới 3
+- Cảnh báo: độ khô: điểm giám khảo trung bình 3.0 < 4.0
+0 lỗi, 4 cảnh báo

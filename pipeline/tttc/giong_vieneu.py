@@ -141,12 +141,12 @@ def synthesize(video_dir, cfg: dict | None = None, run=subprocess.run) -> None:
     for _, _, s, _ in units:
         if re.search(r"\d", s):
             print(f"Cảnh báo: câu có chữ số, nên viết thành chữ để giọng đọc đúng: {s[:70]!r}")
-    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, v)}.wav"), "voice": v}
+    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(_phat_am(s, cfg), v)}.wav"), "voice": v}
               for _, _, s, v in {(u[2], u[3]): u for u in units}.values()], raw, cfg, run)
     words, ranges, offset, files = [], [], 0.0, []
     for k, (pi, cuoi_doan, s, voice) in enumerate(units):
         nghi = cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"]
-        out, goc = raw / f"u{k:04}.wav", raw / f"{_ten(s, voice)}.wav"
+        out, goc = raw / f"u{k:04}.wav", raw / f"{_ten(_phat_am(s, cfg), voice)}.wav"
         _cat_nghi(goc, out, nghi, cfg["toc_do"])
         try:
             dur = _duration(out)
@@ -190,12 +190,12 @@ def nghe_thu(video_dir, so_tu: int = 210, cfg: dict | None = None, run=subproces
             break
     raw = d / "giong-vieneu"
     raw.mkdir(exist_ok=True)
-    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(s, v)}.wav"), "voice": v}
+    _tao_wav([{"text": _phat_am(s, cfg), "out": str(raw / f"{_ten(_phat_am(s, cfg), v)}.wav"), "voice": v}
               for s, v in dict.fromkeys((s, v) for s, _, v in units)], raw, cfg, run)
     files = []
     for k, (s, cuoi_doan, voice) in enumerate(units):
         out = raw / f"nt{k:03}.wav"
-        _cat_nghi(raw / f"{_ten(s, voice)}.wav", out, cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"], cfg["toc_do"])
+        _cat_nghi(raw / f"{_ten(_phat_am(s, cfg), voice)}.wav", out, cfg["pause_doan"] if cuoi_doan else cfg["pause_cau"], cfg["toc_do"])
         files.append(out)
     lst = raw / "nt-list.txt"
     lst.write_text("".join(f"file '{f.resolve()}'\n" for f in files), encoding="utf-8", newline="\n")

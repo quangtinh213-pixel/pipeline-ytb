@@ -824,7 +824,101 @@ def bac_thang():
     return p
 
 
+# ---------- Đợt Starlink: vũ trụ / Internet ----------
+def ve_tinh():
+    """Vệ tinh dẹt kiểu Starlink: thân hộp phẳng, hai tấm pin mặt trời kẻ ô, anten vàng ở mặt dưới."""
+    p = box(-260, 30, 40, 220, 70, 6, DARK, DARK, DARK)
+    for k in range(4):
+        p.append(on_top(-260, 30, 40, 220, 70, 6, 0.03 + k * 0.245, 0.1, 0.23 + k * 0.245, 0.9, MID, 2))
+    p += box(0, 0, 20, 150, 130, 40, WHITE, LIGHT, MID)
+    p += box(-40, 55, 42, 40, 20, 8, LIGHT, LIGHT, MID)  # cần nối tấm pin
+    p += box(150, 55, 42, 40, 20, 8, LIGHT, LIGHT, MID)
+    p += box(190, 30, 40, 220, 70, 6, DARK, DARK, DARK)
+    for k in range(4):
+        p.append(on_top(190, 30, 40, 220, 70, 6, 0.03 + k * 0.245, 0.1, 0.23 + k * 0.245, 0.9, MID, 2))
+    p += box(55, 45, 0, 40, 40, 20, Y, Y2, Y3)
+    return p
+
+
+def chao_thu():
+    """Chảo thu vệ tinh dạng tấm phẳng trên chân đế, mặt chảo ngửa lên trời, viền vàng."""
+    p = box(60, 60, 0, 80, 80, 12, DARK, DARK, DARK)
+    p += box(92, 92, 12, 16, 16, 90, LIGHT, WHITE, MID)
+    x0, y0, z0, w, d = 10, 40, 100, 180, 120
+    p.append(poly([(x0, y0, z0 + 70), (x0 + w, y0, z0 + 70), (x0 + w, y0 + d, z0), (x0, y0 + d, z0)], WHITE))
+    p.append(poly([(x0 + 18, y0 + 12, z0 + 63), (x0 + w - 18, y0 + 12, z0 + 63),
+                   (x0 + w - 18, y0 + d - 12, z0 + 7), (x0 + 18, y0 + d - 12, z0 + 7)], LIGHT, 3))
+    p.append(poly([(x0 + 70, y0 + 45, z0 + 44), (x0 + 110, y0 + 45, z0 + 44),
+                   (x0 + 110, y0 + 75, z0 + 26), (x0 + 70, y0 + 75, z0 + 26)], Y, 3))
+    return p
+
+
+def modem():
+    """Modem cáp quang: hộp dẹt đứng, ba đèn trên mặt trước (một đèn vàng), hai râu anten."""
+    p = box(0, 0, 0, 220, 70, 120, WHITE, LIGHT, MID)
+    for k in range(3):
+        p.append(on_left(0, 0, 0, 220, 70, 120, 0.15 + k * 0.12, 0.7, 0.22 + k * 0.12, 0.78, Y if k == 0 else DARK, 2))
+    p.append(on_left(0, 0, 0, 220, 70, 120, 0.1, 0.12, 0.9, 0.22, MID, 2))
+    p += box(25, 25, 120, 14, 14, 110, DARK, DARK, DARK) + box(180, 25, 120, 14, 14, 110, DARK, DARK, DARK)
+    return p
+
+
+def thap_bat():
+    """Tháp phóng có hai cánh tay thép kẹp quanh thân tàu: 'tháp bắt con tàu'."""
+    p = box(-20, -20, 0, 120, 120, 16, DARK, DARK, DARK)
+    p += box(0, 0, 16, 60, 60, 380, MID, LIGHT, DARK)
+    for k in range(6):
+        p.append(on_left(0, 0, 16, 60, 60, 380, 0.15, 0.05 + k * 0.16, 0.85, 0.12 + k * 0.16, DARK, 2))
+    p += box(60, -10, 300, 130, 16, 22, Y, Y2, Y3)   # cánh tay sau
+    p += cil(150, 40, 120, 38, 260, WHITE, LIGHT, MID, n=20)  # thân tàu
+    p += box(60, 80, 300, 130, 16, 22, Y, Y2, Y3)    # cánh tay trước
+    return p
+
+
+def tau_ca():
+    """Tàu cá: thân dài, cabin trắng phía sau, cột cần câu, chảo thu vàng trên nóc cabin."""
+    p = box(0, 0, 0, 300, 100, 50, DARK, DARK, DARK)
+    p.append(poly([(300, 0, 0), (360, 50, 25), (300, 100, 0)], DARK))
+    p.append(poly([(300, 0, 50), (360, 50, 50), (300, 100, 50)], MID))
+    p.append(on_left(0, 0, 0, 300, 100, 50, 0.0, 0.75, 1.0, 0.85, WHITE, 2))
+    p += box(30, 15, 50, 90, 70, 70, WHITE, LIGHT, MID)
+    p.append(on_left(30, 15, 50, 90, 70, 70, 0.15, 0.45, 0.85, 0.8, DARK, 2))
+    p += box(170, 45, 50, 10, 10, 150, LIGHT, WHITE, MID)
+    p += box(55, 35, 120, 40, 30, 10, Y, Y2, Y3)
+    return p
+
+
+def may_bay():
+    """Máy bay chở khách nhìn chéo: thân dài, cánh ngang, đuôi đứng vàng."""
+    p = box(150, -170, 50, 70, 380, 8, LIGHT, LIGHT, MID)          # cánh
+    p += box(0, 0, 30, 380, 50, 50, WHITE, LIGHT, MID)              # thân
+    p.append(on_left(0, 0, 30, 380, 50, 50, 0.08, 0.55, 0.92, 0.7, DARK, 2))
+    p.append(poly([(380, 0, 30), (440, 25, 45), (380, 50, 30)], LIGHT))
+    p.append(poly([(380, 0, 80), (440, 25, 45), (380, 50, 80)], WHITE))
+    p += box(0, -60, 70, 50, 170, 6, LIGHT, LIGHT, MID)              # đuôi ngang
+    p += box(0, 18, 80, 60, 14, 80, Y, Y2, Y3)                        # đuôi đứng
+    return p
+
+
+def nha_san():
+    """Nhà sàn ở bản: sàn gỗ trên cột, mái dốc, một chảo thu vàng trên mái."""
+    p = []
+    for x in (0, 170):
+        for y in (0, 110):
+            p += box(x, y, 0, 16, 16, 70, DARK, DARK, DARK)
+    p += box(-10, -10, 70, 200, 140, 14, MID, LIGHT, DARK)
+    p += box(0, 0, 84, 180, 120, 70, WHITE, LIGHT, MID)
+    p.append(on_left(0, 0, 84, 180, 120, 70, 0.4, 0.0, 0.6, 0.7, DARK, 3))
+    p.append(poly([(-20, -20, 154), (200, -20, 154), (200, 60, 230), (-20, 60, 230)], LIGHT))
+    p.append(poly([(-20, 60, 230), (200, 60, 230), (200, 140, 154), (-20, 140, 154)], WHITE))
+    p.append(poly([(-20, 140, 154), (-20, 60, 230), (-20, -20, 154)], MID))
+    p.append(poly([(120, 80, 200), (170, 80, 200), (170, 110, 178), (120, 110, 178)], Y, 3))
+    return p
+
+
 ITEMS = {
+    "ve-tinh": ve_tinh, "chao-thu": chao_thu, "modem": modem, "thap-bat": thap_bat,
+    "tau-ca": tau_ca, "may-bay": may_bay, "nha-san": nha_san,
     "cua-hep": cua_hep, "bac-thang": bac_thang,
     "toa-nha-quoc-hoi": toa_nha_quoc_hoi, "dien-thoai": dien_thoai, "chip": chip, "laptop": laptop,
     "tien": tien, "tai-lieu": tai_lieu, "nha-may": nha_may, "may-chu": may_chu,

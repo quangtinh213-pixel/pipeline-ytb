@@ -1,0 +1,2471 @@
+{
+ "scenes": [
+  {
+   "id": "c001",
+   "y": "Mở bằng sự kiện có số: chuyến bay thứ 15 của Starship vừa về Texas",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "15",
+    "truoc": "Chuyến bay ",
+    "sau": "",
+    "nhan": "Starship về lại Texas",
+    "nguon_id": "sp1",
+    "svg": "ten-lua",
+    "tong": "hook"
+   },
+   "an_du": "Số 15 lấy từ trang SpaceX (sp1); tên lửa mờ phía sau chỉ là chủ thể, không thêm ý"
+  },
+  {
+   "id": "c002",
+   "y": "Con tàu đi rồi về đúng chỗ sau gần một ngày",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "22,5",
+    "truoc": "",
+    "sau": " giờ",
+    "nhan": "Rời đi rồi về đúng chỗ",
+    "nguon_id": "sp3",
+    "svg": "dong-ho"
+   }
+  },
+  {
+   "id": "c003",
+   "y": "Người xem tận mắt thấy tháp khép tay bắt tàu",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "bat-tau-b.mp4",
+    "nhan": "Tháp bắt Starship",
+    "tu_khoa": "Hai cánh tay thép"
+   },
+   "an_du": "Clip thật webcast chuyến bay 15, đúng khoảnh khắc sp4 mô tả"
+  },
+  {
+   "id": "c004",
+   "y": "Đóng đinh ý 'lần đầu tiên'",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "bắt gọn con tàu, lần đầu tiên.",
+    "nhan_tu": "lần đầu tiên"
+   }
+  },
+  {
+   "id": "c005",
+   "y": "Chuyển sang Việt Nam: trang Starlink tiếng Việt có giá thật",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-s1.png",
+    "khung": "13.2,45.4,14.4,9.3",
+    "nguon_id": "s1",
+    "tom_tat": "Starlink Việt Nam: từ 565.995 đồng/tháng",
+    "vien": "nhan"
+   },
+   "an_du": "Ảnh chụp đúng trang starlink.com/vn (s1), khoanh dòng giá"
+  },
+  {
+   "id": "c006",
+   "y": "Con số giá vệ tinh đập vào mắt",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "565.995",
+    "truoc": "",
+    "sau": " đ/tháng",
+    "nhan": "Starlink, gói rẻ nhất",
+    "nguon_id": "s1",
+    "svg": "chao-thu"
+   },
+   "an_du": "Giá chép đúng trang s1; chảo thu chỉ là hình sản phẩm"
+  },
+  {
+   "id": "c007",
+   "y": "Giới thiệu đối thủ quen thuộc: modem cáp quang trong nhà",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cáp quang phổ thông"
+   },
+   "vat_chinh": "modem",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "dong-xu"
+   ]
+  },
+  {
+   "id": "c008",
+   "y": "Đặt hai giá cạnh nhau: chênh lệch thấy ngay",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Cáp quang FPT",
+     "svg": "modem",
+     "so": "195.000",
+     "don_vi": "đồng"
+    },
+    "phai": {
+     "nhan": "Starlink",
+     "svg": "chao-thu",
+     "so": "565.995",
+     "don_vi": "đồng"
+    },
+    "nguon_id": [
+     "f1",
+     "s1"
+    ]
+   },
+   "an_du": "Hai giá lấy từ f1 và s1; cột cao theo đúng tỉ lệ số"
+  },
+  {
+   "id": "c009",
+   "y": "Câu hỏi của cả video",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Internet vệ tinh đã đủ rẻ để thay modem cáp",
+    "nhan_tu": "đủ rẻ",
+    "nho": "Câu hỏi của video"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "đủ rẻ"
+   }
+  },
+  {
+   "id": "c010",
+   "y": "Nhịp thở: hình ảnh cáp mạng quen thuộc",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "trung-tam-du-lieu-1085656-c010.mp4",
+    "nhan": "Cáp mạng"
+   }
+  },
+  {
+   "id": "c011",
+   "y": "Câu trả lời bắt đầu từ cái tháp",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Tháp phóng ở Texas"
+   },
+   "an_du": "Tháp bắt tàu đúng như sp4; không thêm chi tiết",
+   "vat_chinh": "thap-bat",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "ten-lua"
+   ]
+  },
+  {
+   "id": "c012",
+   "y": "Chuyến bay chở hàng: 26 vệ tinh",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "26",
+    "truoc": "",
+    "sau": " vệ tinh",
+    "nhan": "Starlink thế hệ mới",
+    "nguon_id": "sp2",
+    "svg": "ve-tinh"
+   },
+   "an_du": "Số vệ tinh lấy từ sp2"
+  },
+  {
+   "id": "c013",
+   "y": "Quan hệ: tên lửa đưa vệ tinh lên, vệ tinh bán mạng cho người Việt",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cùng một mạng Starlink",
+    "buoc": [
+     {
+      "nhan": "Tên lửa thả vệ tinh",
+      "svg": "ten-lua"
+     },
+     {
+      "nhan": "Mạng vệ tinh Starlink",
+      "svg": "ve-tinh"
+     },
+     {
+      "nhan": "Gói bán ở Việt Nam",
+      "svg": "co-viet-nam"
+     }
+    ],
+    "noi_bat": 2
+   },
+   "an_du": "Chỉ nói vệ tinh thuộc cùng mạng (sp2) với dịch vụ đang bán ở Việt Nam (s1); không nói chính 26 vệ tinh đó phục vụ Việt Nam"
+  },
+  {
+   "id": "c014",
+   "y": "Giải phẫu tên lửa: hai phần",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Tên lửa có hai phần",
+    "boi": [
+     {
+      "chu": "Tầng đẩy",
+      "tu": "tầng đẩy",
+      "x": 0.68,
+      "y": 0.62,
+      "kieu": "trang",
+      "mui_ten": "trai"
+     }
+    ],
+    "tong": "ky-thuat"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "trai"
+   },
+   "vat_chinh": "ten-lua",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "thap-bat"
+   ]
+  },
+  {
+   "id": "c015",
+   "y": "Vai trò hai phần khác nhau",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Tầng đẩy: quay đầu",
+     "svg": "mui-ten-len"
+    },
+    "phai": {
+     "nhan": "Con tàu: vào quỹ đạo",
+     "svg": "ten-lua"
+    }
+   }
+  },
+  {
+   "id": "c016",
+   "y": "Con tàu phải bay quanh Trái Đất rồi về",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Phần khó nhất"
+   },
+   "an_du": "Quả cầu là Trái Đất, vệ tinh là con tàu bay vòng; đúng hành trình sp7, sp8",
+   "vat_chinh": "bong-bong",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "ve-tinh"
+   ]
+  },
+  {
+   "id": "c017",
+   "y": "Logo kênh, nhắc câu hỏi",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "mo-dau",
+    "cau": "Internet vệ tinh đã rẻ hơn cáp quang?"
+   }
+  },
+  {
+   "id": "c018",
+   "y": "Thời gian trên quỹ đạo",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "20",
+    "truoc": "Hơn ",
+    "sau": " giờ",
+    "nhan": "Trên quỹ đạo",
+    "nguon_id": "sp7",
+    "svg": "ve-tinh"
+   }
+  },
+  {
+   "id": "c019",
+   "y": "Hành trình về: rời quỹ đạo, về tháp",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Rời quỹ đạo, về tháp",
+    "boi": [
+     {
+      "chu": "Đốt lại một động cơ",
+      "tu": "đốt lại",
+      "x": 0.3,
+      "y": 0.25,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Đáp đúng chỗ cũ",
+      "tu": "chỗ cũ",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "nhan"
+     }
+    ]
+   },
+   "an_du": "Đúng sp8 (đốt lại một động cơ để rời quỹ đạo) và sp4 (về tháp)",
+   "vat_chinh": "ten-lua",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "bong-bong",
+    "thap-bat"
+   ]
+  },
+  {
+   "id": "c020",
+   "y": "Ẩn dụ dễ hiểu: tên lửa dùng một lần như đốt xe sau mỗi chuyến",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Giao xong, đốt luôn xe",
+    "boi": [
+     {
+      "chu": "Hà Nội",
+      "tu": "Hà Nội",
+      "x": 0.2,
+      "y": 0.3,
+      "kieu": "trang"
+     },
+     {
+      "chu": "Sài Gòn",
+      "tu": "Sài Gòn",
+      "x": 0.8,
+      "y": 0.3,
+      "kieu": "trang"
+     },
+     {
+      "chu": "Đốt bỏ",
+      "tu": "đốt bỏ",
+      "x": 0.5,
+      "y": 0.2,
+      "kieu": "do"
+     }
+    ]
+   },
+   "an_du": "So sánh do chính lời đọc đưa ra; không gắn số chi phí vì nguồn không có",
+   "vat_chinh": "oto",
+   "may_quay": "lia",
+   "dao_cu": [
+    "container"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c021",
+   "y": "Dùng một lần so với bắt lại được",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Dùng một lần",
+     "svg": "ten-lua"
+    },
+    "phai": {
+     "nhan": "Bắt lại cả hai phần",
+     "svg": "thap-bat"
+    }
+   }
+  },
+  {
+   "id": "c022",
+   "y": "Kết ẩn dụ: xe quay về bến",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Về bến, chạy tiếp"
+   },
+   "vat_chinh": "oto",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "mui-ten-len"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c023",
+   "y": "Câu hỏi phản biện: chuyến này hoàn hảo à?",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Thế chuyến này hoàn hảo à? Chưa.",
+    "nhan_tu": "Chưa.",
+    "nho": "Câu hỏi"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "hoàn hảo"
+   }
+  },
+  {
+   "id": "c024",
+   "y": "Bằng chứng: SpaceX tự ghi tầng đẩy hụt một động cơ",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-sp6.png",
+    "khung": "3.2,39.8,47.1,20.5",
+    "nguon_id": "sp6",
+    "tom_tat": "Tầng đẩy chỉ đốt lại 32 trên 33 động cơ",
+    "vien": "do",
+    "zoom": 2.6
+   },
+   "an_du": "Dòng nguyên văn trên trang SpaceX (sp6)"
+  },
+  {
+   "id": "c025",
+   "y": "Nguyên nhân chưa rõ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Thiếu nhiên liệu",
+    "boi": [
+     {
+      "chu": "Đang điều tra",
+      "tu": "điều tra",
+      "x": 0.72,
+      "y": 0.28,
+      "kieu": "do"
+     }
+    ]
+   },
+   "vat_chinh": "ten-lua",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "mui-ten-xuong",
+    "kinh-lup"
+   ]
+  },
+  {
+   "id": "c026",
+   "y": "Tầng đẩy đổi hướng ra biển",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Không về được tháp",
+    "boi": [
+     {
+      "chu": "Ra ngoài khơi",
+      "tu": "ngoài khơi",
+      "x": 0.72,
+      "y": 0.35,
+      "kieu": "do",
+      "mui_ten": "phai"
+     }
+    ]
+   },
+   "vat_chinh": "thap-bat",
+   "may_quay": "lia",
+   "dao_cu": [
+    "mui-ten-xuong"
+   ]
+  },
+  {
+   "id": "c027",
+   "y": "Kết cục tầng đẩy, nguyên văn SpaceX",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "sp5",
+    "trich": "Upon landing burn shutdown, the Super Heavy's flight termination system was triggered.",
+    "to_vang": "flight termination system was triggered",
+    "trich_vi": "Khi tắt lần đốt hạ cánh, hệ thống tự hủy của Super Heavy được kích hoạt.",
+    "to_vang_vi": "hệ thống tự hủy"
+   },
+   "an_du": "Trích nguyên văn sp5, bản dịch sát nghĩa"
+  },
+  {
+   "id": "c028",
+   "y": "Một chuyến, hai kết cục",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Con tàu: về tháp",
+     "svg": "thap-bat"
+    },
+    "phai": {
+     "nhan": "Tầng đẩy: tự hủy",
+     "svg": "ten-lua"
+    }
+   },
+   "an_du": "Hai kết cục lấy từ sp4 và sp5; không đánh giá thêm"
+  },
+  {
+   "id": "c029",
+   "y": "Chốt: một nửa thành công, và kênh nói rõ chỗ chưa có số",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Một nửa thành công.",
+    "nhan_tu": "Một nửa"
+   },
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai",
+    "tu": "Kênh không tìm thấy"
+   }
+  },
+  {
+   "id": "c030",
+   "y": "Thành thật: không quy ra tiền được",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Chưa có số chi phí",
+    "boi": [
+     {
+      "chu": "Không có nguồn",
+      "tu": "không quy ra tiền",
+      "x": 0.7,
+      "y": 0.3,
+      "kieu": "do"
+     }
+    ]
+   },
+   "vat_chinh": "tien",
+   "may_quay": "dung",
+   "dao_cu": [
+    "kinh-lup"
+   ]
+  },
+  {
+   "id": "c031",
+   "y": "Cơ chế bước 1: bay lại nhiều lần",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cơ chế",
+    "buoc": [
+     {
+      "nhan": "Bay lại nhiều lần",
+      "svg": "thap-bat"
+     },
+     {
+      "nhan": "Phóng vệ tinh đỡ tốn",
+      "svg": "ve-tinh"
+     },
+     {
+      "nhan": "Thêm hàng để bán",
+      "svg": "chao-thu"
+     }
+    ],
+    "noi_bat": 0
+   },
+   "an_du": "Chuỗi nhân quả đúng lời đọc; không gắn số chi phí vì nguồn không có"
+  },
+  {
+   "id": "c032",
+   "y": "Cơ chế bước cuối: thêm hàng để bán",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cơ chế",
+    "buoc": [
+     {
+      "nhan": "Bay lại nhiều lần",
+      "svg": "thap-bat"
+     },
+     {
+      "nhan": "Phóng vệ tinh đỡ tốn",
+      "svg": "ve-tinh"
+     },
+     {
+      "nhan": "Thêm hàng để bán",
+      "svg": "chao-thu"
+     }
+    ],
+    "noi_bat": 2
+   }
+  },
+  {
+   "id": "c033",
+   "y": "Điều kiện tái sử dụng trọn vẹn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cả hai tầng phải về",
+    "nguon_id": "sp2",
+    "boi": [
+     {
+      "chu": "26 vệ tinh",
+      "tu": "hai mươi sáu",
+      "x": 0.25,
+      "y": 0.3,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Cả hai tầng về",
+      "tu": "cả hai tầng",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "nhan"
+     }
+    ]
+   },
+   "an_du": "26 vệ tinh từ sp2; điều kiện 'cả hai tầng về' là lời đọc",
+   "vat_chinh": "thap-bat",
+   "may_quay": "he-lo",
+   "dao_cu": [
+    "ten-lua",
+    "ve-tinh"
+   ]
+  },
+  {
+   "id": "c034",
+   "y": "Cầu nối sang Việt Nam",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Đang thử ở Việt Nam"
+   },
+   "an_du": "Cờ Việt Nam = nơi thí điểm theo Quyết định 659 (q1)",
+   "vat_chinh": "co-viet-nam",
+   "may_quay": "he-lo",
+   "dao_cu": [
+    "ve-tinh",
+    "chao-thu"
+   ]
+  },
+  {
+   "id": "c035",
+   "y": "Mở chương",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 1",
+    "chuong": "Starlink được phép làm gì",
+    "tong": "viet-nam"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c036",
+   "y": "Văn bản gốc: Quyết định 659",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "659",
+    "truoc": "Quyết định ",
+    "sau": "",
+    "nhan": "Ban hành năm 2025",
+    "nguon_id": "q4",
+    "svg": "tai-lieu"
+   }
+  },
+  {
+   "id": "c037",
+   "y": "Ba chữ: trần, hạn, điều kiện",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Thí điểm có kiểm soát",
+    "boi": [
+     {
+      "chu": "Có trần",
+      "tu": "có trần",
+      "x": 0.22,
+      "y": 0.3,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Có hạn",
+      "tu": "có hạn",
+      "x": 0.5,
+      "y": 0.2,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Có điều kiện",
+      "tu": "có điều kiện",
+      "x": 0.78,
+      "y": 0.3,
+      "kieu": "vang"
+     }
+    ]
+   },
+   "an_du": "Cửa hẹp = thí điểm có kiểm soát, đúng chữ của Quyết định (q1, q2)",
+   "vat_chinh": "cua-hep",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "o-khoa"
+   ],
+   "san_khau": "co-quan"
+  },
+  {
+   "id": "c038",
+   "y": "Con số trần",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "600.000",
+    "truoc": "",
+    "sau": " thuê bao",
+    "nhan": "Trần thí điểm",
+    "nguon_id": "q1",
+    "svg": "nguoi-nhom"
+   },
+   "an_du": "Trần lấy nguyên văn q1"
+  },
+  {
+   "id": "c039",
+   "y": "Bằng chứng: câu trong Quyết định",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-q1.png",
+    "khung": "12.9,48.0,52.7,13.9",
+    "nguon_id": "q1",
+    "tom_tat": "Tối đa 600.000 thuê bao thí điểm",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c040",
+   "y": "Hạn chót",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "2031",
+    "truoc": "Trước ",
+    "sau": "",
+    "nhan": "Hạn chót thí điểm",
+    "nguon_id": "q2",
+    "svg": "lich"
+   }
+  },
+  {
+   "id": "c041",
+   "y": "Phạm vi thí điểm rộng hơn Internet nhà",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cố định, biển, máy bay",
+    "boi": [
+     {
+      "chu": "Cố định",
+      "tu": "cố định",
+      "x": 0.2,
+      "y": 0.3,
+      "kieu": "nhan"
+     },
+     {
+      "chu": "Trên biển",
+      "tu": "trên biển",
+      "x": 0.5,
+      "y": 0.2,
+      "kieu": "nhan"
+     },
+     {
+      "chu": "Trên máy bay",
+      "tu": "máy bay",
+      "x": 0.8,
+      "y": 0.3,
+      "kieu": "nhan"
+     }
+    ]
+   },
+   "vat_chinh": "chao-thu",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "tau-ca",
+    "may-bay"
+   ]
+  },
+  {
+   "id": "c042",
+   "y": "Đặt câu hỏi ngược: 600 nghìn có nhiều không?",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Sáu trăm nghìn nghe thì nhiều.",
+    "nhan_tu": "nghe thì nhiều"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "nghe thì nhiều"
+   }
+  },
+  {
+   "id": "c043",
+   "y": "Tỷ lệ nhỏ bất ngờ",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "phan-tram",
+    "so": 2.5,
+    "nhan": "Tổng thuê bao cố định",
+    "tieu_de": "Trần 600.000 bằng",
+    "nguon_id": "c1"
+   },
+   "an_du": "Tỷ lệ 2,5% do Cục Viễn thông nêu (c1)"
+  },
+  {
+   "id": "c044",
+   "y": "Bằng chứng: lời Cục Viễn thông",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-c1.png",
+    "khung": "12.4,38.3,55.5,23.4",
+    "nguon_id": "c1",
+    "tom_tat": "Chỉ khoảng 2,5% thuê bao băng rộng cố định",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c045",
+   "y": "Góc nhỏ của thị trường",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Starlink tối đa ~2,5%",
+     "svg": "nguoi",
+     "to": 0.06
+    },
+    "phai": {
+     "nhan": "Cả thị trường cố định",
+     "svg": "nguoi-nhom",
+     "to": 1.0
+    },
+    "nguon_id": "c1"
+   }
+  },
+  {
+   "id": "c046",
+   "y": "Hạ tầng đặt ở đâu",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Bốn trạm mặt đất",
+    "nguon_id": "c5",
+    "boi": [
+     {
+      "chu": "4 trạm",
+      "tu": "bốn trạm",
+      "x": 0.5,
+      "y": 0.18,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Phú Thọ",
+      "tu": "Phú Thọ",
+      "x": 0.2,
+      "y": 0.35,
+      "kieu": "trang"
+     },
+     {
+      "chu": "Đà Nẵng",
+      "tu": "Đà Nẵng",
+      "x": 0.5,
+      "y": 0.42,
+      "kieu": "trang"
+     },
+     {
+      "chu": "TP HCM",
+      "tu": "Thành phố Hồ Chí Minh",
+      "x": 0.8,
+      "y": 0.35,
+      "kieu": "trang"
+     }
+    ]
+   },
+   "vat_chinh": "tram-phat-song",
+   "may_quay": "dung",
+   "dao_cu": [
+    "ve-tinh"
+   ],
+   "san_khau": "may-chu"
+  },
+  {
+   "id": "c047",
+   "y": "Cơ quan quản lý lên tiếng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cục đánh giá"
+   },
+   "vat_chinh": "tai-lieu",
+   "may_quay": "dung",
+   "dao_cu": [
+    "kinh-lup"
+   ],
+   "san_khau": "co-quan"
+  },
+  {
+   "id": "c048",
+   "y": "Kết luận của Cục",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Starlink ít có khả năng cạnh tranh trực tiếp với nhà mạng trong nước.",
+    "nhan_tu": "ít có khả năng cạnh tranh",
+    "nho": "Cục Viễn thông đánh giá"
+   },
+   "an_du": "Câu đánh giá của Cục (c1), không thêm ý"
+  },
+  {
+   "id": "c049",
+   "y": "Ẩn dụ quán phở: chỗ ngồi đếm sẵn",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Số bàn đếm sẵn",
+    "boi": [
+     {
+      "chu": "Quán nổi tiếng",
+      "tu": "quán phở",
+      "x": 0.25,
+      "y": 0.25,
+      "kieu": "trang"
+     },
+     {
+      "chu": "Số bàn đếm sẵn",
+      "tu": "vài chục bàn",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "vang"
+     }
+    ]
+   },
+   "an_du": "So sánh của lời đọc: trần thuê bao (q1) = số bàn đếm sẵn; không nói gì về chất lượng",
+   "vat_chinh": "cao-oc",
+   "may_quay": "lia",
+   "dao_cu": [
+    "nguoi-nhom",
+    "cua-hep"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c050",
+   "y": "Chuyển sang giá",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Có hạn. Giá bao nhiêu?"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "Vậy giá"
+   },
+   "vat_chinh": "o-khoa",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "tien"
+   ]
+  },
+  {
+   "id": "c051",
+   "y": "Mở chương giá",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 2",
+    "chuong": "Giá dự kiến và giá đang chào",
+    "tong": "khai-niem"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c052",
+   "y": "Tháng đầu dự kiến",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "435",
+    "truoc": "",
+    "sau": " USD",
+    "nhan": "Tháng đầu, dự kiến",
+    "nguon_id": "c3",
+    "svg": "tien"
+   },
+   "an_du": "Mức dự kiến của Bộ (c3)"
+  },
+  {
+   "id": "c053",
+   "y": "Thiết bị chiếm phần lớn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Phần lớn là thiết bị",
+    "nguon_id": "c3",
+    "boi": [
+     {
+      "chu": "350 USD thiết bị",
+      "tu": "ba trăm năm mươi",
+      "x": 0.7,
+      "y": 0.3,
+      "kieu": "vang"
+     }
+    ]
+   },
+   "vat_chinh": "chao-thu",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "tien"
+   ]
+  },
+  {
+   "id": "c054",
+   "y": "Bằng chứng: trang Bộ KH&CN",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-c2.png",
+    "khung": "12.4,41.7,55.5,16.6",
+    "nguon_id": "c2",
+    "tom_tat": "Từ tháng thứ hai: khoảng 85 USD, tức 2,2 triệu đồng",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c055",
+   "y": "Hôm nay: hai gói trên trang Starlink",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trich-bao",
+    "cac": [
+     {
+      "nguon_id": "s1",
+      "tom_tat": "100 Mbps: từ 565.995 đồng"
+     },
+     {
+      "nguon_id": "s2",
+      "tom_tat": "Trên 400 Mbps: từ 855.550 đồng"
+     }
+    ]
+   }
+  },
+  {
+   "id": "c056",
+   "y": "Gói đắt",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "855.550",
+    "truoc": "",
+    "sau": " đ/tháng",
+    "nhan": "Gói tối đa trên 400 Mbps",
+    "nguon_id": "s2",
+    "svg": "chao-thu"
+   }
+  },
+  {
+   "id": "c057",
+   "y": "Gói rẻ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "565.995",
+    "truoc": "",
+    "sau": " đ/tháng",
+    "nhan": "Gói 100 Mbps",
+    "nguon_id": "s1",
+    "svg": "tien"
+   }
+  },
+  {
+   "id": "c058",
+   "y": "So dự kiến với giá đang chào",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Dự kiến tháng 3",
+     "svg": "tien",
+     "so": "2,2",
+     "don_vi": "triệu đồng"
+    },
+    "phai": {
+     "nhan": "Gói đắt nhất đang chào",
+     "svg": "tien",
+     "so": "855.550",
+     "don_vi": "đồng"
+    },
+    "ti_le": "gấp khoảng 2,57 lần",
+    "nguon_id": [
+     "c2",
+     "s2",
+     "t1"
+    ]
+   },
+   "an_du": "Hai mức từ c2, s2; tỉ lệ kênh tự tính (t1)"
+  },
+  {
+   "id": "c059",
+   "y": "Đảo chiều: giá chào chưa bằng nửa dự kiến",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": true,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "giá đang chào chưa bằng một nửa.",
+    "nhan_tu": "chưa bằng một nửa"
+   },
+   "an_du": "Phép so của kênh (t1); lời đọc nói rõ nguồn tháng 3 không ghi gói nào"
+  },
+  {
+   "id": "c060",
+   "y": "Điều kiện in nhỏ dưới giá",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-s1.png",
+    "khung": "13.2,45.4,14.4,9.3",
+    "nguon_id": "s1",
+    "tom_tat": "Ở một số khu vực, đăng ký trước 1/12",
+    "vien": "do"
+   },
+   "an_du": "Dòng chữ nhỏ thật trên trang s1"
+  },
+  {
+   "id": "c061",
+   "y": "Hai câu hỏi chưa có trả lời",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Còn bỏ ngỏ",
+    "nguon_id": "s1",
+    "boi": [
+     {
+      "chu": "Khu vực nào?",
+      "tu": "khu vực nào",
+      "x": 0.25,
+      "y": 0.3,
+      "kieu": "do"
+     },
+     {
+      "chu": "Sau 1/12?",
+      "tu": "Qua ngày đó",
+      "x": 0.75,
+      "y": 0.3,
+      "kieu": "do"
+     }
+    ]
+   },
+   "vat_chinh": "lich",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "kinh-lup"
+   ],
+   "san_khau": "san-giao-dich"
+  },
+  {
+   "id": "c062",
+   "y": "Chốt: mới chỉ là giá chào",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "con số kia mới chỉ là giá chào, chưa phải giá cố định.",
+    "nhan_tu": "giá chào",
+    "nho": "Kênh chưa kiểm được"
+   },
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai",
+    "tu": "chưa kiểm được"
+   }
+  },
+  {
+   "id": "c063",
+   "y": "Thêm một dòng nhỏ: chậm giờ cao điểm",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-s3.png",
+    "khung": "2.3,46.4,95.5,7.1",
+    "nguon_id": "s3",
+    "tom_tat": "Gói 100 Mbps chậm hơn vào giờ cao điểm",
+    "vien": "do"
+   },
+   "an_du": "Dòng nguyên văn trang Starlink (s3)"
+  },
+  {
+   "id": "c064",
+   "y": "Giờ cao điểm không được định nghĩa",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Mấy giờ?",
+    "boi": [
+     {
+      "chu": "Trang không ghi",
+      "tu": "không ghi",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "do"
+     }
+    ]
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "cơ quan quản lý"
+   },
+   "vat_chinh": "dong-ho",
+   "may_quay": "dung",
+   "dao_cu": [
+    "mui-ten-xuong"
+   ]
+  },
+  {
+   "id": "c065",
+   "y": "Bối cảnh: buổi họp báo tháng 3",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "micro-phong-hop-6951298-c065.mp4",
+    "nhan": "Ảnh minh họa"
+   }
+  },
+  {
+   "id": "c066",
+   "y": "Bằng chứng: lời cảnh báo",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-c4.png",
+    "khung": "12.4,41.7,55.5,16.6",
+    "nguon_id": "c4",
+    "tom_tat": "Giảm giá cạnh tranh không lành mạnh: tăng cường giám sát",
+    "vien": "nhan"
+   },
+   "an_du": "Câu nguyên văn của Cục (c4)"
+  },
+  {
+   "id": "c067",
+   "y": "Đó là cảnh báo chung",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Tăng cường giám sát",
+    "boi": [
+     {
+      "chu": "Cảnh báo chung",
+      "tu": "cảnh báo chung",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "vang"
+     }
+    ]
+   },
+   "vat_chinh": "kinh-lup",
+   "may_quay": "dung",
+   "dao_cu": [
+    "tien"
+   ],
+   "san_khau": "co-quan"
+  },
+  {
+   "id": "c068",
+   "y": "Kênh không thấy vi phạm nào",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "giay-to-7732805-c068.mp4",
+    "nhan": "Hồ sơ",
+    "tu_khoa": "Chưa thấy vi phạm"
+   },
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "phai",
+    "tu": "Kênh không thấy"
+   }
+  },
+  {
+   "id": "c069",
+   "y": "Mời đăng ký để theo dõi mốc giá",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Theo dõi giá cùng kênh"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai",
+    "tu": "đăng ký kênh"
+   },
+   "vat_chinh": "dien-thoai",
+   "may_quay": "dung",
+   "dao_cu": [
+    "lich"
+   ]
+  },
+  {
+   "id": "c070",
+   "y": "Hẹn mốc 1/12",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Mốc 1/12",
+    "nguon_id": "s1"
+   },
+   "vat_chinh": "lich",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "chao-thu"
+   ]
+  },
+  {
+   "id": "c071",
+   "y": "Mở chương so hóa đơn",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 3",
+    "chuong": "Đặt cạnh hóa đơn cáp quang",
+    "tong": "hook"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c072",
+   "y": "Bằng chứng: bảng giá FPT",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-f1.png",
+    "khung": "7.5,37,86,28",
+    "nguon_id": "f1",
+    "tom_tat": "Internet GIGA 300 Mbps: 195.000 đồng/tháng",
+    "vien": "nhan"
+   },
+   "an_du": "Ảnh chụp trang fpt.vn (f1)"
+  },
+  {
+   "id": "c073",
+   "y": "Gói 1 Gbps cùng giá",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "195.000",
+    "truoc": "",
+    "sau": " đ/tháng",
+    "nhan": "Gói 1 Gbps cũng vậy",
+    "nguon_id": "f2",
+    "svg": "modem"
+   }
+  },
+  {
+   "id": "c074",
+   "y": "Gấp gần ba lần",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Cáp quang FPT",
+     "svg": "modem",
+     "so": "195.000",
+     "don_vi": "đồng"
+    },
+    "phai": {
+     "nhan": "Starlink 100 Mbps",
+     "svg": "chao-thu",
+     "so": "565.995",
+     "don_vi": "đồng"
+    },
+    "ti_le": "gần gấp 3",
+    "nguon_id": [
+     "f1",
+     "s1",
+     "t2"
+    ]
+   },
+   "an_du": "Giá f1, s1; tỉ lệ kênh tự tính (t2)"
+  },
+  {
+   "id": "c075",
+   "y": "Gói đắt hơn bốn lần",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "xep-hang",
+    "tieu_de": "Giá mỗi tháng",
+    "hang": [
+     {
+      "nhan": "Starlink trên 400 Mbps",
+      "so": 855550
+     },
+     {
+      "nhan": "Starlink 100 Mbps",
+      "so": 565995
+     },
+     {
+      "nhan": "FPT 300 Mbps",
+      "so": 195000
+     }
+    ],
+    "don_vi": "đồng",
+    "nguon_id": [
+     "s2",
+     "s1",
+     "f1"
+    ],
+    "noi_bat": 0
+   },
+   "an_du": "Ba giá đều từ trang hãng (s1, s2, f1)"
+  },
+  {
+   "id": "c076",
+   "y": "Quy ra năm: cáp quang",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "2,34",
+    "truoc": "",
+    "sau": " triệu đồng",
+    "nhan": "Cáp quang, một năm",
+    "nguon_id": "t5",
+    "svg": "modem"
+   },
+   "dan": {
+    "the": "tinh-toan",
+    "goc": "phai",
+    "tu": "Quy ra"
+   }
+  },
+  {
+   "id": "c077",
+   "y": "Giả định giá giữ cả năm",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "may-tinh-tay-3860709-c077.mp4",
+    "nhan": "Tính cả năm",
+    "tu_khoa": "Nếu giá giữ cả năm"
+   }
+  },
+  {
+   "id": "c078",
+   "y": "Quy ra năm: Starlink",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "6,79",
+    "truoc": "",
+    "sau": " triệu đồng",
+    "nhan": "Starlink 100 Mbps, một năm",
+    "nguon_id": "t4",
+    "huong": "len",
+    "svg": "chao-thu"
+   },
+   "an_du": "Phép tính t4 của kênh từ giá s1"
+  },
+  {
+   "id": "c079",
+   "y": "Chưa tính thiết bị, bằng chứng từ Bộ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-c3.png",
+    "khung": "12.4,41.7,55.5,16.6",
+    "nguon_id": "c3",
+    "tom_tat": "Khoảng 350 USD cho bộ thiết bị đầu cuối",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c080",
+   "y": "Khoản chênh quy ra số năm cáp quang",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Chênh gần hai năm",
+    "nguon_id": "t6",
+    "boi": [
+     {
+      "chu": "Chênh 4.451.940 đồng/năm",
+      "tu": "khoản chênh",
+      "x": 0.28,
+      "y": 0.25,
+      "kieu": "vang"
+     },
+     {
+      "chu": "Gần 2 năm cáp quang",
+      "tu": "gần hai năm",
+      "x": 0.74,
+      "y": 0.3,
+      "kieu": "nhan"
+     }
+    ]
+   },
+   "an_du": "Phép tính t6 của kênh; lịch = số năm, modem = cáp quang",
+   "vat_chinh": "modem",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "lich",
+    "dong-xu"
+   ],
+   "san_khau": "san-giao-dich"
+  },
+  {
+   "id": "c081",
+   "y": "Chuyển sang tốc độ",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Đó là chưa nói tốc độ.",
+    "nhan_tu": "tốc độ"
+   }
+  },
+  {
+   "id": "c082",
+   "y": "Tốc độ cố định trung bình",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "297,64",
+    "truoc": "",
+    "sau": " Mbps",
+    "nhan": "Tốc độ Internet cố định",
+    "nguon_id": "n2",
+    "svg": "tia-set"
+   }
+  },
+  {
+   "id": "c083",
+   "y": "Tốc độ: 100 so với 300",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Starlink",
+     "svg": "chao-thu",
+     "so": "100",
+     "don_vi": "Mbps"
+    },
+    "phai": {
+     "nhan": "Cáp quang FPT",
+     "svg": "modem",
+     "so": "300",
+     "don_vi": "Mbps"
+    },
+    "nguon_id": [
+     "s1",
+     "f1"
+    ]
+   },
+   "an_du": "Tốc độ gói lấy từ s1, f1"
+  },
+  {
+   "id": "c084",
+   "y": "Chốt: rẻ hơn, nhanh hơn, trên giấy",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "vừa rẻ hơn vừa nhanh hơn, ít nhất là trên giấy.",
+    "nhan_tu": "trên giấy"
+   }
+  },
+  {
+   "id": "c085",
+   "y": "FPT không ghi chậm giờ cao điểm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "FPT: không ghi chậm",
+     "svg": "modem"
+    },
+    "phai": {
+     "nhan": "Starlink: chậm giờ cao điểm",
+     "svg": "chao-thu"
+    }
+   }
+  },
+  {
+   "id": "c086",
+   "y": "Câu trả lời cho nhà ở thành phố",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cáp quang tới cửa"
+   },
+   "an_du": "Nhà phố có cáp quang = trường hợp lời đọc nêu",
+   "vat_chinh": "modem",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "cao-oc"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c087",
+   "y": "Vậy Starlink cho ai?",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Chưa thay được modem"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "sinh ra cho ai"
+   },
+   "vat_chinh": "chao-thu",
+   "may_quay": "dung",
+   "dao_cu": [
+    "modem"
+   ]
+  },
+  {
+   "id": "c088",
+   "y": "Mở chương vùng lõm sóng",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 4",
+    "chuong": "Những nơi không kéo được dây",
+    "tong": "viet-nam"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c089",
+   "y": "Người nói: Cục trưởng Cục Viễn thông",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "b-roll",
+    "video": "phat-bieu.mp4",
+    "nhan": "Ông Nguyễn Thành Chung"
+   },
+   "an_du": "Ảnh thật trong bài Bộ KH&CN (b1–b5)"
+  },
+  {
+   "id": "c090",
+   "y": "Lễ bàn giao thật",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "b-roll",
+    "video": "ban-giao.mp4",
+    "nhan": "Lễ bàn giao thiết bị Starlink"
+   }
+  },
+  {
+   "id": "c091",
+   "y": "Gần trọn vẹn",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "phan-tram",
+    "so": 99.56,
+    "nhan": "Thôn, bản có băng rộng di động",
+    "nguon_id": "b3"
+   },
+   "an_du": "Tỷ lệ do Cục trưởng nêu (b3)"
+  },
+  {
+   "id": "c092",
+   "y": "Đảo chiều: phần còn lại mới khó",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Gần trọn vẹn. Phần còn lại mới khó.",
+    "nhan_tu": "mới khó"
+   }
+  },
+  {
+   "id": "c093",
+   "y": "Phần còn lại cụ thể",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "273",
+    "truoc": "",
+    "sau": " thôn",
+    "nhan": "Thôn còn phải xử lý",
+    "nguon_id": "b4",
+    "boi": [
+     {
+      "chu": "82 thôn chưa có điện",
+      "tu": "tám mươi hai",
+      "x": 0.5,
+      "y": 0.8,
+      "kieu": "do"
+     }
+    ],
+    "svg": "nha-san"
+   },
+   "an_du": "Số 273 và 82 từ rà soát 2026 (b4)"
+  },
+  {
+   "id": "c094",
+   "y": "Bằng chứng: rà soát năm 2026",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-b4.png",
+    "khung": "12.4,43.4,55.5,13.2",
+    "nguon_id": "b4",
+    "tom_tat": "Còn 273 thôn, 82 thôn chưa có điện lưới",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c095",
+   "y": "254 bộ thiết bị được bàn giao",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "254",
+    "truoc": "",
+    "sau": " bộ",
+    "nhan": "Bộ Starlink được bàn giao",
+    "nguon_id": "b1",
+    "svg": "chao-thu"
+   },
+   "an_du": "Số bộ từ b1"
+  },
+  {
+   "id": "c096",
+   "y": "Bằng chứng: bài của Bộ",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-b1.png",
+    "khung": "12.4,45.1,55.5,9.8",
+    "nguon_id": "b1",
+    "tom_tat": "254 bộ, gói tối đa 400 Mbps, miễn phí 6 tháng",
+    "vien": "nhan"
+   }
+  },
+  {
+   "id": "c097",
+   "y": "Cam kết tổng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "1.000",
+    "truoc": "",
+    "sau": " bộ",
+    "nhan": "Starlink cam kết tổng cộng",
+    "nguon_id": "b5",
+    "svg": "chao-thu"
+   }
+  },
+  {
+   "id": "c098",
+   "y": "Đã chạy ở bao nhiêu điểm",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trang-nguon",
+    "anh": "tn-n1.png",
+    "khung": "12.4,41.7,55.5,16.6",
+    "nguon_id": "n1",
+    "tom_tat": "Đến 1/11/2026: 196 điểm lõm sóng",
+    "vien": "vang"
+   },
+   "an_du": "Câu nguyên văn của Bộ (n1)"
+  },
+  {
+   "id": "c099",
+   "y": "Ai được dùng",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "xep-hang",
+    "tieu_de": "196 điểm lõm sóng",
+    "hang": [
+     {
+      "nhan": "Thôn, bản",
+      "so": 154
+     },
+     {
+      "nhan": "Cơ sở công lập",
+      "so": 42
+     }
+    ],
+    "don_vi": "điểm",
+    "nguon_id": "n1",
+    "noi_bat": 0
+   }
+  },
+  {
+   "id": "c100",
+   "y": "Ví dụ: trạm phát sóng ở bên kia núi",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ví dụ: trường bản cao"
+   },
+   "an_du": "Ví dụ giả định, lời đọc nói rõ 'ví dụ'; không gán cho địa phương cụ thể",
+   "vat_chinh": "nha-san",
+   "may_quay": "lia",
+   "dao_cu": [
+    "tram-phat-song",
+    "cay"
+   ]
+  },
+  {
+   "id": "c101",
+   "y": "Một chảo thu là có mạng",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ví dụ: chảo lên mái"
+   },
+   "an_du": "Chảo thu = thiết bị bàn giao (b1); ví dụ của lời đọc",
+   "vat_chinh": "nha-san",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "chao-thu",
+    "ve-tinh"
+   ]
+  },
+  {
+   "id": "c102",
+   "y": "Câu hỏi đầu tiên không phải giá",
+   "nhip_cam_xuc": "dao-chieu",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "gói rẻ hay gói đắt đều không phải câu hỏi đầu tiên.",
+    "nhan_tu": "không phải câu hỏi đầu tiên"
+   }
+  },
+  {
+   "id": "c103",
+   "y": "Có mạng hay không",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Rẻ hay đắt?",
+     "svg": "tien",
+     "to": 0.5
+    },
+    "phai": {
+     "nhan": "Có mạng hay không?",
+     "svg": "chao-thu",
+     "to": 1.0
+    }
+   }
+  },
+  {
+   "id": "c104",
+   "y": "Nhóm thứ hai: biển và máy bay",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Trên biển, trên máy bay",
+    "nguon_id": "q3"
+   },
+   "vat_chinh": "tau-ca",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "may-bay",
+    "ve-tinh"
+   ]
+  },
+  {
+   "id": "c105",
+   "y": "Tàu cá: vệ tinh là lựa chọn hiếm hoi",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Ngoài khơi cả tuần"
+   },
+   "an_du": "Ví dụ của lời đọc; Quyết định cho thí điểm Internet trên biển (q3)",
+   "vat_chinh": "tau-ca",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "ve-tinh"
+   ],
+   "san_khau": "cang"
+  },
+  {
+   "id": "c106",
+   "y": "Mở chương: hai việc",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 5",
+    "chuong": "Hai việc cần ngóng",
+    "tong": "ky-thuat"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c107",
+   "y": "Việc một: mốc 1/12",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Hạn đăng ký 1/12",
+    "nguon_id": "s1",
+    "boi": [
+     {
+      "chu": "Đăng ký trước 1/12",
+      "tu": "Qua mốc đó",
+      "x": 0.72,
+      "y": 0.3,
+      "kieu": "vang"
+     }
+    ]
+   },
+   "an_du": "Mốc in trên trang s1",
+   "vat_chinh": "lich",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "chao-thu"
+   ],
+   "san_khau": "san-giao-dich"
+  },
+  {
+   "id": "c108",
+   "y": "Giá lâu dài hay giá mở cửa?",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "là giá lâu dài, hay chỉ là giá mở cửa.",
+    "nhan_tu": "giá mở cửa",
+    "nho": "Câu hỏi"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "phai",
+    "tu": "giá lâu dài"
+   }
+  },
+  {
+   "id": "c109",
+   "y": "Nếu giá giữ: gần gấp ba",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "2,9",
+    "truoc": "Gấp ",
+    "sau": " lần",
+    "nhan": "Starlink so với cáp quang",
+    "nguon_id": "t2",
+    "svg": "chao-thu"
+   }
+  },
+  {
+   "id": "c110",
+   "y": "Nếu giá tăng",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Giá lên thì sao?"
+   },
+   "vat_chinh": "chao-thu",
+   "may_quay": "dung",
+   "dao_cu": [
+    "mui-ten-len",
+    "cao-oc"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c111",
+   "y": "Việc hai: SpaceX đang tìm nguyên nhân",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "trich-bao",
+    "nguon_id": "sp6",
+    "trich": "The boostback burn ended early due to low fuel mass",
+    "to_vang": "low fuel mass",
+    "trich_vi": "Lần đốt quay đầu kết thúc sớm do thiếu nhiên liệu",
+    "to_vang_vi": "thiếu nhiên liệu"
+   },
+   "an_du": "Trích nguyên văn sp6"
+  },
+  {
+   "id": "c112",
+   "y": "Điều kiện trọn vẹn",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Cả hai tầng cùng về"
+   },
+   "an_du": "Lời đọc nêu điều kiện; tháp từ sp4",
+   "vat_chinh": "thap-bat",
+   "may_quay": "he-lo",
+   "dao_cu": [
+    "ten-lua"
+   ]
+  },
+  {
+   "id": "c113",
+   "y": "Tái sử dụng trọn vẹn",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Theo cơ chế vừa kể",
+    "buoc": [
+     {
+      "nhan": "Cả hai tầng về",
+      "svg": "thap-bat"
+     },
+     {
+      "nhan": "Phóng lại",
+      "svg": "ten-lua"
+     },
+     {
+      "nhan": "Vệ tinh lên rẻ hơn",
+      "svg": "ve-tinh"
+     }
+    ],
+    "noi_bat": 1
+   }
+  },
+  {
+   "id": "c114",
+   "y": "Chi phí có cơ hội giảm thật",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Theo cơ chế vừa kể",
+    "buoc": [
+     {
+      "nhan": "Cả hai tầng về",
+      "svg": "thap-bat"
+     },
+     {
+      "nhan": "Phóng lại",
+      "svg": "ten-lua"
+     },
+     {
+      "nhan": "Vệ tinh lên rẻ hơn",
+      "svg": "ve-tinh"
+     }
+    ],
+    "noi_bat": 2
+   }
+  },
+  {
+   "id": "c115",
+   "y": "Mốc dài hơi: 2031",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-lon",
+    "so": "2031",
+    "truoc": "Trước ",
+    "sau": "",
+    "nhan": "Thí điểm phải kết thúc",
+    "nguon_id": "q2",
+    "svg": "co-viet-nam"
+   },
+   "an_du": "Năm 2031 lấy nguyên văn q2"
+  },
+  {
+   "id": "c116",
+   "y": "Sau 2031 thì sao",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Sau mốc đó Starlink được làm tiếp hay không,",
+    "nhan_tu": "làm tiếp hay không"
+   }
+  },
+  {
+   "id": "c117",
+   "y": "Bỏ ngỏ",
+   "nhip_cam_xuc": "ha",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Chưa có nguồn trả lời"
+   },
+   "dan": {
+    "the": "bo-ngo",
+    "goc": "trai",
+    "tu": "chưa có nguồn"
+   },
+   "vat_chinh": "tai-lieu",
+   "may_quay": "dung",
+   "dao_cu": [
+    "kinh-lup"
+   ]
+  },
+  {
+   "id": "c118",
+   "y": "Chi tiết buồn cười: con tàu đi vòng rồi về",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Bay hơn 20 giờ",
+     "svg": "bong-bong"
+    },
+    "phai": {
+     "nhan": "Về đúng chỗ cũ",
+     "svg": "thap-bat"
+    },
+    "nguon_id": "sp7"
+   }
+  },
+  {
+   "id": "c119",
+   "y": "Đối lập: modem ở nhà",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Rút phích, cắm lại"
+   },
+   "an_du": "Đối lập do lời đọc đưa ra; không nói gì về nhà mạng cụ thể",
+   "vat_chinh": "modem",
+   "may_quay": "punch-in",
+   "dao_cu": [
+    "tia-set"
+   ],
+   "san_khau": "thanh-pho"
+  },
+  {
+   "id": "c120",
+   "y": "Chốt chương",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Tàu vũ trụ",
+     "svg": "ten-lua"
+    },
+    "phai": {
+     "nhan": "Hóa đơn tiền đồng",
+     "svg": "tien"
+    }
+   }
+  },
+  {
+   "id": "c121",
+   "y": "Mở chương trả lời",
+   "nhip_cam_xuc": "mo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chuong",
+    "so": "Phần 6",
+    "chuong": "Trả lời câu hỏi",
+    "tong": "hook"
+   },
+   "dan": {
+    "the": "chao",
+    "goc": "phai"
+   }
+  },
+  {
+   "id": "c122",
+   "y": "Câu trả lời: chưa",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Chưa. Với giá đang chào,",
+    "nhan_tu": "Chưa.",
+    "nho": "Câu trả lời"
+   },
+   "an_du": "Kết luận dựa trên phép tính t2",
+   "dan": {
+    "the": "xac-nhan",
+    "goc": "phai",
+    "tu": "Chưa"
+   }
+  },
+  {
+   "id": "c123",
+   "y": "Gần gấp ba, chưa tính thiết bị",
+   "nhip_cam_xuc": "dinh",
+   "trong_diem": true,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Cáp quang, một năm",
+     "svg": "modem",
+     "so": "2,34",
+     "don_vi": "triệu đồng"
+    },
+    "phai": {
+     "nhan": "Starlink, một năm",
+     "svg": "chao-thu",
+     "so": "6,79",
+     "don_vi": "triệu đồng"
+    },
+    "nguon_id": [
+     "t5",
+     "t4"
+    ]
+   },
+   "an_du": "Hóa đơn năm kênh tự tính (t4, t5) từ giá f1, s1"
+  },
+  {
+   "id": "c124",
+   "y": "Tiêu chí chấm",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cách chấm của kênh",
+    "buoc": [
+     {
+      "nhan": "Có cáp quang tới cửa?",
+      "svg": "modem"
+     },
+     {
+      "nhan": "Có: chưa cần",
+      "svg": "cao-oc"
+     },
+     {
+      "nhan": "Không: chỗ Starlink phát huy",
+      "svg": "chao-thu"
+     }
+    ],
+    "noi_bat": 0
+   }
+  },
+  {
+   "id": "c125",
+   "y": "Hai nhánh",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "quy-trinh",
+    "tieu_de": "Cách chấm của kênh",
+    "buoc": [
+     {
+      "nhan": "Có cáp quang tới cửa?",
+      "svg": "modem"
+     },
+     {
+      "nhan": "Có: chưa cần",
+      "svg": "cao-oc"
+     },
+     {
+      "nhan": "Không: chỗ Starlink phát huy",
+      "svg": "chao-thu"
+     }
+    ],
+    "noi_bat": 1
+   }
+  },
+  {
+   "id": "c126",
+   "y": "Nơi Starlink đáng tiền",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": true,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Nơi cáp không tới"
+   },
+   "an_du": "Tàu, bản đúng các nhóm lời đọc nêu (q3, n1)",
+   "vat_chinh": "chao-thu",
+   "may_quay": "keo-ra",
+   "dao_cu": [
+    "tau-ca",
+    "nha-san"
+   ]
+  },
+  {
+   "id": "c127",
+   "y": "Điều kiện để kênh đổi ý",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "chu-dong",
+    "cau": "Kênh sẽ đổi ý nếu",
+    "nhan_tu": "đổi ý",
+    "nho": "Điều kiện"
+   }
+  },
+  {
+   "id": "c128",
+   "y": "Hai điều kiện cùng lúc",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-sanh",
+    "trai": {
+     "nhan": "Giá ngang cáp quang",
+     "svg": "tien"
+    },
+    "phai": {
+     "nhan": "Giờ cao điểm vẫn nhanh",
+     "svg": "dong-ho"
+    }
+   }
+  },
+  {
+   "id": "c129",
+   "y": "Mời đoán giá",
+   "nhip_cam_xuc": "leo",
+   "trong_diem": false,
+   "canh": {
+    "mau": "minh-hoa",
+    "nhan": "Sau 1/12: bao nhiêu?",
+    "nguon_id": "s1"
+   },
+   "dan": {
+    "the": "nghi",
+    "goc": "trai",
+    "tu": "Thử đoán"
+   },
+   "vat_chinh": "lich",
+   "may_quay": "day-vao",
+   "dao_cu": [
+    "chao-thu"
+   ]
+  },
+  {
+   "id": "c130",
+   "y": "Giá hiện tại làm mốc để đoán",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "so-lon",
+    "so": "565.995",
+    "truoc": "Hiện ",
+    "sau": " đ",
+    "nhan": "Sau 1/12 còn bao nhiêu?",
+    "nguon_id": "s1",
+    "svg": "chao-thu"
+   }
+  },
+  {
+   "id": "c131",
+   "y": "Màn kết",
+   "nhip_cam_xuc": "chot",
+   "trong_diem": false,
+   "canh": {
+    "mau": "ket-thuc",
+    "cau": "Sau 1/12 Starlink còn giá bao nhiêu?",
+    "moi": "Để lại một con số dưới bình luận"
+   }
+  }
+ ]
+}

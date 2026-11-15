@@ -91,6 +91,15 @@ def test_pronunciation_map_applies_to_tts_text_only(tmp_path):
     assert t["words"][0]["w"] == "ChatGPT"
 
 
+def test_adding_pronunciation_remakes_only_affected_units(tmp_path):
+    d = _video(tmp_path, "#### B\n**Lời đọc:**\nChatGPT giá rẻ. Hôm nay trời đẹp.\n")
+    giong_vieneu.synthesize(d, cfg=CFG, run=_fake_worker([1.0]))
+    calls = []
+    cfg = dict(CFG, phat_am={"ChatGPT": "chát gi pi ti"})
+    giong_vieneu.synthesize(d, cfg=cfg, run=_fake_worker([1.0], calls=calls))
+    assert [j["text"] for j in calls[0]] == ["chát gi pi ti giá rẻ."]  # câu không đổi chữ đọc giữ tệp cũ
+
+
 def test_audition_makes_one_mp3_per_voice(tmp_path):
     files = giong_vieneu.audition(tmp_path / "thu", ["Hải Đăng", "Thiện Minh"], "Xin chào các bạn.", cfg=CFG,
                                   run=_fake_worker([1.0]))
