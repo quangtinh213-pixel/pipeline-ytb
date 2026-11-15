@@ -210,7 +210,14 @@ def kiem_short(script_md: str, wpm: float = 237) -> list[str]:
     """Lỗi và cảnh báo của kịch bản Short viết riêng: thời lượng 30–55 giây, câu đầu là hook có số gắn [#id]."""
     from tttc import tieu_de as td
     from tttc.giong_vieneu import cau
-    cac_cau = [c for p in tts.spoken_paragraphs(script_md, keep_tags=True) for c in cau(p)]
+    cac_cau = []
+    for c in (c for p in tts.spoken_paragraphs(script_md, keep_tags=True) for c in cau(p)):
+        the = re.match(r"(?:\s*\[#[\w-]+\])+", c)  # "… mười. [#v1] Câu sau": thẻ thuộc câu đứng trước
+        if the and cac_cau:
+            cac_cau[-1] += the.group(0)
+            c = c[the.end():].strip()
+        if c:
+            cac_cau.append(c)
     if not cac_cau:
         return ["Lỗi: kịch bản Short chưa có phần lời đọc"]
     out, dau = [], cac_cau[0]

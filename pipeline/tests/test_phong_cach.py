@@ -325,3 +325,9 @@ def test_kiem_short_canh_bao():
 
 def test_kiem_short_chua_co_loi_doc_tra_mot_loi_ro():
     assert phong_cach.kiem_short("# Tiêu đề\n\nLoại: shorts\n") == ["Lỗi: kịch bản Short chưa có phần lời đọc"]
+
+
+def test_kiem_short_the_nguon_sau_dau_cham_van_tinh_cho_cau_dau():
+    # quy ước kịch bản của kênh: "… trên mười. [#v1] Câu sau" – thẻ thuộc câu đứng trước nó
+    k = _short("Bảy Díp dính lỗ hổng tám phẩy năm trên mười. [#1] Máy bạn có dính không?")
+    assert not _loi(phong_cach.kiem_short(k), "[#id]")
