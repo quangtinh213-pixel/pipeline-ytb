@@ -76,7 +76,7 @@ Bản đánh giá mục 7.2 tìm ra ba lỗi lặp lại bằng cách khớp tay
 
 Thêm các luật này vào `docs/phong-cach-kich-ban.md` (bản đánh giá mục 7.4 đã soạn sẵn).
 
-### 1.4 `giam_sat`: ngưỡng đo được
+### 1.4 `giam_sat`: ngưỡng đo được – **đã làm 15/11**
 
 **Hiện tại:** "CTR < 4% sau 3 giờ" → báo động, gợi ý xoay bao bì. Nhưng CTR chỉ có từ Reporting API, trễ ~48 giờ, gộp theo ngày PST. Ngưỡng 3 giờ không bao giờ đo được bằng máy; chỉ dùng được khi bạn nhập tay từ Studio.
 
@@ -87,6 +87,13 @@ Thêm các luật này vào `docs/phong-cach-kich-ban.md` (bản đánh giá m�
 - ≥ 1.000 view trong 7 ngày → in "làm thêm 2 tập cùng chuỗi".
 
 Chạy cuối `dong-bo-view.py` mỗi tối, ghi vào log. Đồng thời viết lại `docs/quy-tac-quyet-dinh.md` (luật "0,5×/3× trung vị" vô nghĩa khi trung vị ~100 view).
+
+**Đã làm:**
+- `giam_sat.luat_so` áp bốn ngưỡng trên cho video dài đăng trong 30 ngày. `dong-bo-view.py` in các dòng `Luật:` vào log mỗi tối; xem lại bằng `python -m tttc.giam_sat luat`.
+- Sổ thêm hai cột `avd_pct` và `con_50pct` (làm trước một phần mục 2.1). Hai cột tự điền khi video đủ 9 ngày, sổ cũ được `migrate` thêm cột.
+- `docs/quy-tac-quyet-dinh.md` đã viết lại.
+- Lần chạy đầu trên sổ thật kích hoạt đúng một luật: video iPhone cũ 10/11, CTR 1,3%.
+- Giới hạn: chưa có luật cho Shorts, vì API không có tỉ lệ "ở lại xem / vuốt qua" (`o_lai_short` vẫn phải nhập tay, mục 8.2). Luật in lại mỗi tối cho tới khi video quá 30 ngày; báo cáo tuần (2.3) sẽ gom lại.
 
 ---
 

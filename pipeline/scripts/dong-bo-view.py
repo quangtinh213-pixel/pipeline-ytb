@@ -112,6 +112,39 @@ def cap_nhat_giu_chan(rows: list[dict], thoi_luong: dict[str, float], analytics,
     return changed
 
 
+def cap_nhat_avd(rows: list[dict], thoi_luong: dict[str, float], analytics, now: datetime) -> int:
+    """Điền avd_pct (averageViewPercentage) và con_50pct (người còn xem ở giữa video) còn trống, tính trên 7 ngày đầu.
+    Cùng điều kiện chờ CHO_DU_LIEU ngày như giu_chan_30s. Trả số dòng có điền."""
+    if analytics is None:
+        return 0
+    changed = 0
+    for r in rows:
+        v = _vid(r)
+        thieu_avd, thieu_50 = not (r.get("avd_pct") or "").strip(), not (r.get("con_50pct") or "").strip()
+        if not v or v not in thoi_luong or not (thieu_avd or thieu_50):
+            continue
+        try:
+            ngay = datetime.strptime(r.get("gio_dang", ""), "%d/%m/%Y %H:%M").date()
+        except ValueError:
+            continue
+        if (now.date() - ngay).days < CHO_DU_LIEU:
+            continue
+        dau, cuoi = ngay.isoformat(), (ngay + timedelta(days=6)).isoformat()
+        row_changed = False
+        if thieu_avd:
+            so = giam_sat.lay_chi_so_analytics(v, dau, cuoi, analytics=analytics) or {}
+            if so.get("averageViewPercentage") is not None:
+                r["avd_pct"] = f"{float(so['averageViewPercentage']):.0f}%"
+                row_changed = True
+        if thieu_50:
+            w = giam_sat.giu_chan_tai(analytics, v, thoi_luong[v] / 2, thoi_luong[v], dau, cuoi)
+            if w is not None:
+                r["con_50pct"] = f"{w * 100:.0f}%"
+                row_changed = True
+        changed += int(row_changed)
+    return changed
+
+
 def cap_nhat_ctr(rows: list[dict], reporting, now: datetime, tai=reach.tai) -> int:
     """Điền ctr còn trống bằng CTR thumbnail gộp 7 ngày đầu (Reporting API). Chỉ điền khi đủ báo cáo cả 7 ngày.
     Dòng đã có CTR điền tay thì không ghi đè, chỉ in số tính được để đối chiếu đơn vị."""
@@ -153,6 +186,7 @@ def dong_bo():
         return
 
     with _lock(TRACKER.with_name(f".{TRACKER.name}.lock")):
+        theo_doi.migrate(TRACKER)  # thêm cột mới (avd_pct, con_50pct…) trước khi đọc, kẻo DictWriter bỏ mất
         with TRACKER.open(encoding="utf-8", newline="") as f:
             reader = csv.DictReader(f)
             fieldnames = reader.fieldnames or []
@@ -181,6 +215,7 @@ def dong_bo():
         if an is None:
             print("Bỏ qua giữ chân 30s: chưa có token Analytics (chạy `uv run python -m tttc.dang login-analytics`)")
         giu_chan_updated = cap_nhat_giu_chan(rows, thoi_luong, an, now)
+        avd_updated = cap_nhat_avd(rows, thoi_luong, an, now)
 
         ctr_updated = 0
         try:
@@ -203,8 +238,15 @@ def dong_bo():
             w.writeheader()
             w.writerows(rows)
         tmp.replace(TRACKER)
-        print(f"Đã điền số view cho {updated}/{len(rows)} video, giữ chân 30s cho {giu_chan_updated} video, CTR cho {ctr_updated} video "
+        print(f"Đã điền số view cho {updated}/{len(rows)} video, giữ chân 30s cho {giu_chan_updated} video, AVD/50% cho {avd_updated} video, CTR cho {ctr_updated} video "
               f"và đối chiếu đối thủ cho {opp_updated} dòng vào theo-doi.csv")
+
+    # luật ngưỡng tuyệt đối (docs/quy-tac-quyet-dinh.md): in vào log mỗi tối, việc trên Studio do người dùng làm
+    kq = giam_sat.luat_so(rows, now)
+    for *_, m in kq:
+        print(f"Luật: {m}")
+    if not kq:
+        print("Luật: không luật nào kích hoạt")
 
 
 if __name__ == "__main__":

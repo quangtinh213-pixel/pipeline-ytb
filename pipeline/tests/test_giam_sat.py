@@ -158,3 +158,44 @@ def test_lay_chi_so_analytics_khong_xin_ctr_vi_api_tu_choi():
     an = _an_giu_chan([])
     giam_sat.lay_chi_so_analytics("v1", "2026-11-14", analytics=an)
     assert "ClickRate" not in an.reports.return_value.query.call_args.kwargs["metrics"]
+
+
+def _dong(**kw):
+    r = {"ngay": "10/11/2026", "tieu_de": "Video dài", "gio_dang": "10/11/2026 15:30", "link": "https://youtu.be/a",
+         "view_7d": "", "ctr": "", "giu_chan_30s": "", "avd_pct": ""}
+    return r | kw
+
+
+def test_luat_so_bat_tung_nguong_tuyet_doi():
+    now = giam_sat.datetime(2026, 11, 20, 21, 30, tzinfo=giam_sat.VN)
+    rows = [_dong(ctr="2.4%", giu_chan_30s="65%", avd_pct="28%", view_7d="1200")]
+    luat = {ma for _, ma, _ in giam_sat.luat_so(rows, now)}
+    assert luat == {"ctr", "giu_chan_30s", "avd_pct", "view_7d"}
+    tin = " ".join(m for *_, m in giam_sat.luat_so(rows, now))
+    assert "Test & Compare" in tin and "hook" in tin and "cấu trúc" in tin and "chuỗi" in tin
+
+
+def test_luat_so_im_lang_khi_dat_nguong_hoac_chua_co_so():
+    now = giam_sat.datetime(2026, 11, 20, 21, 30, tzinfo=giam_sat.VN)
+    rows = [_dong(ctr="3.0%", giu_chan_30s="70%", avd_pct="30%", view_7d="999"), _dong(link="https://youtu.be/b")]
+    assert giam_sat.luat_so(rows, now) == []
+
+
+def test_luat_so_bo_shorts_va_video_qua_30_ngay():
+    now = giam_sat.datetime(2026, 11, 20, 21, 30, tzinfo=giam_sat.VN)
+    rows = [_dong(tieu_de="Một Short #shorts", ctr="1%"),
+            _dong(gio_dang="10/10/2026 15:30", ctr="1%")]
+    assert giam_sat.luat_so(rows, now) == []
+
+
+def test_main_luat_doc_so_va_in(tmp_path, capsys):
+    import csv
+    p = tmp_path / "theo-doi.csv"
+    r = _dong(ctr="1.3%")
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=list(r))
+        w.writeheader()
+        w.writerow(r)
+    assert giam_sat.main(["luat", "--so", str(p), "--ngay", "2026-11-12"]) == 0
+    out = capsys.readouterr().out
+    assert "CTR 1.3% < 3%" in out

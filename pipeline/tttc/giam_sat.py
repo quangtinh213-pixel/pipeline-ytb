@@ -1,8 +1,9 @@
-"""Module giám sát hiệu suất và tự động cấp cứu bao bì (CTR Monitor & Auto-Pivot).
+"""Giám sát video đã đăng: luật ngưỡng tuyệt đối đọc từ sổ, và đổi bao bì khi cần.
 
-Khi một video có CTR < 4% sau 3 giờ công khai:
-- Phát cảnh báo nguy cấp (Báo động đỏ).
-- Tự động hoặc hỗ trợ đổi sang phương án Tiêu đề & Thumbnail dự phòng trong dong-goi.json.
+- `luat_so`: đọc theo-doi.csv (CTR 7 ngày, còn xem ở giây 30, AVD, view 7 ngày) và in việc cần làm.
+  Chạy cuối dong-bo-view.py mỗi tối; đọc lại bằng `python -m tttc.giam_sat luat`.
+- `kiem_tra_video`: kiểm một video với CTR nhập tay từ Studio, có thể xoay sang phương án dự phòng.
+  CTR từ Reporting API trễ khoảng 48 giờ nên các mốc vài giờ đầu chỉ dùng được khi nhập tay.
 """
 import csv
 import json
@@ -17,6 +18,9 @@ from tttc import trang_thai as tt
 VN = timezone(timedelta(hours=7))
 NGUONG_CTR_CANH_BAO = 5.0
 NGUONG_CTR_NGUY_CAP = 4.0
+# Luật đọc sổ (docs/quy-tac-quyet-dinh.md); chỉ áp cho video dài, video đăng trong 30 ngày gần nhất.
+LUAT_CTR, LUAT_GIU_30S, LUAT_AVD, LUAT_VIEW_7D = 3.0, 70.0, 30.0, 1000
+LUAT_TUOI = timedelta(days=30)
 
 
 def lay_thong_tin_video(video_id: str, youtube=None) -> dict[str, Any]:
@@ -219,10 +223,69 @@ def kiem_tra_video(
     return out
 
 
+def _pct(v) -> float | None:
+    """'6.3%' / '6.3' ra 6.3; ô trống hoặc không phải số ra None."""
+    try:
+        return float(str(v).replace("%", "").replace(",", ".").strip())
+    except (TypeError, ValueError):
+        return None
+
+
+def luat_so(rows: list[dict], now: datetime) -> list[tuple[str, str, str]]:
+    """Áp luật ngưỡng tuyệt đối cho các dòng sổ. Trả về (link, cột, thông điệp) cho mỗi luật kích hoạt.
+    Bỏ Shorts (chưa có số đo riêng) và video quá LUAT_TUOI; ô trống thì không kết luận."""
+    out = []
+    for r in rows:
+        tieu = r.get("tieu_de") or ""
+        if "#shorts" in tieu.lower():
+            continue
+        try:
+            dang_luc = datetime.strptime(r.get("gio_dang", ""), "%d/%m/%Y %H:%M").replace(tzinfo=VN)
+        except ValueError:
+            continue
+        if now - dang_luc > LUAT_TUOI:
+            continue
+        ten = f"{r.get('ngay', '')} «{tieu[:60]}»"
+        link = r.get("link", "")
+        ctr, g30, avd, v7 = (_pct(r.get(c)) for c in ("ctr", "giu_chan_30s", "avd_pct", "view_7d"))
+        if ctr is not None and ctr < LUAT_CTR:
+            out.append((link, "ctr", f"{ten}: CTR {r['ctr']} < {LUAT_CTR:g}% → đổi thumbnail bằng Test & Compare trong Studio (bạn làm)"))
+        if g30 is not None and g30 < LUAT_GIU_30S:
+            out.append((link, "giu_chan_30s", f"{ten}: còn xem ở giây 30 {r['giu_chan_30s']} < {LUAT_GIU_30S:g}% → xem lại hook trước video kế tiếp"))
+        if avd is not None and avd < LUAT_AVD:
+            out.append((link, "avd_pct", f"{ten}: AVD {r['avd_pct']} < {LUAT_AVD:g}% → xem lại độ dài/cấu trúc"))
+        if v7 is not None and v7 >= LUAT_VIEW_7D:
+            nghin = f"{LUAT_VIEW_7D:,}".replace(",", ".")
+            out.append((link, "view_7d", f"{ten}: {r['view_7d']} view 7 ngày ≥ {nghin} → làm thêm 2 tập cùng chuỗi"))
+    return out
+
+
+def _main_luat(argv: list[str]) -> int:
+    import argparse
+
+    p = argparse.ArgumentParser(prog="python -m tttc.giam_sat luat")
+    p.add_argument("--so", default=str(dang.TRACKER), help="Đường dẫn theo-doi.csv")
+    p.add_argument("--ngay", default=None, help="Ngày tính tuổi video (yyyy-mm-dd), mặc định hôm nay")
+    a = p.parse_args(argv)
+    now = (datetime.strptime(a.ngay, "%Y-%m-%d").replace(hour=23, minute=59, tzinfo=VN) if a.ngay
+           else datetime.now(VN))
+    with open(a.so, encoding="utf-8", newline="") as f:
+        rows = list(csv.DictReader(f))
+    kq = luat_so(rows, now)
+    for *_, m in kq:
+        print(f"Luật: {m}")
+    if not kq:
+        print("Luật: không luật nào kích hoạt")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     import argparse
     import sys
 
+    argv = sys.argv[1:] if argv is None else argv
+    if argv[:1] == ["luat"]:
+        return _main_luat(argv[1:])
     p = argparse.ArgumentParser(prog="python -m tttc.giam_sat")
     p.add_argument("video_dir", help="Thư mục video (vd ../videos/<slug>)")
     p.add_argument("--ctr", default=None, help="Giá trị CTR từ YouTube Studio (vd 3.2 hoặc 3.2%%)")

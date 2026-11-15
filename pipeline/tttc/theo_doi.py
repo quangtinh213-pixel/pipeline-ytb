@@ -7,7 +7,7 @@ import statistics
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-EXTRA = ["trung_de_ho", "chenh_gio", "radar_hang", "view_ho_24h"]
+EXTRA = ["trung_de_ho", "chenh_gio", "radar_hang", "view_ho_24h", "avd_pct", "con_50pct"]
 VN = timezone(timedelta(hours=7))
 # Cửa sổ ghi số view: lỡ cửa sổ thì để trống, không ghi số của thời điểm khác vào cột.
 CUA_SO = {"view_24h": (timedelta(hours=24), timedelta(hours=48)), "view_7d": (timedelta(days=7), timedelta(days=8))}
