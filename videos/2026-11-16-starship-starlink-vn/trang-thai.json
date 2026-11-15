@@ -1,0 +1,73 @@
+{
+  "steps": {
+    "chu-de": {
+      "status": "xong",
+      "note": "đề 1 Starship bắt tầng trên + Starlink VN 633/600.000 thuê bao (8 điểm), video dài không ghi Loại; đối thủ chưa đăng; yt-viral không có trong phiên",
+      "bat_dau": "2026-11-15T21:34:14.931784+07:00",
+      "ket_thuc": "2026-11-15T21:34:14.934400+07:00"
+    },
+    "nguon": {
+      "status": "xong",
+      "note": "36 mục: SpaceX sp1-sp7, Starlink VN s1-s4, QĐ 659 q1-q4, Bộ KH&CN c1-c5 b1-b5 n1-n2, FPT f1-f2, tự tính t1-t5; chua-xac-minh v1 (633 thuê bao), v2 (giá cũ) không dùng; thiếu ảnh s4, q2, q4, b3-b5, f2",
+      "bat_dau": "2026-11-15T21:35:36.745260+07:00",
+      "ket_thuc": "2026-11-15T21:46:23.097653+07:00"
+    },
+    "kich-ban": {
+      "status": "xong",
+      "note": "video dài không ghi Loại, ~2.050 từ (8,2 phút); kiem 0 lỗi; phong_cach 0 Lỗi, nhịp 0,49 sát ngưỡng 0,5 giữ; yt-script không có trong phiên, viết theo khung giao việc",
+      "bat_dau": "2026-11-15T21:46:23.100201+07:00",
+      "ket_thuc": "2026-11-15T21:50:25.308671+07:00"
+    },
+    "phan-bien-giong": {
+      "status": "xong",
+      "note": "vòng 1: 12 mục (nhận 9, nhận một phần 3), điểm 3,5/3,5/3/4,8; vòng 2: 12 mục (nhận 7, nhận một phần 5), điểm 4,3/4/4/4,8; đạt",
+      "bat_dau": "2026-11-15T21:50:25.311105+07:00",
+      "ket_thuc": "2026-11-15T21:56:03.931359+07:00"
+    },
+    "kiem": {
+      "status": "dang-chay",
+      "note": "",
+      "bat_dau": "2026-11-15T21:56:03.935357+07:00"
+    },
+    "duyet-1": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "giong": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dao-dien": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "canh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "hinh": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "render": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dong-goi": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "duyet-2": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "dang": {
+      "status": "chua-chay",
+      "note": ""
+    },
+    "shorts": {
+      "status": "chua-chay",
+      "note": ""
+    }
+  }
+}

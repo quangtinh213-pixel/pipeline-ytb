@@ -1,0 +1,400 @@
+[
+  {
+    "id": "sp1",
+    "ten": "SpaceX",
+    "gia_tri": "13/11/2026; 14/11/2026; chuyến bay thứ 15",
+    "trich_dan": "On Friday, November 13, Starship lifted off from Starbase, Texas on its 15th flight.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp2",
+    "ten": "SpaceX",
+    "gia_tri": "26 vệ tinh Starlink V3",
+    "trich_dan": "After making it to orbit, Starship deployed 26 Starlink V3 satellites.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp3",
+    "ten": "SpaceX",
+    "gia_tri": "22,5 giờ",
+    "trich_dan": "approached the same launch site it had just left 22.5 hours prior.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp4",
+    "ten": "SpaceX",
+    "gia_tri": "bắt Starship lần đầu tiên",
+    "trich_dan": "into Mechzilla's waiting arms, which closed to catch Starship for the very first time.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp5",
+    "ten": "SpaceX",
+    "gia_tri": "tầng đẩy không về được, kích hoạt hệ thống hủy",
+    "trich_dan": "Upon landing burn shutdown, the Super Heavy's flight termination system was triggered.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp6",
+    "ten": "SpaceX",
+    "gia_tri": "32 trên 33 động cơ; ngắt sớm do thiếu nhiên liệu",
+    "trich_dan": "The boostback burn ended early due to low fuel mass, with the root cause under investigation.",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "sp7",
+    "ten": "SpaceX",
+    "gia_tri": "hơn 20 giờ trong không gian",
+    "trich_dan": "After monitoring its systems for more than 20 hours in space",
+    "url": "https://www.spacex.com/launches/starship-flight-15",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/sp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "s1",
+    "ten": "Starlink Việt Nam",
+    "gia_tri": "565.995 đồng/tháng; 100 Mbps; đăng ký trước 1/12",
+    "trich_dan": "Gia đình – 100 Mbps … DỊCH VỤ BẮT ĐẦU TỪ 565.995 ₫/th Ở MỘT SỐ KHU VỰC, ĐĂNG KÝ TRƯỚC 1/12",
+    "url": "https://www.starlink.com/vn/residential",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/s1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "s2",
+    "ten": "Starlink Việt Nam",
+    "gia_tri": "855.550 đồng/tháng; trên 400 Mbps",
+    "trich_dan": "Gói Gia đình. Tốc độ tối đa trên 400 Mbps. … DỊCH VỤ BẮT ĐẦU TỪ 855.550 ₫/th",
+    "url": "https://www.starlink.com/vn/residential",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/s1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "s3",
+    "ten": "Starlink Việt Nam",
+    "gia_tri": "100 Mbps; chậm hơn vào giờ cao điểm",
+    "trich_dan": "Người dùng các gói Residential 100 Mbps và Residential Lite sẽ gặp tình trạng tốc độ chậm hơn vào giờ cao điểm.",
+    "url": "https://www.starlink.com/vn/residential",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/s1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "s4",
+    "ten": "Starlink Việt Nam",
+    "gia_tri": "hơn 160 quốc gia, vùng lãnh thổ",
+    "trich_dan": "Starlink cung cấp kết nối băng thông rộng đáng tin cậy tại hơn 160 quốc gia, vùng lãnh thổ",
+    "url": "https://www.starlink.com/vn/residential",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "q1",
+    "ten": "Chính phủ – Quyết định 659/QĐ-TTg",
+    "gia_tri": "600.000 thuê bao",
+    "trich_dan": "Số lượng thuê bao tối đa được triển khai thí điểm là 600.000 thuê bao",
+    "url": "https://baochinhphu.vn/thi-diem-co-kiem-soat-trien-khai-dich-vu-vien-thong-su-dung-cong-nghe-ve-tinh-quy-dao-tam-thap-tai-viet-nam-102250326112020508.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/q1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "q2",
+    "ten": "Chính phủ – Quyết định 659/QĐ-TTg",
+    "gia_tri": "05 năm; trước 01/01/2031; năm 2031",
+    "trich_dan": "thực hiện trong thời gian 05 năm … và phải kết thúc trước ngày 01/01/2031.",
+    "url": "https://baochinhphu.vn/thi-diem-co-kiem-soat-trien-khai-dich-vu-vien-thong-su-dung-cong-nghe-ve-tinh-quy-dao-tam-thap-tai-viet-nam-102250326112020508.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "q3",
+    "ten": "Chính phủ – Quyết định 659/QĐ-TTg",
+    "gia_tri": "Internet trên biển, trên máy bay",
+    "trich_dan": "dịch vụ di động vệ tinh (dịch vụ truy nhập Internet trên biển; dịch vụ truy nhập Internet trên máy bay).",
+    "url": "https://baochinhphu.vn/thi-diem-co-kiem-soat-trien-khai-dich-vu-vien-thong-su-dung-cong-nghe-ve-tinh-quy-dao-tam-thap-tai-viet-nam-102250326112020508.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/q1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "q4",
+    "ten": "Chính phủ – Quyết định 659/QĐ-TTg",
+    "gia_tri": "Quyết định 659; 26/3/2025; năm 2025",
+    "trich_dan": "Phó Thủ tướng Nguyễn Chí Dũng đã ký ban hành Quyết định số 659/QĐ-TTg của Thủ tướng Chính phủ",
+    "url": "https://baochinhphu.vn/thi-diem-co-kiem-soat-trien-khai-dich-vu-vien-thong-su-dung-cong-nghe-ve-tinh-quy-dao-tam-thap-tai-viet-nam-102250326112020508.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c1",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "2,5% tổng số thuê bao băng rộng cố định; 600.000 thuê bao; 4 trạm gateway",
+    "trich_dan": "là 600.000 thuê bao (tương đương chỉ khoảng 2,5% tổng số thuê bao băng rộng cố định hiện có tại Việt Nam)",
+    "url": "https://mst.gov.vn/internet-ve-tinh-starlink-it-co-kha-nang-canh-tranh-voi-nha-mang-viet-197260401163426002.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/c2.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c2",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "85 USD; 2,2 triệu đồng mỗi tháng (dự kiến, tháng 3/2026)",
+    "trich_dan": "Từ tháng thứ hai, người dùng trả khoảng 85 USD, tương đương khoảng 2,2 triệu đồng mỗi tháng",
+    "url": "https://mst.gov.vn/internet-ve-tinh-starlink-it-co-kha-nang-canh-tranh-voi-nha-mang-viet-197260401163426002.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/c1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c3",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "435 USD tháng đầu; 350 USD thiết bị (dự kiến)",
+    "trich_dan": "cần chi khoảng 435 USD trong tháng đầu tiên, bao gồm khoảng 350 USD cho bộ thiết bị đầu cuối",
+    "url": "https://mst.gov.vn/internet-ve-tinh-starlink-it-co-kha-nang-canh-tranh-voi-nha-mang-viet-197260401163426002.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/c1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c4",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "giám sát nếu giảm giá cạnh tranh không lành mạnh",
+    "trich_dan": "giảm giá có dấu hiệu cạnh tranh không lành mạnh, cơ quan quản lý Nhà nước sẽ tăng cường giám sát",
+    "url": "https://mst.gov.vn/internet-ve-tinh-starlink-it-co-kha-nang-canh-tranh-voi-nha-mang-viet-197260401163426002.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/c1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "c5",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "4 trạm gateway: Phú Thọ, Đà Nẵng, TP Hồ Chí Minh",
+    "trich_dan": "cùng 4 trạm gateway đặt tại Phú Thọ, Đà Nẵng và TP. Hồ Chí Minh.",
+    "url": "https://mst.gov.vn/internet-ve-tinh-starlink-it-co-kha-nang-canh-tranh-voi-nha-mang-viet-197260401163426002.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/c2.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b1",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "254 bộ thiết bị; 400 Mbps; 6 tháng",
+    "trich_dan": "254 bộ thiết bị Starlink Standard 4X được bàn giao, kèm gói dịch vụ với tốc độ truy cập tối đa 400 Mbps, miễn phí trong 6 tháng.",
+    "url": "https://mst.gov.vn/starlink-dong-hanh-voi-bo-khcn-xoa-lom-song-thu-hep-khoang-cach-so-197260911165023286.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/b1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b2",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "13 tỉnh, thành phố; 254 địa điểm",
+    "trich_dan": "trước mắt 254 địa điểm tại 13 tỉnh, thành phố được xác định cần hỗ trợ bằng Internet vệ tinh quỹ đạo tầm thấp.",
+    "url": "https://mst.gov.vn/starlink-dong-hanh-voi-bo-khcn-xoa-lom-song-thu-hep-khoang-cach-so-197260911165023286.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/b1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b3",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "99,56% thôn bản có băng rộng di động",
+    "trich_dan": "đưa tỷ lệ thôn, bản có kết nối băng rộng di động lên 99,56%.",
+    "url": "https://mst.gov.vn/starlink-dong-hanh-voi-bo-khcn-xoa-lom-song-thu-hep-khoang-cach-so-197260911165023286.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b4",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "273 thôn; 82 thôn chưa có điện lưới",
+    "trich_dan": "số thôn cần tiếp tục xử lý còn 273, trong đó có 82 thôn chưa có điện lưới.",
+    "url": "https://mst.gov.vn/starlink-dong-hanh-voi-bo-khcn-xoa-lom-song-thu-hep-khoang-cach-so-197260911165023286.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "b5",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "1.000 bộ thiết bị; 6 tháng",
+    "trich_dan": "doanh nghiệp cam kết hỗ trợ 1.000 bộ thiết bị Starlink cùng dịch vụ miễn phí 6 tháng",
+    "url": "https://mst.gov.vn/starlink-dong-hanh-voi-bo-khcn-xoa-lom-song-thu-hep-khoang-cach-so-197260911165023286.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "n1",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "196 điểm lõm sóng; 154 thôn, bản; 42 cơ sở công lập; 1/11/2026",
+    "trich_dan": "Đến ngày 1/11/2026, Internet vệ tinh đã được kích hoạt tại 196 điểm lõm sóng, gồm 154 thôn, bản và 42 cơ sở công lập",
+    "url": "https://mst.gov.vn/dau-an-noi-bat-cua-nghi-quyet-57-197261111140350497.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/b2.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "n2",
+    "ten": "Bộ Khoa học và Công nghệ",
+    "gia_tri": "297,64 Mbps tốc độ Internet cố định",
+    "trich_dan": "Tốc độ Internet cố định đạt 297,64 Mbps, đưa Việt Nam vào nhóm 10 nước dẫn đầu thế giới.",
+    "url": "https://mst.gov.vn/dau-an-noi-bat-cua-nghi-quyet-57-197261111140350497.htm",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/b2.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "f1",
+    "ten": "FPT Telecom",
+    "gia_tri": "195.000 đồng/tháng; 300 Mbps",
+    "trich_dan": "Internet GIGA (Internet) 195.000₫ … Tốc độ 300Mbps/300Mbps",
+    "url": "https://fpt.vn/internet",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/fp1.jpg",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "f2",
+    "ten": "FPT Telecom",
+    "gia_tri": "195.000 đồng/tháng; 1 Gbps",
+    "trich_dan": "Internet SKY (Internet) 195.000₫ … Tốc độ 1Gbps/300Mbps",
+    "url": "https://fpt.vn/internet",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "xac-minh"
+  },
+  {
+    "id": "v1",
+    "ten": "VnExpress",
+    "gia_tri": "633 thuê bao (theo Bộ KH&CN, chưa thấy văn bản gốc)",
+    "trich_dan": "Dịch vụ Starlink có 633 thuê bao kích hoạt tại Việt Nam sau ba tháng hoạt động, theo thống kê của Bộ Khoa học và Công nghệ.",
+    "url": "https://vnexpress.net/internet-ve-tinh-starlink-co-633-thue-bao-tai-viet-nam-5141755.html",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "chua-xac-minh"
+  },
+  {
+    "id": "v2",
+    "ten": "VnExpress",
+    "gia_tri": "1.131.990 đồng/tháng; 1.711.100 đồng/tháng (giá ngày 7/11, chưa đối chiếu được trang Starlink cũ)",
+    "trich_dan": "gói Gia đình tốc độ tối đa 100 Mbps giá 1.131.990 đồng và gói không giới hạn tốc độ giá 1.711.100 đồng mỗi tháng",
+    "url": "https://vnexpress.net/internet-ve-tinh-starlink-co-633-thue-bao-tai-viet-nam-5141755.html",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "nguon/v1.jpg",
+    "trang_thai": "chua-xac-minh"
+  },
+  {
+    "id": "t1",
+    "ten": "Tự tính",
+    "gia_tri": "2,57 lần; hơn 2,5 lần",
+    "trich_dan": "2.200.000 đồng ÷ 855.550 đồng",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "2.200.000 ÷ 855.550",
+    "dau_vao": [
+      "c2",
+      "s2"
+    ]
+  },
+  {
+    "id": "t2",
+    "ten": "Tự tính",
+    "gia_tri": "2,9 lần; gần 3 lần",
+    "trich_dan": "565.995 đồng ÷ 195.000 đồng",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "565.995 ÷ 195.000",
+    "dau_vao": [
+      "s1",
+      "f1"
+    ]
+  },
+  {
+    "id": "t3",
+    "ten": "Tự tính",
+    "gia_tri": "4,39 lần; hơn 4 lần",
+    "trich_dan": "855.550 đồng ÷ 195.000 đồng",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "855.550 ÷ 195.000",
+    "dau_vao": [
+      "s2",
+      "f2"
+    ]
+  },
+  {
+    "id": "t4",
+    "ten": "Tự tính",
+    "gia_tri": "6.791.940 đồng; 6,79 triệu đồng; gần 6,8 triệu đồng một năm",
+    "trich_dan": "565.995 đồng × 12 tháng",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "565.995 × 12",
+    "dau_vao": [
+      "s1"
+    ]
+  },
+  {
+    "id": "t5",
+    "ten": "Tự tính",
+    "gia_tri": "2.340.000 đồng; 2,34 triệu đồng một năm",
+    "trich_dan": "195.000 đồng × 12 tháng",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "195.000 × 12",
+    "dau_vao": [
+      "f1"
+    ]
+  },
+  {
+    "id": "t6",
+    "ten": "Tự tính",
+    "gia_tri": "4.451.940 đồng; 1,9 năm; gần 2 năm",
+    "trich_dan": "(6.791.940 − 2.340.000) ÷ 2.340.000",
+    "url": "",
+    "ngay_truy_cap": "2026-11-15",
+    "anh_chup": "",
+    "trang_thai": "tu-tinh",
+    "cong_thuc": "(565.995 × 12 − 195.000 × 12) ÷ (195.000 × 12)",
+    "dau_vao": [
+      "s1",
+      "f1"
+    ]
+  }
+]

@@ -34,7 +34,8 @@ THUC_THE = [
     r"\boutlook\b", r"\bmicrosoft 365\b", r"\bcopilot\b", r"\bclaude\b", r"\banthropic\b",
     r"\b7-zip\b", r"\b7zip\b", r"\bthông tư\b", r"\bnghị định\b", r"\bvietcombank\b",
     r"\bmomo\b", r"\bzalo\b", r"\bshopee\b", r"\bram\b", r"\bssd\b", r"\bwindows\b",
-    r"\bmeta\b", r"\bfacebook\b", r"\binstagram\b", r"\bwhatsapp\b", r"\bmessenger\b"
+    r"\bmeta\b", r"\bfacebook\b", r"\binstagram\b", r"\bwhatsapp\b", r"\bmessenger\b",
+    r"\bstarlink\b", r"\bspacex\b", r"\bstarship\b"
 ]
 
 # 3. Góc Việt Nam / túi tiền / đời sống người xem

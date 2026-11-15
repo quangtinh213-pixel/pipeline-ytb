@@ -1,0 +1,54 @@
+# Phản biện giọng văn, vòng 1
+
+conversation_id: b59054fe-ec22-44b3-ab97-8b952997431e
+
+## Phản hồi của agy
+
+Dưới đây là phần phê bình chi tiết bản lời đọc theo đúng tiêu chuẩn biên tập giọng đọc và các ràng buộc của kênh:
+
+### Danh sách 12 vấn đề biên tập
+
+1. **"Để dễ hình dung, cứ lấy một ví dụ đời thường."** | `sáo rỗng` | `vừa` | Bỏ hẳn câu mào đầu rườm rà này, vào thẳng ví dụ so sánh: *"Nó giống như một chuyến xe khách chở hàng..."*
+2. **"Cú đốt quay đầu tắt sớm vì thiếu nhiên liệu, nguyên nhân vẫn đang điều tra."** | `văn dịch` | `vừa` | Thuật ngữ dịch thô từ cụm tiếng Anh (*boostback burn*); sửa thành: *"Lúc quay đầu, động cơ hãm tắt sớm vì thiếu nhiên liệu, nguyên nhân vẫn đang điều tra."*
+3. **"SpaceX không công bố mỗi lần phóng tốn bao nhiêu tiền, nên kênh không quy chuyện này ra đồng."** | `khó đọc to` | `nhẹ` | Cụm "quy chuyện này ra đồng" gượng gạo và khó phát âm tròn vành rõ chữ; sửa thành: *"...nên kênh không quy ra tiền cụ thể được."*
+4. **"Muốn tái sử dụng trọn vẹn thì cả hai tầng phải cùng về, và một trong những nơi đang mua dịch vụ từ đám vệ tinh đó, dù mới ở mức thí điểm, là Việt Nam."** | `khó đọc to` | `nặng` | Câu dài tới 34 từ (vượt trần 28 từ của mẫu giọng) với nhiều mệnh đề chêm xen gây hụt hơi; tách đôi: *"Muốn tái sử dụng trọn vẹn thì cả hai tầng phải cùng về. Mà một trong những nơi đang dùng thử mạng vệ tinh đó lại là Việt Nam."*
+5. **"Cũng không nói qua ngày đó thì giá thành bao nhiêu, và kênh chưa kiểm được hai điểm này, nên con số kia nên hiểu là giá chào, chưa phải giá cố định của dịch vụ."** | `khó đọc to` | `nặng` | Câu dài tới 38 từ, cấu trúc dây cà ra dây muống; gọt bớt từ nối và tách câu: *"Hết hạn đó giá tăng lên bao nhiêu thì chưa rõ. Hai điểm này chưa kiểm chứng được, nên con số kia mới chỉ là giá chào thôi."*
+6. **"Một dòng chữ nhỏ khác cũng đáng đọc: gói một trăm megabit sẽ chậm hơn vào giờ cao điểm."** | `sáo rỗng` | `vừa` | Cách dẫn dắt mang giọng văn viết/báo chí và mấp mé mô-típ cấm ("một dòng nhỏ"); sửa thành: *"Còn một chi tiết nữa đáng để ý: gói một trăm megabit sẽ chậm đi vào giờ cao điểm."*
+7. **"Gói Starlink rẻ nhất, tính ra, vẫn đắt gần gấp ba gói cáp quang đó. Gói Starlink nhanh nhất thì tính ra gấp hơn bốn lần."** | `nhịp đều` | `vừa` | Lặp từ đệm "tính ra" ở hai câu liền kề (toàn bài lặp tới 8 lần), tạo nhịp đều mòn tai; sửa thành: *"Gói Starlink rẻ nhất vẫn đắt gần gấp ba cáp quang. Gói nhanh nhất thì hơn bốn lần."*
+8. **"Hình dung thế này. Tính ra, khoản chênh mỗi năm đủ để một gia đình đóng thêm gần hai năm tiền cáp quang nữa."** | `nhịp đều` | `nhẹ` | Bị lặp từ mồi "Hình dung" quá nhiều ở đầu các đoạn (4 lần); bỏ hẳn từ mồi: *"Khoản chênh mỗi năm đủ để một nhà đóng thêm gần hai năm tiền cáp quang nữa."*
+9. **"Với một con tàu đánh cá ngoài khơi cả tuần, cáp quang đơn giản là không tồn tại, và lựa chọn thật sự chỉ nằm giữa vệ tinh hoặc không có mạng."** | `văn dịch` | `vừa` | Cấu trúc "đơn giản là không tồn tại" (*simply does not exist*) sặc mùi dịch ngữ; sửa cho thuần Việt: *"Tàu cá ngoài khơi cả tuần thì làm gì có cáp quang, lúc ấy chỉ có nước dùng vệ tinh hoặc chịu mất mạng."*
+10. **"Nếu giá quay lên, câu chuyện ở thành phố khép lại."** | `đao to búa lớn` | `nhẹ` | Cụm "câu chuyện ở thành phố khép lại" kịch tính hóa quá mức, không hợp không khí quán cà phê; sửa thành: *"Nếu giá tăng lại, coi như người ở thành phố hết lý do để bận tâm."*
+11. **"Hình dung một điểm trường ở bản cao, chưa có điện lưới, trạm phát sóng gần nhất ở bên kia núi. Một bộ chảo thu đặt trên mái, thế là cô giáo có mạng để nộp báo cáo."** | `bịa trải nghiệm` | `nhẹ` | Chi tiết "cô giáo có mạng nộp báo cáo" tự dựng hoạt cảnh cảm xúc hơi khiên cưỡng; nên bám sát chức năng hành chính thực tế: *"Đặt bộ chảo thu lên mái điểm trường là giáo viên có mạng liên lạc với phòng giáo dục, cập nhật giáo án."*
+12. **"Ghi con số xuống bình luận."** | `sáo rỗng` | `vừa` | Câu chốt bị khô và mang tính mệnh lệnh hành chính như mẫu bot; sửa thành lời rủ tự nhiên với bạn bè: *"Anh em thử đoán rồi thả một con số dưới bình luận xem ai đoán sát nhất."*
+
+---
+
+### Chấm điểm theo 4 tiêu chí (Thang điểm 1–5)
+
+* **Tự nhiên khi đọc to: 3.5/5**
+  Văn phong nhìn chung mạch lạc, xử lý chữ số cho giọng đọc máy tốt. Tuy nhiên còn một số câu dài trên 30 từ gây hụt hơi và vài chỗ diễn đạt cấn khẩu hình (văn dịch).
+* **Đúng tình huống kể (quán cà phê): 3.5/5**
+  Thái độ khách quan, điềm tĩnh và biết nhận giới hạn thông tin rất tốt. Dù vậy, vẫn còn vướng vài đoạn mào đầu kiểu dẫn chương trình truyền hình và một số câu mệnh lệnh khô cứng thay vì lời kể thân mật giữa hai người bạn.
+* **Nhịp: 3.0/5**
+  Các đoạn ngắn xen kẽ tốt, nhưng bị lỗi lặp thói quen ngôn ngữ khá nặng: lặp từ đệm "tính ra" (8 lần), từ mồi "hình dung" (4 lần) và xuất hiện hai câu quá dài phá vỡ cấu trúc nhịp đĩnh đạc của mẫu giọng.
+* **Chi tiết cụ thể: 4.8/5**
+  Rất xuất sắc. Dẫn chứng xác thực từ Quyết định 659, trích dẫn chuẩn xác lãnh đạo Cục Viễn thông, các mốc thời gian, số trạm và số thôn bản thiếu điện cụ thể, thuyết phục, không cảm tính.
+
+
+## Bảng triage
+
+| # | Câu trích | Loại | Mức | Nhận/Bỏ | Lý do |
+|---|---|---|---|---|---|
+| 1 | `Để dễ hình dung, cứ lấy một ví dụ đời thường.` | sáo rỗng | vừa | Nhận 1 phần | Vào thẳng so sánh; vẫn giữ một câu ngắn nói rõ là ví dụ (thẻ phong cách mục 8). |
+| 2 | `Cú đốt quay đầu tắt sớm…` | văn dịch | vừa | Nhận | Đổi thành "Lúc quay đầu, động cơ tắt sớm…"; không dùng "động cơ hãm" vì nguồn không nói vậy. |
+| 3 | `…không quy chuyện này ra đồng.` | khó đọc to | nhẹ | Nhận | "không quy ra tiền được". |
+| 4 | `Muốn tái sử dụng trọn vẹn… là Việt Nam.` | khó đọc to | nặng | Nhận | Tách hai câu. |
+| 5 | `Cũng không nói qua ngày đó…` | khó đọc to | nặng | Nhận | Tách hai câu, bỏ từ nối. |
+| 6 | `Một dòng chữ nhỏ khác cũng đáng đọc…` | sáo rỗng | vừa | Nhận | Đổi cả hai chỗ "dòng chữ nhỏ" (cụm gần danh sách cấm mở đầu). |
+| 7 | `Gói Starlink rẻ nhất, tính ra… tính ra gấp hơn bốn lần.` | nhịp đều | vừa | Nhận 1 phần | Gộp thành một câu một chữ "tính ra"; không bỏ hẳn vì số tự tính bắt buộc có "tính ra" (máy kiem chặn). |
+| 8 | `Hình dung thế này. Tính ra…` | nhịp đều | nhẹ | Nhận 1 phần | Bỏ "Hình dung thế này"; giữ "Tính ra" (số tự tính t6). |
+| 9 | `…cáp quang đơn giản là không tồn tại…` | văn dịch | vừa | Nhận | Viết lại thuần Việt, tách hai câu. |
+| 10 | `…câu chuyện ở thành phố khép lại.` | đao to búa lớn | nhẹ | Nhận | "người ở thành phố gần như hết lý do để cân nhắc". |
+| 11 | `…thế là cô giáo có mạng để nộp báo cáo.` | bịa trải nghiệm | nhẹ | Nhận 1 phần | Bỏ chi tiết dựng cảnh; không thêm "giáo án, phòng giáo dục" vì cũng không có nguồn. Còn lại: "là điểm trường có mạng". |
+| 12 | `Ghi con số xuống bình luận.` | sáo rỗng | vừa | Nhận 1 phần | Rủ tự nhiên hơn; không dùng "anh em" (chỉ cho video theo template, mục 10). |
+
