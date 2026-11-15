@@ -218,3 +218,85 @@ def test_boi_labels_count_as_layering_events():
     assert cl.do(san(0), _timing(80, 300))["tren_8"] == 1   # 4 sự kiện / 20 s: tĩnh
     assert cl.do(san(4), _timing(80, 300))["tren_8"] == 0   # 8 sự kiện / 20 s = 24/phút
     assert cl.do(san(4), _timing(80, 300))["sfx_phut"] > cl.do(san(0), _timing(80, 300))["sfx_phut"]
+
+
+# --- kiem_short: cổng chất lượng Short dọc gốc (spec 2026-11-15-shorts-doc-goc mục 4.6) ---
+from pathlib import Path as _P
+
+MOC0 = {"id": "d0", "mau": "moc", "start": 0.0, "end": 3.0, "chu": "Máy cũ còn rẻ không", "so": "15,89 triệu"}
+
+
+def _short_canh(*durs, dau=MOC0):
+    sc, t = [dict(dau)], dau["end"]
+    for i, d in enumerate(durs):
+        sc.append({"id": f"d{i + 1}", "mau": "ket", "start": t, "end": t + d, "chu": "Kết"})
+        t += d
+    return {"khuon": "doc", "scenes": sc}
+
+
+def _timing(n=80, buoc=0.45, tho=0.4):
+    return {"duration": n * buoc, "words": [{"w": "x", "start": round(i * buoc, 3), "end": round(i * buoc + tho, 3)}
+                                            for i in range(n)]}
+
+
+CANH_OK = _short_canh(*[3.0] * 13)       # 14 cảnh × 3 s = 42 s
+TIMING_OK = _timing()
+DO_OK = lambda p: (42.0, 1080, 1920)     # noqa: E731
+
+
+def _loi(msgs, key=""):
+    return [m for m in msgs if m.startswith("Lỗi") and key in m]
+
+
+def _cb(msgs, key=""):
+    return [m for m in msgs if m.startswith("Cảnh báo") and key in m]
+
+
+def test_kiem_short_sach():
+    assert cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), DO_OK) == []
+
+
+def test_canh_dau_khong_phai_moc_la_loi():
+    canh = _short_canh(*[3.0] * 13, dau=dict(MOC0, mau="ket"))
+    assert _loi(cl.kiem_short(canh, TIMING_OK), "moc")
+
+
+def test_canh_dau_khong_bat_dau_o_0_la_loi():
+    assert _loi(cl.kiem_short(_short_canh(3.0, dau=dict(MOC0, start=0.4)), TIMING_OK), "giây 0")
+
+
+def test_canh_dau_thieu_so_hoac_chu_qua_8_tu_la_loi():
+    assert _loi(cl.kiem_short(_short_canh(3.0, dau={k: v for k, v in MOC0.items() if k != "so"}), TIMING_OK), "so")
+    dai = dict(MOC0, chu="Máy cũ bây giờ liệu có còn rẻ như trước không")
+    assert _loi(cl.kiem_short(_short_canh(3.0, dau=dai), TIMING_OK), "8 từ")
+
+
+def test_thoi_luong_ngoai_30_55_la_loi():
+    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (61.0, 1080, 1920)), "61")
+    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (24.5, 1080, 1920)), "24")
+
+
+def test_khung_khong_phai_1080x1920_la_loi():
+    assert _loi(cl.kiem_short(CANH_OK, TIMING_OK, _P("x.mp4"), lambda p: (40.0, 1920, 1080)), "1080×1920")
+
+
+def test_canh_dai_hon_6_giay_canh_bao():
+    assert _cb(cl.kiem_short(_short_canh(3.0, 7.0), TIMING_OK), "d2")
+
+
+def test_trung_binh_canh_hon_3_5_giay_canh_bao():
+    assert _cb(cl.kiem_short(_short_canh(*[4.5] * 8), TIMING_OK), "trung bình")
+
+
+def test_nghi_giua_hai_tu_qua_0_25_canh_bao():
+    t = _timing()
+    t["words"][10]["start"] = t["words"][9]["end"] + 0.6
+    assert _cb(cl.kiem_short(CANH_OK, t), "nghỉ")
+
+
+def test_timing_khong_co_words_khong_nem_loi():
+    assert isinstance(cl.kiem_short(CANH_OK, {"duration": 40.0}), list)
+
+
+def test_kiem_short_khong_co_canh():
+    assert cl.kiem_short({"khuon": "doc", "scenes": []}, TIMING_OK) == [cl.EMPTY]

@@ -141,6 +141,55 @@ def kiem_30s_dau(so_do: dict, max_tb: float = 3.5) -> list[str]:
     return []
 
 
+# Short dọc gốc (spec 2026-11-15-shorts-doc-goc mục 4.6): khung 0 phải là cảnh moc đủ chữ và số, 30–55 giây, nhịp nhanh.
+SHORT_GIAY, SHORT_CANH_MAX, SHORT_CANH_TB, SHORT_NGHI_MAX = (30.0, 55.0), 6.0, 3.5, 0.25
+SHORT_KHUNG, SHORT_CHU_MAX = (1080, 1920), 8
+
+
+def _do_mp4(path: Path) -> tuple[float, int, int]:
+    """(giây, rộng, cao) của tệp video bằng ffprobe."""
+    import subprocess
+    r = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=width,height:format=duration",
+                        "-of", "json", str(path)], capture_output=True, text=True, check=True)
+    j = json.loads(r.stdout)
+    return float(j["format"]["duration"]), int(j["streams"][0]["width"]), int(j["streams"][0]["height"])
+
+
+def kiem_short(canh: dict, timing: dict, mp4: Path | None = None, do_mp4=None) -> list[str]:
+    """Lỗi và cảnh báo của một Short dọc gốc. mp4 None thì bỏ các luật về tệp (thời lượng, khung)."""
+    sc = canh.get("scenes") or []
+    if not sc:
+        return [EMPTY]
+    out, dau = [], sc[0]
+    if dau.get("mau") != "moc":
+        out.append(f"Lỗi: cảnh đầu {dau['id']} dùng {dau.get('mau')}, phải là moc (khung 0 đủ chữ và số)")
+    if abs(dau.get("start", 0)) > 0.01:
+        out.append(f"Lỗi: cảnh đầu bắt đầu ở {dau['start']} s, phải ở giây 0")
+    if dau.get("mau") == "moc":
+        if len(str(dau.get("chu") or "").split()) > SHORT_CHU_MAX:
+            out.append(f"Lỗi: chu của cảnh đầu quá {SHORT_CHU_MAX} từ, khung 0 phải đọc được trong một giây")
+        if not str(dau.get("so") or "").strip():
+            out.append("Lỗi: cảnh đầu thiếu so – khung 0 cần một con số có nguồn")
+    if mp4 is not None:
+        giay, rong, cao = (do_mp4 or _do_mp4)(Path(mp4))
+        if not SHORT_GIAY[0] <= giay <= SHORT_GIAY[1]:
+            out.append(f"Lỗi: Short dài {giay:.1f} giây (cho phép {SHORT_GIAY[0]:g}–{SHORT_GIAY[1]:g})")
+        if (rong, cao) != SHORT_KHUNG:
+            out.append(f"Lỗi: khung {rong}×{cao}, Short dọc gốc phải 1080×1920")
+    dai = [c for c in sc if c["end"] - c["start"] > SHORT_CANH_MAX]
+    out += [f"Cảnh báo: {c['id']} dài {c['end'] - c['start']:.1f} s (Short nên ≤ {SHORT_CANH_MAX:g} s mỗi cảnh)" for c in dai]
+    tb = (sc[-1]["end"] - sc[0]["start"]) / len(sc)
+    if tb > SHORT_CANH_TB:
+        out.append(f"Cảnh báo: cảnh dài trung bình {tb:.1f} s (Short nên ≤ {SHORT_CANH_TB:g} s)")
+    ws = timing.get("words") or []
+    nghi = [(a, b) for a, b in zip(ws, ws[1:]) if b["start"] - a["end"] > SHORT_NGHI_MAX]
+    if nghi:
+        a, b = max(nghi, key=lambda ab: ab[1]["start"] - ab[0]["end"])
+        out.append(f"Cảnh báo: {len(nghi)} chỗ nghỉ giữa hai từ quá {SHORT_NGHI_MAX:g} s (dài nhất "
+                   f"{b['start'] - a['end']:.2f} s ở giây {a['end']:.1f}) – cắt khoảng lặng")
+    return out
+
+
 def kiem(so_do: dict, muc: dict = MUC_TIEU) -> list[str]:
     if not so_do["so_canh"]:
         return [EMPTY]
