@@ -228,10 +228,40 @@ chạy `uv run python -m tttc.canh V` rồi `uv run python -m tttc.chat_luong V`
 - `uv run python -m tttc.trang_thai gui-duyet V duyet-2` ngay sau khi tạo trang, trước khi gửi `duyet-2.html` và `frames/soi-hinh.png`.
 - Tóm tắt: độ dài video, số cảnh, 3 tiêu đề, cảnh báo còn lại. **Dừng.** Không tự chọn phương án.
 
-## 7. shorts (sau khi đăng video dài, buổi tối)
-- Gọi skill `yt-shorts` với `kich-ban.md` + `giong-timing.json`: chọn 2–3 đoạn trọn ý, 20–55 s, mỗi đoạn trùng ranh giới cảnh; tránh cắt qua cảnh chuyển chương (`mau == "chuong"`).
-- Mỗi đoạn k: `dung.compose('V', w=1080, h=1920, scene_range=(i, j), out=f'short-{k}', short_hook='<câu hook tò mò 4-7 từ>')`
-  rồi `scripts/render.sh V/short-k V/shorts/k.mp4 delivery`.
-- Giờ đăng Short: sáng ngày hôm sau video dài (đề xuất 08:00 giờ Việt Nam).
-- Shorts không nằm trên đường găng: dựng sau khi `dang` xong (máy rảnh buổi tối), giờ đăng Short là sáng hôm sau. Dựng xong thì thêm từng mục vào `dong-goi.json:shorts` (`file`, `tieu_de`, `ngay`, `gio`) rồi gửi người dùng xem từng Short (tệp, tiêu đề, giờ đăng). Khi người dùng nói "ok" với Short i: `uv run python -m tttc.trang_thai duyet-short ../videos/<slug> <i>` (ghi sha256 tệp + tiêu đề + giờ; đổi bất cứ thứ gì sau đó là phải duyệt lại). Sau đó đăng bằng `/video-dang` (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
+## 7. shorts dọc gốc (sau khi đăng video dài, buổi tối)
+Thiết kế: `docs/superpowers/specs/2026-11-15-shorts-doc-goc-design.md`. Mỗi Short là một video riêng: kịch bản riêng,
+giọng đọc mới, hình dựng bằng mẫu dọc 1080×1920 (`templates/canh-doc/`). **Không** cắt đoạn từ video dài nữa
+(`scene_range` + `short_hook` chỉ còn để dựng lại Short cũ). Lý do: Short cắt từ giữa bài và thu nhỏ sân khấu ngang chỉ giữ
+9,6–18,9% người lướt tới.
+
+- **Chọn góc:** 2 Short mỗi video, mỗi Short một góc tự đứng được (người chưa xem video dài vẫn hiểu), có ít nhất một con số
+  có nguồn trong `V/nguon.json`. Ưu tiên đề tiêu dùng có giá cụ thể.
+- **Kịch bản** `V/ngan/k/kich-ban.md` (dòng đầu `Loại: shorts`, mục 7 của `docs/template-kich-ban.md`, 35–50 giây):
+  câu nói đầu tiên là câu hook có con số gắn `[#id]`; kết bằng câu nối lại câu đầu để xem lặp (không kêu bấm video liên kết);
+  không dùng giọng phụ `>>`. Kiểm, sửa hết dòng `Lỗi`:
+  `phong_cach.kiem_short(kich_ban)` + `kiem.check(kich_ban, nguon của V)`.
+- **Giọng:** `giong_vieneu.synthesize('V/ngan/k', giong_vieneu.cfg_shorts())` (nghỉ 0,10 s).
+- **Cảnh** `V/ngan/k/canh.json` = `{"khuon": "doc", "scenes": [...]}`, cảnh đầu luôn là `moc` bắt đầu ở 0 có `chu` (≤ 8 từ)
+  và `so`. Năm mẫu dọc:
+  - `moc`: `chu`, `so` (chuỗi hiển thị, ≤ 12 ký tự), `nhan?`, `nguon_id` khi có số.
+  - `bang-chung`: `anh` (đường dẫn trong V, vd `nguon/x.png`), `vung` = `[x, y, w, h]` trong 0–1 cắt đúng dòng/con số,
+    `tom_tat` (một dòng tiếng Việt), `nguon_id`. Không chiếu nguyên trang.
+  - `anh`: đúng một trong `anh` / `video` (tên tệp trong `V/broll/`), `diem_giu` = `[x, y]` trong 0–1 (chỗ giữ khi cắt dọc), `nhan?`.
+  - `doi-chieu`: `tren`, `duoi` = `{"nhan", "so"}`, `noi_bat` = `tren`/`duoi`, `nguon_id`.
+  - `ket`: `chu`, `so?`.
+  Cảnh ≤ 6 s, trung bình ≤ 3,5 s. Kiểm: `canh.validate(canh, timing, nguon=nguon của V, video_dir='V/ngan/k', goc='V')`.
+- **Dựng:** `dung.compose('V/ngan/k', goc='V')` → `scripts/render.sh V/ngan/k/composition V/shorts/k.mp4 delivery`
+  → `chat_luong.kiem_short(canh, timing, 'V/shorts/k.mp4')` (sửa hết `Lỗi`) → `dung.trich_khung('V/shorts/k.mp4', 'V/ngan/k')`.
+- **Tiêu đề Short:** chấm bằng `tieu_de.kiem` và `tieu_de.kiem_khop_nguon` như video dài (không giật gân, không "!").
+- **Đóng gói:** thêm vào `dong-goi.json:shorts` `{"file": "shorts/k.mp4", "tieu_de", "ngay", "gio", "khuon": "doc", "mo_ta"?}`
+  (`mo_ta` riêng nếu có, không thì dùng mô tả video dài; dòng trỏ về video dài tự thêm lúc đăng).
+- Giờ đăng Short: sáng ngày hôm sau video dài (đề xuất 08:00 giờ Việt Nam). Shorts không nằm trên đường găng: dựng sau khi
+  `dang` xong (máy rảnh buổi tối).
+- **Gửi người dùng** từng Short: tệp mp4, `khung-0.png`, `khung-3.png`, tiêu đề, giờ đăng, cảnh báo còn lại. **Dừng.**
+  Khi người dùng nói "ok" với Short i: `uv run python -m tttc.trang_thai duyet-short ../videos/<slug> <i>` (ghi sha256 tệp +
+  mọi trường của mục Short; đổi bất cứ thứ gì sau đó, kể cả `mo_ta`, là phải duyệt lại). Sau đó đăng bằng `/video-dang`
+  (`tttc.dang short`). `dong-goi.json:shorts` có thể rỗng khi duyệt 2.
+- **Đo:** nhắc người dùng nhập tỉ lệ "ở lại xem" từ Studio vào cột `o_lai_short` của `theo-doi.csv` sau 48 giờ (cột
+  `khuon_short` do `dang` tự ghi). Mỗi lứa chỉ đổi một biến; lứa đầu 6 Short chỉ đổi cách dựng, giữ loại đề tiêu dùng có giá
+  cụ thể. Sau 6 Short dọc gốc mà trung vị `o_lai_short` dưới 25% thì dừng thêm mẫu cảnh, xem lại câu hook và chọn đề.
 - `set_step(V, "shorts", "xong")` sau khi tất cả Short đã dựng.

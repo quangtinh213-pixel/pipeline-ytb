@@ -953,3 +953,9 @@ def test_compose_doc_mau_anh_chi_co_video_khi_canh_dung_video(ngan_du_mau, video
 def test_mau_bang_chung_khong_chieu_nguyen_trang():
     t = (dung.TPL_DOC / "bang-chung.html").read_text(encoding="utf-8")
     assert "v.vw" in t and "v.vh" in t and "v.ty_le" in t     # phóng theo vùng, không đặt ảnh nguyên cỡ
+
+
+def test_trich_khung_ghi_hai_anh(tmp_path):
+    mp4 = _tone(tmp_path / "s.mp4", 5, video=True)
+    out = dung.trich_khung(mp4, tmp_path / "ra")
+    assert [p.name for p in out] == ["khung-0.png", "khung-3.png"] and all(p.stat().st_size > 0 for p in out)

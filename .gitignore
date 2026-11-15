@@ -13,6 +13,10 @@ videos/**/*.mp4
 videos/**/*.mov
 videos/**/*.webm
 videos/*/shorts/
+videos/*/ngan/*/*.mp3
+videos/*/ngan/*/giong-vieneu/
+videos/*/ngan/*/composition/
+videos/*/ngan/*/khung-*.png
 videos/*/frames/
 videos/thu-nghiem/
 videos/nghe-thu-giong/

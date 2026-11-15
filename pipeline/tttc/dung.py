@@ -893,6 +893,18 @@ def check_av(video_mp4, audio, tol: float = 0.5) -> list[str]:
             for label, t in (("tiếng trong MP4", a), ("giọng gốc", voice)) if abs(v - t) > tol]
 
 
+def trich_khung(mp4, out_dir, moc: tuple[float, ...] = (0.0, 3.0)) -> list[Path]:
+    """Trích khung-<giây>.png tại từng mốc để người dùng xem khung đầu của Short khi duyệt."""
+    out_dir = Path(out_dir)
+    out_dir.mkdir(parents=True, exist_ok=True)
+    ra = []
+    for t in moc:
+        f = out_dir / f"khung-{int(t)}.png"
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-ss", str(t), "-i", str(mp4), "-frames:v", "1", str(f)], check=True)
+        ra.append(f)
+    return ra
+
+
 def contact_sheet(video_mp4, scenes: dict, out_png) -> Path:
     sc = scenes["scenes"]
     cols, rows = min(len(sc), COLS), -(-len(sc) // COLS)

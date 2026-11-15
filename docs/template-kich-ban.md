@@ -95,16 +95,15 @@ Khóa loại (dùng ở dòng `Loại:` đầu `kich-ban.md`): `ra-mat`, `ro-ri`
 
 ## 7. Shorts (`shorts`, 35 – 50 giây, khổ dọc 9:16)
 
-**[0–4s] MÓC CÂU NGHỊCH LÝ (Text to viền đen/vàng nổi bật):** [Sự kiện sốc] vừa xảy ra, và chiếc điện thoại/tài khoản của bạn sắp chịu trận!
-*(Ví dụ: "Bạn tưởng mua máy cũ là hời? Xem xong văn bản này có khi muốn đổi ý ngay!")*
+**[0–4s] MÓC CÂU (câu nói đầu tiên, đồng thời là chữ lớn ở khung 0 – mẫu `moc`):** [Sự kiện cụ thể] kèm [con số có nguồn `[#id]`], rồi đúng một câu hỏi về túi tiền người Việt. Không mở bằng từ nối ("Thứ nhất", "Còn", "Vậy"), không từ giật gân, không "!".
+*(Ví dụ: "Cấm nhập máy cũ, iPhone mười lăm Plus cũ vẫn mười lăm phẩy tám chín triệu [#id]. Sang năm giá có tăng không?")*
 
 **[4–20s] Điểm chấn động nhất:** No cap, [con số thiệt hại hoặc thay đổi giá]. [Bằng chứng zoom vào văn bản/trang giá gốc].
 
 **[20–40s] Bóc trần thực tế + Châm biếm ngắn:** Marketing thì nói là [chiêu trò], nhưng tính toán ra thì người dùng Việt phải bù thêm [số tiền].
 
-**[40–50s] ĐIỀU HƯỚNG SANG VIDEO DÀI (Related Video CTA):** 
-- *Cách 1 (Kéo sang video dài):* "Muốn biết toàn bộ 3 điểm lách luật và bảng tính chi tiết, bấm ngay vào video liên kết bên dưới tên kênh!"
-- *Cách 2 (Vòng lặp vô tận):* Câu cuối kết thúc bằng cụm từ khớp với câu mở đầu (để người xem lặp lại lần 2 mà không nhận ra).
+**[40–50s] KẾT BẰNG VÒNG LẶP (mặc định từ 15/11/2026):** Câu cuối kết thúc bằng cụm từ khớp với câu mở đầu, để người xem lặp lại lần 2 mà không nhận ra.
+- *Kéo sang video dài* ("bấm vào video liên kết…"): tạm không dùng; dùng lại khi tỉ lệ "ở lại xem" của Shorts đã vượt 40%. Dòng trỏ về video dài vẫn tự có trong mô tả.
 
 ## Mẫu câu châm biếm + trend dùng được nhiều lần
 
