@@ -234,7 +234,7 @@ def ban_co_toi(anh: Path, nhan: str, so: str, hoi: str, out: Path, ghi_cong: str
     bg_color = theme.rgb(theme.TH["nen"])
     cyan = theme.rgb(theme.TH["nhan"][0])
     do = theme.rgb(theme.TH["sac"]["do"][0])
-    vang = theme.rgb(theme.TH.get("pill", {}).get("vang", ["#FACC15"])[0])
+    vang = theme.rgb(theme.TH["pill"]["vang"][0])
     img = Image.new("RGB", (W, H), bg_color)
 
     grid = Image.new("RGBA", (W, H), (0, 0, 0, 0))

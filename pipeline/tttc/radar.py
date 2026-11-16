@@ -39,23 +39,51 @@ DOI_THU_FIELDS = ["kenh", "video_id", "tieu_de", "gio_dang", "view_24h", "view_7
 
 
 
-def doc_rss(channel_id: str, get=requests.get) -> list[dict]:
-    """[{"id","tieu_de","dang_luc" (UTC+7),"view" (None nếu thiếu)}], bỏ qua mục hỏng."""
+def doc_rss(channel_id: str, get=requests.get, youtube=None) -> list[dict]:
+    """[{"id","tieu_de","dang_luc" (UTC+7),"view" (None nếu thiếu)}], bỏ qua mục hỏng.
+    Nếu RSS của YouTube trả lỗi 5xx, tự động dự phòng qua Data API (uploads playlist, tốn 2 đơn vị quota)."""
     try:
         r = get(RSS.format(channel_id), timeout=20)
         r.raise_for_status()
         root = ET.fromstring(r.text)
-    except Exception as e:  # mạng, HTTP, XML hỏng: báo một loại lỗi, không làm sập vòng quét
-        raise RuntimeError(f"RSS đối thủ không đọc được: {e}") from e
-    out = []
-    for e in root.findall("a:entry", NS):
-        vid, title, pub = e.findtext("yt:videoId", namespaces=NS), e.findtext("a:title", namespaces=NS), e.findtext("a:published", namespaces=NS)
-        if not (vid and title and pub):
-            continue
-        stat = e.find("m:group/m:community/m:statistics", NS)
-        view = int(stat.get("views")) if stat is not None and (stat.get("views") or "").isdigit() else None
-        out.append({"id": vid, "tieu_de": title, "dang_luc": datetime.fromisoformat(pub).astimezone(VN), "view": view})
-    return out
+        out = []
+        for e in root.findall("a:entry", NS):
+            vid, title, pub = e.findtext("yt:videoId", namespaces=NS), e.findtext("a:title", namespaces=NS), e.findtext("a:published", namespaces=NS)
+            if not (vid and title and pub):
+                continue
+            stat = e.find("m:group/m:community/m:statistics", NS)
+            view = int(stat.get("views")) if stat is not None and (stat.get("views") or "").isdigit() else None
+            out.append({"id": vid, "tieu_de": title, "dang_luc": datetime.fromisoformat(pub).astimezone(VN), "view": view})
+        return out
+    except Exception as rss_err:
+        if get is not requests.get and youtube is None:  # trong unit test truyền mock `get`: báo lỗi ngay như cũ
+            raise RuntimeError(f"RSS đối thủ không đọc được: {rss_err}") from rss_err
+        try:
+            from tttc import dang
+            yt = youtube or dang.client()
+            upl = "UU" + channel_id[2:] if channel_id.startswith("UC") else channel_id
+            pl = yt.playlistItems().list(part="snippet,contentDetails", playlistId=upl, maxResults=15).execute()
+            vids = [it["contentDetails"]["videoId"] for it in pl.get("items", []) if it.get("contentDetails", {}).get("videoId")]
+            if not vids:
+                raise rss_err
+            v_resp = yt.videos().list(part="snippet,statistics", id=",".join(vids)).execute()
+            out = []
+            for it in v_resp.get("items", []):
+                sn = it.get("snippet", {})
+                st = it.get("statistics", {})
+                pub = sn.get("publishedAt")
+                if not pub:
+                    continue
+                v_cnt = st.get("viewCount")
+                out.append({
+                    "id": it["id"],
+                    "tieu_de": sn.get("title", ""),
+                    "dang_luc": datetime.fromisoformat(pub.replace("Z", "+00:00")).astimezone(VN),
+                    "view": int(v_cnt) if v_cnt is not None and str(v_cnt).isdigit() else None,
+                })
+            return sorted(out, key=lambda x: x["dang_luc"], reverse=True)
+        except Exception:
+            raise RuntimeError(f"RSS đối thủ không đọc được: {rss_err}") from rss_err
 
 
 def cham_diem(soc: int, so_lon: int, goc_vn: int) -> int:
