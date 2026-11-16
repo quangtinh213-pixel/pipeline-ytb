@@ -75,3 +75,8 @@ def ctr(ngay_csv: list[dict[str, tuple[float, float]]], video_id: str) -> float 
     impr = sum(d.get(video_id, (0.0, 0.0))[0] for d in ngay_csv)
     clicks = sum(d.get(video_id, (0.0, 0.0))[1] for d in ngay_csv)
     return clicks / impr if impr else None
+
+
+def hien_thi(ngay_csv: list[dict[str, tuple[float, float]]], video_id: str) -> int:
+    """Tổng lượt hiển thị thumbnail của một video trên các ngày truyền vào."""
+    return int(round(sum(d.get(video_id, (0.0, 0.0))[0] for d in ngay_csv)))

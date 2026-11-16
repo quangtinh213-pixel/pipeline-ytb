@@ -263,7 +263,13 @@ def _upload(d: Path, date_vn: str, time_vn: str, youtube, tracker: Path, playlis
         yt.playlistItems().insert(part="snippet", body={"snippet": {
             "playlistId": playlist_id, "resourceId": {"kind": "youtube#video", "videoId": vid}}}).execute(num_retries=RETRIES)
         tt.set_field(d, "playlist_ok", playlist_id)
-    _track(tracker, title, when, vid)
+    goi_d = _goi(d)
+    them_d = {k: v for k, v in {
+        "khuon_thumb": _chosen(d).get("khuon", ""),
+        "goc": goi_d.get("goc", ""),
+        "chuoi": goi_d.get("chuoi", ""),
+    }.items() if v}
+    _track(tracker, title, when, vid, them_d or None)
     tt.set_step(d, "dang", "xong", f"https://youtu.be/{vid}")
     return vid
 

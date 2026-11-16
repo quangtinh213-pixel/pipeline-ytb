@@ -8,7 +8,11 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 # o_lai_short: tỉ lệ "ở lại xem" của Short, nhập tay từ Studio sau 48 giờ; khuon_short: cu / doc (dang ghi lúc upload)
-EXTRA = ["trung_de_ho", "chenh_gio", "radar_hang", "view_ho_24h", "avd_pct", "con_50pct", "o_lai_short", "khuon_short"]
+EXTRA = [
+    "trung_de_ho", "chenh_gio", "radar_hang", "view_ho_24h",
+    "avd_pct", "con_50pct", "o_lai_short", "khuon_short",
+    "hien_thi_7d", "khuon_thumb", "goc", "chuoi", "roi_lon_nhat",
+]
 VN = timezone(timedelta(hours=7))
 # Cửa sổ ghi số view: lỡ cửa sổ thì để trống, không ghi số của thời điểm khác vào cột.
 CUA_SO = {"view_24h": (timedelta(hours=24), timedelta(hours=48)), "view_7d": (timedelta(days=7), timedelta(days=8))}

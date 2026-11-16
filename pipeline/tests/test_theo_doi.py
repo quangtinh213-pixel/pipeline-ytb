@@ -68,5 +68,5 @@ def test_migrate_them_hai_cot_short_giu_du_lieu_cu(tmp_path):
     p.write_text(OLD, encoding="utf-8")
     theo_doi.migrate(p)
     rows = list(csv.DictReader(p.open(encoding="utf-8")))
-    assert list(rows[0])[-2:] == ["o_lai_short", "khuon_short"]
-    assert rows[0]["tieu_de"] == "Tiêu đề" and rows[0]["o_lai_short"] == "" and rows[0]["khuon_short"] == ""
+    assert list(rows[0])[-7:] == ["o_lai_short", "khuon_short", "hien_thi_7d", "khuon_thumb", "goc", "chuoi", "roi_lon_nhat"]
+    assert rows[0]["tieu_de"] == "Tiêu đề" and rows[0]["o_lai_short"] == "" and rows[0]["hien_thi_7d"] == ""

@@ -146,8 +146,8 @@ def cap_nhat_avd(rows: list[dict], thoi_luong: dict[str, float], analytics, now:
 
 
 def cap_nhat_ctr(rows: list[dict], reporting, now: datetime, tai=reach.tai) -> int:
-    """Điền ctr còn trống bằng CTR thumbnail gộp 7 ngày đầu (Reporting API). Chỉ điền khi đủ báo cáo cả 7 ngày.
-    Dòng đã có CTR điền tay thì không ghi đè, chỉ in số tính được để đối chiếu đơn vị."""
+    """Điền ctr và hien_thi_7d còn trống bằng số gộp 7 ngày đầu (Reporting API). Chỉ điền chính thức khi đủ cả 7 ngày.
+    Video mới có 1–6 ngày báo cáo thì in CTR tạm tính ra log. Dòng đã có CTR điền tay thì không ghi đè ctr."""
     if reporting is None:
         return 0
     job = reach.job_id(reporting)
@@ -159,19 +159,29 @@ def cap_nhat_ctr(rows: list[dict], reporting, now: datetime, tai=reach.tai) -> i
     changed = 0
     for r in rows:
         v = _vid(r)
+        if not v:
+            continue
         try:
             ngay = datetime.strptime(r.get("gio_dang", ""), "%d/%m/%Y %H:%M").replace(tzinfo=VN).astimezone(reach.PT).date()
         except ValueError:
             continue
         cac_ngay = [ngay + timedelta(days=k) for k in range(7)]
-        if not v or not all(d in ngay_url for d in cac_ngay):
+        co_ngay = [d for d in cac_ngay if d in ngay_url]
+        if not co_ngay:
             continue
-        for d in cac_ngay:
+        for d in co_ngay:
             if d not in cache:
                 cache[d] = reach.doc_csv(tai(reporting, ngay_url[d]))
-        c = reach.ctr([cache[d] for d in cac_ngay], v)
+        c = reach.ctr([cache[d] for d in co_ngay], v)
+        impr = reach.hien_thi([cache[d] for d in co_ngay], v)
+        if len(co_ngay) < 7:
+            if c is not None and impr > 0:
+                print(f"CTR tạm tính {v} ({len(co_ngay)}/7 ngày): {c * 100:.1f}% ({impr} hiển thị)")
+            continue
         if c is None:
             continue
+        if "hien_thi_7d" in r and not (r.get("hien_thi_7d") or "").strip() and impr > 0:
+            r["hien_thi_7d"] = str(impr)
         if (r.get("ctr") or "").strip():
             print(f"CTR đối chiếu {v}: sổ {r['ctr']} – báo cáo {c * 100:.1f}%")
             continue
@@ -225,10 +235,13 @@ def dong_bo():
 
         opp_updated = 0
         if CONFIG.exists():
-            kenh_ho = json.loads(CONFIG.read_text(encoding="utf-8")).get("doi_thu", {}).get("kenh_id")
+            doi_thu_cfg = json.loads(CONFIG.read_text(encoding="utf-8")).get("doi_thu", {})
+            kenh_ho = doi_thu_cfg.get("kenh_id")
             if kenh_ho:
                 try:
-                    opp_updated = cap_nhat_doi_thu(rows, radar.doc_rss(kenh_ho), now)
+                    rss_items = radar.doc_rss(kenh_ho)
+                    opp_updated = cap_nhat_doi_thu(rows, rss_items, now)
+                    radar.cap_nhat_so_doi_thu(ROOT / "doi-thu.csv", rss_items, now, kenh=doi_thu_cfg.get("ten", "@MotCongNghe"))
                 except RuntimeError as e:
                     print(f"Cảnh báo đồng bộ đối thủ: {e}")
 

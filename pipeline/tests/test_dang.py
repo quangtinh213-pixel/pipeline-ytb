@@ -291,7 +291,7 @@ def test_track_migrates_old_csv_and_keeps_old_rows(tmp_path):
                  "09/11/2026,Cũ,09/11/2026 20:45,https://youtu.be/x,,,,\n", encoding="utf-8")
     dang._track(t, "Mới", "10/11/2026 15:30", "vid")
     rows = list(csv.DictReader(t.open(encoding="utf-8")))
-    assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 16  # + avd_pct, con_50pct, o_lai_short, khuon_short (15/11)
+    assert list(rows[0]) == dang.FIELDS and len(dang.FIELDS) == 21
     assert [r["tieu_de"] for r in rows] == ["Cũ", "Mới"] and rows[1]["chenh_gio"] == "" and rows[1]["link"].endswith("vid")
 
 

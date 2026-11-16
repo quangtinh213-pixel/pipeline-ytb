@@ -117,18 +117,21 @@ def test_cap_nhat_ctr_can_du_7_ngay_va_khong_ghi_de(monkeypatch, capsys):
     # 15:30 giờ VN 09/11 = 00:30 PST 09/11 → 7 ngày 09–15/11
     du = {date(2026, 11, 9) + timedelta(days=k): f"u{k}" for k in range(7)}
     monkeypatch.setattr(mod.reach, "bao_cao_theo_ngay", lambda rp, job: du)
-    csv_ = "video_id,video_thumbnail_impressions,video_thumbnail_impressions_ctr\nmoi,1000,0.05\nstudio,1000,0.06\n"
+    csv_ = "video_id,video_thumbnail_impressions,video_thumbnail_impressions_ctr\nmoi,1000,0.05\nstudio,1000,0.06\nsau,500,0.04\n"
     tai = MagicMock(return_value=csv_)
     rows = [
-        {"link": "https://youtu.be/moi", "gio_dang": "09/11/2026 15:30", "ctr": ""},
-        {"link": "https://youtu.be/studio", "gio_dang": "09/11/2026 15:30", "ctr": "6.3%"},
-        {"link": "https://youtu.be/sau", "gio_dang": "12/11/2026 15:30", "ctr": ""},  # chưa đủ 7 ngày báo cáo
+        {"link": "https://youtu.be/moi", "gio_dang": "09/11/2026 15:30", "ctr": "", "hien_thi_7d": ""},
+        {"link": "https://youtu.be/studio", "gio_dang": "09/11/2026 15:30", "ctr": "6.3%", "hien_thi_7d": ""},
+        {"link": "https://youtu.be/sau", "gio_dang": "12/11/2026 15:30", "ctr": "", "hien_thi_7d": ""},  # chưa đủ 7 ngày báo cáo
     ]
     now = datetime(2026, 11, 20, 9, 0, tzinfo=VN)
     assert mod.cap_nhat_ctr(rows, MagicMock(), now, tai=tai) == 1
     assert [r["ctr"] for r in rows] == ["5.0%", "6.3%", ""]
+    assert rows[0]["hien_thi_7d"] == "7000" and rows[1]["hien_thi_7d"] == "7000"
     assert tai.call_count == 7  # mỗi ngày tải một lần dù nhiều video
-    assert "sổ 6.3% – báo cáo 6.0%" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert "sổ 6.3% – báo cáo 6.0%" in out
+    assert "CTR tạm tính sau (4/7 ngày): 4.0% (2000 hiển thị)" in out
     assert mod.cap_nhat_ctr(rows, None, now) == 0
 
 
