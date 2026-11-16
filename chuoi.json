@@ -1,0 +1,43 @@
+{
+  "chuoi": [
+    {
+      "ma": "nvidia-de-che-ai",
+      "ten": "Đế chế Nvidia & Cuộc chiến Chip AI",
+      "playlist_id": "PLf9v4rPuuCys",
+      "tu_khoa": ["nvidia", "jensen huang", "megaspeed", "h100", "blackwell", "chip ai"],
+      "tap": [
+        {"slug": "2026-11-11-nvidia-ceo-gian-diep", "video_id": "E17SceQLG9I", "ngay": "2026-11-09"},
+        {"slug": "2026-11-15-nvidia-siet-chip", "video_id": "d1jh3GyOdrU", "ngay": "2026-11-12"},
+        {"slug": "2026-11-13-huang-roi-nvidia", "video_id": "RX21zw1F8S0", "ngay": "2026-11-13"}
+      ],
+      "goi_y_tap_ke": [
+        "Báo cáo tài chính quý Nvidia 17/11: doanh thu thực tế sau khủng hoảng",
+        "Phiên điều trần Hạ viện Mỹ 18/11 về đường đi chip AI qua Singapore"
+      ]
+    },
+    {
+      "ma": "spacex-starlink-vn",
+      "ten": "SpaceX, Starlink & Hạ tầng Viễn thông Việt Nam",
+      "playlist_id": "PLf9v4rPuuCys",
+      "tu_khoa": ["starlink", "spacex", "starship", "elon musk", "vệ tinh"],
+      "tap": [
+        {"slug": "2026-11-16-starship-starlink-vn", "video_id": null, "ngay": "2026-11-16"}
+      ],
+      "goi_y_tap_ke": [
+        "Sau mốc 01/12/2026: Giá Starlink tại Việt Nam thay đổi ra sao so với cáp quang?"
+      ]
+    },
+    {
+      "ma": "big-tech-du-lieu-vn",
+      "ten": "Big Tech bị phạt & Quyền dữ liệu người Việt",
+      "playlist_id": "PLf9v4rPuuCys",
+      "tu_khoa": ["meta", "facebook", "dữ liệu cá nhân", "garante privacy"],
+      "tap": [
+        {"slug": "2026-11-16-meta-phat-anh-facebook", "video_id": "Gsvyy5eGh70", "ngay": "2026-11-16"}
+      ],
+      "goi_y_tap_ke": [
+        "Hạn 60 ngày của Italy: Meta tắt tính năng gợi ý ảnh toàn cầu hay chỉ ở châu Âu?"
+      ]
+    }
+  ]
+}

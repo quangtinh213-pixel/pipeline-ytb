@@ -484,3 +484,12 @@ def test_doi_mo_ta_short_sau_khi_duyet_thi_phai_duyet_lai(video):
     assert tt.short_current(video, 0)
     _short_moi(video, mo_ta="Bản sửa sau khi duyệt.")
     assert not tt.short_current(video, 0)
+
+
+def test_build_body_prepends_tap_truoc_when_present(video):
+    goi = json.loads((video / "dong-goi.json").read_text(encoding="utf-8"))
+    goi["tap_truoc"] = "E17SceQLG9I"
+    (video / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
+    body = dang.build_body(video, "2099-11-13T12:00:00Z")
+    assert "👉 Xem tập trước trong chuỗi: https://youtu.be/E17SceQLG9I" in body["snippet"]["description"]
+

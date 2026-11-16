@@ -102,7 +102,11 @@ def build_body(video_dir, when: str) -> dict:
     d = Path(video_dir)
     goi = _goi(d)
     tags = goi.get("tags", [])
-    return _body(_chosen(d)["tieu_de"], gan_hashtag(goi["mo_ta"], tags, is_short=False), tags, when)
+    mo_ta = goi["mo_ta"]
+    tap_truoc = (goi.get("tap_truoc") or "").strip()
+    if tap_truoc and f"youtu.be/{tap_truoc}" not in mo_ta:
+        mo_ta = f"👉 Xem tập trước trong chuỗi: https://youtu.be/{tap_truoc}\n\n{mo_ta}"
+    return _body(_chosen(d)["tieu_de"], gan_hashtag(mo_ta, tags, is_short=False), tags, when)
 
 
 def _guard(video_dir: Path) -> None:

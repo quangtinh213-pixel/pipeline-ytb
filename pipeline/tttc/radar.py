@@ -3,8 +3,10 @@
 Chỉ dùng tiêu đề, giờ đăng và số view của đối thủ làm tín hiệu; không lấy lời, kịch bản hay hình của họ.
 Chạy: uv run python -m tttc.radar rss
 """
+import csv
 import json
 import re
+import statistics
 import sys
 import unicodedata
 import xml.etree.ElementTree as ET
@@ -14,7 +16,9 @@ from pathlib import Path
 import requests
 
 PIPE = Path(__file__).resolve().parent.parent
+ROOT = PIPE.parent
 CONFIG = PIPE / "config.json"
+CHUOI = ROOT / "chuoi.json"
 VN = timezone(timedelta(hours=7))
 RSS = "https://www.youtube.com/feeds/videos.xml?channel_id={}"
 SUGGEST_URL = "https://suggestqueries.google.com/complete/search"
@@ -24,6 +28,15 @@ THUC_THE_BAO_HOA = [
     "nvidia", "apple", "iphone", "microsoft", "openai",
     "google", "grab", "viettel", "chatgpt", "ai", "chip",
 ]
+THUC_THE_CLUSTER_A = [
+    "nvidia", "jensen huang", "tsmc", "apple", "openai", "sam altman",
+    "microsoft", "google", "meta", "facebook", "elon musk", "spacex",
+    "starlink", "starship", "deepseek", "huawei", "byd", "intel", "amd",
+    "qualcomm", "asml", "bán dẫn", "chip", "ai", "trung tâm dữ liệu",
+    "thuế quan", "trừng phạt",
+]
+DOI_THU_FIELDS = ["kenh", "video_id", "tieu_de", "gio_dang", "view_24h", "view_7d", "view_moi_nhat", "nhom_de", "breakout"]
+
 
 
 def doc_rss(channel_id: str, get=requests.get) -> list[dict]:
@@ -160,6 +173,10 @@ def ghi_chu_de(
                f"góc Việt Nam {d['goc_vn']}×2)\n- Tin gốc: {d['link']}\n- Họ đã đăng cùng sự kiện: {ho}\n")
         if kws := goi_y.get(d["tieu_de"]):
             muc += f"- Từ khóa tìm kiếm gợi ý: {', '.join(kws)}\n"
+        if dd := d.get("dinh_dang"):
+            muc += f"- Định dạng khuyến nghị: {dd}\n"
+        if ch := d.get("chuoi"):
+            muc += f"- Chuỗi: {ch}\n"
         khối.append(muc)
     if bao_hoa:
         chi_tiet = ", ".join(f"{k} ({v} video)" for k, v in bao_hoa.items())
@@ -167,6 +184,105 @@ def ghi_chu_de(
     p = Path(video_dir) / "chu-de.md"
     p.write_text("\n".join(khối), encoding="utf-8", newline="\n")
     return p
+
+
+def la_cluster_a(text: str) -> bool:
+    """Kiểm tra tiêu đề/chủ đề có thuộc Cluster A (Bàn cờ Đế chế AI & Bán dẫn / Big Tech tỷ đô) không."""
+    raw = unicodedata.normalize("NFC", text or "")
+    low = raw.lower()
+    for e in THUC_THE_CLUSTER_A:
+        if e == "ai":
+            if re.search(r"(?<!\w)AI(?!\w)|(?:^|[-_ ])ai(?:$|[-_ ])", raw):
+                return True
+        elif re.search(rf"(?<!\w){re.escape(e)}(?!\w)", low):
+            return True
+    return False
+
+
+def khuyen_nghi_dinh_dang(de: dict) -> str:
+    """Trả về khuyến nghị định dạng: 'dai-tang-1' | 'dai-tang-2' | 'shorts' | 'bo'."""
+    diem = de.get("diem")
+    if diem is None:
+        diem = cham_diem(de.get("soc", 0), de.get("so_lon", 0), de.get("goc_vn", 0))
+    if diem < 4:
+        return "bo"
+    cluster_a = de.get("cluster_a")
+    if cluster_a is None:
+        cluster_a = la_cluster_a(de.get("tieu_de", ""))
+    tre_gio = float(de.get("tre_gio", 0) or 0)
+    tran = de.get("tran_nhu_cau")
+    if tre_gio > 48 or (tran is not None and float(tran) < 10000) or not cluster_a:
+        return "shorts"
+    if de.get("ho_da_dang") and float(de.get("chenh_gio_ho", 2.0) or 2.0) >= 2.0:
+        return "dai-tang-2"
+    return "dai-tang-1"
+
+
+def khop_chuoi(text: str, chuoi_path: Path = CHUOI) -> dict | None:
+    """Trả về mục chuỗi trong chuoi.json nếu text khớp từ khóa của chuỗi; None nếu không khớp."""
+    p = Path(chuoi_path)
+    if not p.exists():
+        return None
+    try:
+        data = json.loads(p.read_text(encoding="utf-8")).get("chuoi", [])
+    except Exception:
+        return None
+    low = unicodedata.normalize("NFC", text or "").lower()
+    for ch in data:
+        for kw in ch.get("tu_khoa", []):
+            if re.search(rf"(?<!\w){re.escape(kw.lower())}(?!\w)", low):
+                return ch
+    return None
+
+
+def cap_nhat_so_doi_thu(csv_path: Path, rss_items: list[dict], now: datetime, kenh: str = "@MotCongNghe") -> int:
+    """Cập nhật doi-thu.csv từ RSS đối thủ: lưu view_24h, view_7d, view_moi_nhat, nhom_de ('cluster-a'|'tieu-dung'|'khac') và breakout."""
+    if not rss_items:
+        return 0
+    p = Path(csv_path)
+    existing: dict[str, dict] = {}
+    if p.exists():
+        with p.open(encoding="utf-8", newline="") as f:
+            for r in csv.DictReader(f):
+                if r.get("video_id"):
+                    existing[r["video_id"]] = r
+    changed = 0
+    for it in rss_items:
+        vid = it.get("id")
+        if not vid:
+            continue
+        title = it.get("tieu_de", "")
+        dang_luc: datetime = it["dang_luc"]
+        gio_str = dang_luc.strftime("%d/%m/%Y %H:%M")
+        v_str = str(it["view"]) if it.get("view") is not None else ""
+        nhom = "cluster-a" if la_cluster_a(title) else (
+            "tieu-dung" if re.search(r"\b(?:giá|phí|cũ|mua|cước|tiền)\b", title.lower()) else "khac"
+        )
+        row = existing.get(vid, {k: "" for k in DOI_THU_FIELDS})
+        before = dict(row)
+        row.update({"kenh": kenh, "video_id": vid, "tieu_de": title, "gio_dang": gio_str, "nhom_de": row.get("nhom_de") or nhom})
+        if v_str:
+            row["view_moi_nhat"] = v_str
+            tuoi = now - dang_luc
+            if timedelta(hours=24) <= tuoi < timedelta(hours=48) and not row.get("view_24h"):
+                row["view_24h"] = v_str
+            if timedelta(days=7) <= tuoi < timedelta(days=8) and not row.get("view_7d"):
+                row["view_7d"] = v_str
+        existing[vid] = row
+        changed += int(row != before)
+
+    views = [float(r["view_moi_nhat"]) for r in existing.values() if (r.get("view_moi_nhat") or "").isdigit() and float(r["view_moi_nhat"]) > 0]
+    med = statistics.median(views) if views else 0.0
+    for r in existing.values():
+        if med > 0 and (r.get("view_moi_nhat") or "").isdigit():
+            r["breakout"] = f"{float(r['view_moi_nhat']) / med:.1f}"
+
+    p.parent.mkdir(parents=True, exist_ok=True)
+    with p.open("w", encoding="utf-8", newline="") as f:
+        w = csv.DictWriter(f, fieldnames=DOI_THU_FIELDS)
+        w.writeheader()
+        w.writerows(existing.values())
+    return changed
 
 
 def main(argv: list[str], get=requests.get) -> int:

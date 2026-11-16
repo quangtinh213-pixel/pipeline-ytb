@@ -153,3 +153,33 @@ def test_kiem_bao_hoa_ignores_de2_3_and_warnings_and_lowercase_ai_pronoun(tmp_pa
     res = radar.kiem_bao_hoa(tmp_path, so_ngay=4)
     assert "ai" not in res
     assert "nvidia" not in res  # chỉ đếm d3 (d1 nhắc Nvidia ở warning & Đề 2 bị bỏ qua)
+
+
+def test_la_cluster_a_va_khuyen_nghi_dinh_dang():
+    assert radar.la_cluster_a("Nvidia bốc hơi 190 tỷ USD vì chip AI")
+    assert not radar.la_cluster_a("Grab giảm phí 2.000 đồng mỗi cuốc xe")
+    assert radar.khuyen_nghi_dinh_dang({"tieu_de": "Nvidia mất 190 tỷ USD", "soc": 2, "so_lon": 2, "goc_vn": 1}) == "dai-tang-1"
+    assert radar.khuyen_nghi_dinh_dang({"tieu_de": "Nvidia mất 190 tỷ USD", "soc": 2, "so_lon": 2, "goc_vn": 1,
+                                        "ho_da_dang": True, "chenh_gio_ho": 3.5}) == "dai-tang-2"
+    assert radar.khuyen_nghi_dinh_dang({"tieu_de": "Grab giảm phí 2.000 đồng", "soc": 2, "so_lon": 1, "goc_vn": 2}) == "shorts"
+    assert radar.khuyen_nghi_dinh_dang({"tieu_de": "Nvidia ra mắt cáp sạc", "soc": 1, "so_lon": 0, "goc_vn": 0}) == "bo"
+
+
+def test_khop_chuoi_va_cap_nhat_so_doi_thu(tmp_path):
+    chuoi_p = tmp_path / "chuoi.json"
+    chuoi_p.write_text(json.dumps({"chuoi": [{"ma": "nvidia-ai", "ten": "Nvidia", "playlist_id": "PL1",
+                                              "tu_khoa": ["nvidia", "jensen huang"],
+                                              "tap": [{"slug": "s1", "video_id": "v1", "ngay": "2026-11-13"}]}]}), encoding="utf-8")
+    assert radar.khop_chuoi("Jensen Huang điều trần ở Hạ viện", chuoi_p)["ma"] == "nvidia-ai"
+    assert radar.khop_chuoi("Grab tăng phí", chuoi_p) is None
+
+    dt_csv = tmp_path / "doi-thu.csv"
+    rss = [
+        {"id": "v_nv", "tieu_de": "Nvidia mất 190 tỷ đô", "dang_luc": datetime(2026, 11, 15, 17, 0, tzinfo=VN), "view": 80000},
+        {"id": "v_gr", "tieu_de": "Mẹo tiết kiệm pin điện thoại", "dang_luc": datetime(2026, 11, 10, 17, 0, tzinfo=VN), "view": 10000},
+    ]
+    now = datetime(2026, 11, 16, 21, 0, tzinfo=VN)
+    assert radar.cap_nhat_so_doi_thu(dt_csv, rss, now) == 2
+    txt = dt_csv.read_text(encoding="utf-8")
+    assert "v_nv" in txt and "cluster-a" in txt and "80000" in txt
+
