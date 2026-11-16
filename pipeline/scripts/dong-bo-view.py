@@ -7,7 +7,7 @@ import re
 import unicodedata
 from datetime import datetime, timedelta
 from pathlib import Path
-from tttc import giam_sat, radar, reach, theo_doi
+from tttc import giam_sat, kham, radar, reach, theo_doi
 from tttc.dang import analytics_client, client, reporting_client, _lock
 from tttc.theo_doi import VN, dien_view
 
@@ -226,6 +226,7 @@ def dong_bo():
             print("Bỏ qua giữ chân 30s: chưa có token Analytics (chạy `uv run python -m tttc.dang login-analytics`)")
         giu_chan_updated = cap_nhat_giu_chan(rows, thoi_luong, an, now)
         avd_updated = cap_nhat_avd(rows, thoi_luong, an, now)
+        kham.cap_nhat_kham(rows, thoi_luong, an, now)
 
         ctr_updated = 0
         try:
