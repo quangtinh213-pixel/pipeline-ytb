@@ -196,7 +196,7 @@ def test_review_1_includes_kiem_thoi_luong_thuc_warning(tmp_path):
 
 def test_review_2_flags_thumbnail_not_on_locked_template(tmp_path):
     d = _video(tmp_path)
-    goi = {**GOI, "phuong_an": [{**GOI["phuong_an"][0]}, {**GOI["phuong_an"][1], "khuon": "khung"},
+    goi = {**GOI, "phuong_an": [{**GOI["phuong_an"][0], "khuon": "ban-co-toi"}, {**GOI["phuong_an"][1], "khuon": "khung"},
                                 {k: v for k, v in GOI["phuong_an"][2].items() if k != "khuon"}]}
     (d / "dong-goi.json").write_text(json.dumps(goi, ensure_ascii=False), encoding="utf-8")
     html = duyet.render_review_2(d).read_text(encoding="utf-8")

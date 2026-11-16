@@ -112,9 +112,9 @@ def render_review_2(video_dir) -> Path:
         for msg in [*kq.loi, *kq.canh_bao, *tieu_de.kiem_khop_nguon(o["tieu_de"], nguon),
                     *phong_cach.kiem_khop_tieu_de(_read(d / "kich-ban.md"), o["tieu_de"])]:
             warns.append(f"Phương án {i}: {msg}")
-        if o.get("khuon") != thumb.KHUON:
-            warns.append(f"Phương án {i}: Lỗi: thumbnail không theo khuôn đã khóa «{thumb.KHUON}» "
-                         f"(đang ghi: {o.get('khuon') or 'không ghi'}); dựng lại bằng thumb.ho_so")
+        if o.get("khuon") not in thumb.KHUON_HOP_LE:
+            warns.append(f"Phương án {i}: Lỗi: thumbnail không theo khuôn đã khóa «ho-so / ban-co-toi» "
+                         f"(đang ghi: {o.get('khuon') or 'không ghi'}); dựng lại bằng thumb.ho_so hoặc thumb.ban_co_toi")
         dong_dai = [line for line in o.get("chu_thumb", []) if len(line.split()) > 4]
         if dong_dai:
             warns.append(f"Phương án {i}: Chữ thumbnail dài quá 4 từ ({', '.join(dong_dai)}) — nên rút gọn ≤ 3 từ/dòng")

@@ -212,18 +212,16 @@ xong in đường dẫn `soi-hinh.png` và kết quả `check_av`. Cần chạy 
 1. Gọi skill `yt-package`: 3 cặp tiêu đề (≤ 100 ký tự, ưu tiên ≤ 60) + chữ thumbnail theo ba tầng `nhan`/`so`/`hoi` của bước 2.
    Tiêu đề theo luật `tttc.tieu_de` (xem skill `video-moi` bước kiểm tiêu đề): dạng `[sự kiện + số]: [một câu hỏi]?`, không giật gân,
    không "!", không nhãn in hoa mở đầu. Phương án nào `tieu_de.kiem` còn lỗi thì viết lại trước khi dựng thumbnail, không đưa lên duyệt 2.
-2. Thumbnail – **một khuôn đã khóa: `ho-so`** (người dùng chốt 15/11/2026; `docs/nghien-cuu/de-xuat-phat-trien-2026-11-15.md` mục 5).
-   Cả 3 phương án dùng `tttc.thumb.ho_so(anh, nhan, so, hoi, V/thumbnails/N.png, ghi_cong, tam=(x, y))`; chúng chỉ khác
-   **chữ và ảnh**, không khác khuôn. Không dùng `thumb.make`, `thumb.khung`, CoDesign hay nền TobyFlow cho video dài nữa.
-   - `nhan`: chủ thể + động từ, ≤ 3 từ ("NVIDIA MẤT", "GRAB GIẢM PHÍ"); có thể để `""`.
-   - `so`: con số làm chính, lấy từ `nguon.json` và khớp số trong tiêu đề ("190 TỶ USD", "3.000 TỶ").
-   - `hoi`: **một** câu hỏi ≤ 3 từ ("VỀ TÚI AI?", "VÌ MỘT LÁ THƯ?"); dài hơn thì chữ nhỏ, không đọc được trên điện thoại.
-   - `anh`: ảnh thật của sự kiện (Wikimedia Commons, ảnh báo/hãng có ghi công) hoặc khung đẹp nhất của video
-     (`thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`). `tam` = điểm giữ khi cắt (mặt người thường `(0.5, 0.35)`).
+2. Thumbnail – **hai khuôn đã khóa cho Test & Compare: `ban-co-toi` và `ho-so`** (người dùng chốt 16/11/2026; `docs/superpowers/specs/2026-11-16-dinh-huong-cluster-a-va-vong-hoc-design.md` mục 5.1).
+   Trong bộ 3 phương án của mỗi video dài, xuất cả `tttc.thumb.ban_co_toi(anh, nhan, so, hoi, V/thumbnails/N.png, ghi_cong, tam=(x, y), zoom=...)` và `tttc.thumb.ho_so(anh, nhan, so, hoi, V/thumbnails/N.png, ghi_cong, tam=(x, y), zoom=...)` để chạy Test & Compare trực tiếp trên YouTube Studio. Không dùng `thumb.make`, `thumb.khung`, CoDesign hay nền TobyFlow cho video dài nữa.
+   - `nhan`: chủ thể + động từ xung đột, ≤ 3 từ ("NVIDIA BỐC HƠI", "META BỊ PHẠT"); có thể để `""`.
+   - `so`: con số làm chính, lấy từ `nguon.json` và khớp số trong tiêu đề ("-190 TỶ USD", "805 TRIỆU EURO").
+   - `hoi`: **một** câu hỏi ≤ 3 từ ("MỸ RA TRÁT?", "VIỆT NAM PHẠT?"); dài hơn thì chữ nhỏ, không đọc được trên điện thoại.
+   - `anh`: ảnh thật của nhân vật/sự kiện (Wikimedia Commons, ảnh báo/hãng có ghi công) hoặc khung đẹp nhất của video
+     (`thumb.khung_tu_video(V/final.mp4, t, V/thumbnails/khung.png, bo_day=0.12)`). Dùng `tam=(x, y)` và `zoom` (vd `zoom=1.8–2.5` cho ảnh có mặt người) để gương mặt nhân vật luôn rõ ở cỡ 168×94 px.
      **Không** dùng mặt người do AI tạo trông như ảnh thật, không logo hãng làm ảnh chính.
    - `ghi_cong` = `anh/ghi-cong.json:ghi_cong` nếu ảnh có ghi công.
-   - Cách chia 3 phương án: đổi ảnh (người / bối cảnh Việt Nam / khung video) hoặc đổi cặp số–câu hỏi, giữ một biến mỗi lần để Test & Compare đọc được.
-   - Khuôn cố ý khác kênh mẫu (nền giấy kem, không viền cam/vàng, không tia chia đôi, không hộp vàng chữ đen). Muốn đổi khuôn: hỏi người dùng, sửa `thumb.KHUON`.
+   - Cách chia 3 phương án: PA 1 dùng `ban-co-toi`, PA 2 dùng `ho-so` (giữ cùng chữ để đo Nền tối vs Nền kem), PA 3 đổi góc chữ/ảnh.
    - Mở bản `-168px` của từng thumbnail: đọc không ra chữ thì sửa.
 3. Gọi skill `yt-chapters` với mốc từ `giong-timing.json:paragraphs` (mốc thật, không ước tính).
 4. Gọi skill `yt-seo` cho mô tả + tags. Mô tả kết thúc bằng:

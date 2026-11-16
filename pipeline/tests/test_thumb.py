@@ -189,3 +189,28 @@ def test_ho_so_takes_colours_from_theme_and_credit_stays_left_of_badge(tmp_path,
     img = Image.open(big).convert("RGB")
     assert img.getpixel((3, 3)) == (240, 224, 208)
     assert img.convert("L").crop((1150, 680, 1280, 720)).getextrema()[0] > 150  # góc badge thời lượng để trống
+
+
+def test_crop_zoom_clamps_to_image_bounds(tmp_path):
+    img = Image.new("RGB", (800, 600), (10, 20, 30))
+    img.paste((250, 0, 0), (350, 250, 450, 350))
+    c1 = thumb._crop_zoom(img, (0.5, 0.5), zoom=2.0)
+    assert c1.size == (400, 300) and c1.getpixel((200, 150)) == (250, 0, 0)
+    c_edge = thumb._crop_zoom(img, (0.0, 1.0), zoom=3.0)
+    assert c_edge.size == (266, 200)
+    assert thumb._crop_zoom(img, (0.5, 0.5), zoom=1.0).size == (800, 600)
+
+
+def test_ban_co_toi_makes_1280x720_and_168px_with_dark_bg_and_red_banner(tmp_path):
+    import pytest
+    a = _anh(tmp_path, mau=(180, 120, 90), size=(1000, 800))
+    big, small = thumb.ban_co_toi(a, "NVIDIA BỐC HƠI", "-190 TỶ USD", "MỸ RA TRÁT?",
+                                  tmp_path / "b.png", ghi_cong="Ảnh: Wikimedia", tam=(0.5, 0.4), zoom=2.0)
+    assert Image.open(big).size == (1280, 720) and Image.open(small).size == (168, 94)
+    img = Image.open(big).convert("RGB")
+    do = theme.rgb(theme.TH["sac"]["do"][0])
+    assert img.getpixel((5, 360)) == do  # thanh nhấn đỏ mép trái
+    assert max(img.getpixel((40, 30))) < 50  # nền tối sâu ở góc trên trái
+    with pytest.raises(ValueError):
+        thumb.ban_co_toi(a, "NVIDIA", "", "SAO?", tmp_path / "b2.png")
+
